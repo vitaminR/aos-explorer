@@ -620,6 +620,9 @@
       <button class="tab-btn" onclick="switchTab('azure-setup', this)">
         Azure Setup
       </button>
+      <button class="tab-btn" onclick="switchTab('standards', this)">
+        Standards Track
+      </button>
     </div>
 
     <!-- ===== OVERVIEW TAB ===== -->
@@ -714,54 +717,48 @@
                 <td>Understand where tools sit and which layer is failing</td>
               </tr>
               <tr>
-                <h2 id="terminology">Terminology Primer: Four Words, Four Levels</h2>
+                <td><strong>CTOs / VPs</strong></td>
                 <td>Explain architecture and defend adoption decisions</td>
-                  {a}OS uses four terms to describe the same system at four zoom
-                  levels. You do not need to memorize them first. Use them to move
-                  from the big responsibility layer to the smallest meaningful detail.
+              </tr>
+              <tr>
+                <td><strong>Procurement</strong></td>
                 <td>Compare Azure-native vs aftermarket solutions</td>
               </tr>
               <tr>
-                  <strong>Plain-English map</strong>
-                  <strong>Stratum</strong> = responsibility layer.
-                  <strong>Substrate</strong> = systems doing work in that layer.
-                  <strong>Construct</strong> = a concrete thing those systems create,
-                  store, or update. <strong>Primitive</strong> = the smallest field,
-                  signal, or action inside that thing.
-            <div class="feature-card">
+                <td><strong>Security</strong></td>
+                <td>Map compliance and governance controls across the stack</td>
+              </tr>
+            </tbody>
+          </table>
 
-                <p>
-                  If you want an analogy, think of a <strong>building cross-section</strong>.
-                  A <strong>stratum</strong> is a floor with a distinct purpose.
-                  <strong>Substrates</strong> are the systems operating on that floor.
-                  <strong>Constructs</strong> are the outputs or managed objects those
-                  systems produce. <strong>Primitives</strong> are the smallest named
-                  parts inside those outputs.
-                </p>
+          <h2 id="features">Key Features</h2>
+          <div class="feature-grid">
+            <div class="feature-card">
               <div class="icon">&#x1F50D;</div>
               <div class="title">Progressive Drilldown</div>
               <div class="desc">
-                    <div class="eyebrow">1 · major boundary</div>
-                Primitive. The UI unfolds — no page changes.
+                Navigate Stratum &rarr; Substrate &rarr; Construct &rarr;
+                Primitive. The UI unfolds &mdash; no page reloads.
               </div>
-                      A major responsibility layer in the stack.
+            </div>
             <div class="feature-card">
               <div class="icon">&#x2696;</div>
-                      Use it when the owner, interface, or failure mode changes.
+              <div class="title">Compare Basket</div>
               <div class="desc">
-                Add up to 4 products to your basket and see side-by-side
-                coverage, overlaps, and gaps.
+                Add up to 4 products and see side-by-side coverage, overlaps,
+                and gaps.
               </div>
             </div>
             <div class="feature-card">
-                    <div class="eyebrow">2 · systems in that boundary</div>
+              <div class="icon">&#x1F4CA;</div>
               <div class="title">Evidence-Backed</div>
               <div class="desc">
-                      The tools, runtimes, frameworks, or services doing work inside
-                      a stratum.
+                Every classification includes confidence scores and
+                human-readable rationale.
               </div>
             </div>
-                      Think: the systems operating on one floor of the building.
+            <div class="feature-card">
+              <div class="icon">&#x1F500;</div>
               <div class="title">Multi-Residency</div>
               <div class="desc">
                 Products can span multiple layers. The UI never forces false
@@ -769,31 +766,32 @@
               </div>
             </div>
             <div class="feature-card">
-                    <div class="eyebrow">3 · thing created or managed</div>
+              <div class="icon">&#x1F9EC;</div>
               <div class="title">Ontology-First</div>
               <div class="desc">
-                      A concrete artifact or state a substrate creates, stores, or
-                      updates.
+                Structured data model beneath every view &mdash; not ad-hoc
+                categories.
               </div>
             </div>
-                      Think: a plan, request, memory object, policy decision, or
-                      roster.
+            <div class="feature-card">
+              <div class="icon">&#x2328;</div>
               <div class="title">Keyboard-First</div>
               <div class="desc">
-                Full keyboard navigation. Press / to search, 1-7 to jump, ? for
+                Full keyboard navigation. Press <kbd>/</kbd> to search,
+                <kbd>1</kbd>&ndash;<kbd>7</kbd> to jump, <kbd>?</kbd> for
                 shortcuts.
               </div>
             </div>
           </div>
-                    <div class="eyebrow">4 · smallest named part</div>
+
           <h2 id="tech">Tech Stack</h2>
           <table class="doc-table">
-                      The smallest meaningful field, signal, flag, or action inside a
-                      construct.
+            <thead>
+              <tr>
                 <th>Layer</th>
                 <th>Technology</th>
-                      Think: the IDs, scores, permissions, timestamps, or flags that
-                      give the construct shape.
+              </tr>
+            </thead>
             <tbody>
               <tr>
                 <td>Framework</td>
@@ -803,46 +801,18 @@
                 <td>Styling</td>
                 <td>Tailwind CSS v4</td>
               </tr>
-                  <strong>Quick translation:</strong>
-                  <strong>layer → systems → thing → part</strong>.
-              </tr>
-
-                <div class="callout">
-                  <strong>Worked example</strong>
-                  In <strong>L4 Orchestration</strong>, a
-                  <strong>workflow engine</strong> is the <strong>substrate</strong>.
-                  It may create an <strong>execution_plan</strong>
-                  <strong>construct</strong>. Inside that plan, fields like
-                  <code>task_id</code>, <code>retry_count</code>, and
-                  <code>priority</code> are <strong>primitives</strong>.
-                </div>
               <tr>
                 <td>Animation</td>
                 <td>Framer Motion + GSAP ScrollTrigger</td>
               </tr>
-                    Create a clean dark-mode infographic titled
-                    <strong>“{a}OS Terminology Primer”</strong>. Use a
-                    <strong>building cross-section</strong> with four clear zoom
-                    levels from macro to micro. Level 1:
-                    <strong>Stratum</strong> = a color-coded floor representing a
-                    major responsibility layer. Level 2:
-                    <strong>Substrate</strong> = the systems operating on that floor,
-                    such as workflow engines, agent frameworks, or policy services.
-                    Level 3: <strong>Construct</strong> = one concrete output or
-                    managed object created by those systems, such as an
-                    execution_plan, memory object, policy decision, or UI panel.
-                    Level 4: <strong>Primitive</strong> = the smallest named parts
-                    inside that object, such as task_id, score, retry_count,
-                    permission, timestamp, or flag. Style: premium editorial SaaS
-                    diagram, crisp geometry, clean labels, strong contrast, generous
-                    spacing, elegant arrows, restrained glow, minimal clutter, no
-                    crowded cyberpunk skyline, no tiny unreadable details.
-                  </p>
-                  <p>
-                    Optional cinematic variant: keep the same building hierarchy, but
-                    add slightly more drama — graphite, navy, and warm brass palette,
-                    architectural lighting, sophisticated depth, and brand-forward
-                    polish without losing readability.
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== REFERENCE STACK TAB ===== -->
+    <div class="tab-content" id="tab-reference">
       <div class="docs-layout">
         <nav class="sidebar">
           <div class="sidebar-title">Reference Stack</div>
@@ -1462,111 +1432,164 @@
 
           <h2 id="terminology">Terminology Primer</h2>
           <p>
-            Before you click around, lock in the four nouns that power the whole
-            model. Once these click, the explorer feels intuitive instead of
-            academic.
+            Five nouns power the entire {a}OS model. Lock these in and the
+            Explorer feels intuitive instead of academic.
           </p>
 
-          <div class="callout">
-            <strong>Mental model</strong>
-            Think of {a}OS as a <em>futuristic vertical city</em>. Each
-            <strong>stratum</strong> is a city level with a distinct job. Inside
-            each level live <strong>substrates</strong> — the services,
-            frameworks, or systems that operate there. Those substrates produce
-            <strong>constructs</strong> — plans, memories, agents, policies,
-            interfaces. And every construct is made of
-            <strong>primitives</strong>
-            — the smallest fields, actions, or parts you can point to.
+          <div class="callout" style="border-left-color: var(--accent-indigo)">
+            <strong>Plain-English shorthand</strong> &mdash; Every official term
+            has a plain alias in parentheses. Use whichever clicks. Both appear
+            throughout the Explorer UI.
           </div>
 
-          <div class="primer-grid">
-            <div class="primer-card">
-              <div class="eyebrow">1 · where value lives</div>
-              <div class="term">Stratum</div>
-              <p class="plain">
-                A major layer in the stack, defined by a boundary question.
-              </p>
-              <p class="example">Analogy: a district or floor in the city.</p>
-              <p class="example">
-                Explorer example:
-                <strong>L4 Orchestration &amp; Decisioning</strong>.
-              </p>
-            </div>
-            <div class="primer-card">
-              <div class="eyebrow">2 · what operates there</div>
-              <div class="term">Substrate</div>
-              <p class="plain">
-                The operating environment inside a stratum — a framework,
-                service, engine, or platform that does work.
-              </p>
-              <p class="example">
-                Analogy: the labs, factories, or transit systems inside one city
-                layer.
-              </p>
-              <p class="example">
-                Explorer example: <strong>Workflow Engines</strong> or
-                <strong>Agent Frameworks</strong>.
-              </p>
-            </div>
-            <div class="primer-card">
-              <div class="eyebrow">3 · what gets produced</div>
-              <div class="term">Construct</div>
-              <p class="plain">
-                A meaningful artifact, object, or output created by a substrate.
-              </p>
-              <p class="example">
-                Analogy: the blueprint, control panel, or vehicle that comes out
-                of a workshop.
-              </p>
-              <p class="example">
-                Explorer example: <strong>execution_plan</strong> or
-                <strong>agent_roster</strong>.
-              </p>
-            </div>
-            <div class="primer-card">
-              <div class="eyebrow">4 · what it is made of</div>
-              <div class="term">Primitive</div>
-              <p class="plain">
-                The smallest atomic part inside a construct — a field, flag,
-                token, parameter, or actionable unit.
-              </p>
-              <p class="example">
-                Analogy: the bolts, switches, labels, or circuit traces inside
-                the finished machine.
-              </p>
-              <p class="example">
-                Explorer example: <strong>task_id</strong>,
-                <strong>retry_count</strong>, or <strong>priority</strong>.
-              </p>
-            </div>
+          <table class="doc-table" style="margin-top: 1.5rem">
+            <thead>
+              <tr>
+                <th style="width: 14%">You see&hellip;</th>
+                <th style="width: 22%">We call it</th>
+                <th style="width: 38%">What it means</th>
+                <th style="width: 26%">Explorer example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Pick a layer</td>
+                <td>
+                  <strong>Stratum</strong>
+                  <span style="opacity: 0.6">(layer)</span>
+                </td>
+                <td>
+                  One of 7 horizontal tiers in the stack, each defined by a
+                  boundary question &mdash; <em>&ldquo;Who decides?&rdquo;</em>,
+                  <em>&ldquo;How does it learn?&rdquo;</em>, etc.
+                </td>
+                <td>
+                  <span class="stratum-mini" style="--layer-color: #59a14f">
+                    L4&nbsp;Orchestration&nbsp;&amp;&nbsp;Decisioning
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>Notice a theme that cuts across layers</td>
+                <td>
+                  <strong>Axis</strong>
+                  <span style="opacity: 0.6">(cross-cut)</span>
+                </td>
+                <td>
+                  A concern that spans multiple strata vertically &mdash;
+                  security, cost, latency, compliance, etc. Axes surface in
+                  every layer but are governed holistically.
+                </td>
+                <td>
+                  Security axis &mdash; touches L6&nbsp;Governance,
+                  L3&nbsp;Execution, and L1&nbsp;Infrastructure
+                </td>
+              </tr>
+              <tr>
+                <td>Expand a group inside a layer</td>
+                <td>
+                  <strong>Substrate</strong>
+                  <span style="opacity: 0.6">(group)</span>
+                </td>
+                <td>
+                  A named group of related capabilities within a stratum. Each
+                  substrate bundles the frameworks, engines, or services that do
+                  work at that level.
+                </td>
+                <td>
+                  <em>Workflow Engines</em> or <em>Agent Frameworks</em>
+                  inside L4
+                </td>
+              </tr>
+              <tr>
+                <td>Click a card</td>
+                <td>
+                  <strong>Construct</strong>
+                  <span style="opacity: 0.6">(concept&nbsp;/&nbsp;card)</span>
+                </td>
+                <td>
+                  A named concept or data structure within a substrate.
+                  Constructs are the items you browse, compare, and classify in
+                  the Explorer.
+                </td>
+                <td>
+                  <code>execution_plan</code>,
+                  <code>agent_roster</code>
+                </td>
+              </tr>
+              <tr>
+                <td>Read the fields on a card</td>
+                <td>
+                  <strong>Primitive</strong>
+                  <span style="opacity: 0.6">(field)</span>
+                </td>
+                <td>
+                  The smallest atomic part inside a construct &mdash; a field,
+                  flag, token, parameter, or actionable unit.
+                </td>
+                <td>
+                  <code>task_id</code>, <code>retry_count</code>,
+                  <code>priority</code>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div
+            class="callout"
+            style="
+              margin-top: 1.5rem;
+              opacity: 0.85;
+              border-left-color: var(--accent-blue);
+            "
+          >
+            <strong>Optional mental image</strong> &mdash; If it helps, picture
+            the stack as a vertical city: each stratum is a floor, substrates
+            are the departments on that floor, constructs are the deliverables
+            they produce, and primitives are the parts inside each deliverable.
           </div>
 
-          <p>
-            <strong>Quick translation:</strong> if the official names ever feel
-            abstract, mentally read them as
-            <strong>layer → toolkit → artifact → part</strong>.
-          </p>
-
-          <div class="prompt-box">
-            <div class="label">Infographic prompt</div>
-            <p>
-              Create a cinematic dark-mode infographic titled
-              <strong>“{a}OS Terminology Primer”</strong>. Show a futuristic
-              vertical arcology / megacity cutaway with four zoom levels from
-              macro to micro. Level 1: <strong>Stratum</strong> as color-coded
-              city layers with names like Models, Memory, Orchestration,
-              Governance, Experience. Level 2: <strong>Substrate</strong> as
-              labs, factories, control rooms, and frameworks operating inside
-              one selected layer. Level 3: <strong>Construct</strong> as
-              tangible outputs floating from those systems — execution plan,
-              agent roster, memory object, policy, UI panel. Level 4:
-              <strong>Primitive</strong> as exploded-detail atoms inside a
-              construct — task_id, role, retry_count, timestamp, permission,
-              vector, prompt. Style: premium sci-fi dashboard, elegant arrows,
-              subtle neon glow, clean typography, high contrast, minimal
-              clutter, educational but aspirational. Make the naming feel
-              iconic, modern, and worth remembering.
+          <div
+            style="
+              margin: 2rem 0;
+              padding: 1.5rem;
+              border-radius: 12px;
+              background: var(--bg-elevated);
+              border: 1px solid rgba(255, 255, 255, 0.06);
+              text-align: center;
+            "
+          >
+            <p
+              style="
+                margin: 0 0 0.75rem;
+                font-size: 0.85rem;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+                opacity: 0.5;
+              "
+            >
+              Terminology Infographic
             </p>
+            <!-- Replace the src below with the actual infographic path once saved -->
+            <div
+              style="
+                padding: 3rem 1rem;
+                border: 1px dashed rgba(255, 255, 255, 0.12);
+                border-radius: 8px;
+                color: rgba(255, 255, 255, 0.3);
+                font-size: 0.9rem;
+              "
+            >
+              <span
+                style="font-size: 2rem; display: block; margin-bottom: 0.5rem"
+                >&#x1F5BC;</span
+              >
+              Place <code>{a}OS Terminology Primer</code> infographic here<br />
+              <span style="font-size: 0.8rem; opacity: 0.6"
+                >Save the image to <code>90.aOS-Explorer/docs/</code> and update
+                the <code>&lt;img&gt;</code> tag</span
+              >
+            </div>
           </div>
 
           <h2 id="quick-start">Quick Start</h2>
