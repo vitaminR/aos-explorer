@@ -16,7 +16,7 @@
 The AI ecosystem has 500+ products competing across overlapping domains. **{a}OS Explorer** gives you a shared vocabulary to cut through the noise:
 
 - **7 Strata** — from L1 Models & Infrastructure to L7 Experience & Intent
-- **40+ products** mapped across the full stack — frameworks, agents, MCPs, platforms
+- **Top 40+ products** mapped across the full stack — frameworks, agents, MCPs, platforms
 - **Side-by-side comparison** with gap analysis — see what's covered and what's missing
 - **Golden Path builds** — curated best-in-class stacks for common use cases
 - **Confidence scoring** — every mapping is scored and dated, not just claimed
