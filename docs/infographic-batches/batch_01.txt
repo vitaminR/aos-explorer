@@ -1,0 +1,169 @@
+═══════════════════════════════════════════════════════════
+  BATCH 1 of 13  —  5 infographics
+═══════════════════════════════════════════════════════════
+
+SYSTEM PROMPT (paste this first, or set as custom instructions):
+─────────────────────────────────────────────────────────
+You are a visual design assistant creating ADHD-friendly technical infographics for the {a}OS Agentic Operating System reference model.
+
+DESIGN RULES:
+- Dark background (#0a0a0f) with high-contrast text
+- Use the layer accent color as the primary highlight
+- Clean, minimal layout - no clutter
+- Large readable typography (minimum 14pt equivalent)
+- Each primitive shown as a distinct card/node with its name + 1-line description
+- Show relationships between primitives with arrows or connectors if applicable
+- Include a small icon or visual metaphor for each primitive
+- Include the layer badge (e.g. "L4 · Orchestration") in the top-left corner
+- Parent construct name is the large title
+- Aspect ratio: 16:9 (landscape)
+- Style: flat design, subtle gradients, no 3D, modern SaaS dashboard aesthetic
+- Footer: "{a}OS Reference Model · vitaminR" in small text
+
+FORMAT: Create a single infographic image. Do NOT return markdown or text descriptions.
+
+─────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────┐
+│  PROMPT 1/5  —  #01  L7 | Intent Object
+│  Save as: intent-object.png
+└─────────────────────────────────────────────────────┘
+
+Create an infographic for the "Intent Object" construct from the {a}OS reference model.
+
+LAYER: L7 — Human Interface
+ACCENT COLOR: #818cf8
+CONSTRUCT: Intent Object
+PRIMITIVE COUNT: 4
+
+PRIMITIVES (show each as a card/node):
+  - Goal Statement: Natural language or structured declaration of what the user wants to achieve. Parsed by the intent engine to extract actionable objectives.
+  - Constraint Set: Boundaries the agent must respect: budget, time, scope, permissions, safety rails. Constraints narrow the solution space.
+  - Preference Weight: Numeric weights expressing how strongly the user prefers one outcome over another. Used for multi-objective optimization.
+  - Intent Confidence: Score (0–1) indicating how certain the system is about its interpretation of user intent. Low scores trigger clarification.
+
+VISUAL GUIDANCE:
+- Title: "Intent Object" in large text, colored #818cf8
+- Layer badge: "L7 · Human Interface" top-left
+- Show all 4 primitives as connected cards on dark (#0a0a0f) background
+- Use #818cf8 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly — no walls of text
+
+═══  NEXT PROMPT  (paste after saving the image above)  ═══
+
+┌─────────────────────────────────────────────────────┐
+│  PROMPT 2/5  —  #02  L7 | Session Context
+│  Save as: session-context.png
+└─────────────────────────────────────────────────────┘
+
+Create an infographic for the "Session Context" construct from the {a}OS reference model.
+
+LAYER: L7 — Human Interface
+ACCENT COLOR: #818cf8
+CONSTRUCT: Session Context
+PRIMITIVE COUNT: 4
+
+PRIMITIVES (show each as a card/node):
+  - Conversation History: Ordered log of messages between user and agent within a session. Enables context-aware responses and reference resolution.
+  - User Profile: Persistent user attributes (role, expertise, preferences) that personalize agent behavior across sessions.
+  - Decision Log: Audit trail of choices made during the session — what was selected, rejected, and why. Supports undo and review.
+  - Context Window: The sliding window of tokens currently visible to the model. Managing its size is critical for coherent long interactions.
+
+VISUAL GUIDANCE:
+- Title: "Session Context" in large text, colored #818cf8
+- Layer badge: "L7 · Human Interface" top-left
+- Show all 4 primitives as connected cards on dark (#0a0a0f) background
+- Use #818cf8 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly — no walls of text
+
+═══  NEXT PROMPT  (paste after saving the image above)  ═══
+
+┌─────────────────────────────────────────────────────┐
+│  PROMPT 3/5  —  #03  L7 | Satisfaction Signal
+│  Save as: satisfaction-signal.png
+└─────────────────────────────────────────────────────┘
+
+Create an infographic for the "Satisfaction Signal" construct from the {a}OS reference model.
+
+LAYER: L7 — Human Interface
+ACCENT COLOR: #818cf8
+CONSTRUCT: Satisfaction Signal
+PRIMITIVE COUNT: 4
+
+PRIMITIVES (show each as a card/node):
+  - Thumbs Signal: Explicit binary feedback (👍/👎) from the user on agent output quality. Simplest form of RLHF signal.
+  - Completion Rate: Percentage of tasks the agent completes without human intervention. High rates indicate effective autonomy.
+  - Retry Count: Number of times the user re-prompts or re-runs a task. High retry counts signal intent misalignment.
+  - Dwell Time: Time the user spends reviewing agent output before accepting or rejecting. Long dwell may indicate confusion.
+
+VISUAL GUIDANCE:
+- Title: "Satisfaction Signal" in large text, colored #818cf8
+- Layer badge: "L7 · Human Interface" top-left
+- Show all 4 primitives as connected cards on dark (#0a0a0f) background
+- Use #818cf8 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly — no walls of text
+
+═══  NEXT PROMPT  (paste after saving the image above)  ═══
+
+┌─────────────────────────────────────────────────────┐
+│  PROMPT 4/5  —  #04  L7 | Feedback Loop
+│  Save as: feedback-loop.png
+└─────────────────────────────────────────────────────┘
+
+Create an infographic for the "Feedback Loop" construct from the {a}OS reference model.
+
+LAYER: L7 — Human Interface
+ACCENT COLOR: #818cf8
+CONSTRUCT: Feedback Loop
+PRIMITIVE COUNT: 4
+
+PRIMITIVES (show each as a card/node):
+  - Signal Aggregator: Collects and normalizes multiple satisfaction signals into a unified quality score for the feedback loop.
+  - Behavior Adjuster: Component that modifies agent parameters (temperature, tool selection, verbosity) based on aggregated feedback.
+  - Reward Shaper: Transforms raw satisfaction signals into reward values suitable for reinforcement learning or fine-tuning.
+  - Loop Frequency: How often the feedback loop runs — per-turn, per-session, or per-batch. Determines adaptation speed.
+
+VISUAL GUIDANCE:
+- Title: "Feedback Loop" in large text, colored #818cf8
+- Layer badge: "L7 · Human Interface" top-left
+- Show all 4 primitives as connected cards on dark (#0a0a0f) background
+- Use #818cf8 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly — no walls of text
+
+═══  NEXT PROMPT  (paste after saving the image above)  ═══
+
+┌─────────────────────────────────────────────────────┐
+│  PROMPT 5/5  —  #05  L4 | Execution Plan
+│  Save as: execution-plan.png
+└─────────────────────────────────────────────────────┘
+
+Create an infographic for the "Execution Plan" construct from the {a}OS reference model.
+
+LAYER: L4 — Orchestration
+ACCENT COLOR: #34d399
+CONSTRUCT: Execution Plan
+PRIMITIVE COUNT: 4
+
+PRIMITIVES (show each as a card/node):
+  - Step Graph: DAG of individual steps with edges encoding dependencies. The orchestrator traverses this to execute tasks in order.
+  - Branch Condition: Boolean or score-based condition determining which branch of the plan to follow. Enables dynamic workflows.
+  - Retry Policy: Rules for when and how to retry failed steps: max attempts, backoff strategy, and error classification.
+  - Plan Hash: Content-addressable hash of the execution plan. Used for caching, deduplication, and plan versioning.
+
+VISUAL GUIDANCE:
+- Title: "Execution Plan" in large text, colored #34d399
+- Layer badge: "L4 · Orchestration" top-left
+- Show all 4 primitives as connected cards on dark (#0a0a0f) background
+- Use #34d399 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly — no walls of text
+

@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 72" width="440" height="72">
+  <defs>
+    <style>@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;700&amp;display=swap");</style>
+
+    <!-- Reuse the orange glow for the icon mark -->
+    <radialGradient id="og_h" cx="50%" cy="46%" r="38%">
+      <stop offset="0%" stop-color="#ff7a00" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#ff7a00" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Silver gradient for "OS" in text lockup -->
+    <linearGradient id="silvGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#94a3b8"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       Icon mark — 200×200 scaled to 64×64
+       scale = 0.32,  translate(0, 4) for vertical centering
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <g transform="translate(0,4) scale(0.32)">
+    <!-- Dark square background -->
+    <rect width="200" height="200" rx="32" fill="#0a0c10"/>
+    <rect x="1" y="1" width="198" height="100" rx="31" fill="white" fill-opacity="0.013"/>
+    <!-- Indigo border (stroke-width 3 → renders as ~1px after scale) -->
+    <rect x="0.5" y="0.5" width="199" height="199" rx="31.5"
+          fill="none" stroke="#818cf8" stroke-opacity="0.25" stroke-width="3"/>
+
+    <!-- Orange halo -->
+    <ellipse cx="100" cy="87" rx="46" ry="36" fill="url(#og_h)"/>
+
+    <!-- {a} mark -->
+    <text x="100" y="113"
+          text-anchor="middle"
+          font-family="Inter, -apple-system, BlinkMacSystemFont, system-ui, sans-serif"
+          font-size="74" font-weight="700" letter-spacing="-1">
+      <tspan fill="rgba(255,255,255,0.22)">{</tspan>
+      <tspan fill="#ff7a00">a</tspan>
+      <tspan fill="rgba(255,255,255,0.22)">}</tspan>
+    </text>
+
+    <!-- Separator -->
+    <line x1="26" y1="122" x2="174" y2="122"
+          stroke="rgba(255,255,255,0.07)" stroke-width="3"/>
+
+    <!-- 7 Strata bars -->
+    <rect x="26" y="128" width="148" height="5" rx="2.5" fill="#c75a00"/>
+    <rect x="26" y="138" width="148" height="5" rx="2.5" fill="#e15759"/>
+    <rect x="26" y="148" width="148" height="5" rx="2.5" fill="#b07aa1"/>
+    <rect x="26" y="158" width="148" height="5" rx="2.5" fill="#59a14f"/>
+    <rect x="26" y="168" width="148" height="5" rx="2.5" fill="#edc948"/>
+    <rect x="26" y="178" width="148" height="5" rx="2.5" fill="#22d3ee"/>
+    <rect x="26" y="188" width="148" height="5" rx="2.5" fill="#4f6bc2"/>
+  </g>
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       Text lockup — starts at x = 64 + 16 = 80
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+
+  <!-- Primary name: {a}OS Explorer -->
+  <text x="80" y="38"
+        font-family="Inter, -apple-system, BlinkMacSystemFont, system-ui, sans-serif"
+        font-size="27" font-weight="700" letter-spacing="-0.5">
+    <tspan fill="rgba(255,255,255,0.25)">{</tspan>
+    <tspan fill="#ff7a00">a</tspan>
+    <tspan fill="rgba(255,255,255,0.25)">}</tspan>
+    <tspan fill="url(#silvGrad)">OS</tspan>
+    <tspan fill="rgba(255,255,255,0.38)" font-weight="300"> Explorer</tspan>
+  </text>
+
+  <!-- Tagline -->
+  <text x="81" y="57"
+        font-family="Inter, -apple-system, BlinkMacSystemFont, system-ui, sans-serif"
+        font-size="10.5" font-weight="400" fill="rgba(255,255,255,0.28)" letter-spacing="1.4">
+    THE OSI MODEL FOR AI
+  </text>
+</svg>

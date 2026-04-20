@@ -1,0 +1,173 @@
+═══════════════════════════════════════════════════════════
+  BATCH 9 of 13  —  5 infographics
+═══════════════════════════════════════════════════════════
+
+SYSTEM PROMPT (paste this first, or set as custom instructions):
+─────────────────────────────────────────────────────────
+You are a visual design assistant creating ADHD-friendly technical infographics for the {a}OS Agentic Operating System reference model.
+
+DESIGN RULES:
+- Dark background (#0a0a0f) with high-contrast text
+- Use the layer accent color as the primary highlight
+- Clean, minimal layout - no clutter
+- Large readable typography (minimum 14pt equivalent)
+- Each primitive shown as a distinct card/node with its name + 1-line description
+- Show relationships between primitives with arrows or connectors if applicable
+- Include a small icon or visual metaphor for each primitive
+- Include the layer badge (e.g. "L4 · Orchestration") in the top-left corner
+- Parent construct name is the large title
+- Aspect ratio: 16:9 (landscape)
+- Style: flat design, subtle gradients, no 3D, modern SaaS dashboard aesthetic
+- Footer: "{a}OS Reference Model · vitaminR" in small text
+
+FORMAT: Create a single infographic image. Do NOT return markdown or text descriptions.
+
+─────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────┐
+│  PROMPT 1/5  —  #41  L5 | Drift Detector
+│  Save as: drift-detector.png
+└─────────────────────────────────────────────────────┘
+
+Create an infographic for the "Drift Detector" construct from the {a}OS reference model.
+
+LAYER: L5 — Observability
+ACCENT COLOR: #fbbf24
+CONSTRUCT: Drift Detector
+PRIMITIVE COUNT: 4
+
+PRIMITIVES (show each as a card/node):
+  - Baseline Snapshot: Statistical profile of 'normal' model behavior (output distributions, token patterns, latency profiles) captured at a known-good state.
+  - Current Window: Rolling time window of recent model behavior being compared against the baseline (e.g., last 24h of outputs).
+  - Drift Metric: Statistical measure of distribution divergence: KL divergence, JS divergence, PSI, or cosine distance.
+  - Alert Threshold: The drift metric value above which an alert fires. Separates normal variance from genuine distribution shift.
+
+VISUAL GUIDANCE:
+- Title: "Drift Detector" in large text, colored #fbbf24
+- Layer badge: "L5 · Observability" top-left
+- Show all 4 primitives as connected cards on dark (#0a0a0f) background
+- Use #fbbf24 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly — no walls of text
+
+═══  NEXT PROMPT  (paste after saving the image above)  ═══
+
+┌─────────────────────────────────────────────────────┐
+│  PROMPT 2/5  —  #42  L5 | Anomaly Alert
+│  Save as: anomaly-alert.png
+└─────────────────────────────────────────────────────┘
+
+Create an infographic for the "Anomaly Alert" construct from the {a}OS reference model.
+
+LAYER: L5 — Observability
+ACCENT COLOR: #fbbf24
+CONSTRUCT: Anomaly Alert
+PRIMITIVE COUNT: 4
+
+PRIMITIVES (show each as a card/node):
+  - Alert ID: Unique identifier for a fired alert. Links to the investigation, response actions, and resolution.
+  - Metric Name: The specific metric that triggered the alert (e.g., 'latency_p99', 'error_rate', 'drift_psi').
+  - Observed Value: The actual metric value that crossed the threshold and triggered the alert.
+  - Routing Channel: Where the alert is sent: PagerDuty, Slack channel, email group, or automated remediation pipeline.
+
+VISUAL GUIDANCE:
+- Title: "Anomaly Alert" in large text, colored #fbbf24
+- Layer badge: "L5 · Observability" top-left
+- Show all 4 primitives as connected cards on dark (#0a0a0f) background
+- Use #fbbf24 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly — no walls of text
+
+═══  NEXT PROMPT  (paste after saving the image above)  ═══
+
+┌─────────────────────────────────────────────────────┐
+│  PROMPT 3/5  —  #43  L5 | SLO Monitor
+│  Save as: slo-monitor.png
+└─────────────────────────────────────────────────────┘
+
+Create an infographic for the "SLO Monitor" construct from the {a}OS reference model.
+
+LAYER: L5 — Observability
+ACCENT COLOR: #fbbf24
+CONSTRUCT: SLO Monitor
+PRIMITIVE COUNT: 4
+
+PRIMITIVES (show each as a card/node):
+  - SLO Name: Human-readable identifier for the Service Level Objective (e.g., 'agent-response-latency-p99').
+  - Target Percentage: The availability/quality target: 99.9% of requests must complete within latency budget. The 'nines'.
+  - Current Percentage: Real-time compliance percentage over the rolling window. The live score compared against target.
+  - Error Budget Remaining: How much of the allowed failure budget is left in the current window. When it hits 0, freeze deployments.
+
+VISUAL GUIDANCE:
+- Title: "SLO Monitor" in large text, colored #fbbf24
+- Layer badge: "L5 · Observability" top-left
+- Show all 4 primitives as connected cards on dark (#0a0a0f) background
+- Use #fbbf24 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly — no walls of text
+
+═══  NEXT PROMPT  (paste after saving the image above)  ═══
+
+┌─────────────────────────────────────────────────────┐
+│  PROMPT 4/5  —  #44  L5 | Cost Tracker
+│  Save as: cost-tracker.png
+└─────────────────────────────────────────────────────┘
+
+Create an infographic for the "Cost Tracker" construct from the {a}OS reference model.
+
+LAYER: L5 — Observability
+ACCENT COLOR: #fbbf24
+CONSTRUCT: Cost Tracker
+PRIMITIVE COUNT: 8
+
+PRIMITIVES (show each as a card/node):
+  - Session Cost (USD): Total dollar cost of a single agent session: sum of all LLM calls, tool invocations, and compute time.
+  - Daily Budget (USD): Maximum allowed spend per day across all agent activity. Hard cap to prevent runaway costs.
+  - Burn Rate: Current spend velocity ($/hour). If burn rate × remaining hours > budget, action needed.
+  - Cost Alert Threshold: Percentage of budget that triggers alerts (e.g., 80% = warning, 100% = block). Multi-tier for graduated response.
+  - Runtime Type: The sandbox execution engine: Docker container, Firecracker microVM, gVisor, or WASM isolate.
+  - Isolation Level: Degree of separation: process-level, container-level, VM-level. Determines what the code can access.
+  - Timeout (sec): Maximum wall-clock time before the sandbox is forcibly terminated. Prevents infinite loops and resource abuse.
+  - Resource Quota: CPU, memory, disk, and network limits enforced on the sandbox. Prevents resource exhaustion attacks.
+
+VISUAL GUIDANCE:
+- Title: "Cost Tracker" in large text, colored #fbbf24
+- Layer badge: "L5 · Observability" top-left
+- Show all 8 primitives as connected cards on dark (#0a0a0f) background
+- Use #fbbf24 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly — no walls of text
+
+═══  NEXT PROMPT  (paste after saving the image above)  ═══
+
+┌─────────────────────────────────────────────────────┐
+│  PROMPT 5/5  —  #45  L3 | Interpreter Session
+│  Save as: interpreter-session.png
+└─────────────────────────────────────────────────────┘
+
+Create an infographic for the "Interpreter Session" construct from the {a}OS reference model.
+
+LAYER: L3 — Capabilities
+ACCENT COLOR: #38bdf8
+CONSTRUCT: Interpreter Session
+PRIMITIVE COUNT: 4
+
+PRIMITIVES (show each as a card/node):
+  - Session ID: Unique identifier for a REPL/interpreter session. Enables state persistence across multiple code executions.
+  - Language Runtime: The programming language and version: 'python:3.12', 'node:20', 'bash:5'. Determines available libraries.
+  - Variable State: The in-memory variable namespace: all variables, functions, and imports persisted across executions in this session.
+  - History Length: Number of previous execution cells/commands retained in session history. Enables replay and context.
+
+VISUAL GUIDANCE:
+- Title: "Interpreter Session" in large text, colored #38bdf8
+- Layer badge: "L3 · Capabilities" top-left
+- Show all 4 primitives as connected cards on dark (#0a0a0f) background
+- Use #38bdf8 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly — no walls of text
+

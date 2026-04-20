@@ -1,0 +1,169 @@
+═══════════════════════════════════════════════════════════
+  BATCH 3 of 13  —  5 infographics
+═══════════════════════════════════════════════════════════
+
+SYSTEM PROMPT (paste this first, or set as custom instructions):
+─────────────────────────────────────────────────────────
+You are a visual design assistant creating ADHD-friendly technical infographics for the {a}OS Agentic Operating System reference model.
+
+DESIGN RULES:
+- Dark background (#0a0a0f) with high-contrast text
+- Use the layer accent color as the primary highlight
+- Clean, minimal layout - no clutter
+- Large readable typography (minimum 14pt equivalent)
+- Each primitive shown as a distinct card/node with its name + 1-line description
+- Show relationships between primitives with arrows or connectors if applicable
+- Include a small icon or visual metaphor for each primitive
+- Include the layer badge (e.g. "L4 · Orchestration") in the top-left corner
+- Parent construct name is the large title
+- Aspect ratio: 16:9 (landscape)
+- Style: flat design, subtle gradients, no 3D, modern SaaS dashboard aesthetic
+- Footer: "{a}OS Reference Model · vitaminR" in small text
+
+FORMAT: Create a single infographic image. Do NOT return markdown or text descriptions.
+
+─────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────┐
+│  PROMPT 1/5  —  #11  L4 | Message Channel
+│  Save as: message-channel.png
+└─────────────────────────────────────────────────────┘
+
+Create an infographic for the "Message Channel" construct from the {a}OS reference model.
+
+LAYER: L4 — Orchestration
+ACCENT COLOR: #34d399
+CONSTRUCT: Message Channel
+PRIMITIVE COUNT: 4
+
+PRIMITIVES (show each as a card/node):
+  - Channel ID: Unique identifier for a communication channel between agents. Supports point-to-point and pub/sub patterns.
+  - Message Envelope: Wrapper around message payload containing metadata: sender, timestamp, correlation ID, content type.
+  - Delivery Guarantee: Reliability level: at-most-once, at-least-once, or exactly-once. Trade-off between performance and correctness.
+  - Subscriber List: List of agents subscribed to a channel. Used for fan-out delivery in pub/sub messaging patterns.
+
+VISUAL GUIDANCE:
+- Title: "Message Channel" in large text, colored #34d399
+- Layer badge: "L4 · Orchestration" top-left
+- Show all 4 primitives as connected cards on dark (#0a0a0f) background
+- Use #34d399 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly — no walls of text
+
+═══  NEXT PROMPT  (paste after saving the image above)  ═══
+
+┌─────────────────────────────────────────────────────┐
+│  PROMPT 2/5  —  #12  L4 | Delegation Policy
+│  Save as: delegation-policy.png
+└─────────────────────────────────────────────────────┘
+
+Create an infographic for the "Delegation Policy" construct from the {a}OS reference model.
+
+LAYER: L4 — Orchestration
+ACCENT COLOR: #34d399
+CONSTRUCT: Delegation Policy
+PRIMITIVE COUNT: 4
+
+PRIMITIVES (show each as a card/node):
+  - Delegation Trigger: Condition that causes an agent to delegate a subtask: complexity threshold, capability gap, or explicit rule.
+  - Approval Gate: Optional human-in-the-loop checkpoint before delegation executes. Prevents uncontrolled task chains.
+  - Max Depth: Maximum delegation nesting level. Prevents infinite delegation chains (agent A → B → C → ...).
+  - Escalation Path: Ordered list of fallback agents or humans to try when delegation fails or times out.
+
+VISUAL GUIDANCE:
+- Title: "Delegation Policy" in large text, colored #34d399
+- Layer badge: "L4 · Orchestration" top-left
+- Show all 4 primitives as connected cards on dark (#0a0a0f) background
+- Use #34d399 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly — no walls of text
+
+═══  NEXT PROMPT  (paste after saving the image above)  ═══
+
+┌─────────────────────────────────────────────────────┐
+│  PROMPT 3/5  —  #13  L3 | Tool Manifest
+│  Save as: tool-manifest.png
+└─────────────────────────────────────────────────────┘
+
+Create an infographic for the "Tool Manifest" construct from the {a}OS reference model.
+
+LAYER: L3 — Capabilities
+ACCENT COLOR: #38bdf8
+CONSTRUCT: Tool Manifest
+PRIMITIVE COUNT: 4
+
+PRIMITIVES (show each as a card/node):
+  - Tool ID: Unique identifier for a registered tool. The model references this when choosing which tool to call.
+  - JSON Schema: Formal schema defining the tool's input parameters and their types. The model uses this for argument generation.
+  - Auth Type: Authentication method required to call the tool: API key, OAuth, bearer token, or none.
+  - Rate Limit: Maximum calls per time window to prevent abuse and manage costs. Enforced by the tool runtime.
+
+VISUAL GUIDANCE:
+- Title: "Tool Manifest" in large text, colored #38bdf8
+- Layer badge: "L3 · Capabilities" top-left
+- Show all 4 primitives as connected cards on dark (#0a0a0f) background
+- Use #38bdf8 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly — no walls of text
+
+═══  NEXT PROMPT  (paste after saving the image above)  ═══
+
+┌─────────────────────────────────────────────────────┐
+│  PROMPT 4/5  —  #14  L3 | API Binding
+│  Save as: api-binding.png
+└─────────────────────────────────────────────────────┘
+
+Create an infographic for the "API Binding" construct from the {a}OS reference model.
+
+LAYER: L3 — Capabilities
+ACCENT COLOR: #38bdf8
+CONSTRUCT: API Binding
+PRIMITIVE COUNT: 4
+
+PRIMITIVES (show each as a card/node):
+  - Endpoint URL: The concrete HTTP endpoint the tool call is routed to at runtime. May vary by environment.
+  - Request Template: Template for constructing the HTTP request: method, headers, body format. Populated with tool call arguments.
+  - Response Parser: Logic that extracts structured data from the API response and transforms it into agent-readable format.
+  - Error Handler: Strategy for handling API errors: retry, fallback, or surface to user. Includes status code mapping.
+
+VISUAL GUIDANCE:
+- Title: "API Binding" in large text, colored #38bdf8
+- Layer badge: "L3 · Capabilities" top-left
+- Show all 4 primitives as connected cards on dark (#0a0a0f) background
+- Use #38bdf8 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly — no walls of text
+
+═══  NEXT PROMPT  (paste after saving the image above)  ═══
+
+┌─────────────────────────────────────────────────────┐
+│  PROMPT 5/5  —  #15  L3 | Capability Schema
+│  Save as: capability-schema.png
+└─────────────────────────────────────────────────────┘
+
+Create an infographic for the "Capability Schema" construct from the {a}OS reference model.
+
+LAYER: L3 — Capabilities
+ACCENT COLOR: #38bdf8
+CONSTRUCT: Capability Schema
+PRIMITIVE COUNT: 4
+
+PRIMITIVES (show each as a card/node):
+  - Capability ID: Unique identifier for a capability the tool provides. Used by the planner to match tasks to tools.
+  - Input Schema: JSON Schema defining what the tool expects as input. The model validates arguments against this.
+  - Output Schema: JSON Schema defining what the tool returns. Enables type-safe chaining of tool outputs to next steps.
+  - Side Effects: Declaration of external state changes the tool causes (file write, API mutation, DB update). Critical for safety.
+
+VISUAL GUIDANCE:
+- Title: "Capability Schema" in large text, colored #38bdf8
+- Layer badge: "L3 · Capabilities" top-left
+- Show all 4 primitives as connected cards on dark (#0a0a0f) background
+- Use #38bdf8 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly — no walls of text
+

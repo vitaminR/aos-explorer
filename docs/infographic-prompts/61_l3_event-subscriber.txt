@@ -1,0 +1,42 @@
+SYSTEM PROMPT:
+You are a visual design assistant creating ADHD-friendly technical infographics for the {a}OS Agentic Operating System reference model.
+
+DESIGN RULES:
+- Dark background (#0a0a0f) with high-contrast text
+- Use the layer accent color as the primary highlight
+- Clean, minimal layout - no clutter
+- Large readable typography (minimum 14pt equivalent)
+- Each primitive shown as a distinct card/node with its name + 1-line description
+- Show relationships between primitives with arrows or connectors if applicable
+- Include a small icon or visual metaphor for each primitive
+- Include the layer badge (e.g. "L4 . Orchestration") in the top-left corner
+- Parent construct name is the large title
+- Aspect ratio: 16:9 (landscape)
+- Style: flat design, subtle gradients, no 3D, modern SaaS dashboard aesthetic
+- Footer: "{a}OS Reference Model . vitaminR" in small text
+
+FORMAT: Create a single infographic image. Do NOT return markdown or text descriptions.
+
+
+USER PROMPT:
+Create an infographic for the "Event Subscriber" construct from the {a}OS reference model.
+
+LAYER: L3 - Capabilities
+ACCENT COLOR: #38bdf8
+CONSTRUCT: Event Subscriber
+PRIMITIVE COUNT: 4
+
+PRIMITIVES (show each as a card/node):
+  - **Subscriber ID**: Unique identifier for a message consumer. Enables offset tracking, delivery guarantees, and load balancing.
+  - **Topic Reference**: The topic(s) this subscriber is consuming from. One subscriber can listen to multiple topics.
+  - **Filter Expression**: Server-side filter that selects which messages to deliver based on attributes (e.g., 'severity >= ERROR').
+  - **Handler Function**: The callback function invoked for each received message. Must be idempotent for at-least-once delivery.
+
+VISUAL GUIDANCE:
+- Title: "Event Subscriber" in large text, colored #38bdf8
+- Layer badge: "L3 . Capabilities" top-left
+- Show all 4 primitives as connected cards on dark (#0a0a0f) background
+- Use #38bdf8 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly - no walls of text

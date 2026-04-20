@@ -1,0 +1,46 @@
+SYSTEM PROMPT:
+You are a visual design assistant creating ADHD-friendly technical infographics for the {a}OS Agentic Operating System reference model.
+
+DESIGN RULES:
+- Dark background (#0a0a0f) with high-contrast text
+- Use the layer accent color as the primary highlight
+- Clean, minimal layout - no clutter
+- Large readable typography (minimum 14pt equivalent)
+- Each primitive shown as a distinct card/node with its name + 1-line description
+- Show relationships between primitives with arrows or connectors if applicable
+- Include a small icon or visual metaphor for each primitive
+- Include the layer badge (e.g. "L4 . Orchestration") in the top-left corner
+- Parent construct name is the large title
+- Aspect ratio: 16:9 (landscape)
+- Style: flat design, subtle gradients, no 3D, modern SaaS dashboard aesthetic
+- Footer: "{a}OS Reference Model . vitaminR" in small text
+
+FORMAT: Create a single infographic image. Do NOT return markdown or text descriptions.
+
+
+USER PROMPT:
+Create an infographic for the "Cost Tracker" construct from the {a}OS reference model.
+
+LAYER: L5 - Observability
+ACCENT COLOR: #fbbf24
+CONSTRUCT: Cost Tracker
+PRIMITIVE COUNT: 8
+
+PRIMITIVES (show each as a card/node):
+  - **Session Cost (USD)**: Total dollar cost of a single agent session: sum of all LLM calls, tool invocations, and compute time.
+  - **Daily Budget (USD)**: Maximum allowed spend per day across all agent activity. Hard cap to prevent runaway costs.
+  - **Burn Rate**: Current spend velocity ($/hour). If burn rate × remaining hours > budget, action needed.
+  - **Cost Alert Threshold**: Percentage of budget that triggers alerts (e.g., 80% = warning, 100% = block). Multi-tier for graduated response.
+  - **Runtime Type**: The sandbox execution engine: Docker container, Firecracker microVM, gVisor, or WASM isolate.
+  - **Isolation Level**: Degree of separation: process-level, container-level, VM-level. Determines what the code can access.
+  - **Timeout (sec)**: Maximum wall-clock time before the sandbox is forcibly terminated. Prevents infinite loops and resource abuse.
+  - **Resource Quota**: CPU, memory, disk, and network limits enforced on the sandbox. Prevents resource exhaustion attacks.
+
+VISUAL GUIDANCE:
+- Title: "Cost Tracker" in large text, colored #fbbf24
+- Layer badge: "L5 . Observability" top-left
+- Show all 8 primitives as connected cards on dark (#0a0a0f) background
+- Use #fbbf24 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly - no walls of text

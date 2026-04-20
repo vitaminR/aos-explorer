@@ -1,0 +1,169 @@
+═══════════════════════════════════════════════════════════
+  BATCH 6 of 13  —  5 infographics
+═══════════════════════════════════════════════════════════
+
+SYSTEM PROMPT (paste this first, or set as custom instructions):
+─────────────────────────────────────────────────────────
+You are a visual design assistant creating ADHD-friendly technical infographics for the {a}OS Agentic Operating System reference model.
+
+DESIGN RULES:
+- Dark background (#0a0a0f) with high-contrast text
+- Use the layer accent color as the primary highlight
+- Clean, minimal layout - no clutter
+- Large readable typography (minimum 14pt equivalent)
+- Each primitive shown as a distinct card/node with its name + 1-line description
+- Show relationships between primitives with arrows or connectors if applicable
+- Include a small icon or visual metaphor for each primitive
+- Include the layer badge (e.g. "L4 · Orchestration") in the top-left corner
+- Parent construct name is the large title
+- Aspect ratio: 16:9 (landscape)
+- Style: flat design, subtle gradients, no 3D, modern SaaS dashboard aesthetic
+- Footer: "{a}OS Reference Model · vitaminR" in small text
+
+FORMAT: Create a single infographic image. Do NOT return markdown or text descriptions.
+
+─────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────┐
+│  PROMPT 1/5  —  #26  L6 | Audit Entry
+│  Save as: audit-entry.png
+└─────────────────────────────────────────────────────┘
+
+Create an infographic for the "Audit Entry" construct from the {a}OS reference model.
+
+LAYER: L6 — Governance
+ACCENT COLOR: #fb7185
+CONSTRUCT: Audit Entry
+PRIMITIVE COUNT: 4
+
+PRIMITIVES (show each as a card/node):
+  - Entry ID: Globally unique, immutable identifier for an audit log record. Must be tamper-evident.
+  - Actor ID: The principal (user, agent, service) that performed the audited action. Links to identity systems.
+  - Action Type: The verb describing what happened: 'create', 'read', 'update', 'delete', 'execute', 'approve'.
+  - Resource URN: Uniform resource name identifying the target of the action. Enables resource-centric audit queries.
+
+VISUAL GUIDANCE:
+- Title: "Audit Entry" in large text, colored #fb7185
+- Layer badge: "L6 · Governance" top-left
+- Show all 4 primitives as connected cards on dark (#0a0a0f) background
+- Use #fb7185 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly — no walls of text
+
+═══  NEXT PROMPT  (paste after saving the image above)  ═══
+
+┌─────────────────────────────────────────────────────┐
+│  PROMPT 2/5  —  #27  L6 | Compliance Check
+│  Save as: compliance-check.png
+└─────────────────────────────────────────────────────┘
+
+Create an infographic for the "Compliance Check" construct from the {a}OS reference model.
+
+LAYER: L6 — Governance
+ACCENT COLOR: #fb7185
+CONSTRUCT: Compliance Check
+PRIMITIVE COUNT: 4
+
+PRIMITIVES (show each as a card/node):
+  - Check ID: Identifier linking to a specific compliance requirement (e.g., 'SOC2-CC6.1', 'GDPR-Art17').
+  - Regulation Reference: Formal citation to the regulatory requirement being checked (e.g., 'GDPR Article 17: Right to Erasure').
+  - Pass/Fail: Binary result of the check: 'pass' (compliant) or 'fail' (non-compliant). May include 'not-applicable'.
+  - Remediation Hint: Actionable instructions for fixing a failed compliance check. Ideally includes code/config snippets.
+
+VISUAL GUIDANCE:
+- Title: "Compliance Check" in large text, colored #fb7185
+- Layer badge: "L6 · Governance" top-left
+- Show all 4 primitives as connected cards on dark (#0a0a0f) background
+- Use #fb7185 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly — no walls of text
+
+═══  NEXT PROMPT  (paste after saving the image above)  ═══
+
+┌─────────────────────────────────────────────────────┐
+│  PROMPT 3/5  —  #28  L6 | Retention Policy
+│  Save as: retention-policy.png
+└─────────────────────────────────────────────────────┘
+
+Create an infographic for the "Retention Policy" construct from the {a}OS reference model.
+
+LAYER: L6 — Governance
+ACCENT COLOR: #fb7185
+CONSTRUCT: Retention Policy
+PRIMITIVE COUNT: 4
+
+PRIMITIVES (show each as a card/node):
+  - Data Class: Classification of data (PII, financial, operational, public) that determines retention requirements.
+  - Retention Days: Number of days data must be retained before eligible for deletion. Varies by data class and regulation.
+  - Archive Target: Destination for data that's past active retention but must be preserved (cold storage, glacier, tape).
+  - Deletion Method: How data is destroyed: soft delete, hard delete, crypto-shred, or physical destruction.
+
+VISUAL GUIDANCE:
+- Title: "Retention Policy" in large text, colored #fb7185
+- Layer badge: "L6 · Governance" top-left
+- Show all 4 primitives as connected cards on dark (#0a0a0f) background
+- Use #fb7185 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly — no walls of text
+
+═══  NEXT PROMPT  (paste after saving the image above)  ═══
+
+┌─────────────────────────────────────────────────────┐
+│  PROMPT 4/5  —  #29  L6 | Evidence Chain
+│  Save as: evidence-chain.png
+└─────────────────────────────────────────────────────┘
+
+Create an infographic for the "Evidence Chain" construct from the {a}OS reference model.
+
+LAYER: L6 — Governance
+ACCENT COLOR: #fb7185
+CONSTRUCT: Evidence Chain
+PRIMITIVE COUNT: 4
+
+PRIMITIVES (show each as a card/node):
+  - Chain ID: Identifier for a linked sequence of audit entries proving a complete decision trail.
+  - Linked Entries: Array of audit entry_ids composing this evidence chain, in chronological order.
+  - Hash Digest: Cryptographic hash of the chain contents. Changing any entry changes the hash, proving tamper evidence.
+  - Verifier Signature: Digital signature from an authorized verifier attesting that the evidence chain is complete and unmodified.
+
+VISUAL GUIDANCE:
+- Title: "Evidence Chain" in large text, colored #fb7185
+- Layer badge: "L6 · Governance" top-left
+- Show all 4 primitives as connected cards on dark (#0a0a0f) background
+- Use #fb7185 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly — no walls of text
+
+═══  NEXT PROMPT  (paste after saving the image above)  ═══
+
+┌─────────────────────────────────────────────────────┐
+│  PROMPT 5/5  —  #30  L6 | Content Filter
+│  Save as: content-filter.png
+└─────────────────────────────────────────────────────┘
+
+Create an infographic for the "Content Filter" construct from the {a}OS reference model.
+
+LAYER: L6 — Governance
+ACCENT COLOR: #fb7185
+CONSTRUCT: Content Filter
+PRIMITIVE COUNT: 4
+
+PRIMITIVES (show each as a card/node):
+  - Filter ID: Identifier for a content filter configuration. Multiple filters may apply in sequence.
+  - Taxonomy Version: Version of the content safety taxonomy being used (harm categories, severity levels, definitions).
+  - Action on Match: What happens when content matches a filter: block, flag-for-review, redact, or log-only.
+  - Confidence Threshold: Minimum classifier confidence score (0.0–1.0) to trigger the filter action. Balances precision vs recall.
+
+VISUAL GUIDANCE:
+- Title: "Content Filter" in large text, colored #fb7185
+- Layer badge: "L6 · Governance" top-left
+- Show all 4 primitives as connected cards on dark (#0a0a0f) background
+- Use #fb7185 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly — no walls of text
+

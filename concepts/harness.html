@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{a}OS Concept — Execution Harness</title>
+  <style>
+    :root {
+      --bg: #0f0f14;
+      --bg-surface: #1a1a24;
+      --text-primary: #e8e8f0;
+      --text-secondary: #a0a0b8;
+      --text-tertiary: #6b6b80;
+      --accent-indigo: #818cf8;
+      --border: rgba(255,255,255,0.08);
+      --danger: #f87171;
+      --success: #34d399;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      padding: 2rem;
+      max-width: 740px;
+      margin: 0 auto;
+    }
+    a { color: var(--accent-indigo); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1 { font-size: 1.8rem; margin-bottom: 0.3rem; }
+    .slug { font-size: 0.85rem; color: var(--text-tertiary); margin-bottom: 1.2rem; }
+    .short-def { font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 1.5rem; border-left: 3px solid var(--accent-indigo); padding-left: 12px; }
+    section { margin-bottom: 1.5rem; }
+    section h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-tertiary); margin-bottom: 0.5rem; }
+    section p { color: var(--text-secondary); }
+    .meta { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .meta span { font-size: 0.85rem; color: var(--text-tertiary); }
+    .meta strong { color: var(--text-primary); }
+    ul { padding-left: 1.2rem; color: var(--text-secondary); }
+    li { margin-bottom: 0.4rem; }
+    code { background: var(--bg-surface); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+    .callout { padding: 10px 14px; border-radius: 8px; margin-bottom: 0.8rem; font-size: 0.92rem; line-height: 1.5; }
+    .callout-danger { background: rgba(248,113,113,0.08); border-left: 3px solid var(--danger); color: var(--text-secondary); }
+    .callout-success { background: rgba(52,211,153,0.08); border-left: 3px solid var(--success); color: var(--text-secondary); }
+    .back { display: inline-block; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    .nav-footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--text-tertiary); }
+  </style>
+</head>
+<body>
+  <a class="back" href="../prototype.html#concept=harness">← Back to Explorer</a>
+
+  <h1>Execution Harness</h1>
+  <div class="slug">/harness</div>
+  <div class="short-def">A governing scaffold that constrains sequencing, context budgets, checkpoints, and stop conditions.</div>
+
+  <div class="meta">
+    <span>Strata: <strong>L4</strong></span>
+    <span>Axes: <strong>Orchestration</strong></span>
+    <span>Status: <strong>complete</strong></span>
+  </div>
+
+  <section>
+    <h2>Explainer</h2>
+    <p>A harness sits at L4 (Orchestration) and defines how work is done, not just what to do. It wraps an agent or pipeline with lifecycle controls — sequencing steps, enforcing context budgets, persisting checkpoints, and triggering stop conditions. Examples include execution harnesses (GSD, BMAD), test harnesses (Superpowers), and CI/CD harnesses (Harness.io). Not to be confused with the agent or the tools it calls — the harness is the governing scaffold around them.</p>
+  </section>
+
+  <section>
+    <h2>Anti-Patterns</h2>
+    <ul>
+      <li>Bolting agent execution onto generic container orchestrators without native lifecycle support leads to fragile systems that crash mid-task.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Mitigations</h2>
+    <ul>
+      <li>Utilize a dedicated agent runtime harness that natively provides durable execution, state isolation, and lifecycle management from day one.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Top Products</h2>
+    <ul>
+      <li><code>bmad</code></li>
+      <li><code>gsd</code></li>
+      <li><code>superpowers</code></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Related Concepts</h2>
+    <ul>
+      <li><a href="loop-core.html">loop-core</a> · <a href="../prototype.html#concept=loop-core" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+      <li><a href="guardrails.html">guardrails</a> · <a href="../prototype.html#concept=guardrails" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+      <li><a href="checkpoint.html">checkpoint</a> · <a href="../prototype.html#concept=checkpoint" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Sources</h2>
+    <ul>
+      <li><a href="../docs.html#glossary">Glossary — docs.html</a></li>
+      <li><a href="../prototype.html#concept=harness">Open in Explorer →</a></li>
+    </ul>
+  </section>
+
+  <div class="nav-footer">
+    <a href="../prototype.html">Explorer</a> ·
+    <a href="../docs.html#glossary">Docs Glossary</a> ·
+    <a href="../docs.html#concepts">Concepts Table</a>
+  </div>
+</body>
+</html>

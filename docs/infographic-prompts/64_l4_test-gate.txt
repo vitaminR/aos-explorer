@@ -1,0 +1,48 @@
+SYSTEM PROMPT:
+You are a visual design assistant creating ADHD-friendly technical infographics for the {a}OS Agentic Operating System reference model.
+
+DESIGN RULES:
+- Dark background (#0a0a0f) with high-contrast text
+- Use the layer accent color as the primary highlight
+- Clean, minimal layout - no clutter
+- Large readable typography (minimum 14pt equivalent)
+- Each primitive shown as a distinct card/node with its name + 1-line description
+- Show relationships between primitives with arrows or connectors if applicable
+- Include a small icon or visual metaphor for each primitive
+- Include the layer badge (e.g. "L4 . Orchestration") in the top-left corner
+- Parent construct name is the large title
+- Aspect ratio: 16:9 (landscape)
+- Style: flat design, subtle gradients, no 3D, modern SaaS dashboard aesthetic
+- Footer: "{a}OS Reference Model . vitaminR" in small text
+
+FORMAT: Create a single infographic image. Do NOT return markdown or text descriptions.
+
+
+USER PROMPT:
+Create an infographic for the "Test Gate" construct from the {a}OS reference model.
+
+LAYER: L4 - Orchestration
+ACCENT COLOR: #34d399
+CONSTRUCT: Test Gate
+PRIMITIVE COUNT: 10
+
+PRIMITIVES (show each as a card/node):
+  - **Test Case ID**: Unique identifier for the test case being evaluated at this gate. Links pass/fail status to a specific test definition.
+  - **Test Name**: Human-readable label for the test case. Used in gate reports, CI dashboards, and failure notifications.
+  - **Pass/Fail Bool**: Binary gate result: true = pass (proceed), false = fail (block). The atomic decision of the quality checkpoint.
+  - **Coverage %**: Code or branch coverage percentage achieved by this test case. Gate blocks forward progress if below the required threshold.
+  - **Block Forward Flag**: Explicit signal that a failing gate should halt pipeline progression. When true, no downstream steps execute.
+  - **Failure Trace ID**: Reference to the distributed trace or log entry capturing the test failure context for debugging.
+  - **Required Fix Note**: Structured remediation note explaining what must change before the gate can pass on the next retry.
+  - **Gate Status**: Current lifecycle state of the gate: pending, running, passed, failed, or skipped.
+  - **Retry Count**: Number of times this gate has been attempted. Exceeding max retries escalates to human review.
+  - **Last Run Timestamp**: ISO 8601 timestamp of the most recent gate execution. Stale timestamps indicate a gate that has not been re-evaluated.
+
+VISUAL GUIDANCE:
+- Title: "Test Gate" in large text, colored #34d399
+- Layer badge: "L4 . Orchestration" top-left
+- Show all 10 primitives as connected cards on dark (#0a0a0f) background
+- Use #34d399 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly - no walls of text

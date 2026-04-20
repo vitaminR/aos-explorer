@@ -1,0 +1,169 @@
+═══════════════════════════════════════════════════════════
+  BATCH 5 of 13  —  5 infographics
+═══════════════════════════════════════════════════════════
+
+SYSTEM PROMPT (paste this first, or set as custom instructions):
+─────────────────────────────────────────────────────────
+You are a visual design assistant creating ADHD-friendly technical infographics for the {a}OS Agentic Operating System reference model.
+
+DESIGN RULES:
+- Dark background (#0a0a0f) with high-contrast text
+- Use the layer accent color as the primary highlight
+- Clean, minimal layout - no clutter
+- Large readable typography (minimum 14pt equivalent)
+- Each primitive shown as a distinct card/node with its name + 1-line description
+- Show relationships between primitives with arrows or connectors if applicable
+- Include a small icon or visual metaphor for each primitive
+- Include the layer badge (e.g. "L4 · Orchestration") in the top-left corner
+- Parent construct name is the large title
+- Aspect ratio: 16:9 (landscape)
+- Style: flat design, subtle gradients, no 3D, modern SaaS dashboard aesthetic
+- Footer: "{a}OS Reference Model · vitaminR" in small text
+
+FORMAT: Create a single infographic image. Do NOT return markdown or text descriptions.
+
+─────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────┐
+│  PROMPT 1/5  —  #21  L6 | Guardrail Config
+│  Save as: guardrail-config.png
+└─────────────────────────────────────────────────────┘
+
+Create an infographic for the "Guardrail Config" construct from the {a}OS reference model.
+
+LAYER: L6 — Governance
+ACCENT COLOR: #fb7185
+CONSTRUCT: Guardrail Config
+PRIMITIVE COUNT: 4
+
+PRIMITIVES (show each as a card/node):
+  - Guardrail ID: Named identifier for a guardrail set (e.g., 'financial-safety-v2'). Versioned and environment-scoped.
+  - Policy Bundle: Collection of policy rules grouped into a deployable unit. Bundling enables atomic policy updates.
+  - Fallback Action: Default behavior when a guardrail can't evaluate (engine timeout, missing data): block, allow-with-log, or degrade.
+  - Activation Trigger: Condition that activates or deactivates a guardrail: time-based, feature-flag, or event-driven.
+
+VISUAL GUIDANCE:
+- Title: "Guardrail Config" in large text, colored #fb7185
+- Layer badge: "L6 · Governance" top-left
+- Show all 4 primitives as connected cards on dark (#0a0a0f) background
+- Use #fb7185 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly — no walls of text
+
+═══  NEXT PROMPT  (paste after saving the image above)  ═══
+
+┌─────────────────────────────────────────────────────┐
+│  PROMPT 2/5  —  #22  L6 | Auth Token
+│  Save as: auth-token.png
+└─────────────────────────────────────────────────────┘
+
+Create an infographic for the "Auth Token" construct from the {a}OS reference model.
+
+LAYER: L6 — Governance
+ACCENT COLOR: #fb7185
+CONSTRUCT: Auth Token
+PRIMITIVE COUNT: 4
+
+PRIMITIVES (show each as a card/node):
+  - Token Value: The actual secret string (JWT, API key, bearer token). Must never be logged, stored in plaintext, or transmitted without TLS.
+  - Token Issuer: The identity provider or authority that minted the token. Verified by consumers to establish trust.
+  - Token Scope: The permissions encoded in the token: which APIs, actions, and resources it grants access to.
+  - Expiry Epoch: Unix timestamp when the token becomes invalid. The fundamental time-limit on credential validity.
+
+VISUAL GUIDANCE:
+- Title: "Auth Token" in large text, colored #fb7185
+- Layer badge: "L6 · Governance" top-left
+- Show all 4 primitives as connected cards on dark (#0a0a0f) background
+- Use #fb7185 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly — no walls of text
+
+═══  NEXT PROMPT  (paste after saving the image above)  ═══
+
+┌─────────────────────────────────────────────────────┐
+│  PROMPT 3/5  —  #23  L6 | Role Binding
+│  Save as: role-binding.png
+└─────────────────────────────────────────────────────┘
+
+Create an infographic for the "Role Binding" construct from the {a}OS reference model.
+
+LAYER: L6 — Governance
+ACCENT COLOR: #fb7185
+CONSTRUCT: Role Binding
+PRIMITIVE COUNT: 4
+
+PRIMITIVES (show each as a card/node):
+  - Principal ID: Unique identifier of the entity (user, agent, service account) being granted a role.
+  - Role Name: Human-readable label for the role (e.g., 'code-reviewer', 'data-reader', 'admin'). Maps to a permission set.
+  - Resource Scope: The set of resources (APIs, data stores, tools) a role binding grants access to.
+  - Inherited From: Reference to the parent binding this role was inherited from (e.g., org-level admin cascading to projects).
+
+VISUAL GUIDANCE:
+- Title: "Role Binding" in large text, colored #fb7185
+- Layer badge: "L6 · Governance" top-left
+- Show all 4 primitives as connected cards on dark (#0a0a0f) background
+- Use #fb7185 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly — no walls of text
+
+═══  NEXT PROMPT  (paste after saving the image above)  ═══
+
+┌─────────────────────────────────────────────────────┐
+│  PROMPT 4/5  —  #24  L6 | Credential Vault
+│  Save as: credential-vault.png
+└─────────────────────────────────────────────────────┘
+
+Create an infographic for the "Credential Vault" construct from the {a}OS reference model.
+
+LAYER: L6 — Governance
+ACCENT COLOR: #fb7185
+CONSTRUCT: Credential Vault
+PRIMITIVE COUNT: 4
+
+PRIMITIVES (show each as a card/node):
+  - Secret ID: Logical name for a secret stored in the vault (e.g., 'openai-api-key-prod'). Agents reference this, never raw values.
+  - Encryption Algorithm: The algorithm used to encrypt secrets at rest (AES-256-GCM, ChaCha20). Must meet compliance requirements.
+  - Rotation Interval: How often a secret is automatically rotated (e.g., every 90 days). Limits blast radius of leaked credentials.
+  - Access Log Ref: Pointer to the audit log recording who accessed which secret and when. Critical for breach investigation.
+
+VISUAL GUIDANCE:
+- Title: "Credential Vault" in large text, colored #fb7185
+- Layer badge: "L6 · Governance" top-left
+- Show all 4 primitives as connected cards on dark (#0a0a0f) background
+- Use #fb7185 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly — no walls of text
+
+═══  NEXT PROMPT  (paste after saving the image above)  ═══
+
+┌─────────────────────────────────────────────────────┐
+│  PROMPT 5/5  —  #25  L6 | Permission Scope
+│  Save as: permission-scope.png
+└─────────────────────────────────────────────────────┘
+
+Create an infographic for the "Permission Scope" construct from the {a}OS reference model.
+
+LAYER: L6 — Governance
+ACCENT COLOR: #fb7185
+CONSTRUCT: Permission Scope
+PRIMITIVE COUNT: 4
+
+PRIMITIVES (show each as a card/node):
+  - Scope Pattern: Glob, regex, or path expression defining which resources fall within this permission scope.
+  - Allowed Actions: Explicit list of actions (read, write, delete, execute) permitted within this scope.
+  - Denied Actions: Explicit list of actions blocked even if other rules allow them. Deny always wins over allow.
+  - Condition Expression: Runtime condition (time of day, IP range, MFA status) that must be true for the permission to apply.
+
+VISUAL GUIDANCE:
+- Title: "Permission Scope" in large text, colored #fb7185
+- Layer badge: "L6 · Governance" top-left
+- Show all 4 primitives as connected cards on dark (#0a0a0f) background
+- Use #fb7185 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly — no walls of text
+

@@ -1,0 +1,42 @@
+SYSTEM PROMPT:
+You are a visual design assistant creating ADHD-friendly technical infographics for the {a}OS Agentic Operating System reference model.
+
+DESIGN RULES:
+- Dark background (#0a0a0f) with high-contrast text
+- Use the layer accent color as the primary highlight
+- Clean, minimal layout - no clutter
+- Large readable typography (minimum 14pt equivalent)
+- Each primitive shown as a distinct card/node with its name + 1-line description
+- Show relationships between primitives with arrows or connectors if applicable
+- Include a small icon or visual metaphor for each primitive
+- Include the layer badge (e.g. "L4 . Orchestration") in the top-left corner
+- Parent construct name is the large title
+- Aspect ratio: 16:9 (landscape)
+- Style: flat design, subtle gradients, no 3D, modern SaaS dashboard aesthetic
+- Footer: "{a}OS Reference Model . vitaminR" in small text
+
+FORMAT: Create a single infographic image. Do NOT return markdown or text descriptions.
+
+
+USER PROMPT:
+Create an infographic for the "Test Case" construct from the {a}OS reference model.
+
+LAYER: L5 - Observability
+ACCENT COLOR: #fbbf24
+CONSTRUCT: Test Case
+PRIMITIVE COUNT: 4
+
+PRIMITIVES (show each as a card/node):
+  - **Case ID**: Unique identifier for a test case within a suite. Enables per-case result tracking and regression detection.
+  - **Input Prompt**: The exact prompt or conversation sent to the model for this test case. The 'question' of the eval.
+  - **Expected Output**: The reference answer or pattern the model output must match or approximate. Ground truth for scoring.
+  - **Scoring Function**: The function that evaluates model output against expected output and returns a score (0–1 or pass/fail).
+
+VISUAL GUIDANCE:
+- Title: "Test Case" in large text, colored #fbbf24
+- Layer badge: "L5 . Observability" top-left
+- Show all 4 primitives as connected cards on dark (#0a0a0f) background
+- Use #fbbf24 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly - no walls of text

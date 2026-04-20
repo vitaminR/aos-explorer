@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{a}OS Concept — Guardrails &amp; Safety</title>
+  <style>
+    :root {
+      --bg: #0f0f14;
+      --bg-surface: #1a1a24;
+      --text-primary: #e8e8f0;
+      --text-secondary: #a0a0b8;
+      --text-tertiary: #6b6b80;
+      --accent-indigo: #818cf8;
+      --border: rgba(255,255,255,0.08);
+      --danger: #f87171;
+      --success: #34d399;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      padding: 2rem;
+      max-width: 740px;
+      margin: 0 auto;
+    }
+    a { color: var(--accent-indigo); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1 { font-size: 1.8rem; margin-bottom: 0.3rem; }
+    .slug { font-size: 0.85rem; color: var(--text-tertiary); margin-bottom: 1.2rem; }
+    .short-def { font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 1.5rem; border-left: 3px solid var(--accent-indigo); padding-left: 12px; }
+    section { margin-bottom: 1.5rem; }
+    section h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-tertiary); margin-bottom: 0.5rem; }
+    section p { color: var(--text-secondary); }
+    .meta { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .meta span { font-size: 0.85rem; color: var(--text-tertiary); }
+    .meta strong { color: var(--text-primary); }
+    ul { padding-left: 1.2rem; color: var(--text-secondary); }
+    li { margin-bottom: 0.4rem; }
+    code { background: var(--bg-surface); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+    .callout { padding: 10px 14px; border-radius: 8px; margin-bottom: 0.8rem; font-size: 0.92rem; line-height: 1.5; }
+    .callout-danger { background: rgba(248,113,113,0.08); border-left: 3px solid var(--danger); color: var(--text-secondary); }
+    .callout-success { background: rgba(52,211,153,0.08); border-left: 3px solid var(--success); color: var(--text-secondary); }
+    .back { display: inline-block; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    .nav-footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--text-tertiary); }
+  </style>
+</head>
+<body>
+  <a class="back" href="../prototype.html#concept=guardrails">← Back to Explorer</a>
+
+  <h1>Guardrails &amp; Safety</h1>
+  <div class="slug">/guardrails</div>
+  <div class="short-def">Validates inputs and outputs to ensure safety, policy compliance, and defense against prompt injection.</div>
+
+  <div class="meta">
+    <span>Strata: <strong>L6</strong></span>
+    <span>Axes: <strong>Governance</strong></span>
+    <span>Status: <strong>seed</strong></span>
+  </div>
+
+  <section>
+    <h2>Explainer</h2>
+    <p>Guardrails are deterministic validation layers embedded directly into the orchestration pipeline. They inspect every input, output, and tool invocation against policy-as-code rules before execution proceeds. Without them, agents are vulnerable to prompt injection, unauthorized privilege escalation, and compliance violations. Guardrails should be baked in from day one, not bolted on after deployment.</p>
+  </section>
+
+  <section>
+    <h2>Anti-Patterns</h2>
+    <ul>
+      <li>Bolting security guardrails onto an application after deployment results in fragmented policies that agents can easily bypass through prompt manipulation.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Mitigations</h2>
+    <ul>
+      <li>Embed deterministic, policy-as-code guardrails directly into the orchestration layer from day one to validate all inputs, outputs, and tool invocations.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Top Products</h2>
+    <ul>
+      <li><code>opa</code></li>
+      <li><code>sksecurity</code></li>
+      <li><code>wfhuman</code></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Related Concepts</h2>
+    <ul>
+      <li><a href="harness.html">harness</a> · <a href="../prototype.html#concept=harness" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+      <li><a href="governance.html">governance</a> · <a href="../prototype.html#concept=governance" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Sources</h2>
+    <ul>
+      <li><a href="../docs.html#glossary">Glossary — docs.html</a></li>
+      <li><a href="../prototype.html#concept=guardrails">Open in Explorer →</a></li>
+    </ul>
+  </section>
+
+  <div class="nav-footer">
+    <a href="../prototype.html">Explorer</a> ·
+    <a href="../docs.html#glossary">Docs Glossary</a> ·
+    <a href="../docs.html#concepts">Concepts Table</a>
+  </div>
+</body>
+</html>

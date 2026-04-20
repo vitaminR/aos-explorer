@@ -1,0 +1,173 @@
+═══════════════════════════════════════════════════════════
+  BATCH 4 of 13  —  5 infographics
+═══════════════════════════════════════════════════════════
+
+SYSTEM PROMPT (paste this first, or set as custom instructions):
+─────────────────────────────────────────────────────────
+You are a visual design assistant creating ADHD-friendly technical infographics for the {a}OS Agentic Operating System reference model.
+
+DESIGN RULES:
+- Dark background (#0a0a0f) with high-contrast text
+- Use the layer accent color as the primary highlight
+- Clean, minimal layout - no clutter
+- Large readable typography (minimum 14pt equivalent)
+- Each primitive shown as a distinct card/node with its name + 1-line description
+- Show relationships between primitives with arrows or connectors if applicable
+- Include a small icon or visual metaphor for each primitive
+- Include the layer badge (e.g. "L4 · Orchestration") in the top-left corner
+- Parent construct name is the large title
+- Aspect ratio: 16:9 (landscape)
+- Style: flat design, subtle gradients, no 3D, modern SaaS dashboard aesthetic
+- Footer: "{a}OS Reference Model · vitaminR" in small text
+
+FORMAT: Create a single infographic image. Do NOT return markdown or text descriptions.
+
+─────────────────────────────────────────────────────────
+
+┌─────────────────────────────────────────────────────┐
+│  PROMPT 1/5  —  #16  L2 | Search Index
+│  Save as: search-index.png
+└─────────────────────────────────────────────────────┘
+
+Create an infographic for the "Search Index" construct from the {a}OS reference model.
+
+LAYER: L2 — Knowledge & Retrieval
+ACCENT COLOR: #a78bfa
+CONSTRUCT: Search Index
+PRIMITIVE COUNT: 4
+
+PRIMITIVES (show each as a card/node):
+  - Index Type: The index algorithm: vector (HNSW, IVF), keyword (BM25), or hybrid. Determines retrieval characteristics.
+  - Embedding Dim: Dimensionality of the embedding vectors stored in the index. Must match the embedding model's output size.
+  - Doc Count: Total number of documents (or chunks) indexed. Affects search latency and memory requirements.
+  - Refresh Interval: How often the index rebuilds or syncs with source documents. Trade-off between freshness and compute cost.
+
+VISUAL GUIDANCE:
+- Title: "Search Index" in large text, colored #a78bfa
+- Layer badge: "L2 · Knowledge & Retrieval" top-left
+- Show all 4 primitives as connected cards on dark (#0a0a0f) background
+- Use #a78bfa accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly — no walls of text
+
+═══  NEXT PROMPT  (paste after saving the image above)  ═══
+
+┌─────────────────────────────────────────────────────┐
+│  PROMPT 2/5  —  #17  L2 | Chunk Collection
+│  Save as: chunk-collection.png
+└─────────────────────────────────────────────────────┘
+
+Create an infographic for the "Chunk Collection" construct from the {a}OS reference model.
+
+LAYER: L2 — Knowledge & Retrieval
+ACCENT COLOR: #a78bfa
+CONSTRUCT: Chunk Collection
+PRIMITIVE COUNT: 4
+
+PRIMITIVES (show each as a card/node):
+  - Chunk ID: Unique identifier for a document chunk. Used for retrieval, citation, and deduplication.
+  - Source Doc: Reference to the original document this chunk was extracted from. Preserves provenance chain.
+  - Token Count: Number of tokens in the chunk. Used for context window budgeting when assembling retrieval results.
+  - Embedding Vector: Dense vector representation of the chunk's semantic content. Used for similarity search in the index.
+
+VISUAL GUIDANCE:
+- Title: "Chunk Collection" in large text, colored #a78bfa
+- Layer badge: "L2 · Knowledge & Retrieval" top-left
+- Show all 4 primitives as connected cards on dark (#0a0a0f) background
+- Use #a78bfa accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly — no walls of text
+
+═══  NEXT PROMPT  (paste after saving the image above)  ═══
+
+┌─────────────────────────────────────────────────────┐
+│  PROMPT 3/5  —  #18  L2 | Relevance Score
+│  Save as: relevance-score.png
+└─────────────────────────────────────────────────────┘
+
+Create an infographic for the "Relevance Score" construct from the {a}OS reference model.
+
+LAYER: L2 — Knowledge & Retrieval
+ACCENT COLOR: #a78bfa
+CONSTRUCT: Relevance Score
+PRIMITIVE COUNT: 4
+
+PRIMITIVES (show each as a card/node):
+  - Cosine Similarity: Similarity metric between query and document embeddings. Core signal for semantic search ranking.
+  - BM25 Score: Classic term-frequency keyword relevance score. Complements vector search for exact-match queries.
+  - Recency Boost: Score multiplier favoring recently updated documents. Prevents stale content from dominating results.
+  - Combined Rank: Final ranking after fusing vector, keyword, and recency scores. Typically via reciprocal rank fusion.
+
+VISUAL GUIDANCE:
+- Title: "Relevance Score" in large text, colored #a78bfa
+- Layer badge: "L2 · Knowledge & Retrieval" top-left
+- Show all 4 primitives as connected cards on dark (#0a0a0f) background
+- Use #a78bfa accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly — no walls of text
+
+═══  NEXT PROMPT  (paste after saving the image above)  ═══
+
+┌─────────────────────────────────────────────────────┐
+│  PROMPT 4/5  —  #19  L2 | Rerank Pipeline
+│  Save as: rerank-pipeline.png
+└─────────────────────────────────────────────────────┘
+
+Create an infographic for the "Rerank Pipeline" construct from the {a}OS reference model.
+
+LAYER: L2 — Knowledge & Retrieval
+ACCENT COLOR: #a78bfa
+CONSTRUCT: Rerank Pipeline
+PRIMITIVE COUNT: 8
+
+PRIMITIVES (show each as a card/node):
+  - Reranker Model: Cross-encoder model that scores query-document pairs more accurately than bi-encoder retrieval.
+  - Top K: Number of top results to keep after reranking. Balances quality against context window budget.
+  - Score Threshold: Minimum relevance score to include a result. Filters out low-quality matches before injection.
+  - Latency Budget (ms): Maximum milliseconds allowed for the reranking step. Enforces latency SLA trade-offs.
+  - Rule ID: Unique identifier for a policy rule. Used for version tracking, audit references, and override targeting.
+  - Rule Expression: The actual policy logic — a boolean expression in Rego, CEL, or JSON that evaluates to allow/deny.
+  - Enforcement Mode: Whether the rule blocks (enforce), warns (audit), or just logs (monitor). Allows gradual rollout of new policies.
+  - Scope Selector: Pattern or filter that limits which agents, resources, or environments a policy applies to.
+
+VISUAL GUIDANCE:
+- Title: "Rerank Pipeline" in large text, colored #a78bfa
+- Layer badge: "L2 · Knowledge & Retrieval" top-left
+- Show all 8 primitives as connected cards on dark (#0a0a0f) background
+- Use #a78bfa accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly — no walls of text
+
+═══  NEXT PROMPT  (paste after saving the image above)  ═══
+
+┌─────────────────────────────────────────────────────┐
+│  PROMPT 5/5  —  #20  L6 | Policy Evaluation
+│  Save as: policy-evaluation.png
+└─────────────────────────────────────────────────────┘
+
+Create an infographic for the "Policy Evaluation" construct from the {a}OS reference model.
+
+LAYER: L6 — Governance
+ACCENT COLOR: #fb7185
+CONSTRUCT: Policy Evaluation
+PRIMITIVE COUNT: 4
+
+PRIMITIVES (show each as a card/node):
+  - Eval Request: The input bundle sent to the policy engine: agent identity, intended action, resource target, and context.
+  - Decision Result: The allow/deny verdict from the policy engine, with optional explanations and matched rule references.
+  - Eval Latency: Time taken for a single policy evaluation. Must stay within budget to avoid blocking agent actions.
+  - Violation Detail: Structured record of exactly which rule was violated, what the expected vs actual values were, and remediation steps.
+
+VISUAL GUIDANCE:
+- Title: "Policy Evaluation" in large text, colored #fb7185
+- Layer badge: "L6 · Governance" top-left
+- Show all 4 primitives as connected cards on dark (#0a0a0f) background
+- Use #fb7185 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly — no walls of text
+

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <style>@import url("https://fonts.googleapis.com/css2?family=Inter:wght@700&amp;display=swap");</style>
+
+    <!-- Orange ambient glow behind the 'a' -->
+    <radialGradient id="oglow" cx="50%" cy="46%" r="38%">
+      <stop offset="0%" stop-color="#ff7a00" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#ff7a00" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Indigo top-corner glow for depth -->
+    <radialGradient id="topglow" cx="30%" cy="0%" r="60%">
+      <stop offset="0%" stop-color="#818cf8" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#818cf8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- ── Background ── -->
+  <rect width="200" height="200" rx="32" fill="#0a0c10"/>
+
+  <!-- Subtle surface sheen (top half) -->
+  <rect x="1" y="1" width="198" height="100" rx="31" fill="white" fill-opacity="0.013"/>
+
+  <!-- Indigo corner glow -->
+  <rect width="200" height="200" rx="32" fill="url(#topglow)"/>
+
+  <!-- Indigo border ring -->
+  <rect x="0.5" y="0.5" width="199" height="199" rx="31.5"
+        fill="none" stroke="#818cf8" stroke-opacity="0.22" stroke-width="1"/>
+
+  <!-- ── {a} Lettermark ── -->
+
+  <!-- Warm orange halo behind the 'a' -->
+  <ellipse cx="100" cy="87" rx="46" ry="36" fill="url(#oglow)"/>
+
+  <!-- Main mark: { a } -->
+  <text x="100" y="113"
+        text-anchor="middle"
+        font-family="Inter, -apple-system, BlinkMacSystemFont, system-ui, sans-serif"
+        font-size="74" font-weight="700" letter-spacing="-1">
+    <tspan fill="rgba(255,255,255,0.22)">{</tspan>
+    <tspan fill="#ff7a00">a</tspan>
+    <tspan fill="rgba(255,255,255,0.22)">}</tspan>
+  </text>
+
+  <!-- ── Section Divider ── -->
+  <line x1="26" y1="122" x2="174" y2="122"
+        stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+
+  <!-- ── 7 Strata Bars  (L7 Interface → L1 Compute) ── -->
+  <!-- step = 10px  (5px bar + 5px gap)                  -->
+  <!-- last bar ends at y = 128 + 6×10 + 5 = 193         -->
+
+  <rect x="26" y="128" width="148" height="5" rx="2.5" fill="#c75a00"/><!-- L7 Interface  -->
+  <rect x="26" y="138" width="148" height="5" rx="2.5" fill="#e15759"/><!-- L6 Reasoning  -->
+  <rect x="26" y="148" width="148" height="5" rx="2.5" fill="#b07aa1"/><!-- L5 Interaction -->
+  <rect x="26" y="158" width="148" height="5" rx="2.5" fill="#59a14f"/><!-- L4 Workflow    -->
+  <rect x="26" y="168" width="148" height="5" rx="2.5" fill="#edc948"/><!-- L3 Memory      -->
+  <rect x="26" y="178" width="148" height="5" rx="2.5" fill="#22d3ee"/><!-- L2 Model       -->
+  <rect x="26" y="188" width="148" height="5" rx="2.5" fill="#4f6bc2"/><!-- L1 Compute     -->
+</svg>

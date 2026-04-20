@@ -371,98 +371,24 @@
         font-style: italic;
       }
 
-      /* ===== CALLOUT SYSTEM (Note · Important · Tip · Warning) ===== */
-      /* Semantic colors */
-      :root {
-        --callout-note: #60a5fa; /* blue   */
-        --callout-note-bg: rgba(96, 165, 250, 0.06);
-        --callout-important: #c084fc; /* purple */
-        --callout-important-bg: rgba(192, 132, 252, 0.06);
-        --callout-tip: #34d399; /* green  */
-        --callout-tip-bg: rgba(52, 211, 153, 0.06);
-        --callout-warning: #fbbf24; /* amber  */
-        --callout-warning-bg: rgba(251, 191, 36, 0.06);
-      }
-
+      /* ===== CALLOUT ===== */
       .callout {
         background: var(--bg-surface);
         border: 1px solid var(--border);
-        border-left: 3px solid var(--callout-note);
+        border-left: 3px solid var(--accent-indigo);
         border-radius: 0 8px 8px 0;
         padding: 16px 20px;
         margin: 20px 0;
         font-size: 13px;
         color: var(--text-secondary);
-        position: relative;
       }
-      .callout .callout-heading {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        margin-bottom: 6px;
-        font-size: 12px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        color: var(--callout-note);
-      }
-      .callout .callout-heading svg {
-        flex-shrink: 0;
-      }
-      /* Legacy: keep bold-first-child working as fallback */
-      .callout > strong:first-child {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        margin-bottom: 6px;
+      .callout strong {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--accent-indigo);
         font-size: 12px;
         text-transform: uppercase;
         letter-spacing: 0.5px;
-        color: var(--callout-note);
-      }
-
-      /* —— Note (default / blue) —— */
-      .callout.callout-note,
-      .callout:not(.callout-important):not(.callout-tip):not(.callout-warning) {
-        border-left-color: var(--callout-note);
-        background: var(--callout-note-bg);
-      }
-      .callout.callout-note .callout-heading,
-      .callout:not(.callout-important):not(.callout-tip):not(.callout-warning)
-        .callout-heading,
-      .callout:not(.callout-important):not(.callout-tip):not(.callout-warning)
-        > strong:first-child {
-        color: var(--callout-note);
-      }
-
-      /* —— Important (purple) —— */
-      .callout.callout-important {
-        border-left-color: var(--callout-important);
-        background: var(--callout-important-bg);
-      }
-      .callout.callout-important .callout-heading,
-      .callout.callout-important > strong:first-child {
-        color: var(--callout-important);
-      }
-
-      /* —— Tip (green) —— */
-      .callout.callout-tip {
-        border-left-color: var(--callout-tip);
-        background: var(--callout-tip-bg);
-      }
-      .callout.callout-tip .callout-heading,
-      .callout.callout-tip > strong:first-child {
-        color: var(--callout-tip);
-      }
-
-      /* —— Warning (amber) —— */
-      .callout.callout-warning {
-        border-left-color: var(--callout-warning);
-        background: var(--callout-warning-bg);
-      }
-      .callout.callout-warning .callout-heading,
-      .callout.callout-warning > strong:first-child {
-        color: var(--callout-warning);
       }
 
       /* ===== ABBR ===== */
@@ -655,241 +581,6 @@
       .prompt-box p:last-child {
         margin-bottom: 0;
       }
-
-      /* ===== ENHANCED: Smooth scroll ===== */
-      html {
-        scroll-behavior: smooth;
-      }
-
-      /* ===== ENHANCED: Table alternate rows ===== */
-      .doc-table tbody tr:nth-child(even) td {
-        background: rgba(255, 255, 255, 0.015);
-      }
-
-      /* ===== ENHANCED: Section fade-in on load ===== */
-      .content h2 {
-        animation: fadeSlideIn 0.5s ease both;
-      }
-      @keyframes fadeSlideIn {
-        from {
-          opacity: 0;
-          transform: translateY(8px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      /* ===== ENHANCED: Heading anchor hover indicator ===== */
-      .content h2[id]::before {
-        content: "#";
-        position: absolute;
-        left: -1.5em;
-        color: var(--text-quaternary);
-        opacity: 0;
-        transition: opacity 0.2s;
-        font-weight: 400;
-      }
-      .content h2[id] {
-        position: relative;
-      }
-      .content h2[id]:hover::before {
-        opacity: 1;
-        color: var(--accent-indigo);
-      }
-
-      /* ===== ENHANCED: Tab indicator slide ===== */
-      .tabs-bar {
-        position: relative;
-      }
-      .tab-btn {
-        position: relative;
-        transition:
-          color 0.25s ease,
-          border-bottom-color 0.25s ease;
-      }
-
-      /* ===== ENHANCED: Tab content fade transition ===== */
-      .tab-content {
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-      .tab-content.active {
-        opacity: 1;
-      }
-
-      /* ===== ENHANCED: Callout hover lift ===== */
-      .callout {
-        transition:
-          transform 0.2s ease,
-          box-shadow 0.2s ease;
-      }
-      .callout:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-      }
-
-      /* ===== Callout SVG icon set (inline via CSS pseudo) ===== */
-      /* Icons rendered via the .callout-heading span in HTML */
-
-      /* ===== ENHANCED: Sidebar link transition ===== */
-      .sidebar-link {
-        transition:
-          all 0.2s ease,
-          padding-left 0.2s ease;
-      }
-      .sidebar-link.is-visible {
-        padding-left: 14px;
-        color: var(--accent-blue);
-        background: rgba(96, 165, 250, 0.06);
-      }
-
-      /* ===== ENHANCED: Code inline hover ===== */
-      .content code {
-        transition:
-          background 0.15s,
-          border-color 0.15s;
-      }
-      .content code:hover {
-        background: var(--bg-elevated);
-        border-color: var(--border-hover);
-      }
-
-      /* ===== ENHANCED: Feature card glow on hover ===== */
-      .feature-card:hover {
-        box-shadow: 0 0 24px rgba(129, 140, 248, 0.06);
-      }
-
-      /* ===== ENHANCED: Stratum mini card glow ===== */
-      .stratum-mini:hover {
-        box-shadow: 0 0 16px
-          color-mix(in srgb, var(--layer-color, #818cf8) 15%, transparent);
-      }
-
-      /* ===== ENHANCED: Responsive ===== */
-      @media (max-width: 860px) {
-        .docs-layout {
-          grid-template-columns: 1fr;
-        }
-        .sidebar {
-          position: static;
-          height: auto;
-          border-right: none;
-          border-bottom: 1px solid var(--border);
-          display: flex;
-          flex-wrap: wrap;
-          gap: 4px;
-          padding: 12px 16px;
-        }
-        .sidebar-title {
-          width: 100%;
-        }
-        .sidebar-link {
-          display: inline-block;
-        }
-        .content {
-          padding: 24px 20px 60px;
-        }
-        .feature-grid {
-          grid-template-columns: 1fr;
-        }
-        .tabs-bar {
-          overflow-x: auto;
-        }
-      }
-
-      /* ── Auth UI ─────────────────────────────────────────────────────── */
-      .auth-btn {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        padding: 6px 14px;
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        border-radius: 20px;
-        color: #e2e8f0;
-        font-size: 13px;
-        font-weight: 500;
-        cursor: pointer;
-        transition:
-          background 0.2s,
-          border-color 0.2s;
-        white-space: nowrap;
-      }
-      .auth-btn:hover {
-        background: rgba(255, 255, 255, 0.15);
-        border-color: rgba(255, 255, 255, 0.35);
-      }
-      .auth-btn svg {
-        flex-shrink: 0;
-      }
-      .auth-user-panel {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-      .auth-avatar {
-        width: 28px;
-        height: 28px;
-        border-radius: 50%;
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        object-fit: cover;
-      }
-      .auth-username {
-        font-size: 13px;
-        color: #e2e8f0;
-        max-width: 120px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-      .auth-signout-btn {
-        font-size: 12px;
-        padding: 4px 10px;
-        background: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 12px;
-        color: #94a3b8;
-        cursor: pointer;
-        transition: background 0.2s;
-      }
-      .auth-signout-btn:hover {
-        background: rgba(255, 255, 255, 0.08);
-        color: #e2e8f0;
-      }
-
-      /* ===== BACK-TO-TOP FAB ===== */
-      .back-to-top {
-        position: fixed;
-        bottom: 32px;
-        right: 32px;
-        width: 42px;
-        height: 42px;
-        border-radius: 50%;
-        background: var(--accent-indigo);
-        color: #fff;
-        border: none;
-        font-size: 20px;
-        cursor: pointer;
-        opacity: 0;
-        pointer-events: none;
-        transition:
-          opacity 0.25s,
-          transform 0.25s;
-        z-index: 900;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
-      }
-      .back-to-top.visible {
-        opacity: 1;
-        pointer-events: auto;
-      }
-      .back-to-top:hover {
-        transform: scale(1.1);
-      }
     </style>
   </head>
   <body>
@@ -904,38 +595,6 @@
       <div class="logo">{a}OS <span>Explorer</span></div>
       <div class="header-spacer"></div>
       <a href="prototype.html" class="back-link">&#x2190; Back to Explorer</a>
-      <!-- GitHub auth controls — shown/hidden by firebase-auth.js -->
-      <button id="auth-signin-btn" class="auth-btn" title="Sign in with GitHub">
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="currentColor"
-          aria-hidden="true"
-        >
-          <path
-            d="M8 0C3.58 0 0 3.58 0 8a8 8 0 005.47 7.59c.4.07.55-.17.55-.38
-            0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
-            -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
-            .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15
-            -.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.65 7.65 0 012 0c1.53-1.04
-            2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87
-            3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46
-            .55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"
-          />
-        </svg>
-        Sign in
-      </button>
-      <div id="auth-user-panel" class="auth-user-panel" style="display: none">
-        <img
-          id="auth-avatar"
-          class="auth-avatar"
-          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-          alt="User avatar"
-        />
-        <span id="auth-username" class="auth-username"></span>
-        <button id="auth-signout-btn" class="auth-signout-btn">Sign out</button>
-      </div>
     </header>
 
     <!-- TABS -->
@@ -977,36 +636,13 @@
           <a href="#why" class="sidebar-link">Why it exists</a>
           <a href="#who" class="sidebar-link">Who it's for</a>
           <a href="#features" class="sidebar-link">Key features</a>
+          <a href="#tech" class="sidebar-link">Tech stack</a>
         </nav>
         <div class="content">
           <h1>What is {a}OS Explorer?</h1>
           <p class="subtitle">
             The interactive taxonomy and comparison engine for the agentic era.
           </p>
-
-          <div style="text-align: center; margin: 32px 0 40px">
-            <img
-              src="docs/assets/aos-terminology-primer.png"
-              alt="{a}OS Terminology Primer — Stratum, Substrate, Construct, Primitive"
-              style="
-                max-width: 520px;
-                width: 100%;
-                border-radius: 12px;
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-                border: 1px solid rgba(255, 255, 255, 0.06);
-              "
-            />
-            <p
-              style="
-                margin-top: 12px;
-                font-size: 12px;
-                color: rgba(255, 255, 255, 0.4);
-              "
-            >
-              Each level zooms deeper into the one above — from the full
-              7-stratum stack down to atomic primitives.
-            </p>
-          </div>
 
           <p>
             {a}OS Explorer is a web application that lets you
@@ -1022,20 +658,14 @@
 
           <div class="callout">
             <strong>New to the vocabulary?</strong>
-            <p>Use this translation first:</p>
-            <ul>
-              <li><strong>Stratum</strong> = responsibility layer</li>
-              <li><strong>Substrate</strong> = systems in that layer</li>
-              <li><strong>Construct</strong> = thing they create or manage</li>
-              <li>
-                <strong>Primitive</strong> = the smallest field, signal, or
-                action inside it
-              </li>
-            </ul>
-            <p>
-              The User Guide starts with a worked example so the vocabulary
-              earns its keep instead of asking you to memorize jargon.
-            </p>
+            Use this translation first:
+            <strong
+              >Stratum = responsibility layer. Substrate = systems in that
+              layer. Construct = thing they create or manage. Primitive = the
+              smallest field, signal, or action inside it.</strong
+            >
+            The User Guide starts with a worked example so the vocabulary earns
+            its keep instead of asking you to memorize jargon.
           </div>
 
           <div class="callout">
@@ -1153,6 +783,30 @@
               </div>
             </div>
           </div>
+
+          <h2 id="tech">Tech Stack</h2>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Layer</th>
+                <th>Technology</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Framework</td>
+                <td>Next.js 15 + TypeScript</td>
+              </tr>
+              <tr>
+                <td>Styling</td>
+                <td>Tailwind CSS v4</td>
+              </tr>
+              <tr>
+                <td>Animation</td>
+                <td>Framer Motion + GSAP ScrollTrigger</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -1165,9 +819,6 @@
           <a href="#stack" class="sidebar-link active">The 7 Strata</a>
           <a href="#axes" class="sidebar-link">Cross-cutting Axes</a>
           <a href="#hierarchy" class="sidebar-link">Ontology Hierarchy</a>
-          <a href="#concepts" class="sidebar-link">Core Concepts</a>
-          <a href="#h2h" class="sidebar-link">Head-to-Head</a>
-          <a href="#golden-paths" class="sidebar-link">Golden Paths</a>
           <a href="#terms" class="sidebar-link">Glossary</a>
         </nav>
         <div class="content">
@@ -1347,332 +998,6 @@
             </tbody>
           </table>
 
-          <h2 id="concepts">Core Agentic Concepts</h2>
-          <p>
-            These are the current first-class agentic concepts the explorer
-            should understand semantically — not just as raw string matches.
-            Each concept below includes its current top-3 mapped products or
-            workflows in the catalog.
-          </p>
-          <table class="doc-table">
-            <thead>
-              <tr>
-                <th>Concept</th>
-                <th>Definition</th>
-                <th>Current Top 3</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr id="concept-harness">
-                <td>
-                  <strong
-                    ><a
-                      href="concepts/harness.html"
-                      style="color: inherit; text-decoration: underline dotted"
-                      >Harness</a
-                    ></strong
-                  >
-                </td>
-                <td>
-                  Governing scaffold around execution: sequencing, context
-                  control, checkpoints, and stop conditions.
-                </td>
-                <td>BMAD · GSD · Superpowers</td>
-              </tr>
-              <tr>
-                <td><strong>loop-core</strong></td>
-                <td>
-                  Canonical control cycle for agent behavior: plan → act →
-                  evaluate → adjust.
-                </td>
-                <td>LangGraph · Eval Workflow · Human-in-the-Loop</td>
-              </tr>
-              <tr>
-                <td><strong>loop-research</strong></td>
-                <td>
-                  Discovery loop for gathering evidence, validating sources, and
-                  refining the problem before implementation.
-                </td>
-                <td>Azure AI Search · Exa MCP · RAG Pipeline</td>
-              </tr>
-              <tr>
-                <td><strong>loop-eval</strong></td>
-                <td>
-                  Quality loop for scoring outputs, diagnosing failures, and
-                  feeding improvements back into prompts or workflows.
-                </td>
-                <td>
-                  Eval &amp; Improve Loop · Agent Skills · Testing Strategy
-                </td>
-              </tr>
-              <tr>
-                <td><strong>loop-implementation</strong></td>
-                <td>
-                  Delivery loop for spec → build → test → review → iterate.
-                </td>
-                <td>BMAD Method · Superpowers · Claude Code</td>
-              </tr>
-              <tr>
-                <td><strong>loop-recovery</strong></td>
-                <td>
-                  Failure-handling loop for retry, rollback, checkpoint, and
-                  resume semantics.
-                </td>
-                <td>GSD · Shipyard · LangGraph</td>
-              </tr>
-              <tr>
-                <td><strong>RAG</strong></td>
-                <td>
-                  Retrieval-augmented generation: grounding model outputs with
-                  retrieved evidence and citations.
-                </td>
-                <td>Azure AI Search · RAG Pipeline · Mem0</td>
-              </tr>
-              <tr>
-                <td><strong>MCP</strong></td>
-                <td>
-                  Model Context Protocol — a standard interface for exposing
-                  tools, resources, and prompts to agents.
-                </td>
-                <td>GitHub MCP · Playwright MCP · Filesystem MCP</td>
-              </tr>
-              <tr>
-                <td><strong>Memory</strong></td>
-                <td>
-                  Persistent or working context used across turns, sessions, and
-                  tasks.
-                </td>
-                <td>Mem0 · Memory MCP · Hermes Agent</td>
-              </tr>
-              <tr>
-                <td><strong>Governance</strong></td>
-                <td>
-                  Rules, permissions, approvals, safety boundaries, and audit
-                  logic that constrain action.
-                </td>
-                <td>Open Policy Agent · Security Audit · Human-in-the-Loop</td>
-              </tr>
-              <tr>
-                <td><strong>tool-calling</strong></td>
-                <td>
-                  The construct enabling a model to select, format arguments
-                  for, and invoke external APIs.
-                </td>
-                <td>MCP Filesystem · MCP Brave Search · Agent Skills</td>
-              </tr>
-              <tr>
-                <td><strong>multi-agent</strong></td>
-                <td>
-                  Coordination where multiple specialized agents collaborate,
-                  delegate tasks, and share state.
-                </td>
-                <td>CrewAI · LangGraph · OpenHands</td>
-              </tr>
-              <tr>
-                <td><strong>handoff</strong></td>
-                <td>
-                  Secure transfer of control, working context, and state from
-                  one agent to another.
-                </td>
-                <td>LangGraph · CrewAI · Human-in-the-Loop</td>
-              </tr>
-              <tr>
-                <td><strong>checkpoint</strong></td>
-                <td>
-                  Persists an agent's exact state at a specific moment for time
-                  travel, durable execution, and fault recovery.
-                </td>
-                <td>LangGraph · Mem0 · MCP Memory</td>
-              </tr>
-              <tr>
-                <td><strong>fallback</strong></td>
-                <td>
-                  Implements retry strategies, graceful degradation, or
-                  alternate routing when a primary step fails.
-                </td>
-                <td>LangGraph · Claude Code · RAG Pipeline</td>
-              </tr>
-              <tr>
-                <td><strong>routing</strong></td>
-                <td>
-                  Dynamically dispatches requests to the most appropriate model,
-                  prompt, or specialized agent.
-                </td>
-                <td>Azure AI Foundry · LangGraph · CrewAI</td>
-              </tr>
-              <tr>
-                <td><strong>guardrails</strong></td>
-                <td>
-                  Validates inputs and outputs to ensure safety, policy
-                  compliance, and defense against prompt injection.
-                </td>
-                <td>OPA · SK Security · Human-in-the-Loop</td>
-              </tr>
-              <tr>
-                <td><strong>observability-loop</strong></td>
-                <td>
-                  Captures end-to-end traces and metrics to evaluate decisions,
-                  detect regressions, and drive improvement.
-                </td>
-                <td>Eval Workflow · LangGraph · CI/CD Workflow</td>
-              </tr>
-              <tr>
-                <td><strong>approval-loop</strong></td>
-                <td>
-                  Pauses agent execution at critical junctures to require
-                  explicit human sign-off before proceeding.
-                </td>
-                <td>Human-in-the-Loop · Claude Code · Cursor</td>
-              </tr>
-              <tr>
-                <td><strong>memory-loop</strong></td>
-                <td>
-                  Continuous cycle of storing, retrieving, and consolidating
-                  interactions into episodic and semantic stores.
-                </td>
-                <td>Mem0 · Azure AI Search · MCP Memory</td>
-              </tr>
-              <tr>
-                <td><strong>context-engineering</strong></td>
-                <td>
-                  Dynamically managing, compressing, and structuring information
-                  fed into the context window for maximum reasoning.
-                </td>
-                <td>GitIngest · Cursor · Claude Code</td>
-              </tr>
-              <tr>
-                <td><strong>planning</strong></td>
-                <td>
-                  Hierarchical task decomposition and controlled sequencing that
-                  keeps long-horizon execution on-policy.
-                </td>
-                <td>LangGraph · CrewAI · Hermes</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <h2 id="h2h">Head-to-Head Matchups</h2>
-          <p>
-            These curated comparison sets mirror the in-app Head-to-Head tab and
-            are intended for structured selection tradeoffs.
-          </p>
-          <table class="doc-table">
-            <thead>
-              <tr>
-                <th>Matchup</th>
-                <th>When to choose #1</th>
-                <th>When to choose #2</th>
-                <th>When to choose #3</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>LangGraph vs CrewAI vs AutoGen</strong></td>
-                <td>LangGraph: deterministic, stateful production workflows</td>
-                <td>CrewAI: fast role-based multi-agent prototyping</td>
-                <td>AutoGen: conversational research coordination</td>
-              </tr>
-              <tr>
-                <td><strong>Mem0 vs Zep vs Custom Vector Stores</strong></td>
-                <td>Mem0: fast personalization + memory integrations</td>
-                <td>Zep: temporal fact evolution and graph memory</td>
-                <td>Custom: full control of retrieval stack and operations</td>
-              </tr>
-              <tr>
-                <td><strong>Claude Code vs Devin vs Aider</strong></td>
-                <td>Claude Code: deep multi-file reasoning/refactors</td>
-                <td>Devin: autonomous backlog execution in cloud sandbox</td>
-                <td>Aider: git-native local pair-programming</td>
-              </tr>
-              <tr>
-                <td>
-                  <strong>Azure AI Search vs Pinecone vs Weaviate</strong>
-                </td>
-                <td>Azure AI Search: enterprise hybrid search in Azure</td>
-                <td>Pinecone: simplest low-ops serverless vector backend</td>
-                <td>Weaviate: flexible hybrid + multimodal/search modeling</td>
-              </tr>
-              <tr>
-                <td><strong>OPA vs Cedar vs Custom Policy</strong></td>
-                <td>OPA: broad policy-as-code governance across stack</td>
-                <td>Cedar: high-performance AWS-aligned authorization</td>
-                <td>Custom: early prototype only, low governance maturity</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <h2 id="golden-paths">Golden Path Architectures</h2>
-          <p>
-            Recommended starter stacks that combine product synergy with clear
-            mission boundaries.
-          </p>
-          <table class="doc-table">
-            <thead>
-              <tr>
-                <th>Build</th>
-                <th>Mission</th>
-                <th>Core Stack</th>
-                <th>Not ideal for</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Enterprise RAG Fortress</strong></td>
-                <td>
-                  Accurate, governed enterprise retrieval with strict access
-                  control and policy enforcement.
-                </td>
-                <td>
-                  Azure AI Foundry · OPA · LangGraph · Azure AI Search · Mem0
-                </td>
-                <td>Lightweight chatbots without policy/memory requirements</td>
-              </tr>
-              <tr>
-                <td><strong>Autonomous Code Forge</strong></td>
-                <td>
-                  Multi-file implementation + review + evaluation + deployment
-                  with quality gates.
-                </td>
-                <td>
-                  Claude Code · MCP Filesystem · SK Code Review · Eval WF ·
-                  CI/CD WF
-                </td>
-                <td>Fast inline visual autocomplete-first pair programming</td>
-              </tr>
-              <tr>
-                <td><strong>Collaborative Research Swarm</strong></td>
-                <td>
-                  Role-based research synthesis with retrieval and scored output
-                  quality control.
-                </td>
-                <td>CrewAI · MCP Brave Search · MCP Memory · Eval WF</td>
-                <td>
-                  Deterministic transaction processing with strict rollback
-                </td>
-              </tr>
-              <tr>
-                <td><strong>Full-Stack App Factory</strong></td>
-                <td>
-                  Prompt-to-UI acceleration with backend wiring and automated
-                  deployment path.
-                </td>
-                <td>v0 · Cursor · MCP PostgreSQL · MCP GitHub · Shipyard</td>
-                <td>Hands-off autonomous backlog clearing</td>
-              </tr>
-              <tr>
-                <td><strong>Regulated Compliance Engine</strong></td>
-                <td>
-                  High-risk workflows with deterministic control flow, policy
-                  enforcement, and mandatory approval gates.
-                </td>
-                <td>
-                  LangGraph · OPA · SK Security · Human-in-Loop WF · Eval WF
-                </td>
-                <td>Open-ended exploratory or creative ideation workflows</td>
-              </tr>
-            </tbody>
-          </table>
-
           <h2 id="terms">Glossary</h2>
           <table class="doc-table">
             <thead>
@@ -1717,99 +1042,6 @@
               <tr>
                 <td><strong>Multi-Residency</strong></td>
                 <td>A product spanning multiple strata simultaneously</td>
-              </tr>
-              <tr id="glossary-harness">
-                <td>
-                  <strong
-                    ><a
-                      href="concepts/harness.html"
-                      style="color: inherit; text-decoration: underline dotted"
-                      >Harness</a
-                    ></strong
-                  >
-                </td>
-                <td>
-                  A structured wrapper that constrains how an AI agent or
-                  pipeline executes — enforcing sequencing, context budgets,
-                  checkpoints, and stop conditions. A harness sits at L4
-                  (Orchestration) and defines <em>how</em> work is done, not
-                  just <em>what</em> to do. Examples: execution harnesses (GSD,
-                  BMAD), test harnesses (Superpowers), and CI/CD harnesses
-                  (Harness.io). Not to be confused with the agent or the tools
-                  it calls — the harness is the governing scaffold around them.
-                  <br /><small
-                    ><a
-                      href="prototype.html#concept=harness"
-                      style="opacity: 0.7"
-                      >→ preview in Explorer</a
-                    ></small
-                  >
-                </td>
-              </tr>
-              <tr>
-                <td><strong>loop-core</strong></td>
-                <td>
-                  The canonical agentic control cycle: plan → act → evaluate →
-                  adjust, repeated until stop conditions are met.
-                </td>
-              </tr>
-              <tr>
-                <td><strong>loop-research</strong></td>
-                <td>
-                  Discovery/evidence loop: gather sources, test hypotheses,
-                  resolve contradictions, then refine the problem framing.
-                </td>
-              </tr>
-              <tr>
-                <td><strong>loop-eval</strong></td>
-                <td>
-                  Evaluation loop: score outputs against quality criteria,
-                  diagnose failures, and feed fixes back into prompts, routing,
-                  or policy.
-                </td>
-              </tr>
-              <tr>
-                <td><strong>loop-implementation</strong></td>
-                <td>
-                  Build loop: spec → implement → test → review → iterate.
-                  Focuses on production-safe delivery and regression control.
-                </td>
-              </tr>
-              <tr>
-                <td><strong>loop-recovery</strong></td>
-                <td>
-                  Failure-handling loop: backoff, retry, checkpoint, rollback,
-                  and resume — designed to preserve forward progress under
-                  partial failure.
-                </td>
-              </tr>
-              <tr>
-                <td><strong>Agent</strong></td>
-                <td>
-                  An LLM-backed system that perceives context, reasons about
-                  goals, selects tools or sub-agents, executes actions, and
-                  updates state — in a loop until a stop condition is met.
-                  Agents span L3–L7 depending on capability; the term alone does
-                  not imply a specific stratum.
-                </td>
-              </tr>
-              <tr>
-                <td><strong>Primitive</strong></td>
-                <td>
-                  The smallest named capability unit within a construct (e.g.
-                  <em>goal_statement</em>, <em>tool_call</em>). A product can
-                  support a primitive partially or fully; evidence quality
-                  determines confidence.
-                </td>
-              </tr>
-              <tr>
-                <td><strong>Construct</strong></td>
-                <td>
-                  A named cluster of related primitives within a stratum (e.g.
-                  <em>Intent Object</em> at L7). Constructs are the intermediate
-                  unit between stratum and primitive in the {a}OS ontology
-                  hierarchy.
-                </td>
               </tr>
             </tbody>
           </table>
@@ -2339,28 +1571,24 @@
               Terminology Infographic
             </p>
             <!-- Replace the src below with the actual infographic path once saved -->
-            <div style="text-align: center; margin: 24px 0 32px">
-              <img
-                src="docs/assets/aos-terminology-primer.png"
-                alt="{a}OS Terminology Primer — Stratum, Substrate, Construct, Primitive"
-                style="
-                  max-width: 520px;
-                  width: 100%;
-                  border-radius: 12px;
-                  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-                  border: 1px solid rgba(255, 255, 255, 0.06);
-                "
-              />
-              <p
-                style="
-                  margin-top: 12px;
-                  font-size: 12px;
-                  color: rgba(255, 255, 255, 0.4);
-                "
+            <div
+              style="
+                padding: 3rem 1rem;
+                border: 1px dashed rgba(255, 255, 255, 0.12);
+                border-radius: 8px;
+                color: rgba(255, 255, 255, 0.3);
+                font-size: 0.9rem;
+              "
+            >
+              <span
+                style="font-size: 2rem; display: block; margin-bottom: 0.5rem"
+                >&#x1F5BC;</span
               >
-                Each level zooms deeper into the one above — from the full
-                7-stratum stack down to atomic primitives.
-              </p>
+              Place <code>{a}OS Terminology Primer</code> infographic here<br />
+              <span style="font-size: 0.8rem; opacity: 0.6"
+                >Save the image to <code>90.aOS-Explorer/docs/</code> and update
+                the <code>&lt;img&gt;</code> tag</span
+              >
             </div>
           </div>
 
@@ -2637,6 +1865,13 @@
             Every placement shows its confidence score and rationale. Disputed
             classifications are explicitly marked. Future versions will support
             formal dispute annotations.
+          </p>
+
+          <h3>What tech stack does this use?</h3>
+          <p>
+            Next.js 15, TypeScript, Tailwind CSS v4, with Aceternity UI, Framer
+            Motion, GSAP, and Zustand. Data starts as structured JSON/YAML and
+            evolves to Prisma + Postgres.
           </p>
         </div>
       </div>
@@ -3840,747 +3075,18 @@
       </div>
     </div>
 
-    <!-- ===== STANDARDS TRACK TAB ===== -->
-    <div class="tab-content" id="tab-standards">
-      <div class="docs-layout">
-        <nav class="sidebar">
-          <div class="sidebar-title">Standards Track</div>
-          <a href="#std-roadmap" class="sidebar-link active">Roadmap</a>
-          <a href="#std-rationale" class="sidebar-link">Why Standardize?</a>
-          <a href="#std-neutral" class="sidebar-link">Phase 1: Neutral Spec</a>
-          <a href="#std-ieee" class="sidebar-link">Phase 2: IEEE SA</a>
-          <a href="#std-nist" class="sidebar-link">Phase 3: NIST Crosswalk</a>
-          <a href="#std-iso" class="sidebar-link">Phase 4: ISO / SC 42</a>
-          <a href="#std-timeline" class="sidebar-link">90-Day Timeline</a>
-          <a href="#std-advice" class="sidebar-link">Strategic Advice</a>
-        </nav>
-        <div class="content">
-          <h1>Standards Track</h1>
-          <p class="subtitle">
-            The path from open reference model to internationally recognized
-            standard — IEEE&nbsp;SA &rarr; NIST &rarr;
-            ISO/IEC&nbsp;JTC&nbsp;1/SC&nbsp;42.
-          </p>
-
-          <!-- Version + Status Badge -->
-          <div
-            style="
-              display: flex;
-              gap: 12px;
-              margin: 16px 0 24px;
-              flex-wrap: wrap;
-            "
-          >
-            <span
-              style="
-                display: inline-block;
-                padding: 4px 14px;
-                border-radius: 20px;
-                font-size: 0.82rem;
-                font-weight: 700;
-                background: rgba(34, 197, 94, 0.15);
-                color: #22c55e;
-                border: 1px solid rgba(34, 197, 94, 0.3);
-              "
-              >v1.0 &mdash; Locked</span
-            >
-            <span
-              style="
-                display: inline-block;
-                padding: 4px 14px;
-                border-radius: 20px;
-                font-size: 0.82rem;
-                font-weight: 700;
-                background: rgba(99, 102, 241, 0.15);
-                color: #818cf8;
-                border: 1px solid rgba(99, 102, 241, 0.3);
-              "
-              >Phase 0: Foundation &check;</span
-            >
-            <span
-              style="
-                display: inline-block;
-                padding: 4px 14px;
-                border-radius: 20px;
-                font-size: 0.82rem;
-                font-weight: 700;
-                background: rgba(245, 158, 11, 0.15);
-                color: #f59e0b;
-                border: 1px solid rgba(245, 158, 11, 0.3);
-              "
-              >License: CC&nbsp;BY&nbsp;4.0 + Apache&nbsp;2.0</span
-            >
-          </div>
-
-          <!-- Full Roadmap Timeline -->
-          <h2 id="std-roadmap">Roadmap</h2>
-          <p>Eight phases from current foundation to ISO recognition.</p>
-          <table class="doc-table">
-            <thead>
-              <tr>
-                <th style="width: 5%">#</th>
-                <th style="width: 22%">Phase</th>
-                <th style="width: 18%">Target</th>
-                <th>Key Deliverable</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr style="background: rgba(34, 197, 94, 0.08)">
-                <td><strong>0</strong></td>
-                <td>Foundation</td>
-                <td>&check; Done</td>
-                <td>
-                  v1.0 reference model locked, Explorer with 40+ products
-                  classified
-                </td>
-              </tr>
-              <tr>
-                <td><strong>1</strong></td>
-                <td>Atlas Adoption</td>
-                <td>Q2-Q3 2026</td>
-                <td>
-                  Pilot deployment under perpetual license; internal validation
-                  across real Atlas workflows
-                </td>
-              </tr>
-              <tr>
-                <td><strong>2</strong></td>
-                <td>Community Review</td>
-                <td>Q3-Q4 2026</td>
-                <td>
-                  5-10 external reviewers (industry + academic); objections and
-                  endorsements captured
-                </td>
-              </tr>
-              <tr>
-                <td><strong>3</strong></td>
-                <td>Standards-Ready Package</td>
-                <td>Q4 2026</td>
-                <td>
-                  Neutral spec, worked use cases, problem statement, evidence
-                  memo
-                </td>
-              </tr>
-              <tr>
-                <td><strong>4</strong></td>
-                <td>NIST Alignment</td>
-                <td>Q4 2026 - Q1 2027</td>
-                <td>
-                  Finalize AI RMF crosswalk; submit for NIST community alignment
-                  feedback
-                </td>
-              </tr>
-              <tr>
-                <td><strong>5</strong></td>
-                <td>IEEE Incubation</td>
-                <td>Q1-Q2 2027</td>
-                <td>IEEE SA pre-standardization outreach; draft PAR</td>
-              </tr>
-              <tr>
-                <td><strong>6</strong></td>
-                <td>Formal Submission</td>
-                <td>Q2-Q3 2027</td>
-                <td>
-                  IEEE PAR submission via myProject; identify sponsoring
-                  committee
-                </td>
-              </tr>
-              <tr>
-                <td><strong>7</strong></td>
-                <td>ISO Track (parallel)</td>
-                <td>2027+</td>
-                <td>
-                  ISO/IEC JTC 1/SC 42 WG 1 route via ANSI (if IEEE traction is
-                  strong)
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
-          <!-- Rationale -->
-          <h2 id="std-rationale">Why Standardize?</h2>
-          <p>
-            {a}OS already solves a real problem — giving architects a shared
-            ontology for the AI operations stack. Standardization turns that
-            ontology into something procurement can cite, regulators can
-            reference, and vendors can map against. The goal is not prestige;
-            it's <strong>durability and interoperability</strong>.
-          </p>
-          <div class="callout" style="border-left-color: var(--accent-indigo)">
-            <strong>Core principle</strong> &mdash; Be willing to lose the
-            branded wording. If the concepts survive in a neutral spec, you win
-            regardless of whether the final standard says "stratum" or "tier."
-          </div>
-
-          <!-- Phase 1: Neutral Spec -->
-          <h2 id="std-neutral">Phase 1 &mdash; Neutral Spec Extraction</h2>
-          <p>
-            Before any standards body will engage, the model must exist as a
-            <strong>vendor-neutral, IP-clean specification</strong> — no product
-            names, no marketing language, no assumptions about Azure or any
-            other cloud.
-          </p>
-          <table class="doc-table">
-            <thead>
-              <tr>
-                <th style="width: 5%">#</th>
-                <th style="width: 30%">Deliverable</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>Problem Statement</td>
-                <td>
-                  One-page framing: what gap this model fills, why existing
-                  frameworks don't cover it.
-                </td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Scope &amp; Non-Scope</td>
-                <td>
-                  What the standard defines vs. what it explicitly does not.
-                  Includes boundary diagram.
-                </td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Neutral Terminology</td>
-                <td>
-                  Dual-label mapping: <em>Stratum &harr; Tier</em>,
-                  <em>Substrate &harr; Capability Group</em>,
-                  <em>Construct &harr; Entity</em>,
-                  <em>Primitive &harr; Attribute</em>,
-                  <em>Axis &harr; Cross-cutting Concern</em>.
-                </td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>Metamodel Diagram</td>
-                <td>
-                  UML or SysML class diagram showing the 5-concept ontology and
-                  relationships.
-                </td>
-              </tr>
-              <tr>
-                <td>5</td>
-                <td>Use Cases (6&times;)</td>
-                <td>
-                  Six scenarios demonstrating model utility: vendor evaluation,
-                  compliance mapping, architecture review, gap analysis,
-                  procurement scoring, and interop testing.
-                </td>
-              </tr>
-              <tr>
-                <td>6</td>
-                <td>Crosswalk Table</td>
-                <td>
-                  How {a}OS maps to existing frameworks: NIST AI RMF, EU AI Act
-                  risk tiers, ISO/IEC 42001, OWASP AI Top 10.
-                </td>
-              </tr>
-              <tr>
-                <td>7</td>
-                <td>Evidence of Need</td>
-                <td>
-                  Market research, analyst citations, or adoption metrics
-                  demonstrating industry demand for such a classification.
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
-          <!-- Phase 2: IEEE SA -->
-          <h2 id="std-ieee">Phase 2 &mdash; IEEE SA Incubation</h2>
-          <p>
-            IEEE Standards Association is the fastest on-ramp for a new
-            standard. Two entry paths exist:
-          </p>
-          <table class="doc-table">
-            <thead>
-              <tr>
-                <th style="width: 30%">Path</th>
-                <th style="width: 25%">Timeline</th>
-                <th>Best For</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Industry Connections Activity (IC)</strong></td>
-                <td>6&ndash;12 months</td>
-                <td>
-                  Rapid incubation, building a coalition, publishing a white
-                  paper or technical report before committing to a full
-                  standard.
-                </td>
-              </tr>
-              <tr>
-                <td><strong>Standards Working Group (WG)</strong></td>
-                <td>18&ndash;36 months</td>
-                <td>
-                  Full IEEE standard (e.g., P-series number). Requires 5+
-                  organizational participants, a sponsor, and a PAR (Project
-                  Authorization Request).
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="callout">
-            <strong>Recommendation</strong> &mdash; Start with an IC Activity to
-            socialize the model, gather co-sponsors, and harden the spec through
-            peer review. Graduate to a WG once you have 5+ organizational
-            backers.
-          </div>
-
-          <!-- Phase 3: NIST -->
-          <h2 id="std-nist">Phase 3 &mdash; NIST Crosswalk</h2>
-          <p>
-            NIST does not create classification standards for industry models,
-            but the <strong>AI Risk Management Framework (AI RMF 1.0)</strong>
-            is the US government's anchor document. Mapping {a}OS strata to AI
-            RMF functions creates a compliance bridge that federal buyers can
-            reference.
-          </p>
-          <table class="doc-table">
-            <thead>
-              <tr>
-                <th>{a}OS Stratum</th>
-                <th>AI RMF Function</th>
-                <th>Alignment Notes</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>L7 Experience &amp; Intent</td>
-                <td>GOVERN 1 &mdash; Policies</td>
-                <td>User intent mapping, transparency requirements</td>
-              </tr>
-              <tr>
-                <td>L6 Governance &amp; Trust</td>
-                <td>GOVERN 2&ndash;6, MAP 1</td>
-                <td>Risk tolerance, roles, compliance controls</td>
-              </tr>
-              <tr>
-                <td>L5 Observability &amp; Evaluation</td>
-                <td>MEASURE 1&ndash;4</td>
-                <td>Metrics, monitoring, evaluation gates</td>
-              </tr>
-              <tr>
-                <td>L4 Orchestration &amp; Decisioning</td>
-                <td>MANAGE 1&ndash;4</td>
-                <td>Workflow control, decision audit trail</td>
-              </tr>
-              <tr>
-                <td>L3 Execution &amp; Interfaces</td>
-                <td>MAP 2&ndash;3</td>
-                <td>Runtime boundaries, API contracts</td>
-              </tr>
-              <tr>
-                <td>L2 Knowledge &amp; Memory</td>
-                <td>MAP 4&ndash;5</td>
-                <td>Data provenance, knowledge governance</td>
-              </tr>
-              <tr>
-                <td>L1 Models &amp; Infrastructure</td>
-                <td>MANAGE 1 (infra)</td>
-                <td>Compute, model lifecycle, deployment targets</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <!-- Phase 4: ISO -->
-          <h2 id="std-iso">Phase 4 &mdash; ISO / IEC JTC 1 / SC 42</h2>
-          <p>
-            The ultimate destination: submission to
-            <strong>ISO/IEC JTC&nbsp;1/SC&nbsp;42 WG&nbsp;1</strong>
-            (AI Foundational Standards). This is a 3&ndash;5 year process but
-            produces a globally recognized standard that procurement,
-            regulators, and auditors rely on.
-          </p>
-          <div class="callout">
-            <strong>Prerequisite</strong> &mdash; An established IEEE standard
-            or technical report is the strongest vehicle for an
-            <em>ISO/IEC fast-track</em> submission. Phase 2 feeds directly into
-            Phase 4.
-          </div>
-          <table class="doc-table">
-            <thead>
-              <tr>
-                <th>Stage</th>
-                <th>ISO Process</th>
-                <th>What Happens</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>NP</td>
-                <td>New Work Item Proposal</td>
-                <td>
-                  National body sponsors the proposal; 5+ participating
-                  P-members must vote yes.
-                </td>
-              </tr>
-              <tr>
-                <td>WD</td>
-                <td>Working Draft</td>
-                <td>WG 1 iterates on the spec through 1&ndash;3 drafts.</td>
-              </tr>
-              <tr>
-                <td>CD</td>
-                <td>Committee Draft</td>
-                <td>Full SC 42 review and comment resolution.</td>
-              </tr>
-              <tr>
-                <td>DIS</td>
-                <td>Draft International Standard</td>
-                <td>Broader JTC 1 ballot; editorial polish.</td>
-              </tr>
-              <tr>
-                <td>IS</td>
-                <td>International Standard</td>
-                <td>
-                  Published as ISO/IEC xxxxx. Periodic review every 5 years.
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
-          <!-- 90-Day Timeline -->
-          <h2 id="std-timeline">90-Day Execution Plan</h2>
-          <p>
-            A realistic first-quarter roadmap to go from open model to
-            submission-ready package.
-          </p>
-          <table class="doc-table">
-            <thead>
-              <tr>
-                <th style="width: 18%">Weeks</th>
-                <th style="width: 30%">Milestone</th>
-                <th>Key Activities</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>1&ndash;2</strong></td>
-                <td>Neutral Spec v0.1</td>
-                <td>
-                  Strip branding, write problem statement, produce dual-label
-                  terminology map, draft metamodel diagram.
-                </td>
-              </tr>
-              <tr>
-                <td><strong>3&ndash;4</strong></td>
-                <td>Gap Analysis</td>
-                <td>
-                  Complete crosswalk table (NIST AI RMF, EU AI Act, ISO 42001,
-                  OWASP). Identify gaps and overlaps.
-                </td>
-              </tr>
-              <tr>
-                <td><strong>5&ndash;6</strong></td>
-                <td>External Review</td>
-                <td>
-                  Recruit 3&ndash;5 domain reviewers (academia, industry, gov).
-                  Collect structured feedback. Iterate spec to v0.2.
-                </td>
-              </tr>
-              <tr>
-                <td><strong>7&ndash;8</strong></td>
-                <td>Submission Package</td>
-                <td>
-                  Compile complete IEEE IC Activity proposal or PAR draft.
-                  Include use cases, evidence of need, and letters of support.
-                </td>
-              </tr>
-              <tr>
-                <td><strong>9&ndash;12</strong></td>
-                <td>Outreach &amp; Coalition</td>
-                <td>
-                  Present at 2+ industry events or webinars. Recruit
-                  organizational co-sponsors. Submit to IEEE SA NesCom.
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
-          <!-- Strategic Advice -->
-          <h2 id="std-advice">Strategic Advice</h2>
-          <div class="callout" style="border-left-color: var(--accent-indigo)">
-            <strong>The single most important principle</strong> &mdash; Be
-            willing to lose the branded wording. If the model's
-            <em>concepts</em>
-            survive — the seven tiers, the cross-cutting axes, the
-            stratum&rarr;substrate&rarr;construct&rarr;primitive hierarchy — you
-            win, even if the final ISO standard uses entirely different
-            terminology.
-          </div>
-          <table class="doc-table">
-            <thead>
-              <tr>
-                <th style="width: 35%">Do</th>
-                <th style="width: 35%">Don't</th>
-                <th>Why</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Ship dual-label docs from Day 1</td>
-                <td>Hard-code only branded terms</td>
-                <td>
-                  Standards bodies reject vocabulary that implies vendor
-                  lock-in.
-                </td>
-              </tr>
-              <tr>
-                <td>Map to existing frameworks early</td>
-                <td>Claim the model is "entirely new"</td>
-                <td>
-                  Reviewers need to see how it extends — not replaces — prior
-                  art.
-                </td>
-              </tr>
-              <tr>
-                <td>Recruit co-sponsors before submitting</td>
-                <td>Solo-author the submission</td>
-                <td>
-                  IEEE and ISO require multi-org participation. Solo proposals
-                  stall.
-                </td>
-              </tr>
-              <tr>
-                <td>Publish open-source tooling alongside the spec</td>
-                <td>Gate the model behind a paywall</td>
-                <td>Adoption drives standardization; scarcity kills it.</td>
-              </tr>
-              <tr>
-                <td>Focus on the ontology hierarchy</td>
-                <td>Try to standardize implementation details</td>
-                <td>
-                  Standards define <em>what</em>, not <em>how</em>. Keep
-                  architecture decisions out of the spec.
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
-          <p style="margin-top: 2rem; opacity: 0.6; font-size: 0.85rem">
-            <em
-              >This roadmap will be updated as the standardization effort
-              progresses. Track deliverable status in the Roadmap tab.</em
-            >
-          </p>
-        </div>
-      </div>
-    </div>
-
     <script>
-      /* ===== TAB SWITCHING ===== */
       function switchTab(tabId, btn) {
-        // Fade out current
-        document.querySelectorAll(".tab-content.active").forEach((t) => {
-          t.style.opacity = "0";
-          setTimeout(() => {
-            t.classList.remove("active");
-            // Activate new tab
-            const next = document.getElementById("tab-" + tabId);
-            if (next) {
-              next.classList.add("active");
-              // Force reflow then fade in
-              void next.offsetWidth;
-              next.style.opacity = "1";
-            }
-          }, 150);
-        });
+        document
+          .querySelectorAll(".tab-content")
+          .forEach((t) => t.classList.remove("active"));
         document
           .querySelectorAll(".tab-btn")
           .forEach((b) => b.classList.remove("active"));
-        if (btn) btn.classList.add("active");
-        // Update URL hash
-        history.replaceState(null, "", "#" + tabId);
-        // Scroll to top of content
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        document.getElementById("tab-" + tabId).classList.add("active");
+        btn.classList.add("active");
+        window.scrollTo(0, 0);
       }
-
-      /* ===== INTERSECTION OBSERVER: Active sidebar tracking ===== */
-      function initSidebarTracking() {
-        const activeTab = document.querySelector(".tab-content.active");
-        if (!activeTab) return;
-        const headings = activeTab.querySelectorAll("h2[id]");
-        const links = activeTab.querySelectorAll(".sidebar-link");
-        if (!headings.length || !links.length) return;
-
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              const id = entry.target.getAttribute("id");
-              const link = activeTab.querySelector(
-                '.sidebar-link[href="#' + id + '"]',
-              );
-              if (link) {
-                if (entry.isIntersecting) {
-                  links.forEach((l) => l.classList.remove("is-visible"));
-                  link.classList.add("is-visible");
-                }
-              }
-            });
-          },
-          {
-            rootMargin: "-120px 0px -60% 0px",
-            threshold: 0,
-          },
-        );
-
-        headings.forEach((h) => observer.observe(h));
-        return observer;
-      }
-
-      /* ===== HASH-BASED DEEP LINKS ===== */
-      function handleHash() {
-        const hash = window.location.hash.slice(1);
-        if (!hash) return;
-        // Check if hash matches a tab
-        const tabEl = document.getElementById("tab-" + hash);
-        if (tabEl) {
-          const btn = document.querySelector(
-            ".tab-btn[onclick*=\"'" + hash + "'\"]",
-          );
-          switchTab(hash, btn);
-          return;
-        }
-        // Check if hash matches a section within a tab
-        const target = document.getElementById(hash);
-        if (target) {
-          // Find which tab contains this section
-          const parentTab = target.closest(".tab-content");
-          if (parentTab) {
-            const tabId = parentTab.id.replace("tab-", "");
-            const btn = document.querySelector(
-              ".tab-btn[onclick*=\"'" + tabId + "'\"]",
-            );
-            if (!parentTab.classList.contains("active")) {
-              switchTab(tabId, btn);
-            }
-            setTimeout(() => {
-              target.scrollIntoView({ behavior: "smooth", block: "start" });
-            }, 200);
-          }
-        }
-      }
-
-      /* ===== INIT ===== */
-      let sidebarObserver = null;
-
-      // Re-init sidebar tracking when tabs switch
-      const origSwitchTab = switchTab;
-      switchTab = function (tabId, btn) {
-        if (sidebarObserver) sidebarObserver.disconnect();
-        origSwitchTab(tabId, btn);
-        setTimeout(() => {
-          sidebarObserver = initSidebarTracking();
-        }, 200);
-      };
-
-      document.addEventListener("DOMContentLoaded", () => {
-        sidebarObserver = initSidebarTracking();
-        handleHash();
-      });
-
-      window.addEventListener("hashchange", handleHash);
-
-      /* ===== CALLOUT AUTO-UPGRADE ===== */
-      /* Converts plain .callout divs to typed callouts (note/important/tip/warning)
-         based on their <strong> label text.  Adds SVG icon + heading. */
-      (function upgradeCallouts() {
-        const ICON = {
-          note: `<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"/></svg>`,
-          important: `<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0114.25 13H8.06l-2.573 2.573A1.458 1.458 0 013 14.543V13H1.75A1.75 1.75 0 010 11.25zm1.75-.25a.25.25 0 00-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 01.75.75v2.19l2.72-2.72a.749.749 0 01.53-.22h6.5a.25.25 0 00.25-.25v-9.5a.25.25 0 00-.25-.25zm7 2.25v2.5a.75.75 0 01-1.5 0v-2.5a.75.75 0 011.5 0zM9 9a1 1 0 11-2 0 1 1 0 012 0z"/></svg>`,
-          tip: `<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 01-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 00-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 01-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75zM5.75 12h4.5a.75.75 0 010 1.5h-4.5a.75.75 0 010-1.5zM6 15.25a.75.75 0 01.75-.75h2.5a.75.75 0 010 1.5h-2.5a.75.75 0 01-.75-.75z"/></svg>`,
-          warning: `<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575zm1.763.707a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368zm.53 3.996v2.5a.75.75 0 01-1.5 0v-2.5a.75.75 0 011.5 0zM9 11a1 1 0 11-2 0 1 1 0 012 0z"/></svg>`,
-        };
-
-        // Map label substrings → callout type
-        const LABEL_MAP = [
-          // Warning
-          [/warning|block these|public internet/i, "warning"],
-          // Important
-          [
-            /important|critical|governance is not|most of l7|deploy apim|projects are not|prerequisite|two resource models|start with prompt/i,
-            "important",
-          ],
-          // Tip
-          [
-            /tip|key insight|example|shorthand|mental image|discoverability|recommendation|single most important|core principle/i,
-            "tip",
-          ],
-          // Default: note
-        ];
-
-        function classify(label) {
-          for (const [re, type] of LABEL_MAP) {
-            if (re.test(label)) return type;
-          }
-          return "note";
-        }
-
-        document.querySelectorAll(".callout").forEach((el) => {
-          // Already upgraded?
-          if (el.querySelector(".callout-heading")) return;
-
-          const strong = el.querySelector("strong:first-child");
-          if (!strong) return;
-
-          const label = strong.textContent.trim();
-          const type = classify(label);
-
-          el.classList.add("callout-" + type);
-
-          // Build heading
-          const heading = document.createElement("div");
-          heading.className = "callout-heading";
-          heading.innerHTML =
-            ICON[type] +
-            " <span>" +
-            type.charAt(0).toUpperCase() +
-            type.slice(1) +
-            "</span>";
-
-          // Replace the old strong with heading + content label
-          const contentLabel = document.createElement("strong");
-          contentLabel.style.cssText =
-            "display:block;margin-bottom:4px;color:var(--text-primary);font-size:13px;text-transform:none;letter-spacing:0";
-          contentLabel.textContent = label;
-
-          strong.replaceWith(heading);
-          heading.after(contentLabel);
-        });
-      })();
-    </script>
-    <!-- Firebase Auth (GitHub OAuth) — loaded after page scripts -->
-    <script type="module" src="js/firebase-auth.js"></script>
-
-    <!-- Back-to-top FAB -->
-    <button
-      class="back-to-top"
-      id="backToTop"
-      onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
-      title="Back to top"
-    >
-      &#x2191;
-    </button>
-    <script>
-      (function () {
-        const btn = document.getElementById("backToTop");
-        if (!btn) return;
-        window.addEventListener(
-          "scroll",
-          function () {
-            btn.classList.toggle("visible", window.scrollY > 400);
-          },
-          { passive: true },
-        );
-      })();
     </script>
   </body>
 </html>

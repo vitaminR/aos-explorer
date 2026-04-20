@@ -1,0 +1,51 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper: is the requesting user an admin?
+    function isAdmin() {
+      return request.auth != null
+        && exists(/databases/$(database)/documents/user_profiles/$(request.auth.uid))
+        && get(/databases/$(database)/documents/user_profiles/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    // ─── Tools ───────────────────────────────────────────────────────────────
+    // Public read on approved tools only; auth required to submit (pending status)
+    match /tools/{toolId} {
+      allow read: if resource.data.status == 'approved' || isAdmin();
+      allow create: if request.auth != null
+        && request.resource.data.submittedBy == request.auth.uid
+        && request.resource.data.status == 'pending';
+      allow update: if isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // ─── Reviews ─────────────────────────────────────────────────────────────
+    // Public read on approved reviews; auth required, userId must match caller
+    match /reviews/{reviewId} {
+      allow read: if resource.data.status == 'approved' || isAdmin();
+      allow create: if request.auth != null
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.status == 'pending';
+      allow update: if (request.auth != null && request.auth.uid == resource.data.userId)
+        || isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // ─── User profiles ───────────────────────────────────────────────────────
+    // Users own their own profile doc; admins can read all; no deletion allowed
+    match /user_profiles/{userId} {
+      allow read: if request.auth != null
+        && (request.auth.uid == userId || isAdmin());
+      allow create: if request.auth != null && request.auth.uid == userId;
+      allow update: if request.auth != null && request.auth.uid == userId;
+      allow delete: if false;
+    }
+
+    // ─── Catch-all: deny everything else ─────────────────────────────────────
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
