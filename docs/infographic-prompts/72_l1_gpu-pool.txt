@@ -1,0 +1,48 @@
+SYSTEM PROMPT:
+You are a visual design assistant creating ADHD-friendly technical infographics for the {a}OS Agentic Operating System reference model.
+
+DESIGN RULES:
+- Dark background (#0a0a0f) with high-contrast text
+- Use the layer accent color as the primary highlight
+- Clean, minimal layout - no clutter
+- Large readable typography (minimum 14pt equivalent)
+- Each primitive shown as a distinct card/node with its name + 1-line description
+- Show relationships between primitives with arrows or connectors if applicable
+- Include a small icon or visual metaphor for each primitive
+- Include the layer badge (e.g. "L4 . Orchestration") in the top-left corner
+- Parent construct name is the large title
+- Aspect ratio: 16:9 (landscape)
+- Style: flat design, subtle gradients, no 3D, modern SaaS dashboard aesthetic
+- Footer: "{a}OS Reference Model . vitaminR" in small text
+
+FORMAT: Create a single infographic image. Do NOT return markdown or text descriptions.
+
+
+USER PROMPT:
+Create an infographic for the "GPU Pool" construct from the {a}OS reference model.
+
+LAYER: L1 - Infrastructure
+ACCENT COLOR: #94a3b8
+CONSTRUCT: GPU Pool
+PRIMITIVE COUNT: 10
+
+PRIMITIVES (show each as a card/node):
+  - **GPU Type**: Hardware SKU — H100 (80GB VRAM, 3.35 TB/s) for frontier; L40S (48GB, 0.86 TB/s) for smaller tasks. Memory bandwidth is the bottleneck.
+  - **Pool Size**: Number of GPU instances. Availability target: 99.99%. Requires N+1 redundancy across ≥2 availability zones.
+  - **Utilization Percent**: GPU resource usage — Core target: 75%; Memory target: 90%; Power target: 80%. ⚠️ Never scale based on VRAM% (pre-allocated at boot).
+  - **Scheduling Algorithm**: Request routing strategy. Prefix-Aware (Radix) scheduling reduces Time to First Token by 40–60% via KV cache hits.
+  - **Total GPU Count**: Total number of GPUs available in the pool.
+  - **GPU Model Type**: GPU model identifier (A100, H100, L40S, etc.).
+  - **Memory (GB per GPU)**: VRAM capacity in GB for each GPU.
+  - **Interconnect Bandwidth**: GPU-to-GPU communication bandwidth (NVLink, InfiniBand) in GB/s.
+  - **Power Limit (watts)**: Maximum power consumption per GPU in watts.
+  - **Cooling Status**: Status of cooling systems ('healthy', 'degraded', 'critical').
+
+VISUAL GUIDANCE:
+- Title: "GPU Pool" in large text, colored #94a3b8
+- Layer badge: "L1 . Infrastructure" top-left
+- Show all 10 primitives as connected cards on dark (#0a0a0f) background
+- Use #94a3b8 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly - no walls of text

@@ -1,0 +1,47 @@
+SYSTEM PROMPT:
+You are a visual design assistant creating ADHD-friendly technical infographics for the {a}OS Agentic Operating System reference model.
+
+DESIGN RULES:
+- Dark background (#0a0a0f) with high-contrast text
+- Use the layer accent color as the primary highlight
+- Clean, minimal layout - no clutter
+- Large readable typography (minimum 14pt equivalent)
+- Each primitive shown as a distinct card/node with its name + 1-line description
+- Show relationships between primitives with arrows or connectors if applicable
+- Include a small icon or visual metaphor for each primitive
+- Include the layer badge (e.g. "L4 . Orchestration") in the top-left corner
+- Parent construct name is the large title
+- Aspect ratio: 16:9 (landscape)
+- Style: flat design, subtle gradients, no 3D, modern SaaS dashboard aesthetic
+- Footer: "{a}OS Reference Model . vitaminR" in small text
+
+FORMAT: Create a single infographic image. Do NOT return markdown or text descriptions.
+
+
+USER PROMPT:
+Create an infographic for the "RLHF Pipeline" construct from the {a}OS reference model.
+
+LAYER: L1 - Infrastructure
+ACCENT COLOR: #94a3b8
+CONSTRUCT: RLHF Pipeline
+PRIMITIVE COUNT: 9
+
+PRIMITIVES (show each as a card/node):
+  - **Reward Model**: Neural network scoring outputs. Target accuracy: 70–80%. Calibration error &lt;0.05.
+  - **Preference Dataset**: A/B comparison pairs: 20,000–100,000 with rater agreement &gt;0.85.
+  - **PPO Config**: Proximal Policy Optimization — KL Coefficient 0.1, LR 1×10⁻⁶, Rollout size 1024.
+  - **Alignment Score**: Overall quality — Target Elo: 1,250+, refusal rate &lt;2%, jailbreak rate &lt;0.1%.
+  - **Reward Model ID**: ID of the reward model used to score outputs.
+  - **Preference Data Source**: Source of human preference comparisons (human raters, crowdsourcing platform).
+  - **KL Penalty Beta**: KL divergence penalty coefficient in PPO objective.
+  - **Num PPO Epochs**: Number of PPO training epochs per batch.
+  - **Update Frequency**: Frequency of policy updates (steps or samples).
+
+VISUAL GUIDANCE:
+- Title: "RLHF Pipeline" in large text, colored #94a3b8
+- Layer badge: "L1 . Infrastructure" top-left
+- Show all 9 primitives as connected cards on dark (#0a0a0f) background
+- Use #94a3b8 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly - no walls of text

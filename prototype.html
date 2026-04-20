@@ -6338,13 +6338,18 @@
 
       /* ===== US-11: Reduced-motion guard ===== */
       @media (prefers-reduced-motion: reduce) {
-        *, *::before, *::after {
+        *,
+        *::before,
+        *::after {
           animation-duration: 0.01ms !important;
           animation-iteration-count: 1 !important;
           transition-duration: 0.01ms !important;
           scroll-behavior: auto !important;
         }
-        .aurora, .aurora canvas { display: none !important; }
+        .aurora,
+        .aurora canvas {
+          display: none !important;
+        }
       }
 
       /* ===== US-12: Search result count badge ===== */
@@ -6366,26 +6371,73 @@
 
       /* ===== US-13: Mobile polish <480px ===== */
       @media (max-width: 480px) {
-        .hero-section h1 { font-size: 20px; }
-        .hero-tagline { font-size: 12px; }
-        .mode-pills { flex-wrap: wrap; gap: 4px; }
-        .mode-pill { font-size: 11px; padding: 5px 10px; }
-        .search-bar { margin: 0 8px; }
-        .expand-all-btn { font-size: 10px; padding: 4px 8px; }
-        .stratum-card { margin: 6px 0; }
-        .stratum-header { padding: 12px; font-size: 13px; }
-        .product-card { padding: 10px; }
-        .lens-detail-section { padding: 10px; }
-        .right-rail { padding: 8px; }
-        .left-rail { display: none; }
-        .main-canvas { padding: 0 4px; }
-        .header { padding: 8px 12px; }
-        .header-actions { gap: 4px; }
-        .header-actions button { font-size: 10px; padding: 5px 8px; }
-        .quick-filters { flex-wrap: wrap; }
-        .quick-filter-btn { font-size: 10px; }
-        .afb-tag { font-size: 10px; }
-        .share-btn, .suggest-cta { font-size: 10px; padding: 5px 10px; }
+        .hero-section h1 {
+          font-size: 20px;
+        }
+        .hero-tagline {
+          font-size: 12px;
+        }
+        .mode-pills {
+          flex-wrap: wrap;
+          gap: 4px;
+        }
+        .mode-pill {
+          font-size: 11px;
+          padding: 5px 10px;
+        }
+        .search-bar {
+          margin: 0 8px;
+        }
+        .expand-all-btn {
+          font-size: 10px;
+          padding: 4px 8px;
+        }
+        .stratum-card {
+          margin: 6px 0;
+        }
+        .stratum-header {
+          padding: 12px;
+          font-size: 13px;
+        }
+        .product-card {
+          padding: 10px;
+        }
+        .lens-detail-section {
+          padding: 10px;
+        }
+        .right-rail {
+          padding: 8px;
+        }
+        .left-rail {
+          display: none;
+        }
+        .main-canvas {
+          padding: 0 4px;
+        }
+        .header {
+          padding: 8px 12px;
+        }
+        .header-actions {
+          gap: 4px;
+        }
+        .header-actions button {
+          font-size: 10px;
+          padding: 5px 8px;
+        }
+        .quick-filters {
+          flex-wrap: wrap;
+        }
+        .quick-filter-btn {
+          font-size: 10px;
+        }
+        .afb-tag {
+          font-size: 10px;
+        }
+        .share-btn,
+        .suggest-cta {
+          font-size: 10px;
+          padding: 5px 10px;
+        }
       }
 
       /* ===== US-14: Scroll progress indicator ===== */
@@ -6394,7 +6446,11 @@
         top: 0;
         left: 0;
         height: 3px;
-        background: linear-gradient(90deg, var(--accent-indigo), var(--accent-teal, #06b6d4));
+        background: linear-gradient(
+          90deg,
+          var(--accent-indigo),
+          var(--accent-teal, #06b6d4)
+        );
         z-index: 10001;
         width: 0%;
         transition: width 0.1s linear;
@@ -6420,7 +6476,12 @@
     <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
     <!-- US-9: ARIA live region for filter/search announcements -->
-    <div id="a11yAnnouncer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+    <div
+      id="a11yAnnouncer"
+      class="sr-only"
+      aria-live="polite"
+      aria-atomic="true"
+    ></div>
 
     <!-- SKIP TO CONTENT (accessibility) -->
     <a href="#stackContainer" class="skip-link" id="skipLink"
@@ -6440,7 +6501,7 @@
         <span class="brand-a">{</span><span class="brand-a">a</span
         ><span class="brand-a">}</span>OS <span>Explorer</span>
       </div>
-      <div class="search-bar" style="position:relative">
+      <div class="search-bar" style="position: relative">
         <span class="search-icon">&#x1F50D;</span>
         <input
           type="text"
@@ -6449,7 +6510,11 @@
           title="Search products, strata, constructs&hellip;"
           aria-describedby="searchResultCount"
         />
-        <span class="search-result-count" id="searchResultCount" aria-hidden="true"></span>
+        <span
+          class="search-result-count"
+          id="searchResultCount"
+          aria-hidden="true"
+        ></span>
         <span class="shortcut">/</span>
         <div class="search-autocomplete" id="searchAutocomplete"></div>
       </div>
@@ -6545,7 +6610,7 @@
         href="stack-mapper.html"
         title="Build &amp; Rank your Agentic Stack — drag products, score maturity"
         id="buildStackNavBtn"
-        style="text-decoration:none"
+        style="text-decoration: none"
       >
         <span class="nav-icon">&#x1F9F1;</span>
         <span class="nav-label">Build Stack</span>
@@ -6704,7 +6769,7 @@
     </div>
 
     <!-- T7: DAILY BOUNDARY LEAK -->
-    <div class="boundary-leak-card" id="boundaryLeakCard">
+    <div class="boundary-leak-card hidden" id="boundaryLeakCard">
       <span class="bl-icon">&#x26A0;</span>
       <div class="bl-body">
         <div class="bl-title" id="blTitle"></div>
@@ -28352,7 +28417,8 @@
         // US-12: Update search result count badge
         const srcBadge = document.getElementById("searchResultCount");
         if (srcBadge) {
-          const totalProducts = document.querySelectorAll(".product-card").length;
+          const totalProducts =
+            document.querySelectorAll(".product-card").length;
           if (q) {
             srcBadge.textContent = visibleProducts + "/" + totalProducts;
             srcBadge.classList.add("visible");
@@ -31128,7 +31194,8 @@
         const bar = document.getElementById("scrollProgress");
         if (!bar) return;
         const scrollTop = window.scrollY;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const docHeight =
+          document.documentElement.scrollHeight - window.innerHeight;
         const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
         bar.style.width = pct + "%";
       }
@@ -33463,7 +33530,8 @@
         document.getElementById("blText").textContent = story.body;
         document.getElementById("blMeta").textContent =
           `#${story.slug} · ${story.tags.join(", ")}`;
-        card.classList.remove("hidden");
+        // card.classList.remove("hidden"); // disabled — hero area kept minimal
+        return;
       }
       function dismissBoundaryLeak() {
         const today = new Date().toISOString().slice(0, 10);
@@ -33742,7 +33810,12 @@
     </div>
 
     <!-- Toast Container (Improvement 7) -->
-    <div class="toast-container" id="toastContainer" aria-live="assertive" role="alert"></div>
+    <div
+      class="toast-container"
+      id="toastContainer"
+      aria-live="assertive"
+      role="alert"
+    ></div>
 
     <!-- ===== T3: STACK BUILDER OVERLAY ===== -->
     <div class="stack-builder-overlay hidden" id="stackBuilderOverlay">

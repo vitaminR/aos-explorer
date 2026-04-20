@@ -19,24 +19,26 @@ FORMAT: Create a single infographic image. Do NOT return markdown or text descri
 
 
 USER PROMPT:
-Create an infographic for the "Rerank Pipeline" construct from the {a}OS reference model.
+Create an infographic for the "Override Protocol" construct from the {a}OS reference model.
 
-LAYER: L2 - Knowledge & Retrieval
-ACCENT COLOR: #a78bfa
-CONSTRUCT: Rerank Pipeline
-PRIMITIVE COUNT: 4
+LAYER: L6 - Governance
+ACCENT COLOR: #fb7185
+CONSTRUCT: Override Protocol
+PRIMITIVE COUNT: 6
 
 PRIMITIVES (show each as a card/node):
-  - **Reranker Model**: Cross-encoder model that scores query-document pairs more accurately than bi-encoder retrieval.
-  - **Top K**: Number of top results to keep after reranking. Balances quality against context window budget.
-  - **Score Threshold**: Minimum relevance score to include a result. Filters out low-quality matches before injection.
-  - **Latency Budget (ms)**: Maximum milliseconds allowed for the reranking step. Enforces latency SLA trade-offs.
+  - **Override ID**: Unique identifier for this override.
+  - **Target Rule ID**: ID of the policy rule being overridden.
+  - **Override Value**: New value or action to apply instead of the rule.
+  - **Expiration Timestamp**: ISO8601 timestamp when the override expires.
+  - **Approval Chain**: List of approvers who authorized this override.
+  - **Audit Trail**: Log of all actions and decisions related to this override.
 
 VISUAL GUIDANCE:
-- Title: "Rerank Pipeline" in large text, colored #a78bfa
-- Layer badge: "L2 . Knowledge & Retrieval" top-left
-- Show all 4 primitives as connected cards on dark (#0a0a0f) background
-- Use #a78bfa accent for borders, connectors, and highlights
+- Title: "Override Protocol" in large text, colored #fb7185
+- Layer badge: "L6 . Governance" top-left
+- Show all 6 primitives as connected cards on dark (#0a0a0f) background
+- Use #fb7185 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
 - If primitives have a natural flow or hierarchy, show it with arrows
 - Keep it clean, scannable, ADHD-friendly - no walls of text

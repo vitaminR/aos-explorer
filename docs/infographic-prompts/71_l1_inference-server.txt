@@ -1,0 +1,48 @@
+SYSTEM PROMPT:
+You are a visual design assistant creating ADHD-friendly technical infographics for the {a}OS Agentic Operating System reference model.
+
+DESIGN RULES:
+- Dark background (#0a0a0f) with high-contrast text
+- Use the layer accent color as the primary highlight
+- Clean, minimal layout - no clutter
+- Large readable typography (minimum 14pt equivalent)
+- Each primitive shown as a distinct card/node with its name + 1-line description
+- Show relationships between primitives with arrows or connectors if applicable
+- Include a small icon or visual metaphor for each primitive
+- Include the layer badge (e.g. "L4 . Orchestration") in the top-left corner
+- Parent construct name is the large title
+- Aspect ratio: 16:9 (landscape)
+- Style: flat design, subtle gradients, no 3D, modern SaaS dashboard aesthetic
+- Footer: "{a}OS Reference Model . vitaminR" in small text
+
+FORMAT: Create a single infographic image. Do NOT return markdown or text descriptions.
+
+
+USER PROMPT:
+Create an infographic for the "Inference Server" construct from the {a}OS reference model.
+
+LAYER: L1 - Infrastructure
+ACCENT COLOR: #94a3b8
+CONSTRUCT: Inference Server
+PRIMITIVE COUNT: 10
+
+PRIMITIVES (show each as a card/node):
+  - **Server Framework**: Serving engine — vLLM for high throughput (256+ sequences) or SGLang for agentic prefix-sharing (512+ sequences).
+  - **Quantization Level**: Precision reduction — FP8 saves 50% VRAM (&lt;0.01% perplexity impact); INT4 saves 75% (&lt;1% impact).
+  - **KV Cache Size**: Memory for key-value attention cache. Target utilization: 80–95% of allocated blocks (1,000–10,000 blocks).
+  - **Concurrent Slots**: Max simultaneous requests. Target: 64–256 slots with 70–90% occupancy.
+  - **Server Port**: Network port on which the inference server listens.
+  - **Framework Type**: Inference framework (vLLM, TensorRT, Ollama, Ray Serve) hosting the model.
+  - **Device Type**: Hardware acceleration type ('GPU', 'TPU', 'CPU', 'NPU').
+  - **Batch Strategy**: Batching approach ('static', 'dynamic', 'none') for grouping inference requests.
+  - **Auto Scaling Enabled**: Boolean flag enabling/disabling automatic replica scaling.
+  - **TPU Device Count**: Number of TPU devices allocated to the inference server.
+
+VISUAL GUIDANCE:
+- Title: "Inference Server" in large text, colored #94a3b8
+- Layer badge: "L1 . Infrastructure" top-left
+- Show all 10 primitives as connected cards on dark (#0a0a0f) background
+- Use #94a3b8 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly - no walls of text

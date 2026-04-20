@@ -1,0 +1,48 @@
+SYSTEM PROMPT:
+You are a visual design assistant creating ADHD-friendly technical infographics for the {a}OS Agentic Operating System reference model.
+
+DESIGN RULES:
+- Dark background (#0a0a0f) with high-contrast text
+- Use the layer accent color as the primary highlight
+- Clean, minimal layout - no clutter
+- Large readable typography (minimum 14pt equivalent)
+- Each primitive shown as a distinct card/node with its name + 1-line description
+- Show relationships between primitives with arrows or connectors if applicable
+- Include a small icon or visual metaphor for each primitive
+- Include the layer badge (e.g. "L4 . Orchestration") in the top-left corner
+- Parent construct name is the large title
+- Aspect ratio: 16:9 (landscape)
+- Style: flat design, subtle gradients, no 3D, modern SaaS dashboard aesthetic
+- Footer: "{a}OS Reference Model . vitaminR" in small text
+
+FORMAT: Create a single infographic image. Do NOT return markdown or text descriptions.
+
+
+USER PROMPT:
+Create an infographic for the "Batch Queue" construct from the {a}OS reference model.
+
+LAYER: L1 - Infrastructure
+ACCENT COLOR: #94a3b8
+CONSTRUCT: Batch Queue
+PRIMITIVE COUNT: 10
+
+PRIMITIVES (show each as a card/node):
+  - **Batch Size**: Dynamic batching range: 1–256. Each additional request adds ~5ms TPOT latency penalty.
+  - **Queue Depth**: Leading indicator of latency. Target wait: &lt;50ms. Autoscaling threshold: 3–10 requests waiting.
+  - **Drain Timeout**: Wait time before node shutdown. Recommended: 300 seconds for &gt;99.9% clean exit rate.
+  - **Priority Lanes**: QoS segmentation — Platinum: 90% capacity, Gold: 10%, Background: slack only during peak.
+  - **Queue Name**: Identifier for this specific batch queue.
+  - **Max Batch Size**: Maximum number of requests to group in a single batch.
+  - **Wait Timeout (ms)**: Maximum milliseconds to wait before flushing an incomplete batch.
+  - **Priority Level**: Priority level (low, medium, high, critical) for queue scheduling.
+  - **Backpressure Threshold**: Queue depth at which backpressure is applied to slow down submissions.
+  - **Overflow Strategy**: Action when queue is full ('reject', 'drop-oldest', 'queue-in-memory').
+
+VISUAL GUIDANCE:
+- Title: "Batch Queue" in large text, colored #94a3b8
+- Layer badge: "L1 . Infrastructure" top-left
+- Show all 10 primitives as connected cards on dark (#0a0a0f) background
+- Use #94a3b8 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly - no walls of text

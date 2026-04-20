@@ -1,0 +1,50 @@
+SYSTEM PROMPT:
+You are a visual design assistant creating ADHD-friendly technical infographics for the {a}OS Agentic Operating System reference model.
+
+DESIGN RULES:
+- Dark background (#0a0a0f) with high-contrast text
+- Use the layer accent color as the primary highlight
+- Clean, minimal layout - no clutter
+- Large readable typography (minimum 14pt equivalent)
+- Each primitive shown as a distinct card/node with its name + 1-line description
+- Show relationships between primitives with arrows or connectors if applicable
+- Include a small icon or visual metaphor for each primitive
+- Include the layer badge (e.g. "L4 . Orchestration") in the top-left corner
+- Parent construct name is the large title
+- Aspect ratio: 16:9 (landscape)
+- Style: flat design, subtle gradients, no 3D, modern SaaS dashboard aesthetic
+- Footer: "{a}OS Reference Model . vitaminR" in small text
+
+FORMAT: Create a single infographic image. Do NOT return markdown or text descriptions.
+
+
+USER PROMPT:
+Create an infographic for the "Model Endpoint" construct from the {a}OS reference model.
+
+LAYER: L1 - Infrastructure
+ACCENT COLOR: #94a3b8
+CONSTRUCT: Model Endpoint
+PRIMITIVE COUNT: 12
+
+PRIMITIVES (show each as a card/node):
+  - **Endpoint URL**: Abstract URI managed by service mesh for routing inference requests. RTT latency target: &lt;20ms.
+  - **Model Version**: Tracks weight + engine + prompt template combinations. Deployed via canary rollouts.
+  - **Throughput TPS**: Primary velocity metric: tokens per second. Single user: 15–150 TPS; max batch: 400–5,000 TPS. TPOT target: &lt;50ms.
+  - **Fallback Endpoint**: Redundancy routing when primary endpoint fails. Failover latency target: &lt;100ms with &gt;99% success rate.
+  - **Endpoint URL**: Public/private API URL where the model can be invoked for inference.
+  - **Model Version**: Version of the model currently served at this endpoint.
+  - **Load Balancer ID**: Reference to the load balancer distributing requests across model replicas.
+  - **Rate Limit (tokens/min)**: Maximum tokens-per-minute throughput allowed for this endpoint.
+  - **Concurrency Slots**: Maximum number of simultaneous requests the endpoint can handle.
+  - **Timeout (seconds)**: Request timeout after which the endpoint returns a timeout error.
+  - **Authentication Key**: API key or bearer token required to call this endpoint.
+  - **Region**: Geographic region where the endpoint is deployed.
+
+VISUAL GUIDANCE:
+- Title: "Model Endpoint" in large text, colored #94a3b8
+- Layer badge: "L1 . Infrastructure" top-left
+- Show all 12 primitives as connected cards on dark (#0a0a0f) background
+- Use #94a3b8 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly - no walls of text

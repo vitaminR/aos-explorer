@@ -1,0 +1,48 @@
+SYSTEM PROMPT:
+You are a visual design assistant creating ADHD-friendly technical infographics for the {a}OS Agentic Operating System reference model.
+
+DESIGN RULES:
+- Dark background (#0a0a0f) with high-contrast text
+- Use the layer accent color as the primary highlight
+- Clean, minimal layout - no clutter
+- Large readable typography (minimum 14pt equivalent)
+- Each primitive shown as a distinct card/node with its name + 1-line description
+- Show relationships between primitives with arrows or connectors if applicable
+- Include a small icon or visual metaphor for each primitive
+- Include the layer badge (e.g. "L4 . Orchestration") in the top-left corner
+- Parent construct name is the large title
+- Aspect ratio: 16:9 (landscape)
+- Style: flat design, subtle gradients, no 3D, modern SaaS dashboard aesthetic
+- Footer: "{a}OS Reference Model . vitaminR" in small text
+
+FORMAT: Create a single infographic image. Do NOT return markdown or text descriptions.
+
+
+USER PROMPT:
+Create an infographic for the "Tokenizer Config" construct from the {a}OS reference model.
+
+LAYER: L1 - Infrastructure
+ACCENT COLOR: #94a3b8
+CONSTRUCT: Tokenizer Config
+PRIMITIVE COUNT: 10
+
+PRIMITIVES (show each as a card/node):
+  - **Vocab Size**: Total unique tokens in the vocabulary. Modern models: 100K–150K tokens. Compression ratio target: 0.7–0.8 tokens/word.
+  - **Encoding Scheme**: Tokenization algorithm — usually Byte-level BPE to prevent Out of Vocabulary (OOV) errors.
+  - **Special Tokens**: Control signals (&lt;tool_call&gt;, &lt;|im_start|&gt;, &lt;eos&gt;) that trigger specific model behaviors.
+  - **Token Budget**: Runtime caps to prevent runaway loops. Recommended: 10,000 tokens per tool loop; 100,000 per session.
+  - **Vocab Size**: Number of unique tokens in the vocabulary.
+  - **BOS Token ID**: Token ID marking the beginning-of-sequence.
+  - **EOS Token ID**: Token ID marking the end-of-sequence.
+  - **Pad Token ID**: Token ID used for padding sequences to equal length.
+  - **Token Merge Strategy**: Strategy for handling subword merging ('bpe', 'wordpiece', 'sentencepiece').
+  - **Unicode Normalization**: Unicode normalization form (NFC, NFD, NFKC, NFKD) applied before tokenization.
+
+VISUAL GUIDANCE:
+- Title: "Tokenizer Config" in large text, colored #94a3b8
+- Layer badge: "L1 . Infrastructure" top-left
+- Show all 10 primitives as connected cards on dark (#0a0a0f) background
+- Use #94a3b8 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly - no walls of text

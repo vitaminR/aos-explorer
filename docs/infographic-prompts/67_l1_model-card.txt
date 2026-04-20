@@ -1,0 +1,50 @@
+SYSTEM PROMPT:
+You are a visual design assistant creating ADHD-friendly technical infographics for the {a}OS Agentic Operating System reference model.
+
+DESIGN RULES:
+- Dark background (#0a0a0f) with high-contrast text
+- Use the layer accent color as the primary highlight
+- Clean, minimal layout - no clutter
+- Large readable typography (minimum 14pt equivalent)
+- Each primitive shown as a distinct card/node with its name + 1-line description
+- Show relationships between primitives with arrows or connectors if applicable
+- Include a small icon or visual metaphor for each primitive
+- Include the layer badge (e.g. "L4 . Orchestration") in the top-left corner
+- Parent construct name is the large title
+- Aspect ratio: 16:9 (landscape)
+- Style: flat design, subtle gradients, no 3D, modern SaaS dashboard aesthetic
+- Footer: "{a}OS Reference Model . vitaminR" in small text
+
+FORMAT: Create a single infographic image. Do NOT return markdown or text descriptions.
+
+
+USER PROMPT:
+Create an infographic for the "Model Card" construct from the {a}OS reference model.
+
+LAYER: L1 - Infrastructure
+ACCENT COLOR: #94a3b8
+CONSTRUCT: Model Card
+PRIMITIVE COUNT: 12
+
+PRIMITIVES (show each as a card/node):
+  - **Card ID**: Immutable identifier (Namespace/Family/Params/Quant/Hash) that uniquely identifies a model version and prevents behavioral drift.
+  - **Model Family**: Architectural lineage (GPT, Llama, Mistral, Gemma…) determining Jinja2 chat templates and prompting strategy.
+  - **Capability Tags**: Boolean/categorical tags (vision, tool_calling, code, math) used by orchestrators for agent routing.
+  - **License Type**: Enforces commercial and training compliance (Apache 2.0, MIT, Llama Community, etc.).
+  - **Model ID**: Unique identifier for the model (e.g., 'gpt-4-turbo', 'llama-2-70b') used for versioning and deployment.
+  - **Version Tag**: Semantic version string (e.g., 'v1.2.3') tracking model updates and training iterations.
+  - **License Type**: License classification (MIT, Apache 2.0, OpenRAIL, Commercial) defining usage restrictions.
+  - **Base Model Name**: Name of the foundation model this was fine-tuned from (e.g., 'Llama 2' for derivative models).
+  - **Training Dataset ID**: Reference identifier for the primary training dataset(s) used to create the model.
+  - **Eval Metrics**: Performance scores (BLEU, ROUGE, accuracy, F1) on standard benchmarks.
+  - **Tokenizer ID**: Reference to the tokenizer configuration used for encoding text into tokens.
+  - **Config Hash**: SHA256 hash of the model configuration ensuring consistency and reproducibility.
+
+VISUAL GUIDANCE:
+- Title: "Model Card" in large text, colored #94a3b8
+- Layer badge: "L1 . Infrastructure" top-left
+- Show all 12 primitives as connected cards on dark (#0a0a0f) background
+- Use #94a3b8 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly - no walls of text

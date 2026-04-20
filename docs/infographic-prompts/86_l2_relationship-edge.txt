@@ -19,23 +19,25 @@ FORMAT: Create a single infographic image. Do NOT return markdown or text descri
 
 
 USER PROMPT:
-Create an infographic for the "Rerank Pipeline" construct from the {a}OS reference model.
+Create an infographic for the "Relationship Edge" construct from the {a}OS reference model.
 
 LAYER: L2 - Knowledge & Retrieval
 ACCENT COLOR: #a78bfa
-CONSTRUCT: Rerank Pipeline
-PRIMITIVE COUNT: 4
+CONSTRUCT: Relationship Edge
+PRIMITIVE COUNT: 6
 
 PRIMITIVES (show each as a card/node):
-  - **Reranker Model**: Cross-encoder model that scores query-document pairs more accurately than bi-encoder retrieval.
-  - **Top K**: Number of top results to keep after reranking. Balances quality against context window budget.
-  - **Score Threshold**: Minimum relevance score to include a result. Filters out low-quality matches before injection.
-  - **Latency Budget (ms)**: Maximum milliseconds allowed for the reranking step. Enforces latency SLA trade-offs.
+  - **Source Entity ID**: ID of the source entity in the relationship.
+  - **Target Entity ID**: ID of the target entity in the relationship.
+  - **Relationship Type**: Type of relationship (works_for, knows, mentions, etc.).
+  - **Strength Score**: Strength of the relationship (0.0–1.0).
+  - **Temporal Validity**: Time range during which the relationship is valid.
+  - **Metadata JSON**: Additional structured metadata about the relationship.
 
 VISUAL GUIDANCE:
-- Title: "Rerank Pipeline" in large text, colored #a78bfa
+- Title: "Relationship Edge" in large text, colored #a78bfa
 - Layer badge: "L2 . Knowledge & Retrieval" top-left
-- Show all 4 primitives as connected cards on dark (#0a0a0f) background
+- Show all 6 primitives as connected cards on dark (#0a0a0f) background
 - Use #a78bfa accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
 - If primitives have a natural flow or hierarchy, show it with arrows

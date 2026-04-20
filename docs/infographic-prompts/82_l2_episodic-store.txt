@@ -19,23 +19,25 @@ FORMAT: Create a single infographic image. Do NOT return markdown or text descri
 
 
 USER PROMPT:
-Create an infographic for the "Rerank Pipeline" construct from the {a}OS reference model.
+Create an infographic for the "Episodic Store" construct from the {a}OS reference model.
 
 LAYER: L2 - Knowledge & Retrieval
 ACCENT COLOR: #a78bfa
-CONSTRUCT: Rerank Pipeline
-PRIMITIVE COUNT: 4
+CONSTRUCT: Episodic Store
+PRIMITIVE COUNT: 6
 
 PRIMITIVES (show each as a card/node):
-  - **Reranker Model**: Cross-encoder model that scores query-document pairs more accurately than bi-encoder retrieval.
-  - **Top K**: Number of top results to keep after reranking. Balances quality against context window budget.
-  - **Score Threshold**: Minimum relevance score to include a result. Filters out low-quality matches before injection.
-  - **Latency Budget (ms)**: Maximum milliseconds allowed for the reranking step. Enforces latency SLA trade-offs.
+  - **Store ID**: Unique identifier for this episodic memory store.
+  - **Retention (days)**: Number of days to retain entries before automatic deletion.
+  - **Max Entries**: Maximum number of episodic entries to store.
+  - **Embedding Model ID**: ID of the embedding model used for similarity search.
+  - **Indexing Frequency**: How often to update indexes (hourly, daily, on-write).
+  - **Compression Ratio**: Target compression ratio for stored entries.
 
 VISUAL GUIDANCE:
-- Title: "Rerank Pipeline" in large text, colored #a78bfa
+- Title: "Episodic Store" in large text, colored #a78bfa
 - Layer badge: "L2 . Knowledge & Retrieval" top-left
-- Show all 4 primitives as connected cards on dark (#0a0a0f) background
+- Show all 6 primitives as connected cards on dark (#0a0a0f) background
 - Use #a78bfa accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
 - If primitives have a natural flow or hierarchy, show it with arrows

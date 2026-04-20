@@ -24,22 +24,18 @@ Create an infographic for the "Cost Tracker" construct from the {a}OS reference 
 LAYER: L5 - Observability
 ACCENT COLOR: #fbbf24
 CONSTRUCT: Cost Tracker
-PRIMITIVE COUNT: 8
+PRIMITIVE COUNT: 4
 
 PRIMITIVES (show each as a card/node):
   - **Session Cost (USD)**: Total dollar cost of a single agent session: sum of all LLM calls, tool invocations, and compute time.
   - **Daily Budget (USD)**: Maximum allowed spend per day across all agent activity. Hard cap to prevent runaway costs.
   - **Burn Rate**: Current spend velocity ($/hour). If burn rate × remaining hours > budget, action needed.
   - **Cost Alert Threshold**: Percentage of budget that triggers alerts (e.g., 80% = warning, 100% = block). Multi-tier for graduated response.
-  - **Runtime Type**: The sandbox execution engine: Docker container, Firecracker microVM, gVisor, or WASM isolate.
-  - **Isolation Level**: Degree of separation: process-level, container-level, VM-level. Determines what the code can access.
-  - **Timeout (sec)**: Maximum wall-clock time before the sandbox is forcibly terminated. Prevents infinite loops and resource abuse.
-  - **Resource Quota**: CPU, memory, disk, and network limits enforced on the sandbox. Prevents resource exhaustion attacks.
 
 VISUAL GUIDANCE:
 - Title: "Cost Tracker" in large text, colored #fbbf24
 - Layer badge: "L5 . Observability" top-left
-- Show all 8 primitives as connected cards on dark (#0a0a0f) background
+- Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fbbf24 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
 - If primitives have a natural flow or hierarchy, show it with arrows

@@ -1,0 +1,48 @@
+SYSTEM PROMPT:
+You are a visual design assistant creating ADHD-friendly technical infographics for the {a}OS Agentic Operating System reference model.
+
+DESIGN RULES:
+- Dark background (#0a0a0f) with high-contrast text
+- Use the layer accent color as the primary highlight
+- Clean, minimal layout - no clutter
+- Large readable typography (minimum 14pt equivalent)
+- Each primitive shown as a distinct card/node with its name + 1-line description
+- Show relationships between primitives with arrows or connectors if applicable
+- Include a small icon or visual metaphor for each primitive
+- Include the layer badge (e.g. "L4 . Orchestration") in the top-left corner
+- Parent construct name is the large title
+- Aspect ratio: 16:9 (landscape)
+- Style: flat design, subtle gradients, no 3D, modern SaaS dashboard aesthetic
+- Footer: "{a}OS Reference Model . vitaminR" in small text
+
+FORMAT: Create a single infographic image. Do NOT return markdown or text descriptions.
+
+
+USER PROMPT:
+Create an infographic for the "Autoscaler Policy" construct from the {a}OS reference model.
+
+LAYER: L1 - Infrastructure
+ACCENT COLOR: #94a3b8
+CONSTRUCT: Autoscaler Policy
+PRIMITIVE COUNT: 10
+
+PRIMITIVES (show each as a card/node):
+  - **Scale Metric**: Primary trigger: Queue Size (&gt;5 req/GPU). Secondary: P95 TTFT (&gt;500ms). ⚠️ Never use VRAM utilization.
+  - **Cooldown Seconds**: Asymmetric: scale-up 0s (immediate), scale-down 600s (prevent model-load thrashing). Model load takes 30s–5min.
+  - **Min Replicas**: Production floor: 2–4 replicas. Dev floor: 0 (scale-to-zero). Warm replicas avoid 30s–5min cold starts.
+  - **Max Replicas**: Hard financial ceiling mapped to cloud quotas. Range: 32–128 GPUs. ⚠️ Never deploy without this circuit breaker.
+  - **Min Replicas**: Minimum number of model replicas to maintain.
+  - **Max Replicas**: Maximum number of model replicas allowed.
+  - **Target Utilization (%)**: Desired CPU/GPU utilization percentage for scaling decisions.
+  - **Scale-Up Threshold**: Utilization threshold above which to add replicas.
+  - **Cooldown Period (sec)**: Seconds to wait between consecutive scaling operations.
+  - **Metric Aggregation Window**: Time window over which to average metrics before scaling decisions.
+
+VISUAL GUIDANCE:
+- Title: "Autoscaler Policy" in large text, colored #94a3b8
+- Layer badge: "L1 . Infrastructure" top-left
+- Show all 10 primitives as connected cards on dark (#0a0a0f) background
+- Use #94a3b8 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly - no walls of text

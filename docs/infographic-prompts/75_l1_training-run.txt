@@ -1,0 +1,49 @@
+SYSTEM PROMPT:
+You are a visual design assistant creating ADHD-friendly technical infographics for the {a}OS Agentic Operating System reference model.
+
+DESIGN RULES:
+- Dark background (#0a0a0f) with high-contrast text
+- Use the layer accent color as the primary highlight
+- Clean, minimal layout - no clutter
+- Large readable typography (minimum 14pt equivalent)
+- Each primitive shown as a distinct card/node with its name + 1-line description
+- Show relationships between primitives with arrows or connectors if applicable
+- Include a small icon or visual metaphor for each primitive
+- Include the layer badge (e.g. "L4 . Orchestration") in the top-left corner
+- Parent construct name is the large title
+- Aspect ratio: 16:9 (landscape)
+- Style: flat design, subtle gradients, no 3D, modern SaaS dashboard aesthetic
+- Footer: "{a}OS Reference Model . vitaminR" in small text
+
+FORMAT: Create a single infographic image. Do NOT return markdown or text descriptions.
+
+
+USER PROMPT:
+Create an infographic for the "Training Run" construct from the {a}OS reference model.
+
+LAYER: L1 - Infrastructure
+ACCENT COLOR: #94a3b8
+CONSTRUCT: Training Run
+PRIMITIVE COUNT: 11
+
+PRIMITIVES (show each as a card/node):
+  - **Run ID**: Unique experiment identifier for 100% traceability to Git commits. Format: timestamp-gitsha-name-suffix.
+  - **Base Model**: Foundation model being fine-tuned. Target Model Flops Utilization (MFU): 40–55%.
+  - **Hyperparams**: Training config — LR: 5×10⁻⁵, batch: 32–128, epochs: 1–3. Use cosine decay with warm-up.
+  - **Checkpoint Interval**: Save frequency — pausing 60s–600s per snapshot (15–300GB). Recommended: every 500–2,000 steps.
+  - **Run ID**: Unique identifier for this training experiment.
+  - **Dataset Version**: Version of the dataset used for this training run.
+  - **Learning Rate**: Initial learning rate hyperparameter.
+  - **Batch Size**: Batch size during training.
+  - **Num Epochs**: Number of training epochs.
+  - **Checkpoint Interval**: Steps between saving model checkpoints.
+  - **Validation Split**: Fraction of data reserved for validation (0.0–1.0).
+
+VISUAL GUIDANCE:
+- Title: "Training Run" in large text, colored #94a3b8
+- Layer badge: "L1 . Infrastructure" top-left
+- Show all 11 primitives as connected cards on dark (#0a0a0f) background
+- Use #94a3b8 accent for borders, connectors, and highlights
+- Each card: primitive name (bold) + 1-line description (smaller)
+- If primitives have a natural flow or hierarchy, show it with arrows
+- Keep it clean, scannable, ADHD-friendly - no walls of text

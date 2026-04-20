@@ -24,22 +24,18 @@ Create an infographic for the "Safety Boundary" construct from the {a}OS referen
 LAYER: L6 - Governance
 ACCENT COLOR: #fb7185
 CONSTRUCT: Safety Boundary
-PRIMITIVE COUNT: 8
+PRIMITIVE COUNT: 4
 
 PRIMITIVES (show each as a card/node):
   - **Boundary Type**: Category of safety limit: financial (max spend), destructive (no-delete zones), PII (exposure cap), or operational (rate).
   - **Risk Category**: Severity classification of the risk being bounded: critical, high, medium, low. Determines response urgency.
   - **Block Action**: The enforcement action when a boundary is crossed: reject request, kill process, freeze account, or degrade gracefully.
   - **Escalation Target**: The person, team, or automated system notified when a safety boundary is breached.
-  - **Span ID**: Unique identifier for a single operation span within a distributed trace. Enables parent→child span correlation.
-  - **Parent Span ID**: Reference to the parent span that spawned this operation. Null for root spans.
-  - **Operation Name**: Human-readable label for the operation: 'llm.chat.completion', 'tool.web_search', 'agent.delegation'.
-  - **Duration (ms)**: Wall-clock time for the operation in milliseconds. The primary signal for latency analysis and SLO tracking.
 
 VISUAL GUIDANCE:
 - Title: "Safety Boundary" in large text, colored #fb7185
 - Layer badge: "L6 . Governance" top-left
-- Show all 8 primitives as connected cards on dark (#0a0a0f) background
+- Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fb7185 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
 - If primitives have a natural flow or hierarchy, show it with arrows

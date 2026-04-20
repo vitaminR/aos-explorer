@@ -457,26 +457,26 @@
   },
   {
     "name": "Rule ID",
-    "layer": "L2",
-    "parent": "Rerank Pipeline",
+    "layer": "L6",
+    "parent": "Policy Rule",
     "desc": "Unique identifier for a policy rule. Used for version tracking, audit references, and override targeting."
   },
   {
     "name": "Rule Expression",
-    "layer": "L2",
-    "parent": "Rerank Pipeline",
+    "layer": "L6",
+    "parent": "Policy Rule",
     "desc": "The actual policy logic \u2014 a boolean expression in Rego, CEL, or JSON that evaluates to allow/deny."
   },
   {
     "name": "Enforcement Mode",
-    "layer": "L2",
-    "parent": "Rerank Pipeline",
+    "layer": "L6",
+    "parent": "Policy Rule",
     "desc": "Whether the rule blocks (enforce), warns (audit), or just logs (monitor). Allows gradual rollout of new policies."
   },
   {
     "name": "Scope Selector",
-    "layer": "L2",
-    "parent": "Rerank Pipeline",
+    "layer": "L6",
+    "parent": "Policy Rule",
     "desc": "Pattern or filter that limits which agents, resources, or environments a policy applies to."
   },
   {
@@ -817,26 +817,26 @@
   },
   {
     "name": "Span ID",
-    "layer": "L6",
-    "parent": "Safety Boundary",
+    "layer": "L5",
+    "parent": "Trace Span",
     "desc": "Unique identifier for a single operation span within a distributed trace. Enables parent\u2192child span correlation."
   },
   {
     "name": "Parent Span ID",
-    "layer": "L6",
-    "parent": "Safety Boundary",
+    "layer": "L5",
+    "parent": "Trace Span",
     "desc": "Reference to the parent span that spawned this operation. Null for root spans."
   },
   {
     "name": "Operation Name",
-    "layer": "L6",
-    "parent": "Safety Boundary",
+    "layer": "L5",
+    "parent": "Trace Span",
     "desc": "Human-readable label for the operation: 'llm.chat.completion', 'tool.web_search', 'agent.delegation'."
   },
   {
     "name": "Duration (ms)",
-    "layer": "L6",
-    "parent": "Safety Boundary",
+    "layer": "L5",
+    "parent": "Trace Span",
     "desc": "Wall-clock time for the operation in milliseconds. The primary signal for latency analysis and SLO tracking."
   },
   {
@@ -1105,26 +1105,26 @@
   },
   {
     "name": "Runtime Type",
-    "layer": "L5",
-    "parent": "Cost Tracker",
+    "layer": "L3",
+    "parent": "Sandbox Runtime",
     "desc": "The sandbox execution engine: Docker container, Firecracker microVM, gVisor, or WASM isolate."
   },
   {
     "name": "Isolation Level",
-    "layer": "L5",
-    "parent": "Cost Tracker",
+    "layer": "L3",
+    "parent": "Sandbox Runtime",
     "desc": "Degree of separation: process-level, container-level, VM-level. Determines what the code can access."
   },
   {
     "name": "Timeout (sec)",
-    "layer": "L5",
-    "parent": "Cost Tracker",
+    "layer": "L3",
+    "parent": "Sandbox Runtime",
     "desc": "Maximum wall-clock time before the sandbox is forcibly terminated. Prevents infinite loops and resource abuse."
   },
   {
     "name": "Resource Quota",
-    "layer": "L5",
-    "parent": "Cost Tracker",
+    "layer": "L3",
+    "parent": "Sandbox Runtime",
     "desc": "CPU, memory, disk, and network limits enforced on the sandbox. Prevents resource exhaustion attacks."
   },
   {
@@ -1585,290 +1585,290 @@
   },
   {
     "name": "Card ID",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Model Card",
     "desc": "Immutable identifier (Namespace/Family/Params/Quant/Hash) that uniquely identifies a model version and prevents behavioral drift."
   },
   {
     "name": "Model Family",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Model Card",
     "desc": "Architectural lineage (GPT, Llama, Mistral, Gemma\u2026) determining Jinja2 chat templates and prompting strategy."
   },
   {
     "name": "Capability Tags",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Model Card",
     "desc": "Boolean/categorical tags (vision, tool_calling, code, math) used by orchestrators for agent routing."
   },
   {
     "name": "License Type",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Model Card",
     "desc": "Enforces commercial and training compliance (Apache 2.0, MIT, Llama Community, etc.)."
   },
   {
     "name": "Endpoint URL",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Model Endpoint",
     "desc": "Abstract URI managed by service mesh for routing inference requests. RTT latency target: &lt;20ms."
   },
   {
     "name": "Model Version",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Model Endpoint",
     "desc": "Tracks weight + engine + prompt template combinations. Deployed via canary rollouts."
   },
   {
     "name": "Throughput TPS",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Model Endpoint",
     "desc": "Primary velocity metric: tokens per second. Single user: 15\u2013150 TPS; max batch: 400\u20135,000 TPS. TPOT target: &lt;50ms."
   },
   {
     "name": "Fallback Endpoint",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Model Endpoint",
     "desc": "Redundancy routing when primary endpoint fails. Failover latency target: &lt;100ms with &gt;99% success rate."
   },
   {
     "name": "Max Tokens",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Context Window",
     "desc": "Hard hardware/software limit on total input+output tokens. Standard: 128K; long-context: 1M\u201310M. KV cache: 0.5\u20132GB VRAM/1K tokens."
   },
   {
     "name": "Effective Tokens",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Context Window",
     "desc": "Actual sequence length before 'Context Rot' \u2014 where recall accuracy degrades below useful thresholds. Target recall: &gt;95%."
   },
   {
     "name": "Window Strategy",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Context Window",
     "desc": "Memory management approach. PagedAttention with O(N) logical memory is the gold standard for multi-agent prefix sharing."
   },
   {
     "name": "Overflow Policy",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Context Window",
     "desc": "Rules for exceeding the context window limit: Truncate, Error, or Summarize. Requires system-prompt pinning to avoid agent memory loss."
   },
   {
     "name": "Vocab Size",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Tokenizer Config",
     "desc": "Total unique tokens in the vocabulary. Modern models: 100K\u2013150K tokens. Compression ratio target: 0.7\u20130.8 tokens/word."
   },
   {
     "name": "Encoding Scheme",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Tokenizer Config",
     "desc": "Tokenization algorithm \u2014 usually Byte-level BPE to prevent Out of Vocabulary (OOV) errors."
   },
   {
     "name": "Special Tokens",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Tokenizer Config",
     "desc": "Control signals (&lt;tool_call&gt;, &lt;|im_start|&gt;, &lt;eos&gt;) that trigger specific model behaviors."
   },
   {
     "name": "Token Budget",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Tokenizer Config",
     "desc": "Runtime caps to prevent runaway loops. Recommended: 10,000 tokens per tool loop; 100,000 per session."
   },
   {
     "name": "Server Framework",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Inference Server",
     "desc": "Serving engine \u2014 vLLM for high throughput (256+ sequences) or SGLang for agentic prefix-sharing (512+ sequences)."
   },
   {
     "name": "Quantization Level",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Inference Server",
     "desc": "Precision reduction \u2014 FP8 saves 50% VRAM (&lt;0.01% perplexity impact); INT4 saves 75% (&lt;1% impact)."
   },
   {
     "name": "KV Cache Size",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Inference Server",
     "desc": "Memory for key-value attention cache. Target utilization: 80\u201395% of allocated blocks (1,000\u201310,000 blocks)."
   },
   {
     "name": "Concurrent Slots",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Inference Server",
     "desc": "Max simultaneous requests. Target: 64\u2013256 slots with 70\u201390% occupancy."
   },
   {
     "name": "GPU Type",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "GPU Pool",
     "desc": "Hardware SKU \u2014 H100 (80GB VRAM, 3.35 TB/s) for frontier; L40S (48GB, 0.86 TB/s) for smaller tasks. Memory bandwidth is the bottleneck."
   },
   {
     "name": "Pool Size",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "GPU Pool",
     "desc": "Number of GPU instances. Availability target: 99.99%. Requires N+1 redundancy across \u22652 availability zones."
   },
   {
     "name": "Utilization Percent",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "GPU Pool",
     "desc": "GPU resource usage \u2014 Core target: 75%; Memory target: 90%; Power target: 80%. \u26a0\ufe0f Never scale based on VRAM% (pre-allocated at boot)."
   },
   {
     "name": "Scheduling Algorithm",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "GPU Pool",
     "desc": "Request routing strategy. Prefix-Aware (Radix) scheduling reduces Time to First Token by 40\u201360% via KV cache hits."
   },
   {
     "name": "Batch Size",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Batch Queue",
     "desc": "Dynamic batching range: 1\u2013256. Each additional request adds ~5ms TPOT latency penalty."
   },
   {
     "name": "Queue Depth",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Batch Queue",
     "desc": "Leading indicator of latency. Target wait: &lt;50ms. Autoscaling threshold: 3\u201310 requests waiting."
   },
   {
     "name": "Drain Timeout",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Batch Queue",
     "desc": "Wait time before node shutdown. Recommended: 300 seconds for &gt;99.9% clean exit rate."
   },
   {
     "name": "Priority Lanes",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Batch Queue",
     "desc": "QoS segmentation \u2014 Platinum: 90% capacity, Gold: 10%, Background: slack only during peak."
   },
   {
     "name": "Scale Metric",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Autoscaler Policy",
     "desc": "Primary trigger: Queue Size (&gt;5 req/GPU). Secondary: P95 TTFT (&gt;500ms). \u26a0\ufe0f Never use VRAM utilization."
   },
   {
     "name": "Cooldown Seconds",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Autoscaler Policy",
     "desc": "Asymmetric: scale-up 0s (immediate), scale-down 600s (prevent model-load thrashing). Model load takes 30s\u20135min."
   },
   {
     "name": "Min Replicas",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Autoscaler Policy",
     "desc": "Production floor: 2\u20134 replicas. Dev floor: 0 (scale-to-zero). Warm replicas avoid 30s\u20135min cold starts."
   },
   {
     "name": "Max Replicas",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Autoscaler Policy",
     "desc": "Hard financial ceiling mapped to cloud quotas. Range: 32\u2013128 GPUs. \u26a0\ufe0f Never deploy without this circuit breaker."
   },
   {
     "name": "Run ID",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Training Run",
     "desc": "Unique experiment identifier for 100% traceability to Git commits. Format: timestamp-gitsha-name-suffix."
   },
   {
     "name": "Base Model",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Training Run",
     "desc": "Foundation model being fine-tuned. Target Model Flops Utilization (MFU): 40\u201355%."
   },
   {
     "name": "Hyperparams",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Training Run",
     "desc": "Training config \u2014 LR: 5\u00d710\u207b\u2075, batch: 32\u2013128, epochs: 1\u20133. Use cosine decay with warm-up."
   },
   {
     "name": "Checkpoint Interval",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Training Run",
     "desc": "Save frequency \u2014 pausing 60s\u2013600s per snapshot (15\u2013300GB). Recommended: every 500\u20132,000 steps."
   },
   {
     "name": "Dataset URI",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Dataset Config",
     "desc": "Training data location. Load bandwidth &gt;1 GB/s using binary formats (Parquet/Arrow)."
   },
   {
     "name": "Split Ratio",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Dataset Config",
     "desc": "Standard: 90% Train / 5% Validation / 5% Test. Test set MUST be fully decontaminated."
   },
   {
     "name": "Preprocessing Pipeline",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Dataset Config",
     "desc": "Dedup (1M rows/hr) \u2192 PII scrub (500K rows/hr) \u2192 quality filter \u2192 pre-tokenize (10M tokens/sec)."
   },
   {
     "name": "Quality Score",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "Dataset Config",
     "desc": "AI judge discards examples scoring &lt;4.0/5. Target perplexity on clean data: &lt;15."
   },
   {
     "name": "Adapter Rank",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "LoRA Adapter",
     "desc": "LoRA rank \u2014 r=8\u201316 for style (~10M params, &lt;100MB); r=64\u2013128 for knowledge (~80M params, ~500MB VRAM)."
   },
   {
     "name": "Target Modules",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "LoRA Adapter",
     "desc": "Which layers get LoRA adapters. 'All Linear Layers' retains 95% of full fine-tune performance."
   },
   {
     "name": "Merge Strategy",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "LoRA Adapter",
     "desc": "Combining adapter weights \u2014 Merge/Unload (permanent, fastest) or TIES-Merging (multi-adapter, sign-aware)."
   },
   {
     "name": "Adapter Registry",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "LoRA Adapter",
     "desc": "Centralized catalog of 1,000+ adapters with hot-swap latency &lt;200ms."
   },
   {
     "name": "Reward Model",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "RLHF Pipeline",
     "desc": "Neural network scoring outputs. Target accuracy: 70\u201380%. Calibration error &lt;0.05."
   },
   {
     "name": "Preference Dataset",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "RLHF Pipeline",
     "desc": "A/B comparison pairs: 20,000\u2013100,000 with rater agreement &gt;0.85."
   },
   {
     "name": "PPO Config",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "RLHF Pipeline",
     "desc": "Proximal Policy Optimization \u2014 KL Coefficient 0.1, LR 1\u00d710\u207b\u2076, Rollout size 1024."
   },
   {
     "name": "Alignment Score",
-    "layer": "L3",
-    "parent": "Delivery Guarantee",
+    "layer": "L1",
+    "parent": "RLHF Pipeline",
     "desc": "Overall quality \u2014 Target Elo: 1,250+, refusal rate &lt;2%, jailbreak rate &lt;0.1%."
   },
   {
@@ -1990,5 +1990,1205 @@
     "layer": "L4",
     "parent": "TDD Workflow Path",
     "desc": "Terminal state of the TDD workflow path: approved, rejected, or pending-review. Controls downstream deployment eligibility."
+  },
+  {
+    "name": "Model ID",
+    "layer": "L1",
+    "parent": "Model Card",
+    "desc": "Unique identifier for the model (e.g., 'gpt-4-turbo', 'llama-2-70b') used for versioning and deployment."
+  },
+  {
+    "name": "Version Tag",
+    "layer": "L1",
+    "parent": "Model Card",
+    "desc": "Semantic version string (e.g., 'v1.2.3') tracking model updates and training iterations."
+  },
+  {
+    "name": "License Type",
+    "layer": "L1",
+    "parent": "Model Card",
+    "desc": "License classification (MIT, Apache 2.0, OpenRAIL, Commercial) defining usage restrictions."
+  },
+  {
+    "name": "Base Model Name",
+    "layer": "L1",
+    "parent": "Model Card",
+    "desc": "Name of the foundation model this was fine-tuned from (e.g., 'Llama 2' for derivative models)."
+  },
+  {
+    "name": "Training Dataset ID",
+    "layer": "L1",
+    "parent": "Model Card",
+    "desc": "Reference identifier for the primary training dataset(s) used to create the model."
+  },
+  {
+    "name": "Eval Metrics",
+    "layer": "L1",
+    "parent": "Model Card",
+    "desc": "Performance scores (BLEU, ROUGE, accuracy, F1) on standard benchmarks."
+  },
+  {
+    "name": "Tokenizer ID",
+    "layer": "L1",
+    "parent": "Model Card",
+    "desc": "Reference to the tokenizer configuration used for encoding text into tokens."
+  },
+  {
+    "name": "Config Hash",
+    "layer": "L1",
+    "parent": "Model Card",
+    "desc": "SHA256 hash of the model configuration ensuring consistency and reproducibility."
+  },
+  {
+    "name": "Endpoint URL",
+    "layer": "L1",
+    "parent": "Model Endpoint",
+    "desc": "Public/private API URL where the model can be invoked for inference."
+  },
+  {
+    "name": "Model Version",
+    "layer": "L1",
+    "parent": "Model Endpoint",
+    "desc": "Version of the model currently served at this endpoint."
+  },
+  {
+    "name": "Load Balancer ID",
+    "layer": "L1",
+    "parent": "Model Endpoint",
+    "desc": "Reference to the load balancer distributing requests across model replicas."
+  },
+  {
+    "name": "Rate Limit (tokens/min)",
+    "layer": "L1",
+    "parent": "Model Endpoint",
+    "desc": "Maximum tokens-per-minute throughput allowed for this endpoint."
+  },
+  {
+    "name": "Concurrency Slots",
+    "layer": "L1",
+    "parent": "Model Endpoint",
+    "desc": "Maximum number of simultaneous requests the endpoint can handle."
+  },
+  {
+    "name": "Timeout (seconds)",
+    "layer": "L1",
+    "parent": "Model Endpoint",
+    "desc": "Request timeout after which the endpoint returns a timeout error."
+  },
+  {
+    "name": "Authentication Key",
+    "layer": "L1",
+    "parent": "Model Endpoint",
+    "desc": "API key or bearer token required to call this endpoint."
+  },
+  {
+    "name": "Region",
+    "layer": "L1",
+    "parent": "Model Endpoint",
+    "desc": "Geographic region where the endpoint is deployed."
+  },
+  {
+    "name": "Max Tokens",
+    "layer": "L1",
+    "parent": "Context Window",
+    "desc": "Maximum length of the input+output sequence in tokens."
+  },
+  {
+    "name": "Sliding Window Size",
+    "layer": "L1",
+    "parent": "Context Window",
+    "desc": "For models using sliding window attention, the number of tokens visible to each position."
+  },
+  {
+    "name": "RoPE Scaling Factor",
+    "layer": "L1",
+    "parent": "Context Window",
+    "desc": "Factor for Rotary Position Embedding scaling to extend effective context beyond pre-training."
+  },
+  {
+    "name": "Cache Layout Type",
+    "layer": "L1",
+    "parent": "Context Window",
+    "desc": "KV cache layout strategy ('page-cache', 'continuous', 'flash-attn') affecting memory efficiency."
+  },
+  {
+    "name": "KV Cache Quantization",
+    "layer": "L1",
+    "parent": "Context Window",
+    "desc": "Quantization level for KV caches (fp32, fp16, int8) to reduce memory footprint."
+  },
+  {
+    "name": "Attention Mask Type",
+    "layer": "L1",
+    "parent": "Context Window",
+    "desc": "Attention pattern ('causal', 'bidirectional', 'local', 'sparse') determining token visibility."
+  },
+  {
+    "name": "Vocab Size",
+    "layer": "L1",
+    "parent": "Tokenizer Config",
+    "desc": "Number of unique tokens in the vocabulary."
+  },
+  {
+    "name": "BOS Token ID",
+    "layer": "L1",
+    "parent": "Tokenizer Config",
+    "desc": "Token ID marking the beginning-of-sequence."
+  },
+  {
+    "name": "EOS Token ID",
+    "layer": "L1",
+    "parent": "Tokenizer Config",
+    "desc": "Token ID marking the end-of-sequence."
+  },
+  {
+    "name": "Pad Token ID",
+    "layer": "L1",
+    "parent": "Tokenizer Config",
+    "desc": "Token ID used for padding sequences to equal length."
+  },
+  {
+    "name": "Token Merge Strategy",
+    "layer": "L1",
+    "parent": "Tokenizer Config",
+    "desc": "Strategy for handling subword merging ('bpe', 'wordpiece', 'sentencepiece')."
+  },
+  {
+    "name": "Unicode Normalization",
+    "layer": "L1",
+    "parent": "Tokenizer Config",
+    "desc": "Unicode normalization form (NFC, NFD, NFKC, NFKD) applied before tokenization."
+  },
+  {
+    "name": "Server Port",
+    "layer": "L1",
+    "parent": "Inference Server",
+    "desc": "Network port on which the inference server listens."
+  },
+  {
+    "name": "Framework Type",
+    "layer": "L1",
+    "parent": "Inference Server",
+    "desc": "Inference framework (vLLM, TensorRT, Ollama, Ray Serve) hosting the model."
+  },
+  {
+    "name": "Device Type",
+    "layer": "L1",
+    "parent": "Inference Server",
+    "desc": "Hardware acceleration type ('GPU', 'TPU', 'CPU', 'NPU')."
+  },
+  {
+    "name": "Batch Strategy",
+    "layer": "L1",
+    "parent": "Inference Server",
+    "desc": "Batching approach ('static', 'dynamic', 'none') for grouping inference requests."
+  },
+  {
+    "name": "Auto Scaling Enabled",
+    "layer": "L1",
+    "parent": "Inference Server",
+    "desc": "Boolean flag enabling/disabling automatic replica scaling."
+  },
+  {
+    "name": "TPU Device Count",
+    "layer": "L1",
+    "parent": "Inference Server",
+    "desc": "Number of TPU devices allocated to the inference server."
+  },
+  {
+    "name": "Total GPU Count",
+    "layer": "L1",
+    "parent": "GPU Pool",
+    "desc": "Total number of GPUs available in the pool."
+  },
+  {
+    "name": "GPU Model Type",
+    "layer": "L1",
+    "parent": "GPU Pool",
+    "desc": "GPU model identifier (A100, H100, L40S, etc.)."
+  },
+  {
+    "name": "Memory (GB per GPU)",
+    "layer": "L1",
+    "parent": "GPU Pool",
+    "desc": "VRAM capacity in GB for each GPU."
+  },
+  {
+    "name": "Interconnect Bandwidth",
+    "layer": "L1",
+    "parent": "GPU Pool",
+    "desc": "GPU-to-GPU communication bandwidth (NVLink, InfiniBand) in GB/s."
+  },
+  {
+    "name": "Power Limit (watts)",
+    "layer": "L1",
+    "parent": "GPU Pool",
+    "desc": "Maximum power consumption per GPU in watts."
+  },
+  {
+    "name": "Cooling Status",
+    "layer": "L1",
+    "parent": "GPU Pool",
+    "desc": "Status of cooling systems ('healthy', 'degraded', 'critical')."
+  },
+  {
+    "name": "Queue Name",
+    "layer": "L1",
+    "parent": "Batch Queue",
+    "desc": "Identifier for this specific batch queue."
+  },
+  {
+    "name": "Max Batch Size",
+    "layer": "L1",
+    "parent": "Batch Queue",
+    "desc": "Maximum number of requests to group in a single batch."
+  },
+  {
+    "name": "Wait Timeout (ms)",
+    "layer": "L1",
+    "parent": "Batch Queue",
+    "desc": "Maximum milliseconds to wait before flushing an incomplete batch."
+  },
+  {
+    "name": "Priority Level",
+    "layer": "L1",
+    "parent": "Batch Queue",
+    "desc": "Priority level (low, medium, high, critical) for queue scheduling."
+  },
+  {
+    "name": "Backpressure Threshold",
+    "layer": "L1",
+    "parent": "Batch Queue",
+    "desc": "Queue depth at which backpressure is applied to slow down submissions."
+  },
+  {
+    "name": "Overflow Strategy",
+    "layer": "L1",
+    "parent": "Batch Queue",
+    "desc": "Action when queue is full ('reject', 'drop-oldest', 'queue-in-memory')."
+  },
+  {
+    "name": "Min Replicas",
+    "layer": "L1",
+    "parent": "Autoscaler Policy",
+    "desc": "Minimum number of model replicas to maintain."
+  },
+  {
+    "name": "Max Replicas",
+    "layer": "L1",
+    "parent": "Autoscaler Policy",
+    "desc": "Maximum number of model replicas allowed."
+  },
+  {
+    "name": "Target Utilization (%)",
+    "layer": "L1",
+    "parent": "Autoscaler Policy",
+    "desc": "Desired CPU/GPU utilization percentage for scaling decisions."
+  },
+  {
+    "name": "Scale-Up Threshold",
+    "layer": "L1",
+    "parent": "Autoscaler Policy",
+    "desc": "Utilization threshold above which to add replicas."
+  },
+  {
+    "name": "Cooldown Period (sec)",
+    "layer": "L1",
+    "parent": "Autoscaler Policy",
+    "desc": "Seconds to wait between consecutive scaling operations."
+  },
+  {
+    "name": "Metric Aggregation Window",
+    "layer": "L1",
+    "parent": "Autoscaler Policy",
+    "desc": "Time window over which to average metrics before scaling decisions."
+  },
+  {
+    "name": "Run ID",
+    "layer": "L1",
+    "parent": "Training Run",
+    "desc": "Unique identifier for this training experiment."
+  },
+  {
+    "name": "Dataset Version",
+    "layer": "L1",
+    "parent": "Training Run",
+    "desc": "Version of the dataset used for this training run."
+  },
+  {
+    "name": "Learning Rate",
+    "layer": "L1",
+    "parent": "Training Run",
+    "desc": "Initial learning rate hyperparameter."
+  },
+  {
+    "name": "Batch Size",
+    "layer": "L1",
+    "parent": "Training Run",
+    "desc": "Batch size during training."
+  },
+  {
+    "name": "Num Epochs",
+    "layer": "L1",
+    "parent": "Training Run",
+    "desc": "Number of training epochs."
+  },
+  {
+    "name": "Checkpoint Interval",
+    "layer": "L1",
+    "parent": "Training Run",
+    "desc": "Steps between saving model checkpoints."
+  },
+  {
+    "name": "Validation Split",
+    "layer": "L1",
+    "parent": "Training Run",
+    "desc": "Fraction of data reserved for validation (0.0\u20131.0)."
+  },
+  {
+    "name": "Dataset ID",
+    "layer": "L1",
+    "parent": "Dataset Config",
+    "desc": "Unique identifier for the dataset."
+  },
+  {
+    "name": "Split Ratios",
+    "layer": "L1",
+    "parent": "Dataset Config",
+    "desc": "Ratios for train/val/test splits (e.g., 0.8/0.1/0.1)."
+  },
+  {
+    "name": "Sequence Length",
+    "layer": "L1",
+    "parent": "Dataset Config",
+    "desc": "Target sequence length in tokens for data samples."
+  },
+  {
+    "name": "Sampling Strategy",
+    "layer": "L1",
+    "parent": "Dataset Config",
+    "desc": "Sampling approach ('sequential', 'random', 'stratified')."
+  },
+  {
+    "name": "Augmentation Enabled",
+    "layer": "L1",
+    "parent": "Dataset Config",
+    "desc": "Boolean flag enabling/disabling data augmentation."
+  },
+  {
+    "name": "Source URI",
+    "layer": "L1",
+    "parent": "Dataset Config",
+    "desc": "URI/path to the dataset source (S3, local, HuggingFace)."
+  },
+  {
+    "name": "Adapter Rank",
+    "layer": "L1",
+    "parent": "LoRA Adapter",
+    "desc": "Rank of the low-rank matrices (typically 8\u201364)."
+  },
+  {
+    "name": "Adapter Alpha",
+    "layer": "L1",
+    "parent": "LoRA Adapter",
+    "desc": "Scaling factor for LoRA updates (typically 16\u201332)."
+  },
+  {
+    "name": "Base Model ID",
+    "layer": "L1",
+    "parent": "LoRA Adapter",
+    "desc": "ID of the base model this adapter fine-tunes."
+  },
+  {
+    "name": "Weight Decay",
+    "layer": "L1",
+    "parent": "LoRA Adapter",
+    "desc": "L2 regularization coefficient for adapter weights."
+  },
+  {
+    "name": "Target Modules",
+    "layer": "L1",
+    "parent": "LoRA Adapter",
+    "desc": "List of layer names to apply LoRA to (e.g., ['q_proj', 'v_proj'])."
+  },
+  {
+    "name": "LoRA Dropout",
+    "layer": "L1",
+    "parent": "LoRA Adapter",
+    "desc": "Dropout probability for LoRA layers."
+  },
+  {
+    "name": "Reward Model ID",
+    "layer": "L1",
+    "parent": "RLHF Pipeline",
+    "desc": "ID of the reward model used to score outputs."
+  },
+  {
+    "name": "Preference Data Source",
+    "layer": "L1",
+    "parent": "RLHF Pipeline",
+    "desc": "Source of human preference comparisons (human raters, crowdsourcing platform)."
+  },
+  {
+    "name": "KL Penalty Beta",
+    "layer": "L1",
+    "parent": "RLHF Pipeline",
+    "desc": "KL divergence penalty coefficient in PPO objective."
+  },
+  {
+    "name": "Num PPO Epochs",
+    "layer": "L1",
+    "parent": "RLHF Pipeline",
+    "desc": "Number of PPO training epochs per batch."
+  },
+  {
+    "name": "Update Frequency",
+    "layer": "L1",
+    "parent": "RLHF Pipeline",
+    "desc": "Frequency of policy updates (steps or samples)."
+  },
+  {
+    "name": "Capacity (tokens)",
+    "layer": "L2",
+    "parent": "Working Memory",
+    "desc": "Maximum number of tokens stored in working memory."
+  },
+  {
+    "name": "Retention Policy",
+    "layer": "L2",
+    "parent": "Working Memory",
+    "desc": "Policy determining how long items stay in working memory ('FIFO', 'LRU', 'importance-based')."
+  },
+  {
+    "name": "Eviction Strategy",
+    "layer": "L2",
+    "parent": "Working Memory",
+    "desc": "Strategy for removing items when capacity is exceeded."
+  },
+  {
+    "name": "Access Pattern Type",
+    "layer": "L2",
+    "parent": "Working Memory",
+    "desc": "Pattern of memory access ('sequential', 'random', 'temporal-clustered')."
+  },
+  {
+    "name": "Compression Enabled",
+    "layer": "L2",
+    "parent": "Working Memory",
+    "desc": "Boolean flag enabling/disabling memory compression."
+  },
+  {
+    "name": "Store ID",
+    "layer": "L2",
+    "parent": "Episodic Store",
+    "desc": "Unique identifier for this episodic memory store."
+  },
+  {
+    "name": "Retention (days)",
+    "layer": "L2",
+    "parent": "Episodic Store",
+    "desc": "Number of days to retain entries before automatic deletion."
+  },
+  {
+    "name": "Max Entries",
+    "layer": "L2",
+    "parent": "Episodic Store",
+    "desc": "Maximum number of episodic entries to store."
+  },
+  {
+    "name": "Embedding Model ID",
+    "layer": "L2",
+    "parent": "Episodic Store",
+    "desc": "ID of the embedding model used for similarity search."
+  },
+  {
+    "name": "Indexing Frequency",
+    "layer": "L2",
+    "parent": "Episodic Store",
+    "desc": "How often to update indexes (hourly, daily, on-write)."
+  },
+  {
+    "name": "Compression Ratio",
+    "layer": "L2",
+    "parent": "Episodic Store",
+    "desc": "Target compression ratio for stored entries."
+  },
+  {
+    "name": "Consolidation Interval (hrs)",
+    "layer": "L2",
+    "parent": "Memory Consolidator",
+    "desc": "Hours between consolidation cycles."
+  },
+  {
+    "name": "Merge Strategy",
+    "layer": "L2",
+    "parent": "Memory Consolidator",
+    "desc": "Strategy for merging similar memories ('simple-concat', 'semantic-merge', 'voting')."
+  },
+  {
+    "name": "Duplicate Threshold",
+    "layer": "L2",
+    "parent": "Memory Consolidator",
+    "desc": "Similarity threshold above which entries are considered duplicates (0.0\u20131.0)."
+  },
+  {
+    "name": "Target Density",
+    "layer": "L2",
+    "parent": "Memory Consolidator",
+    "desc": "Target information density for consolidated memory (0.0\u20131.0)."
+  },
+  {
+    "name": "GC Trigger Threshold",
+    "layer": "L2",
+    "parent": "Memory Consolidator",
+    "desc": "Memory utilization threshold triggering garbage collection."
+  },
+  {
+    "name": "Decay Rate",
+    "layer": "L2",
+    "parent": "Forgetting Policy",
+    "desc": "Rate at which memory strength decreases over time."
+  },
+  {
+    "name": "Recency Weight",
+    "layer": "L2",
+    "parent": "Forgetting Policy",
+    "desc": "Weight assigned to recent access in retention decisions (0.0\u20131.0)."
+  },
+  {
+    "name": "Access Frequency Weight",
+    "layer": "L2",
+    "parent": "Forgetting Policy",
+    "desc": "Weight assigned to access frequency in retention decisions (0.0\u20131.0)."
+  },
+  {
+    "name": "Semantic Similarity Threshold",
+    "layer": "L2",
+    "parent": "Forgetting Policy",
+    "desc": "Threshold for considering memories semantically equivalent."
+  },
+  {
+    "name": "Forgetting Curve Type",
+    "layer": "L2",
+    "parent": "Forgetting Policy",
+    "desc": "Mathematical model for forgetting ('exponential', 'power-law', 'hyperbolic')."
+  },
+  {
+    "name": "Entity ID",
+    "layer": "L2",
+    "parent": "Entity Node",
+    "desc": "Unique identifier for the entity."
+  },
+  {
+    "name": "Entity Type",
+    "layer": "L2",
+    "parent": "Entity Node",
+    "desc": "Classification of the entity (person, organization, concept, etc.)."
+  },
+  {
+    "name": "Embedding Vector",
+    "layer": "L2",
+    "parent": "Entity Node",
+    "desc": "Dense vector representation of the entity."
+  },
+  {
+    "name": "Confidence Score",
+    "layer": "L2",
+    "parent": "Entity Node",
+    "desc": "Confidence in the entity's validity (0.0\u20131.0)."
+  },
+  {
+    "name": "Created Timestamp",
+    "layer": "L2",
+    "parent": "Entity Node",
+    "desc": "ISO8601 timestamp when the entity was created."
+  },
+  {
+    "name": "Last Updated",
+    "layer": "L2",
+    "parent": "Entity Node",
+    "desc": "ISO8601 timestamp of the most recent entity update."
+  },
+  {
+    "name": "Source Entity ID",
+    "layer": "L2",
+    "parent": "Relationship Edge",
+    "desc": "ID of the source entity in the relationship."
+  },
+  {
+    "name": "Target Entity ID",
+    "layer": "L2",
+    "parent": "Relationship Edge",
+    "desc": "ID of the target entity in the relationship."
+  },
+  {
+    "name": "Relationship Type",
+    "layer": "L2",
+    "parent": "Relationship Edge",
+    "desc": "Type of relationship (works_for, knows, mentions, etc.)."
+  },
+  {
+    "name": "Strength Score",
+    "layer": "L2",
+    "parent": "Relationship Edge",
+    "desc": "Strength of the relationship (0.0\u20131.0)."
+  },
+  {
+    "name": "Temporal Validity",
+    "layer": "L2",
+    "parent": "Relationship Edge",
+    "desc": "Time range during which the relationship is valid."
+  },
+  {
+    "name": "Metadata JSON",
+    "layer": "L2",
+    "parent": "Relationship Edge",
+    "desc": "Additional structured metadata about the relationship."
+  },
+  {
+    "name": "Ontology ID",
+    "layer": "L2",
+    "parent": "Ontology Schema",
+    "desc": "Unique identifier for the ontology."
+  },
+  {
+    "name": "Version",
+    "layer": "L2",
+    "parent": "Ontology Schema",
+    "desc": "Version number of the ontology."
+  },
+  {
+    "name": "Root Concept",
+    "layer": "L2",
+    "parent": "Ontology Schema",
+    "desc": "Top-level concept in the ontology hierarchy."
+  },
+  {
+    "name": "Hierarchy Depth",
+    "layer": "L2",
+    "parent": "Ontology Schema",
+    "desc": "Maximum depth of the concept hierarchy."
+  },
+  {
+    "name": "Relation Types",
+    "layer": "L2",
+    "parent": "Ontology Schema",
+    "desc": "List of allowed relationship types in the ontology."
+  },
+  {
+    "name": "Extension Hooks",
+    "layer": "L2",
+    "parent": "Ontology Schema",
+    "desc": "Points where the ontology can be extended with custom concepts."
+  },
+  {
+    "name": "Query Type",
+    "layer": "L2",
+    "parent": "Graph Query",
+    "desc": "Type of graph traversal (shortest-path, k-hop, pattern-match)."
+  },
+  {
+    "name": "Traversal Depth",
+    "layer": "L2",
+    "parent": "Graph Query",
+    "desc": "Maximum number of hops in the graph traversal."
+  },
+  {
+    "name": "Result Limit",
+    "layer": "L2",
+    "parent": "Graph Query",
+    "desc": "Maximum number of results to return."
+  },
+  {
+    "name": "Filter Predicates",
+    "layer": "L2",
+    "parent": "Graph Query",
+    "desc": "Conditions to filter results (node type, relationship strength, etc.)."
+  },
+  {
+    "name": "Scoring Function",
+    "layer": "L2",
+    "parent": "Graph Query",
+    "desc": "Function to score and rank results."
+  },
+  {
+    "name": "Timeout (ms)",
+    "layer": "L2",
+    "parent": "Graph Query",
+    "desc": "Query timeout in milliseconds."
+  },
+  {
+    "name": "Index Type",
+    "layer": "L2",
+    "parent": "Vector Index",
+    "desc": "Type of vector index (HNSW, IVF, LSH, flat)."
+  },
+  {
+    "name": "Embedding Dimension",
+    "layer": "L2",
+    "parent": "Vector Index",
+    "desc": "Dimensionality of the embeddings in the index."
+  },
+  {
+    "name": "Distance Metric",
+    "layer": "L2",
+    "parent": "Vector Index",
+    "desc": "Metric for similarity (cosine, euclidean, dot-product)."
+  },
+  {
+    "name": "Num Partitions",
+    "layer": "L2",
+    "parent": "Vector Index",
+    "desc": "Number of partitions for distributed indexing."
+  },
+  {
+    "name": "Vector Count",
+    "layer": "L2",
+    "parent": "Vector Index",
+    "desc": "Current number of vectors in the index."
+  },
+  {
+    "name": "Index Size (MB)",
+    "layer": "L2",
+    "parent": "Vector Index",
+    "desc": "Size of the index in megabytes."
+  },
+  {
+    "name": "Embedding ID",
+    "layer": "L2",
+    "parent": "Embedding Model",
+    "desc": "Unique identifier for the embedding model."
+  },
+  {
+    "name": "Output Dimension",
+    "layer": "L2",
+    "parent": "Embedding Model",
+    "desc": "Dimensionality of output embeddings."
+  },
+  {
+    "name": "Distance Metric",
+    "layer": "L2",
+    "parent": "Embedding Model",
+    "desc": "Recommended distance metric for this embedding model."
+  },
+  {
+    "name": "Max Sequence Length",
+    "layer": "L2",
+    "parent": "Embedding Model",
+    "desc": "Maximum input sequence length the model can handle."
+  },
+  {
+    "name": "Normalization Type",
+    "layer": "L2",
+    "parent": "Embedding Model",
+    "desc": "Normalization applied to embeddings (L2, cosine, none)."
+  },
+  {
+    "name": "Model Format",
+    "layer": "L2",
+    "parent": "Embedding Model",
+    "desc": "Format of the model files (PyTorch, ONNX, TensorFlow)."
+  },
+  {
+    "name": "Chunk Size",
+    "layer": "L2",
+    "parent": "Chunk Strategy",
+    "desc": "Size of each chunk in tokens."
+  },
+  {
+    "name": "Overlap Tokens",
+    "layer": "L2",
+    "parent": "Chunk Strategy",
+    "desc": "Number of tokens to overlap between adjacent chunks."
+  },
+  {
+    "name": "Splitting Method",
+    "layer": "L2",
+    "parent": "Chunk Strategy",
+    "desc": "Method for splitting text ('by-tokens', 'by-sentences', 'semantic')."
+  },
+  {
+    "name": "Boundary Detection",
+    "layer": "L2",
+    "parent": "Chunk Strategy",
+    "desc": "Method to detect logical boundaries for splitting."
+  },
+  {
+    "name": "Metadata Extraction",
+    "layer": "L2",
+    "parent": "Chunk Strategy",
+    "desc": "Whether to extract and preserve metadata for chunks."
+  },
+  {
+    "name": "Encoding Format",
+    "layer": "L2",
+    "parent": "Chunk Strategy",
+    "desc": "Text encoding format (UTF-8, ASCII, etc.)."
+  },
+  {
+    "name": "Refresh Interval (sec)",
+    "layer": "L2",
+    "parent": "Index Refresh",
+    "desc": "Seconds between index refresh cycles."
+  },
+  {
+    "name": "Batch Size",
+    "layer": "L2",
+    "parent": "Index Refresh",
+    "desc": "Number of documents to process per batch during refresh."
+  },
+  {
+    "name": "Incremental Flag",
+    "layer": "L2",
+    "parent": "Index Refresh",
+    "desc": "Boolean flag enabling incremental (vs. full) index refresh."
+  },
+  {
+    "name": "Full Reindex Trigger",
+    "layer": "L2",
+    "parent": "Index Refresh",
+    "desc": "Condition triggering a full index rebuild."
+  },
+  {
+    "name": "Concurrent Jobs",
+    "layer": "L2",
+    "parent": "Index Refresh",
+    "desc": "Number of parallel indexing jobs allowed."
+  },
+  {
+    "name": "Cleanup Policy",
+    "layer": "L2",
+    "parent": "Index Refresh",
+    "desc": "Policy for removing stale index data."
+  },
+  {
+    "name": "Runtime ID",
+    "layer": "L3",
+    "parent": "Sandbox Runtime",
+    "desc": "Unique identifier for this sandbox runtime."
+  },
+  {
+    "name": "Isolation Level",
+    "layer": "L3",
+    "parent": "Sandbox Runtime",
+    "desc": "Isolation strength ('process', 'container', 'vm')."
+  },
+  {
+    "name": "Resource Limits JSON",
+    "layer": "L3",
+    "parent": "Sandbox Runtime",
+    "desc": "JSON specifying CPU, memory, and disk limits."
+  },
+  {
+    "name": "Timeouts JSON",
+    "layer": "L3",
+    "parent": "Sandbox Runtime",
+    "desc": "JSON specifying execution timeouts for different operations."
+  },
+  {
+    "name": "Networking Enabled",
+    "layer": "L3",
+    "parent": "Sandbox Runtime",
+    "desc": "Boolean flag enabling/disabling network access in sandbox."
+  },
+  {
+    "name": "Filesystem Access",
+    "layer": "L3",
+    "parent": "Sandbox Runtime",
+    "desc": "Specification of filesystem access restrictions."
+  },
+  {
+    "name": "Pattern ID",
+    "layer": "L4",
+    "parent": "Pattern",
+    "desc": "Unique identifier for the pattern."
+  },
+  {
+    "name": "Pattern Type",
+    "layer": "L4",
+    "parent": "Pattern",
+    "desc": "Classification of pattern (trigger, filter, transform)."
+  },
+  {
+    "name": "Match Rules",
+    "layer": "L4",
+    "parent": "Pattern",
+    "desc": "Rules defining when the pattern should trigger."
+  },
+  {
+    "name": "Action Handler",
+    "layer": "L4",
+    "parent": "Pattern",
+    "desc": "Function/method to execute when pattern matches."
+  },
+  {
+    "name": "Priority Level",
+    "layer": "L4",
+    "parent": "Pattern",
+    "desc": "Priority for pattern evaluation (0\u2013100)."
+  },
+  {
+    "name": "Enabled Flag",
+    "layer": "L4",
+    "parent": "Pattern",
+    "desc": "Boolean flag enabling/disabling the pattern."
+  },
+  {
+    "name": "Harness ID",
+    "layer": "L6",
+    "parent": "Test Harness",
+    "desc": "Unique identifier for the test harness."
+  },
+  {
+    "name": "Test Suite ID",
+    "layer": "L6",
+    "parent": "Test Harness",
+    "desc": "Reference to the test suite(s) this harness runs."
+  },
+  {
+    "name": "Fixture Config",
+    "layer": "L6",
+    "parent": "Test Harness",
+    "desc": "Configuration for test fixtures (setup data, mocks)."
+  },
+  {
+    "name": "Teardown Script",
+    "layer": "L6",
+    "parent": "Test Harness",
+    "desc": "Script to execute after tests for cleanup."
+  },
+  {
+    "name": "Test Parallelism",
+    "layer": "L6",
+    "parent": "Test Harness",
+    "desc": "Number of parallel test workers."
+  },
+  {
+    "name": "Failure Mode",
+    "layer": "L6",
+    "parent": "Test Harness",
+    "desc": "Behavior on test failure ('stop', 'continue', 'retry')."
+  },
+  {
+    "name": "Persona ID",
+    "layer": "L6",
+    "parent": "Persona",
+    "desc": "Unique identifier for the agent persona."
+  },
+  {
+    "name": "Role Name",
+    "layer": "L6",
+    "parent": "Persona",
+    "desc": "Human-readable name for the agent role."
+  },
+  {
+    "name": "Capability Set",
+    "layer": "L6",
+    "parent": "Persona",
+    "desc": "List of capabilities this persona has access to."
+  },
+  {
+    "name": "Training Data Source",
+    "layer": "L6",
+    "parent": "Persona",
+    "desc": "Source of training data shaping persona behavior."
+  },
+  {
+    "name": "Behavior Parameters",
+    "layer": "L6",
+    "parent": "Persona",
+    "desc": "Parameters controlling agent behavior (temperature, risk tolerance, etc.)."
+  },
+  {
+    "name": "Knowledge Base ID",
+    "layer": "L6",
+    "parent": "Persona",
+    "desc": "Reference to the persona's knowledge base."
+  },
+  {
+    "name": "Stack ID",
+    "layer": "L6",
+    "parent": "Stack",
+    "desc": "Unique identifier for this stack configuration."
+  },
+  {
+    "name": "Layer Composition",
+    "layer": "L6",
+    "parent": "Stack",
+    "desc": "Specification of components from each of the 7 layers."
+  },
+  {
+    "name": "Version Constraints",
+    "layer": "L6",
+    "parent": "Stack",
+    "desc": "Version constraints for stack components."
+  },
+  {
+    "name": "Dependency Graph",
+    "layer": "L6",
+    "parent": "Stack",
+    "desc": "Graph of dependencies between stack components."
+  },
+  {
+    "name": "Deployment Target",
+    "layer": "L6",
+    "parent": "Stack",
+    "desc": "Target environment for deployment (dev, staging, prod)."
+  },
+  {
+    "name": "Resource Manifest",
+    "layer": "L6",
+    "parent": "Stack",
+    "desc": "Specification of required resources (CPU, memory, storage)."
+  },
+  {
+    "name": "Covenant ID",
+    "layer": "L7",
+    "parent": "Covenant",
+    "desc": "Unique identifier for the covenant."
+  },
+  {
+    "name": "Obligation Set",
+    "layer": "L7",
+    "parent": "Covenant",
+    "desc": "Set of obligations the agent must fulfill."
+  },
+  {
+    "name": "Constraint Rules",
+    "layer": "L7",
+    "parent": "Covenant",
+    "desc": "Rules defining constraints on agent actions."
+  },
+  {
+    "name": "Penalty Function",
+    "layer": "L7",
+    "parent": "Covenant",
+    "desc": "Function determining penalties for covenant violations."
+  },
+  {
+    "name": "Renewal Period (days)",
+    "layer": "L7",
+    "parent": "Covenant",
+    "desc": "Days until covenant renewal is required."
+  },
+  {
+    "name": "Stakeholder List",
+    "layer": "L7",
+    "parent": "Covenant",
+    "desc": "List of stakeholders party to the covenant."
+  },
+  {
+    "name": "Rule ID",
+    "layer": "L6",
+    "parent": "Policy Rule",
+    "desc": "Unique identifier for the policy rule."
+  },
+  {
+    "name": "Condition Expression",
+    "layer": "L6",
+    "parent": "Policy Rule",
+    "desc": "Boolean expression evaluated to determine if rule applies."
+  },
+  {
+    "name": "Action Type",
+    "layer": "L6",
+    "parent": "Policy Rule",
+    "desc": "Type of action to take (allow, deny, log, alert)."
+  },
+  {
+    "name": "Effect",
+    "layer": "L6",
+    "parent": "Policy Rule",
+    "desc": "Effect of the rule (allow or deny)."
+  },
+  {
+    "name": "Priority",
+    "layer": "L6",
+    "parent": "Policy Rule",
+    "desc": "Evaluation priority (higher = evaluated first)."
+  },
+  {
+    "name": "Audit Enabled",
+    "layer": "L6",
+    "parent": "Policy Rule",
+    "desc": "Boolean flag enabling audit logging for this rule."
+  },
+  {
+    "name": "Override ID",
+    "layer": "L6",
+    "parent": "Override Protocol",
+    "desc": "Unique identifier for this override."
+  },
+  {
+    "name": "Target Rule ID",
+    "layer": "L6",
+    "parent": "Override Protocol",
+    "desc": "ID of the policy rule being overridden."
+  },
+  {
+    "name": "Override Value",
+    "layer": "L6",
+    "parent": "Override Protocol",
+    "desc": "New value or action to apply instead of the rule."
+  },
+  {
+    "name": "Expiration Timestamp",
+    "layer": "L6",
+    "parent": "Override Protocol",
+    "desc": "ISO8601 timestamp when the override expires."
+  },
+  {
+    "name": "Approval Chain",
+    "layer": "L6",
+    "parent": "Override Protocol",
+    "desc": "List of approvers who authorized this override."
+  },
+  {
+    "name": "Audit Trail",
+    "layer": "L6",
+    "parent": "Override Protocol",
+    "desc": "Log of all actions and decisions related to this override."
+  },
+  {
+    "name": "Span ID",
+    "layer": "L7",
+    "parent": "Trace Span",
+    "desc": "Unique identifier for this trace span."
+  },
+  {
+    "name": "Parent Span ID",
+    "layer": "L7",
+    "parent": "Trace Span",
+    "desc": "ID of the parent span in the trace tree."
+  },
+  {
+    "name": "Operation Name",
+    "layer": "L7",
+    "parent": "Trace Span",
+    "desc": "Name of the operation represented by this span."
+  },
+  {
+    "name": "Start Timestamp",
+    "layer": "L7",
+    "parent": "Trace Span",
+    "desc": "ISO8601 timestamp when the span started."
+  },
+  {
+    "name": "Duration (ms)",
+    "layer": "L7",
+    "parent": "Trace Span",
+    "desc": "Duration of the span in milliseconds."
+  },
+  {
+    "name": "Status Code",
+    "layer": "L7",
+    "parent": "Trace Span",
+    "desc": "Status of the operation (ok, error, timeout)."
+  },
+  {
+    "name": "Attributes JSON",
+    "layer": "L7",
+    "parent": "Trace Span",
+    "desc": "Additional structured attributes of the span."
   }
 ]
