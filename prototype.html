@@ -6317,9 +6317,111 @@
         gap: 16px;
         margin-bottom: 6px;
       }
+
+      /* ===== US-10: Global focus-visible for keyboard users ===== */
+      *:focus-visible {
+        outline: 2px solid var(--accent-indigo);
+        outline-offset: 2px;
+      }
+      button:focus-visible,
+      .mode-pill:focus-visible,
+      .quick-filter-btn:focus-visible,
+      .stratum-header:focus-visible {
+        outline: 2px solid var(--accent-indigo);
+        outline-offset: -2px;
+        box-shadow: 0 0 0 4px rgba(129, 140, 248, 0.18);
+      }
+      /* Remove default outline when using mouse */
+      *:focus:not(:focus-visible) {
+        outline: none;
+      }
+
+      /* ===== US-11: Reduced-motion guard ===== */
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+        .aurora, .aurora canvas { display: none !important; }
+      }
+
+      /* ===== US-12: Search result count badge ===== */
+      .search-result-count {
+        position: absolute;
+        right: 38px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 10.5px;
+        font-weight: 600;
+        color: var(--text-quaternary);
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.2s;
+      }
+      .search-result-count.visible {
+        opacity: 1;
+      }
+
+      /* ===== US-13: Mobile polish <480px ===== */
+      @media (max-width: 480px) {
+        .hero-section h1 { font-size: 20px; }
+        .hero-tagline { font-size: 12px; }
+        .mode-pills { flex-wrap: wrap; gap: 4px; }
+        .mode-pill { font-size: 11px; padding: 5px 10px; }
+        .search-bar { margin: 0 8px; }
+        .expand-all-btn { font-size: 10px; padding: 4px 8px; }
+        .stratum-card { margin: 6px 0; }
+        .stratum-header { padding: 12px; font-size: 13px; }
+        .product-card { padding: 10px; }
+        .lens-detail-section { padding: 10px; }
+        .right-rail { padding: 8px; }
+        .left-rail { display: none; }
+        .main-canvas { padding: 0 4px; }
+        .header { padding: 8px 12px; }
+        .header-actions { gap: 4px; }
+        .header-actions button { font-size: 10px; padding: 5px 8px; }
+        .quick-filters { flex-wrap: wrap; }
+        .quick-filter-btn { font-size: 10px; }
+        .afb-tag { font-size: 10px; }
+        .share-btn, .suggest-cta { font-size: 10px; padding: 5px 10px; }
+      }
+
+      /* ===== US-14: Scroll progress indicator ===== */
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--accent-indigo), var(--accent-teal, #06b6d4));
+        z-index: 10001;
+        width: 0%;
+        transition: width 0.1s linear;
+        pointer-events: none;
+      }
+
+      /* ===== SR-only utility ===== */
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
     </style>
   </head>
   <body>
+    <!-- US-14: Scroll progress indicator -->
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+    <!-- US-9: ARIA live region for filter/search announcements -->
+    <div id="a11yAnnouncer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
     <!-- SKIP TO CONTENT (accessibility) -->
     <a href="#stackContainer" class="skip-link" id="skipLink"
       >Skip to content</a
@@ -6338,14 +6440,16 @@
         <span class="brand-a">{</span><span class="brand-a">a</span
         ><span class="brand-a">}</span>OS <span>Explorer</span>
       </div>
-      <div class="search-bar">
+      <div class="search-bar" style="position:relative">
         <span class="search-icon">&#x1F50D;</span>
         <input
           type="text"
           placeholder="Search&hellip;"
           id="searchInput"
           title="Search products, strata, constructs&hellip;"
+          aria-describedby="searchResultCount"
         />
+        <span class="search-result-count" id="searchResultCount" aria-hidden="true"></span>
         <span class="shortcut">/</span>
         <div class="search-autocomplete" id="searchAutocomplete"></div>
       </div>
@@ -28245,6 +28349,25 @@
         // Update active filter bar + product count
         updateActiveFilterBar(visibleProducts, q);
 
+        // US-12: Update search result count badge
+        const srcBadge = document.getElementById("searchResultCount");
+        if (srcBadge) {
+          const totalProducts = document.querySelectorAll(".product-card").length;
+          if (q) {
+            srcBadge.textContent = visibleProducts + "/" + totalProducts;
+            srcBadge.classList.add("visible");
+          } else {
+            srcBadge.textContent = "";
+            srcBadge.classList.remove("visible");
+          }
+        }
+
+        // US-9: Announce filter results to screen readers
+        const announcer = document.getElementById("a11yAnnouncer");
+        if (announcer && (q || hasActiveFilter)) {
+          announcer.textContent = visibleProducts + " products shown";
+        }
+
         const autoSelectedProductId = getAutoSelectedSearchProductId(
           q,
           conceptMatches,
@@ -31000,6 +31123,16 @@
         if (btn) btn.classList.toggle("visible", window.scrollY > 500);
       }
 
+      // ===== US-14: Scroll Progress Indicator =====
+      function updateScrollProgress() {
+        const bar = document.getElementById("scrollProgress");
+        if (!bar) return;
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        bar.style.width = pct + "%";
+      }
+
       // ===== IMPROVEMENT 15: Keyboard Product Navigation (j/k) =====
       let kbProductIndex = -1;
       function navigateProducts(direction) {
@@ -33504,13 +33637,14 @@
           }
         });
 
-        // Scroll listeners — mini-map + back-to-top (Improvements 12, 13)
+        // Scroll listeners — mini-map + back-to-top + scroll progress
         let scrollTick = false;
         window.addEventListener("scroll", () => {
           if (!scrollTick) {
             requestAnimationFrame(() => {
               updateMiniMap();
               updateBackToTop();
+              updateScrollProgress();
               scrollTick = false;
             });
             scrollTick = true;
@@ -33608,7 +33742,7 @@
     </div>
 
     <!-- Toast Container (Improvement 7) -->
-    <div class="toast-container" id="toastContainer"></div>
+    <div class="toast-container" id="toastContainer" aria-live="assertive" role="alert"></div>
 
     <!-- ===== T3: STACK BUILDER OVERLAY ===== -->
     <div class="stack-builder-overlay hidden" id="stackBuilderOverlay">
