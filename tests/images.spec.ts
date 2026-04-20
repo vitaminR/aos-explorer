@@ -4,7 +4,8 @@ import path from "path";
 const PROD = "https://aos-explorer.web.app";
 
 test.describe("Image loading — production", () => {
-  test("prod docs.html — terminology primer image loads", async ({ page }) => {
+  test.skip("prod docs.html — terminology primer image loads", async ({ page }) => {
+    // SKIPPED: docs.html is now text-only (no embedded images)
     await page.goto(`${PROD}/docs.html`, { waitUntil: "networkidle" });
     const images = page.locator("img");
     const count = await images.count();
