@@ -1,0 +1,360 @@
+{
+  "version": "v1.1.0",
+  "generatedAt": "2026-04-20T01:54:16Z",
+  "count": 7,
+  "strata": [
+    {
+      "id": "l7",
+      "label": "L7",
+      "name": "Experience & Intent",
+      "color": "#f59e0b",
+      "definition": "The human boundary where requests enter, responses render, and approvals happen.",
+      "boundaryQuestion": "What is the user asking, seeing, approving, or rejecting?",
+      "oneLiner": "What the human asks, sees, and approves.",
+      "substrates": [
+        "chat UI",
+        "portal",
+        "CLI",
+        "dashboard",
+        "approval surface",
+        "API gateway"
+      ],
+      "constructs": [
+        "user session",
+        "task request",
+        "approval request",
+        "rendered response",
+        "scoped work item"
+      ],
+      "primitives": [
+        "user_id",
+        "session_id",
+        "message_text",
+        "file_handle",
+        "role_string",
+        "approval_bool"
+      ],
+      "typicalFailures": [
+        "wrong intent captured",
+        "ambiguous user instruction",
+        "poor UX causes misuse",
+        "approval action not recorded",
+        "response rendered without context"
+      ],
+      "coreMetrics": [
+        "task completion rate",
+        "time to first response",
+        "approval completion rate",
+        "user drop-off rate",
+        "correction rate"
+      ]
+    },
+    {
+      "id": "l6",
+      "label": "L6",
+      "name": "Governance & Trust",
+      "color": "#6366f1",
+      "definition": "The policy boundary where access, safety, approval, budget, and compliance are enforced.",
+      "boundaryQuestion": "Who is allowed to do this, under what policy, with what risk and budget?",
+      "oneLiner": "What is allowed, safe, compliant, and budgeted.",
+      "substrates": [
+        "IAM / RBAC",
+        "policy engine",
+        "content safety",
+        "secrets manager",
+        "key manager",
+        "budget guardrails",
+        "approval workflows"
+      ],
+      "constructs": [
+        "access token",
+        "policy decision",
+        "trust envelope",
+        "audit trail",
+        "safety verdict",
+        "budget envelope"
+      ],
+      "primitives": [
+        "scope",
+        "allow_deny_flag",
+        "policy_rule",
+        "secret_ref",
+        "risk_score",
+        "budget_threshold",
+        "classification_tag"
+      ],
+      "typicalFailures": [
+        "unauthorized tool access",
+        "over-permissive policy",
+        "missing audit evidence",
+        "secret exposure",
+        "budget runaway",
+        "unsafe content not blocked"
+      ],
+      "coreMetrics": [
+        "policy violation rate",
+        "unauthorized attempt count",
+        "audit completeness",
+        "budget variance",
+        "approval latency",
+        "safety block accuracy"
+      ]
+    },
+    {
+      "id": "l5",
+      "label": "L5",
+      "name": "Observability & Evaluation",
+      "color": "#8b5cf6",
+      "definition": "The proof boundary where execution becomes visible, measurable, and judged.",
+      "boundaryQuestion": "What actually happened, how well did it perform, and where did it fail?",
+      "oneLiner": "What happened, how it performed, and how we know.",
+      "substrates": [
+        "distributed tracing",
+        "logging pipeline",
+        "metrics store",
+        "eval harness",
+        "dashboard",
+        "alerting system",
+        "drift monitor"
+      ],
+      "constructs": [
+        "trace graph",
+        "eval scorecard",
+        "alert object",
+        "cost curve",
+        "regression report",
+        "incident record"
+      ],
+      "primitives": [
+        "timestamp",
+        "trace_id",
+        "span_id",
+        "metric_point",
+        "severity",
+        "token_count",
+        "score_float"
+      ],
+      "typicalFailures": [
+        "silent failure with no trace",
+        "eval blind spot",
+        "cost spike unseen",
+        "bad alert thresholds",
+        "drift not detected",
+        "success measured incorrectly"
+      ],
+      "coreMetrics": [
+        "trace coverage",
+        "p95 / p99 latency",
+        "eval pass rate",
+        "false positive alert rate",
+        "drift detection lag",
+        "cost per successful task"
+      ]
+    },
+    {
+      "id": "l4",
+      "label": "L4",
+      "name": "Orchestration & Decisioning",
+      "color": "#3b82f6",
+      "definition": "The control boundary where work is routed, sequenced, delegated, retried, and stopped.",
+      "boundaryQuestion": "What happens next, in what order, with which agent, under which stop conditions?",
+      "oneLiner": "What happens next, by whom, and in what order.",
+      "substrates": [
+        "workflow engine",
+        "router",
+        "state machine",
+        "planner",
+        "handoff manager",
+        "queue",
+        "retry logic",
+        "circuit breaker"
+      ],
+      "constructs": [
+        "execution graph",
+        "plan",
+        "routing table",
+        "session state",
+        "handoff packet",
+        "stop condition"
+      ],
+      "primitives": [
+        "node_id",
+        "edge",
+        "task_id",
+        "state_key",
+        "retry_count",
+        "timeout_value",
+        "branch_flag"
+      ],
+      "typicalFailures": [
+        "infinite loop",
+        "wrong specialist selected",
+        "retry storm",
+        "broken stop condition",
+        "dead branch",
+        "state corruption"
+      ],
+      "coreMetrics": [
+        "task success rate",
+        "average steps per task",
+        "loop rate",
+        "retry rate",
+        "handoff success rate",
+        "orchestration latency"
+      ]
+    },
+    {
+      "id": "l3",
+      "label": "L3",
+      "name": "Execution & Interfaces",
+      "color": "#06b6d4",
+      "definition": "The action boundary where external tools, APIs, scripts, and sandboxes are invoked.",
+      "boundaryQuestion": "What external action was invoked, against which interface, and what happened?",
+      "oneLiner": "What external action was actually taken.",
+      "substrates": [
+        "tool gateway",
+        "function-calling adapter",
+        "MCP server",
+        "API connector",
+        "sandbox",
+        "job runner",
+        "script executor",
+        "microVM / container task"
+      ],
+      "constructs": [
+        "tool call",
+        "payload",
+        "job run",
+        "connector response",
+        "executed script",
+        "microVM task"
+      ],
+      "primitives": [
+        "endpoint_url",
+        "method",
+        "function_name",
+        "arg_field",
+        "exit_code",
+        "file_path",
+        "process_id"
+      ],
+      "typicalFailures": [
+        "malformed payload",
+        "auth mismatch",
+        "wrong tool executed",
+        "destructive script run",
+        "sandbox escape risk",
+        "connector timeout"
+      ],
+      "coreMetrics": [
+        "tool success rate",
+        "interface latency",
+        "side-effect accuracy",
+        "sandbox failure rate",
+        "connector coverage",
+        "execution rollback rate"
+      ]
+    },
+    {
+      "id": "l2",
+      "label": "L2",
+      "name": "Knowledge & Memory",
+      "color": "#10b981",
+      "definition": "The context boundary where facts, documents, semantic relationships, and memory are stored and retrieved.",
+      "boundaryQuestion": "What context did the system know, retrieve, remember, or forget?",
+      "oneLiner": "What context the system knew, retrieved, or forgot.",
+      "substrates": [
+        "vector store",
+        "graph store",
+        "document index",
+        "memory store",
+        "transcript store",
+        "RAG pipeline"
+      ],
+      "constructs": [
+        "embedding set",
+        "chunk set",
+        "memory object",
+        "semantic thread",
+        "citation set",
+        "entity graph"
+      ],
+      "primitives": [
+        "float_value",
+        "document_id",
+        "chunk_id",
+        "entity_id",
+        "memory_key",
+        "embedding_dimension"
+      ],
+      "typicalFailures": [
+        "wrong retrieval",
+        "stale context",
+        "forgotten session detail",
+        "duplicate memory",
+        "low-quality chunking",
+        "bad entity resolution"
+      ],
+      "coreMetrics": [
+        "retrieval precision",
+        "retrieval recall",
+        "citation coverage",
+        "memory hit rate",
+        "stale context rate",
+        "rerank lift"
+      ]
+    },
+    {
+      "id": "l1",
+      "label": "L1",
+      "name": "Models & Infrastructure",
+      "color": "#64748b",
+      "definition": "The foundation boundary where models, runtimes, compute, storage, and network resources actually operate.",
+      "boundaryQuestion": "Is the model/runtime/compute/network foundation available and behaving correctly?",
+      "oneLiner": "What compute, runtime, model, and network foundation made it all possible.",
+      "substrates": [
+        "model endpoint",
+        "inference runtime",
+        "container runtime",
+        "GPU / CPU",
+        "scheduler",
+        "storage",
+        "network fabric",
+        "service mesh"
+      ],
+      "constructs": [
+        "model response",
+        "token stream",
+        "embedding output",
+        "container",
+        "packet flow",
+        "runtime allocation"
+      ],
+      "primitives": [
+        "token",
+        "byte",
+        "packet",
+        "request_id",
+        "ip_address",
+        "port",
+        "gpu_second"
+      ],
+      "typicalFailures": [
+        "model unavailable",
+        "cold start / scaling lag",
+        "network segmentation issue",
+        "GPU exhaustion",
+        "endpoint timeout",
+        "bad model deployment"
+      ],
+      "coreMetrics": [
+        "availability",
+        "model latency",
+        "tokens per second",
+        "error rate",
+        "infrastructure utilization",
+        "cost per call"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "$comment": "Refresh queue — items waiting for review. Sorted by priority descending. Processed manually for now; future agents will consume this.",
+  "schemaVersion": "0.1.0",
+  "queue": [
+    {
+      "id": "rq-001",
+      "targetType": "product",
+      "targetId": "langgraph",
+      "reason": "high-volatility-vendor",
+      "detail": "LangChain ships major versions frequently. LangGraph 0.3+ may change state persistence API.",
+      "priority": 0.82,
+      "priorityFactors": {
+        "demand": 0.9,
+        "strategicImportance": 0.8,
+        "volatility": 0.9,
+        "confidenceDecay": 0.3,
+        "trustLevel": 0.7
+      },
+      "requestedDate": "2026-04-14",
+      "deadline": "2026-05-01",
+      "status": "pending",
+      "assignedTo": null,
+      "completedDate": null,
+      "notes": "Check if LangGraph 0.3 persistence API changed. Update evidence packet ev-langgraph-001."
+    },
+    {
+      "id": "rq-002",
+      "targetType": "evidence",
+      "targetId": "ev-gsd-001",
+      "reason": "stub-evidence",
+      "detail": "Evidence packet is a stub with no claims. Needs manual research.",
+      "priority": 0.65,
+      "priorityFactors": {
+        "demand": 0.6,
+        "strategicImportance": 0.7,
+        "volatility": 0.3,
+        "confidenceDecay": 0.8,
+        "trustLevel": 0.4
+      },
+      "requestedDate": "2026-04-14",
+      "deadline": null,
+      "status": "pending",
+      "assignedTo": null,
+      "completedDate": null,
+      "notes": "Fill evidence claims from GSD repo analysis."
+    },
+    {
+      "id": "rq-003",
+      "targetType": "concept",
+      "targetId": "mcp",
+      "reason": "spec-evolution",
+      "detail": "MCP spec is actively evolving. Concept explainer may need update if new primitives are added.",
+      "priority": 0.55,
+      "priorityFactors": {
+        "demand": 0.8,
+        "strategicImportance": 0.7,
+        "volatility": 0.7,
+        "confidenceDecay": 0.2,
+        "trustLevel": 0.8
+      },
+      "requestedDate": "2026-04-14",
+      "deadline": null,
+      "status": "pending",
+      "assignedTo": null,
+      "completedDate": null,
+      "notes": "Monitor MCP spec repo for breaking changes."
+    }
+  ]
+}

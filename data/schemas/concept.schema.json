@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "concept.schema.json",
+  "title": "aOS Concept Card (Tier A)",
+  "description": "Canonical, slow-changing concept definition for the {a}OS taxonomy.",
+  "type": "object",
+  "required": ["slug", "name", "shortDefinition", "status"],
+  "properties": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$",
+      "description": "URL-safe canonical identifier. Must be globally unique."
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable display name."
+    },
+    "aliases": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Search aliases and alternate spellings. Must not collide across concepts."
+    },
+    "shortDefinition": {
+      "type": "string",
+      "maxLength": 300,
+      "description": "One-sentence definition for cards and previews."
+    },
+    "explainer": {
+      "type": "string",
+      "description": "2-3 paragraph deep explanation for the full concept page."
+    },
+    "strata": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["L1", "L2", "L3", "L4", "L5", "L6", "L7"]
+      },
+      "description": "Which {a}OS strata this concept primarily lives in."
+    },
+    "axes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Which cross-cutting axes this concept touches."
+    },
+    "relatedProductIds": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Product IDs from products.json that map to this concept."
+    },
+    "relatedConceptSlugs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Other concept slugs related to this one."
+    },
+    "antiPatterns": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "mitigations": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": { "type": "string" },
+          "href": { "type": "string" }
+        },
+        "required": ["label", "href"]
+      }
+    },
+    "freshnessTier": {
+      "type": "string",
+      "enum": ["A"],
+      "default": "A"
+    },
+    "lastReviewed": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "ISO date of last human review."
+    },
+    "reviewPolicy": {
+      "type": "string",
+      "enum": ["quarterly", "manual"],
+      "default": "quarterly"
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Confidence in this concept definition's accuracy and completeness."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["seed", "draft", "complete", "deprecated"],
+      "description": "Lifecycle status of this concept card."
+    }
+  }
+}

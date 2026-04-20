@@ -1,0 +1,210 @@
+# {a}OS Explorer — Full Taxonomy Data
+# Version: v1.1.0
+# Generated: 2026-04-20T01:54:16Z
+# Source: https://aos7.tech
+
+============================================================
+STRATA (7 canonical layers)
+============================================================
+
+## L7 — Experience & Intent
+Definition: The human boundary where requests enter, responses render, and approvals happen.
+Boundary question: What is the user asking, seeing, approving, or rejecting?
+Substrates: chat UI, portal, CLI, dashboard, approval surface, API gateway
+Constructs: user session, task request, approval request, rendered response, scoped work item
+Primitives: user_id, session_id, message_text, file_handle, role_string, approval_bool
+Typical failures: wrong intent captured, ambiguous user instruction, poor UX causes misuse, approval action not recorded, response rendered without context
+Core metrics: task completion rate, time to first response, approval completion rate, user drop-off rate, correction rate
+
+## L6 — Governance & Trust
+Definition: The policy boundary where access, safety, approval, budget, and compliance are enforced.
+Boundary question: Who is allowed to do this, under what policy, with what risk and budget?
+Substrates: IAM / RBAC, policy engine, content safety, secrets manager, key manager, budget guardrails, approval workflows
+Constructs: access token, policy decision, trust envelope, audit trail, safety verdict, budget envelope
+Primitives: scope, allow_deny_flag, policy_rule, secret_ref, risk_score, budget_threshold, classification_tag
+Typical failures: unauthorized tool access, over-permissive policy, missing audit evidence, secret exposure, budget runaway, unsafe content not blocked
+Core metrics: policy violation rate, unauthorized attempt count, audit completeness, budget variance, approval latency, safety block accuracy
+
+## L5 — Observability & Evaluation
+Definition: The proof boundary where execution becomes visible, measurable, and judged.
+Boundary question: What actually happened, how well did it perform, and where did it fail?
+Substrates: distributed tracing, logging pipeline, metrics store, eval harness, dashboard, alerting system, drift monitor
+Constructs: trace graph, eval scorecard, alert object, cost curve, regression report, incident record
+Primitives: timestamp, trace_id, span_id, metric_point, severity, token_count, score_float
+Typical failures: silent failure with no trace, eval blind spot, cost spike unseen, bad alert thresholds, drift not detected, success measured incorrectly
+Core metrics: trace coverage, p95 / p99 latency, eval pass rate, false positive alert rate, drift detection lag, cost per successful task
+
+## L4 — Orchestration & Decisioning
+Definition: The control boundary where work is routed, sequenced, delegated, retried, and stopped.
+Boundary question: What happens next, in what order, with which agent, under which stop conditions?
+Substrates: workflow engine, router, state machine, planner, handoff manager, queue, retry logic, circuit breaker
+Constructs: execution graph, plan, routing table, session state, handoff packet, stop condition
+Primitives: node_id, edge, task_id, state_key, retry_count, timeout_value, branch_flag
+Typical failures: infinite loop, wrong specialist selected, retry storm, broken stop condition, dead branch, state corruption
+Core metrics: task success rate, average steps per task, loop rate, retry rate, handoff success rate, orchestration latency
+
+## L3 — Execution & Interfaces
+Definition: The action boundary where external tools, APIs, scripts, and sandboxes are invoked.
+Boundary question: What external action was invoked, against which interface, and what happened?
+Substrates: tool gateway, function-calling adapter, MCP server, API connector, sandbox, job runner, script executor, microVM / container task
+Constructs: tool call, payload, job run, connector response, executed script, microVM task
+Primitives: endpoint_url, method, function_name, arg_field, exit_code, file_path, process_id
+Typical failures: malformed payload, auth mismatch, wrong tool executed, destructive script run, sandbox escape risk, connector timeout
+Core metrics: tool success rate, interface latency, side-effect accuracy, sandbox failure rate, connector coverage, execution rollback rate
+
+## L2 — Knowledge & Memory
+Definition: The context boundary where facts, documents, semantic relationships, and memory are stored and retrieved.
+Boundary question: What context did the system know, retrieve, remember, or forget?
+Substrates: vector store, graph store, document index, memory store, transcript store, RAG pipeline
+Constructs: embedding set, chunk set, memory object, semantic thread, citation set, entity graph
+Primitives: float_value, document_id, chunk_id, entity_id, memory_key, embedding_dimension
+Typical failures: wrong retrieval, stale context, forgotten session detail, duplicate memory, low-quality chunking, bad entity resolution
+Core metrics: retrieval precision, retrieval recall, citation coverage, memory hit rate, stale context rate, rerank lift
+
+## L1 — Models & Infrastructure
+Definition: The foundation boundary where models, runtimes, compute, storage, and network resources actually operate.
+Boundary question: Is the model/runtime/compute/network foundation available and behaving correctly?
+Substrates: model endpoint, inference runtime, container runtime, GPU / CPU, scheduler, storage, network fabric, service mesh
+Constructs: model response, token stream, embedding output, container, packet flow, runtime allocation
+Primitives: token, byte, packet, request_id, ip_address, port, gpu_second
+Typical failures: model unavailable, cold start / scaling lag, network segmentation issue, GPU exhaustion, endpoint timeout, bad model deployment
+Core metrics: availability, model latency, tokens per second, error rate, infrastructure utilization, cost per call
+
+============================================================
+CONCEPTS (14 entries)
+============================================================
+
+## Execution Harness (/harness)
+Definition: A governing scaffold that constrains sequencing, context budgets, checkpoints, and stop conditions.
+Explainer: A harness sits at L0/L4 (Meta/Orchestration) and is the assembled agent bundle: model + tools + memory + orchestration + policy. It defines how work is done, not just what to do. It wraps an agent or pipeline with lifecycle controls — sequencing steps, enforcing context budgets, persisting checkpoints, and triggering stop conditions. Examples include execution harnesses (GSD, BMAD), test harnesses (Superpowers), and CI/CD harnesses (Harness.io). Not to be confused with the agent or the tools it calls — the harness is the governing scaffold around them.
+Strata: L0, L4
+Aliases: harness, harnes, orchestration harness, execution harness, delivery harness, layer 0, stratum 0
+Anti-patterns: Bolting agent execution onto generic container orchestrators without native lifecycle support leads to fragile systems that crash mid-task.
+Mitigations: Utilize a dedicated agent runtime harness that natively provides durable execution, state isolation, and lifecycle management from day one.
+
+## loop-core (/loop-core)
+Definition: Iterative cycle of plan → act → evaluate → adjust until stop conditions are met.
+Explainer: The canonical agentic control cycle. An agent enters a loop where it plans the next action, executes it via tools or generation, evaluates the result against success criteria, and adjusts strategy. The loop repeats until stop conditions are satisfied or a budget is exhausted. Variants include research loops, evaluation loops, implementation loops, and recovery loops.
+Strata: L3, L4
+Aliases: loop, loops, loop-core, agentic loop, feedback loop
+Anti-patterns: Relying on a single, open-ended prompt-response generation causes the agent to hallucinate actions instead of dynamically adapting to environment feedback.
+Mitigations: Implement an iterative control loop where the agent explicitly generates a thought trace to reason about observations before executing its next action.
+
+## MCP Tooling (/mcp)
+Definition: Standardized interface for exposing tools, resources, and prompts to agents.
+Explainer: The Model Context Protocol (MCP) establishes a universal interface allowing agents to connect to any compliant tool or dataset. Instead of writing bespoke integrations for every data source, teams adopt MCP to provide plug-and-play tool surfaces. MCP servers expose file systems, APIs, databases, and browser actions through a consistent schema.
+Strata: L2, L3
+Aliases: mcp, model context protocol, tool registry
+Anti-patterns: Writing bespoke, hardcoded integrations for every new data source creates an unsustainable maintenance burden and severe vendor lock-in.
+Mitigations: Adopt the Model Context Protocol (MCP) to establish a universal, standardized interface allowing agents to instantly connect to any compliant tool or dataset.
+
+## Memory Systems (/memory)
+Definition: Stores and recalls contextual state across turns, sessions, and tasks.
+Explainer: Memory systems give agents the ability to persist and retrieve state beyond a single context window. A multi-tiered architecture typically includes working memory for active tasks, episodic memory for session history, and semantic memory for long-term knowledge. Without memory, agents suffer from amnesia — forcing users to repeatedly explain context and endure the same mistakes.
+Strata: L2
+Aliases: memory, episodic memory, working memory, context memory
+Anti-patterns: Deploying stateless agents that suffer from amnesia forces users to repeatedly explain their context and endure the same mistakes in every new session.
+Mitigations: Establish a multi-tiered memory architecture consisting of working memory for active tasks, episodic memory for session history, and semantic memory for long-term knowledge.
+
+## Guardrails & Safety (/guardrails)
+Definition: Validates inputs and outputs to ensure safety, policy compliance, and defense against prompt injection.
+Explainer: Guardrails are deterministic validation layers embedded directly into the orchestration pipeline. They inspect every input, output, and tool invocation against policy-as-code rules before execution proceeds. Without them, agents are vulnerable to prompt injection, unauthorized privilege escalation, and compliance violations. Guardrails should be baked in from day one, not bolted on after deployment.
+Strata: L6
+Aliases: guardrails, safety, output validation, content safety, prompt injection defense, input validation
+Anti-patterns: Bolting security guardrails onto an application after deployment results in fragmented policies that agents can easily bypass through prompt manipulation.
+Mitigations: Embed deterministic, policy-as-code guardrails directly into the orchestration layer from day one to validate all inputs, outputs, and tool invocations.
+
+## Checkpoints & State Persistence (/checkpoint)
+Definition: Durable snapshots of agent state that enable resume, rollback, and crash recovery.
+Explainer: Checkpoints capture a serializable snapshot of agent state — including context, progress, and intermediate results — at defined intervals. If the agent crashes, times out, or is preempted, execution resumes from the last checkpoint rather than restarting from scratch. Essential for long-running tasks and multi-step pipelines.
+Strata: L4
+Aliases: checkpoint, checkpointing, state snapshot
+
+## Tool Calling (/tool_calling)
+Definition: The mechanism by which an agent invokes external tools, APIs, or functions to act on the world.
+Explainer: Tool calling is the bridge between an agent's reasoning and real-world side effects. The agent generates a structured tool invocation (name + arguments), the runtime validates and dispatches it, and the result is fed back into the agent's context. Standardized via protocols like MCP and OpenAI function calling.
+Strata: L2, L3
+Aliases: tool calling, tool use, function calling
+
+## Retrieval-Augmented Generation (/rag)
+Definition: Augments LLM generation with retrieved external knowledge to reduce hallucination and improve accuracy.
+Explainer: RAG pipelines retrieve relevant documents from a knowledge base before generating a response, grounding the agent's output in real data rather than parametric memory alone. Implementations range from simple vector-search retrieval to multi-hop re-ranking pipelines with hybrid search.
+Strata: L2
+Aliases: rag, retrieval augmented generation, RAG
+
+## Governance & Compliance (/governance)
+Definition: Organizational policies, audit trails, and compliance controls that govern agent behavior at scale.
+Explainer: Governance encompasses the policies, audit mechanisms, and compliance controls that ensure agents operate within organizational boundaries. This includes access control, usage quotas, logging, approval workflows, and regulatory compliance. Distinct from runtime guardrails — governance operates at the organizational and fleet level.
+Strata: L6, L7
+Aliases: governance, compliance, policy enforcement
+
+## Agentic Stack (/stack)
+Definition: Complete 7-layer configuration for a domain: model + memory + tools + orchestration + UX + governance.
+Explainer: A stack is the full end-to-end instantiation of all 7 strata optimized for a specific domain or use case. It's not just the technologies, but their wiring: which model, which memory backend, which tool set, which orchestration pattern, which UI paradigm, and which governance policies. Stacks are repeatable blueprints — once assembled and battle-tested, they can be cloned for similar use cases. Examples: research loop stack, customer service stack, code generation stack.
+Strata: L0
+Aliases: stack, agent stack, full stack, layer 0, stratum 0, sovereignty
+Anti-patterns: Hand-assembling agents from loose components without a reproducible stack template leads to drift, inconsistency, and high maintenance cost across multiple similar applications.
+Mitigations: Define canonical stacks as blueprints: reusable 7L configurations that can be versioned, tested, and cloned for new instances.
+
+## Agent Persona (/persona)
+Definition: The identity, voice, role, and behavioral directives that define an agent's character and operating principles.
+Explainer: A persona is the coherent identity and behavioral contract of an agent. It encompasses role (what the agent is), voice (how it communicates), core values (what it prioritizes), constraints (what it won't do), and operating principles (how it makes decisions). A well-defined persona ensures consistency across all interactions and makes agent behavior predictable and auditable. Personas can be hard-coded in system prompts, learned from examples, or emergent from reward models.
+Strata: L0
+Aliases: persona, identity, role, instructions, agent persona, layer 0, stratum 0, sovereignty
+Anti-patterns: Deploying agents without a clear, documented persona results in unpredictable behavior and difficulty in debugging misalignment.
+Mitigations: Define a canonical persona for each agent: explicit role, voice guidelines, core values, and decision-making principles.
+
+## Agentic Pattern (/pattern)
+Definition: Repeatable architectural patterns for orchestrating agent reasoning, action, and feedback loops.
+Explainer: Agentic patterns are proven choreographies of reasoning → planning → execution → evaluation. Examples include ReAct (Reasoning + Acting), Chain-of-Thought (CoT), Self-Ask, Tree-of-Thought, and multi-agent debate. A pattern defines the structure of the control loop and the format of prompts, but is agnostic to the underlying model or tools. Patterns are composable — they can be nested or sequenced to build complex multi-stage pipelines.
+Strata: L0
+Aliases: pattern, orchestration pattern, control pattern, ReAct, chain of thought, layer 0, stratum 0, sovereignty
+Anti-patterns: Designing orchestration logic ad-hoc for each new task duplicates effort, introduces subtle bugs, and makes it impossible to compare or optimize approaches.
+Mitigations: Identify and document repeatable patterns (ReAct, CoT, debate, retrieval loops) and encode them as reusable, testable orchestration templates.
+
+## Agent Configuration (/config)
+Definition: Runtime parameters that instantiate a harness for a specific task or domain: model, temperature, tools, context budget, etc.
+Explainer: Configuration is the set of declarative, runtime-modifiable knobs that turn a generic harness into a domain-specific agent. Examples: which LLM, temperature, top-k, tool set, max context window, timeout, max retries, memory backend, guardrail policies. Good configs are externalized and version-controlled, making it easy to A/B test, audit, and roll back changes without code changes.
+Strata: L0
+Aliases: config, configuration, instantiation, parameters, agent config, layer 0, stratum 0, sovereignty
+Anti-patterns: Hardcoding agent parameters (model, temperature, tool list) into application code makes it impossible to tune without redeploy and prevents safe A/B testing.
+Mitigations: Externalize all agent configuration into declarative files or services that can be modified, versioned, and rolled back independently of application code.
+
+## Agent Covenant (/covenant)
+Definition: A formal pledge of agent capabilities, performance, and safety guarantees: latency, accuracy, uptime, and compliance.
+Explainer: A covenant is the behavioral contract between an agent and its users/operators. It specifies: what the agent commits to do (capability boundary), how fast (latency SLA), with what accuracy (quality threshold), under what conditions (fault resilience), and in compliance with what policies (safety constraints). Covenants are machine-testable — they become the basis for automated eval frameworks and production monitoring.
+Strata: L0
+Aliases: covenant, SLA, guarantee, pledge, behavioral contract, layer 0, stratum 0, sovereignty
+Anti-patterns: Deploying agents without explicit performance guarantees or safety pledges leads to misaligned expectations and production surprises.
+Mitigations: Define a machine-testable covenant for each agent: capability boundary, latency SLA, quality threshold, fault resilience, and compliance policies. Instrument monitoring and evals against this covenant.
+
+============================================================
+PRODUCTS (3 entries)
+============================================================
+
+## BMAD (Community)
+Type: framework
+Primary stratum: L4 Orchestration & Decisioning
+Secondary strata: L3
+Deployment: Local
+License: Open Source
+Rationale: Spec-first agent harness for turning vague goals into disciplined execution. Enforces planning, checkpointing, and quality gates before implementation begins.
+Confidence: 91%
+
+## GSD (Community)
+Type: framework
+Primary stratum: L4 Orchestration & Decisioning
+Secondary strata: L3
+Deployment: Local
+License: Open Source
+Rationale: Context-lifecycle harness with explicit checkpoints, budget control, and resume semantics. Best for durable multi-step agent execution.
+Confidence: 89%
+
+## LangGraph (LangChain)
+Type: framework
+Primary stratum: L4 Orchestration & Decisioning
+Secondary strata: L3
+Deployment: Hybrid
+License: Open Source
+Rationale: Graph-based agent orchestration framework. Defines agent workflows as cyclic graphs with state management and tool execution.
+Confidence: 88%

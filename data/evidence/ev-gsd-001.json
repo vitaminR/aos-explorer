@@ -1,0 +1,20 @@
+{
+  "$comment": "Tier C — Evidence packet stub for GSD. To be filled during next research pass.",
+  "id": "ev-gsd-001",
+  "productId": "gsd",
+  "type": "repo-analysis",
+  "title": "GSD context-lifecycle and checkpoint model",
+  "summary": "Placeholder — needs manual research pass.",
+  "sourceUrl": "",
+  "sourceType": "github-repo",
+  "sourceQuality": "unknown",
+  "trustLevel": "unverified",
+  "capturedDate": "2026-04-14",
+  "expiresDate": "2026-07-14",
+  "confidence": 0.5,
+  "claims": [],
+  "tags": ["harness", "checkpoint", "durable-execution"],
+  "status": "stub",
+  "lastReviewed": null,
+  "reviewedBy": null
+}

@@ -1,0 +1,573 @@
+{
+  "version": "v1.1.0",
+  "generatedAt": "2026-04-20T01:54:16Z",
+  "count": 14,
+  "concepts": [
+    {
+      "slug": "harness",
+      "name": "Execution Harness",
+      "aliases": [
+        "harness",
+        "harnes",
+        "orchestration harness",
+        "execution harness",
+        "delivery harness",
+        "layer 0",
+        "stratum 0"
+      ],
+      "shortDefinition": "A governing scaffold that constrains sequencing, context budgets, checkpoints, and stop conditions.",
+      "explainer": "A harness sits at L0/L4 (Meta/Orchestration) and is the assembled agent bundle: model + tools + memory + orchestration + policy. It defines how work is done, not just what to do. It wraps an agent or pipeline with lifecycle controls — sequencing steps, enforcing context budgets, persisting checkpoints, and triggering stop conditions. Examples include execution harnesses (GSD, BMAD), test harnesses (Superpowers), and CI/CD harnesses (Harness.io). Not to be confused with the agent or the tools it calls — the harness is the governing scaffold around them.",
+      "strata": [
+        "L0",
+        "L4"
+      ],
+      "axes": [
+        "Orchestration"
+      ],
+      "relatedProductIds": [
+        "bmad",
+        "gsd",
+        "superpowers"
+      ],
+      "relatedConceptSlugs": [
+        "loop-core",
+        "guardrails",
+        "checkpoint"
+      ],
+      "antiPatterns": [
+        "Bolting agent execution onto generic container orchestrators without native lifecycle support leads to fragile systems that crash mid-task."
+      ],
+      "mitigations": [
+        "Utilize a dedicated agent runtime harness that natively provides durable execution, state isolation, and lifecycle management from day one."
+      ],
+      "sources": [
+        {
+          "label": "Glossary — docs.html",
+          "href": "docs.html#glossary"
+        }
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-04-14",
+      "reviewPolicy": "quarterly",
+      "confidence": 0.95,
+      "status": "complete"
+    },
+    {
+      "slug": "loop-core",
+      "name": "loop-core",
+      "aliases": [
+        "loop",
+        "loops",
+        "loop-core",
+        "agentic loop",
+        "feedback loop"
+      ],
+      "shortDefinition": "Iterative cycle of plan → act → evaluate → adjust until stop conditions are met.",
+      "explainer": "The canonical agentic control cycle. An agent enters a loop where it plans the next action, executes it via tools or generation, evaluates the result against success criteria, and adjusts strategy. The loop repeats until stop conditions are satisfied or a budget is exhausted. Variants include research loops, evaluation loops, implementation loops, and recovery loops.",
+      "strata": [
+        "L3",
+        "L4"
+      ],
+      "axes": [
+        "Execution",
+        "Orchestration"
+      ],
+      "relatedProductIds": [
+        "langgraph",
+        "wfeval",
+        "wfhuman"
+      ],
+      "relatedConceptSlugs": [
+        "harness",
+        "checkpoint",
+        "memory"
+      ],
+      "antiPatterns": [
+        "Relying on a single, open-ended prompt-response generation causes the agent to hallucinate actions instead of dynamically adapting to environment feedback."
+      ],
+      "mitigations": [
+        "Implement an iterative control loop where the agent explicitly generates a thought trace to reason about observations before executing its next action."
+      ],
+      "sources": [
+        {
+          "label": "Glossary — docs.html",
+          "href": "docs.html#glossary"
+        }
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-04-14",
+      "reviewPolicy": "quarterly",
+      "confidence": 0.88,
+      "status": "seed"
+    },
+    {
+      "slug": "mcp",
+      "name": "MCP Tooling",
+      "aliases": [
+        "mcp",
+        "model context protocol",
+        "tool registry"
+      ],
+      "shortDefinition": "Standardized interface for exposing tools, resources, and prompts to agents.",
+      "explainer": "The Model Context Protocol (MCP) establishes a universal interface allowing agents to connect to any compliant tool or dataset. Instead of writing bespoke integrations for every data source, teams adopt MCP to provide plug-and-play tool surfaces. MCP servers expose file systems, APIs, databases, and browser actions through a consistent schema.",
+      "strata": [
+        "L2",
+        "L3"
+      ],
+      "axes": [
+        "Knowledge",
+        "Execution"
+      ],
+      "relatedProductIds": [
+        "mcpgithub",
+        "mcpplaywright",
+        "mcpfs"
+      ],
+      "relatedConceptSlugs": [
+        "tool_calling",
+        "harness"
+      ],
+      "antiPatterns": [
+        "Writing bespoke, hardcoded integrations for every new data source creates an unsustainable maintenance burden and severe vendor lock-in."
+      ],
+      "mitigations": [
+        "Adopt the Model Context Protocol (MCP) to establish a universal, standardized interface allowing agents to instantly connect to any compliant tool or dataset."
+      ],
+      "sources": [
+        {
+          "label": "Glossary — docs.html",
+          "href": "docs.html#glossary"
+        }
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-04-14",
+      "reviewPolicy": "quarterly",
+      "confidence": 0.85,
+      "status": "seed"
+    },
+    {
+      "slug": "memory",
+      "name": "Memory Systems",
+      "aliases": [
+        "memory",
+        "episodic memory",
+        "working memory",
+        "context memory"
+      ],
+      "shortDefinition": "Stores and recalls contextual state across turns, sessions, and tasks.",
+      "explainer": "Memory systems give agents the ability to persist and retrieve state beyond a single context window. A multi-tiered architecture typically includes working memory for active tasks, episodic memory for session history, and semantic memory for long-term knowledge. Without memory, agents suffer from amnesia — forcing users to repeatedly explain context and endure the same mistakes.",
+      "strata": [
+        "L2"
+      ],
+      "axes": [
+        "Knowledge"
+      ],
+      "relatedProductIds": [
+        "mem0",
+        "mcpmemory",
+        "hermesagent"
+      ],
+      "relatedConceptSlugs": [
+        "loop-core",
+        "checkpoint",
+        "rag"
+      ],
+      "antiPatterns": [
+        "Deploying stateless agents that suffer from amnesia forces users to repeatedly explain their context and endure the same mistakes in every new session."
+      ],
+      "mitigations": [
+        "Establish a multi-tiered memory architecture consisting of working memory for active tasks, episodic memory for session history, and semantic memory for long-term knowledge."
+      ],
+      "sources": [
+        {
+          "label": "Glossary — docs.html",
+          "href": "docs.html#glossary"
+        }
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-04-14",
+      "reviewPolicy": "quarterly",
+      "confidence": 0.9,
+      "status": "seed"
+    },
+    {
+      "slug": "guardrails",
+      "name": "Guardrails & Safety",
+      "aliases": [
+        "guardrails",
+        "safety",
+        "output validation",
+        "content safety",
+        "prompt injection defense",
+        "input validation"
+      ],
+      "shortDefinition": "Validates inputs and outputs to ensure safety, policy compliance, and defense against prompt injection.",
+      "explainer": "Guardrails are deterministic validation layers embedded directly into the orchestration pipeline. They inspect every input, output, and tool invocation against policy-as-code rules before execution proceeds. Without them, agents are vulnerable to prompt injection, unauthorized privilege escalation, and compliance violations. Guardrails should be baked in from day one, not bolted on after deployment.",
+      "strata": [
+        "L6"
+      ],
+      "axes": [
+        "Governance"
+      ],
+      "relatedProductIds": [
+        "opa",
+        "sksecurity",
+        "wfhuman"
+      ],
+      "relatedConceptSlugs": [
+        "harness",
+        "governance"
+      ],
+      "antiPatterns": [
+        "Bolting security guardrails onto an application after deployment results in fragmented policies that agents can easily bypass through prompt manipulation."
+      ],
+      "mitigations": [
+        "Embed deterministic, policy-as-code guardrails directly into the orchestration layer from day one to validate all inputs, outputs, and tool invocations."
+      ],
+      "sources": [
+        {
+          "label": "Glossary — docs.html",
+          "href": "docs.html#glossary"
+        }
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-04-14",
+      "reviewPolicy": "quarterly",
+      "confidence": 0.92,
+      "status": "seed"
+    },
+    {
+      "slug": "checkpoint",
+      "name": "Checkpoints & State Persistence",
+      "aliases": [
+        "checkpoint",
+        "checkpointing",
+        "state snapshot"
+      ],
+      "shortDefinition": "Durable snapshots of agent state that enable resume, rollback, and crash recovery.",
+      "explainer": "Checkpoints capture a serializable snapshot of agent state — including context, progress, and intermediate results — at defined intervals. If the agent crashes, times out, or is preempted, execution resumes from the last checkpoint rather than restarting from scratch. Essential for long-running tasks and multi-step pipelines.",
+      "strata": [
+        "L4"
+      ],
+      "axes": [
+        "Orchestration"
+      ],
+      "relatedProductIds": [],
+      "relatedConceptSlugs": [
+        "harness",
+        "loop-core",
+        "memory"
+      ],
+      "antiPatterns": [],
+      "mitigations": [],
+      "sources": [],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-04-14",
+      "reviewPolicy": "quarterly",
+      "confidence": 0.7,
+      "status": "seed"
+    },
+    {
+      "slug": "tool_calling",
+      "name": "Tool Calling",
+      "aliases": [
+        "tool calling",
+        "tool use",
+        "function calling"
+      ],
+      "shortDefinition": "The mechanism by which an agent invokes external tools, APIs, or functions to act on the world.",
+      "explainer": "Tool calling is the bridge between an agent's reasoning and real-world side effects. The agent generates a structured tool invocation (name + arguments), the runtime validates and dispatches it, and the result is fed back into the agent's context. Standardized via protocols like MCP and OpenAI function calling.",
+      "strata": [
+        "L2",
+        "L3"
+      ],
+      "axes": [
+        "Execution"
+      ],
+      "relatedProductIds": [],
+      "relatedConceptSlugs": [
+        "mcp",
+        "harness"
+      ],
+      "antiPatterns": [],
+      "mitigations": [],
+      "sources": [],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-04-14",
+      "reviewPolicy": "quarterly",
+      "confidence": 0.7,
+      "status": "seed"
+    },
+    {
+      "slug": "rag",
+      "name": "Retrieval-Augmented Generation",
+      "aliases": [
+        "rag",
+        "retrieval augmented generation",
+        "RAG"
+      ],
+      "shortDefinition": "Augments LLM generation with retrieved external knowledge to reduce hallucination and improve accuracy.",
+      "explainer": "RAG pipelines retrieve relevant documents from a knowledge base before generating a response, grounding the agent's output in real data rather than parametric memory alone. Implementations range from simple vector-search retrieval to multi-hop re-ranking pipelines with hybrid search.",
+      "strata": [
+        "L2"
+      ],
+      "axes": [
+        "Knowledge"
+      ],
+      "relatedProductIds": [],
+      "relatedConceptSlugs": [
+        "memory"
+      ],
+      "antiPatterns": [],
+      "mitigations": [],
+      "sources": [],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-04-14",
+      "reviewPolicy": "quarterly",
+      "confidence": 0.7,
+      "status": "seed"
+    },
+    {
+      "slug": "governance",
+      "name": "Governance & Compliance",
+      "aliases": [
+        "governance",
+        "compliance",
+        "policy enforcement"
+      ],
+      "shortDefinition": "Organizational policies, audit trails, and compliance controls that govern agent behavior at scale.",
+      "explainer": "Governance encompasses the policies, audit mechanisms, and compliance controls that ensure agents operate within organizational boundaries. This includes access control, usage quotas, logging, approval workflows, and regulatory compliance. Distinct from runtime guardrails — governance operates at the organizational and fleet level.",
+      "strata": [
+        "L6",
+        "L7"
+      ],
+      "axes": [
+        "Governance"
+      ],
+      "relatedProductIds": [],
+      "relatedConceptSlugs": [
+        "guardrails",
+        "harness"
+      ],
+      "antiPatterns": [],
+      "mitigations": [],
+      "sources": [],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-04-14",
+      "reviewPolicy": "quarterly",
+      "confidence": 0.7,
+      "status": "seed"
+    },
+    {
+      "slug": "stack",
+      "name": "Agentic Stack",
+      "aliases": [
+        "stack",
+        "agent stack",
+        "full stack",
+        "layer 0",
+        "stratum 0",
+        "sovereignty"
+      ],
+      "shortDefinition": "Complete 7-layer configuration for a domain: model + memory + tools + orchestration + UX + governance.",
+      "explainer": "A stack is the full end-to-end instantiation of all 7 strata optimized for a specific domain or use case. It's not just the technologies, but their wiring: which model, which memory backend, which tool set, which orchestration pattern, which UI paradigm, and which governance policies. Stacks are repeatable blueprints — once assembled and battle-tested, they can be cloned for similar use cases. Examples: research loop stack, customer service stack, code generation stack.",
+      "strata": [
+        "L0"
+      ],
+      "axes": [
+        "Orchestration"
+      ],
+      "relatedProductIds": [],
+      "relatedConceptSlugs": [
+        "harness",
+        "persona",
+        "pattern",
+        "covenant"
+      ],
+      "antiPatterns": [
+        "Hand-assembling agents from loose components without a reproducible stack template leads to drift, inconsistency, and high maintenance cost across multiple similar applications."
+      ],
+      "mitigations": [
+        "Define canonical stacks as blueprints: reusable 7L configurations that can be versioned, tested, and cloned for new instances."
+      ],
+      "sources": [],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-04-17",
+      "reviewPolicy": "quarterly",
+      "confidence": 0.88,
+      "status": "seed",
+      "hidden": true,
+      "easterEgg": true
+    },
+    {
+      "slug": "persona",
+      "name": "Agent Persona",
+      "aliases": [
+        "persona",
+        "identity",
+        "role",
+        "instructions",
+        "agent persona",
+        "layer 0",
+        "stratum 0",
+        "sovereignty"
+      ],
+      "shortDefinition": "The identity, voice, role, and behavioral directives that define an agent's character and operating principles.",
+      "explainer": "A persona is the coherent identity and behavioral contract of an agent. It encompasses role (what the agent is), voice (how it communicates), core values (what it prioritizes), constraints (what it won't do), and operating principles (how it makes decisions). A well-defined persona ensures consistency across all interactions and makes agent behavior predictable and auditable. Personas can be hard-coded in system prompts, learned from examples, or emergent from reward models.",
+      "strata": [
+        "L0"
+      ],
+      "axes": [
+        "Governance"
+      ],
+      "relatedProductIds": [],
+      "relatedConceptSlugs": [
+        "harness",
+        "covenant",
+        "stack"
+      ],
+      "antiPatterns": [
+        "Deploying agents without a clear, documented persona results in unpredictable behavior and difficulty in debugging misalignment."
+      ],
+      "mitigations": [
+        "Define a canonical persona for each agent: explicit role, voice guidelines, core values, and decision-making principles."
+      ],
+      "sources": [],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-04-17",
+      "reviewPolicy": "quarterly",
+      "confidence": 0.82,
+      "status": "seed",
+      "hidden": true,
+      "easterEgg": true
+    },
+    {
+      "slug": "pattern",
+      "name": "Agentic Pattern",
+      "aliases": [
+        "pattern",
+        "orchestration pattern",
+        "control pattern",
+        "ReAct",
+        "chain of thought",
+        "layer 0",
+        "stratum 0",
+        "sovereignty"
+      ],
+      "shortDefinition": "Repeatable architectural patterns for orchestrating agent reasoning, action, and feedback loops.",
+      "explainer": "Agentic patterns are proven choreographies of reasoning → planning → execution → evaluation. Examples include ReAct (Reasoning + Acting), Chain-of-Thought (CoT), Self-Ask, Tree-of-Thought, and multi-agent debate. A pattern defines the structure of the control loop and the format of prompts, but is agnostic to the underlying model or tools. Patterns are composable — they can be nested or sequenced to build complex multi-stage pipelines.",
+      "strata": [
+        "L0"
+      ],
+      "axes": [
+        "Orchestration"
+      ],
+      "relatedProductIds": [],
+      "relatedConceptSlugs": [
+        "harness",
+        "loop-core",
+        "stack"
+      ],
+      "antiPatterns": [
+        "Designing orchestration logic ad-hoc for each new task duplicates effort, introduces subtle bugs, and makes it impossible to compare or optimize approaches."
+      ],
+      "mitigations": [
+        "Identify and document repeatable patterns (ReAct, CoT, debate, retrieval loops) and encode them as reusable, testable orchestration templates."
+      ],
+      "sources": [],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-04-17",
+      "reviewPolicy": "quarterly",
+      "confidence": 0.85,
+      "status": "seed",
+      "hidden": true,
+      "easterEgg": true
+    },
+    {
+      "slug": "config",
+      "name": "Agent Configuration",
+      "aliases": [
+        "config",
+        "configuration",
+        "instantiation",
+        "parameters",
+        "agent config",
+        "layer 0",
+        "stratum 0",
+        "sovereignty"
+      ],
+      "shortDefinition": "Runtime parameters that instantiate a harness for a specific task or domain: model, temperature, tools, context budget, etc.",
+      "explainer": "Configuration is the set of declarative, runtime-modifiable knobs that turn a generic harness into a domain-specific agent. Examples: which LLM, temperature, top-k, tool set, max context window, timeout, max retries, memory backend, guardrail policies. Good configs are externalized and version-controlled, making it easy to A/B test, audit, and roll back changes without code changes.",
+      "strata": [
+        "L0"
+      ],
+      "axes": [
+        "Orchestration",
+        "Governance"
+      ],
+      "relatedProductIds": [],
+      "relatedConceptSlugs": [
+        "harness",
+        "covenant",
+        "stack"
+      ],
+      "antiPatterns": [
+        "Hardcoding agent parameters (model, temperature, tool list) into application code makes it impossible to tune without redeploy and prevents safe A/B testing."
+      ],
+      "mitigations": [
+        "Externalize all agent configuration into declarative files or services that can be modified, versioned, and rolled back independently of application code."
+      ],
+      "sources": [],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-04-17",
+      "reviewPolicy": "quarterly",
+      "confidence": 0.8,
+      "status": "seed",
+      "hidden": true,
+      "easterEgg": true
+    },
+    {
+      "slug": "covenant",
+      "name": "Agent Covenant",
+      "aliases": [
+        "covenant",
+        "SLA",
+        "guarantee",
+        "pledge",
+        "behavioral contract",
+        "layer 0",
+        "stratum 0",
+        "sovereignty"
+      ],
+      "shortDefinition": "A formal pledge of agent capabilities, performance, and safety guarantees: latency, accuracy, uptime, and compliance.",
+      "explainer": "A covenant is the behavioral contract between an agent and its users/operators. It specifies: what the agent commits to do (capability boundary), how fast (latency SLA), with what accuracy (quality threshold), under what conditions (fault resilience), and in compliance with what policies (safety constraints). Covenants are machine-testable — they become the basis for automated eval frameworks and production monitoring.",
+      "strata": [
+        "L0"
+      ],
+      "axes": [
+        "Governance",
+        "Observability"
+      ],
+      "relatedProductIds": [],
+      "relatedConceptSlugs": [
+        "harness",
+        "persona",
+        "stack"
+      ],
+      "antiPatterns": [
+        "Deploying agents without explicit performance guarantees or safety pledges leads to misaligned expectations and production surprises."
+      ],
+      "mitigations": [
+        "Define a machine-testable covenant for each agent: capability boundary, latency SLA, quality threshold, fault resilience, and compliance policies. Instrument monitoring and evals against this covenant."
+      ],
+      "sources": [],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-04-17",
+      "reviewPolicy": "quarterly",
+      "confidence": 0.78,
+      "status": "seed",
+      "hidden": true,
+      "easterEgg": true
+    }
+  ]
+}

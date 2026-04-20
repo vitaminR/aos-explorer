@@ -1,0 +1,15 @@
+{
+  "version": "v1.1.0",
+  "generatedAt": "2026-04-20T01:54:16Z",
+  "strataCount": 7,
+  "conceptCount": 14,
+  "productCount": 3,
+  "endpoints": {
+    "strata": "/api/v1/strata",
+    "concepts": "/api/v1/concepts",
+    "products": "/api/v1/products",
+    "version": "/api/v1/version"
+  },
+  "llmsTxt": "/llms.txt",
+  "llmsFullTxt": "/llms-full.txt"
+}

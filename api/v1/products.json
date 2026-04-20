@@ -1,0 +1,121 @@
+{
+  "version": "v1.1.0",
+  "generatedAt": "2026-04-20T01:54:16Z",
+  "count": 3,
+  "products": [
+    {
+      "id": "bmad",
+      "name": "BMAD",
+      "type": "framework",
+      "vendor": "Community",
+      "deployment": "Local",
+      "license": "Open Source",
+      "primary": "L4 Orchestration & Decisioning",
+      "secondary": "L3",
+      "axisRoles": "Governance: Strong · Observability: Medium",
+      "confidence": 0.91,
+      "rationale": "Spec-first agent harness for turning vague goals into disciplined execution. Enforces planning, checkpointing, and quality gates before implementation begins.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "harness",
+          "role": "primary",
+          "rank": 1,
+          "why": "Strongest spec-first harness for turning vague goals into disciplined execution."
+        },
+        {
+          "conceptSlug": "loop-core",
+          "role": "secondary",
+          "rank": 3,
+          "why": "Best spec-first implementation loop when requirements discipline matters most."
+        }
+      ],
+      "evidenceIds": [
+        "ev-bmad-001"
+      ],
+      "freshnessTier": "B",
+      "lastReviewed": "2026-04-06",
+      "lastVerified": "2026-04-06",
+      "updatePriority": 0.3,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "low",
+      "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "gsd",
+      "name": "GSD",
+      "type": "framework",
+      "vendor": "Community",
+      "deployment": "Local",
+      "license": "Open Source",
+      "primary": "L4 Orchestration & Decisioning",
+      "secondary": "L3",
+      "axisRoles": "Governance: Medium · Observability: Medium",
+      "confidence": 0.89,
+      "rationale": "Context-lifecycle harness with explicit checkpoints, budget control, and resume semantics. Best for durable multi-step agent execution.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "harness",
+          "role": "primary",
+          "rank": 2,
+          "why": "Best context-lifecycle harness with checkpoints, budget control, and resume semantics."
+        },
+        {
+          "conceptSlug": "checkpoint",
+          "role": "primary",
+          "rank": 1,
+          "why": "Best explicit checkpoint/resume model for recovering work without losing context."
+        }
+      ],
+      "evidenceIds": [
+        "ev-gsd-001"
+      ],
+      "freshnessTier": "B",
+      "lastReviewed": "2026-04-06",
+      "lastVerified": "2026-04-06",
+      "updatePriority": 0.3,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "low",
+      "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "langgraph",
+      "name": "LangGraph",
+      "type": "framework",
+      "vendor": "LangChain",
+      "deployment": "Hybrid",
+      "license": "Open Source",
+      "primary": "L4 Orchestration & Decisioning",
+      "secondary": "L3",
+      "axisRoles": "Governance: Light · Observability: Medium",
+      "confidence": 0.88,
+      "rationale": "Graph-based agent orchestration framework. Defines agent workflows as cyclic graphs with state management and tool execution.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "loop-core",
+          "role": "primary",
+          "rank": 1,
+          "why": "Most explicit graph-based control loop for stateful agent execution."
+        },
+        {
+          "conceptSlug": "checkpoint",
+          "role": "secondary",
+          "rank": 1,
+          "why": "Features built-in central state persistence for branching, time travel, and durable execution."
+        }
+      ],
+      "evidenceIds": [
+        "ev-langgraph-001"
+      ],
+      "freshnessTier": "B",
+      "lastReviewed": "2026-04-06",
+      "lastVerified": "2026-04-06",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "medium",
+      "sourceQuality": "high",
+      "status": "active"
+    }
+  ]
+}

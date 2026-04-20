@@ -1,0 +1,85 @@
+{
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      ".firebaserc",
+      "firestore.rules",
+      "firestore.indexes.json",
+      "**/node_modules/**",
+      "**/.git/**",
+      ".codacy/**",
+
+      "scripts/**",
+      "tests/**",
+      "test-results/**",
+      "docs/*.md",
+      "docs/*.csv",
+      "docs/crucible/**",
+      "docs/infographic-batches/**",
+      "docs/infographic-prompts/**",
+      "docs/infographics/**",
+
+      "data/schemas/**",
+      "data/queues/**",
+      "data/policies/**",
+      "data/evidence/**",
+
+      "*.md",
+      "*.py",
+      "*.ipynb",
+
+      "mcp/**",
+
+      "package.json",
+      "package-lock.json",
+      "playwright.config.ts",
+      "tsconfig.json",
+      "_primitives_inventory.json"
+    ],
+    "headers": [
+      {
+        "source": "**/*.html",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=300" },
+          { "key": "X-Content-Type-Options", "value": "nosniff" }
+        ]
+      },
+      {
+        "source": "data/**",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=300" },
+          { "key": "X-Content-Type-Options", "value": "nosniff" }
+        ]
+      },
+      {
+        "source": "api/**",
+        "headers": [
+          { "key": "Access-Control-Allow-Origin", "value": "*" },
+          { "key": "Access-Control-Allow-Methods", "value": "GET, OPTIONS" },
+          { "key": "Cache-Control", "value": "public, max-age=300" },
+          { "key": "X-Content-Type-Options", "value": "nosniff" }
+        ]
+      }
+    ],
+    "redirects": [
+      {
+        "source": "/",
+        "destination": "/prototype.html",
+        "type": 302
+      }
+    ],
+    "rewrites": [
+      { "source": "/api/v1/strata", "destination": "/api/v1/strata.json" },
+      { "source": "/api/v1/concepts", "destination": "/api/v1/concepts.json" },
+      { "source": "/api/v1/products", "destination": "/api/v1/products.json" },
+      { "source": "/api/v1/version", "destination": "/api/v1/version.json" }
+    ],
+    "cleanUrls": false,
+    "trailingSlash": false
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  }
+}

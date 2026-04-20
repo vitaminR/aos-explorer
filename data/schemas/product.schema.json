@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "product.schema.json",
+  "title": "aOS Product Card (Tier B)",
+  "description": "Medium-volatility product metadata with placement, confidence, and evidence links.",
+  "type": "object",
+  "required": ["id", "name", "type", "confidence", "status"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$",
+      "description": "URL-safe canonical product ID. Must match prototype.html PRODUCT_DETAILS key."
+    },
+    "name": { "type": "string" },
+    "type": {
+      "type": "string",
+      "enum": [
+        "product",
+        "framework",
+        "tool",
+        "agent",
+        "workflow",
+        "skill",
+        "mcp"
+      ]
+    },
+    "vendor": { "type": "string" },
+    "deployment": {
+      "type": "string",
+      "enum": ["Cloud", "Local", "Hybrid"]
+    },
+    "license": {
+      "type": "string",
+      "enum": ["Open Source", "Proprietary"]
+    },
+    "primary": {
+      "type": "string",
+      "description": "Primary stratum placement."
+    },
+    "secondary": {
+      "type": "string",
+      "description": "Secondary strata (comma-separated or dash)."
+    },
+    "axisRoles": { "type": "string" },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "rationale": { "type": "string" },
+    "conceptMappings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["conceptSlug", "role"],
+        "properties": {
+          "conceptSlug": { "type": "string" },
+          "role": {
+            "type": "string",
+            "enum": ["primary", "secondary", "tertiary"]
+          },
+          "rank": { "type": "integer", "minimum": 1 },
+          "why": { "type": "string" }
+        }
+      },
+      "description": "How this product maps to concepts. Replaces inline CONCEPT_LEXICON top3."
+    },
+    "evidenceIds": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "IDs of evidence packets supporting this product's placement."
+    },
+    "freshnessTier": {
+      "type": "string",
+      "enum": ["B"],
+      "default": "B"
+    },
+    "lastReviewed": {
+      "type": ["string", "null"],
+      "format": "date"
+    },
+    "lastVerified": {
+      "type": ["string", "null"],
+      "format": "date"
+    },
+    "updatePriority": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Current refresh priority score (computed from policy scoring)."
+    },
+    "reviewPolicy": {
+      "type": "string",
+      "enum": ["scheduled", "triggered", "manual"]
+    },
+    "changeRisk": {
+      "type": "string",
+      "enum": ["low", "medium", "high"],
+      "description": "How risky is it to change this product's placement."
+    },
+    "sourceQuality": {
+      "type": "string",
+      "enum": ["unknown", "low", "medium", "high"],
+      "description": "Quality of the sources backing this product's current placement."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "deprecated", "pending-review", "stub"]
+    }
+  }
+}

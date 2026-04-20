@@ -1,0 +1,31 @@
+{
+  "$comment": "Tier C — Evidence packet. Fast-changing, replaceable. One file per evidence item. Linked from product cards via evidenceIds.",
+  "id": "ev-bmad-001",
+  "productId": "bmad",
+  "type": "repo-analysis",
+  "title": "BMAD repo structure and spec-first pattern",
+  "summary": "BMAD enforces a spec → plan → implement → test loop. The repo includes agent persona definitions, task templates, and checklists that constrain execution order.",
+  "sourceUrl": "https://github.com/bmad-agent/bmad-agent",
+  "sourceType": "github-repo",
+  "sourceQuality": "high",
+  "trustLevel": "verified-manual",
+  "capturedDate": "2026-04-06",
+  "expiresDate": "2026-07-06",
+  "confidence": 0.91,
+  "claims": [
+    {
+      "claim": "BMAD uses persona-based agent definitions with explicit task checklists",
+      "evidence": "Repo contains /agents/ folder with .md persona files and /checklists/ with step-by-step validation gates",
+      "confidence": 0.92
+    },
+    {
+      "claim": "Spec-first workflow requires approved specification before implementation begins",
+      "evidence": "Task flow enforces: create-spec → review-spec → approve-spec → implement, with gate checks at each transition",
+      "confidence": 0.9
+    }
+  ],
+  "tags": ["harness", "spec-first", "orchestration", "quality-gates"],
+  "status": "active",
+  "lastReviewed": "2026-04-06",
+  "reviewedBy": "manual"
+}

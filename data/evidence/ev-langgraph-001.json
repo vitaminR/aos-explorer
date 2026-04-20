@@ -1,0 +1,20 @@
+{
+  "$comment": "Tier C — Evidence packet stub for LangGraph.",
+  "id": "ev-langgraph-001",
+  "productId": "langgraph",
+  "type": "repo-analysis",
+  "title": "LangGraph graph-based orchestration and state persistence",
+  "summary": "Placeholder — needs manual research pass.",
+  "sourceUrl": "https://github.com/langchain-ai/langgraph",
+  "sourceType": "github-repo",
+  "sourceQuality": "unknown",
+  "trustLevel": "unverified",
+  "capturedDate": "2026-04-14",
+  "expiresDate": "2026-07-14",
+  "confidence": 0.5,
+  "claims": [],
+  "tags": ["loop-core", "orchestration", "state-graph"],
+  "status": "stub",
+  "lastReviewed": null,
+  "reviewedBy": null
+}

@@ -1,0 +1,1550 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{a}OS Stack Mapper — Build Your Agentic Stack</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>{</text></svg>"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --bg-base: rgb(8, 10, 12);
+        --bg-card: rgb(14, 16, 20);
+        --bg-card-hover: rgb(20, 22, 28);
+        --bg-surface: rgb(18, 20, 26);
+        --bg-elevated: rgb(24, 26, 34);
+        --border: rgba(255, 255, 255, 0.06);
+        --border-hover: rgba(255, 255, 255, 0.12);
+        --text-primary: rgba(255, 255, 255, 0.9);
+        --text-secondary: rgba(255, 255, 255, 0.6);
+        --text-tertiary: rgba(255, 255, 255, 0.38);
+        --accent-indigo: #818cf8;
+        --l7: #c084fc;
+        --l7-glow: rgba(192, 132, 252, 0.25);
+        --l6: #f472b6;
+        --l6-glow: rgba(244, 114, 182, 0.25);
+        --l5: #fb923c;
+        --l5-glow: rgba(251, 146, 60, 0.25);
+        --l4: #818cf8;
+        --l4-glow: rgba(129, 140, 248, 0.25);
+        --l3: #34d399;
+        --l3-glow: rgba(52, 211, 153, 0.25);
+        --l2: #22d3ee;
+        --l2-glow: rgba(34, 211, 238, 0.25);
+        --l1: #fbbf24;
+        --l1-glow: rgba(251, 191, 36, 0.25);
+      }
+
+      body {
+        font-family: "Inter", system-ui, sans-serif;
+        background: var(--bg-base);
+        color: var(--text-primary);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      /* ===== AURORA BG ===== */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          radial-gradient(
+            ellipse 600px 400px at 20% 20%,
+            rgba(129, 140, 248, 0.08),
+            transparent
+          ),
+          radial-gradient(
+            ellipse 500px 350px at 80% 60%,
+            rgba(192, 132, 252, 0.06),
+            transparent
+          ),
+          radial-gradient(
+            ellipse 400px 300px at 50% 80%,
+            rgba(52, 211, 153, 0.04),
+            transparent
+          );
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* ===== TOP BAR ===== */
+      .top-bar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 24px;
+        background: rgba(8, 10, 12, 0.85);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--border);
+      }
+      .top-bar-left {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .back-link {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: color 0.2s;
+      }
+      .back-link:hover {
+        color: var(--accent-indigo);
+      }
+      .top-bar h1 {
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: -0.3px;
+      }
+      .top-bar h1 .brand-a {
+        color: #818cf8;
+        font-style: italic;
+      }
+      .top-bar-right {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      /* ===== MATURITY PYRAMID ===== */
+      .pyramid-section {
+        max-width: 640px;
+        margin: 36px auto 0;
+        text-align: center;
+        padding: 0 20px;
+        position: relative;
+        z-index: 1;
+      }
+      .rank-kicker {
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--accent-indigo);
+        margin-bottom: 10px;
+      }
+      .rank-title {
+        font-size: 28px;
+        font-weight: 800;
+        letter-spacing: -0.6px;
+        line-height: 1.25;
+        margin-bottom: 8px;
+      }
+      .rank-title .brand-a {
+        color: #818cf8;
+        font-style: italic;
+      }
+      .rank-subtitle {
+        font-size: 13px;
+        color: var(--text-tertiary);
+        max-width: 480px;
+        margin: 0 auto 28px;
+        line-height: 1.5;
+      }
+      .rank-pyramid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 20px;
+      }
+      .rank-tier {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        border-radius: 10px;
+        padding: 12px 20px;
+        transition: all 0.25s ease;
+        cursor: default;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+      }
+      .rank-tier:hover {
+        background: var(--bg-card-hover);
+        border-color: var(--border-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+      }
+      .rank-tier[data-rank="S"] {
+        width: 45%;
+        min-width: 260px;
+      }
+      .rank-tier[data-rank="A"] {
+        width: 55%;
+        min-width: 280px;
+      }
+      .rank-tier[data-rank="B"] {
+        width: 65%;
+        min-width: 300px;
+      }
+      .rank-tier[data-rank="C"] {
+        width: 80%;
+        min-width: 340px;
+      }
+      .rank-tier[data-rank="D"] {
+        width: 95%;
+        min-width: 380px;
+      }
+      .rank-badge {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        font-weight: 800;
+        font-size: 16px;
+        flex-shrink: 0;
+        line-height: 1;
+      }
+      .rank-badge .rank-lv {
+        font-size: 8px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        opacity: 0.7;
+        margin-top: 1px;
+      }
+      .rank-tier[data-rank="S"] .rank-badge {
+        background: linear-gradient(135deg, #fbbf24, #f59e0b);
+        color: #1c1917;
+        box-shadow: 0 0 14px rgba(251, 191, 36, 0.35);
+      }
+      .rank-tier[data-rank="A"] .rank-badge {
+        background: linear-gradient(135deg, #a78bfa, #818cf8);
+        color: #1e1b4b;
+        box-shadow: 0 0 14px rgba(129, 140, 248, 0.35);
+      }
+      .rank-tier[data-rank="B"] .rank-badge {
+        background: linear-gradient(135deg, #34d399, #059669);
+        color: #022c22;
+        box-shadow: 0 0 14px rgba(52, 211, 153, 0.3);
+      }
+      .rank-tier[data-rank="C"] .rank-badge {
+        background: linear-gradient(135deg, #22d3ee, #06b6d4);
+        color: #083344;
+        box-shadow: 0 0 14px rgba(34, 211, 238, 0.25);
+      }
+      .rank-tier[data-rank="D"] .rank-badge {
+        background: linear-gradient(135deg, #94a3b8, #64748b);
+        color: #0f172a;
+        box-shadow: 0 0 14px rgba(148, 163, 184, 0.2);
+      }
+      .rank-tier-info {
+        text-align: left;
+        flex: 1;
+        min-width: 0;
+      }
+      .rank-tier-name {
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 1.3;
+      }
+      .rank-tier-class {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        font-weight: 600;
+        margin-top: 1px;
+      }
+      .rank-tier[data-rank="S"] .rank-tier-class {
+        color: #fbbf24;
+      }
+      .rank-tier[data-rank="A"] .rank-tier-class {
+        color: #a78bfa;
+      }
+      .rank-tier[data-rank="B"] .rank-tier-class {
+        color: #34d399;
+      }
+      .rank-tier[data-rank="C"] .rank-tier-class {
+        color: #22d3ee;
+      }
+      .rank-tier[data-rank="D"] .rank-tier-class {
+        color: #94a3b8;
+      }
+      .rank-divider {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: 75%;
+        margin: 10px 0;
+      }
+      .rank-divider::before,
+      .rank-divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        opacity: 0.4;
+        background: repeating-linear-gradient(
+          90deg,
+          var(--accent-indigo) 0,
+          var(--accent-indigo) 8px,
+          transparent 8px,
+          transparent 14px
+        );
+      }
+      .rank-divider-label {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-weight: 700;
+        color: var(--accent-indigo);
+        white-space: nowrap;
+        opacity: 0.6;
+      }
+
+      /* ===== MAIN LAYOUT ===== */
+      .mapper-layout {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        gap: 0;
+        max-width: 1200px;
+        margin: 32px auto 60px;
+        padding: 0 20px;
+        position: relative;
+        z-index: 1;
+        min-height: 600px;
+      }
+
+      /* ===== CATALOG SIDEBAR ===== */
+      .catalog-panel {
+        background: var(--bg-surface);
+        border: 1px solid var(--border);
+        border-radius: 14px 0 0 14px;
+        padding: 16px;
+        overflow-y: auto;
+        max-height: calc(100vh - 180px);
+        position: sticky;
+        top: 80px;
+      }
+      .catalog-header {
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--text-tertiary);
+        margin-bottom: 12px;
+      }
+      .catalog-search {
+        width: 100%;
+        padding: 10px 14px;
+        border-radius: 8px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        color: var(--text-primary);
+        font-size: 13px;
+        font-family: inherit;
+        outline: none;
+        transition: border-color 0.2s;
+        margin-bottom: 12px;
+      }
+      .catalog-search:focus {
+        border-color: var(--accent-indigo);
+      }
+      .catalog-search::placeholder {
+        color: var(--text-tertiary);
+      }
+      .catalog-filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 14px;
+      }
+      .catalog-filter-btn {
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 600;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        color: var(--text-secondary);
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .catalog-filter-btn:hover {
+        border-color: var(--border-hover);
+        color: var(--text-primary);
+      }
+      .catalog-filter-btn.active {
+        background: var(--accent-indigo);
+        color: white;
+        border-color: var(--accent-indigo);
+      }
+      .catalog-list {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .catalog-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        border-radius: 8px;
+        background: var(--bg-card);
+        border: 1px solid transparent;
+        cursor: grab;
+        transition: all 0.2s;
+        user-select: none;
+      }
+      .catalog-item:hover {
+        background: var(--bg-card-hover);
+        border-color: var(--border-hover);
+      }
+      .catalog-item:active {
+        cursor: grabbing;
+      }
+      .catalog-item.dragging {
+        opacity: 0.4;
+      }
+      .catalog-item .ci-name {
+        font-size: 13px;
+        font-weight: 600;
+        flex: 1;
+      }
+      .catalog-item .ci-vendor {
+        font-size: 10px;
+        color: var(--text-tertiary);
+      }
+      .catalog-item .ci-dots {
+        display: flex;
+        gap: 3px;
+      }
+      .catalog-item .ci-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        opacity: 0.2;
+      }
+      .catalog-item .ci-dot.active {
+        opacity: 1;
+      }
+      .catalog-item .ci-type {
+        font-size: 9px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+        color: var(--text-tertiary);
+        padding: 2px 6px;
+        border-radius: 4px;
+        background: var(--bg-elevated);
+      }
+      .no-results {
+        text-align: center;
+        padding: 30px 10px;
+        color: var(--text-tertiary);
+        font-size: 13px;
+      }
+
+      /* ===== STRATA MAPPER ===== */
+      .strata-mapper {
+        background: var(--bg-surface);
+        border: 1px solid var(--border);
+        border-left: none;
+        border-radius: 0 14px 14px 0;
+        padding: 20px 24px;
+      }
+      .mapper-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
+      .mapper-title {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--text-secondary);
+      }
+      .mapper-score {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--accent-indigo);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .mapper-score .score-badge {
+        padding: 4px 14px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 800;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+      }
+
+      .stratum-zone {
+        border-radius: 10px;
+        margin-bottom: 8px;
+        border: 2px dashed var(--border);
+        transition: all 0.25s;
+        min-height: 64px;
+        position: relative;
+        overflow: hidden;
+      }
+      .stratum-zone.drag-over {
+        border-color: var(--zone-color, var(--accent-indigo));
+        background: rgba(129, 140, 248, 0.05);
+        box-shadow: inset 0 0 20px rgba(129, 140, 248, 0.08);
+      }
+      .stratum-zone-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 16px;
+        cursor: default;
+      }
+      .sz-tag {
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        padding: 4px 10px;
+        border-radius: 6px;
+        color: white;
+        flex-shrink: 0;
+      }
+      .sz-name {
+        font-size: 14px;
+        font-weight: 700;
+        flex: 1;
+      }
+      .sz-count {
+        font-size: 11px;
+        color: var(--text-tertiary);
+        font-weight: 600;
+      }
+      .stratum-zone-items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        padding: 0 16px 12px;
+        min-height: 8px;
+      }
+      .stratum-zone-items:empty {
+        padding-bottom: 0;
+      }
+      .placed-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 5px 12px;
+        border-radius: 20px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        font-size: 12px;
+        font-weight: 600;
+        cursor: default;
+        transition: all 0.2s;
+        animation: chipIn 0.2s ease;
+      }
+      @keyframes chipIn {
+        from {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      .placed-chip:hover {
+        border-color: #ef4444;
+      }
+      .placed-chip .chip-remove {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        cursor: pointer;
+        color: var(--text-tertiary);
+        transition: all 0.15s;
+      }
+      .placed-chip .chip-remove:hover {
+        background: #ef4444;
+        color: white;
+      }
+      .stratum-zone-empty {
+        padding: 0 16px 12px;
+        font-size: 12px;
+        color: var(--text-tertiary);
+        font-style: italic;
+      }
+
+      /* L7-L1 colors */
+      .stratum-zone[data-stratum="L7"] {
+        --zone-color: var(--l7);
+      }
+      .stratum-zone[data-stratum="L6"] {
+        --zone-color: var(--l6);
+      }
+      .stratum-zone[data-stratum="L5"] {
+        --zone-color: var(--l5);
+      }
+      .stratum-zone[data-stratum="L4"] {
+        --zone-color: var(--l4);
+      }
+      .stratum-zone[data-stratum="L3"] {
+        --zone-color: var(--l3);
+      }
+      .stratum-zone[data-stratum="L2"] {
+        --zone-color: var(--l2);
+      }
+      .stratum-zone[data-stratum="L1"] {
+        --zone-color: var(--l1);
+      }
+
+      /* ===== SAVE / LOAD BAR ===== */
+      .stack-bar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 16px;
+        border-radius: 10px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        margin-bottom: 16px;
+        flex-wrap: wrap;
+      }
+      .stack-bar label {
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--text-tertiary);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .stack-name-input {
+        flex: 1;
+        min-width: 140px;
+        padding: 8px 12px;
+        border-radius: 8px;
+        background: var(--bg-surface);
+        border: 1px solid var(--border);
+        color: var(--text-primary);
+        font-size: 13px;
+        font-family: inherit;
+        outline: none;
+      }
+      .stack-name-input:focus {
+        border-color: var(--accent-indigo);
+      }
+      .stack-btn {
+        padding: 8px 18px;
+        border-radius: 8px;
+        font-size: 12px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s;
+        border: 1px solid var(--border);
+        background: var(--bg-elevated);
+        color: var(--text-primary);
+      }
+      .stack-btn:hover {
+        border-color: var(--accent-indigo);
+        color: var(--accent-indigo);
+      }
+      .stack-btn.primary {
+        background: linear-gradient(135deg, #818cf8, #a78bfa);
+        color: white;
+        border: none;
+      }
+      .stack-btn.primary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 16px rgba(129, 140, 248, 0.4);
+      }
+      .stack-btn.danger {
+        color: #ef4444;
+      }
+      .stack-btn.danger:hover {
+        background: #ef4444;
+        color: white;
+        border-color: #ef4444;
+      }
+
+      /* Saved stacks list */
+      .saved-stacks {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+      }
+      .saved-stack-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        border-radius: 20px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .saved-stack-chip:hover {
+        border-color: var(--accent-indigo);
+        color: var(--accent-indigo);
+      }
+      .saved-stack-chip.active {
+        background: var(--accent-indigo);
+        color: white;
+        border-color: var(--accent-indigo);
+      }
+      .saved-stack-chip .ssc-delete {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+      .saved-stack-chip .ssc-delete:hover {
+        background: #ef4444;
+        color: white;
+      }
+
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 800px) {
+        .mapper-layout {
+          grid-template-columns: 1fr;
+        }
+        .catalog-panel {
+          border-radius: 14px 14px 0 0;
+          max-height: 260px;
+          position: static;
+        }
+        .strata-mapper {
+          border-left: 1px solid var(--border);
+          border-radius: 0 0 14px 14px;
+        }
+        .rank-tier {
+          width: 100% !important;
+          min-width: 0 !important;
+        }
+        .rank-title {
+          font-size: 22px;
+        }
+      }
+
+      /* ===== TOAST ===== */
+      .toast {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        padding: 12px 24px;
+        border-radius: 10px;
+        background: var(--bg-elevated);
+        border: 1px solid var(--accent-indigo);
+        color: var(--text-primary);
+        font-size: 13px;
+        font-weight: 600;
+        z-index: 200;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.3s;
+        pointer-events: none;
+      }
+      .toast.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <a class="back-link" href="prototype.html">&larr; Explorer</a>
+        <h1><span class="brand-a">{a}</span>OS Stack Mapper</h1>
+      </div>
+      <div class="top-bar-right">
+        <button class="stack-btn" onclick="exportStack()">Export JSON</button>
+        <button class="stack-btn" onclick="importStack()">Import</button>
+      </div>
+    </div>
+
+    <!-- MATURITY PYRAMID -->
+    <section class="pyramid-section">
+      <div class="rank-kicker">Stack Assessment</div>
+      <h2 class="rank-title">
+        The 5 Ranks of <span class="brand-a">Agentic Stack</span> Maturity
+      </h2>
+      <p class="rank-subtitle">
+        Most organizations are stuck at Rank C or D. Real operational leverage
+        starts at Rank B.
+      </p>
+      <div class="rank-pyramid">
+        <div class="rank-tier" data-rank="S">
+          <div class="rank-badge">S<span class="rank-lv">Lv.5</span></div>
+          <div class="rank-tier-info">
+            <div class="rank-tier-name">Autonomous Enterprise Mesh</div>
+            <div class="rank-tier-class">The Sovereign</div>
+          </div>
+        </div>
+        <div class="rank-tier" data-rank="A">
+          <div class="rank-badge">A<span class="rank-lv">Lv.4</span></div>
+          <div class="rank-tier-info">
+            <div class="rank-tier-name">Cross-Domain Orchestration</div>
+            <div class="rank-tier-class">The Orchestrator</div>
+          </div>
+        </div>
+        <div class="rank-tier" data-rank="B">
+          <div class="rank-badge">B<span class="rank-lv">Lv.3</span></div>
+          <div class="rank-tier-info">
+            <div class="rank-tier-name">Multi-Agent Workflows</div>
+            <div class="rank-tier-class">The Operator</div>
+          </div>
+        </div>
+        <div class="rank-divider">
+          <span class="rank-divider-label">The Agentic Threshold</span>
+        </div>
+        <div class="rank-tier" data-rank="C">
+          <div class="rank-badge">C<span class="rank-lv">Lv.2</span></div>
+          <div class="rank-tier-info">
+            <div class="rank-tier-name">Assisted Copilots &amp; APIs</div>
+            <div class="rank-tier-class">The Experimenter</div>
+          </div>
+        </div>
+        <div class="rank-tier" data-rank="D">
+          <div class="rank-badge">D<span class="rank-lv">Lv.1</span></div>
+          <div class="rank-tier-info">
+            <div class="rank-tier-name">Prompt &amp; Pray</div>
+            <div class="rank-tier-class">The Prompter</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN MAPPER -->
+    <div class="mapper-layout">
+      <!-- CATALOG SIDEBAR -->
+      <div class="catalog-panel" id="catalogPanel">
+        <div class="catalog-header">Product Catalog</div>
+        <input
+          class="catalog-search"
+          id="catalogSearch"
+          type="text"
+          placeholder="Search products…"
+          autocomplete="off"
+        />
+        <div class="catalog-filters" id="catalogFilters">
+          <button class="catalog-filter-btn active" data-filter="all">
+            All
+          </button>
+          <button class="catalog-filter-btn" data-filter="product">
+            Products
+          </button>
+          <button class="catalog-filter-btn" data-filter="framework">
+            Frameworks
+          </button>
+          <button class="catalog-filter-btn" data-filter="tool">Tools</button>
+          <button class="catalog-filter-btn" data-filter="mcp">MCPs</button>
+          <button class="catalog-filter-btn" data-filter="practice">
+            Practices
+          </button>
+        </div>
+        <div class="catalog-list" id="catalogList"></div>
+      </div>
+
+      <!-- STRATA DROP ZONES -->
+      <div class="strata-mapper" id="strataMapper">
+        <!-- Save / Load -->
+        <div class="stack-bar">
+          <label>Stack Name</label>
+          <input
+            class="stack-name-input"
+            id="stackName"
+            type="text"
+            placeholder="My Agentic Stack"
+            maxlength="60"
+          />
+          <button class="stack-btn primary" onclick="saveStack()">Save</button>
+          <button class="stack-btn" onclick="newStack()">New</button>
+          <button class="stack-btn danger" onclick="clearStack()">Clear</button>
+        </div>
+        <div class="saved-stacks" id="savedStacks"></div>
+        <div class="mapper-header">
+          <div class="mapper-title">
+            Drop products into strata &mdash; or click to add
+          </div>
+          <div class="mapper-score">
+            Coverage <span class="score-badge" id="coverageScore">0/7</span>
+          </div>
+        </div>
+        <div id="strataZones"></div>
+      </div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast"></div>
+
+    <!-- HIDDEN FILE INPUT FOR IMPORT -->
+    <input type="file" id="importFile" accept=".json" style="display: none" />
+
+    <script>
+      // ===== PRODUCT CATALOG =====
+      const CATALOG = [
+        {
+          name: "Azure AI Foundry",
+          vendor: "Microsoft",
+          type: "product",
+          strata: ["L4", "L3", "L2", "L1"],
+        },
+        {
+          name: "Hermes",
+          vendor: "Internal",
+          type: "product",
+          strata: ["L7", "L6", "L5", "L4"],
+        },
+        {
+          name: "Paperclip",
+          vendor: "Internal",
+          type: "product",
+          strata: ["L7", "L4", "L3"],
+        },
+        {
+          name: "CrewAI",
+          vendor: "CrewAI Inc",
+          type: "framework",
+          strata: ["L4", "L3"],
+        },
+        { name: "Mem0", vendor: "Mem0 AI", type: "tool", strata: ["L2"] },
+        {
+          name: "LangGraph",
+          vendor: "LangChain",
+          type: "framework",
+          strata: ["L4", "L3"],
+        },
+        {
+          name: "Azure AI Search",
+          vendor: "Microsoft",
+          type: "tool",
+          strata: ["L2"],
+        },
+        {
+          name: "Open Policy Agent",
+          vendor: "CNCF",
+          type: "framework",
+          strata: ["L6"],
+        },
+        {
+          name: "GSD",
+          vendor: "Community",
+          type: "framework",
+          strata: ["L4", "L2"],
+        },
+        {
+          name: "BMAD Method",
+          vendor: "Community",
+          type: "framework",
+          strata: ["L7", "L4", "L2"],
+        },
+        {
+          name: "Superpowers",
+          vendor: "Community",
+          type: "framework",
+          strata: ["L5", "L4", "L3"],
+        },
+        {
+          name: "gstack",
+          vendor: "Community",
+          type: "framework",
+          strata: ["L7", "L6", "L4"],
+        },
+        {
+          name: "Hermes Agent",
+          vendor: "Community",
+          type: "product",
+          strata: ["L4", "L3", "L2", "L1"],
+        },
+        {
+          name: "Shipyard",
+          vendor: "Community",
+          type: "framework",
+          strata: ["L6", "L5", "L4", "L3"],
+        },
+        {
+          name: "Cursor IDE",
+          vendor: "Anysphere",
+          type: "product",
+          strata: ["L7", "L3"],
+        },
+        {
+          name: "Git Ingest",
+          vendor: "Community",
+          type: "tool",
+          strata: ["L3", "L2"],
+        },
+        {
+          name: "Lovable",
+          vendor: "Lovable",
+          type: "tool",
+          strata: ["L7", "L4"],
+        },
+        { name: "v0", vendor: "Vercel", type: "tool", strata: ["L7", "L4"] },
+        { name: "Exa MCP", vendor: "Exa", type: "mcp", strata: ["L3", "L2"] },
+        {
+          name: "Agent Skills",
+          vendor: "Addy Osmani",
+          type: "framework",
+          strata: ["L6", "L5", "L4"],
+        },
+        {
+          name: "Aider",
+          vendor: "Community",
+          type: "tool",
+          strata: ["L7", "L3"],
+        },
+        {
+          name: "Claude Code",
+          vendor: "Anthropic",
+          type: "product",
+          strata: ["L7", "L4", "L3"],
+        },
+        {
+          name: "Cline",
+          vendor: "Community",
+          type: "tool",
+          strata: ["L7", "L3"],
+        },
+        {
+          name: "Devin",
+          vendor: "Cognition",
+          type: "product",
+          strata: ["L7", "L6", "L5", "L4", "L3", "L2"],
+        },
+        {
+          name: "OpenHands",
+          vendor: "Community",
+          type: "framework",
+          strata: ["L7", "L4", "L3"],
+        },
+        {
+          name: "SWE-agent",
+          vendor: "Princeton",
+          type: "framework",
+          strata: ["L4", "L3"],
+        },
+        {
+          name: "Brave Search MCP",
+          vendor: "Brave",
+          type: "mcp",
+          strata: ["L3", "L2"],
+        },
+        {
+          name: "Filesystem MCP",
+          vendor: "Anthropic",
+          type: "mcp",
+          strata: ["L3"],
+        },
+        {
+          name: "GitHub MCP",
+          vendor: "GitHub",
+          type: "mcp",
+          strata: ["L3", "L2"],
+        },
+        {
+          name: "Memory MCP",
+          vendor: "Community",
+          type: "mcp",
+          strata: ["L2"],
+        },
+        {
+          name: "Playwright MCP",
+          vendor: "Microsoft",
+          type: "mcp",
+          strata: ["L3"],
+        },
+        {
+          name: "PostgreSQL MCP",
+          vendor: "Community",
+          type: "mcp",
+          strata: ["L2", "L1"],
+        },
+        {
+          name: "RAG Pipeline",
+          vendor: "Pattern",
+          type: "practice",
+          strata: ["L2", "L1"],
+        },
+        {
+          name: "Human-in-the-Loop",
+          vendor: "Pattern",
+          type: "practice",
+          strata: ["L6", "L5"],
+        },
+        {
+          name: "Eval & Improve Loop",
+          vendor: "Pattern",
+          type: "practice",
+          strata: ["L5"],
+        },
+        {
+          name: "Agent CI/CD",
+          vendor: "Pattern",
+          type: "practice",
+          strata: ["L6", "L5", "L3"],
+        },
+        {
+          name: "Code Review",
+          vendor: "Pattern",
+          type: "practice",
+          strata: ["L6", "L5", "L3"],
+        },
+        {
+          name: "Testing Strategy",
+          vendor: "Pattern",
+          type: "practice",
+          strata: ["L5", "L3"],
+        },
+        {
+          name: "Security Audit",
+          vendor: "Pattern",
+          type: "practice",
+          strata: ["L6", "L5"],
+        },
+        {
+          name: "API Design",
+          vendor: "Pattern",
+          type: "practice",
+          strata: ["L3"],
+        },
+        {
+          name: "DB Optimization",
+          vendor: "Pattern",
+          type: "practice",
+          strata: ["L2", "L1"],
+        },
+        {
+          name: "Perf Profiling",
+          vendor: "Pattern",
+          type: "practice",
+          strata: ["L5", "L3"],
+        },
+      ];
+
+      // ===== STRATA DEFINITIONS =====
+      const STRATA = [
+        {
+          id: "L7",
+          name: "Experience & Intent",
+          color: "var(--l7)",
+          bg: "var(--l7-glow)",
+        },
+        {
+          id: "L6",
+          name: "Governance & Trust",
+          color: "var(--l6)",
+          bg: "var(--l6-glow)",
+        },
+        {
+          id: "L5",
+          name: "Observability & Eval",
+          color: "var(--l5)",
+          bg: "var(--l5-glow)",
+        },
+        {
+          id: "L4",
+          name: "Orchestration & Decisioning",
+          color: "var(--l4)",
+          bg: "var(--l4-glow)",
+        },
+        {
+          id: "L3",
+          name: "Execution & Interfaces",
+          color: "var(--l3)",
+          bg: "var(--l3-glow)",
+        },
+        {
+          id: "L2",
+          name: "Knowledge & Memory",
+          color: "var(--l2)",
+          bg: "var(--l2-glow)",
+        },
+        {
+          id: "L1",
+          name: "Models & Infrastructure",
+          color: "var(--l1)",
+          bg: "var(--l1-glow)",
+        },
+      ];
+
+      // ===== STATE =====
+      const STORAGE_KEY = "aos_stacks";
+      let currentStackId = null; // active stack localStorage id
+      let placements = {}; // { L7: ["Product A", ...], L6: [...], ... }
+
+      // Init placements
+      STRATA.forEach((s) => (placements[s.id] = []));
+
+      // ===== RENDER CATALOG =====
+      let activeFilter = "all";
+      function renderCatalog() {
+        const q = document.getElementById("catalogSearch").value.toLowerCase();
+        const list = document.getElementById("catalogList");
+        const dotColors = {
+          L7: "var(--l7)",
+          L6: "var(--l6)",
+          L5: "var(--l5)",
+          L4: "var(--l4)",
+          L3: "var(--l3)",
+          L2: "var(--l2)",
+          L1: "var(--l1)",
+        };
+        let html = "";
+        let count = 0;
+        CATALOG.forEach((p, i) => {
+          if (activeFilter !== "all" && p.type !== activeFilter) return;
+          if (
+            q &&
+            !p.name.toLowerCase().includes(q) &&
+            !p.vendor.toLowerCase().includes(q)
+          )
+            return;
+          const dots = STRATA.map(
+            (s) =>
+              `<div class="ci-dot ${p.strata.includes(s.id) ? "active" : ""}" style="background:${dotColors[s.id]}"></div>`,
+          ).join("");
+          html += `<div class="catalog-item" draggable="true" data-idx="${i}" onclick="quickAdd(${i})" title="Drag to a stratum or click to add">
+      <div>
+        <div class="ci-name">${esc(p.name)}</div>
+        <div class="ci-vendor">${esc(p.vendor)}</div>
+      </div>
+      <div class="ci-dots">${dots}</div>
+      <div class="ci-type">${esc(p.type)}</div>
+    </div>`;
+          count++;
+        });
+        if (!count)
+          html = '<div class="no-results">No products match your search.</div>';
+        list.innerHTML = html;
+
+        // Attach drag events
+        list.querySelectorAll(".catalog-item[draggable]").forEach((el) => {
+          el.addEventListener("dragstart", onDragStart);
+          el.addEventListener("dragend", onDragEnd);
+        });
+      }
+
+      // ===== RENDER STRATA ZONES =====
+      function renderZones() {
+        const container = document.getElementById("strataZones");
+        let html = "";
+        STRATA.forEach((s) => {
+          const items = placements[s.id] || [];
+          const chips = items
+            .map(
+              (name) =>
+                `<div class="placed-chip">
+        ${esc(name)}
+        <span class="chip-remove" onclick="removeProduct('${s.id}','${esc(name)}')">&times;</span>
+      </div>`,
+            )
+            .join("");
+          const empty =
+            items.length === 0
+              ? '<div class="stratum-zone-empty">Drag a product here or click one from the catalog</div>'
+              : "";
+          html += `<div class="stratum-zone" data-stratum="${s.id}"
+      ondragover="onDragOver(event)" ondragleave="onDragLeave(event)" ondrop="onDrop(event,'${s.id}')">
+      <div class="stratum-zone-header">
+        <span class="sz-tag" style="background:${s.color}">${s.id}</span>
+        <span class="sz-name">${s.name}</span>
+        <span class="sz-count">${items.length} item${items.length !== 1 ? "s" : ""}</span>
+      </div>
+      <div class="stratum-zone-items">${chips}</div>
+      ${empty}
+    </div>`;
+        });
+        container.innerHTML = html;
+        updateCoverage();
+      }
+
+      function updateCoverage() {
+        const filled = STRATA.filter(
+          (s) => (placements[s.id] || []).length > 0,
+        ).length;
+        document.getElementById("coverageScore").textContent = `${filled}/7`;
+      }
+
+      // ===== DRAG & DROP =====
+      let dragIdx = null;
+      function onDragStart(e) {
+        dragIdx = parseInt(e.currentTarget.dataset.idx);
+        e.currentTarget.classList.add("dragging");
+        e.dataTransfer.effectAllowed = "copy";
+        e.dataTransfer.setData("text/plain", dragIdx);
+      }
+      function onDragEnd(e) {
+        e.currentTarget.classList.remove("dragging");
+        dragIdx = null;
+        document
+          .querySelectorAll(".stratum-zone.drag-over")
+          .forEach((z) => z.classList.remove("drag-over"));
+      }
+      function onDragOver(e) {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = "copy";
+        e.currentTarget.classList.add("drag-over");
+      }
+      function onDragLeave(e) {
+        e.currentTarget.classList.remove("drag-over");
+      }
+      function onDrop(e, stratumId) {
+        e.preventDefault();
+        e.currentTarget.classList.remove("drag-over");
+        const idx = parseInt(e.dataTransfer.getData("text/plain"));
+        if (isNaN(idx)) return;
+        addProduct(idx, stratumId);
+      }
+
+      // ===== QUICK ADD (CLICK) =====
+      function quickAdd(idx) {
+        const product = CATALOG[idx];
+        if (!product) return;
+        // Add to each stratum the product covers (that it isn't already in)
+        let added = false;
+        product.strata.forEach((sid) => {
+          if (!placements[sid].includes(product.name)) {
+            placements[sid].push(product.name);
+            added = true;
+          }
+        });
+        if (added) {
+          renderZones();
+          toast(`Added ${product.name} to ${product.strata.join(", ")}`);
+        } else {
+          toast(`${product.name} is already placed`);
+        }
+      }
+
+      function addProduct(idx, stratumId) {
+        const product = CATALOG[idx];
+        if (!product) return;
+        if (placements[stratumId].includes(product.name)) {
+          toast(`${product.name} already in ${stratumId}`);
+          return;
+        }
+        placements[stratumId].push(product.name);
+        renderZones();
+        toast(`Added ${product.name} to ${stratumId}`);
+      }
+
+      function removeProduct(stratumId, name) {
+        placements[stratumId] = placements[stratumId].filter((n) => n !== name);
+        renderZones();
+      }
+
+      // ===== SAVE / LOAD =====
+      function getAllStacks() {
+        try {
+          return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+        } catch {
+          return {};
+        }
+      }
+      function saveAllStacks(stacks) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(stacks));
+      }
+
+      function saveStack() {
+        const nameEl = document.getElementById("stackName");
+        const name = nameEl.value.trim();
+        if (!name) {
+          toast("Enter a stack name first");
+          nameEl.focus();
+          return;
+        }
+        const id = currentStackId || "stack_" + Date.now();
+        const stacks = getAllStacks();
+        stacks[id] = {
+          name,
+          placements: JSON.parse(JSON.stringify(placements)),
+          updated: new Date().toISOString(),
+        };
+        saveAllStacks(stacks);
+        currentStackId = id;
+        renderSaved();
+        toast(`Saved "${name}"`);
+      }
+
+      function loadStack(id) {
+        const stacks = getAllStacks();
+        const stack = stacks[id];
+        if (!stack) return;
+        currentStackId = id;
+        document.getElementById("stackName").value = stack.name;
+        // Restore placements
+        STRATA.forEach(
+          (s) => (placements[s.id] = (stack.placements[s.id] || []).slice()),
+        );
+        renderZones();
+        renderSaved();
+        toast(`Loaded "${stack.name}"`);
+      }
+
+      function deleteStack(id, ev) {
+        ev.stopPropagation();
+        const stacks = getAllStacks();
+        const name = stacks[id]?.name || "stack";
+        delete stacks[id];
+        saveAllStacks(stacks);
+        if (currentStackId === id) {
+          currentStackId = null;
+        }
+        renderSaved();
+        toast(`Deleted "${name}"`);
+      }
+
+      function newStack() {
+        currentStackId = null;
+        document.getElementById("stackName").value = "";
+        STRATA.forEach((s) => (placements[s.id] = []));
+        renderZones();
+        renderSaved();
+        toast("New empty stack");
+      }
+
+      function clearStack() {
+        STRATA.forEach((s) => (placements[s.id] = []));
+        renderZones();
+        toast("Stack cleared");
+      }
+
+      function renderSaved() {
+        const stacks = getAllStacks();
+        const container = document.getElementById("savedStacks");
+        const ids = Object.keys(stacks).sort((a, b) =>
+          (stacks[b].updated || "") > (stacks[a].updated || "") ? 1 : -1,
+        );
+        if (ids.length === 0) {
+          container.innerHTML = "";
+          return;
+        }
+        container.innerHTML = ids
+          .map((id) => {
+            const s = stacks[id];
+            const active = id === currentStackId ? " active" : "";
+            return `<div class="saved-stack-chip${active}" onclick="loadStack('${id}')">
+      ${esc(s.name)}
+      <span class="ssc-delete" onclick="deleteStack('${id}', event)">&times;</span>
+    </div>`;
+          })
+          .join("");
+      }
+
+      // ===== EXPORT / IMPORT =====
+      function exportStack() {
+        const name =
+          document.getElementById("stackName").value.trim() || "Untitled Stack";
+        const data = {
+          name,
+          placements,
+          exported: new Date().toISOString(),
+          version: 1,
+        };
+        const blob = new Blob([JSON.stringify(data, null, 2)], {
+          type: "application/json",
+        });
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = name.replace(/[^a-zA-Z0-9_-]/g, "_") + ".json";
+        a.click();
+        URL.revokeObjectURL(a.href);
+        toast("Exported stack as JSON");
+      }
+
+      function importStack() {
+        document.getElementById("importFile").click();
+      }
+      document
+        .getElementById("importFile")
+        .addEventListener("change", function (e) {
+          const file = e.target.files[0];
+          if (!file) return;
+          const reader = new FileReader();
+          reader.onload = function (ev) {
+            try {
+              const data = JSON.parse(ev.target.result);
+              if (!data.placements) throw new Error("Invalid stack file");
+              document.getElementById("stackName").value =
+                data.name || "Imported Stack";
+              STRATA.forEach(
+                (s) =>
+                  (placements[s.id] = (data.placements[s.id] || []).slice()),
+              );
+              currentStackId = null;
+              renderZones();
+              toast("Imported stack");
+            } catch (err) {
+              toast("Invalid file format");
+            }
+          };
+          reader.readAsText(file);
+          e.target.value = "";
+        });
+
+      // ===== FILTER BUTTONS =====
+      document.querySelectorAll(".catalog-filter-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          document
+            .querySelectorAll(".catalog-filter-btn")
+            .forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          activeFilter = btn.dataset.filter;
+          renderCatalog();
+        });
+      });
+
+      // ===== SEARCH =====
+      document
+        .getElementById("catalogSearch")
+        .addEventListener("input", renderCatalog);
+
+      // ===== TOAST =====
+      let toastTimer;
+      function toast(msg) {
+        const el = document.getElementById("toast");
+        el.textContent = msg;
+        el.classList.add("show");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => el.classList.remove("show"), 2200);
+      }
+
+      // ===== HELPERS =====
+      function esc(s) {
+        const d = document.createElement("div");
+        d.textContent = s;
+        return d.innerHTML;
+      }
+
+      // ===== BOOT =====
+      renderCatalog();
+      renderZones();
+      renderSaved();
+    </script>
+  </body>
+</html>

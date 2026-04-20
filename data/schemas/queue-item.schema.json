@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "queue-item.schema.json",
+  "title": "aOS Refresh Queue Item (Tier D)",
+  "description": "A pending review request. Consumed by humans now, agents later.",
+  "type": "object",
+  "required": ["id", "targetType", "targetId", "reason", "priority", "status"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^rq-[0-9]+$"
+    },
+    "targetType": {
+      "type": "string",
+      "enum": ["concept", "product", "evidence"],
+      "description": "Which tier the target belongs to."
+    },
+    "targetId": {
+      "type": "string",
+      "description": "Slug or ID of the item to refresh."
+    },
+    "reason": {
+      "type": "string",
+      "enum": [
+        "scheduled-review",
+        "high-volatility-vendor",
+        "stub-evidence",
+        "confidence-decay",
+        "spec-evolution",
+        "user-correction",
+        "link-rot",
+        "manual-request"
+      ]
+    },
+    "detail": { "type": "string" },
+    "priority": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Computed from scoring formula in refresh-policy.json."
+    },
+    "priorityFactors": {
+      "type": "object",
+      "properties": {
+        "demand": { "type": "number", "minimum": 0, "maximum": 1 },
+        "strategicImportance": { "type": "number", "minimum": 0, "maximum": 1 },
+        "volatility": { "type": "number", "minimum": 0, "maximum": 1 },
+        "confidenceDecay": { "type": "number", "minimum": 0, "maximum": 1 },
+        "trustLevel": { "type": "number", "minimum": 0, "maximum": 1 }
+      },
+      "description": "Individual factor values used to compute priority."
+    },
+    "requestedDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "deadline": {
+      "type": ["string", "null"],
+      "format": "date"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "in-progress", "completed", "skipped"]
+    },
+    "assignedTo": {
+      "type": ["string", "null"],
+      "description": "Who/what is handling this. Null = unassigned. Future: agent ID."
+    },
+    "completedDate": {
+      "type": ["string", "null"],
+      "format": "date"
+    },
+    "notes": { "type": "string" }
+  }
+}

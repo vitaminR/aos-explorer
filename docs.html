@@ -1,0 +1,4586 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{a}OS Explorer — Documentation</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --bg-base: rgb(8, 10, 12);
+        --bg-card: rgb(14, 16, 20);
+        --bg-surface: rgb(18, 20, 26);
+        --bg-elevated: rgb(24, 26, 34);
+        --border: rgba(255, 255, 255, 0.06);
+        --border-hover: rgba(255, 255, 255, 0.12);
+        --text-primary: rgba(255, 255, 255, 0.9);
+        --text-secondary: rgba(255, 255, 255, 0.6);
+        --text-tertiary: rgba(255, 255, 255, 0.4);
+        --text-quaternary: rgba(255, 255, 255, 0.2);
+        --accent-indigo: #818cf8;
+        --accent-blue: #60a5fa;
+        --accent-gradient: linear-gradient(135deg, #818cf8, #60a5fa);
+        --glow-indigo: rgba(129, 140, 248, 0.15);
+        --l7: #c75a00;
+        --l7-glow: rgba(199, 90, 0, 0.12);
+        --l6: #e15759;
+        --l6-glow: rgba(225, 87, 89, 0.12);
+        --l5: #b07aa1;
+        --l5-glow: rgba(176, 122, 161, 0.12);
+        --l4: #59a14f;
+        --l4-glow: rgba(89, 161, 79, 0.12);
+        --l3: #edc948;
+        --l3-glow: rgba(237, 201, 72, 0.12);
+        --l2: #22d3ee;
+        --l2-glow: rgba(34, 211, 238, 0.12);
+        --l1: #1e40af;
+        --l1-glow: rgba(30, 64, 175, 0.12);
+      }
+
+      body {
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          system-ui,
+          sans-serif;
+        background: var(--bg-base);
+        color: var(--text-primary);
+        min-height: 100vh;
+        line-height: 1.7;
+      }
+
+      /* ===== AURORA ===== */
+      .aurora {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+      }
+      .aurora-blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(120px);
+        opacity: 0.05;
+        animation: drift 20s ease-in-out infinite alternate;
+      }
+      .aurora-blob:nth-child(1) {
+        width: 600px;
+        height: 600px;
+        background: #818cf8;
+        top: -200px;
+        left: 20%;
+      }
+      .aurora-blob:nth-child(2) {
+        width: 500px;
+        height: 500px;
+        background: #60a5fa;
+        top: 40%;
+        right: -100px;
+        animation-delay: -7s;
+      }
+      .aurora-blob:nth-child(3) {
+        width: 400px;
+        height: 400px;
+        background: #c084fc;
+        bottom: -100px;
+        left: 40%;
+        animation-delay: -14s;
+      }
+      @keyframes drift {
+        0% {
+          transform: translate(0, 0) scale(1);
+        }
+        50% {
+          transform: translate(30px, -20px) scale(1.08);
+        }
+        100% {
+          transform: translate(-20px, 15px) scale(0.95);
+        }
+      }
+
+      /* ===== HEADER ===== */
+      .header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(8, 10, 12, 0.85);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border);
+        padding: 0 32px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .logo {
+        font-weight: 700;
+        font-size: 18px;
+        letter-spacing: -0.5px;
+        background: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        white-space: nowrap;
+      }
+      .logo span {
+        font-weight: 300;
+        -webkit-text-fill-color: var(--text-tertiary);
+      }
+      .header-spacer {
+        flex: 1;
+      }
+      .back-link {
+        font-size: 13px;
+        color: var(--text-tertiary);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .back-link:hover {
+        color: var(--accent-indigo);
+      }
+
+      /* ===== TABS ===== */
+      .tabs-bar {
+        border-bottom: 1px solid var(--border);
+        padding: 0 32px;
+        display: flex;
+        gap: 0;
+        background: rgba(8, 10, 12, 0.5);
+        position: relative;
+        z-index: 1;
+      }
+      .tab-btn {
+        padding: 14px 20px;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--text-tertiary);
+        background: none;
+        border: none;
+        border-bottom: 2px solid transparent;
+        cursor: pointer;
+        transition: all 0.2s;
+        white-space: nowrap;
+      }
+      .tab-btn:hover {
+        color: var(--text-secondary);
+      }
+      .tab-btn.active {
+        color: var(--accent-indigo);
+        border-bottom-color: var(--accent-indigo);
+      }
+
+      /* ===== LAYOUT ===== */
+      .docs-layout {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        min-height: calc(100vh - 64px - 49px);
+        position: relative;
+        z-index: 1;
+      }
+
+      /* ===== SIDEBAR ===== */
+      .sidebar {
+        border-right: 1px solid var(--border);
+        padding: 24px 16px;
+        background: rgba(14, 16, 20, 0.4);
+        position: sticky;
+        top: 113px;
+        height: calc(100vh - 113px);
+        overflow-y: auto;
+      }
+      .sidebar-title {
+        font-size: 10px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+        color: var(--text-quaternary);
+        margin-bottom: 10px;
+        padding: 0 8px;
+      }
+      .sidebar-link {
+        display: block;
+        padding: 6px 10px;
+        border-radius: 6px;
+        font-size: 13px;
+        color: var(--text-secondary);
+        text-decoration: none;
+        margin-bottom: 2px;
+        transition: all 0.15s;
+      }
+      .sidebar-link:hover {
+        background: var(--bg-surface);
+        color: var(--text-primary);
+      }
+      .sidebar-link.active {
+        background: var(--glow-indigo);
+        color: var(--accent-indigo);
+      }
+      .sidebar-divider {
+        height: 1px;
+        background: var(--border);
+        margin: 16px 8px;
+      }
+
+      /* ===== CONTENT ===== */
+      .content {
+        padding: 40px 48px 80px;
+        max-width: 820px;
+      }
+      .content h1 {
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: -0.8px;
+        margin-bottom: 8px;
+        background: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .content .subtitle {
+        font-size: 15px;
+        color: var(--text-tertiary);
+        margin-bottom: 40px;
+      }
+      .content h2[id] {
+        scroll-margin-top: 130px;
+      }
+      .content h3[id] {
+        scroll-margin-top: 130px;
+      }
+      .content h2 {
+        font-size: 22px;
+        font-weight: 600;
+        letter-spacing: -0.3px;
+        margin: 40px 0 16px;
+        color: var(--text-primary);
+      }
+      .content h3 {
+        font-size: 16px;
+        font-weight: 600;
+        margin: 28px 0 12px;
+        color: var(--text-primary);
+      }
+      .content p {
+        color: var(--text-secondary);
+        margin-bottom: 16px;
+        font-size: 14px;
+      }
+      .content strong {
+        color: var(--text-primary);
+      }
+      .content ul,
+      .content ol {
+        color: var(--text-secondary);
+        padding-left: 20px;
+        margin-bottom: 16px;
+        font-size: 14px;
+      }
+      .content li {
+        margin-bottom: 6px;
+      }
+      .content code {
+        background: var(--bg-surface);
+        border: 1px solid var(--border);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 12px;
+        color: var(--accent-indigo);
+        font-family: "SF Mono", "Fira Code", monospace;
+      }
+      .content a {
+        color: var(--accent-indigo);
+        text-decoration: none;
+      }
+      .content a:hover {
+        text-decoration: underline;
+      }
+
+      /* ===== TABLE ===== */
+      .doc-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 16px 0 24px;
+        font-size: 13px;
+      }
+      .doc-table th {
+        text-align: left;
+        padding: 10px 14px;
+        background: var(--bg-surface);
+        color: var(--text-primary);
+        font-weight: 600;
+        border-bottom: 1px solid var(--border);
+      }
+      .doc-table td {
+        padding: 10px 14px;
+        border-bottom: 1px solid var(--border);
+        color: var(--text-secondary);
+      }
+      .doc-table tr:hover td {
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      /* ===== STRATUM MINI CARD ===== */
+      .stratum-mini {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 16px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        margin-bottom: 6px;
+        transition: all 0.2s;
+      }
+      .stratum-mini:hover {
+        border-color: var(--border-hover);
+        background: rgba(20, 22, 28, 1);
+      }
+      .stratum-mini .num {
+        font-size: 11px;
+        font-weight: 700;
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        flex-shrink: 0;
+      }
+      .stratum-mini .info {
+        flex: 1;
+      }
+      .stratum-mini .name {
+        font-size: 14px;
+        font-weight: 600;
+      }
+      .stratum-mini .question {
+        font-size: 12px;
+        color: var(--text-tertiary);
+        font-style: italic;
+      }
+
+      /* ===== CALLOUT SYSTEM (Note · Important · Tip · Warning) ===== */
+      /* Semantic colors */
+      :root {
+        --callout-note: #60a5fa; /* blue   */
+        --callout-note-bg: rgba(96, 165, 250, 0.06);
+        --callout-important: #c084fc; /* purple */
+        --callout-important-bg: rgba(192, 132, 252, 0.06);
+        --callout-tip: #34d399; /* green  */
+        --callout-tip-bg: rgba(52, 211, 153, 0.06);
+        --callout-warning: #fbbf24; /* amber  */
+        --callout-warning-bg: rgba(251, 191, 36, 0.06);
+      }
+
+      .callout {
+        background: var(--bg-surface);
+        border: 1px solid var(--border);
+        border-left: 3px solid var(--callout-note);
+        border-radius: 0 8px 8px 0;
+        padding: 16px 20px;
+        margin: 20px 0;
+        font-size: 13px;
+        color: var(--text-secondary);
+        position: relative;
+      }
+      .callout .callout-heading {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 6px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--callout-note);
+      }
+      .callout .callout-heading svg {
+        flex-shrink: 0;
+      }
+      /* Legacy: keep bold-first-child working as fallback */
+      .callout > strong:first-child {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 6px;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--callout-note);
+      }
+
+      /* —— Note (default / blue) —— */
+      .callout.callout-note,
+      .callout:not(.callout-important):not(.callout-tip):not(.callout-warning) {
+        border-left-color: var(--callout-note);
+        background: var(--callout-note-bg);
+      }
+      .callout.callout-note .callout-heading,
+      .callout:not(.callout-important):not(.callout-tip):not(.callout-warning)
+        .callout-heading,
+      .callout:not(.callout-important):not(.callout-tip):not(.callout-warning)
+        > strong:first-child {
+        color: var(--callout-note);
+      }
+
+      /* —— Important (purple) —— */
+      .callout.callout-important {
+        border-left-color: var(--callout-important);
+        background: var(--callout-important-bg);
+      }
+      .callout.callout-important .callout-heading,
+      .callout.callout-important > strong:first-child {
+        color: var(--callout-important);
+      }
+
+      /* —— Tip (green) —— */
+      .callout.callout-tip {
+        border-left-color: var(--callout-tip);
+        background: var(--callout-tip-bg);
+      }
+      .callout.callout-tip .callout-heading,
+      .callout.callout-tip > strong:first-child {
+        color: var(--callout-tip);
+      }
+
+      /* —— Warning (amber) —— */
+      .callout.callout-warning {
+        border-left-color: var(--callout-warning);
+        background: var(--callout-warning-bg);
+      }
+      .callout.callout-warning .callout-heading,
+      .callout.callout-warning > strong:first-child {
+        color: var(--callout-warning);
+      }
+
+      /* ===== ABBR ===== */
+      abbr {
+        text-decoration: underline dotted var(--text-quaternary);
+        text-underline-offset: 3px;
+        cursor: help;
+      }
+      abbr:hover {
+        color: var(--accent-indigo);
+        text-decoration-color: var(--accent-indigo);
+      }
+
+      /* ===== GLOSSARY ===== */
+      .glossary-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4px 24px;
+        font-size: 12px;
+        margin-top: 10px;
+      }
+      .glossary-grid dt {
+        color: var(--accent-indigo);
+        font-weight: 600;
+        font-family: "SF Mono", "Fira Code", monospace;
+      }
+      .glossary-grid dd {
+        color: var(--text-secondary);
+        margin: 0 0 4px;
+      }
+
+      /* ===== KBD ===== */
+      kbd {
+        background: var(--bg-surface);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 2px 7px;
+        font-size: 12px;
+        color: var(--text-primary);
+        font-family: "Inter", sans-serif;
+      }
+
+      /* ===== HIDDEN TABS ===== */
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+      }
+
+      /* ===== SCROLLBAR ===== */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--bg-elevated);
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      /* ===== CONFIDENCE BADGE ===== */
+      .badge-high {
+        display: inline-block;
+        background: rgba(52, 211, 153, 0.12);
+        color: #34d399;
+        font-size: 11px;
+        font-weight: 600;
+        padding: 2px 8px;
+        border-radius: 4px;
+      }
+      .badge-med {
+        display: inline-block;
+        background: rgba(251, 191, 36, 0.12);
+        color: #fbbf24;
+        font-size: 11px;
+        font-weight: 600;
+        padding: 2px 8px;
+        border-radius: 4px;
+      }
+      .badge-low {
+        display: inline-block;
+        background: rgba(248, 113, 113, 0.12);
+        color: #f87171;
+        font-size: 11px;
+        font-weight: 600;
+        padding: 2px 8px;
+        border-radius: 4px;
+      }
+
+      /* ===== FEATURE GRID ===== */
+      .feature-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin: 20px 0 28px;
+      }
+      .feature-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 16px;
+        transition: all 0.2s;
+      }
+      .feature-card:hover {
+        border-color: var(--border-hover);
+        transform: translateY(-1px);
+      }
+      .feature-card .icon {
+        font-size: 20px;
+        margin-bottom: 8px;
+      }
+      .feature-card .title {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 4px;
+        color: var(--text-primary);
+      }
+      .feature-card .desc {
+        font-size: 12px;
+        color: var(--text-tertiary);
+      }
+
+      /* ===== TERMINOLOGY PRIMER ===== */
+      .primer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 12px;
+        margin: 20px 0 24px;
+      }
+      .primer-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 16px;
+        transition: all 0.2s;
+      }
+      .primer-card:hover {
+        border-color: var(--border-hover);
+        transform: translateY(-1px);
+      }
+      .primer-card .eyebrow {
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--text-quaternary);
+        margin-bottom: 8px;
+      }
+      .primer-card .term {
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--text-primary);
+        margin-bottom: 6px;
+      }
+      .primer-card .plain {
+        font-size: 13px;
+        color: var(--text-secondary);
+        margin-bottom: 10px;
+      }
+      .primer-card .example {
+        font-size: 12px;
+        color: var(--text-tertiary);
+        margin-bottom: 6px;
+      }
+      .prompt-box {
+        background: linear-gradient(
+          180deg,
+          rgba(129, 140, 248, 0.1),
+          rgba(96, 165, 250, 0.04)
+        );
+        border: 1px solid rgba(129, 140, 248, 0.18);
+        border-radius: 12px;
+        padding: 18px 20px;
+        margin: 20px 0 24px;
+      }
+      .prompt-box .label {
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--accent-indigo);
+        margin-bottom: 10px;
+      }
+      .prompt-box p:last-child {
+        margin-bottom: 0;
+      }
+
+      /* ===== ENHANCED: Smooth scroll ===== */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* ===== ENHANCED: Table alternate rows ===== */
+      .doc-table tbody tr:nth-child(even) td {
+        background: rgba(255, 255, 255, 0.015);
+      }
+
+      /* ===== ENHANCED: Section fade-in on load ===== */
+      .content h2 {
+        animation: fadeSlideIn 0.5s ease both;
+      }
+      @keyframes fadeSlideIn {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ===== ENHANCED: Heading anchor hover indicator ===== */
+      .content h2[id]::before {
+        content: "#";
+        position: absolute;
+        left: -1.5em;
+        color: var(--text-quaternary);
+        opacity: 0;
+        transition: opacity 0.2s;
+        font-weight: 400;
+      }
+      .content h2[id] {
+        position: relative;
+      }
+      .content h2[id]:hover::before {
+        opacity: 1;
+        color: var(--accent-indigo);
+      }
+
+      /* ===== ENHANCED: Tab indicator slide ===== */
+      .tabs-bar {
+        position: relative;
+      }
+      .tab-btn {
+        position: relative;
+        transition:
+          color 0.25s ease,
+          border-bottom-color 0.25s ease;
+      }
+
+      /* ===== ENHANCED: Tab content fade transition ===== */
+      .tab-content {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .tab-content.active {
+        opacity: 1;
+      }
+
+      /* ===== ENHANCED: Callout hover lift ===== */
+      .callout {
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+      .callout:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      /* ===== Callout SVG icon set (inline via CSS pseudo) ===== */
+      /* Icons rendered via the .callout-heading span in HTML */
+
+      /* ===== ENHANCED: Sidebar link transition ===== */
+      .sidebar-link {
+        transition:
+          all 0.2s ease,
+          padding-left 0.2s ease;
+      }
+      .sidebar-link.is-visible {
+        padding-left: 14px;
+        color: var(--accent-blue);
+        background: rgba(96, 165, 250, 0.06);
+      }
+
+      /* ===== ENHANCED: Code inline hover ===== */
+      .content code {
+        transition:
+          background 0.15s,
+          border-color 0.15s;
+      }
+      .content code:hover {
+        background: var(--bg-elevated);
+        border-color: var(--border-hover);
+      }
+
+      /* ===== ENHANCED: Feature card glow on hover ===== */
+      .feature-card:hover {
+        box-shadow: 0 0 24px rgba(129, 140, 248, 0.06);
+      }
+
+      /* ===== ENHANCED: Stratum mini card glow ===== */
+      .stratum-mini:hover {
+        box-shadow: 0 0 16px
+          color-mix(in srgb, var(--layer-color, #818cf8) 15%, transparent);
+      }
+
+      /* ===== ENHANCED: Responsive ===== */
+      @media (max-width: 860px) {
+        .docs-layout {
+          grid-template-columns: 1fr;
+        }
+        .sidebar {
+          position: static;
+          height: auto;
+          border-right: none;
+          border-bottom: 1px solid var(--border);
+          display: flex;
+          flex-wrap: wrap;
+          gap: 4px;
+          padding: 12px 16px;
+        }
+        .sidebar-title {
+          width: 100%;
+        }
+        .sidebar-link {
+          display: inline-block;
+        }
+        .content {
+          padding: 24px 20px 60px;
+        }
+        .feature-grid {
+          grid-template-columns: 1fr;
+        }
+        .tabs-bar {
+          overflow-x: auto;
+        }
+      }
+
+      /* ── Auth UI ─────────────────────────────────────────────────────── */
+      .auth-btn {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 14px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 20px;
+        color: #e2e8f0;
+        font-size: 13px;
+        font-weight: 500;
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          border-color 0.2s;
+        white-space: nowrap;
+      }
+      .auth-btn:hover {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.35);
+      }
+      .auth-btn svg {
+        flex-shrink: 0;
+      }
+      .auth-user-panel {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .auth-avatar {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        object-fit: cover;
+      }
+      .auth-username {
+        font-size: 13px;
+        color: #e2e8f0;
+        max-width: 120px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .auth-signout-btn {
+        font-size: 12px;
+        padding: 4px 10px;
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 12px;
+        color: #94a3b8;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .auth-signout-btn:hover {
+        background: rgba(255, 255, 255, 0.08);
+        color: #e2e8f0;
+      }
+
+      /* ===== BACK-TO-TOP FAB ===== */
+      .back-to-top {
+        position: fixed;
+        bottom: 32px;
+        right: 32px;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: var(--accent-indigo);
+        color: #fff;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        opacity: 0;
+        pointer-events: none;
+        transition:
+          opacity 0.25s,
+          transform 0.25s;
+        z-index: 900;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+      }
+      .back-to-top.visible {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .back-to-top:hover {
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="aurora">
+      <div class="aurora-blob"></div>
+      <div class="aurora-blob"></div>
+      <div class="aurora-blob"></div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header">
+      <div class="logo">{a}OS <span>Explorer</span></div>
+      <div class="header-spacer"></div>
+      <a href="prototype.html" class="back-link">&#x2190; Back to Explorer</a>
+      <!-- GitHub auth controls — shown/hidden by firebase-auth.js -->
+      <button id="auth-signin-btn" class="auth-btn" title="Sign in with GitHub">
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            d="M8 0C3.58 0 0 3.58 0 8a8 8 0 005.47 7.59c.4.07.55-.17.55-.38
+            0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+            -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
+            .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15
+            -.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.65 7.65 0 012 0c1.53-1.04
+            2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87
+            3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46
+            .55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"
+          />
+        </svg>
+        Sign in
+      </button>
+      <div id="auth-user-panel" class="auth-user-panel" style="display: none">
+        <img
+          id="auth-avatar"
+          class="auth-avatar"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+          alt="User avatar"
+        />
+        <span id="auth-username" class="auth-username"></span>
+        <button id="auth-signout-btn" class="auth-signout-btn">Sign out</button>
+      </div>
+    </header>
+
+    <!-- TABS -->
+    <div class="tabs-bar">
+      <button class="tab-btn active" onclick="switchTab('overview', this)">
+        Overview
+      </button>
+      <button class="tab-btn" onclick="switchTab('reference', this)">
+        Reference Stack
+      </button>
+      <button class="tab-btn" onclick="switchTab('classification', this)">
+        Classification
+      </button>
+      <button class="tab-btn" onclick="switchTab('products', this)">
+        Products
+      </button>
+      <button class="tab-btn" onclick="switchTab('guide', this)">
+        User Guide
+      </button>
+      <button class="tab-btn" onclick="switchTab('roadmap', this)">
+        Roadmap
+      </button>
+      <button class="tab-btn" onclick="switchTab('azure-setup', this)">
+        Azure Setup
+      </button>
+      <button class="tab-btn" onclick="switchTab('standards', this)">
+        Standards Track
+      </button>
+    </div>
+
+    <!-- ===== OVERVIEW TAB ===== -->
+    <div class="tab-content active" id="tab-overview">
+      <div class="docs-layout">
+        <nav class="sidebar">
+          <div class="sidebar-title">Overview</div>
+          <a href="#what" class="sidebar-link active"
+            >What is {a}OS Explorer?</a
+          >
+          <a href="#why" class="sidebar-link">Why it exists</a>
+          <a href="#who" class="sidebar-link">Who it's for</a>
+          <a href="#features" class="sidebar-link">Key features</a>
+        </nav>
+        <div class="content">
+          <h1>What is {a}OS Explorer?</h1>
+          <p class="subtitle">
+            The interactive taxonomy and comparison engine for the agentic era.
+          </p>
+
+          <div style="text-align: center; margin: 32px 0 40px">
+            <img
+              src="docs/assets/aos-terminology-primer.png"
+              alt="{a}OS Terminology Primer — Stratum, Substrate, Construct, Primitive"
+              style="
+                max-width: 520px;
+                width: 100%;
+                border-radius: 12px;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+                border: 1px solid rgba(255, 255, 255, 0.06);
+              "
+            />
+            <p
+              style="
+                margin-top: 12px;
+                font-size: 12px;
+                color: rgba(255, 255, 255, 0.4);
+              "
+            >
+              Each level zooms deeper into the one above — from the full
+              7-stratum stack down to atomic primitives.
+            </p>
+          </div>
+
+          <p>
+            {a}OS Explorer is a web application that lets you
+            <strong>browse, compare, and understand</strong> AI products,
+            frameworks, agents, workflows, and skills through a structured
+            7-layer reference model.
+          </p>
+
+          <p>
+            Think of it as the <strong>OSI model for the agentic era</strong> —
+            but interactive.
+          </p>
+
+          <div class="callout">
+            <strong>New to the vocabulary?</strong>
+            <p>Use this translation first:</p>
+            <ul>
+              <li><strong>Stratum</strong> = responsibility layer</li>
+              <li><strong>Substrate</strong> = systems in that layer</li>
+              <li><strong>Construct</strong> = thing they create or manage</li>
+              <li>
+                <strong>Primitive</strong> = the smallest field, signal, or
+                action inside it
+              </li>
+            </ul>
+            <p>
+              The User Guide starts with a worked example so the vocabulary
+              earns its keep instead of asking you to memorize jargon.
+            </p>
+          </div>
+
+          <div class="callout">
+            <strong>Key insight</strong>
+            Most AI tooling sites tell you what a product <em>claims</em> to do.
+            {a}OS Explorer tells you where it <em>actually belongs</em>, what it
+            overlaps with, and what gaps appear when you compose systems
+            together.
+          </div>
+
+          <h2 id="why">Why It Exists</h2>
+          <p>
+            The agentic AI ecosystem is growing fast. Hundreds of products,
+            frameworks, and tools compete across overlapping domains.
+            Architects, engineers, and technical leaders need a way to:
+          </p>
+          <ul>
+            <li>
+              Understand <strong>where a product sits</strong> in the stack
+            </li>
+            <li>See <strong>how products overlap</strong> or leave gaps</li>
+            <li>
+              Compare <strong>Azure-native vs aftermarket</strong> solutions
+            </li>
+            <li>
+              Identify <strong>hidden dependencies</strong> between systems
+            </li>
+            <li>Defend <strong>adoption decisions</strong> with evidence</li>
+          </ul>
+
+          <h2 id="who">Who It's For</h2>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>User</th>
+                <th>Need</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Architects</strong></td>
+                <td>
+                  Compare stacks, identify overlap, assess governance
+                  implications
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Engineers</strong></td>
+                <td>Understand where tools sit and which layer is failing</td>
+              </tr>
+              <tr>
+                <td><strong>CTOs / VPs</strong></td>
+                <td>Explain architecture and defend adoption decisions</td>
+              </tr>
+              <tr>
+                <td><strong>Procurement</strong></td>
+                <td>Compare Azure-native vs aftermarket solutions</td>
+              </tr>
+              <tr>
+                <td><strong>Security</strong></td>
+                <td>Map compliance and governance controls across the stack</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="features">Key Features</h2>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <div class="icon">&#x1F50D;</div>
+              <div class="title">Progressive Drilldown</div>
+              <div class="desc">
+                Navigate Stratum &rarr; Substrate &rarr; Construct &rarr;
+                Primitive. The UI unfolds &mdash; no page reloads.
+              </div>
+            </div>
+            <div class="feature-card">
+              <div class="icon">&#x2696;</div>
+              <div class="title">Compare Basket</div>
+              <div class="desc">
+                Add up to 4 products and see side-by-side coverage, overlaps,
+                and gaps.
+              </div>
+            </div>
+            <div class="feature-card">
+              <div class="icon">&#x1F4CA;</div>
+              <div class="title">Evidence-Backed</div>
+              <div class="desc">
+                Every classification includes confidence scores and
+                human-readable rationale.
+              </div>
+            </div>
+            <div class="feature-card">
+              <div class="icon">&#x1F500;</div>
+              <div class="title">Multi-Residency</div>
+              <div class="desc">
+                Products can span multiple layers. The UI never forces false
+                exclusivity.
+              </div>
+            </div>
+            <div class="feature-card">
+              <div class="icon">&#x1F9EC;</div>
+              <div class="title">Ontology-First</div>
+              <div class="desc">
+                Structured data model beneath every view &mdash; not ad-hoc
+                categories.
+              </div>
+            </div>
+            <div class="feature-card">
+              <div class="icon">&#x2328;</div>
+              <div class="title">Keyboard-First</div>
+              <div class="desc">
+                Full keyboard navigation. Press <kbd>/</kbd> to search,
+                <kbd>1</kbd>&ndash;<kbd>7</kbd> to jump, <kbd>?</kbd> for
+                shortcuts.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== REFERENCE STACK TAB ===== -->
+    <div class="tab-content" id="tab-reference">
+      <div class="docs-layout">
+        <nav class="sidebar">
+          <div class="sidebar-title">Reference Stack</div>
+          <a href="#stack" class="sidebar-link active">The 7 Strata</a>
+          <a href="#axes" class="sidebar-link">Cross-cutting Axes</a>
+          <a href="#hierarchy" class="sidebar-link">Ontology Hierarchy</a>
+          <a href="#concepts" class="sidebar-link">Core Concepts</a>
+          <a href="#h2h" class="sidebar-link">Head-to-Head</a>
+          <a href="#golden-paths" class="sidebar-link">Golden Paths</a>
+          <a href="#terms" class="sidebar-link">Glossary</a>
+        </nav>
+        <div class="content">
+          <h1>The {a}OS Reference Stack</h1>
+          <p class="subtitle">
+            7 strata. 2 axes. From user intent down to raw model infrastructure.
+          </p>
+
+          <h2 id="stack">The 7 Strata</h2>
+          <p>
+            Each stratum answers a specific
+            <strong>boundary question</strong> about the agentic system:
+          </p>
+
+          <div style="margin: 20px 0 32px">
+            <div class="stratum-mini">
+              <div
+                class="num"
+                style="background: var(--l7-glow); color: var(--l7)"
+              >
+                L7
+              </div>
+              <div class="info">
+                <div class="name">Experience & Intent</div>
+                <div class="question">
+                  What did the human actually want — and did they get it?
+                </div>
+              </div>
+            </div>
+            <div class="stratum-mini">
+              <div
+                class="num"
+                style="background: var(--l6-glow); color: var(--l6)"
+              >
+                L6
+              </div>
+              <div class="info">
+                <div class="name">Governance & Trust</div>
+                <div class="question">
+                  Who approved this action and under which policy?
+                </div>
+              </div>
+            </div>
+            <div class="stratum-mini">
+              <div
+                class="num"
+                style="background: var(--l5-glow); color: var(--l5)"
+              >
+                L5
+              </div>
+              <div class="info">
+                <div class="name">Observability & Evaluation</div>
+                <div class="question">
+                  How well did this work, and can we prove it?
+                </div>
+              </div>
+            </div>
+            <div class="stratum-mini">
+              <div
+                class="num"
+                style="background: var(--l4-glow); color: var(--l4)"
+              >
+                L4
+              </div>
+              <div class="info">
+                <div class="name">Orchestration & Decisioning</div>
+                <div class="question">
+                  What happens next, in what order, with which agent?
+                </div>
+              </div>
+            </div>
+            <div class="stratum-mini">
+              <div
+                class="num"
+                style="background: var(--l3-glow); color: var(--l3)"
+              >
+                L3
+              </div>
+              <div class="info">
+                <div class="name">Execution & Interfaces</div>
+                <div class="question">How does the agent act on the world?</div>
+              </div>
+            </div>
+            <div class="stratum-mini">
+              <div
+                class="num"
+                style="background: var(--l2-glow); color: var(--l2)"
+              >
+                L2
+              </div>
+              <div class="info">
+                <div class="name">Knowledge & Memory</div>
+                <div class="question">
+                  What does the system know, and how does it recall?
+                </div>
+              </div>
+            </div>
+            <div class="stratum-mini">
+              <div
+                class="num"
+                style="background: var(--l1-glow); color: var(--l1)"
+              >
+                L1
+              </div>
+              <div class="info">
+                <div class="name">Models & Infrastructure</div>
+                <div class="question">
+                  What is the raw intelligence, and where does it run?
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h2 id="axes">Cross-cutting Axes</h2>
+          <p>
+            Two axes cut across all strata, representing concerns that apply at
+            every layer:
+          </p>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Axis</th>
+                <th>Scope</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Governance & Trust</strong></td>
+                <td>
+                  Policy enforcement, identity/access, compliance, audit, safety
+                  filters, content moderation
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Observability & Evaluation</strong></td>
+                <td>
+                  Distributed tracing, structured logging, benchmarks, A/B
+                  testing, drift/anomaly detection, SLO alerting
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="hierarchy">Ontology Hierarchy</h2>
+          <p>
+            Every AI product or tool is classified through a 4-level hierarchy:
+          </p>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Level</th>
+                <th>Definition</th>
+                <th>Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Stratum</strong></td>
+                <td>Top-level layer in the stack</td>
+                <td>L4 Orchestration & Decisioning</td>
+              </tr>
+              <tr>
+                <td><strong>Substrate</strong></td>
+                <td>Tools/frameworks operating in that stratum</td>
+                <td>Workflow Engines, Agent Frameworks</td>
+              </tr>
+              <tr>
+                <td><strong>Construct</strong></td>
+                <td>Meaningful artifact produced by a substrate</td>
+                <td>execution_plan, agent_roster</td>
+              </tr>
+              <tr>
+                <td><strong>Primitive</strong></td>
+                <td>Smallest atomic unit inside a construct</td>
+                <td>task_id, retry_count, priority</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="concepts">Core Agentic Concepts</h2>
+          <p>
+            These are the current first-class agentic concepts the explorer
+            should understand semantically — not just as raw string matches.
+            Each concept below includes its current top-3 mapped products or
+            workflows in the catalog.
+          </p>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Concept</th>
+                <th>Definition</th>
+                <th>Current Top 3</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="concept-harness">
+                <td>
+                  <strong
+                    ><a
+                      href="concepts/harness.html"
+                      style="color: inherit; text-decoration: underline dotted"
+                      >Harness</a
+                    ></strong
+                  >
+                </td>
+                <td>
+                  Governing scaffold around execution: sequencing, context
+                  control, checkpoints, and stop conditions.
+                </td>
+                <td>BMAD · GSD · Superpowers</td>
+              </tr>
+              <tr>
+                <td><strong>loop-core</strong></td>
+                <td>
+                  Canonical control cycle for agent behavior: plan → act →
+                  evaluate → adjust.
+                </td>
+                <td>LangGraph · Eval Workflow · Human-in-the-Loop</td>
+              </tr>
+              <tr>
+                <td><strong>loop-research</strong></td>
+                <td>
+                  Discovery loop for gathering evidence, validating sources, and
+                  refining the problem before implementation.
+                </td>
+                <td>Azure AI Search · Exa MCP · RAG Pipeline</td>
+              </tr>
+              <tr>
+                <td><strong>loop-eval</strong></td>
+                <td>
+                  Quality loop for scoring outputs, diagnosing failures, and
+                  feeding improvements back into prompts or workflows.
+                </td>
+                <td>
+                  Eval &amp; Improve Loop · Agent Skills · Testing Strategy
+                </td>
+              </tr>
+              <tr>
+                <td><strong>loop-implementation</strong></td>
+                <td>
+                  Delivery loop for spec → build → test → review → iterate.
+                </td>
+                <td>BMAD Method · Superpowers · Claude Code</td>
+              </tr>
+              <tr>
+                <td><strong>loop-recovery</strong></td>
+                <td>
+                  Failure-handling loop for retry, rollback, checkpoint, and
+                  resume semantics.
+                </td>
+                <td>GSD · Shipyard · LangGraph</td>
+              </tr>
+              <tr>
+                <td><strong>RAG</strong></td>
+                <td>
+                  Retrieval-augmented generation: grounding model outputs with
+                  retrieved evidence and citations.
+                </td>
+                <td>Azure AI Search · RAG Pipeline · Mem0</td>
+              </tr>
+              <tr>
+                <td><strong>MCP</strong></td>
+                <td>
+                  Model Context Protocol — a standard interface for exposing
+                  tools, resources, and prompts to agents.
+                </td>
+                <td>GitHub MCP · Playwright MCP · Filesystem MCP</td>
+              </tr>
+              <tr>
+                <td><strong>Memory</strong></td>
+                <td>
+                  Persistent or working context used across turns, sessions, and
+                  tasks.
+                </td>
+                <td>Mem0 · Memory MCP · Hermes Agent</td>
+              </tr>
+              <tr>
+                <td><strong>Governance</strong></td>
+                <td>
+                  Rules, permissions, approvals, safety boundaries, and audit
+                  logic that constrain action.
+                </td>
+                <td>Open Policy Agent · Security Audit · Human-in-the-Loop</td>
+              </tr>
+              <tr>
+                <td><strong>tool-calling</strong></td>
+                <td>
+                  The construct enabling a model to select, format arguments
+                  for, and invoke external APIs.
+                </td>
+                <td>MCP Filesystem · MCP Brave Search · Agent Skills</td>
+              </tr>
+              <tr>
+                <td><strong>multi-agent</strong></td>
+                <td>
+                  Coordination where multiple specialized agents collaborate,
+                  delegate tasks, and share state.
+                </td>
+                <td>CrewAI · LangGraph · OpenHands</td>
+              </tr>
+              <tr>
+                <td><strong>handoff</strong></td>
+                <td>
+                  Secure transfer of control, working context, and state from
+                  one agent to another.
+                </td>
+                <td>LangGraph · CrewAI · Human-in-the-Loop</td>
+              </tr>
+              <tr>
+                <td><strong>checkpoint</strong></td>
+                <td>
+                  Persists an agent's exact state at a specific moment for time
+                  travel, durable execution, and fault recovery.
+                </td>
+                <td>LangGraph · Mem0 · MCP Memory</td>
+              </tr>
+              <tr>
+                <td><strong>fallback</strong></td>
+                <td>
+                  Implements retry strategies, graceful degradation, or
+                  alternate routing when a primary step fails.
+                </td>
+                <td>LangGraph · Claude Code · RAG Pipeline</td>
+              </tr>
+              <tr>
+                <td><strong>routing</strong></td>
+                <td>
+                  Dynamically dispatches requests to the most appropriate model,
+                  prompt, or specialized agent.
+                </td>
+                <td>Azure AI Foundry · LangGraph · CrewAI</td>
+              </tr>
+              <tr>
+                <td><strong>guardrails</strong></td>
+                <td>
+                  Validates inputs and outputs to ensure safety, policy
+                  compliance, and defense against prompt injection.
+                </td>
+                <td>OPA · SK Security · Human-in-the-Loop</td>
+              </tr>
+              <tr>
+                <td><strong>observability-loop</strong></td>
+                <td>
+                  Captures end-to-end traces and metrics to evaluate decisions,
+                  detect regressions, and drive improvement.
+                </td>
+                <td>Eval Workflow · LangGraph · CI/CD Workflow</td>
+              </tr>
+              <tr>
+                <td><strong>approval-loop</strong></td>
+                <td>
+                  Pauses agent execution at critical junctures to require
+                  explicit human sign-off before proceeding.
+                </td>
+                <td>Human-in-the-Loop · Claude Code · Cursor</td>
+              </tr>
+              <tr>
+                <td><strong>memory-loop</strong></td>
+                <td>
+                  Continuous cycle of storing, retrieving, and consolidating
+                  interactions into episodic and semantic stores.
+                </td>
+                <td>Mem0 · Azure AI Search · MCP Memory</td>
+              </tr>
+              <tr>
+                <td><strong>context-engineering</strong></td>
+                <td>
+                  Dynamically managing, compressing, and structuring information
+                  fed into the context window for maximum reasoning.
+                </td>
+                <td>GitIngest · Cursor · Claude Code</td>
+              </tr>
+              <tr>
+                <td><strong>planning</strong></td>
+                <td>
+                  Hierarchical task decomposition and controlled sequencing that
+                  keeps long-horizon execution on-policy.
+                </td>
+                <td>LangGraph · CrewAI · Hermes</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="h2h">Head-to-Head Matchups</h2>
+          <p>
+            These curated comparison sets mirror the in-app Head-to-Head tab and
+            are intended for structured selection tradeoffs.
+          </p>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Matchup</th>
+                <th>When to choose #1</th>
+                <th>When to choose #2</th>
+                <th>When to choose #3</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>LangGraph vs CrewAI vs AutoGen</strong></td>
+                <td>LangGraph: deterministic, stateful production workflows</td>
+                <td>CrewAI: fast role-based multi-agent prototyping</td>
+                <td>AutoGen: conversational research coordination</td>
+              </tr>
+              <tr>
+                <td><strong>Mem0 vs Zep vs Custom Vector Stores</strong></td>
+                <td>Mem0: fast personalization + memory integrations</td>
+                <td>Zep: temporal fact evolution and graph memory</td>
+                <td>Custom: full control of retrieval stack and operations</td>
+              </tr>
+              <tr>
+                <td><strong>Claude Code vs Devin vs Aider</strong></td>
+                <td>Claude Code: deep multi-file reasoning/refactors</td>
+                <td>Devin: autonomous backlog execution in cloud sandbox</td>
+                <td>Aider: git-native local pair-programming</td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Azure AI Search vs Pinecone vs Weaviate</strong>
+                </td>
+                <td>Azure AI Search: enterprise hybrid search in Azure</td>
+                <td>Pinecone: simplest low-ops serverless vector backend</td>
+                <td>Weaviate: flexible hybrid + multimodal/search modeling</td>
+              </tr>
+              <tr>
+                <td><strong>OPA vs Cedar vs Custom Policy</strong></td>
+                <td>OPA: broad policy-as-code governance across stack</td>
+                <td>Cedar: high-performance AWS-aligned authorization</td>
+                <td>Custom: early prototype only, low governance maturity</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="golden-paths">Golden Path Architectures</h2>
+          <p>
+            Recommended starter stacks that combine product synergy with clear
+            mission boundaries.
+          </p>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Build</th>
+                <th>Mission</th>
+                <th>Core Stack</th>
+                <th>Not ideal for</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Enterprise RAG Fortress</strong></td>
+                <td>
+                  Accurate, governed enterprise retrieval with strict access
+                  control and policy enforcement.
+                </td>
+                <td>
+                  Azure AI Foundry · OPA · LangGraph · Azure AI Search · Mem0
+                </td>
+                <td>Lightweight chatbots without policy/memory requirements</td>
+              </tr>
+              <tr>
+                <td><strong>Autonomous Code Forge</strong></td>
+                <td>
+                  Multi-file implementation + review + evaluation + deployment
+                  with quality gates.
+                </td>
+                <td>
+                  Claude Code · MCP Filesystem · SK Code Review · Eval WF ·
+                  CI/CD WF
+                </td>
+                <td>Fast inline visual autocomplete-first pair programming</td>
+              </tr>
+              <tr>
+                <td><strong>Collaborative Research Swarm</strong></td>
+                <td>
+                  Role-based research synthesis with retrieval and scored output
+                  quality control.
+                </td>
+                <td>CrewAI · MCP Brave Search · MCP Memory · Eval WF</td>
+                <td>
+                  Deterministic transaction processing with strict rollback
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Full-Stack App Factory</strong></td>
+                <td>
+                  Prompt-to-UI acceleration with backend wiring and automated
+                  deployment path.
+                </td>
+                <td>v0 · Cursor · MCP PostgreSQL · MCP GitHub · Shipyard</td>
+                <td>Hands-off autonomous backlog clearing</td>
+              </tr>
+              <tr>
+                <td><strong>Regulated Compliance Engine</strong></td>
+                <td>
+                  High-risk workflows with deterministic control flow, policy
+                  enforcement, and mandatory approval gates.
+                </td>
+                <td>
+                  LangGraph · OPA · SK Security · Human-in-Loop WF · Eval WF
+                </td>
+                <td>Open-ended exploratory or creative ideation workflows</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="terms">Glossary</h2>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Term</th>
+                <th>Meaning</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Primary Stratum</strong></td>
+                <td>
+                  The single layer where a product delivers its core value
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Secondary Stratum</strong></td>
+                <td>
+                  Additional layers a product touches with meaningful capability
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Axis Role</strong></td>
+                <td>
+                  A product's contribution to a cross-cutting concern
+                  (governance or observability)
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Confidence Score</strong></td>
+                <td>
+                  0.0–1.0 rating of how certain a classification placement is
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Rationale</strong></td>
+                <td>
+                  Human-readable explanation of why a product is placed at a
+                  given stratum
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Multi-Residency</strong></td>
+                <td>A product spanning multiple strata simultaneously</td>
+              </tr>
+              <tr id="glossary-harness">
+                <td>
+                  <strong
+                    ><a
+                      href="concepts/harness.html"
+                      style="color: inherit; text-decoration: underline dotted"
+                      >Harness</a
+                    ></strong
+                  >
+                </td>
+                <td>
+                  A structured wrapper that constrains how an AI agent or
+                  pipeline executes — enforcing sequencing, context budgets,
+                  checkpoints, and stop conditions. A harness sits at L4
+                  (Orchestration) and defines <em>how</em> work is done, not
+                  just <em>what</em> to do. Examples: execution harnesses (GSD,
+                  BMAD), test harnesses (Superpowers), and CI/CD harnesses
+                  (Harness.io). Not to be confused with the agent or the tools
+                  it calls — the harness is the governing scaffold around them.
+                  <br /><small
+                    ><a
+                      href="prototype.html#concept=harness"
+                      style="opacity: 0.7"
+                      >→ preview in Explorer</a
+                    ></small
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td><strong>loop-core</strong></td>
+                <td>
+                  The canonical agentic control cycle: plan → act → evaluate →
+                  adjust, repeated until stop conditions are met.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>loop-research</strong></td>
+                <td>
+                  Discovery/evidence loop: gather sources, test hypotheses,
+                  resolve contradictions, then refine the problem framing.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>loop-eval</strong></td>
+                <td>
+                  Evaluation loop: score outputs against quality criteria,
+                  diagnose failures, and feed fixes back into prompts, routing,
+                  or policy.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>loop-implementation</strong></td>
+                <td>
+                  Build loop: spec → implement → test → review → iterate.
+                  Focuses on production-safe delivery and regression control.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>loop-recovery</strong></td>
+                <td>
+                  Failure-handling loop: backoff, retry, checkpoint, rollback,
+                  and resume — designed to preserve forward progress under
+                  partial failure.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Agent</strong></td>
+                <td>
+                  An LLM-backed system that perceives context, reasons about
+                  goals, selects tools or sub-agents, executes actions, and
+                  updates state — in a loop until a stop condition is met.
+                  Agents span L3–L7 depending on capability; the term alone does
+                  not imply a specific stratum.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Primitive</strong></td>
+                <td>
+                  The smallest named capability unit within a construct (e.g.
+                  <em>goal_statement</em>, <em>tool_call</em>). A product can
+                  support a primitive partially or fully; evidence quality
+                  determines confidence.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Construct</strong></td>
+                <td>
+                  A named cluster of related primitives within a stratum (e.g.
+                  <em>Intent Object</em> at L7). Constructs are the intermediate
+                  unit between stratum and primitive in the {a}OS ontology
+                  hierarchy.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== CLASSIFICATION TAB ===== -->
+    <div class="tab-content" id="tab-classification">
+      <div class="docs-layout">
+        <nav class="sidebar">
+          <div class="sidebar-title">Classification</div>
+          <a href="#model" class="sidebar-link active">Classification Model</a>
+          <a href="#confidence" class="sidebar-link">Confidence Levels</a>
+          <a href="#rules" class="sidebar-link">Placement Rules</a>
+          <a href="#disputes" class="sidebar-link">Disputed Classifications</a>
+        </nav>
+        <div class="content">
+          <h1>Classification Methodology</h1>
+          <p class="subtitle">
+            How products are mapped to the {a}OS reference model.
+          </p>
+
+          <h2 id="model">The Classification Model</h2>
+          <p>
+            Each entity in the explorer receives a structured classification:
+          </p>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Field</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Primary Stratum</strong></td>
+                <td>
+                  The single layer where the product delivers its core value
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Secondary Strata</strong></td>
+                <td>
+                  Additional layers the product touches with meaningful
+                  capability
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Axis Roles</strong></td>
+                <td>
+                  Contributions to Governance & Trust or Observability &
+                  Evaluation
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Capabilities</strong></td>
+                <td>Named features mapped to specific strata</td>
+              </tr>
+              <tr>
+                <td><strong>Constructs</strong></td>
+                <td>
+                  Artifacts or state objects the product creates or manages
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Primitives</strong></td>
+                <td>Atomic units the product reads or writes</td>
+              </tr>
+              <tr>
+                <td><strong>Confidence</strong></td>
+                <td>0.0–1.0 certainty rating</td>
+              </tr>
+              <tr>
+                <td><strong>Rationale</strong></td>
+                <td>Explanation of the classification</td>
+              </tr>
+              <tr>
+                <td><strong>Evidence</strong></td>
+                <td>Optional links, quotes, or documentation</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="confidence">Confidence Levels</h2>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Level</th>
+                <th>Score</th>
+                <th>Badge</th>
+                <th>Meaning</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>High</td>
+                <td>≥ 0.85</td>
+                <td><span class="badge-high">0.92</span></td>
+                <td>
+                  Strong evidence, clear primary layer, multiple corroborating
+                  sources
+                </td>
+              </tr>
+              <tr>
+                <td>Medium</td>
+                <td>0.60 – 0.84</td>
+                <td><span class="badge-med">~0.75</span></td>
+                <td>
+                  Reasonable placement, may have secondary interpretations
+                </td>
+              </tr>
+              <tr>
+                <td>Low</td>
+                <td>&lt; 0.60</td>
+                <td><span class="badge-low">~0.45</span></td>
+                <td>Disputed or emerging product, placement may change</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="rules">Placement Rules</h2>
+          <ol>
+            <li>
+              <strong>One primary stratum</strong> — every product gets exactly
+              one core layer
+            </li>
+            <li>
+              <strong>Zero or more secondary strata</strong> — meaningful but
+              non-primary capabilities
+            </li>
+            <li>
+              <strong>No forced exclusivity</strong> — a product spanning 5
+              layers shows all 5
+            </li>
+            <li>
+              <strong>Primary is visually stronger</strong> — full opacity vs
+              dimmed for secondary
+            </li>
+            <li>
+              <strong>Evidence-backed</strong> — every placement has a rationale
+            </li>
+          </ol>
+
+          <h2 id="disputes">Disputed Classifications</h2>
+          <p>When a classification is uncertain:</p>
+          <ul>
+            <li>Confidence score will be <strong>Medium or Low</strong></li>
+            <li>
+              Rationale will note the
+              <strong>alternative interpretation</strong>
+            </li>
+            <li>
+              Future versions will support explicit
+              <strong>dispute annotations</strong>
+            </li>
+          </ul>
+          <div class="callout">
+            <strong>Example dispute</strong>
+            A product classified as L4 (Orchestration) primary might note:
+            "Could be argued as L3 (Execution) if tool-calling is considered the
+            core loop rather than multi-step planning."
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PRODUCTS TAB ===== -->
+    <div class="tab-content" id="tab-products">
+      <div class="docs-layout">
+        <nav class="sidebar">
+          <div class="sidebar-title">Products</div>
+          <a href="#mvp-set" class="sidebar-link active">MVP Product Set</a>
+          <a href="#af" class="sidebar-link">Azure AI Foundry</a>
+          <a href="#hermes" class="sidebar-link">Hermes</a>
+          <a href="#paperclip" class="sidebar-link">Paperclip</a>
+          <a href="#crewai" class="sidebar-link">CrewAI</a>
+          <a href="#mem0" class="sidebar-link">Mem0</a>
+          <a href="#langgraph" class="sidebar-link">LangGraph</a>
+          <a href="#aisearch" class="sidebar-link">Azure AI Search</a>
+          <a href="#opa" class="sidebar-link">Open Policy Agent</a>
+        </nav>
+        <div class="content">
+          <h1>Product Classifications</h1>
+          <p class="subtitle">
+            The MVP product set classified against the {a}OS reference model.
+          </p>
+
+          <h2 id="mvp-set">MVP Product Set</h2>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Vendor</th>
+                <th>Primary</th>
+                <th>Secondary</th>
+                <th>Deployment</th>
+                <th>Confidence</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Azure AI Foundry</strong></td>
+                <td>Microsoft</td>
+                <td>L1</td>
+                <td>L2, L3, L4</td>
+                <td>Cloud</td>
+                <td><span class="badge-high">0.92</span></td>
+              </tr>
+              <tr>
+                <td><strong>Hermes</strong></td>
+                <td>Internal</td>
+                <td>L4</td>
+                <td>L5, L6, L7</td>
+                <td>Hybrid</td>
+                <td><span class="badge-high">0.88</span></td>
+              </tr>
+              <tr>
+                <td><strong>Paperclip</strong></td>
+                <td>Internal</td>
+                <td>L7</td>
+                <td>L3, L4</td>
+                <td>Local</td>
+                <td><span class="badge-med">~0.75</span></td>
+              </tr>
+              <tr>
+                <td><strong>CrewAI</strong></td>
+                <td>CrewAI Inc</td>
+                <td>L4</td>
+                <td>L3</td>
+                <td>Cloud</td>
+                <td><span class="badge-high">0.90</span></td>
+              </tr>
+              <tr>
+                <td><strong>Mem0</strong></td>
+                <td>Mem0 AI</td>
+                <td>L2</td>
+                <td>—</td>
+                <td>Cloud</td>
+                <td><span class="badge-high">0.95</span></td>
+              </tr>
+              <tr>
+                <td><strong>LangGraph</strong></td>
+                <td>LangChain</td>
+                <td>L4</td>
+                <td>L3</td>
+                <td>Hybrid</td>
+                <td><span class="badge-high">0.88</span></td>
+              </tr>
+              <tr>
+                <td><strong>Azure AI Search</strong></td>
+                <td>Microsoft</td>
+                <td>L2</td>
+                <td>—</td>
+                <td>Cloud</td>
+                <td><span class="badge-high">0.93</span></td>
+              </tr>
+              <tr>
+                <td><strong>Open Policy Agent</strong></td>
+                <td>CNCF</td>
+                <td>L6</td>
+                <td>—</td>
+                <td>Hybrid</td>
+                <td><span class="badge-high">0.95</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="af">Azure AI Foundry</h2>
+          <p>
+            <strong>Primary:</strong> L1 Models & Infrastructure &nbsp;
+            <span class="badge-high">0.92</span>
+          </p>
+          <p>
+            <strong>Secondary:</strong> L2 Knowledge, L3 Execution, L4
+            Orchestration
+          </p>
+          <p>
+            <strong>Rationale:</strong> Built on Microsoft.CognitiveServices.
+            Model hosting and inference is the core value prop; prompt flow,
+            search, and agent capabilities are secondary strata.
+          </p>
+
+          <h2 id="hermes">Hermes</h2>
+          <p>
+            <strong>Primary:</strong> L4 Orchestration & Decisioning &nbsp;
+            <span class="badge-high">0.88</span>
+          </p>
+          <p>
+            <strong>Secondary:</strong> L5 Observability, L6 Governance, L7
+            Experience
+          </p>
+          <p>
+            <strong>Rationale:</strong> Hermes is an orchestration-first
+            platform. Governance, observability, and UX layers are secondary
+            capabilities.
+          </p>
+
+          <h2 id="paperclip">Paperclip</h2>
+          <p>
+            <strong>Primary:</strong> L7 Experience & Intent &nbsp;
+            <span class="badge-med">~0.75</span>
+          </p>
+          <p><strong>Secondary:</strong> L3 Execution, L4 Orchestration</p>
+          <p>
+            <strong>Rationale:</strong> Desktop copilot with strong UX and
+            intent parsing. Orchestration and execution are secondary.
+          </p>
+
+          <h2 id="crewai">CrewAI</h2>
+          <p>
+            <strong>Primary:</strong> L4 Orchestration & Decisioning &nbsp;
+            <span class="badge-high">0.90</span>
+          </p>
+          <p><strong>Secondary:</strong> L3 Execution</p>
+          <p>
+            <strong>Rationale:</strong> Multi-agent crew framework focused on
+            orchestrating agent collaboration and task delegation.
+          </p>
+
+          <h2 id="mem0">Mem0</h2>
+          <p>
+            <strong>Primary:</strong> L2 Knowledge & Memory &nbsp;
+            <span class="badge-high">0.95</span>
+          </p>
+          <p><strong>Secondary:</strong> None</p>
+          <p>
+            <strong>Rationale:</strong> Purpose-built memory layer for AI.
+            Manages context persistence, recall, and long-term agent memory.
+          </p>
+
+          <h2 id="langgraph">LangGraph</h2>
+          <p>
+            <strong>Primary:</strong> L4 Orchestration & Decisioning &nbsp;
+            <span class="badge-high">0.88</span>
+          </p>
+          <p><strong>Secondary:</strong> L3 Execution</p>
+          <p>
+            <strong>Rationale:</strong> Stateful graph-based agent orchestration
+            framework from LangChain. Defines execution flows as directed graphs
+            with state management.
+          </p>
+
+          <h2 id="aisearch">Azure AI Search</h2>
+          <p>
+            <strong>Primary:</strong> L2 Knowledge & Memory &nbsp;
+            <span class="badge-high">0.93</span>
+          </p>
+          <p><strong>Secondary:</strong> None</p>
+          <p>
+            <strong>Rationale:</strong> Cloud-native search-as-a-service with
+            vector + hybrid retrieval. Core of many RAG pipelines.
+          </p>
+
+          <h2 id="opa">Open Policy Agent</h2>
+          <p>
+            <strong>Primary:</strong> L6 Governance & Trust &nbsp;
+            <span class="badge-high">0.95</span>
+          </p>
+          <p><strong>Secondary:</strong> None</p>
+          <p>
+            <strong>Rationale:</strong> General-purpose policy engine
+            (Rego-based). Evaluates access control, resource constraints, and
+            compliance policies.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== USER GUIDE TAB ===== -->
+    <div class="tab-content" id="tab-guide">
+      <div class="docs-layout">
+        <nav class="sidebar">
+          <div class="sidebar-title">User Guide</div>
+          <a href="#terminology" class="sidebar-link active"
+            >Terminology Primer</a
+          >
+          <a href="#quick-start" class="sidebar-link">Quick Start</a>
+          <a href="#browsing" class="sidebar-link">Browsing the Stack</a>
+          <a href="#comparing" class="sidebar-link">Comparing Products</a>
+          <a href="#filtering" class="sidebar-link">Filtering</a>
+          <a href="#shortcuts" class="sidebar-link">Keyboard Shortcuts</a>
+          <a href="#modes" class="sidebar-link">Interaction Modes</a>
+        </nav>
+        <div class="content">
+          <h1>User Guide</h1>
+          <p class="subtitle">How to get the most out of {a}OS Explorer.</p>
+
+          <h2 id="terminology">Terminology Primer</h2>
+          <p>
+            Five nouns power the entire {a}OS model. Lock these in and the
+            Explorer feels intuitive instead of academic.
+          </p>
+
+          <div class="callout" style="border-left-color: var(--accent-indigo)">
+            <strong>Plain-English shorthand</strong> &mdash; Every official term
+            has a plain alias in parentheses. Use whichever clicks. Both appear
+            throughout the Explorer UI.
+          </div>
+
+          <table class="doc-table" style="margin-top: 1.5rem">
+            <thead>
+              <tr>
+                <th style="width: 14%">You see&hellip;</th>
+                <th style="width: 22%">We call it</th>
+                <th style="width: 38%">What it means</th>
+                <th style="width: 26%">Explorer example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Pick a layer</td>
+                <td>
+                  <strong>Stratum</strong>
+                  <span style="opacity: 0.6">(layer)</span>
+                </td>
+                <td>
+                  One of 7 horizontal tiers in the stack, each defined by a
+                  boundary question &mdash; <em>&ldquo;Who decides?&rdquo;</em>,
+                  <em>&ldquo;How does it learn?&rdquo;</em>, etc.
+                </td>
+                <td>
+                  <span class="stratum-mini" style="--layer-color: #59a14f">
+                    L4&nbsp;Orchestration&nbsp;&amp;&nbsp;Decisioning
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td>Notice a theme that cuts across layers</td>
+                <td>
+                  <strong>Axis</strong>
+                  <span style="opacity: 0.6">(cross-cut)</span>
+                </td>
+                <td>
+                  A concern that spans multiple strata vertically &mdash;
+                  security, cost, latency, compliance, etc. Axes surface in
+                  every layer but are governed holistically.
+                </td>
+                <td>
+                  Security axis &mdash; touches L6&nbsp;Governance,
+                  L3&nbsp;Execution, and L1&nbsp;Infrastructure
+                </td>
+              </tr>
+              <tr>
+                <td>Expand a group inside a layer</td>
+                <td>
+                  <strong>Substrate</strong>
+                  <span style="opacity: 0.6">(group)</span>
+                </td>
+                <td>
+                  A named group of related capabilities within a stratum. Each
+                  substrate bundles the frameworks, engines, or services that do
+                  work at that level.
+                </td>
+                <td>
+                  <em>Workflow Engines</em> or <em>Agent Frameworks</em>
+                  inside L4
+                </td>
+              </tr>
+              <tr>
+                <td>Click a card</td>
+                <td>
+                  <strong>Construct</strong>
+                  <span style="opacity: 0.6">(concept&nbsp;/&nbsp;card)</span>
+                </td>
+                <td>
+                  A named concept or data structure within a substrate.
+                  Constructs are the items you browse, compare, and classify in
+                  the Explorer.
+                </td>
+                <td>
+                  <code>execution_plan</code>,
+                  <code>agent_roster</code>
+                </td>
+              </tr>
+              <tr>
+                <td>Read the fields on a card</td>
+                <td>
+                  <strong>Primitive</strong>
+                  <span style="opacity: 0.6">(field)</span>
+                </td>
+                <td>
+                  The smallest atomic part inside a construct &mdash; a field,
+                  flag, token, parameter, or actionable unit.
+                </td>
+                <td>
+                  <code>task_id</code>, <code>retry_count</code>,
+                  <code>priority</code>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div
+            class="callout"
+            style="
+              margin-top: 1.5rem;
+              opacity: 0.85;
+              border-left-color: var(--accent-blue);
+            "
+          >
+            <strong>Optional mental image</strong> &mdash; If it helps, picture
+            the stack as a vertical city: each stratum is a floor, substrates
+            are the departments on that floor, constructs are the deliverables
+            they produce, and primitives are the parts inside each deliverable.
+          </div>
+
+          <div
+            style="
+              margin: 2rem 0;
+              padding: 1.5rem;
+              border-radius: 12px;
+              background: var(--bg-elevated);
+              border: 1px solid rgba(255, 255, 255, 0.06);
+              text-align: center;
+            "
+          >
+            <p
+              style="
+                margin: 0 0 0.75rem;
+                font-size: 0.85rem;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+                opacity: 0.5;
+              "
+            >
+              Terminology Infographic
+            </p>
+            <!-- Replace the src below with the actual infographic path once saved -->
+            <div style="text-align: center; margin: 24px 0 32px">
+              <img
+                src="docs/assets/aos-terminology-primer.png"
+                alt="{a}OS Terminology Primer — Stratum, Substrate, Construct, Primitive"
+                style="
+                  max-width: 520px;
+                  width: 100%;
+                  border-radius: 12px;
+                  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+                  border: 1px solid rgba(255, 255, 255, 0.06);
+                "
+              />
+              <p
+                style="
+                  margin-top: 12px;
+                  font-size: 12px;
+                  color: rgba(255, 255, 255, 0.4);
+                "
+              >
+                Each level zooms deeper into the one above — from the full
+                7-stratum stack down to atomic primitives.
+              </p>
+            </div>
+          </div>
+
+          <h2 id="quick-start">Quick Start</h2>
+          <ol>
+            <li>
+              Open the Explorer — you'll see the 7-stratum reference stack
+            </li>
+            <li>The guided tour will introduce the key areas</li>
+            <li>Click any stratum to expand its substrates</li>
+            <li>Click a substrate to see its constructs</li>
+            <li>
+              Click product cards (right panel) to see classification details
+            </li>
+          </ol>
+
+          <h2 id="browsing">Browsing the Stack</h2>
+          <p>
+            The central canvas shows the {a}OS stack — 7 layers stacked
+            vertically from <strong>L7</strong> (top, user-facing) to
+            <strong>L1</strong> (bottom, infrastructure).
+          </p>
+          <p>Each layer card shows:</p>
+          <ul>
+            <li>A <strong>color-coded bar</strong> on the left edge</li>
+            <li>A <strong>layer number</strong> (L1–L7)</li>
+            <li>
+              A <strong>name</strong> and <strong>boundary question</strong>
+            </li>
+            <li>A <strong>substrate count</strong></li>
+          </ul>
+          <p>
+            Click any layer to <strong>expand it in-place</strong>. Inside
+            you'll find substrates, each with their own constructs. The
+            breadcrumb at the top tracks your depth:
+            <code>{a}OS Stack → L4 Orchestration → Workflow Engines</code>
+          </p>
+
+          <h2 id="comparing">Comparing Products</h2>
+          <p>
+            Click the <strong>+</strong> button on any product card to add it to
+            your compare basket (up to 4). The badge in the header shows your
+            count.
+          </p>
+          <p>The compare view provides:</p>
+          <ul>
+            <li>Layer coverage heatmap</li>
+            <li>Axis role comparison</li>
+            <li>Construct/primitive overlap table</li>
+            <li>Gap and overlap summary</li>
+          </ul>
+
+          <h2 id="filtering">Filtering</h2>
+          <div class="callout">
+            <strong>Discoverability tip</strong>
+            The top mode pills and hero chips mirror the left rail. If you click
+            a quick chip like <strong>Frameworks</strong>,
+            <strong>MCPs</strong>, or <strong>Open Source</strong>, the matching
+            sidebar filter updates so you can learn what the full filter system
+            supports.
+          </div>
+          <p>The left rail provides filter groups:</p>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Filter</th>
+                <th>Values</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Type</td>
+                <td>Products, Frameworks, Workflows, Agents, Skills, MCPs</td>
+              </tr>
+              <tr>
+                <td>Vendor</td>
+                <td>Microsoft, CrewAI Inc, Mem0 AI, CNCF, etc.</td>
+              </tr>
+              <tr>
+                <td>Deployment</td>
+                <td>Cloud, Local, Hybrid</td>
+              </tr>
+              <tr>
+                <td>License</td>
+                <td>Open Source, Proprietary</td>
+              </tr>
+              <tr>
+                <td>Stratum</td>
+                <td>L1–L7</td>
+              </tr>
+              <tr>
+                <td>Substrate</td>
+                <td>
+                  Agent Frameworks, Workflow Engines, Policy Engines, etc.
+                </td>
+              </tr>
+              <tr>
+                <td>Construct</td>
+                <td>
+                  execution_plan, agent_roster, policy_bundle, memory_index
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="shortcuts">Keyboard Shortcuts</h2>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Key</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><kbd>/</kbd></td>
+                <td>Focus search bar</td>
+              </tr>
+              <tr>
+                <td><kbd>1</kbd> – <kbd>7</kbd></td>
+                <td>Jump to stratum L1–L7</td>
+              </tr>
+              <tr>
+                <td><kbd>↑</kbd> <kbd>↓</kbd></td>
+                <td>Navigate between strata</td>
+              </tr>
+              <tr>
+                <td><kbd>→</kbd></td>
+                <td>Expand / drill deeper</td>
+              </tr>
+              <tr>
+                <td><kbd>←</kbd></td>
+                <td>Collapse / drill up</td>
+              </tr>
+              <tr>
+                <td><kbd>c</kbd></td>
+                <td>Toggle compare mode</td>
+              </tr>
+              <tr>
+                <td><kbd>?</kbd></td>
+                <td>Show all shortcuts</td>
+              </tr>
+              <tr>
+                <td><kbd>Esc</kbd></td>
+                <td>Close / collapse all</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="modes">Interaction Modes</h2>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Mode</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Stack Mode</strong></td>
+                <td>Classic 7-stratum vertical view (default)</td>
+              </tr>
+              <tr>
+                <td><strong>Accordion Mode</strong></td>
+                <td>Expand strata into substrate/construct/primitive rows</td>
+              </tr>
+              <tr>
+                <td><strong>Compare Mode</strong></td>
+                <td>Side-by-side comparison of 2–4 selected items</td>
+              </tr>
+              <tr>
+                <td><strong>Category Mode</strong></td>
+                <td>
+                  Toggle between Products, Frameworks, Agents, Workflows, Skills
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Map Mode</strong></td>
+                <td>Multi-layer overlap visualization</td>
+              </tr>
+              <tr>
+                <td><strong>Axis Mode</strong></td>
+                <td>Cross-cutting governance/observability analysis</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== ROADMAP TAB ===== -->
+    <div class="tab-content" id="tab-roadmap">
+      <div class="docs-layout">
+        <nav class="sidebar">
+          <div class="sidebar-title">Roadmap</div>
+          <a href="#current" class="sidebar-link active">Current (MVP)</a>
+          <a href="#next" class="sidebar-link">Next Phase</a>
+          <a href="#future" class="sidebar-link">Future</a>
+          <a href="#faq" class="sidebar-link">FAQ</a>
+        </nav>
+        <div class="content">
+          <h1>Roadmap</h1>
+          <p class="subtitle">
+            Where {a}OS Explorer is today and where it's headed.
+          </p>
+
+          <h2 id="current">Current — MVP</h2>
+          <ul>
+            <li>
+              &#x2705; 7-stratum interactive explorer with progressive drilldown
+            </li>
+            <li>&#x2705; Stratum → Substrate → Construct expansion</li>
+            <li>&#x2705; 5 featured product classifications with rationale</li>
+            <li>&#x2705; Compare basket (add up to 4 products)</li>
+            <li>
+              &#x2705; Left rail: strata nav, axis toggles, filter placeholders
+            </li>
+            <li>&#x2705; Right rail: product cards, detail panel</li>
+            <li>&#x2705; Full keyboard navigation</li>
+            <li>&#x2705; Guided onboarding tour</li>
+            <li>&#x2705; Cinematic dark-theme UI with aurora effects</li>
+          </ul>
+
+          <h2 id="next">Next Phase</h2>
+          <ul>
+            <li>&#x1F6A7; Full compare screen with heatmap and gap analysis</li>
+            <li>&#x1F6A7; Dedicated product detail pages</li>
+            <li>&#x1F6A7; Dedicated stratum detail pages</li>
+            <li>&#x1F6A7; Connected fuzzy search across all entities</li>
+            <li>
+              &#x1F6A7; Active filter system (vendor, deployment, license,
+              maturity)
+            </li>
+            <li>&#x1F6A7; Framework comparison with translation matrix</li>
+            <li>&#x1F6A7; Evidence panel with source links and quotes</li>
+            <li>&#x1F6A7; All 8 MVP products fully classified</li>
+            <li>&#x1F6A7; Mode pills connected to canvas views</li>
+            <li>&#x1F6A7; Primitive-level drill (Construct → Primitives)</li>
+          </ul>
+
+          <h2 id="future">Future</h2>
+          <ul>
+            <li>&#x1F4A1; Saved comparison sets</li>
+            <li>&#x1F4A1; AI-assisted classification suggestions</li>
+            <li>&#x1F4A1; Team workspaces and collaboration</li>
+            <li>&#x1F4A1; Public submission pipeline with moderation</li>
+            <li>&#x1F4A1; Scenario-based evaluation mode</li>
+            <li>&#x1F4A1; Framework scoring and weighting system</li>
+            <li>&#x1F4A1; Alternate framework overlays</li>
+          </ul>
+
+          <h2 id="faq">FAQ</h2>
+          <h3>Is this a product directory?</h3>
+          <p>
+            No. It's a classification and comparison engine. Products are mapped
+            to a structured ontology, not just listed.
+          </p>
+
+          <h3>Can I add my own products?</h3>
+          <p>
+            Not in the MVP. Future phases will support submission pipelines with
+            moderation.
+          </p>
+
+          <h3>How is {a}OS different from other AI frameworks?</h3>
+          <p>
+            {a}OS provides 7 distinct strata with explicit boundary questions,
+            multi-residency classification, and cross-cutting axes. Most
+            alternatives collapse these layers into fewer, coarser categories.
+          </p>
+
+          <h3>What if I disagree with a classification?</h3>
+          <p>
+            Every placement shows its confidence score and rationale. Disputed
+            classifications are explicitly marked. Future versions will support
+            formal dispute annotations.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== AZURE SETUP TAB ===== -->
+    <div class="tab-content" id="tab-azure-setup">
+      <div class="docs-layout">
+        <nav class="sidebar">
+          <div class="sidebar-title">Azure Setup</div>
+          <a href="#az-getting-started" class="sidebar-link active"
+            >Getting Started</a
+          >
+          <a href="#az-learning-path" class="sidebar-link"
+            >7-Day Learning Path</a
+          >
+          <div
+            style="height: 1px; background: var(--border); margin: 8px 0"
+          ></div>
+          <a href="#az-l1" class="sidebar-link">L1: Models &amp; Infra</a>
+          <a href="#az-l2" class="sidebar-link">L2: Knowledge &amp; Memory</a>
+          <a href="#az-l3" class="sidebar-link"
+            >L3: Execution &amp; Interfaces</a
+          >
+          <a href="#az-l4" class="sidebar-link">L4: Orchestration</a>
+          <a href="#az-l5" class="sidebar-link">L5: Observability</a>
+          <a href="#az-l6" class="sidebar-link">L6: Governance &amp; Trust</a>
+          <a href="#az-l7" class="sidebar-link">L7: Experience &amp; Intent</a>
+          <div
+            style="height: 1px; background: var(--border); margin: 8px 0"
+          ></div>
+          <a href="#az-network" class="sidebar-link">Network Isolation</a>
+          <a href="#az-cost" class="sidebar-link">Cost Governance</a>
+          <a href="#az-iac" class="sidebar-link">IaC &amp; CI/CD</a>
+        </nav>
+        <div class="content">
+          <h1>Azure AI Foundry Setup</h1>
+          <p class="subtitle">
+            Step-by-step guides for standing up Azure AI Foundry, organized by
+            {a}OS stratum. Each section shows what Foundry provides, what you
+            must build, and how to set it up.
+          </p>
+
+          <!-- GLOSSARY -->
+          <div class="callout" style="border-left-color: var(--text-tertiary)">
+            <strong>Glossary — Abbreviations Used Below</strong>
+            <dl class="glossary-grid">
+              <dt>GA</dt>
+              <dd>Generally Available (production-ready)</dd>
+              <dt>Preview</dt>
+              <dd>Public preview (not SLA-backed)</dd>
+              <dt>PTU</dt>
+              <dd>Provisioned Throughput Units (reserved capacity)</dd>
+              <dt>CMK</dt>
+              <dd>Customer-Managed Keys (encryption)</dd>
+              <dt>SFT</dt>
+              <dd>Supervised Fine-Tuning</dd>
+              <dt>DPO</dt>
+              <dd>Direct Preference Optimization</dd>
+              <dt>RFT</dt>
+              <dd>Reinforcement Fine-Tuning</dd>
+              <dt>RAG</dt>
+              <dd>Retrieval-Augmented Generation</dd>
+              <dt>BYO</dt>
+              <dd>Bring Your Own (storage / resources)</dd>
+              <dt>MCP</dt>
+              <dd>Model Context Protocol</dd>
+              <dt>RBAC</dt>
+              <dd>Role-Based Access Control</dd>
+              <dt>APIM</dt>
+              <dd>Azure API Management</dd>
+              <dt>VNet</dt>
+              <dd>Virtual Network (Azure networking)</dd>
+              <dt>IaC</dt>
+              <dd>Infrastructure as Code</dd>
+              <dt>PII</dt>
+              <dd>Personally Identifiable Information</dd>
+              <dt>PaaS</dt>
+              <dd>Platform as a Service</dd>
+              <dt>FIPS</dt>
+              <dd>Federal Information Processing Standards</dd>
+              <dt>Entra ID</dt>
+              <dd>Microsoft's identity platform (formerly Azure AD)</dd>
+              <dt>Bicep</dt>
+              <dd>Azure's declarative IaC language</dd>
+              <dt>Rego</dt>
+              <dd>Policy language for Open Policy Agent</dd>
+            </dl>
+          </div>
+
+          <!-- GETTING STARTED -->
+          <h2 id="az-getting-started">Getting Started</h2>
+          <p>
+            Azure AI Foundry (rebranded to "Microsoft Foundry" in 2026) is
+            Microsoft's unified
+            <abbr title="Platform as a Service">PaaS</abbr> for AI — built on
+            <code>Microsoft.CognitiveServices</code>. It bundles model hosting,
+            agent frameworks, content safety, evaluation, and a management
+            portal into a single control plane.
+          </p>
+          <div class="callout">
+            <strong>Two resource models coexist</strong>
+            The "classic" model (based on
+            <code>Microsoft.MachineLearningServices</code>) and the "new" model
+            (based on <code>Microsoft.CognitiveServices</code>) are both active.
+            The new model is where Microsoft invests, but the classic model has
+            more mature network isolation. Check which you are on:
+            <code>az provider show -n Microsoft.CognitiveServices</code>
+          </div>
+          <p><strong>Prerequisites:</strong></p>
+          <ul>
+            <li>Azure subscription (pay-as-you-go is fine for learning)</li>
+            <li>Azure CLI installed — <code>az --version</code></li>
+            <li>
+              Python 3.10+ and
+              <code>pip install azure-ai-projects azure-identity</code>
+            </li>
+            <li>
+              Register the provider:
+              <code>az provider register -n Microsoft.CognitiveServices</code>
+            </li>
+          </ul>
+
+          <p><strong>Foundry coverage across the {a}OS stack:</strong></p>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Stratum</th>
+                <th>Coverage</th>
+                <th>Key Takeaway</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="color: var(--l7)">L7 Experience</td>
+                <td>Partial</td>
+                <td>
+                  Portal + publishing, but new portal lacks
+                  <abbr title="Virtual Network">VNet</abbr> support
+                </td>
+              </tr>
+              <tr>
+                <td style="color: var(--l6)">L6 Governance</td>
+                <td>Partial</td>
+                <td>
+                  Content Safety +
+                  <abbr title="Role-Based Access Control">RBAC</abbr>. No
+                  approval gates, no cost governance
+                </td>
+              </tr>
+              <tr>
+                <td style="color: var(--l5)">L5 Observability</td>
+                <td>Partial</td>
+                <td>Tracing + evaluators. Breaks with private App Insights</td>
+              </tr>
+              <tr>
+                <td style="color: var(--l4)">L4 Orchestration</td>
+                <td>Partial</td>
+                <td>
+                  Prompt agents
+                  <abbr title="Generally Available — production-ready">GA</abbr
+                  >, workflow agents preview
+                </td>
+              </tr>
+              <tr>
+                <td style="color: var(--l3)">L3 Execution</td>
+                <td>Good</td>
+                <td>
+                  Function calling,
+                  <abbr title="Model Context Protocol">MCP</abbr>, Code
+                  Interpreter all <abbr title="Generally Available">GA</abbr>
+                </td>
+              </tr>
+              <tr>
+                <td style="color: var(--l2)">L2 Knowledge</td>
+                <td>Partial</td>
+                <td>
+                  AI Search <abbr title="Generally Available">GA</abbr>, Foundry
+                  IQ preview. No cross-agent state
+                </td>
+              </tr>
+              <tr>
+                <td style="color: var(--l1)">L1 Models</td>
+                <td>Strong</td>
+                <td>
+                  Model catalog,
+                  <abbr title="Provisioned Throughput Units">PTU</abbr>,
+                  fine-tuning, <abbr title="Customer-Managed Keys">CMK</abbr> —
+                  all <abbr title="Generally Available">GA</abbr>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- 7-DAY LEARNING PATH -->
+          <h2 id="az-learning-path">7-Day Learning Path</h2>
+          <p>
+            A structured curriculum that builds bottom-up through the strata.
+            Each day: ~2-4 hours. See the
+            <a href="https://github.com" style="color: var(--accent-indigo)"
+              >full curriculum</a
+            >
+            for detailed instructions.
+          </p>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <div class="icon" style="color: var(--l1)">D1</div>
+              <div class="title">L1 — Models</div>
+              <div class="desc">
+                Create Foundry resource, deploy model, first inference. Posts
+                1-2.
+              </div>
+            </div>
+            <div class="feature-card">
+              <div class="icon" style="color: var(--l2)">D2</div>
+              <div class="title">L2+L3 — Data &amp; Tools</div>
+              <div class="desc">
+                RAG pipeline, AI Search, tool calling, MCP. Posts 5, 8.
+              </div>
+            </div>
+            <div class="feature-card">
+              <div class="icon" style="color: var(--l4)">D3</div>
+              <div class="title">L4 — Agents</div>
+              <div class="desc">
+                Prompt agent, identity, versioning, maturity matrix. Post 7.
+              </div>
+            </div>
+            <div class="feature-card">
+              <div class="icon" style="color: var(--l5)">D4</div>
+              <div class="title">L5 — Observability</div>
+              <div class="desc">
+                App Insights, evaluators, CI/CD gates, private tracing gap. Post
+                10.
+              </div>
+            </div>
+            <div class="feature-card">
+              <div class="icon" style="color: var(--l6)">D5</div>
+              <div class="title">L6+L7 — Governance</div>
+              <div class="desc">
+                RBAC hardening, Content Safety, approval architecture. Posts 3,
+                4, 6.
+              </div>
+            </div>
+            <div class="feature-card">
+              <div class="icon" style="color: var(--accent-indigo)">D6</div>
+              <div class="title">Cross-Cutting</div>
+              <div class="desc">
+                Network isolation, VNet injection, APIM cost governance. Posts
+                5, 9.
+              </div>
+            </div>
+            <div class="feature-card">
+              <div class="icon" style="color: var(--l7)">D7</div>
+              <div class="title">Integration</div>
+              <div class="desc">
+                Bicep deployment, gap analysis, {a}OS classification. Posts 11,
+                12.
+              </div>
+            </div>
+          </div>
+
+          <!-- L1 -->
+          <h2 id="az-l1">L1: Models &amp; Infrastructure</h2>
+          <div class="stratum-mini">
+            <div
+              class="num"
+              style="background: var(--l1-glow); color: var(--l1)"
+            >
+              L1
+            </div>
+            <div class="info">
+              <div class="name">Models &amp; Infrastructure</div>
+              <div class="question">
+                Is the model/runtime/compute/network foundation available and
+                behaving correctly?
+              </div>
+            </div>
+          </div>
+          <h3>What Foundry Provides</h3>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Capability</th>
+                <th>Feature</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Model hosting</td>
+                <td>Model catalog (11K+ models, ~50-100 that matter)</td>
+                <td>GA</td>
+              </tr>
+              <tr>
+                <td>Deployment types</td>
+                <td>
+                  Standard,
+                  <abbr
+                    title="Provisioned Throughput Units — reserved capacity pricing"
+                    >PTU</abbr
+                  >, Global, DataZone, Batch
+                </td>
+                <td>GA</td>
+              </tr>
+              <tr>
+                <td>Fine-tuning</td>
+                <td>
+                  <abbr title="Supervised Fine-Tuning">SFT</abbr>/<abbr
+                    title="Direct Preference Optimization"
+                    >DPO</abbr
+                  >
+                  for GPT-4o/4.1;
+                  <abbr title="Reinforcement Fine-Tuning">RFT</abbr> for o4-mini
+                </td>
+                <td>GA</td>
+              </tr>
+              <tr>
+                <td>Encryption</td>
+                <td>
+                  <abbr title="Customer-Managed Keys">CMK</abbr> via Azure Key
+                  Vault (<abbr title="Federal Information Processing Standards"
+                    >FIPS</abbr
+                  >
+                  140-2)
+                </td>
+                <td>GA</td>
+              </tr>
+              <tr>
+                <td>Edge inference</td>
+                <td>Foundry Local</td>
+                <td>GA</td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>What You Build</h3>
+          <ul>
+            <li>
+              Custom model training (requires Azure ML — separate service)
+            </li>
+            <li>Cross-region disaster recovery (manual architecture)</li>
+            <li>Gov cloud model gap mitigation (model abstraction layer)</li>
+            <li>Hybrid cloud patterns for classified environments</li>
+          </ul>
+          <h3>Setup Walkthrough</h3>
+          <ol>
+            <li>
+              Create a Foundry resource:
+              <code
+                >az cognitiveservices account create --kind AIServices --sku
+                S0</code
+              >
+            </li>
+            <li>Create a project within the resource</li>
+            <li>
+              Deploy a model:
+              <code
+                >az cognitiveservices account deployment create --model-name
+                gpt-4.1 --sku-name GlobalStandard</code
+              >
+            </li>
+            <li>Test inference via Python SDK or REST API</li>
+            <li>
+              Enable CMK encryption via Key Vault if handling sensitive data
+            </li>
+          </ol>
+          <h3>Key Decisions</h3>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Decision</th>
+                <th>Option A</th>
+                <th>Option B</th>
+                <th>Recommendation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Deployment type</td>
+                <td>Pay-as-you-go</td>
+                <td>PTU (reserved)</td>
+                <td>
+                  Start with pay-as-you-go; PTU when you have predictable load
+                </td>
+              </tr>
+              <tr>
+                <td>Scope</td>
+                <td>Global deployment</td>
+                <td>Regional</td>
+                <td>
+                  Regional for data residency; Global for cost optimization
+                </td>
+              </tr>
+              <tr>
+                <td>Model portability</td>
+                <td>Hardcode model names</td>
+                <td>Abstraction layer</td>
+                <td>
+                  Always abstract — build for the model you might lose access to
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            <em
+              >Related: LinkedIn Post 2 (What Foundry Is), Post 6 (Models &amp;
+              Money) — Learning Day 1</em
+            >
+          </p>
+
+          <!-- L2 -->
+          <h2 id="az-l2">L2: Knowledge &amp; Memory</h2>
+          <div class="stratum-mini">
+            <div
+              class="num"
+              style="background: var(--l2-glow); color: var(--l2)"
+            >
+              L2
+            </div>
+            <div class="info">
+              <div class="name">Knowledge &amp; Memory</div>
+              <div class="question">
+                What context did the system know, retrieve, remember, or forget?
+              </div>
+            </div>
+          </div>
+          <h3>What Foundry Provides</h3>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Capability</th>
+                <th>Feature</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <abbr title="Retrieval-Augmented Generation">RAG</abbr> engine
+                </td>
+                <td>Foundry IQ</td>
+                <td>Preview</td>
+              </tr>
+              <tr>
+                <td>Vector search</td>
+                <td>Azure AI Search</td>
+                <td>GA</td>
+              </tr>
+              <tr>
+                <td>Agent memory</td>
+                <td>Conversation memory per agent</td>
+                <td>GA</td>
+              </tr>
+              <tr>
+                <td>File processing</td>
+                <td>File Search tool</td>
+                <td>GA (no VNet)</td>
+              </tr>
+              <tr>
+                <td>Document processing</td>
+                <td>Document Intelligence</td>
+                <td>GA</td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>What You Build</h3>
+          <ul>
+            <li>Cross-agent shared state (Cosmos DB)</li>
+            <li>Memory compaction and lifecycle management</li>
+            <li>Production RAG governance and access controls</li>
+            <li>Context window management strategies</li>
+          </ul>
+          <div class="callout">
+            <strong>Critical: Basic vs. Standard Storage</strong>
+            "Basic" agent storage is Microsoft-managed multitenant. If you
+            handle sensitive data,
+            <abbr title="Personally Identifiable Information">PII</abbr>,
+            financial records, or any controlled data, you need "Standard" with
+            <abbr title="Bring Your Own">BYO</abbr> storage — and you need to
+            know this before your first deployment, not after.
+          </div>
+          <h3>Setup Walkthrough</h3>
+          <ol>
+            <li>
+              Create Azure AI Search:
+              <code>az search service create --sku standard</code>
+            </li>
+            <li>Configure private endpoint for AI Search</li>
+            <li>Upload documents and create a vector index</li>
+            <li>Connect AI Search as an agent tool</li>
+            <li>
+              Configure BYO storage (Standard agent setup) —
+              <strong>do not use Basic for production</strong>
+            </li>
+          </ol>
+          <p>
+            <em>Related: LinkedIn Post 8 (RAG &amp; Data) — Learning Day 2</em>
+          </p>
+
+          <!-- L3 -->
+          <h2 id="az-l3">L3: Execution &amp; Interfaces</h2>
+          <div class="stratum-mini">
+            <div
+              class="num"
+              style="background: var(--l3-glow); color: var(--l3)"
+            >
+              L3
+            </div>
+            <div class="info">
+              <div class="name">Execution &amp; Interfaces</div>
+              <div class="question">
+                What external action was invoked, against which interface, and
+                what happened?
+              </div>
+            </div>
+          </div>
+          <h3>What Foundry Provides</h3>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Capability</th>
+                <th>Feature</th>
+                <th>Status</th>
+                <th>VNet</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Function calling</td>
+                <td>Native function/tool calling</td>
+                <td>GA</td>
+                <td style="color: var(--l3)">Works</td>
+              </tr>
+              <tr>
+                <td>MCP support</td>
+                <td>MCP server integration</td>
+                <td>GA</td>
+                <td style="color: var(--l3)">Works</td>
+              </tr>
+              <tr>
+                <td>Code execution</td>
+                <td>Code Interpreter</td>
+                <td>GA</td>
+                <td style="color: var(--l3)">Works</td>
+              </tr>
+              <tr>
+                <td>Enterprise connectors</td>
+                <td>1,400+ via Logic Apps</td>
+                <td>GA</td>
+                <td style="color: var(--l2)">Partial</td>
+              </tr>
+              <tr>
+                <td>Web search</td>
+                <td>Bing Grounding</td>
+                <td>GA</td>
+                <td style="color: var(--l1)">PUBLIC</td>
+              </tr>
+              <tr>
+                <td>Browser</td>
+                <td>Browser Automation</td>
+                <td>Preview</td>
+                <td style="color: var(--l1)">Broken</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="callout">
+            <strong>Warning: Public Internet Tools</strong>
+            Bing Grounding and Web Search route over public internet even in
+            "isolated" environments. Block via Azure Policy on day one:
+            <code
+              >az policy assignment create --name block-bing --policy "deny Bing
+              grounding"</code
+            >
+          </div>
+          <h3>Setup Walkthrough</h3>
+          <ol>
+            <li>
+              Add a function tool to your agent — test with a simple calculator
+              function
+            </li>
+            <li>Set up MCP server integration for your own services</li>
+            <li>Test Code Interpreter with a data analysis task</li>
+            <li>Block Bing/Web Search via Azure Policy in production</li>
+            <li>Build your personal VNet tool compatibility checklist</li>
+          </ol>
+          <p>
+            <em
+              >Related: LinkedIn Post 5 (Network Isolation), Post 7 (Agent
+              Maturity) — Learning Day 2</em
+            >
+          </p>
+
+          <!-- L4 -->
+          <h2 id="az-l4">L4: Orchestration &amp; Decisioning</h2>
+          <div class="stratum-mini">
+            <div
+              class="num"
+              style="background: var(--l4-glow); color: var(--l4)"
+            >
+              L4
+            </div>
+            <div class="info">
+              <div class="name">Orchestration &amp; Decisioning</div>
+              <div class="question">
+                What happens next, in what order, with which agent, under which
+                stop conditions?
+              </div>
+            </div>
+          </div>
+          <h3>What Foundry Provides</h3>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Agent Type</th>
+                <th>Status</th>
+                <th>VNet</th>
+                <th>Production Ready</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Prompt Agents</td>
+                <td>GA</td>
+                <td style="color: var(--l3)">Yes</td>
+                <td style="color: var(--l3)">Yes</td>
+              </tr>
+              <tr>
+                <td>Workflow Agents</td>
+                <td>Preview</td>
+                <td style="color: var(--l2)">Partial</td>
+                <td style="color: var(--l1)">No</td>
+              </tr>
+              <tr>
+                <td>Hosted Agents</td>
+                <td>Preview</td>
+                <td style="color: var(--l1)">No</td>
+                <td style="color: var(--l1)">No</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="callout">
+            <strong>Start with Prompt Agents</strong>
+            They are GA and production-safe. Workflow and hosted agents are
+            preview — build your first value on what is stable, not what is
+            exciting. Complex orchestration? Use Semantic Kernel or LangGraph in
+            code.
+          </div>
+          <h3>Setup Walkthrough</h3>
+          <ol>
+            <li>Create a prompt agent with a detailed system prompt</li>
+            <li>Attach tools from L3 (function calling, MCP)</li>
+            <li>Configure per-agent Entra managed identity</li>
+            <li>Test agent in the playground</li>
+            <li>Create a second version — test versioning and rollback</li>
+            <li>
+              Explore workflow agents (preview) — understand their limitations
+              before committing
+            </li>
+          </ol>
+          <p>
+            <em>Related: LinkedIn Post 7 (Agent Maturity) — Learning Day 3</em>
+          </p>
+
+          <!-- L5 -->
+          <h2 id="az-l5">L5: Observability &amp; Evaluation</h2>
+          <div class="stratum-mini">
+            <div
+              class="num"
+              style="background: var(--l5-glow); color: var(--l5)"
+            >
+              L5
+            </div>
+            <div class="info">
+              <div class="name">Observability &amp; Evaluation</div>
+              <div class="question">
+                What actually happened, how well did it perform, and where did
+                it fail?
+              </div>
+            </div>
+          </div>
+          <h3>What Foundry Provides</h3>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Capability</th>
+                <th>Feature</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Tracing</td>
+                <td>OpenTelemetry via App Insights</td>
+                <td>GA (prompt agents)</td>
+              </tr>
+              <tr>
+                <td>Evaluators</td>
+                <td>Quality, safety, task adherence</td>
+                <td>GA</td>
+              </tr>
+              <tr>
+                <td>Custom evaluation</td>
+                <td>Configurable pipelines</td>
+                <td>GA</td>
+              </tr>
+              <tr>
+                <td>Continuous eval</td>
+                <td>Scheduled eval against live data</td>
+                <td>GA</td>
+              </tr>
+              <tr>
+                <td>CI/CD</td>
+                <td>GitHub Actions evaluation gates</td>
+                <td>GA</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="callout" style="border-left-color: var(--l1)">
+            <strong>Critical Gap: Private App Insights</strong>
+            Tracing does NOT work with private Application Insights. If you need
+            both network isolation and observability — which is most serious
+            deployments — you must architect a workaround: non-private App
+            Insights in a peered network with restricted access, or export
+            traces to Log Analytics.
+          </div>
+          <h3>Setup Walkthrough</h3>
+          <ol>
+            <li>
+              Create Application Insights:
+              <code>az monitor app-insights component create</code>
+            </li>
+            <li>Connect to your Foundry project</li>
+            <li>Run your agent — inspect traces in the portal</li>
+            <li>Run a quality evaluator against agent output</li>
+            <li>Run a safety evaluator — verify Content Safety scoring</li>
+            <li>Set up a GitHub Actions workflow with an evaluation gate</li>
+            <li>
+              If using private networking: test tracing (it may break) and plan
+              the workaround
+            </li>
+          </ol>
+          <p>
+            <em
+              >Related: LinkedIn Post 10 (Observability Paradox) — Learning Day
+              4</em
+            >
+          </p>
+
+          <!-- L6 -->
+          <h2 id="az-l6">L6: Governance &amp; Trust</h2>
+          <div class="stratum-mini">
+            <div
+              class="num"
+              style="background: var(--l6-glow); color: var(--l6)"
+            >
+              L6
+            </div>
+            <div class="info">
+              <div class="name">Governance &amp; Trust</div>
+              <div class="question">
+                Who is allowed to do this, under what policy, with what risk and
+                budget?
+              </div>
+            </div>
+          </div>
+          <h3>What Foundry Provides</h3>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Capability</th>
+                <th>Feature</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Content filtering</td>
+                <td>Content Safety (always on, configurable)</td>
+                <td>GA</td>
+              </tr>
+              <tr>
+                <td>Prompt protection</td>
+                <td>Prompt Shields — jailbreak detection</td>
+                <td>GA</td>
+              </tr>
+              <tr>
+                <td>RBAC</td>
+                <td>
+                  <abbr
+                    title="Microsoft's identity platform (formerly Azure AD)"
+                    >Entra ID</abbr
+                  >
+                  + 4 built-in roles + custom
+                </td>
+                <td>GA</td>
+              </tr>
+              <tr>
+                <td>Infra policy</td>
+                <td>Azure Policy integration</td>
+                <td>GA</td>
+              </tr>
+              <tr>
+                <td>Threat detection</td>
+                <td>Microsoft Defender</td>
+                <td>GA</td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>What You Build (This Is the Big One)</h3>
+          <div class="callout">
+            <strong>Governance is not a feature — it's an architecture</strong>
+            Foundry has no approval workflows, no governance dashboard, no
+            aggregated audit trail, no compliance reporting, no agent behavior
+            policy engine, and no cost governance. Everything in this list is
+            your responsibility.
+          </div>
+          <h3>RBAC Roles</h3>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Role</th>
+                <th>Use For</th>
+                <th>Risk Level</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Azure AI User</td>
+                <td>Developers (least privilege)</td>
+                <td style="color: var(--l3)">Low — default for all devs</td>
+              </tr>
+              <tr>
+                <td>Azure AI Project Manager</td>
+                <td>Team leads</td>
+                <td style="color: var(--l2)">Medium</td>
+              </tr>
+              <tr>
+                <td>Azure AI Account Owner</td>
+                <td>Resource creation only</td>
+                <td style="color: var(--l2)">Medium — no data actions</td>
+              </tr>
+              <tr>
+                <td>Azure AI Owner</td>
+                <td>Never without justification</td>
+                <td style="color: var(--l1)">High — loaded gun in prod</td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>Setup Walkthrough</h3>
+          <ol>
+            <li>Switch to Entra ID authentication — remove all API keys</li>
+            <li>
+              Assign <code>Azure AI User</code> to developers (least privilege)
+            </li>
+            <li>
+              Verify <code>Azure AI Owner</code> is NOT assigned to any
+              developer accounts
+            </li>
+            <li>Configure Content Safety severity thresholds</li>
+            <li>Test Prompt Shields — attempt a jailbreak, verify detection</li>
+            <li>
+              Create Azure Policy assignments to block dangerous tools in
+              production
+            </li>
+            <li>
+              Design your approval gate architecture (Logic Apps or custom
+              workflow — Foundry does not provide this)
+            </li>
+          </ol>
+          <p>
+            <em
+              >Related: LinkedIn Post 3 ({a}OS debut), Post 4 (Identity) —
+              Learning Day 5</em
+            >
+          </p>
+
+          <!-- L7 -->
+          <h2 id="az-l7">L7: Experience &amp; Intent</h2>
+          <div class="stratum-mini">
+            <div
+              class="num"
+              style="background: var(--l7-glow); color: var(--l7)"
+            >
+              L7
+            </div>
+            <div class="info">
+              <div class="name">Experience &amp; Intent</div>
+              <div class="question">
+                What is the user asking, seeing, approving, or rejecting?
+              </div>
+            </div>
+          </div>
+          <h3>What Foundry Provides</h3>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Capability</th>
+                <th>Feature</th>
+                <th>Status</th>
+                <th>Limitation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Portal</td>
+                <td>Foundry Portal (classic + new)</td>
+                <td>GA</td>
+                <td>New portal lacks VNet support</td>
+              </tr>
+              <tr>
+                <td>Agent builder</td>
+                <td>Visual agent configuration</td>
+                <td>GA</td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td>Publishing</td>
+                <td>Teams, M365, BizChat</td>
+                <td>GA</td>
+                <td style="color: var(--l1)">Requires public endpoints</td>
+              </tr>
+              <tr>
+                <td>API surface</td>
+                <td>REST + Python/JS SDKs</td>
+                <td>GA</td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td>Playground</td>
+                <td>Agent testing playground</td>
+                <td>GA</td>
+                <td>—</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="callout">
+            <strong>Most of L7 is yours to build</strong>
+            The Foundry Portal is a management surface, not an end-user
+            experience. For most production deployments, the L7 surface — the
+            thing your actual users see and interact with — will be entirely
+            custom-built. Agent publishing to Teams requires public endpoints,
+            which is often a non-starter for security-conscious environments.
+          </div>
+          <h3>Setup Walkthrough</h3>
+          <ol>
+            <li>
+              Navigate the Foundry Portal — toggle between classic and new
+              portals
+            </li>
+            <li>
+              Use the classic portal or CLI for network-isolated management (the
+              new portal doesn't support it)
+            </li>
+            <li>
+              Test agent publishing to Teams (note the public endpoint
+              requirement)
+            </li>
+            <li>Design your L7 surface: what will end users actually see?</li>
+            <li>
+              Plan: approval surfaces, escalation flows, intent disambiguation —
+              none of these come from Foundry
+            </li>
+          </ol>
+          <p>
+            <em
+              >Related: LinkedIn Post 3 (Governance debut) — Learning Day 5</em
+            >
+          </p>
+
+          <!-- NETWORK ISOLATION -->
+          <h2 id="az-network">Network Isolation</h2>
+          <p>
+            Three isolation dimensions: <strong>inbound</strong> (private
+            endpoints), <strong>outbound from resource</strong> (VNet
+            injection), and <strong>outbound from agents</strong> (tool-level).
+          </p>
+          <h3>What Works in VNet</h3>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Tool / Feature</th>
+                <th>VNet Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Private endpoints (inbound)</td>
+                <td style="color: var(--l3)">Works</td>
+              </tr>
+              <tr>
+                <td>VNet injection (agent compute)</td>
+                <td style="color: var(--l3)">Works (/27+ subnet)</td>
+              </tr>
+              <tr>
+                <td>Function calling</td>
+                <td style="color: var(--l3)">Works</td>
+              </tr>
+              <tr>
+                <td>MCP (private)</td>
+                <td style="color: var(--l3)">Works</td>
+              </tr>
+              <tr>
+                <td>Code Interpreter</td>
+                <td style="color: var(--l3)">Works</td>
+              </tr>
+              <tr>
+                <td>AI Search (private endpoint)</td>
+                <td style="color: var(--l3)">Works</td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>What Breaks in VNet</h3>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Tool / Feature</th>
+                <th>Issue</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="color: var(--l1)">File Search</td>
+                <td>Not supported in VNet isolation</td>
+              </tr>
+              <tr>
+                <td style="color: var(--l1)">OpenAPI Tool</td>
+                <td>Not supported in VNet isolation</td>
+              </tr>
+              <tr>
+                <td style="color: var(--l1)">Azure Functions (tool)</td>
+                <td>Not supported in VNet isolation</td>
+              </tr>
+              <tr>
+                <td style="color: var(--l1)">Browser Automation</td>
+                <td>Not supported in VNet isolation</td>
+              </tr>
+              <tr>
+                <td style="color: var(--l1)">Hosted Agents</td>
+                <td>No VNet support at all</td>
+              </tr>
+              <tr>
+                <td style="color: var(--l1)">Workflow Agents</td>
+                <td>Inbound only</td>
+              </tr>
+              <tr>
+                <td style="color: var(--l1)">Tracing (private App Insights)</td>
+                <td>Breaks entirely</td>
+              </tr>
+              <tr>
+                <td style="color: var(--l1)">New Foundry Portal</td>
+                <td>Must use classic, SDK, or CLI</td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>What Goes Over Public Internet</h3>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Tool</th>
+                <th>Risk</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="color: var(--l1)">Bing Grounding</td>
+                <td>Public internet even in "isolated" environments</td>
+              </tr>
+              <tr>
+                <td style="color: var(--l1)">Web Search</td>
+                <td>Public internet even in "isolated" environments</td>
+              </tr>
+              <tr>
+                <td style="color: var(--l1)">SharePoint Grounding</td>
+                <td>Public internet even in "isolated" environments</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="callout" style="border-left-color: var(--l1)">
+            <strong>Block these via Azure Policy in production</strong>
+            The marketing says "end-to-end network isolation." The reality is an
+            exceptions list. Know it before your security team finds it for you.
+          </div>
+          <p>
+            <em
+              >Related: LinkedIn Post 5 (Network Isolation Exceptions Table) —
+              Learning Day 6</em
+            >
+          </p>
+
+          <!-- COST GOVERNANCE -->
+          <h2 id="az-cost">Cost Governance</h2>
+          <p>
+            The platform itself is free to explore. Costs come from model
+            consumption, storage, search, networking, and compute.
+          </p>
+          <h3>Native vs. Custom</h3>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Capability</th>
+                <th>Source</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Budget alerts</td>
+                <td style="color: var(--l3)">Native — Azure Cost Management</td>
+              </tr>
+              <tr>
+                <td>Per-resource tracking</td>
+                <td style="color: var(--l3)">Native — Azure Cost Management</td>
+              </tr>
+              <tr>
+                <td>Per-team chargeback</td>
+                <td style="color: var(--l1)">Custom — requires APIM gateway</td>
+              </tr>
+              <tr>
+                <td>Per-user token budgets</td>
+                <td style="color: var(--l1)">Custom — requires APIM + logic</td>
+              </tr>
+              <tr>
+                <td>Real-time spend enforcement</td>
+                <td style="color: var(--l1)">
+                  Custom — requires APIM kill switch
+                </td>
+              </tr>
+              <tr>
+                <td>Cross-service attribution</td>
+                <td style="color: var(--l1)">Custom — Log Analytics queries</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="callout">
+            <strong
+              >Deploy <abbr title="Azure API Management">APIM</abbr> as an AI
+              Gateway from Day One</strong
+            >
+            Azure API Management sits between your consumers and Foundry. It
+            provides token metering, rate limiting, and per-team chargeback that
+            Foundry lacks natively. Build it before you need it — not after an
+            agent loops and spends your monthly budget overnight.
+          </div>
+          <p>
+            <em>Related: LinkedIn Post 9 (Cost Governance) — Learning Day 6</em>
+          </p>
+
+          <!-- IaC & CI/CD -->
+          <h2 id="az-iac">IaC &amp; CI/CD</h2>
+          <p>
+            <strong
+              >Deploy via
+              <abbr title="Azure's declarative Infrastructure as Code language"
+                >Bicep</abbr
+              >/CLI, not the portal.</strong
+            >
+            The new portal does not support network isolation workflows.
+            <abbr title="Infrastructure as Code">IaC</abbr> is not optional —
+            it's the only reliable path for production.
+          </p>
+          <h3>Bicep Templates</h3>
+          <ul>
+            <li><code>00-basic</code> — Simple Foundry resource + project</li>
+            <li>
+              <code>19-hybrid-private-resources-agent-setup</code> —
+              Network-isolated agent setup with BYO storage
+            </li>
+          </ul>
+          <p>
+            Fork the <code>azure-ai-foundry/foundry-samples</code> Bicep
+            templates. Customize for your policies and compliance. Maintain as
+            an internal module.
+          </p>
+          <h3>Phase 1 Architecture (Minimum Viable Platform)</h3>
+          <ul>
+            <li>Foundry resource + project</li>
+            <li>Private endpoints</li>
+            <li>One model deployment (pay-as-you-go)</li>
+            <li>One prompt agent (GA)</li>
+            <li>Application Insights (with tracing workaround if private)</li>
+            <li>APIM AI Gateway (cost metering from day one)</li>
+            <li>Azure Cost Management budget with alerts</li>
+            <li>Entra-only authentication (no API keys)</li>
+          </ul>
+          <h3>CI/CD Pattern</h3>
+          <ol>
+            <li>Bicep deployment via GitHub Actions</li>
+            <li>Agent evaluation gate (quality + safety evaluators)</li>
+            <li>Cost check gate (budget threshold)</li>
+            <li>
+              Promote: dev → staging → prod (separate Foundry resources per
+              environment)
+            </li>
+          </ol>
+          <div class="callout">
+            <strong>Projects are NOT environments</strong>
+            Projects within a single Foundry resource share networking and
+            cannot serve as environment boundaries. Use separate Foundry
+            resources per environment (dev, staging, prod).
+          </div>
+          <p><em>Related: LinkedIn Post 11 (Phase 1) — Learning Day 7</em></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== STANDARDS TRACK TAB ===== -->
+    <div class="tab-content" id="tab-standards">
+      <div class="docs-layout">
+        <nav class="sidebar">
+          <div class="sidebar-title">Standards Track</div>
+          <a href="#std-roadmap" class="sidebar-link active">Roadmap</a>
+          <a href="#std-rationale" class="sidebar-link">Why Standardize?</a>
+          <a href="#std-neutral" class="sidebar-link">Phase 1: Neutral Spec</a>
+          <a href="#std-ieee" class="sidebar-link">Phase 2: IEEE SA</a>
+          <a href="#std-nist" class="sidebar-link">Phase 3: NIST Crosswalk</a>
+          <a href="#std-iso" class="sidebar-link">Phase 4: ISO / SC 42</a>
+          <a href="#std-timeline" class="sidebar-link">90-Day Timeline</a>
+          <a href="#std-advice" class="sidebar-link">Strategic Advice</a>
+        </nav>
+        <div class="content">
+          <h1>Standards Track</h1>
+          <p class="subtitle">
+            The path from open reference model to internationally recognized
+            standard — IEEE&nbsp;SA &rarr; NIST &rarr;
+            ISO/IEC&nbsp;JTC&nbsp;1/SC&nbsp;42.
+          </p>
+
+          <!-- Version + Status Badge -->
+          <div
+            style="
+              display: flex;
+              gap: 12px;
+              margin: 16px 0 24px;
+              flex-wrap: wrap;
+            "
+          >
+            <span
+              style="
+                display: inline-block;
+                padding: 4px 14px;
+                border-radius: 20px;
+                font-size: 0.82rem;
+                font-weight: 700;
+                background: rgba(34, 197, 94, 0.15);
+                color: #22c55e;
+                border: 1px solid rgba(34, 197, 94, 0.3);
+              "
+              >v1.0 &mdash; Locked</span
+            >
+            <span
+              style="
+                display: inline-block;
+                padding: 4px 14px;
+                border-radius: 20px;
+                font-size: 0.82rem;
+                font-weight: 700;
+                background: rgba(99, 102, 241, 0.15);
+                color: #818cf8;
+                border: 1px solid rgba(99, 102, 241, 0.3);
+              "
+              >Phase 0: Foundation &check;</span
+            >
+            <span
+              style="
+                display: inline-block;
+                padding: 4px 14px;
+                border-radius: 20px;
+                font-size: 0.82rem;
+                font-weight: 700;
+                background: rgba(245, 158, 11, 0.15);
+                color: #f59e0b;
+                border: 1px solid rgba(245, 158, 11, 0.3);
+              "
+              >License: CC&nbsp;BY&nbsp;4.0 + Apache&nbsp;2.0</span
+            >
+          </div>
+
+          <!-- Full Roadmap Timeline -->
+          <h2 id="std-roadmap">Roadmap</h2>
+          <p>Eight phases from current foundation to ISO recognition.</p>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th style="width: 5%">#</th>
+                <th style="width: 22%">Phase</th>
+                <th style="width: 18%">Target</th>
+                <th>Key Deliverable</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="background: rgba(34, 197, 94, 0.08)">
+                <td><strong>0</strong></td>
+                <td>Foundation</td>
+                <td>&check; Done</td>
+                <td>
+                  v1.0 reference model locked, Explorer with 40+ products
+                  classified
+                </td>
+              </tr>
+              <tr>
+                <td><strong>1</strong></td>
+                <td>Atlas Adoption</td>
+                <td>Q2-Q3 2026</td>
+                <td>
+                  Pilot deployment under perpetual license; internal validation
+                  across real Atlas workflows
+                </td>
+              </tr>
+              <tr>
+                <td><strong>2</strong></td>
+                <td>Community Review</td>
+                <td>Q3-Q4 2026</td>
+                <td>
+                  5-10 external reviewers (industry + academic); objections and
+                  endorsements captured
+                </td>
+              </tr>
+              <tr>
+                <td><strong>3</strong></td>
+                <td>Standards-Ready Package</td>
+                <td>Q4 2026</td>
+                <td>
+                  Neutral spec, worked use cases, problem statement, evidence
+                  memo
+                </td>
+              </tr>
+              <tr>
+                <td><strong>4</strong></td>
+                <td>NIST Alignment</td>
+                <td>Q4 2026 - Q1 2027</td>
+                <td>
+                  Finalize AI RMF crosswalk; submit for NIST community alignment
+                  feedback
+                </td>
+              </tr>
+              <tr>
+                <td><strong>5</strong></td>
+                <td>IEEE Incubation</td>
+                <td>Q1-Q2 2027</td>
+                <td>IEEE SA pre-standardization outreach; draft PAR</td>
+              </tr>
+              <tr>
+                <td><strong>6</strong></td>
+                <td>Formal Submission</td>
+                <td>Q2-Q3 2027</td>
+                <td>
+                  IEEE PAR submission via myProject; identify sponsoring
+                  committee
+                </td>
+              </tr>
+              <tr>
+                <td><strong>7</strong></td>
+                <td>ISO Track (parallel)</td>
+                <td>2027+</td>
+                <td>
+                  ISO/IEC JTC 1/SC 42 WG 1 route via ANSI (if IEEE traction is
+                  strong)
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Rationale -->
+          <h2 id="std-rationale">Why Standardize?</h2>
+          <p>
+            {a}OS already solves a real problem — giving architects a shared
+            ontology for the AI operations stack. Standardization turns that
+            ontology into something procurement can cite, regulators can
+            reference, and vendors can map against. The goal is not prestige;
+            it's <strong>durability and interoperability</strong>.
+          </p>
+          <div class="callout" style="border-left-color: var(--accent-indigo)">
+            <strong>Core principle</strong> &mdash; Be willing to lose the
+            branded wording. If the concepts survive in a neutral spec, you win
+            regardless of whether the final standard says "stratum" or "tier."
+          </div>
+
+          <!-- Phase 1: Neutral Spec -->
+          <h2 id="std-neutral">Phase 1 &mdash; Neutral Spec Extraction</h2>
+          <p>
+            Before any standards body will engage, the model must exist as a
+            <strong>vendor-neutral, IP-clean specification</strong> — no product
+            names, no marketing language, no assumptions about Azure or any
+            other cloud.
+          </p>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th style="width: 5%">#</th>
+                <th style="width: 30%">Deliverable</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Problem Statement</td>
+                <td>
+                  One-page framing: what gap this model fills, why existing
+                  frameworks don't cover it.
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Scope &amp; Non-Scope</td>
+                <td>
+                  What the standard defines vs. what it explicitly does not.
+                  Includes boundary diagram.
+                </td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Neutral Terminology</td>
+                <td>
+                  Dual-label mapping: <em>Stratum &harr; Tier</em>,
+                  <em>Substrate &harr; Capability Group</em>,
+                  <em>Construct &harr; Entity</em>,
+                  <em>Primitive &harr; Attribute</em>,
+                  <em>Axis &harr; Cross-cutting Concern</em>.
+                </td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Metamodel Diagram</td>
+                <td>
+                  UML or SysML class diagram showing the 5-concept ontology and
+                  relationships.
+                </td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Use Cases (6&times;)</td>
+                <td>
+                  Six scenarios demonstrating model utility: vendor evaluation,
+                  compliance mapping, architecture review, gap analysis,
+                  procurement scoring, and interop testing.
+                </td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Crosswalk Table</td>
+                <td>
+                  How {a}OS maps to existing frameworks: NIST AI RMF, EU AI Act
+                  risk tiers, ISO/IEC 42001, OWASP AI Top 10.
+                </td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>Evidence of Need</td>
+                <td>
+                  Market research, analyst citations, or adoption metrics
+                  demonstrating industry demand for such a classification.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Phase 2: IEEE SA -->
+          <h2 id="std-ieee">Phase 2 &mdash; IEEE SA Incubation</h2>
+          <p>
+            IEEE Standards Association is the fastest on-ramp for a new
+            standard. Two entry paths exist:
+          </p>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th style="width: 30%">Path</th>
+                <th style="width: 25%">Timeline</th>
+                <th>Best For</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Industry Connections Activity (IC)</strong></td>
+                <td>6&ndash;12 months</td>
+                <td>
+                  Rapid incubation, building a coalition, publishing a white
+                  paper or technical report before committing to a full
+                  standard.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Standards Working Group (WG)</strong></td>
+                <td>18&ndash;36 months</td>
+                <td>
+                  Full IEEE standard (e.g., P-series number). Requires 5+
+                  organizational participants, a sponsor, and a PAR (Project
+                  Authorization Request).
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="callout">
+            <strong>Recommendation</strong> &mdash; Start with an IC Activity to
+            socialize the model, gather co-sponsors, and harden the spec through
+            peer review. Graduate to a WG once you have 5+ organizational
+            backers.
+          </div>
+
+          <!-- Phase 3: NIST -->
+          <h2 id="std-nist">Phase 3 &mdash; NIST Crosswalk</h2>
+          <p>
+            NIST does not create classification standards for industry models,
+            but the <strong>AI Risk Management Framework (AI RMF 1.0)</strong>
+            is the US government's anchor document. Mapping {a}OS strata to AI
+            RMF functions creates a compliance bridge that federal buyers can
+            reference.
+          </p>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>{a}OS Stratum</th>
+                <th>AI RMF Function</th>
+                <th>Alignment Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>L7 Experience &amp; Intent</td>
+                <td>GOVERN 1 &mdash; Policies</td>
+                <td>User intent mapping, transparency requirements</td>
+              </tr>
+              <tr>
+                <td>L6 Governance &amp; Trust</td>
+                <td>GOVERN 2&ndash;6, MAP 1</td>
+                <td>Risk tolerance, roles, compliance controls</td>
+              </tr>
+              <tr>
+                <td>L5 Observability &amp; Evaluation</td>
+                <td>MEASURE 1&ndash;4</td>
+                <td>Metrics, monitoring, evaluation gates</td>
+              </tr>
+              <tr>
+                <td>L4 Orchestration &amp; Decisioning</td>
+                <td>MANAGE 1&ndash;4</td>
+                <td>Workflow control, decision audit trail</td>
+              </tr>
+              <tr>
+                <td>L3 Execution &amp; Interfaces</td>
+                <td>MAP 2&ndash;3</td>
+                <td>Runtime boundaries, API contracts</td>
+              </tr>
+              <tr>
+                <td>L2 Knowledge &amp; Memory</td>
+                <td>MAP 4&ndash;5</td>
+                <td>Data provenance, knowledge governance</td>
+              </tr>
+              <tr>
+                <td>L1 Models &amp; Infrastructure</td>
+                <td>MANAGE 1 (infra)</td>
+                <td>Compute, model lifecycle, deployment targets</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Phase 4: ISO -->
+          <h2 id="std-iso">Phase 4 &mdash; ISO / IEC JTC 1 / SC 42</h2>
+          <p>
+            The ultimate destination: submission to
+            <strong>ISO/IEC JTC&nbsp;1/SC&nbsp;42 WG&nbsp;1</strong>
+            (AI Foundational Standards). This is a 3&ndash;5 year process but
+            produces a globally recognized standard that procurement,
+            regulators, and auditors rely on.
+          </p>
+          <div class="callout">
+            <strong>Prerequisite</strong> &mdash; An established IEEE standard
+            or technical report is the strongest vehicle for an
+            <em>ISO/IEC fast-track</em> submission. Phase 2 feeds directly into
+            Phase 4.
+          </div>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Stage</th>
+                <th>ISO Process</th>
+                <th>What Happens</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>NP</td>
+                <td>New Work Item Proposal</td>
+                <td>
+                  National body sponsors the proposal; 5+ participating
+                  P-members must vote yes.
+                </td>
+              </tr>
+              <tr>
+                <td>WD</td>
+                <td>Working Draft</td>
+                <td>WG 1 iterates on the spec through 1&ndash;3 drafts.</td>
+              </tr>
+              <tr>
+                <td>CD</td>
+                <td>Committee Draft</td>
+                <td>Full SC 42 review and comment resolution.</td>
+              </tr>
+              <tr>
+                <td>DIS</td>
+                <td>Draft International Standard</td>
+                <td>Broader JTC 1 ballot; editorial polish.</td>
+              </tr>
+              <tr>
+                <td>IS</td>
+                <td>International Standard</td>
+                <td>
+                  Published as ISO/IEC xxxxx. Periodic review every 5 years.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- 90-Day Timeline -->
+          <h2 id="std-timeline">90-Day Execution Plan</h2>
+          <p>
+            A realistic first-quarter roadmap to go from open model to
+            submission-ready package.
+          </p>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th style="width: 18%">Weeks</th>
+                <th style="width: 30%">Milestone</th>
+                <th>Key Activities</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1&ndash;2</strong></td>
+                <td>Neutral Spec v0.1</td>
+                <td>
+                  Strip branding, write problem statement, produce dual-label
+                  terminology map, draft metamodel diagram.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>3&ndash;4</strong></td>
+                <td>Gap Analysis</td>
+                <td>
+                  Complete crosswalk table (NIST AI RMF, EU AI Act, ISO 42001,
+                  OWASP). Identify gaps and overlaps.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>5&ndash;6</strong></td>
+                <td>External Review</td>
+                <td>
+                  Recruit 3&ndash;5 domain reviewers (academia, industry, gov).
+                  Collect structured feedback. Iterate spec to v0.2.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>7&ndash;8</strong></td>
+                <td>Submission Package</td>
+                <td>
+                  Compile complete IEEE IC Activity proposal or PAR draft.
+                  Include use cases, evidence of need, and letters of support.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>9&ndash;12</strong></td>
+                <td>Outreach &amp; Coalition</td>
+                <td>
+                  Present at 2+ industry events or webinars. Recruit
+                  organizational co-sponsors. Submit to IEEE SA NesCom.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Strategic Advice -->
+          <h2 id="std-advice">Strategic Advice</h2>
+          <div class="callout" style="border-left-color: var(--accent-indigo)">
+            <strong>The single most important principle</strong> &mdash; Be
+            willing to lose the branded wording. If the model's
+            <em>concepts</em>
+            survive — the seven tiers, the cross-cutting axes, the
+            stratum&rarr;substrate&rarr;construct&rarr;primitive hierarchy — you
+            win, even if the final ISO standard uses entirely different
+            terminology.
+          </div>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th style="width: 35%">Do</th>
+                <th style="width: 35%">Don't</th>
+                <th>Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ship dual-label docs from Day 1</td>
+                <td>Hard-code only branded terms</td>
+                <td>
+                  Standards bodies reject vocabulary that implies vendor
+                  lock-in.
+                </td>
+              </tr>
+              <tr>
+                <td>Map to existing frameworks early</td>
+                <td>Claim the model is "entirely new"</td>
+                <td>
+                  Reviewers need to see how it extends — not replaces — prior
+                  art.
+                </td>
+              </tr>
+              <tr>
+                <td>Recruit co-sponsors before submitting</td>
+                <td>Solo-author the submission</td>
+                <td>
+                  IEEE and ISO require multi-org participation. Solo proposals
+                  stall.
+                </td>
+              </tr>
+              <tr>
+                <td>Publish open-source tooling alongside the spec</td>
+                <td>Gate the model behind a paywall</td>
+                <td>Adoption drives standardization; scarcity kills it.</td>
+              </tr>
+              <tr>
+                <td>Focus on the ontology hierarchy</td>
+                <td>Try to standardize implementation details</td>
+                <td>
+                  Standards define <em>what</em>, not <em>how</em>. Keep
+                  architecture decisions out of the spec.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p style="margin-top: 2rem; opacity: 0.6; font-size: 0.85rem">
+            <em
+              >This roadmap will be updated as the standardization effort
+              progresses. Track deliverable status in the Roadmap tab.</em
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      /* ===== TAB SWITCHING ===== */
+      function switchTab(tabId, btn) {
+        // Fade out current
+        document.querySelectorAll(".tab-content.active").forEach((t) => {
+          t.style.opacity = "0";
+          setTimeout(() => {
+            t.classList.remove("active");
+            // Activate new tab
+            const next = document.getElementById("tab-" + tabId);
+            if (next) {
+              next.classList.add("active");
+              // Force reflow then fade in
+              void next.offsetWidth;
+              next.style.opacity = "1";
+            }
+          }, 150);
+        });
+        document
+          .querySelectorAll(".tab-btn")
+          .forEach((b) => b.classList.remove("active"));
+        if (btn) btn.classList.add("active");
+        // Update URL hash
+        history.replaceState(null, "", "#" + tabId);
+        // Scroll to top of content
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      /* ===== INTERSECTION OBSERVER: Active sidebar tracking ===== */
+      function initSidebarTracking() {
+        const activeTab = document.querySelector(".tab-content.active");
+        if (!activeTab) return;
+        const headings = activeTab.querySelectorAll("h2[id]");
+        const links = activeTab.querySelectorAll(".sidebar-link");
+        if (!headings.length || !links.length) return;
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              const id = entry.target.getAttribute("id");
+              const link = activeTab.querySelector(
+                '.sidebar-link[href="#' + id + '"]',
+              );
+              if (link) {
+                if (entry.isIntersecting) {
+                  links.forEach((l) => l.classList.remove("is-visible"));
+                  link.classList.add("is-visible");
+                }
+              }
+            });
+          },
+          {
+            rootMargin: "-120px 0px -60% 0px",
+            threshold: 0,
+          },
+        );
+
+        headings.forEach((h) => observer.observe(h));
+        return observer;
+      }
+
+      /* ===== HASH-BASED DEEP LINKS ===== */
+      function handleHash() {
+        const hash = window.location.hash.slice(1);
+        if (!hash) return;
+        // Check if hash matches a tab
+        const tabEl = document.getElementById("tab-" + hash);
+        if (tabEl) {
+          const btn = document.querySelector(
+            ".tab-btn[onclick*=\"'" + hash + "'\"]",
+          );
+          switchTab(hash, btn);
+          return;
+        }
+        // Check if hash matches a section within a tab
+        const target = document.getElementById(hash);
+        if (target) {
+          // Find which tab contains this section
+          const parentTab = target.closest(".tab-content");
+          if (parentTab) {
+            const tabId = parentTab.id.replace("tab-", "");
+            const btn = document.querySelector(
+              ".tab-btn[onclick*=\"'" + tabId + "'\"]",
+            );
+            if (!parentTab.classList.contains("active")) {
+              switchTab(tabId, btn);
+            }
+            setTimeout(() => {
+              target.scrollIntoView({ behavior: "smooth", block: "start" });
+            }, 200);
+          }
+        }
+      }
+
+      /* ===== INIT ===== */
+      let sidebarObserver = null;
+
+      // Re-init sidebar tracking when tabs switch
+      const origSwitchTab = switchTab;
+      switchTab = function (tabId, btn) {
+        if (sidebarObserver) sidebarObserver.disconnect();
+        origSwitchTab(tabId, btn);
+        setTimeout(() => {
+          sidebarObserver = initSidebarTracking();
+        }, 200);
+      };
+
+      document.addEventListener("DOMContentLoaded", () => {
+        sidebarObserver = initSidebarTracking();
+        handleHash();
+      });
+
+      window.addEventListener("hashchange", handleHash);
+
+      /* ===== CALLOUT AUTO-UPGRADE ===== */
+      /* Converts plain .callout divs to typed callouts (note/important/tip/warning)
+         based on their <strong> label text.  Adds SVG icon + heading. */
+      (function upgradeCallouts() {
+        const ICON = {
+          note: `<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"/></svg>`,
+          important: `<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0114.25 13H8.06l-2.573 2.573A1.458 1.458 0 013 14.543V13H1.75A1.75 1.75 0 010 11.25zm1.75-.25a.25.25 0 00-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 01.75.75v2.19l2.72-2.72a.749.749 0 01.53-.22h6.5a.25.25 0 00.25-.25v-9.5a.25.25 0 00-.25-.25zm7 2.25v2.5a.75.75 0 01-1.5 0v-2.5a.75.75 0 011.5 0zM9 9a1 1 0 11-2 0 1 1 0 012 0z"/></svg>`,
+          tip: `<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 01-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 00-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 01-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75zM5.75 12h4.5a.75.75 0 010 1.5h-4.5a.75.75 0 010-1.5zM6 15.25a.75.75 0 01.75-.75h2.5a.75.75 0 010 1.5h-2.5a.75.75 0 01-.75-.75z"/></svg>`,
+          warning: `<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575zm1.763.707a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368zm.53 3.996v2.5a.75.75 0 01-1.5 0v-2.5a.75.75 0 011.5 0zM9 11a1 1 0 11-2 0 1 1 0 012 0z"/></svg>`,
+        };
+
+        // Map label substrings → callout type
+        const LABEL_MAP = [
+          // Warning
+          [/warning|block these|public internet/i, "warning"],
+          // Important
+          [
+            /important|critical|governance is not|most of l7|deploy apim|projects are not|prerequisite|two resource models|start with prompt/i,
+            "important",
+          ],
+          // Tip
+          [
+            /tip|key insight|example|shorthand|mental image|discoverability|recommendation|single most important|core principle/i,
+            "tip",
+          ],
+          // Default: note
+        ];
+
+        function classify(label) {
+          for (const [re, type] of LABEL_MAP) {
+            if (re.test(label)) return type;
+          }
+          return "note";
+        }
+
+        document.querySelectorAll(".callout").forEach((el) => {
+          // Already upgraded?
+          if (el.querySelector(".callout-heading")) return;
+
+          const strong = el.querySelector("strong:first-child");
+          if (!strong) return;
+
+          const label = strong.textContent.trim();
+          const type = classify(label);
+
+          el.classList.add("callout-" + type);
+
+          // Build heading
+          const heading = document.createElement("div");
+          heading.className = "callout-heading";
+          heading.innerHTML =
+            ICON[type] +
+            " <span>" +
+            type.charAt(0).toUpperCase() +
+            type.slice(1) +
+            "</span>";
+
+          // Replace the old strong with heading + content label
+          const contentLabel = document.createElement("strong");
+          contentLabel.style.cssText =
+            "display:block;margin-bottom:4px;color:var(--text-primary);font-size:13px;text-transform:none;letter-spacing:0";
+          contentLabel.textContent = label;
+
+          strong.replaceWith(heading);
+          heading.after(contentLabel);
+        });
+      })();
+    </script>
+    <!-- Firebase Auth (GitHub OAuth) — loaded after page scripts -->
+    <script type="module" src="js/firebase-auth.js"></script>
+
+    <!-- Back-to-top FAB -->
+    <button
+      class="back-to-top"
+      id="backToTop"
+      onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+      title="Back to top"
+    >
+      &#x2191;
+    </button>
+    <script>
+      (function () {
+        const btn = document.getElementById("backToTop");
+        if (!btn) return;
+        window.addEventListener(
+          "scroll",
+          function () {
+            btn.classList.toggle("visible", window.scrollY > 400);
+          },
+          { passive: true },
+        );
+      })();
+    </script>
+  </body>
+</html>

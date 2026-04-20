@@ -1,0 +1,15 @@
+{
+  "name": "90.aos-explorer",
+  "version": "1.0.0",
+  "description": "> Interactive taxonomy and comparison engine for the {a}OS Agentic Reference Stack.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.59.1"
+  }
+}

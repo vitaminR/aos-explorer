@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Logo Preview</title>
+<style>
+  body { background: #080a0c; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; gap: 48px; font-family: Inter, sans-serif; }
+  h2 { color: rgba(255,255,255,0.4); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; margin: 0 0 12px; }
+  .section { display: flex; flex-direction: column; align-items: center; }
+  .bg-dark { background: #0a0c10; padding: 24px; border-radius: 16px; }
+  .bg-light { background: #f8fafc; padding: 24px; border-radius: 16px; }
+</style>
+</head>
+<body>
+  <div class="section">
+    <h2>Square Icon</h2>
+    <img src="logo.svg" width="200" height="200"/>
+  </div>
+  <div class="section">
+    <h2>Horizontal Lockup</h2>
+    <div class="bg-dark">
+      <img src="logo-horizontal.svg" width="440" height="72"/>
+    </div>
+  </div>
+  <div class="section">
+    <h2>Horizontal on Light BG</h2>
+    <div class="bg-light">
+      <img src="logo-horizontal.svg" width="440" height="72"/>
+    </div>
+  </div>
+  <div class="section">
+    <h2>Small Sizes</h2>
+    <img src="logo.svg" width="64" height="64"/>
+    <img src="logo.svg" width="32" height="32" style="margin-top:8px"/>
+  </div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+{
+  "$comment": "Refresh policies — defines review cadence, scoring weights, and thresholds for each tier.",
+  "schemaVersion": "0.1.0",
+
+  "tiers": {
+    "A": {
+      "label": "Concepts",
+      "description": "Stable taxonomy definitions. Slow-changing. Human-reviewed only.",
+      "reviewCadence": "quarterly",
+      "reviewCadenceDays": 90,
+      "triggerConditions": [
+        "Manual request",
+        "Concept definition disputed in community",
+        "New stratum or axis added to reference model"
+      ],
+      "autoRefresh": false,
+      "approvalRequired": true,
+      "confidenceDecayRate": 0.02,
+      "changeRisk": "high"
+    },
+    "B": {
+      "label": "Products",
+      "description": "Product metadata, placements, confidence scores. Medium volatility.",
+      "reviewCadence": "monthly",
+      "reviewCadenceDays": 30,
+      "triggerConditions": [
+        "Scheduled monthly review",
+        "Major version release detected",
+        "Vendor acquisition/sunset",
+        "Community signal (>3 corrections in queue)",
+        "Confidence drops below 0.7"
+      ],
+      "autoRefresh": false,
+      "approvalRequired": true,
+      "confidenceDecayRate": 0.05,
+      "changeRisk": "medium"
+    },
+    "C": {
+      "label": "Evidence",
+      "description": "Volatile evidence packets. Replaceable. Expires after TTL.",
+      "reviewCadence": "on-demand",
+      "reviewCadenceDays": null,
+      "triggerConditions": [
+        "Evidence expiry date reached",
+        "Source URL returns 404",
+        "Linked product updated",
+        "New evidence available for same product"
+      ],
+      "autoRefresh": true,
+      "approvalRequired": false,
+      "confidenceDecayRate": 0.1,
+      "changeRisk": "low",
+      "defaultTTLDays": 90
+    }
+  },
+
+  "scoring": {
+    "$comment": "Refresh priority = weighted sum of 5 factors, each 0.0–1.0. Result is 0.0–1.0.",
+    "formula": "priority = (demand × w_demand) + (strategicImportance × w_strategic) + (volatility × w_volatility) + (confidenceDecay × w_decay) + ((1 - trustLevel) × w_trust)",
+    "weights": {
+      "demand": 0.25,
+      "strategicImportance": 0.2,
+      "volatility": 0.25,
+      "confidenceDecay": 0.15,
+      "trustLevel": 0.15
+    },
+    "thresholds": {
+      "urgent": 0.8,
+      "soon": 0.6,
+      "backlog": 0.4,
+      "skip": 0.2
+    },
+    "factorDefinitions": {
+      "demand": "How often users search/click this item. Proxy: search hit count or concept page views. 0 = never accessed, 1 = top-5 item.",
+      "strategicImportance": "How central this item is to the {a}OS narrative. 0 = niche, 1 = foundational concept/product.",
+      "volatility": "How fast the external source changes. 0 = stable spec, 1 = weekly releases.",
+      "confidenceDecay": "How much confidence has degraded since last review. 0 = just reviewed, 1 = expired/stale.",
+      "trustLevel": "Quality of the current evidence. 0 = no evidence/unverified, 1 = multiple verified sources. Note: inverted in formula (lower trust → higher priority)."
+    }
+  },
+
+  "defaults": {
+    "newProductReviewPolicy": "scheduled",
+    "newProductFreshnessTier": "B",
+    "newEvidenceStatus": "stub",
+    "stubEvidenceConfidence": 0.5,
+    "evidenceExpiryDays": 90
+  }
+}

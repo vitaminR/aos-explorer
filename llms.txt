@@ -1,0 +1,31 @@
+# {a}OS Explorer
+
+> The Agentic Operating System taxonomy: a 7-stratum reference model
+> for classifying AI agent tools, frameworks, and infrastructure.
+> Version: v1.1.0 | https://aos7.tech
+
+## Strata
+
+- [L7 Experience & Intent](https://aos7.tech/api/v1/strata): What the human asks, sees, and approves.
+- [L6 Governance & Trust](https://aos7.tech/api/v1/strata): What is allowed, safe, compliant, and budgeted.
+- [L5 Observability & Evaluation](https://aos7.tech/api/v1/strata): What happened, how it performed, and how we know.
+- [L4 Orchestration & Decisioning](https://aos7.tech/api/v1/strata): What happens next, by whom, and in what order.
+- [L3 Execution & Interfaces](https://aos7.tech/api/v1/strata): What external action was actually taken.
+- [L2 Knowledge & Memory](https://aos7.tech/api/v1/strata): What context the system knew, retrieved, or forgot.
+- [L1 Models & Infrastructure](https://aos7.tech/api/v1/strata): What compute, runtime, model, and network foundation made it all possible.
+
+## API
+
+- [Concepts](https://aos7.tech/api/v1/concepts): All taxonomy concepts with definitions
+- [Products](https://aos7.tech/api/v1/products): Product catalog with strata placements
+- [Strata](https://aos7.tech/api/v1/strata): Full stratum definitions with substrates and primitives
+- [Version](https://aos7.tech/api/v1/version): Current taxonomy version metadata
+
+## Documentation
+
+- [Explorer UI](https://aos7.tech/prototype.html): Interactive taxonomy browser
+- [Stack Builder](https://aos7.tech/stack-builder.html): Build and compare agentic stacks
+
+## Optional
+
+- [Full taxonomy data](https://aos7.tech/llms-full.txt): Complete concept and product data for LLMs
