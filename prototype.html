@@ -451,13 +451,13 @@
 
       /* ===== MAIN CANVAS ===== */
       .main-canvas {
-        padding: 24px 32px;
+        padding: 18px 32px 24px;
         overflow-y: auto;
       }
 
       .hero-section {
         text-align: center;
-        padding: 10px 0 8px;
+        padding: 6px 0 8px;
         position: relative;
       }
       .hero-section h1 {
@@ -5209,6 +5209,11 @@
         margin-top: 10px;
         padding: 0 16px;
       }
+      .hero-quick-filters {
+        max-width: 680px;
+        margin: 8px auto 12px;
+        padding: 0 4px;
+      }
       .qf-chip {
         display: inline-flex;
         align-items: center;
@@ -6798,12 +6803,6 @@
       </button>
     </div>
 
-    <!-- QUICK FILTER CHIPS -->
-    <div
-      id="quickFilters"
-      style="display: none; flex-wrap: wrap; gap: 6px; padding: 6px 16px 2px"
-    ></div>
-
     <!-- MAIN LAYOUT -->
     <div class="app-layout">
       <!-- LEFT RAIL -->
@@ -7104,6 +7103,13 @@
             <div class="hero-context-detail" id="heroContextDetail"></div>
           </div>
         </div>
+
+        <!-- QUICK FILTER CHIPS -->
+        <div
+          id="quickFilters"
+          class="quick-filters hero-quick-filters"
+          style="display: none"
+        ></div>
 
         <!-- META BUILDS OVERLAY -->
         <div class="meta-overlay" id="metaOverlay">
