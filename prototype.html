@@ -6095,6 +6095,9 @@
       </button>
     </div>
 
+    <!-- QUICK FILTER CHIPS -->
+    <div id="quickFilters" style="display:none; flex-wrap:wrap; gap:6px; padding:6px 16px 2px;"></div>
+
     <!-- MAIN LAYOUT -->
     <div class="app-layout">
       <!-- LEFT RAIL -->
@@ -21727,7 +21730,2203 @@
               "Azure Monitor and Application Insights use duration as a first-class span metric for latency analysis.",
           },
         ],
+        // L1 | Model Card
+        model_id: {
+          name: "Model ID",
+          layer: "L1",
+          parent: "Model Card",
+          desc: "Unique identifier for the model (e.g., 'gpt-4-turbo', 'llama-2-70b') used for versioning and deployment.",
+        },
+        version_tag: {
+          name: "Version Tag",
+          layer: "L1",
+          parent: "Model Card",
+          desc: "Semantic version string (e.g., 'v1.2.3') tracking model updates and training iterations.",
+        },
+        license_type: {
+          name: "License Type",
+          layer: "L1",
+          parent: "Model Card",
+          desc: "License classification (MIT, Apache 2.0, OpenRAIL, Commercial) defining usage restrictions.",
+        },
+        base_model_name: {
+          name: "Base Model Name",
+          layer: "L1",
+          parent: "Model Card",
+          desc: "Name of the foundation model this was fine-tuned from (e.g., 'Llama 2' for derivative models).",
+        },
+        training_dataset_id: {
+          name: "Training Dataset ID",
+          layer: "L1",
+          parent: "Model Card",
+          desc: "Reference identifier for the primary training dataset(s) used to create the model.",
+        },
+        eval_metrics: {
+          name: "Eval Metrics",
+          layer: "L1",
+          parent: "Model Card",
+          desc: "Performance scores (BLEU, ROUGE, accuracy, F1) on standard benchmarks.",
+        },
+        tokenizer_id: {
+          name: "Tokenizer ID",
+          layer: "L1",
+          parent: "Model Card",
+          desc: "Reference to the tokenizer configuration used for encoding text into tokens.",
+        },
+        config_hash: {
+          name: "Config Hash",
+          layer: "L1",
+          parent: "Model Card",
+          desc: "SHA256 hash of the model configuration ensuring consistency and reproducibility.",
+        },
+        // L1 | Model Endpoint
+        endpoint_url: {
+          name: "Endpoint URL",
+          layer: "L1",
+          parent: "Model Endpoint",
+          desc: "Public/private API URL where the model can be invoked for inference.",
+        },
+        model_version: {
+          name: "Model Version",
+          layer: "L1",
+          parent: "Model Endpoint",
+          desc: "Version of the model currently served at this endpoint.",
+        },
+        load_balancer_id: {
+          name: "Load Balancer ID",
+          layer: "L1",
+          parent: "Model Endpoint",
+          desc: "Reference to the load balancer distributing requests across model replicas.",
+        },
+        rate_limit_tokens_per_min: {
+          name: "Rate Limit (tokens/min)",
+          layer: "L1",
+          parent: "Model Endpoint",
+          desc: "Maximum tokens-per-minute throughput allowed for this endpoint.",
+        },
+        concurrency_slots: {
+          name: "Concurrency Slots",
+          layer: "L1",
+          parent: "Model Endpoint",
+          desc: "Maximum number of simultaneous requests the endpoint can handle.",
+        },
+        timeout_seconds: {
+          name: "Timeout (seconds)",
+          layer: "L1",
+          parent: "Model Endpoint",
+          desc: "Request timeout after which the endpoint returns a timeout error.",
+        },
+        authentication_key: {
+          name: "Authentication Key",
+          layer: "L1",
+          parent: "Model Endpoint",
+          desc: "API key or bearer token required to call this endpoint.",
+        },
+        region: {
+          name: "Region",
+          layer: "L1",
+          parent: "Model Endpoint",
+          desc: "Geographic region where the endpoint is deployed.",
+        },
+        // L1 | Context Window
+        max_tokens: {
+          name: "Max Tokens",
+          layer: "L1",
+          parent: "Context Window",
+          desc: "Maximum length of the input+output sequence in tokens.",
+        },
+        sliding_window_size: {
+          name: "Sliding Window Size",
+          layer: "L1",
+          parent: "Context Window",
+          desc: "For models using sliding window attention, the number of tokens visible to each position.",
+        },
+        rope_scaling_factor: {
+          name: "RoPE Scaling Factor",
+          layer: "L1",
+          parent: "Context Window",
+          desc: "Factor for Rotary Position Embedding scaling to extend effective context beyond pre-training.",
+        },
+        cache_layout_type: {
+          name: "Cache Layout Type",
+          layer: "L1",
+          parent: "Context Window",
+          desc: "KV cache layout strategy ('page-cache', 'continuous', 'flash-attn') affecting memory efficiency.",
+        },
+        kv_cache_quantization: {
+          name: "KV Cache Quantization",
+          layer: "L1",
+          parent: "Context Window",
+          desc: "Quantization level for KV caches (fp32, fp16, int8) to reduce memory footprint.",
+        },
+        attention_mask_type: {
+          name: "Attention Mask Type",
+          layer: "L1",
+          parent: "Context Window",
+          desc: "Attention pattern ('causal', 'bidirectional', 'local', 'sparse') determining token visibility.",
+        },
+        // L1 | Tokenizer Config
+        vocab_size: {
+          name: "Vocab Size",
+          layer: "L1",
+          parent: "Tokenizer Config",
+          desc: "Number of unique tokens in the vocabulary.",
+        },
+        bos_token_id: {
+          name: "BOS Token ID",
+          layer: "L1",
+          parent: "Tokenizer Config",
+          desc: "Token ID marking the beginning-of-sequence.",
+        },
+        eos_token_id: {
+          name: "EOS Token ID",
+          layer: "L1",
+          parent: "Tokenizer Config",
+          desc: "Token ID marking the end-of-sequence.",
+        },
+        pad_token_id: {
+          name: "Pad Token ID",
+          layer: "L1",
+          parent: "Tokenizer Config",
+          desc: "Token ID used for padding sequences to equal length.",
+        },
+        token_merge_strategy: {
+          name: "Token Merge Strategy",
+          layer: "L1",
+          parent: "Tokenizer Config",
+          desc: "Strategy for handling subword merging ('bpe', 'wordpiece', 'sentencepiece').",
+        },
+        unicode_normalization: {
+          name: "Unicode Normalization",
+          layer: "L1",
+          parent: "Tokenizer Config",
+          desc: "Unicode normalization form (NFC, NFD, NFKC, NFKD) applied before tokenization.",
+        },
+        // L1 | Inference Server
+        server_port: {
+          name: "Server Port",
+          layer: "L1",
+          parent: "Inference Server",
+          desc: "Network port on which the inference server listens.",
+        },
+        framework_type: {
+          name: "Framework Type",
+          layer: "L1",
+          parent: "Inference Server",
+          desc: "Inference framework (vLLM, TensorRT, Ollama, Ray Serve) hosting the model.",
+        },
+        device_type: {
+          name: "Device Type",
+          layer: "L1",
+          parent: "Inference Server",
+          desc: "Hardware acceleration type ('GPU', 'TPU', 'CPU', 'NPU').",
+        },
+        batch_strategy: {
+          name: "Batch Strategy",
+          layer: "L1",
+          parent: "Inference Server",
+          desc: "Batching approach ('static', 'dynamic', 'none') for grouping inference requests.",
+        },
+        auto_scaling_enabled: {
+          name: "Auto Scaling Enabled",
+          layer: "L1",
+          parent: "Inference Server",
+          desc: "Boolean flag enabling/disabling automatic replica scaling.",
+        },
+        tpu_device_count: {
+          name: "TPU Device Count",
+          layer: "L1",
+          parent: "Inference Server",
+          desc: "Number of TPU devices allocated to the inference server.",
+        },
+        // L1 | GPU Pool
+        total_gpu_count: {
+          name: "Total GPU Count",
+          layer: "L1",
+          parent: "GPU Pool",
+          desc: "Total number of GPUs available in the pool.",
+        },
+        gpu_model_type: {
+          name: "GPU Model Type",
+          layer: "L1",
+          parent: "GPU Pool",
+          desc: "GPU model identifier (A100, H100, L40S, etc.).",
+        },
+        memory_gb_per_gpu: {
+          name: "Memory (GB per GPU)",
+          layer: "L1",
+          parent: "GPU Pool",
+          desc: "VRAM capacity in GB for each GPU.",
+        },
+        interconnect_bandwidth: {
+          name: "Interconnect Bandwidth",
+          layer: "L1",
+          parent: "GPU Pool",
+          desc: "GPU-to-GPU communication bandwidth (NVLink, InfiniBand) in GB/s.",
+        },
+        power_limit_watts: {
+          name: "Power Limit (watts)",
+          layer: "L1",
+          parent: "GPU Pool",
+          desc: "Maximum power consumption per GPU in watts.",
+        },
+        cooling_status: {
+          name: "Cooling Status",
+          layer: "L1",
+          parent: "GPU Pool",
+          desc: "Status of cooling systems ('healthy', 'degraded', 'critical').",
+        },
+        // L1 | Batch Queue
+        queue_name: {
+          name: "Queue Name",
+          layer: "L1",
+          parent: "Batch Queue",
+          desc: "Identifier for this specific batch queue.",
+        },
+        max_batch_size: {
+          name: "Max Batch Size",
+          layer: "L1",
+          parent: "Batch Queue",
+          desc: "Maximum number of requests to group in a single batch.",
+        },
+        wait_timeout_ms: {
+          name: "Wait Timeout (ms)",
+          layer: "L1",
+          parent: "Batch Queue",
+          desc: "Maximum milliseconds to wait before flushing an incomplete batch.",
+        },
+        priority_level: {
+          name: "Priority Level",
+          layer: "L1",
+          parent: "Batch Queue",
+          desc: "Priority level (low, medium, high, critical) for queue scheduling.",
+        },
+        backpressure_threshold: {
+          name: "Backpressure Threshold",
+          layer: "L1",
+          parent: "Batch Queue",
+          desc: "Queue depth at which backpressure is applied to slow down submissions.",
+        },
+        overflow_strategy: {
+          name: "Overflow Strategy",
+          layer: "L1",
+          parent: "Batch Queue",
+          desc: "Action when queue is full ('reject', 'drop-oldest', 'queue-in-memory').",
+        },
+        // L1 | Autoscaler Policy
+        min_replicas: {
+          name: "Min Replicas",
+          layer: "L1",
+          parent: "Autoscaler Policy",
+          desc: "Minimum number of model replicas to maintain.",
+        },
+        max_replicas: {
+          name: "Max Replicas",
+          layer: "L1",
+          parent: "Autoscaler Policy",
+          desc: "Maximum number of model replicas allowed.",
+        },
+        target_utilization_pct: {
+          name: "Target Utilization (%)",
+          layer: "L1",
+          parent: "Autoscaler Policy",
+          desc: "Desired CPU/GPU utilization percentage for scaling decisions.",
+        },
+        scale_up_threshold: {
+          name: "Scale-Up Threshold",
+          layer: "L1",
+          parent: "Autoscaler Policy",
+          desc: "Utilization threshold above which to add replicas.",
+        },
+        cooldown_period_sec: {
+          name: "Cooldown Period (sec)",
+          layer: "L1",
+          parent: "Autoscaler Policy",
+          desc: "Seconds to wait between consecutive scaling operations.",
+        },
+        metric_aggregation_window: {
+          name: "Metric Aggregation Window",
+          layer: "L1",
+          parent: "Autoscaler Policy",
+          desc: "Time window over which to average metrics before scaling decisions.",
+        },
+        // L1 | Training Run
+        run_id: {
+          name: "Run ID",
+          layer: "L1",
+          parent: "Training Run",
+          desc: "Unique identifier for this training experiment.",
+        },
+        dataset_version: {
+          name: "Dataset Version",
+          layer: "L1",
+          parent: "Training Run",
+          desc: "Version of the dataset used for this training run.",
+        },
+        learning_rate: {
+          name: "Learning Rate",
+          layer: "L1",
+          parent: "Training Run",
+          desc: "Initial learning rate hyperparameter.",
+        },
+        batch_size: {
+          name: "Batch Size",
+          layer: "L1",
+          parent: "Training Run",
+          desc: "Batch size during training.",
+        },
+        num_epochs: {
+          name: "Num Epochs",
+          layer: "L1",
+          parent: "Training Run",
+          desc: "Number of training epochs.",
+        },
+        checkpoint_interval: {
+          name: "Checkpoint Interval",
+          layer: "L1",
+          parent: "Training Run",
+          desc: "Steps between saving model checkpoints.",
+        },
+        validation_split: {
+          name: "Validation Split",
+          layer: "L1",
+          parent: "Training Run",
+          desc: "Fraction of data reserved for validation (0.0–1.0).",
+        },
+        // L1 | Dataset Config
+        dataset_id: {
+          name: "Dataset ID",
+          layer: "L1",
+          parent: "Dataset Config",
+          desc: "Unique identifier for the dataset.",
+        },
+        split_ratios: {
+          name: "Split Ratios",
+          layer: "L1",
+          parent: "Dataset Config",
+          desc: "Ratios for train/val/test splits (e.g., 0.8/0.1/0.1).",
+        },
+        sequence_length: {
+          name: "Sequence Length",
+          layer: "L1",
+          parent: "Dataset Config",
+          desc: "Target sequence length in tokens for data samples.",
+        },
+        sampling_strategy: {
+          name: "Sampling Strategy",
+          layer: "L1",
+          parent: "Dataset Config",
+          desc: "Sampling approach ('sequential', 'random', 'stratified').",
+        },
+        augmentation_enabled: {
+          name: "Augmentation Enabled",
+          layer: "L1",
+          parent: "Dataset Config",
+          desc: "Boolean flag enabling/disabling data augmentation.",
+        },
+        source_uri: {
+          name: "Source URI",
+          layer: "L1",
+          parent: "Dataset Config",
+          desc: "URI/path to the dataset source (S3, local, HuggingFace).",
+        },
+        // L1 | LoRA Adapter
+        adapter_rank: {
+          name: "Adapter Rank",
+          layer: "L1",
+          parent: "LoRA Adapter",
+          desc: "Rank of the low-rank matrices (typically 8–64).",
+        },
+        adapter_alpha: {
+          name: "Adapter Alpha",
+          layer: "L1",
+          parent: "LoRA Adapter",
+          desc: "Scaling factor for LoRA updates (typically 16–32).",
+        },
+        base_model_id: {
+          name: "Base Model ID",
+          layer: "L1",
+          parent: "LoRA Adapter",
+          desc: "ID of the base model this adapter fine-tunes.",
+        },
+        weight_decay: {
+          name: "Weight Decay",
+          layer: "L1",
+          parent: "LoRA Adapter",
+          desc: "L2 regularization coefficient for adapter weights.",
+        },
+        target_modules: {
+          name: "Target Modules",
+          layer: "L1",
+          parent: "LoRA Adapter",
+          desc: "List of layer names to apply LoRA to (e.g., ['q_proj', 'v_proj']).",
+        },
+        lora_dropout: {
+          name: "LoRA Dropout",
+          layer: "L1",
+          parent: "LoRA Adapter",
+          desc: "Dropout probability for LoRA layers.",
+        },
+        // L1 | RLHF Pipeline
+        reward_model_id: {
+          name: "Reward Model ID",
+          layer: "L1",
+          parent: "RLHF Pipeline",
+          desc: "ID of the reward model used to score outputs.",
+        },
+        preference_data_source: {
+          name: "Preference Data Source",
+          layer: "L1",
+          parent: "RLHF Pipeline",
+          desc: "Source of human preference comparisons (human raters, crowdsourcing platform).",
+        },
+        kl_penalty_beta: {
+          name: "KL Penalty Beta",
+          layer: "L1",
+          parent: "RLHF Pipeline",
+          desc: "KL divergence penalty coefficient in PPO objective.",
+        },
+        num_ppo_epochs: {
+          name: "Num PPO Epochs",
+          layer: "L1",
+          parent: "RLHF Pipeline",
+          desc: "Number of PPO training epochs per batch.",
+        },
+        update_frequency: {
+          name: "Update Frequency",
+          layer: "L1",
+          parent: "RLHF Pipeline",
+          desc: "Frequency of policy updates (steps or samples).",
+        },
+        // L2 | Working Memory
+        capacity_tokens: {
+          name: "Capacity (tokens)",
+          layer: "L2",
+          parent: "Working Memory",
+          desc: "Maximum number of tokens stored in working memory.",
+        },
+        retention_policy: {
+          name: "Retention Policy",
+          layer: "L2",
+          parent: "Working Memory",
+          desc: "Policy determining how long items stay in working memory ('FIFO', 'LRU', 'importance-based').",
+        },
+        eviction_strategy: {
+          name: "Eviction Strategy",
+          layer: "L2",
+          parent: "Working Memory",
+          desc: "Strategy for removing items when capacity is exceeded.",
+        },
+        access_pattern_type: {
+          name: "Access Pattern Type",
+          layer: "L2",
+          parent: "Working Memory",
+          desc: "Pattern of memory access ('sequential', 'random', 'temporal-clustered').",
+        },
+        compression_enabled: {
+          name: "Compression Enabled",
+          layer: "L2",
+          parent: "Working Memory",
+          desc: "Boolean flag enabling/disabling memory compression.",
+        },
+        // L2 | Episodic Store
+        store_id: {
+          name: "Store ID",
+          layer: "L2",
+          parent: "Episodic Store",
+          desc: "Unique identifier for this episodic memory store.",
+        },
+        retention_days: {
+          name: "Retention (days)",
+          layer: "L2",
+          parent: "Episodic Store",
+          desc: "Number of days to retain entries before automatic deletion.",
+        },
+        max_entries: {
+          name: "Max Entries",
+          layer: "L2",
+          parent: "Episodic Store",
+          desc: "Maximum number of episodic entries to store.",
+        },
+        embedding_model_id: {
+          name: "Embedding Model ID",
+          layer: "L2",
+          parent: "Episodic Store",
+          desc: "ID of the embedding model used for similarity search.",
+        },
+        indexing_frequency: {
+          name: "Indexing Frequency",
+          layer: "L2",
+          parent: "Episodic Store",
+          desc: "How often to update indexes (hourly, daily, on-write).",
+        },
+        compression_ratio: {
+          name: "Compression Ratio",
+          layer: "L2",
+          parent: "Episodic Store",
+          desc: "Target compression ratio for stored entries.",
+        },
+        // L2 | Memory Consolidator
+        consolidation_interval_hours: {
+          name: "Consolidation Interval (hrs)",
+          layer: "L2",
+          parent: "Memory Consolidator",
+          desc: "Hours between consolidation cycles.",
+        },
+        merge_strategy: {
+          name: "Merge Strategy",
+          layer: "L2",
+          parent: "Memory Consolidator",
+          desc: "Strategy for merging similar memories ('simple-concat', 'semantic-merge', 'voting').",
+        },
+        duplicate_threshold: {
+          name: "Duplicate Threshold",
+          layer: "L2",
+          parent: "Memory Consolidator",
+          desc: "Similarity threshold above which entries are considered duplicates (0.0–1.0).",
+        },
+        target_density: {
+          name: "Target Density",
+          layer: "L2",
+          parent: "Memory Consolidator",
+          desc: "Target information density for consolidated memory (0.0–1.0).",
+        },
+        gc_trigger_threshold: {
+          name: "GC Trigger Threshold",
+          layer: "L2",
+          parent: "Memory Consolidator",
+          desc: "Memory utilization threshold triggering garbage collection.",
+        },
+        // L2 | Forgetting Policy
+        decay_rate: {
+          name: "Decay Rate",
+          layer: "L2",
+          parent: "Forgetting Policy",
+          desc: "Rate at which memory strength decreases over time.",
+        },
+        recency_weight: {
+          name: "Recency Weight",
+          layer: "L2",
+          parent: "Forgetting Policy",
+          desc: "Weight assigned to recent access in retention decisions (0.0–1.0).",
+        },
+        access_frequency_weight: {
+          name: "Access Frequency Weight",
+          layer: "L2",
+          parent: "Forgetting Policy",
+          desc: "Weight assigned to access frequency in retention decisions (0.0–1.0).",
+        },
+        semantic_similarity_threshold: {
+          name: "Semantic Similarity Threshold",
+          layer: "L2",
+          parent: "Forgetting Policy",
+          desc: "Threshold for considering memories semantically equivalent.",
+        },
+        forgetting_curve_type: {
+          name: "Forgetting Curve Type",
+          layer: "L2",
+          parent: "Forgetting Policy",
+          desc: "Mathematical model for forgetting ('exponential', 'power-law', 'hyperbolic').",
+        },
+        // L2 | Entity Node
+        entity_id: {
+          name: "Entity ID",
+          layer: "L2",
+          parent: "Entity Node",
+          desc: "Unique identifier for the entity.",
+        },
+        entity_type: {
+          name: "Entity Type",
+          layer: "L2",
+          parent: "Entity Node",
+          desc: "Classification of the entity (person, organization, concept, etc.).",
+        },
+        embedding_vector: {
+          name: "Embedding Vector",
+          layer: "L2",
+          parent: "Entity Node",
+          desc: "Dense vector representation of the entity.",
+        },
+        confidence_score: {
+          name: "Confidence Score",
+          layer: "L2",
+          parent: "Entity Node",
+          desc: "Confidence in the entity's validity (0.0–1.0).",
+        },
+        created_timestamp: {
+          name: "Created Timestamp",
+          layer: "L2",
+          parent: "Entity Node",
+          desc: "ISO8601 timestamp when the entity was created.",
+        },
+        last_updated: {
+          name: "Last Updated",
+          layer: "L2",
+          parent: "Entity Node",
+          desc: "ISO8601 timestamp of the most recent entity update.",
+        },
+        // L2 | Relationship Edge
+        source_entity_id: {
+          name: "Source Entity ID",
+          layer: "L2",
+          parent: "Relationship Edge",
+          desc: "ID of the source entity in the relationship.",
+        },
+        target_entity_id: {
+          name: "Target Entity ID",
+          layer: "L2",
+          parent: "Relationship Edge",
+          desc: "ID of the target entity in the relationship.",
+        },
+        relationship_type: {
+          name: "Relationship Type",
+          layer: "L2",
+          parent: "Relationship Edge",
+          desc: "Type of relationship (works_for, knows, mentions, etc.).",
+        },
+        strength_score: {
+          name: "Strength Score",
+          layer: "L2",
+          parent: "Relationship Edge",
+          desc: "Strength of the relationship (0.0–1.0).",
+        },
+        temporal_validity: {
+          name: "Temporal Validity",
+          layer: "L2",
+          parent: "Relationship Edge",
+          desc: "Time range during which the relationship is valid.",
+        },
+        metadata_json: {
+          name: "Metadata JSON",
+          layer: "L2",
+          parent: "Relationship Edge",
+          desc: "Additional structured metadata about the relationship.",
+        },
+        // L2 | Ontology Schema
+        ontology_id: {
+          name: "Ontology ID",
+          layer: "L2",
+          parent: "Ontology Schema",
+          desc: "Unique identifier for the ontology.",
+        },
+        version: {
+          name: "Version",
+          layer: "L2",
+          parent: "Ontology Schema",
+          desc: "Version number of the ontology.",
+        },
+        root_concept: {
+          name: "Root Concept",
+          layer: "L2",
+          parent: "Ontology Schema",
+          desc: "Top-level concept in the ontology hierarchy.",
+        },
+        hierarchy_depth: {
+          name: "Hierarchy Depth",
+          layer: "L2",
+          parent: "Ontology Schema",
+          desc: "Maximum depth of the concept hierarchy.",
+        },
+        relation_types: {
+          name: "Relation Types",
+          layer: "L2",
+          parent: "Ontology Schema",
+          desc: "List of allowed relationship types in the ontology.",
+        },
+        extension_hooks: {
+          name: "Extension Hooks",
+          layer: "L2",
+          parent: "Ontology Schema",
+          desc: "Points where the ontology can be extended with custom concepts.",
+        },
+        // L2 | Graph Query
+        query_type: {
+          name: "Query Type",
+          layer: "L2",
+          parent: "Graph Query",
+          desc: "Type of graph traversal (shortest-path, k-hop, pattern-match).",
+        },
+        traversal_depth: {
+          name: "Traversal Depth",
+          layer: "L2",
+          parent: "Graph Query",
+          desc: "Maximum number of hops in the graph traversal.",
+        },
+        result_limit: {
+          name: "Result Limit",
+          layer: "L2",
+          parent: "Graph Query",
+          desc: "Maximum number of results to return.",
+        },
+        filter_predicates: {
+          name: "Filter Predicates",
+          layer: "L2",
+          parent: "Graph Query",
+          desc: "Conditions to filter results (node type, relationship strength, etc.).",
+        },
+        scoring_function: {
+          name: "Scoring Function",
+          layer: "L2",
+          parent: "Graph Query",
+          desc: "Function to score and rank results.",
+        },
+        timeout_ms: {
+          name: "Timeout (ms)",
+          layer: "L2",
+          parent: "Graph Query",
+          desc: "Query timeout in milliseconds.",
+        },
+        // L2 | Vector Index
+        index_type: {
+          name: "Index Type",
+          layer: "L2",
+          parent: "Vector Index",
+          desc: "Type of vector index (HNSW, IVF, LSH, flat).",
+        },
+        embedding_dimension: {
+          name: "Embedding Dimension",
+          layer: "L2",
+          parent: "Vector Index",
+          desc: "Dimensionality of the embeddings in the index.",
+        },
+        vector_distance_metric: {
+          name: "Distance Metric",
+          layer: "L2",
+          parent: "Vector Index",
+          desc: "Metric for similarity (cosine, euclidean, dot-product).",
+        },
+        num_partitions: {
+          name: "Num Partitions",
+          layer: "L2",
+          parent: "Vector Index",
+          desc: "Number of partitions for distributed indexing.",
+        },
+        vector_count: {
+          name: "Vector Count",
+          layer: "L2",
+          parent: "Vector Index",
+          desc: "Current number of vectors in the index.",
+        },
+        index_size_mb: {
+          name: "Index Size (MB)",
+          layer: "L2",
+          parent: "Vector Index",
+          desc: "Size of the index in megabytes.",
+        },
+        // L2 | Embedding Model
+        embedding_id: {
+          name: "Embedding ID",
+          layer: "L2",
+          parent: "Embedding Model",
+          desc: "Unique identifier for the embedding model.",
+        },
+        output_dimension: {
+          name: "Output Dimension",
+          layer: "L2",
+          parent: "Embedding Model",
+          desc: "Dimensionality of output embeddings.",
+        },
+        embed_distance_metric: {
+          name: "Distance Metric",
+          layer: "L2",
+          parent: "Embedding Model",
+          desc: "Recommended distance metric for this embedding model.",
+        },
+        max_sequence_length: {
+          name: "Max Sequence Length",
+          layer: "L2",
+          parent: "Embedding Model",
+          desc: "Maximum input sequence length the model can handle.",
+        },
+        normalization_type: {
+          name: "Normalization Type",
+          layer: "L2",
+          parent: "Embedding Model",
+          desc: "Normalization applied to embeddings (L2, cosine, none).",
+        },
+        model_format: {
+          name: "Model Format",
+          layer: "L2",
+          parent: "Embedding Model",
+          desc: "Format of the model files (PyTorch, ONNX, TensorFlow).",
+        },
+        // L2 | Chunk Strategy
+        chunk_size: {
+          name: "Chunk Size",
+          layer: "L2",
+          parent: "Chunk Strategy",
+          desc: "Size of each chunk in tokens.",
+        },
+        overlap_tokens: {
+          name: "Overlap Tokens",
+          layer: "L2",
+          parent: "Chunk Strategy",
+          desc: "Number of tokens to overlap between adjacent chunks.",
+        },
+        splitting_method: {
+          name: "Splitting Method",
+          layer: "L2",
+          parent: "Chunk Strategy",
+          desc: "Method for splitting text ('by-tokens', 'by-sentences', 'semantic').",
+        },
+        boundary_detection: {
+          name: "Boundary Detection",
+          layer: "L2",
+          parent: "Chunk Strategy",
+          desc: "Method to detect logical boundaries for splitting.",
+        },
+        metadata_extraction: {
+          name: "Metadata Extraction",
+          layer: "L2",
+          parent: "Chunk Strategy",
+          desc: "Whether to extract and preserve metadata for chunks.",
+        },
+        encoding_format: {
+          name: "Encoding Format",
+          layer: "L2",
+          parent: "Chunk Strategy",
+          desc: "Text encoding format (UTF-8, ASCII, etc.).",
+        },
+        // L2 | Index Refresh
+        refresh_interval_seconds: {
+          name: "Refresh Interval (sec)",
+          layer: "L2",
+          parent: "Index Refresh",
+          desc: "Seconds between index refresh cycles.",
+        },
+        refresh_batch_size: {
+          name: "Batch Size",
+          layer: "L2",
+          parent: "Index Refresh",
+          desc: "Number of documents to process per batch during refresh.",
+        },
+        incremental_flag: {
+          name: "Incremental Flag",
+          layer: "L2",
+          parent: "Index Refresh",
+          desc: "Boolean flag enabling incremental (vs. full) index refresh.",
+        },
+        full_reindex_trigger: {
+          name: "Full Reindex Trigger",
+          layer: "L2",
+          parent: "Index Refresh",
+          desc: "Condition triggering a full index rebuild.",
+        },
+        concurrent_jobs: {
+          name: "Concurrent Jobs",
+          layer: "L2",
+          parent: "Index Refresh",
+          desc: "Number of parallel indexing jobs allowed.",
+        },
+        cleanup_policy: {
+          name: "Cleanup Policy",
+          layer: "L2",
+          parent: "Index Refresh",
+          desc: "Policy for removing stale index data.",
+        },
+        // L3 | Sandbox Runtime
+        runtime_id: {
+          name: "Runtime ID",
+          layer: "L3",
+          parent: "Sandbox Runtime",
+          desc: "Unique identifier for this sandbox runtime.",
+        },
+        isolation_level: {
+          name: "Isolation Level",
+          layer: "L3",
+          parent: "Sandbox Runtime",
+          desc: "Isolation strength ('process', 'container', 'vm').",
+        },
+        resource_limits_json: {
+          name: "Resource Limits JSON",
+          layer: "L3",
+          parent: "Sandbox Runtime",
+          desc: "JSON specifying CPU, memory, and disk limits.",
+        },
+        timeouts_json: {
+          name: "Timeouts JSON",
+          layer: "L3",
+          parent: "Sandbox Runtime",
+          desc: "JSON specifying execution timeouts for different operations.",
+        },
+        networking_enabled: {
+          name: "Networking Enabled",
+          layer: "L3",
+          parent: "Sandbox Runtime",
+          desc: "Boolean flag enabling/disabling network access in sandbox.",
+        },
+        filesystem_access: {
+          name: "Filesystem Access",
+          layer: "L3",
+          parent: "Sandbox Runtime",
+          desc: "Specification of filesystem access restrictions.",
+        },
+        // L4 | Pattern
+        pattern_id: {
+          name: "Pattern ID",
+          layer: "L4",
+          parent: "Pattern",
+          desc: "Unique identifier for the pattern.",
+        },
+        pattern_type: {
+          name: "Pattern Type",
+          layer: "L4",
+          parent: "Pattern",
+          desc: "Classification of pattern (trigger, filter, transform).",
+        },
+        match_rules: {
+          name: "Match Rules",
+          layer: "L4",
+          parent: "Pattern",
+          desc: "Rules defining when the pattern should trigger.",
+        },
+        action_handler: {
+          name: "Action Handler",
+          layer: "L4",
+          parent: "Pattern",
+          desc: "Function/method to execute when pattern matches.",
+        },
+        pattern_priority_level: {
+          name: "Priority Level",
+          layer: "L4",
+          parent: "Pattern",
+          desc: "Priority for pattern evaluation (0–100).",
+        },
+        enabled_flag: {
+          name: "Enabled Flag",
+          layer: "L4",
+          parent: "Pattern",
+          desc: "Boolean flag enabling/disabling the pattern.",
+        },
+        // L6 | Test Harness
+        harness_id: {
+          name: "Harness ID",
+          layer: "L6",
+          parent: "Test Harness",
+          desc: "Unique identifier for the test harness.",
+        },
+        test_suite_id: {
+          name: "Test Suite ID",
+          layer: "L6",
+          parent: "Test Harness",
+          desc: "Reference to the test suite(s) this harness runs.",
+        },
+        fixture_config: {
+          name: "Fixture Config",
+          layer: "L6",
+          parent: "Test Harness",
+          desc: "Configuration for test fixtures (setup data, mocks).",
+        },
+        teardown_script: {
+          name: "Teardown Script",
+          layer: "L6",
+          parent: "Test Harness",
+          desc: "Script to execute after tests for cleanup.",
+        },
+        test_parallelism: {
+          name: "Test Parallelism",
+          layer: "L6",
+          parent: "Test Harness",
+          desc: "Number of parallel test workers.",
+        },
+        failure_mode: {
+          name: "Failure Mode",
+          layer: "L6",
+          parent: "Test Harness",
+          desc: "Behavior on test failure ('stop', 'continue', 'retry').",
+        },
+        // L6 | Persona
+        persona_id: {
+          name: "Persona ID",
+          layer: "L6",
+          parent: "Persona",
+          desc: "Unique identifier for the agent persona.",
+        },
+        role_name: {
+          name: "Role Name",
+          layer: "L6",
+          parent: "Persona",
+          desc: "Human-readable name for the agent role.",
+        },
+        capability_set: {
+          name: "Capability Set",
+          layer: "L6",
+          parent: "Persona",
+          desc: "List of capabilities this persona has access to.",
+        },
+        training_data_source: {
+          name: "Training Data Source",
+          layer: "L6",
+          parent: "Persona",
+          desc: "Source of training data shaping persona behavior.",
+        },
+        behavior_parameters: {
+          name: "Behavior Parameters",
+          layer: "L6",
+          parent: "Persona",
+          desc: "Parameters controlling agent behavior (temperature, risk tolerance, etc.).",
+        },
+        knowledge_base_id: {
+          name: "Knowledge Base ID",
+          layer: "L6",
+          parent: "Persona",
+          desc: "Reference to the persona's knowledge base.",
+        },
+        // L6 | Stack
+        stack_id: {
+          name: "Stack ID",
+          layer: "L6",
+          parent: "Stack",
+          desc: "Unique identifier for this stack configuration.",
+        },
+        layer_composition: {
+          name: "Layer Composition",
+          layer: "L6",
+          parent: "Stack",
+          desc: "Specification of components from each of the 7 layers.",
+        },
+        version_constraints: {
+          name: "Version Constraints",
+          layer: "L6",
+          parent: "Stack",
+          desc: "Version constraints for stack components.",
+        },
+        dependency_graph: {
+          name: "Dependency Graph",
+          layer: "L6",
+          parent: "Stack",
+          desc: "Graph of dependencies between stack components.",
+        },
+        deployment_target: {
+          name: "Deployment Target",
+          layer: "L6",
+          parent: "Stack",
+          desc: "Target environment for deployment (dev, staging, prod).",
+        },
+        resource_manifest: {
+          name: "Resource Manifest",
+          layer: "L6",
+          parent: "Stack",
+          desc: "Specification of required resources (CPU, memory, storage).",
+        },
+        // L7 | Covenant
+        covenant_id: {
+          name: "Covenant ID",
+          layer: "L7",
+          parent: "Covenant",
+          desc: "Unique identifier for the covenant.",
+        },
+        obligation_set: {
+          name: "Obligation Set",
+          layer: "L7",
+          parent: "Covenant",
+          desc: "Set of obligations the agent must fulfill.",
+        },
+        constraint_rules: {
+          name: "Constraint Rules",
+          layer: "L7",
+          parent: "Covenant",
+          desc: "Rules defining constraints on agent actions.",
+        },
+        penalty_function: {
+          name: "Penalty Function",
+          layer: "L7",
+          parent: "Covenant",
+          desc: "Function determining penalties for covenant violations.",
+        },
+        renewal_period_days: {
+          name: "Renewal Period (days)",
+          layer: "L7",
+          parent: "Covenant",
+          desc: "Days until covenant renewal is required.",
+        },
+        stakeholder_list: {
+          name: "Stakeholder List",
+          layer: "L7",
+          parent: "Covenant",
+          desc: "List of stakeholders party to the covenant.",
+        },
+        // L6 | Policy Rule
+        rule_id: {
+          name: "Rule ID",
+          layer: "L6",
+          parent: "Policy Rule",
+          desc: "Unique identifier for the policy rule.",
+        },
+        condition_expression: {
+          name: "Condition Expression",
+          layer: "L6",
+          parent: "Policy Rule",
+          desc: "Boolean expression evaluated to determine if rule applies.",
+        },
+        action_type: {
+          name: "Action Type",
+          layer: "L6",
+          parent: "Policy Rule",
+          desc: "Type of action to take (allow, deny, log, alert).",
+        },
+        effect: {
+          name: "Effect",
+          layer: "L6",
+          parent: "Policy Rule",
+          desc: "Effect of the rule (allow or deny).",
+        },
+        rule_priority: {
+          name: "Priority",
+          layer: "L6",
+          parent: "Policy Rule",
+          desc: "Evaluation priority (higher = evaluated first).",
+        },
+        audit_enabled: {
+          name: "Audit Enabled",
+          layer: "L6",
+          parent: "Policy Rule",
+          desc: "Boolean flag enabling audit logging for this rule.",
+        },
+        // L6 | Override Protocol
+        override_id: {
+          name: "Override ID",
+          layer: "L6",
+          parent: "Override Protocol",
+          desc: "Unique identifier for this override.",
+        },
+        target_rule_id: {
+          name: "Target Rule ID",
+          layer: "L6",
+          parent: "Override Protocol",
+          desc: "ID of the policy rule being overridden.",
+        },
+        override_value: {
+          name: "Override Value",
+          layer: "L6",
+          parent: "Override Protocol",
+          desc: "New value or action to apply instead of the rule.",
+        },
+        expiration_timestamp: {
+          name: "Expiration Timestamp",
+          layer: "L6",
+          parent: "Override Protocol",
+          desc: "ISO8601 timestamp when the override expires.",
+        },
+        approval_chain: {
+          name: "Approval Chain",
+          layer: "L6",
+          parent: "Override Protocol",
+          desc: "List of approvers who authorized this override.",
+        },
+        audit_trail: {
+          name: "Audit Trail",
+          layer: "L6",
+          parent: "Override Protocol",
+          desc: "Log of all actions and decisions related to this override.",
+        },
+        // L7 | Trace Span
+        span_id: {
+          name: "Span ID",
+          layer: "L7",
+          parent: "Trace Span",
+          desc: "Unique identifier for this trace span.",
+        },
+        parent_span_id: {
+          name: "Parent Span ID",
+          layer: "L7",
+          parent: "Trace Span",
+          desc: "ID of the parent span in the trace tree.",
+        },
+        operation_name: {
+          name: "Operation Name",
+          layer: "L7",
+          parent: "Trace Span",
+          desc: "Name of the operation represented by this span.",
+        },
+        start_timestamp: {
+          name: "Start Timestamp",
+          layer: "L7",
+          parent: "Trace Span",
+          desc: "ISO8601 timestamp when the span started.",
+        },
+        duration_ms: {
+          name: "Duration (ms)",
+          layer: "L7",
+          parent: "Trace Span",
+          desc: "Duration of the span in milliseconds.",
+        },
+        status_code: {
+          name: "Status Code",
+          layer: "L7",
+          parent: "Trace Span",
+          desc: "Status of the operation (ok, error, timeout).",
+        },
+        attributes_json: {
+          name: "Attributes JSON",
+          layer: "L7",
+          parent: "Trace Span",
+          desc: "Additional structured attributes of the span.",
+        },
       };
+
+      /*
+      // Product-specific guide overlays removed — replaced by infographic prompts.
+      const PRIMITIVE_PRODUCT_GUIDES = {
+        conversation_history: [
+        backpressure_threshold: {
+          name: "Backpressure Threshold",
+          layer: "L1",
+          parent: "Batch Queue",
+          desc: "Queue depth at which backpressure is applied to slow down submissions.",
+        },
+        overflow_strategy: {
+          name: "Overflow Strategy",
+          layer: "L1",
+          parent: "Batch Queue",
+          desc: "Action when queue is full ('reject', 'drop-oldest', 'queue-in-memory').",
+        },
+        // L1 | Autoscaler Policy
+        min_replicas: {
+          name: "Min Replicas",
+          layer: "L1",
+          parent: "Autoscaler Policy",
+          desc: "Minimum number of model replicas to maintain.",
+        },
+        max_replicas: {
+          name: "Max Replicas",
+          layer: "L1",
+          parent: "Autoscaler Policy",
+          desc: "Maximum number of model replicas allowed.",
+        },
+        target_utilization_pct: {
+          name: "Target Utilization (%)",
+          layer: "L1",
+          parent: "Autoscaler Policy",
+          desc: "Desired CPU/GPU utilization percentage for scaling decisions.",
+        },
+        scale_up_threshold: {
+          name: "Scale-Up Threshold",
+          layer: "L1",
+          parent: "Autoscaler Policy",
+          desc: "Utilization threshold above which to add replicas.",
+        },
+        cooldown_period_sec: {
+          name: "Cooldown Period (sec)",
+          layer: "L1",
+          parent: "Autoscaler Policy",
+          desc: "Seconds to wait between consecutive scaling operations.",
+        },
+        metric_aggregation_window: {
+          name: "Metric Aggregation Window",
+          layer: "L1",
+          parent: "Autoscaler Policy",
+          desc: "Time window over which to average metrics before scaling decisions.",
+        },
+        // L1 | Training Run
+        run_id: {
+          name: "Run ID",
+          layer: "L1",
+          parent: "Training Run",
+          desc: "Unique identifier for this training experiment.",
+        },
+        dataset_version: {
+          name: "Dataset Version",
+          layer: "L1",
+          parent: "Training Run",
+          desc: "Version of the dataset used for this training run.",
+        },
+        learning_rate: {
+          name: "Learning Rate",
+          layer: "L1",
+          parent: "Training Run",
+          desc: "Initial learning rate hyperparameter.",
+        },
+        batch_size: {
+          name: "Batch Size",
+          layer: "L1",
+          parent: "Training Run",
+          desc: "Batch size during training.",
+        },
+        num_epochs: {
+          name: "Num Epochs",
+          layer: "L1",
+          parent: "Training Run",
+          desc: "Number of training epochs.",
+        },
+        checkpoint_interval: {
+          name: "Checkpoint Interval",
+          layer: "L1",
+          parent: "Training Run",
+          desc: "Steps between saving model checkpoints.",
+        },
+        validation_split: {
+          name: "Validation Split",
+          layer: "L1",
+          parent: "Training Run",
+          desc: "Fraction of data reserved for validation (0.0–1.0).",
+        },
+        // L1 | Dataset Config
+        dataset_id: {
+          name: "Dataset ID",
+          layer: "L1",
+          parent: "Dataset Config",
+          desc: "Unique identifier for the dataset.",
+        },
+        split_ratios: {
+          name: "Split Ratios",
+          layer: "L1",
+          parent: "Dataset Config",
+          desc: "Ratios for train/val/test splits (e.g., 0.8/0.1/0.1).",
+        },
+        sequence_length: {
+          name: "Sequence Length",
+          layer: "L1",
+          parent: "Dataset Config",
+          desc: "Target sequence length in tokens for data samples.",
+        },
+        sampling_strategy: {
+          name: "Sampling Strategy",
+          layer: "L1",
+          parent: "Dataset Config",
+          desc: "Sampling approach ('sequential', 'random', 'stratified').",
+        },
+        augmentation_enabled: {
+          name: "Augmentation Enabled",
+          layer: "L1",
+          parent: "Dataset Config",
+          desc: "Boolean flag enabling/disabling data augmentation.",
+        },
+        source_uri: {
+          name: "Source URI",
+          layer: "L1",
+          parent: "Dataset Config",
+          desc: "URI/path to the dataset source (S3, local, HuggingFace).",
+        },
+        // L1 | LoRA Adapter
+        adapter_rank: {
+          name: "Adapter Rank",
+          layer: "L1",
+          parent: "LoRA Adapter",
+          desc: "Rank of the low-rank matrices (typically 8–64).",
+        },
+        adapter_alpha: {
+          name: "Adapter Alpha",
+          layer: "L1",
+          parent: "LoRA Adapter",
+          desc: "Scaling factor for LoRA updates (typically 16–32).",
+        },
+        base_model_id: {
+          name: "Base Model ID",
+          layer: "L1",
+          parent: "LoRA Adapter",
+          desc: "ID of the base model this adapter fine-tunes.",
+        },
+        weight_decay: {
+          name: "Weight Decay",
+          layer: "L1",
+          parent: "LoRA Adapter",
+          desc: "L2 regularization coefficient for adapter weights.",
+        },
+        target_modules: {
+          name: "Target Modules",
+          layer: "L1",
+          parent: "LoRA Adapter",
+          desc: "List of layer names to apply LoRA to (e.g., ['q_proj', 'v_proj']).",
+        },
+        lora_dropout: {
+          name: "LoRA Dropout",
+          layer: "L1",
+          parent: "LoRA Adapter",
+          desc: "Dropout probability for LoRA layers.",
+        },
+        // L1 | RLHF Pipeline
+        reward_model_id: {
+          name: "Reward Model ID",
+          layer: "L1",
+          parent: "RLHF Pipeline",
+          desc: "ID of the reward model used to score outputs.",
+        },
+        preference_data_source: {
+          name: "Preference Data Source",
+          layer: "L1",
+          parent: "RLHF Pipeline",
+          desc: "Source of human preference comparisons (human raters, crowdsourcing platform).",
+        },
+        kl_penalty_beta: {
+          name: "KL Penalty Beta",
+          layer: "L1",
+          parent: "RLHF Pipeline",
+          desc: "KL divergence penalty coefficient in PPO objective.",
+        },
+        num_ppo_epochs: {
+          name: "Num PPO Epochs",
+          layer: "L1",
+          parent: "RLHF Pipeline",
+          desc: "Number of PPO training epochs per batch.",
+        },
+        learning_rate: {
+          name: "Learning Rate",
+          layer: "L1",
+          parent: "RLHF Pipeline",
+          desc: "Learning rate for PPO policy updates.",
+        },
+        update_frequency: {
+          name: "Update Frequency",
+          layer: "L1",
+          parent: "RLHF Pipeline",
+          desc: "Frequency of policy updates (steps or samples).",
+        },
+        // L2 | Working Memory
+        capacity_tokens: {
+          name: "Capacity (tokens)",
+          layer: "L2",
+          parent: "Working Memory",
+          desc: "Maximum number of tokens stored in working memory.",
+        },
+        retention_policy: {
+          name: "Retention Policy",
+          layer: "L2",
+          parent: "Working Memory",
+          desc: "Policy determining how long items stay in working memory ('FIFO', 'LRU', 'importance-based').",
+        },
+        eviction_strategy: {
+          name: "Eviction Strategy",
+          layer: "L2",
+          parent: "Working Memory",
+          desc: "Strategy for removing items when capacity is exceeded.",
+        },
+        access_pattern_type: {
+          name: "Access Pattern Type",
+          layer: "L2",
+          parent: "Working Memory",
+          desc: "Pattern of memory access ('sequential', 'random', 'temporal-clustered').",
+        },
+        compression_enabled: {
+          name: "Compression Enabled",
+          layer: "L2",
+          parent: "Working Memory",
+          desc: "Boolean flag enabling/disabling memory compression.",
+        },
+        // L2 | Episodic Store
+        store_id: {
+          name: "Store ID",
+          layer: "L2",
+          parent: "Episodic Store",
+          desc: "Unique identifier for this episodic memory store.",
+        },
+        retention_days: {
+          name: "Retention (days)",
+          layer: "L2",
+          parent: "Episodic Store",
+          desc: "Number of days to retain entries before automatic deletion.",
+        },
+        max_entries: {
+          name: "Max Entries",
+          layer: "L2",
+          parent: "Episodic Store",
+          desc: "Maximum number of episodic entries to store.",
+        },
+        embedding_model_id: {
+          name: "Embedding Model ID",
+          layer: "L2",
+          parent: "Episodic Store",
+          desc: "ID of the embedding model used for similarity search.",
+        },
+        indexing_frequency: {
+          name: "Indexing Frequency",
+          layer: "L2",
+          parent: "Episodic Store",
+          desc: "How often to update indexes (hourly, daily, on-write).",
+        },
+        compression_ratio: {
+          name: "Compression Ratio",
+          layer: "L2",
+          parent: "Episodic Store",
+          desc: "Target compression ratio for stored entries.",
+        },
+        // L2 | Memory Consolidator
+        consolidation_interval_hours: {
+          name: "Consolidation Interval (hrs)",
+          layer: "L2",
+          parent: "Memory Consolidator",
+          desc: "Hours between consolidation cycles.",
+        },
+        merge_strategy: {
+          name: "Merge Strategy",
+          layer: "L2",
+          parent: "Memory Consolidator",
+          desc: "Strategy for merging similar memories ('simple-concat', 'semantic-merge', 'voting').",
+        },
+        duplicate_threshold: {
+          name: "Duplicate Threshold",
+          layer: "L2",
+          parent: "Memory Consolidator",
+          desc: "Similarity threshold above which entries are considered duplicates (0.0–1.0).",
+        },
+        target_density: {
+          name: "Target Density",
+          layer: "L2",
+          parent: "Memory Consolidator",
+          desc: "Target information density for consolidated memory (0.0–1.0).",
+        },
+        gc_trigger_threshold: {
+          name: "GC Trigger Threshold",
+          layer: "L2",
+          parent: "Memory Consolidator",
+          desc: "Memory utilization threshold triggering garbage collection.",
+        },
+        // L2 | Forgetting Policy
+        decay_rate: {
+          name: "Decay Rate",
+          layer: "L2",
+          parent: "Forgetting Policy",
+          desc: "Rate at which memory strength decreases over time.",
+        },
+        recency_weight: {
+          name: "Recency Weight",
+          layer: "L2",
+          parent: "Forgetting Policy",
+          desc: "Weight assigned to recent access in retention decisions (0.0–1.0).",
+        },
+        access_frequency_weight: {
+          name: "Access Frequency Weight",
+          layer: "L2",
+          parent: "Forgetting Policy",
+          desc: "Weight assigned to access frequency in retention decisions (0.0–1.0).",
+        },
+        semantic_similarity_threshold: {
+          name: "Semantic Similarity Threshold",
+          layer: "L2",
+          parent: "Forgetting Policy",
+          desc: "Threshold for considering memories semantically equivalent.",
+        },
+        forgetting_curve_type: {
+          name: "Forgetting Curve Type",
+          layer: "L2",
+          parent: "Forgetting Policy",
+          desc: "Mathematical model for forgetting ('exponential', 'power-law', 'hyperbolic').",
+        },
+        // L2 | Entity Node
+        entity_id: {
+          name: "Entity ID",
+          layer: "L2",
+          parent: "Entity Node",
+          desc: "Unique identifier for the entity.",
+        },
+        entity_type: {
+          name: "Entity Type",
+          layer: "L2",
+          parent: "Entity Node",
+          desc: "Classification of the entity (person, organization, concept, etc.).",
+        },
+        embedding_vector: {
+          name: "Embedding Vector",
+          layer: "L2",
+          parent: "Entity Node",
+          desc: "Dense vector representation of the entity.",
+        },
+        confidence_score: {
+          name: "Confidence Score",
+          layer: "L2",
+          parent: "Entity Node",
+          desc: "Confidence in the entity's validity (0.0–1.0).",
+        },
+        created_timestamp: {
+          name: "Created Timestamp",
+          layer: "L2",
+          parent: "Entity Node",
+          desc: "ISO8601 timestamp when the entity was created.",
+        },
+        last_updated: {
+          name: "Last Updated",
+          layer: "L2",
+          parent: "Entity Node",
+          desc: "ISO8601 timestamp of the most recent entity update.",
+        },
+        // L2 | Relationship Edge
+        source_entity_id: {
+          name: "Source Entity ID",
+          layer: "L2",
+          parent: "Relationship Edge",
+          desc: "ID of the source entity in the relationship.",
+        },
+        target_entity_id: {
+          name: "Target Entity ID",
+          layer: "L2",
+          parent: "Relationship Edge",
+          desc: "ID of the target entity in the relationship.",
+        },
+        relationship_type: {
+          name: "Relationship Type",
+          layer: "L2",
+          parent: "Relationship Edge",
+          desc: "Type of relationship (works_for, knows, mentions, etc.).",
+        },
+        strength_score: {
+          name: "Strength Score",
+          layer: "L2",
+          parent: "Relationship Edge",
+          desc: "Strength of the relationship (0.0–1.0).",
+        },
+        temporal_validity: {
+          name: "Temporal Validity",
+          layer: "L2",
+          parent: "Relationship Edge",
+          desc: "Time range during which the relationship is valid.",
+        },
+        metadata_json: {
+          name: "Metadata JSON",
+          layer: "L2",
+          parent: "Relationship Edge",
+          desc: "Additional structured metadata about the relationship.",
+        },
+        // L2 | Ontology Schema
+        ontology_id: {
+          name: "Ontology ID",
+          layer: "L2",
+          parent: "Ontology Schema",
+          desc: "Unique identifier for the ontology.",
+        },
+        version: {
+          name: "Version",
+          layer: "L2",
+          parent: "Ontology Schema",
+          desc: "Version number of the ontology.",
+        },
+        root_concept: {
+          name: "Root Concept",
+          layer: "L2",
+          parent: "Ontology Schema",
+          desc: "Top-level concept in the ontology hierarchy.",
+        },
+        hierarchy_depth: {
+          name: "Hierarchy Depth",
+          layer: "L2",
+          parent: "Ontology Schema",
+          desc: "Maximum depth of the concept hierarchy.",
+        },
+        relation_types: {
+          name: "Relation Types",
+          layer: "L2",
+          parent: "Ontology Schema",
+          desc: "List of allowed relationship types in the ontology.",
+        },
+        extension_hooks: {
+          name: "Extension Hooks",
+          layer: "L2",
+          parent: "Ontology Schema",
+          desc: "Points where the ontology can be extended with custom concepts.",
+        },
+        // L2 | Graph Query
+        query_type: {
+          name: "Query Type",
+          layer: "L2",
+          parent: "Graph Query",
+          desc: "Type of graph traversal (shortest-path, k-hop, pattern-match).",
+        },
+        traversal_depth: {
+          name: "Traversal Depth",
+          layer: "L2",
+          parent: "Graph Query",
+          desc: "Maximum number of hops in the graph traversal.",
+        },
+        result_limit: {
+          name: "Result Limit",
+          layer: "L2",
+          parent: "Graph Query",
+          desc: "Maximum number of results to return.",
+        },
+        filter_predicates: {
+          name: "Filter Predicates",
+          layer: "L2",
+          parent: "Graph Query",
+          desc: "Conditions to filter results (node type, relationship strength, etc.).",
+        },
+        scoring_function: {
+          name: "Scoring Function",
+          layer: "L2",
+          parent: "Graph Query",
+          desc: "Function to score and rank results.",
+        },
+        timeout_ms: {
+          name: "Timeout (ms)",
+          layer: "L2",
+          parent: "Graph Query",
+          desc: "Query timeout in milliseconds.",
+        },
+        // L2 | Vector Index
+        vector_distance_metric: {
+          name: "Distance Metric",
+          layer: "L2",
+          parent: "Vector Index",
+          desc: "Metric for similarity (cosine, euclidean, dot-product).",
+        },
+        num_partitions: {
+          name: "Num Partitions",
+          layer: "L2",
+          parent: "Vector Index",
+          desc: "Number of partitions for distributed indexing.",
+        },
+        vector_count: {
+          name: "Vector Count",
+          layer: "L2",
+          parent: "Vector Index",
+          desc: "Current number of vectors in the index.",
+        },
+        index_size_mb: {
+          name: "Index Size (MB)",
+          layer: "L2",
+          parent: "Vector Index",
+          desc: "Size of the index in megabytes.",
+        },
+        // L2 | Embedding Model
+        embedding_id: {
+          name: "Embedding ID",
+          layer: "L2",
+          parent: "Embedding Model",
+          desc: "Unique identifier for the embedding model.",
+        },
+        output_dimension: {
+          name: "Output Dimension",
+          layer: "L2",
+          parent: "Embedding Model",
+          desc: "Dimensionality of output embeddings.",
+        },
+        distance_metric: {
+          name: "Distance Metric",
+          layer: "L2",
+          parent: "Embedding Model",
+          desc: "Recommended distance metric for this embedding model.",
+        },
+        max_sequence_length: {
+          name: "Max Sequence Length",
+          layer: "L2",
+          parent: "Embedding Model",
+          desc: "Maximum input sequence length the model can handle.",
+        },
+        normalization_type: {
+          name: "Normalization Type",
+          layer: "L2",
+          parent: "Embedding Model",
+          desc: "Normalization applied to embeddings (L2, cosine, none).",
+        },
+        model_format: {
+          name: "Model Format",
+          layer: "L2",
+          parent: "Embedding Model",
+          desc: "Format of the model files (PyTorch, ONNX, TensorFlow).",
+        },
+        // L2 | Chunk Strategy
+        chunk_size: {
+          name: "Chunk Size",
+          layer: "L2",
+          parent: "Chunk Strategy",
+          desc: "Size of each chunk in tokens.",
+        },
+        overlap_tokens: {
+          name: "Overlap Tokens",
+          layer: "L2",
+          parent: "Chunk Strategy",
+          desc: "Number of tokens to overlap between adjacent chunks.",
+        },
+        splitting_method: {
+          name: "Splitting Method",
+          layer: "L2",
+          parent: "Chunk Strategy",
+          desc: "Method for splitting text ('by-tokens', 'by-sentences', 'semantic').",
+        },
+        boundary_detection: {
+          name: "Boundary Detection",
+          layer: "L2",
+          parent: "Chunk Strategy",
+          desc: "Method to detect logical boundaries for splitting.",
+        },
+        metadata_extraction: {
+          name: "Metadata Extraction",
+          layer: "L2",
+          parent: "Chunk Strategy",
+          desc: "Whether to extract and preserve metadata for chunks.",
+        },
+        encoding_format: {
+          name: "Encoding Format",
+          layer: "L2",
+          parent: "Chunk Strategy",
+          desc: "Text encoding format (UTF-8, ASCII, etc.).",
+        },
+        // L2 | Index Refresh
+        refresh_interval_seconds: {
+          name: "Refresh Interval (sec)",
+          layer: "L2",
+          parent: "Index Refresh",
+          desc: "Seconds between index refresh cycles.",
+        },
+        batch_size: {
+          name: "Batch Size",
+          layer: "L2",
+          parent: "Index Refresh",
+          desc: "Number of documents to process per batch during refresh.",
+        },
+        incremental_flag: {
+          name: "Incremental Flag",
+          layer: "L2",
+          parent: "Index Refresh",
+          desc: "Boolean flag enabling incremental (vs. full) index refresh.",
+        },
+        full_reindex_trigger: {
+          name: "Full Reindex Trigger",
+          layer: "L2",
+          parent: "Index Refresh",
+          desc: "Condition triggering a full index rebuild.",
+        },
+        concurrent_jobs: {
+          name: "Concurrent Jobs",
+          layer: "L2",
+          parent: "Index Refresh",
+          desc: "Number of parallel indexing jobs allowed.",
+        },
+        cleanup_policy: {
+          name: "Cleanup Policy",
+          layer: "L2",
+          parent: "Index Refresh",
+          desc: "Policy for removing stale index data.",
+        },
+        // L3 | Sandbox Runtime
+        runtime_id: {
+          name: "Runtime ID",
+          layer: "L3",
+          parent: "Sandbox Runtime",
+          desc: "Unique identifier for this sandbox runtime.",
+        },
+        isolation_level: {
+          name: "Isolation Level",
+          layer: "L3",
+          parent: "Sandbox Runtime",
+          desc: "Isolation strength ('process', 'container', 'vm').",
+        },
+        resource_limits_json: {
+          name: "Resource Limits JSON",
+          layer: "L3",
+          parent: "Sandbox Runtime",
+          desc: "JSON specifying CPU, memory, and disk limits.",
+        },
+        timeouts_json: {
+          name: "Timeouts JSON",
+          layer: "L3",
+          parent: "Sandbox Runtime",
+          desc: "JSON specifying execution timeouts for different operations.",
+        },
+        networking_enabled: {
+          name: "Networking Enabled",
+          layer: "L3",
+          parent: "Sandbox Runtime",
+          desc: "Boolean flag enabling/disabling network access in sandbox.",
+        },
+        filesystem_access: {
+          name: "Filesystem Access",
+          layer: "L3",
+          parent: "Sandbox Runtime",
+          desc: "Specification of filesystem access restrictions.",
+        },
+        // L4 | Pattern
+        pattern_id: {
+          name: "Pattern ID",
+          layer: "L4",
+          parent: "Pattern",
+          desc: "Unique identifier for the pattern.",
+        },
+        pattern_type: {
+          name: "Pattern Type",
+          layer: "L4",
+          parent: "Pattern",
+          desc: "Classification of pattern (trigger, filter, transform).",
+        },
+        match_rules: {
+          name: "Match Rules",
+          layer: "L4",
+          parent: "Pattern",
+          desc: "Rules defining when the pattern should trigger.",
+        },
+        action_handler: {
+          name: "Action Handler",
+          layer: "L4",
+          parent: "Pattern",
+          desc: "Function/method to execute when pattern matches.",
+        },
+        priority_level: {
+          name: "Priority Level",
+          layer: "L4",
+          parent: "Pattern",
+          desc: "Priority for pattern evaluation (0–100).",
+        },
+        enabled_flag: {
+          name: "Enabled Flag",
+          layer: "L4",
+          parent: "Pattern",
+          desc: "Boolean flag enabling/disabling the pattern.",
+        },
+        // L6 | Test Harness
+        harness_id: {
+          name: "Harness ID",
+          layer: "L6",
+          parent: "Test Harness",
+          desc: "Unique identifier for the test harness.",
+        },
+        test_suite_id: {
+          name: "Test Suite ID",
+          layer: "L6",
+          parent: "Test Harness",
+          desc: "Reference to the test suite(s) this harness runs.",
+        },
+        fixture_config: {
+          name: "Fixture Config",
+          layer: "L6",
+          parent: "Test Harness",
+          desc: "Configuration for test fixtures (setup data, mocks).",
+        },
+        teardown_script: {
+          name: "Teardown Script",
+          layer: "L6",
+          parent: "Test Harness",
+          desc: "Script to execute after tests for cleanup.",
+        },
+        test_parallelism: {
+          name: "Test Parallelism",
+          layer: "L6",
+          parent: "Test Harness",
+          desc: "Number of parallel test workers.",
+        },
+        failure_mode: {
+          name: "Failure Mode",
+          layer: "L6",
+          parent: "Test Harness",
+          desc: "Behavior on test failure ('stop', 'continue', 'retry').",
+        },
+        // L6 | Persona
+        persona_id: {
+          name: "Persona ID",
+          layer: "L6",
+          parent: "Persona",
+          desc: "Unique identifier for the agent persona.",
+        },
+        role_name: {
+          name: "Role Name",
+          layer: "L6",
+          parent: "Persona",
+          desc: "Human-readable name for the agent role.",
+        },
+        capability_set: {
+          name: "Capability Set",
+          layer: "L6",
+          parent: "Persona",
+          desc: "List of capabilities this persona has access to.",
+        },
+        training_data_source: {
+          name: "Training Data Source",
+          layer: "L6",
+          parent: "Persona",
+          desc: "Source of training data shaping persona behavior.",
+        },
+        behavior_parameters: {
+          name: "Behavior Parameters",
+          layer: "L6",
+          parent: "Persona",
+          desc: "Parameters controlling agent behavior (temperature, risk tolerance, etc.).",
+        },
+        knowledge_base_id: {
+          name: "Knowledge Base ID",
+          layer: "L6",
+          parent: "Persona",
+          desc: "Reference to the persona's knowledge base.",
+        },
+        // L6 | Stack
+        stack_id: {
+          name: "Stack ID",
+          layer: "L6",
+          parent: "Stack",
+          desc: "Unique identifier for this stack configuration.",
+        },
+        layer_composition: {
+          name: "Layer Composition",
+          layer: "L6",
+          parent: "Stack",
+          desc: "Specification of components from each of the 7 layers.",
+        },
+        version_constraints: {
+          name: "Version Constraints",
+          layer: "L6",
+          parent: "Stack",
+          desc: "Version constraints for stack components.",
+        },
+        dependency_graph: {
+          name: "Dependency Graph",
+          layer: "L6",
+          parent: "Stack",
+          desc: "Graph of dependencies between stack components.",
+        },
+        deployment_target: {
+          name: "Deployment Target",
+          layer: "L6",
+          parent: "Stack",
+          desc: "Target environment for deployment (dev, staging, prod).",
+        },
+        resource_manifest: {
+          name: "Resource Manifest",
+          layer: "L6",
+          parent: "Stack",
+          desc: "Specification of required resources (CPU, memory, storage).",
+        },
+        // L7 | Covenant
+        covenant_id: {
+          name: "Covenant ID",
+          layer: "L7",
+          parent: "Covenant",
+          desc: "Unique identifier for the covenant.",
+        },
+        obligation_set: {
+          name: "Obligation Set",
+          layer: "L7",
+          parent: "Covenant",
+          desc: "Set of obligations the agent must fulfill.",
+        },
+        constraint_rules: {
+          name: "Constraint Rules",
+          layer: "L7",
+          parent: "Covenant",
+          desc: "Rules defining constraints on agent actions.",
+        },
+        penalty_function: {
+          name: "Penalty Function",
+          layer: "L7",
+          parent: "Covenant",
+          desc: "Function determining penalties for covenant violations.",
+        },
+        renewal_period_days: {
+          name: "Renewal Period (days)",
+          layer: "L7",
+          parent: "Covenant",
+          desc: "Days until covenant renewal is required.",
+        },
+        stakeholder_list: {
+          name: "Stakeholder List",
+          layer: "L7",
+          parent: "Covenant",
+          desc: "List of stakeholders party to the covenant.",
+        },
+        // L6 | Policy Rule
+        rule_id: {
+          name: "Rule ID",
+          layer: "L6",
+          parent: "Policy Rule",
+          desc: "Unique identifier for the policy rule.",
+        },
+        condition_expression: {
+          name: "Condition Expression",
+          layer: "L6",
+          parent: "Policy Rule",
+          desc: "Boolean expression evaluated to determine if rule applies.",
+        },
+        action_type: {
+          name: "Action Type",
+          layer: "L6",
+          parent: "Policy Rule",
+          desc: "Type of action to take (allow, deny, log, alert).",
+        },
+        effect: {
+          name: "Effect",
+          layer: "L6",
+          parent: "Policy Rule",
+          desc: "Effect of the rule (allow or deny).",
+        },
+        priority: {
+          name: "Priority",
+          layer: "L6",
+          parent: "Policy Rule",
+          desc: "Evaluation priority (higher = evaluated first).",
+        },
+        audit_enabled: {
+          name: "Audit Enabled",
+          layer: "L6",
+          parent: "Policy Rule",
+          desc: "Boolean flag enabling audit logging for this rule.",
+        },
+        // L6 | Override Protocol
+        override_id: {
+          name: "Override ID",
+          layer: "L6",
+          parent: "Override Protocol",
+          desc: "Unique identifier for this override.",
+        },
+        target_rule_id: {
+          name: "Target Rule ID",
+          layer: "L6",
+          parent: "Override Protocol",
+          desc: "ID of the policy rule being overridden.",
+        },
+        override_value: {
+          name: "Override Value",
+          layer: "L6",
+          parent: "Override Protocol",
+          desc: "New value or action to apply instead of the rule.",
+        },
+        expiration_timestamp: {
+          name: "Expiration Timestamp",
+          layer: "L6",
+          parent: "Override Protocol",
+          desc: "ISO8601 timestamp when the override expires.",
+        },
+        approval_chain: {
+          name: "Approval Chain",
+          layer: "L6",
+          parent: "Override Protocol",
+          desc: "List of approvers who authorized this override.",
+        },
+        audit_trail: {
+          name: "Audit Trail",
+          layer: "L6",
+          parent: "Override Protocol",
+          desc: "Log of all actions and decisions related to this override.",
+        },
+        // L7 | Trace Span
+        span_id: {
+          name: "Span ID",
+          layer: "L7",
+          parent: "Trace Span",
+          desc: "Unique identifier for this trace span.",
+        },
+        parent_span_id: {
+          name: "Parent Span ID",
+          layer: "L7",
+          parent: "Trace Span",
+          desc: "ID of the parent span in the trace tree.",
+        },
+        operation_name: {
+          name: "Operation Name",
+          layer: "L7",
+          parent: "Trace Span",
+          desc: "Name of the operation represented by this span.",
+        },
+        start_timestamp: {
+          name: "Start Timestamp",
+          layer: "L7",
+          parent: "Trace Span",
+          desc: "ISO8601 timestamp when the span started.",
+        },
+        duration_ms: {
+          name: "Duration (ms)",
+          layer: "L7",
+          parent: "Trace Span",
+          desc: "Duration of the span in milliseconds.",
+        },
+        status_code: {
+          name: "Status Code",
+          layer: "L7",
+          parent: "Trace Span",
+          desc: "Status of the operation (ok, error, timeout).",
+        },
+        attributes_json: {
+          name: "Attributes JSON",
+          layer: "L7",
+          parent: "Trace Span",
+          desc: "Additional structured attributes of the span.",
+        },
+      };
+      */
 
       // ===== EXPAND / COLLAPSE ALL =====
       let allExpanded = false;
@@ -21777,6 +23976,7 @@
         if (!wasExpanded) {
           card.classList.add("expanded");
           expandedStratum = id;
+          localStorage.setItem("aosLastStratum", id);
           const hdr = card.querySelector(".stratum-header");
           if (hdr) hdr.setAttribute("aria-expanded", "true");
 
@@ -21827,6 +24027,8 @@
       function showStratumOverview(id) {
         const s = STRATUM_DETAILS[id];
         if (!s) return;
+        // Dynamic title: show stratum name
+        document.title = id.toUpperCase() + " " + s.name + " — {a}OS Explorer";
         const dp = document.getElementById("detailPanel");
         if (!dp) return;
 
@@ -22102,10 +24304,42 @@
         refreshAxisBandsAfterTransition();
       }
 
+      function resolvePrimitiveDetail(key) {
+        const direct = PRIMITIVE_DETAILS?.[key];
+        const fallback = PRIMITIVE_PRODUCT_GUIDES?.[key];
+        const fallbackValid =
+          fallback &&
+          typeof fallback === "object" &&
+          !Array.isArray(fallback) &&
+          fallback.name &&
+          fallback.layer &&
+          fallback.parent;
+
+        const activePanel = document.querySelector(".primitive-panel.visible");
+        const activeConstructKey = activePanel?.dataset?.activeConstructKey;
+        const activeConstruct = activeConstructKey
+          ? CONSTRUCT_DETAILS[activeConstructKey]
+          : null;
+        const expectedParent = activeConstruct?.name || null;
+
+        if (expectedParent) {
+          if (direct && direct.parent === expectedParent) {
+            return direct;
+          }
+          if (fallbackValid && fallback.parent === expectedParent) {
+            return fallback;
+          }
+        }
+
+        if (direct) return direct;
+        if (fallbackValid) return fallback;
+        return null;
+      }
+
       function showPrimitive(key) {
         if (typeof event !== "undefined" && event?.stopPropagation)
           event.stopPropagation();
-        const prim = PRIMITIVE_DETAILS[key];
+        const prim = resolvePrimitiveDetail(key);
         if (!prim) return;
 
         // Determine layer color variable
@@ -22192,7 +24426,7 @@
       }
 
       function showPrimitiveParent(primKey) {
-        const prim = PRIMITIVE_DETAILS[primKey];
+        const prim = resolvePrimitiveDetail(primKey);
         if (!prim) return;
         const parentKey = prim.parent.replace(/\s/g, "_").toLowerCase();
         const detail = CONSTRUCT_DETAILS[parentKey];
@@ -25496,6 +27730,16 @@
         try {
           visits = parseInt(localStorage.getItem("aosVisits") || "0", 10) || 0;
           localStorage.setItem("aosVisits", String(visits + 1));
+          // Restore last-opened stratum for returning users
+          const lastStratum = localStorage.getItem("aosLastStratum");
+          if (lastStratum) {
+            setTimeout(() => {
+              const card = document.getElementById(lastStratum);
+              if (card && !card.classList.contains("expanded")) {
+                toggleStratum(card, lastStratum);
+              }
+            }, 200);
+          }
         } catch (_) { /* storage blocked — treat as new visitor */ }
         const tipsBtn = document.getElementById("tipsToggleBtn");
         const beginnerChips = document.querySelectorAll(
@@ -26041,6 +28285,9 @@
           }
         });
         document.getElementById("lensClearBtn").classList.add("visible");
+        // Dynamic title: show product name
+        const _pd = PRODUCT_DETAILS[productKey];
+        if (_pd) document.title = _pd.name + " — {a}OS Explorer";
         refreshAxisBandsAfterTransition();
       }
 
@@ -26063,6 +28310,7 @@
           if (badge) badge.remove();
         });
         document.getElementById("lensClearBtn").classList.remove("visible");
+        document.title = "{a}OS Explorer";
 
         // Restore hero
         const hero = document.getElementById("heroSection");
@@ -30097,4 +32345,18 @@
       }
       function closeSuggestModal() {
         releaseFocusTrap();
-        document.getElement
+        document.getElementById("suggestOverlay").classList.remove("open");
+      }
+      function resetSuggestForm() {
+        const form = document.getElementById("suggestForm");
+        if (form) form.reset();
+        document.getElementById("suggestFormView").style.display = "";
+        document.getElementById("suggestSuccessView").style.display = "none";
+        setTimeout(() => {
+          const n = document.getElementById("sgName");
+          if (n) n.focus();
+        }, 50);
+      }
+    </script>
+  </body>
+</html>

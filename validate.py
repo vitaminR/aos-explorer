@@ -151,7 +151,7 @@ if "tooltip" not in html.lower() and "title=" not in html:
 
 # US-8: Mobile — viewport meta must exist
 if 'name="viewport"' not in html:
-    errors.append("US-8 MOBILE: Missing <meta name=\"viewport\"> (responsive)")
+    errors.append('US-8 MOBILE: Missing <meta name="viewport"> (responsive)')
 
 # US-6: Suggest form must have required fields
 for field_id in ("sgName", "sgVendor"):
@@ -163,7 +163,10 @@ if "downloadTaxonomyJSON" not in html:
     errors.append("US-5 EXPORT: downloadTaxonomyJSON not referenced in HTML")
 
 # US-9: Keyboard navigation — keydown listener required
-if 'addEventListener("keydown"' not in html and "addEventListener('keydown'" not in html:
+if (
+    'addEventListener("keydown"' not in html
+    and "addEventListener('keydown'" not in html
+):
     errors.append("US-9 KEYBOARD: No keydown event listener found")
 
 # US-2: Search input must exist
@@ -172,7 +175,9 @@ if 'id="searchInput"' not in html:
 
 # US-10: Share URL — hash-based routing required
 if "updateHashFromState" not in html and "restoreFromHash" not in html:
-    errors.append("US-10 SHARE: No hash routing found (updateHashFromState / restoreFromHash)")
+    errors.append(
+        "US-10 SHARE: No hash routing found (updateHashFromState / restoreFromHash)"
+    )
 
 # US-6 continued: resetSuggestForm must be defined for 'Suggest Another' button
 if "resetSuggestForm" in html and "function resetSuggestForm" not in html:
