@@ -9,6 +9,9 @@
       "**/node_modules/**",
       "**/.git/**",
       ".codacy/**",
+      "*.sh",
+      "*.bat",
+      "*.mjs",
 
       "scripts/**",
       "tests/**",
