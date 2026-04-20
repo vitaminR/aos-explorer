@@ -109,6 +109,945 @@
       "changeRisk": "medium",
       "sourceQuality": "high",
       "status": "active"
+    },
+    {
+      "id": "claude-code",
+      "name": "Claude Code",
+      "type": "platform",
+      "vendor": "Anthropic",
+      "deployment": "Hybrid",
+      "license": "Proprietary",
+      "primary": "L7 Experience & Intent",
+      "secondary": "L4, L3",
+      "axisRoles": "Governance: Strong · Observability: Medium",
+      "confidence": 0.9,
+      "rationale": "Agentic coding assistant with CLI, desktop, and IDE interfaces. Orchestrates multi-step coding tasks with tool use, file editing, and terminal execution within a governed session.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "harness",
+          "role": "primary",
+          "rank": 1,
+          "why": "Full agentic harness with planning, tool use, checkpointing, and human-in-the-loop approval."
+        },
+        {
+          "conceptSlug": "tool_calling",
+          "role": "primary",
+          "rank": 1,
+          "why": "Native tool calling with MCP integration, bash execution, file I/O, and web fetching."
+        },
+        {
+          "conceptSlug": "mcp",
+          "role": "primary",
+          "rank": 1,
+          "why": "First-class MCP client supporting stdio and SSE transports for extensible tool integration."
+        },
+        {
+          "conceptSlug": "guardrails",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Permission system with allow/deny rules, hook-based validation, and sandboxed execution."
+        }
+      ],
+      "evidenceIds": [],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-04-19",
+      "lastVerified": "2026-04-19",
+      "updatePriority": 0.7,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "high",
+      "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "claude-desktop",
+      "name": "Claude Desktop",
+      "type": "platform",
+      "vendor": "Anthropic",
+      "deployment": "Hybrid",
+      "license": "Proprietary",
+      "primary": "L7 Experience & Intent",
+      "secondary": "L3",
+      "axisRoles": "Governance: Medium · Observability: Light",
+      "confidence": 0.85,
+      "rationale": "Desktop chat interface for Claude with MCP server support, file/image upload, and project-scoped conversations. Consumer-facing experience layer for Anthropic models.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "mcp",
+          "role": "primary",
+          "rank": 2,
+          "why": "MCP client enabling local tool servers for file access, database queries, and custom integrations."
+        },
+        {
+          "conceptSlug": "memory",
+          "role": "secondary",
+          "rank": 3,
+          "why": "Project-scoped memory and conversation context management across sessions."
+        }
+      ],
+      "evidenceIds": [],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-04-19",
+      "lastVerified": "2026-04-19",
+      "updatePriority": 0.6,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "high",
+      "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "claude-api",
+      "name": "Claude API",
+      "type": "model-api",
+      "vendor": "Anthropic",
+      "deployment": "Cloud",
+      "license": "Proprietary",
+      "primary": "L1 Models & Infrastructure",
+      "secondary": "L3",
+      "axisRoles": "Governance: Medium · Observability: Medium",
+      "confidence": 0.92,
+      "rationale": "Foundation model API providing inference for Claude model family. Supports tool use, vision, extended thinking, and streaming. The compute substrate that other Anthropic products build on.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "tool_calling",
+          "role": "primary",
+          "rank": 1,
+          "why": "Native function calling with structured JSON schemas for tool definitions and invocations."
+        }
+      ],
+      "evidenceIds": [],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-04-19",
+      "lastVerified": "2026-04-19",
+      "updatePriority": 0.8,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "high",
+      "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "openai-api",
+      "name": "OpenAI API",
+      "type": "model-api",
+      "vendor": "OpenAI",
+      "deployment": "Cloud",
+      "license": "Proprietary",
+      "primary": "L1 Models & Infrastructure",
+      "secondary": "L3",
+      "axisRoles": "Governance: Medium · Observability: Medium",
+      "confidence": 0.92,
+      "rationale": "Foundation model API for GPT and o-series models. Supports function calling, vision, embeddings, and assistants. The dominant commercial inference platform.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "tool_calling",
+          "role": "primary",
+          "rank": 1,
+          "why": "Pioneered structured function calling with JSON schema definitions in the chat completions API."
+        }
+      ],
+      "evidenceIds": [],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-04-19",
+      "lastVerified": "2026-04-19",
+      "updatePriority": 0.8,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "high",
+      "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "openai-assistants",
+      "name": "OpenAI Assistants API",
+      "type": "platform",
+      "vendor": "OpenAI",
+      "deployment": "Cloud",
+      "license": "Proprietary",
+      "primary": "L4 Orchestration & Decisioning",
+      "secondary": "L2, L3",
+      "axisRoles": "Governance: Light · Observability: Light",
+      "confidence": 0.82,
+      "rationale": "Managed agent runtime with built-in threads, file search (RAG), code interpreter, and tool execution. Opinionated orchestration layer that handles state, memory, and tool dispatch.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "harness",
+          "role": "primary",
+          "rank": 3,
+          "why": "Managed harness with threads, runs, and built-in tool dispatch — but limited customization."
+        },
+        {
+          "conceptSlug": "rag",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Built-in file search with vector store for retrieval-augmented generation."
+        },
+        {
+          "conceptSlug": "memory",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Thread-based conversation memory with automatic context management."
+        }
+      ],
+      "evidenceIds": [],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-04-19",
+      "lastVerified": "2026-04-19",
+      "updatePriority": 0.6,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "medium",
+      "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "chatgpt",
+      "name": "ChatGPT",
+      "type": "platform",
+      "vendor": "OpenAI",
+      "deployment": "Cloud",
+      "license": "Proprietary",
+      "primary": "L7 Experience & Intent",
+      "secondary": "L4, L2",
+      "axisRoles": "Governance: Medium · Observability: Light",
+      "confidence": 0.85,
+      "rationale": "Consumer and enterprise chat interface with GPTs (custom agents), plugins, code interpreter, and web browsing. The dominant L7 experience surface for AI interactions.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "persona",
+          "role": "primary",
+          "rank": 1,
+          "why": "GPTs enable custom personas with instructions, knowledge files, and tool configurations."
+        },
+        {
+          "conceptSlug": "tool_calling",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Actions (formerly plugins) enable external API integrations via OpenAPI specs."
+        }
+      ],
+      "evidenceIds": [],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-04-19",
+      "lastVerified": "2026-04-19",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "high",
+      "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "vertex-ai",
+      "name": "Vertex AI",
+      "type": "platform",
+      "vendor": "Google",
+      "deployment": "Cloud",
+      "license": "Proprietary",
+      "primary": "L1 Models & Infrastructure",
+      "secondary": "L4, L5",
+      "axisRoles": "Governance: Strong · Observability: Strong",
+      "confidence": 0.87,
+      "rationale": "Google's unified ML platform spanning model hosting, fine-tuning, evaluation, and agent building. Provides Gemini model endpoints, Model Garden, and Agent Builder for full-stack AI development.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "harness",
+          "role": "secondary",
+          "rank": 3,
+          "why": "Agent Builder provides managed agent orchestration with grounding, tool use, and extensions."
+        },
+        {
+          "conceptSlug": "guardrails",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Built-in safety filters, grounding checks, and responsible AI configuration."
+        }
+      ],
+      "evidenceIds": [],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-04-19",
+      "lastVerified": "2026-04-19",
+      "updatePriority": 0.7,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "high",
+      "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "gemini-api",
+      "name": "Gemini API",
+      "type": "model-api",
+      "vendor": "Google",
+      "deployment": "Cloud",
+      "license": "Proprietary",
+      "primary": "L1 Models & Infrastructure",
+      "secondary": "L3",
+      "axisRoles": "Governance: Medium · Observability: Medium",
+      "confidence": 0.9,
+      "rationale": "Google's foundation model API for Gemini models. Supports multimodal input, function calling, code execution, and grounded generation. Available via AI Studio and Vertex AI.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "tool_calling",
+          "role": "primary",
+          "rank": 1,
+          "why": "Native function calling with automatic or manual tool invocation modes."
+        }
+      ],
+      "evidenceIds": [],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-04-19",
+      "lastVerified": "2026-04-19",
+      "updatePriority": 0.7,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "high",
+      "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "ibm-watsonx",
+      "name": "IBM watsonx.ai",
+      "type": "platform",
+      "vendor": "IBM",
+      "deployment": "Hybrid",
+      "license": "Proprietary",
+      "primary": "L1 Models & Infrastructure",
+      "secondary": "L6, L5",
+      "axisRoles": "Governance: Strong · Observability: Strong",
+      "confidence": 0.83,
+      "rationale": "Enterprise AI platform with Granite model family, prompt engineering studio, fine-tuning, and watsonx.governance for AI lifecycle management. Strong focus on regulated industries.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "governance",
+          "role": "primary",
+          "rank": 1,
+          "why": "watsonx.governance provides model risk management, bias detection, drift monitoring, and audit trails for regulated environments."
+        },
+        {
+          "conceptSlug": "guardrails",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Content filtering, PII detection, and hallucination mitigation built into the platform."
+        }
+      ],
+      "evidenceIds": [],
+      "freshnessTier": "B",
+      "lastReviewed": "2026-04-19",
+      "lastVerified": "2026-04-19",
+      "updatePriority": 0.4,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "medium",
+      "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "azure-openai",
+      "name": "Azure OpenAI Service",
+      "type": "platform",
+      "vendor": "Microsoft",
+      "deployment": "Cloud",
+      "license": "Proprietary",
+      "primary": "L1 Models & Infrastructure",
+      "secondary": "L6",
+      "axisRoles": "Governance: Strong · Observability: Strong",
+      "confidence": 0.9,
+      "rationale": "Enterprise-grade OpenAI model hosting on Azure with content filtering, private networking, managed identity, and compliance certifications. Adds enterprise governance to OpenAI models.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "guardrails",
+          "role": "primary",
+          "rank": 1,
+          "why": "Azure Content Safety provides configurable content filtering, jailbreak detection, and prompt shields."
+        },
+        {
+          "conceptSlug": "governance",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Enterprise RBAC, audit logging, data residency controls, and compliance certifications (SOC2, HIPAA)."
+        }
+      ],
+      "evidenceIds": [],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-04-19",
+      "lastVerified": "2026-04-19",
+      "updatePriority": 0.6,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "medium",
+      "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "aws-bedrock",
+      "name": "Amazon Bedrock",
+      "type": "platform",
+      "vendor": "AWS",
+      "deployment": "Cloud",
+      "license": "Proprietary",
+      "primary": "L1 Models & Infrastructure",
+      "secondary": "L4, L6",
+      "axisRoles": "Governance: Strong · Observability: Medium",
+      "confidence": 0.86,
+      "rationale": "Managed multi-model platform with Agents, Knowledge Bases (RAG), Guardrails, and model evaluation. Provides serverless access to Claude, Llama, Titan, and other foundation models on AWS.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "harness",
+          "role": "secondary",
+          "rank": 3,
+          "why": "Bedrock Agents provide managed orchestration with action groups, knowledge bases, and return control."
+        },
+        {
+          "conceptSlug": "rag",
+          "role": "primary",
+          "rank": 1,
+          "why": "Knowledge Bases provide managed RAG with automatic chunking, embedding, and vector store integration."
+        },
+        {
+          "conceptSlug": "guardrails",
+          "role": "primary",
+          "rank": 1,
+          "why": "Bedrock Guardrails enforce content policies, PII filtering, topic denial, and word filters."
+        }
+      ],
+      "evidenceIds": [],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-04-19",
+      "lastVerified": "2026-04-19",
+      "updatePriority": 0.6,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "medium",
+      "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "crewai",
+      "name": "CrewAI",
+      "type": "framework",
+      "vendor": "CrewAI",
+      "deployment": "Hybrid",
+      "license": "Open Source",
+      "primary": "L4 Orchestration & Decisioning",
+      "secondary": "L3",
+      "axisRoles": "Governance: Light · Observability: Light",
+      "confidence": 0.84,
+      "rationale": "Multi-agent orchestration framework using role-based agents with hierarchical or sequential process flows. Emphasizes agent personas and delegation patterns.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "persona",
+          "role": "primary",
+          "rank": 1,
+          "why": "Agents defined by role, goal, and backstory — strongest persona-driven orchestration model."
+        },
+        {
+          "conceptSlug": "loop-core",
+          "role": "primary",
+          "rank": 2,
+          "why": "Sequential and hierarchical process flows with task delegation between specialized agents."
+        }
+      ],
+      "evidenceIds": [],
+      "freshnessTier": "B",
+      "lastReviewed": "2026-04-19",
+      "lastVerified": "2026-04-19",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "medium",
+      "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "autogen",
+      "name": "AutoGen",
+      "type": "framework",
+      "vendor": "Microsoft",
+      "deployment": "Local",
+      "license": "Open Source",
+      "primary": "L4 Orchestration & Decisioning",
+      "secondary": "L3",
+      "axisRoles": "Governance: Medium · Observability: Medium",
+      "confidence": 0.85,
+      "rationale": "Multi-agent conversation framework with customizable agent types, group chat patterns, and code execution. Supports human-in-the-loop and nested agent conversations.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "loop-core",
+          "role": "primary",
+          "rank": 2,
+          "why": "Conversation-based control loop with multi-agent group chat and round-robin patterns."
+        },
+        {
+          "conceptSlug": "tool_calling",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Agents can register and execute functions, code blocks, and external tools."
+        }
+      ],
+      "evidenceIds": [],
+      "freshnessTier": "B",
+      "lastReviewed": "2026-04-19",
+      "lastVerified": "2026-04-19",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "medium",
+      "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "semantic-kernel",
+      "name": "Semantic Kernel",
+      "type": "framework",
+      "vendor": "Microsoft",
+      "deployment": "Local",
+      "license": "Open Source",
+      "primary": "L4 Orchestration & Decisioning",
+      "secondary": "L2, L3",
+      "axisRoles": "Governance: Medium · Observability: Medium",
+      "confidence": 0.84,
+      "rationale": "Enterprise AI orchestration SDK for .NET, Python, and Java. Provides planner, plugin system, memory connectors, and process framework for building AI agents in enterprise codebases.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "harness",
+          "role": "secondary",
+          "rank": 3,
+          "why": "Kernel + planner + plugins form a lightweight harness for enterprise AI orchestration."
+        },
+        {
+          "conceptSlug": "memory",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Pluggable memory connectors for vector stores, enabling semantic recall across conversations."
+        }
+      ],
+      "evidenceIds": [],
+      "freshnessTier": "B",
+      "lastReviewed": "2026-04-19",
+      "lastVerified": "2026-04-19",
+      "updatePriority": 0.4,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "medium",
+      "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "langchain",
+      "name": "LangChain",
+      "type": "framework",
+      "vendor": "LangChain",
+      "deployment": "Local",
+      "license": "Open Source",
+      "primary": "L3 Execution & Interfaces",
+      "secondary": "L2, L4",
+      "axisRoles": "Governance: Light · Observability: Light",
+      "confidence": 0.86,
+      "rationale": "Composable framework for building LLM applications. Provides chains, agents, tool integrations, document loaders, and output parsers. The most widely adopted LLM integration layer.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "tool_calling",
+          "role": "primary",
+          "rank": 1,
+          "why": "Largest ecosystem of tool integrations, document loaders, and output parsers for LLM applications."
+        },
+        {
+          "conceptSlug": "rag",
+          "role": "primary",
+          "rank": 1,
+          "why": "Comprehensive RAG pipeline with document loaders, text splitters, retrievers, and chain compositions."
+        }
+      ],
+      "evidenceIds": [],
+      "freshnessTier": "B",
+      "lastReviewed": "2026-04-19",
+      "lastVerified": "2026-04-19",
+      "updatePriority": 0.6,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "medium",
+      "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "langsmith",
+      "name": "LangSmith",
+      "type": "platform",
+      "vendor": "LangChain",
+      "deployment": "Cloud",
+      "license": "Proprietary",
+      "primary": "L5 Observability & Evaluation",
+      "secondary": "L4",
+      "axisRoles": "Governance: Light · Observability: Strong",
+      "confidence": 0.87,
+      "rationale": "LLM observability and evaluation platform. Provides tracing, prompt playground, dataset management, automated evaluation, and annotation queues for monitoring agent quality.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "guardrails",
+          "role": "secondary",
+          "rank": 3,
+          "why": "Online evaluation rules can gate or flag agent outputs based on quality criteria."
+        }
+      ],
+      "evidenceIds": [],
+      "freshnessTier": "B",
+      "lastReviewed": "2026-04-19",
+      "lastVerified": "2026-04-19",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "medium",
+      "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "pinecone",
+      "name": "Pinecone",
+      "type": "infrastructure",
+      "vendor": "Pinecone",
+      "deployment": "Cloud",
+      "license": "Proprietary",
+      "primary": "L2 Knowledge & Memory",
+      "secondary": "",
+      "axisRoles": "Governance: Light · Observability: Light",
+      "confidence": 0.9,
+      "rationale": "Managed vector database optimized for similarity search at scale. Provides serverless and pod-based indexes, metadata filtering, and sparse-dense hybrid search for RAG pipelines.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "rag",
+          "role": "primary",
+          "rank": 1,
+          "why": "Purpose-built vector store for retrieval-augmented generation at scale."
+        },
+        {
+          "conceptSlug": "memory",
+          "role": "secondary",
+          "rank": 3,
+          "why": "Can serve as long-term semantic memory store for agent context retrieval."
+        }
+      ],
+      "evidenceIds": [],
+      "freshnessTier": "B",
+      "lastReviewed": "2026-04-19",
+      "lastVerified": "2026-04-19",
+      "updatePriority": 0.3,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "low",
+      "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "chromadb",
+      "name": "ChromaDB",
+      "type": "infrastructure",
+      "vendor": "Chroma",
+      "deployment": "Hybrid",
+      "license": "Open Source",
+      "primary": "L2 Knowledge & Memory",
+      "secondary": "",
+      "axisRoles": "Governance: Light · Observability: Light",
+      "confidence": 0.86,
+      "rationale": "Open-source embedding database for AI applications. Runs embedded or as a server with collections, metadata filtering, and multi-modal embeddings. Popular for local RAG development.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "rag",
+          "role": "primary",
+          "rank": 2,
+          "why": "Lightweight vector store optimized for developer experience in RAG prototyping and production."
+        },
+        {
+          "conceptSlug": "memory",
+          "role": "secondary",
+          "rank": 3,
+          "why": "Collection-based storage suitable for agent memory with metadata-filtered retrieval."
+        }
+      ],
+      "evidenceIds": [],
+      "freshnessTier": "B",
+      "lastReviewed": "2026-04-19",
+      "lastVerified": "2026-04-19",
+      "updatePriority": 0.3,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "low",
+      "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "llamaindex",
+      "name": "LlamaIndex",
+      "type": "framework",
+      "vendor": "LlamaIndex",
+      "deployment": "Local",
+      "license": "Open Source",
+      "primary": "L2 Knowledge & Memory",
+      "secondary": "L3",
+      "axisRoles": "Governance: Light · Observability: Light",
+      "confidence": 0.86,
+      "rationale": "Data framework for building RAG and knowledge-augmented LLM applications. Provides data connectors, indexing strategies, query engines, and agentic RAG patterns.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "rag",
+          "role": "primary",
+          "rank": 1,
+          "why": "Purpose-built framework for retrieval-augmented generation with advanced indexing and query strategies."
+        },
+        {
+          "conceptSlug": "tool_calling",
+          "role": "secondary",
+          "rank": 3,
+          "why": "Query engine tools enable agent-driven retrieval across heterogeneous data sources."
+        }
+      ],
+      "evidenceIds": [],
+      "freshnessTier": "B",
+      "lastReviewed": "2026-04-19",
+      "lastVerified": "2026-04-19",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "medium",
+      "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "guardrails-ai",
+      "name": "Guardrails AI",
+      "type": "framework",
+      "vendor": "Guardrails AI",
+      "deployment": "Hybrid",
+      "license": "Open Source",
+      "primary": "L6 Governance & Trust",
+      "secondary": "L5",
+      "axisRoles": "Governance: Strong · Observability: Medium",
+      "confidence": 0.85,
+      "rationale": "Input/output validation framework for LLM applications. Provides validators for hallucination, toxicity, PII, bias, and custom rules via the Guardrails Hub.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "guardrails",
+          "role": "primary",
+          "rank": 1,
+          "why": "Purpose-built guardrail framework with validator hub for content safety, PII, toxicity, and hallucination detection."
+        }
+      ],
+      "evidenceIds": [],
+      "freshnessTier": "B",
+      "lastReviewed": "2026-04-19",
+      "lastVerified": "2026-04-19",
+      "updatePriority": 0.4,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "low",
+      "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "nemo-guardrails",
+      "name": "NeMo Guardrails",
+      "type": "framework",
+      "vendor": "NVIDIA",
+      "deployment": "Local",
+      "license": "Open Source",
+      "primary": "L6 Governance & Trust",
+      "secondary": "L4",
+      "axisRoles": "Governance: Strong · Observability: Medium",
+      "confidence": 0.84,
+      "rationale": "Programmable guardrails toolkit using Colang DSL. Defines conversational rails for topical control, safety, fact-checking, and jailbreak prevention in LLM applications.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "guardrails",
+          "role": "primary",
+          "rank": 1,
+          "why": "DSL-driven guardrail system with programmable rails for input/output control and dialogue safety."
+        }
+      ],
+      "evidenceIds": [],
+      "freshnessTier": "B",
+      "lastReviewed": "2026-04-19",
+      "lastVerified": "2026-04-19",
+      "updatePriority": 0.4,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "low",
+      "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "prometheus",
+      "name": "Prometheus",
+      "type": "infrastructure",
+      "vendor": "CNCF",
+      "deployment": "Self-hosted",
+      "license": "Open Source",
+      "primary": "L5 Observability & Evaluation",
+      "secondary": "",
+      "axisRoles": "Governance: Light · Observability: Strong",
+      "confidence": 0.88,
+      "rationale": "Time-series metrics collection and alerting system. Pull-based scraping, PromQL query language, and AlertManager. Industry standard for infrastructure and application monitoring.",
+      "conceptMappings": [],
+      "evidenceIds": [],
+      "freshnessTier": "C",
+      "lastReviewed": "2026-04-19",
+      "lastVerified": "2026-04-19",
+      "updatePriority": 0.2,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "low",
+      "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "grafana",
+      "name": "Grafana",
+      "type": "infrastructure",
+      "vendor": "Grafana Labs",
+      "deployment": "Hybrid",
+      "license": "Open Source",
+      "primary": "L5 Observability & Evaluation",
+      "secondary": "L7",
+      "axisRoles": "Governance: Light · Observability: Strong",
+      "confidence": 0.86,
+      "rationale": "Observability dashboard and visualization platform. Connects to Prometheus, Loki, Tempo, and other data sources. Provides alerting, annotations, and team dashboards for monitoring agent systems.",
+      "conceptMappings": [],
+      "evidenceIds": [],
+      "freshnessTier": "C",
+      "lastReviewed": "2026-04-19",
+      "lastVerified": "2026-04-19",
+      "updatePriority": 0.2,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "low",
+      "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "opentelemetry",
+      "name": "OpenTelemetry",
+      "type": "framework",
+      "vendor": "CNCF",
+      "deployment": "Self-hosted",
+      "license": "Open Source",
+      "primary": "L5 Observability & Evaluation",
+      "secondary": "",
+      "axisRoles": "Governance: Light · Observability: Strong",
+      "confidence": 0.9,
+      "rationale": "Vendor-neutral observability framework for traces, metrics, and logs. Provides SDKs, collectors, and semantic conventions. The emerging standard for instrumenting AI/agent systems.",
+      "conceptMappings": [],
+      "evidenceIds": [],
+      "freshnessTier": "B",
+      "lastReviewed": "2026-04-19",
+      "lastVerified": "2026-04-19",
+      "updatePriority": 0.3,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "low",
+      "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "vault",
+      "name": "HashiCorp Vault",
+      "type": "infrastructure",
+      "vendor": "HashiCorp",
+      "deployment": "Hybrid",
+      "license": "Open Source",
+      "primary": "L6 Governance & Trust",
+      "secondary": "",
+      "axisRoles": "Governance: Strong · Observability: Medium",
+      "confidence": 0.88,
+      "rationale": "Secrets management and encryption platform. Dynamic secrets, PKI, transit encryption, and identity-based access. Critical L6 substrate for securing agent credentials and API keys.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "governance",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Secrets management and identity-based access control for agent credentials and API keys."
+        }
+      ],
+      "evidenceIds": [],
+      "freshnessTier": "C",
+      "lastReviewed": "2026-04-19",
+      "lastVerified": "2026-04-19",
+      "updatePriority": 0.2,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "low",
+      "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "dspy",
+      "name": "DSPy",
+      "type": "framework",
+      "vendor": "Stanford NLP",
+      "deployment": "Local",
+      "license": "Open Source",
+      "primary": "L4 Orchestration & Decisioning",
+      "secondary": "L5",
+      "axisRoles": "Governance: Light · Observability: Medium",
+      "confidence": 0.83,
+      "rationale": "Programming framework for optimizing LLM prompts and pipelines. Replaces hand-tuned prompts with compiled, optimized modules using teleprompters and metrics-driven prompt tuning.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "loop-core",
+          "role": "secondary",
+          "rank": 3,
+          "why": "Module-based pipeline composition with automatic prompt optimization as the control loop."
+        }
+      ],
+      "evidenceIds": [],
+      "freshnessTier": "B",
+      "lastReviewed": "2026-04-19",
+      "lastVerified": "2026-04-19",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "medium",
+      "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "cursor",
+      "name": "Cursor",
+      "type": "platform",
+      "vendor": "Anysphere",
+      "deployment": "Local",
+      "license": "Proprietary",
+      "primary": "L7 Experience & Intent",
+      "secondary": "L4, L3",
+      "axisRoles": "Governance: Medium · Observability: Light",
+      "confidence": 0.84,
+      "rationale": "AI-native code editor forked from VS Code. Provides inline chat, multi-file editing, codebase-aware completions, and agent mode for autonomous coding tasks.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "harness",
+          "role": "secondary",
+          "rank": 3,
+          "why": "Agent mode orchestrates multi-step coding tasks with tool use and file editing."
+        },
+        {
+          "conceptSlug": "tool_calling",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Terminal execution, file operations, and web search as tool invocations."
+        }
+      ],
+      "evidenceIds": [],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-04-19",
+      "lastVerified": "2026-04-19",
+      "updatePriority": 0.6,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "high",
+      "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "github-copilot",
+      "name": "GitHub Copilot",
+      "type": "platform",
+      "vendor": "GitHub / Microsoft",
+      "deployment": "Cloud",
+      "license": "Proprietary",
+      "primary": "L7 Experience & Intent",
+      "secondary": "L3",
+      "axisRoles": "Governance: Medium · Observability: Light",
+      "confidence": 0.86,
+      "rationale": "AI pair programmer with inline suggestions, chat, and agent mode. Integrates into VS Code, JetBrains, and CLI. Coding agent can create PRs from issue descriptions.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "tool_calling",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Agent mode uses MCP tools, terminal commands, and file operations for autonomous coding."
+        }
+      ],
+      "evidenceIds": [],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-04-19",
+      "lastVerified": "2026-04-19",
+      "updatePriority": 0.6,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "high",
+      "sourceQuality": "high",
+      "status": "active"
     }
   ]
 }

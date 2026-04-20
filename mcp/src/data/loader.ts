@@ -3,7 +3,7 @@ import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const DATA_DIR = resolve(__dirname, "../../data");
+const DATA_DIR = resolve(__dirname, "../../../data");
 
 export interface Stratum {
   id: string;
@@ -77,8 +77,14 @@ let _products: Product[] | null = null;
 let _version: string = "v1.0.0";
 
 function loadFile<T>(filename: string): T {
-  const content = readFileSync(resolve(DATA_DIR, filename), "utf-8");
-  return JSON.parse(content) as T;
+  const filePath = resolve(DATA_DIR, filename);
+  try {
+    const content = readFileSync(filePath, "utf-8");
+    return JSON.parse(content) as T;
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    throw new Error(`Failed to load ${filename} from ${filePath}: ${msg}`);
+  }
 }
 
 export function getStrata(): Stratum[] {

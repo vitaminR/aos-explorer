@@ -1,6 +1,6 @@
 # {a}OS Explorer — Full Taxonomy Data
 # Version: v1.1.0
-# Generated: 2026-04-20T01:54:16Z
+# Generated: 2026-04-20T03:00:49Z
 # Source: https://aos7.tech
 
 ============================================================
@@ -179,7 +179,7 @@ Anti-patterns: Deploying agents without explicit performance guarantees or safet
 Mitigations: Define a machine-testable covenant for each agent: capability boundary, latency SLA, quality threshold, fault resilience, and compliance policies. Instrument monitoring and evals against this covenant.
 
 ============================================================
-PRODUCTS (3 entries)
+PRODUCTS (31 entries)
 ============================================================
 
 ## BMAD (Community)
@@ -208,3 +208,250 @@ Deployment: Hybrid
 License: Open Source
 Rationale: Graph-based agent orchestration framework. Defines agent workflows as cyclic graphs with state management and tool execution.
 Confidence: 88%
+
+## Claude Code (Anthropic)
+Type: platform
+Primary stratum: L7 Experience & Intent
+Secondary strata: L4, L3
+Deployment: Hybrid
+License: Proprietary
+Rationale: Agentic coding assistant with CLI, desktop, and IDE interfaces. Orchestrates multi-step coding tasks with tool use, file editing, and terminal execution within a governed session.
+Confidence: 90%
+
+## Claude Desktop (Anthropic)
+Type: platform
+Primary stratum: L7 Experience & Intent
+Secondary strata: L3
+Deployment: Hybrid
+License: Proprietary
+Rationale: Desktop chat interface for Claude with MCP server support, file/image upload, and project-scoped conversations. Consumer-facing experience layer for Anthropic models.
+Confidence: 85%
+
+## Claude API (Anthropic)
+Type: model-api
+Primary stratum: L1 Models & Infrastructure
+Secondary strata: L3
+Deployment: Cloud
+License: Proprietary
+Rationale: Foundation model API providing inference for Claude model family. Supports tool use, vision, extended thinking, and streaming. The compute substrate that other Anthropic products build on.
+Confidence: 92%
+
+## OpenAI API (OpenAI)
+Type: model-api
+Primary stratum: L1 Models & Infrastructure
+Secondary strata: L3
+Deployment: Cloud
+License: Proprietary
+Rationale: Foundation model API for GPT and o-series models. Supports function calling, vision, embeddings, and assistants. The dominant commercial inference platform.
+Confidence: 92%
+
+## OpenAI Assistants API (OpenAI)
+Type: platform
+Primary stratum: L4 Orchestration & Decisioning
+Secondary strata: L2, L3
+Deployment: Cloud
+License: Proprietary
+Rationale: Managed agent runtime with built-in threads, file search (RAG), code interpreter, and tool execution. Opinionated orchestration layer that handles state, memory, and tool dispatch.
+Confidence: 82%
+
+## ChatGPT (OpenAI)
+Type: platform
+Primary stratum: L7 Experience & Intent
+Secondary strata: L4, L2
+Deployment: Cloud
+License: Proprietary
+Rationale: Consumer and enterprise chat interface with GPTs (custom agents), plugins, code interpreter, and web browsing. The dominant L7 experience surface for AI interactions.
+Confidence: 85%
+
+## Vertex AI (Google)
+Type: platform
+Primary stratum: L1 Models & Infrastructure
+Secondary strata: L4, L5
+Deployment: Cloud
+License: Proprietary
+Rationale: Google's unified ML platform spanning model hosting, fine-tuning, evaluation, and agent building. Provides Gemini model endpoints, Model Garden, and Agent Builder for full-stack AI development.
+Confidence: 87%
+
+## Gemini API (Google)
+Type: model-api
+Primary stratum: L1 Models & Infrastructure
+Secondary strata: L3
+Deployment: Cloud
+License: Proprietary
+Rationale: Google's foundation model API for Gemini models. Supports multimodal input, function calling, code execution, and grounded generation. Available via AI Studio and Vertex AI.
+Confidence: 90%
+
+## IBM watsonx.ai (IBM)
+Type: platform
+Primary stratum: L1 Models & Infrastructure
+Secondary strata: L6, L5
+Deployment: Hybrid
+License: Proprietary
+Rationale: Enterprise AI platform with Granite model family, prompt engineering studio, fine-tuning, and watsonx.governance for AI lifecycle management. Strong focus on regulated industries.
+Confidence: 83%
+
+## Azure OpenAI Service (Microsoft)
+Type: platform
+Primary stratum: L1 Models & Infrastructure
+Secondary strata: L6
+Deployment: Cloud
+License: Proprietary
+Rationale: Enterprise-grade OpenAI model hosting on Azure with content filtering, private networking, managed identity, and compliance certifications. Adds enterprise governance to OpenAI models.
+Confidence: 90%
+
+## Amazon Bedrock (AWS)
+Type: platform
+Primary stratum: L1 Models & Infrastructure
+Secondary strata: L4, L6
+Deployment: Cloud
+License: Proprietary
+Rationale: Managed multi-model platform with Agents, Knowledge Bases (RAG), Guardrails, and model evaluation. Provides serverless access to Claude, Llama, Titan, and other foundation models on AWS.
+Confidence: 86%
+
+## CrewAI (CrewAI)
+Type: framework
+Primary stratum: L4 Orchestration & Decisioning
+Secondary strata: L3
+Deployment: Hybrid
+License: Open Source
+Rationale: Multi-agent orchestration framework using role-based agents with hierarchical or sequential process flows. Emphasizes agent personas and delegation patterns.
+Confidence: 84%
+
+## AutoGen (Microsoft)
+Type: framework
+Primary stratum: L4 Orchestration & Decisioning
+Secondary strata: L3
+Deployment: Local
+License: Open Source
+Rationale: Multi-agent conversation framework with customizable agent types, group chat patterns, and code execution. Supports human-in-the-loop and nested agent conversations.
+Confidence: 85%
+
+## Semantic Kernel (Microsoft)
+Type: framework
+Primary stratum: L4 Orchestration & Decisioning
+Secondary strata: L2, L3
+Deployment: Local
+License: Open Source
+Rationale: Enterprise AI orchestration SDK for .NET, Python, and Java. Provides planner, plugin system, memory connectors, and process framework for building AI agents in enterprise codebases.
+Confidence: 84%
+
+## LangChain (LangChain)
+Type: framework
+Primary stratum: L3 Execution & Interfaces
+Secondary strata: L2, L4
+Deployment: Local
+License: Open Source
+Rationale: Composable framework for building LLM applications. Provides chains, agents, tool integrations, document loaders, and output parsers. The most widely adopted LLM integration layer.
+Confidence: 86%
+
+## LangSmith (LangChain)
+Type: platform
+Primary stratum: L5 Observability & Evaluation
+Secondary strata: L4
+Deployment: Cloud
+License: Proprietary
+Rationale: LLM observability and evaluation platform. Provides tracing, prompt playground, dataset management, automated evaluation, and annotation queues for monitoring agent quality.
+Confidence: 87%
+
+## Pinecone (Pinecone)
+Type: infrastructure
+Primary stratum: L2 Knowledge & Memory
+Deployment: Cloud
+License: Proprietary
+Rationale: Managed vector database optimized for similarity search at scale. Provides serverless and pod-based indexes, metadata filtering, and sparse-dense hybrid search for RAG pipelines.
+Confidence: 90%
+
+## ChromaDB (Chroma)
+Type: infrastructure
+Primary stratum: L2 Knowledge & Memory
+Deployment: Hybrid
+License: Open Source
+Rationale: Open-source embedding database for AI applications. Runs embedded or as a server with collections, metadata filtering, and multi-modal embeddings. Popular for local RAG development.
+Confidence: 86%
+
+## LlamaIndex (LlamaIndex)
+Type: framework
+Primary stratum: L2 Knowledge & Memory
+Secondary strata: L3
+Deployment: Local
+License: Open Source
+Rationale: Data framework for building RAG and knowledge-augmented LLM applications. Provides data connectors, indexing strategies, query engines, and agentic RAG patterns.
+Confidence: 86%
+
+## Guardrails AI (Guardrails AI)
+Type: framework
+Primary stratum: L6 Governance & Trust
+Secondary strata: L5
+Deployment: Hybrid
+License: Open Source
+Rationale: Input/output validation framework for LLM applications. Provides validators for hallucination, toxicity, PII, bias, and custom rules via the Guardrails Hub.
+Confidence: 85%
+
+## NeMo Guardrails (NVIDIA)
+Type: framework
+Primary stratum: L6 Governance & Trust
+Secondary strata: L4
+Deployment: Local
+License: Open Source
+Rationale: Programmable guardrails toolkit using Colang DSL. Defines conversational rails for topical control, safety, fact-checking, and jailbreak prevention in LLM applications.
+Confidence: 84%
+
+## Prometheus (CNCF)
+Type: infrastructure
+Primary stratum: L5 Observability & Evaluation
+Deployment: Self-hosted
+License: Open Source
+Rationale: Time-series metrics collection and alerting system. Pull-based scraping, PromQL query language, and AlertManager. Industry standard for infrastructure and application monitoring.
+Confidence: 88%
+
+## Grafana (Grafana Labs)
+Type: infrastructure
+Primary stratum: L5 Observability & Evaluation
+Secondary strata: L7
+Deployment: Hybrid
+License: Open Source
+Rationale: Observability dashboard and visualization platform. Connects to Prometheus, Loki, Tempo, and other data sources. Provides alerting, annotations, and team dashboards for monitoring agent systems.
+Confidence: 86%
+
+## OpenTelemetry (CNCF)
+Type: framework
+Primary stratum: L5 Observability & Evaluation
+Deployment: Self-hosted
+License: Open Source
+Rationale: Vendor-neutral observability framework for traces, metrics, and logs. Provides SDKs, collectors, and semantic conventions. The emerging standard for instrumenting AI/agent systems.
+Confidence: 90%
+
+## HashiCorp Vault (HashiCorp)
+Type: infrastructure
+Primary stratum: L6 Governance & Trust
+Deployment: Hybrid
+License: Open Source
+Rationale: Secrets management and encryption platform. Dynamic secrets, PKI, transit encryption, and identity-based access. Critical L6 substrate for securing agent credentials and API keys.
+Confidence: 88%
+
+## DSPy (Stanford NLP)
+Type: framework
+Primary stratum: L4 Orchestration & Decisioning
+Secondary strata: L5
+Deployment: Local
+License: Open Source
+Rationale: Programming framework for optimizing LLM prompts and pipelines. Replaces hand-tuned prompts with compiled, optimized modules using teleprompters and metrics-driven prompt tuning.
+Confidence: 83%
+
+## Cursor (Anysphere)
+Type: platform
+Primary stratum: L7 Experience & Intent
+Secondary strata: L4, L3
+Deployment: Local
+License: Proprietary
+Rationale: AI-native code editor forked from VS Code. Provides inline chat, multi-file editing, codebase-aware completions, and agent mode for autonomous coding tasks.
+Confidence: 84%
+
+## GitHub Copilot (GitHub / Microsoft)
+Type: platform
+Primary stratum: L7 Experience & Intent
+Secondary strata: L3
+Deployment: Cloud
+License: Proprietary
+Rationale: AI pair programmer with inline suggestions, chat, and agent mode. Integrates into VS Code, JetBrains, and CLI. Coding agent can create PRs from issue descriptions.
+Confidence: 86%

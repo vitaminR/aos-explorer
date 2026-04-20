@@ -24,6 +24,58 @@ function matches(haystack: string | undefined, needle: string): boolean {
 }
 
 // ---------------------------------------------------------------------------
+// Utility: synonym expansion for classify_tool
+// ---------------------------------------------------------------------------
+const SYNONYMS: Record<string, string[]> = {
+  // L7
+  chat: ["chat UI", "portal", "dashboard", "user session"],
+  ui: ["chat UI", "portal", "dashboard", "approval surface"],
+  frontend: ["chat UI", "portal", "dashboard"],
+  // L6
+  security: ["IAM / RBAC", "policy engine", "content safety", "secrets manager"],
+  policy: ["policy engine", "trust envelope", "audit trail"],
+  compliance: ["policy engine", "audit trail", "classification_tag"],
+  auth: ["IAM / RBAC", "access token", "scope"],
+  secrets: ["secrets manager", "key manager", "secret_ref"],
+  safety: ["content safety", "safety verdict"],
+  // L5
+  monitoring: ["distributed tracing", "metrics store", "alerting system"],
+  alerting: ["alerting system", "alert object"],
+  tracing: ["distributed tracing", "trace graph"],
+  metrics: ["metrics store", "metric_point", "cost curve"],
+  logging: ["logging pipeline"],
+  observability: ["distributed tracing", "logging pipeline", "metrics store", "eval harness"],
+  evaluation: ["eval harness", "eval scorecard", "regression report"],
+  // L4
+  orchestration: ["workflow engine", "router", "state machine", "planner"],
+  workflow: ["workflow engine", "execution graph", "plan"],
+  routing: ["router", "routing table"],
+  planning: ["planner", "plan"],
+  scheduling: ["queue", "retry logic"],
+  // L3
+  tool: ["tool gateway", "function-calling adapter", "tool call"],
+  api: ["API connector", "connector response", "endpoint_url"],
+  sandbox: ["sandbox", "microVM / container task"],
+  execution: ["script executor", "job runner", "executed script"],
+  mcp: ["MCP server"],
+  function: ["function-calling adapter", "function_name"],
+  // L2
+  vector: ["vector store", "embedding set"],
+  knowledge: ["document index", "graph store", "entity graph"],
+  memory: ["memory store", "memory object", "memory_key"],
+  rag: ["RAG pipeline", "chunk set", "citation set"],
+  embedding: ["vector store", "embedding set", "embedding_dimension"],
+  search: ["document index", "vector store"],
+  // L1
+  model: ["model endpoint", "inference runtime", "model response"],
+  inference: ["inference runtime", "token stream"],
+  compute: ["GPU / CPU", "scheduler", "container runtime"],
+  gpu: ["GPU / CPU", "gpu_second"],
+  runtime: ["inference runtime", "container runtime"],
+  container: ["container runtime", "microVM / container task"],
+};
+
+// ---------------------------------------------------------------------------
 // Tool 1: search_products
 // ---------------------------------------------------------------------------
 server.tool(
@@ -301,6 +353,21 @@ server.tool(
 
     let text = `# Product Comparison\n\n${header}\n${sep}\n${rows.join("\n")}`;
 
+    // Add concept mappings section
+    const mappingsSection = found
+      .filter((p) => p.conceptMappings?.length > 0)
+      .map((p) => {
+        const mappings = p.conceptMappings
+          .map((m) => `  - **${m.conceptSlug}** (${m.role}, rank ${m.rank}): ${m.why}`)
+          .join("\n");
+        return `### ${p.name}\n${mappings}`;
+      })
+      .join("\n\n");
+
+    if (mappingsSection) {
+      text += `\n\n## Concept Mappings\n\n${mappingsSection}`;
+    }
+
     if (notFound.length) {
       text += `\n\n> Products not found: ${notFound.join(", ")}`;
     }
@@ -328,27 +395,37 @@ server.tool(
   },
   async ({ name, description }) => {
     const searchText = `${name} ${description || ""}`.toLowerCase();
+    const searchWords = searchText.split(/\W+/).filter((w) => w.length > 2);
     const strata = getStrata();
+
+    // Expand search words using synonym table
+    const expandedTerms = new Set<string>();
+    for (const word of searchWords) {
+      expandedTerms.add(word);
+      const syns = SYNONYMS[word];
+      if (syns) {
+        for (const s of syns) expandedTerms.add(s.toLowerCase());
+      }
+    }
 
     const scores: { stratum: Stratum; score: number; reasons: string[] }[] =
       strata.map((s) => {
         let score = 0;
         const reasons: string[] = [];
 
-        // Check substrates
+        // Check substrates (direct + expanded)
         for (const sub of s.substrates) {
-          if (
-            searchText.includes(sub.toLowerCase()) ||
-            sub.toLowerCase().includes(searchText.split(" ")[0])
-          ) {
+          const subLower = sub.toLowerCase();
+          if (searchText.includes(subLower) || expandedTerms.has(subLower)) {
             score += 3;
             reasons.push(`substrate match: "${sub}"`);
           }
         }
 
-        // Check constructs
+        // Check constructs (direct + expanded)
         for (const con of s.constructs) {
-          if (searchText.includes(con.toLowerCase())) {
+          const conLower = con.toLowerCase();
+          if (searchText.includes(conLower) || expandedTerms.has(conLower)) {
             score += 2;
             reasons.push(`construct match: "${con}"`);
           }
@@ -356,7 +433,6 @@ server.tool(
 
         // Check definition keywords
         const defWords = s.definition.toLowerCase().split(/\W+/);
-        const searchWords = searchText.split(/\W+/);
         for (const w of searchWords) {
           if (w.length > 3 && defWords.includes(w)) {
             score += 1;
@@ -368,6 +444,14 @@ server.tool(
         if (s.oneLiner.toLowerCase().includes(name.toLowerCase())) {
           score += 2;
           reasons.push("name appears in one-liner");
+        }
+
+        // Check primitives
+        for (const prim of s.primitives) {
+          if (searchText.includes(prim.toLowerCase())) {
+            score += 2;
+            reasons.push(`primitive match: "${prim}"`);
+          }
         }
 
         return { stratum: s, score, reasons };
@@ -402,6 +486,101 @@ server.tool(
         )
         .join("\n\n") +
       `\n\n> Note: Classification is based on keyword matching. For authoritative placement, submit evidence to the {a}OS catalog.`;
+
+    return { content: [{ type: "text" as const, text }] };
+  },
+);
+
+// ---------------------------------------------------------------------------
+// Tool 7: list_products
+// ---------------------------------------------------------------------------
+server.tool(
+  "list_products",
+  "List all products in the {a}OS catalog, optionally filtered by stratum, type, or vendor. Returns a summary table.",
+  {
+    stratum: z.string().optional().describe("Filter by stratum ID (l1-l7)"),
+    type: z.string().optional().describe("Filter by type (framework, platform, infrastructure, model-api)"),
+    vendor: z.string().optional().describe("Filter by vendor name"),
+  },
+  async ({ stratum, type, vendor }) => {
+    let results = getProducts();
+
+    if (stratum) {
+      const sid = stratum.toLowerCase();
+      results = results.filter(
+        (p) =>
+          p.primary?.toLowerCase().includes(sid) ||
+          p.secondary?.toLowerCase().includes(sid),
+      );
+    }
+
+    if (type) {
+      results = results.filter((p) => matches(p.type, type));
+    }
+
+    if (vendor) {
+      results = results.filter((p) => matches(p.vendor, vendor));
+    }
+
+    if (results.length === 0) {
+      return {
+        content: [{ type: "text" as const, text: "No products match the given filters." }],
+      };
+    }
+
+    const header = "| ID | Name | Vendor | Primary | Type | License | Confidence |";
+    const sep = "| --- | --- | --- | --- | --- | --- | --- |";
+    const rows = results.map(
+      (p) =>
+        `| ${p.id} | ${p.name} | ${p.vendor} | ${p.primary} | ${p.type} | ${p.license} | ${Math.round((p.confidence || 0) * 100)}% |`,
+    );
+
+    return {
+      content: [
+        {
+          type: "text" as const,
+          text: `# Product Catalog (${results.length} products)\n\n${header}\n${sep}\n${rows.join("\n")}`,
+        },
+      ],
+    };
+  },
+);
+
+// ---------------------------------------------------------------------------
+// Tool 8: list_concepts
+// ---------------------------------------------------------------------------
+server.tool(
+  "list_concepts",
+  "List all concepts in the {a}OS taxonomy, optionally filtered by stratum. Returns slugs, names, definitions, and status.",
+  {
+    stratum: z.string().optional().describe("Filter by stratum (e.g. 'L4', 'L0')"),
+  },
+  async ({ stratum }) => {
+    let results = getConcepts();
+
+    if (stratum) {
+      const sid = stratum.toUpperCase();
+      results = results.filter((c) =>
+        c.strata?.some((s) => s.toUpperCase() === sid),
+      );
+    }
+
+    if (results.length === 0) {
+      return {
+        content: [{ type: "text" as const, text: "No concepts match the given filters." }],
+      };
+    }
+
+    const header = "| Slug | Name | Strata | Status | Confidence |";
+    const sep = "| --- | --- | --- | --- | --- |";
+    const rows = results.map(
+      (c) =>
+        `| ${c.slug} | ${c.name} | ${c.strata.join(", ")} | ${c.status} | ${Math.round((c.confidence || 0) * 100)}% |`,
+    );
+
+    const text =
+      `# Concept Catalog (${results.length} concepts)\n\n${header}\n${sep}\n${rows.join("\n")}\n\n` +
+      `Use \`lookup_concept(slug)\` for full details on any concept.`;
 
     return { content: [{ type: "text" as const, text }] };
   },
