@@ -37,6 +37,17 @@ KNOWN_BUILTINS = {
     "contains",
     "toggle",
     "value",
+    # Native browser methods referenced via event.x() or window.x()
+    "preventDefault",
+    "scrollTo",
+    "open",
+    "scrollIntoView",
+    "focus",
+    "blur",
+    "closest",
+    "getAttribute",
+    "setAttribute",
+    "removeAttribute",
 }
 onclick_calls = re.findall(r'onclick="[^"]*?(\w+)\s*\(', html)
 for call in onclick_calls:
@@ -45,7 +56,7 @@ for call in onclick_calls:
 
 # 3. Check getElementById references
 # These IDs are created dynamically in JS, not in static HTML
-DYNAMIC_IDS = {"searchBlankSlate", "filterBlankSlate"}
+DYNAMIC_IDS = {"searchBlankSlate", "filterBlankSlate", "quickFilters"}
 get_ids = re.findall(r"getElementById\(['\"](\w+)['\"]\)", html)
 for gid in get_ids:
     if gid not in seen and gid not in DYNAMIC_IDS:
@@ -135,6 +146,41 @@ if "Show rationale" not in html and "Show details" not in html:
 # 13. Tooltip definitions for vocab terms
 if "tooltip" not in html.lower() and "title=" not in html:
     errors.append("RECOGNITION: No tooltip definitions for vocab terms (PRD 6.5.5)")
+
+# ── User Story validations ──────────────────────────────────────────────────
+
+# US-8: Mobile — viewport meta must exist
+if 'name="viewport"' not in html:
+    errors.append("US-8 MOBILE: Missing <meta name=\"viewport\"> (responsive)")
+
+# US-6: Suggest form must have required fields
+for field_id in ("sgName", "sgVendor"):
+    if f'id="{field_id}"' not in html:
+        errors.append(f"US-6 SUGGEST: Form field #{field_id} missing")
+
+# US-5: Download taxonomy must be reachable from UI
+if "downloadTaxonomyJSON" not in html:
+    errors.append("US-5 EXPORT: downloadTaxonomyJSON not referenced in HTML")
+
+# US-9: Keyboard navigation — keydown listener required
+if 'addEventListener("keydown"' not in html and "addEventListener('keydown'" not in html:
+    errors.append("US-9 KEYBOARD: No keydown event listener found")
+
+# US-2: Search input must exist
+if 'id="searchInput"' not in html:
+    errors.append("US-2 SEARCH: searchInput element missing")
+
+# US-10: Share URL — hash-based routing required
+if "updateHashFromState" not in html and "restoreFromHash" not in html:
+    errors.append("US-10 SHARE: No hash routing found (updateHashFromState / restoreFromHash)")
+
+# US-6 continued: resetSuggestForm must be defined for 'Suggest Another' button
+if "resetSuggestForm" in html and "function resetSuggestForm" not in html:
+    errors.append("US-6 SUGGEST: resetSuggestForm() called but never defined")
+
+# US-7: Quick filters container must exist in HTML
+if 'id="quickFilters"' not in html:
+    errors.append("US-7 QUICKFILTER: #quickFilters container missing from HTML")
 
 # Summary
 print(f"=== VALIDATION RESULTS ({len(errors)} issues) ===")
