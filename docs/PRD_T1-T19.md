@@ -482,6 +482,88 @@ Features are grouped into four tiers by strategic role:
 
 ---
 
+## UX Pass — T20–T22 (from April 2026 first-user tour)
+
+> Source: agent UX tour (April 21 2026). Three friction points identified on cold load for a first-time visitor. Low effort, high signal — none require auth or backend.
+
+---
+
+### T20 — Stratum Click Affordance
+
+**Status:** Queued (small, high priority)
+
+**Problem:** Stratum cards are the primary navigation primitive, but nothing signals they are clickable. A first-time visitor sees seven colored rows and no call-to-action. The cursor change and hover glow only trigger on hover — which means users who don't try hovering may never discover the drill-down.
+
+**User story:** As a first-time visitor landing on the page, I understand within 3 seconds that the colored rows are interactive and I should click one to explore.
+
+**Goals:**
+- G1: Every stratum card has a visible static affordance (text, icon, or micro-label) that implies interactivity before hover
+- G2: Does not clutter the card — one small addition maximum
+- G3: Disappears or de-emphasizes after first click (don't teach forever)
+
+**Proposed solution:** Add a small `▶ Explore` pill or `↓` caret to the right side of each stratum header, styled faintly (text-tertiary) and visible at rest. On first click of any stratum, add a `data-toured` attribute to `<body>` (stored in localStorage) and fade the affordance to invisible with CSS.
+
+**Non-goals:** Onboarding modal; animated pulsing; coachmarks.
+
+**Success metric:** Time-to-first-stratum-click drops vs baseline (manual A/B). Bounce rate on `/` decreases.
+
+**Dependencies:** None.
+
+**Risks:** Visual clutter if label is too prominent; existing hover-glow already signals interactivity to experienced users.
+
+---
+
+### T21 — Stratum-Filtered Product Rail
+
+**Status:** Queued (medium, high value)
+
+**Problem:** The center canvas and the right rail are visually independent. A user drilling into L4 Orchestration wants to see *which products live at that layer* — but the right rail continues showing "Featured Products" regardless of what stratum is active. The connection between taxonomy and catalog is invisible.
+
+**User story:** As an architect evaluating orchestration tools, I click L4 and the right rail immediately shows only orchestration-mapped products, sorted by confidence score, with a count badge and a "Clear filter" link.
+
+**Goals:**
+- G1: Right rail product list filters to products with a primary or secondary mapping to the active stratum when a stratum is expanded
+- G2: Right rail header updates to "L4 — 8 Products" (or similar) to confirm the filter is active
+- G3: A single "Show all" reset link restores the full list
+- G4: No performance regression — filtering is client-side on already-loaded data
+
+**Non-goals:** Persisting the stratum filter in the URL (covered by deep-link feature); hiding products entirely.
+
+**Proposed solution:** Hook into the existing `toggleStratum()` function. When a stratum is opened, call a new `filterRailByStratum(id)` function that walks the product cards and hides cards whose `data-strata` attribute doesn't include the active stratum ID. Update the `#rightRailHeader` text. On stratum collapse, restore all cards and reset the header.
+
+**Success metric:** Users who expand a stratum are 2× more likely to click a product card (engagement funnel).
+
+**Dependencies:** Product cards must have `data-strata` attribute mapping them to strata — this is already partially present in the data layer.
+
+**Risks:** Stratum ↔ product mapping data quality; some products span multiple strata and may appear or disappear unexpectedly.
+
+---
+
+### T22 — Hero Default CTA
+
+**Status:** Queued (tiny, immediate)
+
+**Problem:** The hero context panel shows "Hover a section" as its default state. This is a developer's instruction, not a user-facing invitation. A cold-load visitor who hasn't seen the app before doesn't know what "a section" is, and the panel feels like a placeholder.
+
+**User story:** As a first-time visitor, the hero panel gives me a concrete next step rather than a generic instruction.
+
+**Goals:**
+- G1: The default hero panel state has a concrete, specific CTA that directs the user to their first action
+- G2: The CTA is consistent with the existing visual language (no new components)
+- G3: It disappears naturally once the user has interacted (hover, click, or search)
+
+**Proposed solution:** Replace the static "Hover a section" kicker text with a directional prompt: `"↓ Start with L7 — what did the user actually want?"`. Add a subtle animated pulse (one cycle, CSS only) to draw the eye down to the first stratum card. Once any stratum is clicked or any search is typed, the pulse class is removed and the panel switches to its normal hover-driven state.
+
+**Non-goals:** Tutorial walkthrough; persistent tooltip; changing the panel's hover-driven behavior.
+
+**Success metric:** Avg. session depth (strata expanded per visit) increases by ≥1.
+
+**Dependencies:** None.
+
+**Risks:** CTA text may go stale if L7 is renamed or restructured.
+
+---
+
 ## Cross-Cutting Principles
 
 1. **Taxonomy as product.** Every feature reinforces that {a}OS is a living, versioned standard, not a marketing page.
