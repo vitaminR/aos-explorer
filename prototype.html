@@ -3196,6 +3196,43 @@
         transform: rotate(90deg);
       }
 
+      /* T20 — Stratum click affordance (CSS pseudo-element on every collapsed card) */
+      .stratum-card:not(.expanded) .stratum-meta::before {
+        content: "▶ Explore";
+        font-size: 10px;
+        padding: 3px 8px;
+        border-radius: 6px;
+        font-weight: 600;
+        background: rgba(129, 140, 248, 0.12);
+        color: var(--accent-indigo);
+        border: 1px solid rgba(129, 140, 248, 0.28);
+        white-space: nowrap;
+        animation: stratum-explore-pulse 2.6s ease-in-out infinite;
+        transition:
+          opacity 0.4s ease,
+          transform 0.3s ease;
+        order: -1;
+      }
+      body[data-toured="1"] .stratum-card:not(.expanded) .stratum-meta::before {
+        animation: none;
+        opacity: 0.45;
+        transform: scale(0.94);
+      }
+      @keyframes stratum-explore-pulse {
+        0%,
+        100% {
+          opacity: 0.72;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      /* T21 — right-rail product filter (hide cards not in active stratum) */
+      .right-rail .product-card.stratum-filtered-out {
+        display: none !important;
+      }
+
       /* ===== PRODUCT LENS (dimmed strata) ===== */
       .stratum-card.dimmed {
         opacity: 0.25;
@@ -7739,32 +7776,49 @@
               <span class="hint-icon">&#x1F4A1;</span> Tips
             </button>
           </div>
-          <!-- Ecosystem Stats (Improvement 2) -->
+          <!-- Ecosystem Stats (Improvement 2) — tooltips added (T23) -->
           <div class="eco-stats" id="ecoStats">
-            <div class="eco-stat">
+            <div
+              class="eco-stat"
+              title="Products — Individual AI tools, services, or platforms catalogued in the explorer."
+            >
               <span class="stat-num" id="statProducts">0</span
               ><span class="stat-label">Products</span>
             </div>
-            <div class="eco-stat">
+            <div
+              class="eco-stat"
+              title="Strata — The seven horizontal layers (L1–L7) of the reference model, each addressing one concern (Models, Knowledge, Execution, Orchestration, Observability, Governance, Experience)."
+            >
               <span class="stat-num">7</span
               ><span class="stat-label">Strata</span>
             </div>
-            <div class="eco-stat">
+            <div
+              class="eco-stat"
+              title="Substrates — Sub-categories within a stratum (e.g. Agent Frameworks, Tool Routers, Eval Harnesses)."
+            >
               <span class="stat-num" id="statSubstrates">0</span
               ><span class="stat-label">Substrates</span>
             </div>
-            <div class="eco-stat">
+            <div
+              class="eco-stat"
+              title="Constructs — Named patterns, primitives, or techniques used inside a substrate."
+            >
               <span class="stat-num" id="statConstructs">0</span
               ><span class="stat-label">Constructs</span>
             </div>
-            <div class="eco-stat">
+            <div
+              class="eco-stat"
+              title="Axes — Cross-cutting concerns that span every stratum vertically (Governance &amp; Trust, Observability &amp; Eval)."
+            >
               <span class="stat-num">2</span
               ><span class="stat-label">Axes</span>
             </div>
           </div>
           <div class="hero-context-panel" id="heroContextPanel">
             <div class="hero-context-default" id="heroContextDefault">
-              <div class="hero-context-kicker">Hover a section</div>
+              <div class="hero-context-kicker" id="heroContextKicker">
+                ↓ Start with L7 — what did the user actually want?
+              </div>
               <div
                 class="hero-context-instruction-list"
                 id="heroContextInstructionList"
@@ -25643,6 +25697,9 @@
       function toggleStratum(card, id) {
         const wasExpanded = card.classList.contains("expanded");
 
+        // T20: mark user as toured on first stratum interaction
+        markToured();
+
         // Collapse all first (chunking rule: one at a time by default)
         document.querySelectorAll(".stratum-card.expanded").forEach((c) => {
           c.classList.remove("expanded");
@@ -25700,10 +25757,15 @@
           if (!activeLensProduct) {
             showStratumOverview(id);
           }
+
+          // T21: filter right rail to this stratum's products
+          if (!activeLensProduct) filterRailByStratum(id);
         } else {
           expandedStratum = null;
           setStackKeyboardFocus("stratum", null);
           resetBreadcrumb();
+          // T21: clear product-rail filter on collapse
+          if (!activeLensProduct) filterRailByStratum(null);
         }
 
         refreshAxisBandsAfterTransition();
@@ -29526,6 +29588,72 @@
           toggleStratum(el, id);
         }
         syncMobileLocBar();
+      }
+
+      // ===== T20: TOUR STATE (fade ▶ Explore hint after first click) =====
+      (function initTourState() {
+        try {
+          if (localStorage.getItem("aos-toured") === "1") {
+            document.body.setAttribute("data-toured", "1");
+          }
+        } catch (e) {}
+      })();
+      function markToured() {
+        if (document.body.getAttribute("data-toured") === "1") return;
+        document.body.setAttribute("data-toured", "1");
+        try { localStorage.setItem("aos-toured", "1"); } catch (e) {}
+        // Swap hero kicker to the neutral 'Hover a section' once the user has engaged
+        const kicker = document.getElementById("heroContextKicker");
+        if (kicker) kicker.textContent = "Hover a section";
+      }
+
+      // ===== T21: FILTER RIGHT RAIL BY ACTIVE STRATUM =====
+      const STRATUM_LABELS = {
+        l7: "L7 Experience",
+        l6: "L6 Governance",
+        l5: "L5 Observability",
+        l4: "L4 Orchestration",
+        l3: "L3 Execution",
+        l2: "L2 Knowledge",
+        l1: "L1 Models",
+      };
+      function productCardMatchesStratum(card, stratumId) {
+        const dots = card.querySelectorAll(".strata-dots .strata-dot.active");
+        for (const dot of dots) {
+          const bg = (dot.getAttribute("style") || "") + (dot.style.cssText || "");
+          if (bg.includes("--" + stratumId)) return true;
+          if (bg.includes("var(--" + stratumId + ")")) return true;
+        }
+        // fall back to data attribute if a product sets one explicitly
+        const attr = (card.getAttribute("data-strata") || "").toLowerCase();
+        if (attr && attr.split(/[,\s]+/).includes(stratumId)) return true;
+        return false;
+      }
+      function filterRailByStratum(stratumId) {
+        const cards = document.querySelectorAll(".right-rail .product-card");
+        if (!cards.length) return;
+        const header = document.getElementById("rightRailHeader");
+        if (!stratumId) {
+          cards.forEach((c) => c.classList.remove("stratum-filtered-out"));
+          if (header) header.textContent = "Featured Products";
+          return;
+        }
+        let matched = 0;
+        cards.forEach((card) => {
+          if (productCardMatchesStratum(card, stratumId)) {
+            card.classList.remove("stratum-filtered-out");
+            matched++;
+          } else {
+            card.classList.add("stratum-filtered-out");
+          }
+        });
+        if (header) {
+          const label = STRATUM_LABELS[stratumId] || stratumId.toUpperCase();
+          header.innerHTML =
+            `${label} · <span style="opacity:0.85">${matched} product${matched === 1 ? "" : "s"}</span> ` +
+            `<a href="#" style="margin-left:8px;font-size:11px;color:var(--accent-indigo);text-decoration:none" ` +
+            `onclick="event.preventDefault(); filterRailByStratum(null);">Show all</a>`;
+        }
       }
 
       // ===== COACHMARKS =====
