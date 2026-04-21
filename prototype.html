@@ -886,32 +886,40 @@
       .hero-product-quickref {
         display: flex;
         flex-direction: row;
-        flex-wrap: wrap;
-        gap: 6px;
+          flex-wrap: nowrap;
+          gap: 5px;
         align-items: center;
+          max-width: 100%;
+          min-width: 0;
+          overflow-x: auto;
+          overflow-y: hidden;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+          padding-bottom: 2px;
       }
+        .hero-product-quickref::-webkit-scrollbar {
+          display: none;
+        }
       .hero-product-quickref-item {
         display: flex;
         align-items: center;
-        gap: 5px;
-        padding: 5px 11px;
+          gap: 0;
+          padding: 4px 9px;
         border-radius: 20px;
         border: 1px solid rgba(148, 163, 184, 0.12);
         background: rgba(255, 255, 255, 0.04);
+          flex: 0 0 auto;
+          white-space: nowrap;
       }
       .hero-product-quickref-item strong {
-        display: inline;
-        font-size: 9px;
-        font-weight: 700;
-        letter-spacing: 0.8px;
-        text-transform: uppercase;
-        color: var(--text-quaternary);
-        margin: 0;
+          display: none;
       }
       .hero-product-quickref-item span {
-        font-size: 12px;
+          font-size: 11.5px;
+          font-weight: 600;
         line-height: 1;
         color: var(--text-secondary);
+          white-space: nowrap;
       }
       .hero-product-callouts {
         display: grid;
@@ -5136,7 +5144,7 @@
           justify-self: start;
         }
         .hero-product-quickref {
-          flex-wrap: wrap;
+          flex-wrap: nowrap;
         }
         .hero-context-instruction-list {
           grid-template-columns: 1fr 1fr;
@@ -29601,7 +29609,9 @@
       function markToured() {
         if (document.body.getAttribute("data-toured") === "1") return;
         document.body.setAttribute("data-toured", "1");
-        try { localStorage.setItem("aos-toured", "1"); } catch (e) {}
+        try {
+          localStorage.setItem("aos-toured", "1");
+        } catch (e) {}
         // Swap hero kicker to the neutral 'Hover a section' once the user has engaged
         const kicker = document.getElementById("heroContextKicker");
         if (kicker) kicker.textContent = "Hover a section";
@@ -29620,7 +29630,8 @@
       function productCardMatchesStratum(card, stratumId) {
         const dots = card.querySelectorAll(".strata-dots .strata-dot.active");
         for (const dot of dots) {
-          const bg = (dot.getAttribute("style") || "") + (dot.style.cssText || "");
+          const bg =
+            (dot.getAttribute("style") || "") + (dot.style.cssText || "");
           if (bg.includes("--" + stratumId)) return true;
           if (bg.includes("var(--" + stratumId + ")")) return true;
         }
