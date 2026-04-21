@@ -884,32 +884,33 @@
         gap: 14px;
       }
       .hero-product-quickref {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 8px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 6px;
+        align-items: center;
       }
       .hero-product-quickref-item {
-        padding: 11px 12px;
-        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 5px 11px;
+        border-radius: 20px;
         border: 1px solid rgba(148, 163, 184, 0.12);
-        background: linear-gradient(
-          180deg,
-          rgba(255, 255, 255, 0.045) 0%,
-          rgba(255, 255, 255, 0.02) 100%
-        );
+        background: rgba(255, 255, 255, 0.04);
       }
       .hero-product-quickref-item strong {
-        display: block;
-        margin-bottom: 4px;
-        font-size: 10px;
+        display: inline;
+        font-size: 9px;
         font-weight: 700;
-        letter-spacing: 0.9px;
+        letter-spacing: 0.8px;
         text-transform: uppercase;
         color: var(--text-quaternary);
+        margin: 0;
       }
       .hero-product-quickref-item span {
-        font-size: 12.5px;
-        line-height: 1.5;
+        font-size: 12px;
+        line-height: 1;
         color: var(--text-secondary);
       }
       .hero-product-callouts {
@@ -5098,7 +5099,7 @@
           justify-self: start;
         }
         .hero-product-quickref {
-          grid-template-columns: 1fr;
+          flex-wrap: wrap;
         }
         .hero-context-instruction-list {
           grid-template-columns: 1fr 1fr;
@@ -7649,11 +7650,34 @@
         <div class="surface-study-section">
           <div class="surface-study-caption">Surface Study</div>
           <div class="surface-switcher" role="group" aria-label="Surface style">
-            <button class="surface-option" data-surface-value="studio" onclick="setSurface('studio')" title="Studio — flat, dense, minimal blur">Studio</button>
-            <button class="surface-option active" data-surface-value="hybrid" onclick="setSurface('hybrid')" title="Hybrid — balanced matte/gloss (default)">Hybrid</button>
-            <button class="surface-option" data-surface-value="glass" onclick="setSurface('glass')" title="Glass — maximum blur and translucency">Glass</button>
+            <button
+              class="surface-option"
+              data-surface-value="studio"
+              onclick="setSurface('studio')"
+              title="Studio — flat, dense, minimal blur"
+            >
+              Studio
+            </button>
+            <button
+              class="surface-option active"
+              data-surface-value="hybrid"
+              onclick="setSurface('hybrid')"
+              title="Hybrid — balanced matte/gloss (default)"
+            >
+              Hybrid
+            </button>
+            <button
+              class="surface-option"
+              data-surface-value="glass"
+              onclick="setSurface('glass')"
+              title="Glass — maximum blur and translucency"
+            >
+              Glass
+            </button>
           </div>
-          <div class="surface-study-note" id="surfaceStudyNote">Hybrid — balanced matte/gloss</div>
+          <div class="surface-study-note" id="surfaceStudyNote">
+            Hybrid — balanced matte/gloss
+          </div>
         </div>
       </aside>
       <main class="main-canvas">
@@ -29469,20 +29493,28 @@
       const SURFACE_LABELS = {
         studio: "Studio — flat, dense, minimal blur",
         hybrid: "Hybrid — balanced matte/gloss",
-        glass:  "Glass — maximum blur and translucency",
+        glass: "Glass — maximum blur and translucency",
       };
       function setSurface(name) {
         document.body.setAttribute("data-surface", name);
-        document.querySelectorAll(".surface-option").forEach(btn => {
+        document.querySelectorAll(".surface-option").forEach((btn) => {
           btn.classList.toggle("active", btn.dataset.surfaceValue === name);
         });
         const note = document.getElementById("surfaceStudyNote");
         if (note) note.textContent = SURFACE_LABELS[name] || name;
-        try { localStorage.setItem("aos-surface", name); } catch(e) {}
+        try {
+          localStorage.setItem("aos-surface", name);
+        } catch (e) {}
       }
       // Restore persisted preference on load
-      (function() {
-        const saved = (() => { try { return localStorage.getItem("aos-surface"); } catch(e) { return null; } })();
+      (function () {
+        const saved = (() => {
+          try {
+            return localStorage.getItem("aos-surface");
+          } catch (e) {
+            return null;
+          }
+        })();
         setSurface(saved && SURFACE_LABELS[saved] ? saved : "hybrid");
       })();
 
@@ -30497,15 +30529,8 @@
             value: ENTITY_TYPE_LABELS[d.type] || "Product",
             raw: false,
           },
-          { label: "Vendor", value: d.vendor || "Unknown", raw: false },
           { label: "Deploy", value: d.deployment || "Unknown", raw: false },
-          { label: "License", value: d.license || "Unknown", raw: false },
-          {
-            label: "Confidence",
-            value: confidenceWithFreshness(d),
-            raw: false,
-          },
-          { label: "Axes", value: renderAxisFlags(d.axisRoles), raw: true },
+          { label: "Vendor", value: d.vendor || "Unknown", raw: false },
         ];
 
         return facts
