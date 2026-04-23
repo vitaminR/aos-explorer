@@ -4,12 +4,11 @@ import path from "path";
 const FILE_URL = `file:///${path.resolve(__dirname, "../prototype.html").replace(/\\/g, "/")}`;
 
 async function load(page: any) {
+  await page.addInitScript(() => {
+    localStorage.setItem("aosTourDone", "1");
+    localStorage.setItem("aosVisitCount", "4");
+  });
   await page.goto(FILE_URL, { waitUntil: "networkidle" });
-  const coachmark = page.locator("#coachmark");
-  if (await coachmark.isVisible()) {
-    await page.evaluate(() => (window as any).dismissCoach?.());
-    await page.waitForTimeout(300);
-  }
 }
 
 test.describe("T15 — Citation widget", () => {
@@ -117,6 +116,12 @@ test.describe("T15 — Citation widget", () => {
     // Wait for the cite trigger button
     const citeBtn = page.locator(".cite-trigger-btn");
     await expect(citeBtn).toBeVisible({ timeout: 5000 });
+    await expect(
+      page.locator("#heroContextDetail .hero-product-detail .cite-trigger-btn"),
+    ).toHaveCount(1);
+    await expect(
+      page.locator("#heroContextDetail .hero-context-grid .cite-trigger-btn"),
+    ).toHaveCount(0);
   });
 
   test("T15-12  cite button in product panel opens cite modal", async ({

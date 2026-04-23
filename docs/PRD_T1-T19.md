@@ -497,6 +497,7 @@ Features are grouped into four tiers by strategic role:
 **User story:** As a first-time visitor landing on the page, I understand within 3 seconds that the colored rows are interactive and I should click one to explore.
 
 **Goals:**
+
 - G1: Every stratum card has a visible static affordance (text, icon, or micro-label) that implies interactivity before hover
 - G2: Does not clutter the card — one small addition maximum
 - G3: Disappears or de-emphasizes after first click (don't teach forever)
@@ -522,6 +523,7 @@ Features are grouped into four tiers by strategic role:
 **User story:** As an architect evaluating orchestration tools, I click L4 and the right rail immediately shows only orchestration-mapped products, sorted by confidence score, with a count badge and a "Clear filter" link.
 
 **Goals:**
+
 - G1: Right rail product list filters to products with a primary or secondary mapping to the active stratum when a stratum is expanded
 - G2: Right rail header updates to "L4 — 8 Products" (or similar) to confirm the filter is active
 - G3: A single "Show all" reset link restores the full list
@@ -548,6 +550,7 @@ Features are grouped into four tiers by strategic role:
 **User story:** As a first-time visitor, the hero panel gives me a concrete next step rather than a generic instruction.
 
 **Goals:**
+
 - G1: The default hero panel state has a concrete, specific CTA that directs the user to their first action
 - G2: The CTA is consistent with the existing visual language (no new components)
 - G3: It disappears naturally once the user has interacted (hover, click, or search)

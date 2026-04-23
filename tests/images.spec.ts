@@ -4,7 +4,9 @@ import path from "path";
 const PROD = "https://aos-explorer.web.app";
 
 test.describe("Image loading — production", () => {
-  test.skip("prod docs.html — terminology primer image loads", async ({ page }) => {
+  test.skip("prod docs.html — terminology primer image loads", async ({
+    page,
+  }) => {
     // SKIPPED: docs.html is now text-only (no embedded images)
     await page.goto(`${PROD}/docs.html`, { waitUntil: "networkidle" });
     const images = page.locator("img");
@@ -45,6 +47,12 @@ test.describe("Image loading — production", () => {
       "relevance-score.png",
       "rerank-pipeline.png",
       "search-index.png",
+      // newly added governance / compliance infographics
+      "audit-entry.png",
+      "compliance-check.png",
+      "content-filter.png",
+      "evidence-chain.png",
+      "retention-policy.png",
     ];
     for (const file of samples) {
       const res = await request.get(`${PROD}/docs/infographic-output/${file}`);
@@ -54,13 +62,18 @@ test.describe("Image loading — production", () => {
 });
 
 test.describe("Image loading", () => {
-  test("docs.html — all images load successfully", async ({ page }) => {
+  test("docs.html — any present images load successfully", async ({ page }) => {
     const filePath = `file:///${path.resolve(__dirname, "../docs.html").replace(/\\/g, "/")}`;
     await page.goto(filePath, { waitUntil: "networkidle" });
 
     const images = page.locator("img");
     const count = await images.count();
-    expect(count).toBeGreaterThan(0);
+
+    // docs.html is currently text-first; zero images is acceptable.
+    if (count === 0) {
+      expect(count).toBe(0);
+      return;
+    }
 
     for (let i = 0; i < count; i++) {
       const img = images.nth(i);

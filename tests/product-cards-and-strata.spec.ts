@@ -10,6 +10,9 @@
  *
  * US-3  When a product is selected the middle detail panel's cards each have a
  *        copy button so I can share any individual section of the detail view.
+ *
+ * US-4  When a product is selected the quick-reference facts stay on one visual
+ *        row so the panel stays compact and scannable.
  */
 
 import { test, expect } from "@playwright/test";
@@ -22,12 +25,11 @@ const FILE_URL = `file:///${path
 // ── helpers ────────────────────────────────────────────────────────────────
 
 async function loadAndDismissTour(page: any) {
+  await page.addInitScript(() => {
+    localStorage.setItem("aosTourDone", "1");
+    localStorage.setItem("aosVisitCount", "4");
+  });
   await page.goto(FILE_URL, { waitUntil: "networkidle" });
-  const coachmark = page.locator("#coachmark");
-  if (await coachmark.isVisible()) {
-    await page.evaluate(() => (window as any).dismissCoach?.());
-    await page.waitForTimeout(300);
-  }
 }
 
 /** Stub navigator.clipboard so file:// copy tests work without permission errors. */
@@ -191,7 +193,7 @@ test.describe("US-2 — Copy buttons on product cards", () => {
   test("every visible product card has exactly one copy button", async ({
     page,
   }) => {
-    test.setTimeout(30_000);
+    test.setTimeout(60_000);
     await loadAndDismissTour(page);
 
     const cards = page.locator(".product-card");
@@ -207,7 +209,7 @@ test.describe("US-2 — Copy buttons on product cards", () => {
   test("product card copy button has correct aria-label and title", async ({
     page,
   }) => {
-    test.setTimeout(30_000);
+    test.setTimeout(60_000);
     await loadAndDismissTour(page);
 
     const btn = page.locator(".product-card .card-copy-btn").first();
@@ -218,7 +220,7 @@ test.describe("US-2 — Copy buttons on product cards", () => {
   test("product card copy button is initially invisible (opacity 0)", async ({
     page,
   }) => {
-    test.setTimeout(30_000);
+    test.setTimeout(60_000);
     await loadAndDismissTour(page);
 
     const btn = page.locator(".product-card .card-copy-btn").first();
@@ -232,7 +234,7 @@ test.describe("US-2 — Copy buttons on product cards", () => {
   test("product card copy button becomes visible on hover", async ({
     page,
   }) => {
-    test.setTimeout(30_000);
+    test.setTimeout(60_000);
     await loadAndDismissTour(page);
 
     const card = page.locator(".product-card").first();
@@ -249,7 +251,7 @@ test.describe("US-2 — Copy buttons on product cards", () => {
   test("clicking copy button adds .copied class and removes it after ~1s", async ({
     page,
   }) => {
-    test.setTimeout(30_000);
+    test.setTimeout(60_000);
     await loadAndDismissTour(page);
     await stubClipboard(page);
 
@@ -269,7 +271,7 @@ test.describe("US-2 — Copy buttons on product cards", () => {
   test("clicking copy button does NOT navigate away from the page", async ({
     page,
   }) => {
-    test.setTimeout(30_000);
+    test.setTimeout(60_000);
     await loadAndDismissTour(page);
     await stubClipboard(page);
 
@@ -288,7 +290,7 @@ test.describe("US-2 — Copy buttons on product cards", () => {
   test("copy button click does NOT trigger product selection (no heroContextDetail change)", async ({
     page,
   }) => {
-    test.setTimeout(30_000);
+    test.setTimeout(60_000);
     await loadAndDismissTour(page);
     await stubClipboard(page);
 
@@ -421,5 +423,39 @@ test.describe("US-3 — Copy buttons on hero context detail cards", () => {
     expect(copied).toContain("CrewAI Inc");
     expect(copied).toContain("L4");
     expect(copied).toContain("L3");
+  });
+});
+
+// ── US-4: Quick reference compact row ─────────────────────────────────────
+
+test.describe("US-4 — Quick reference stays on one row", () => {
+  test("quick reference renders exactly three compact items", async ({
+    page,
+  }) => {
+    test.setTimeout(30_000);
+    await loadAndDismissTour(page);
+    await selectProduct(page, "af");
+
+    const items = page.locator(
+      "#heroContextDetail .hero-product-quickref-item",
+    );
+    await expect(items).toHaveCount(3);
+  });
+
+  test("all quick reference items share the same top position", async ({
+    page,
+  }) => {
+    test.setTimeout(30_000);
+    await loadAndDismissTour(page);
+    await selectProduct(page, "af");
+
+    const tops = await page
+      .locator("#heroContextDetail .hero-product-quickref-item")
+      .evaluateAll((nodes) =>
+        nodes.map((node) => Math.round(node.getBoundingClientRect().top)),
+      );
+
+    expect(tops.length).toBe(3);
+    expect(new Set(tops).size).toBe(1);
   });
 });

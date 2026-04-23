@@ -6,6 +6,14 @@ const FILE_URL = `file:///${path
   .resolve(__dirname, "../prototype.html")
   .replace(/\\/g, "/")}`;
 
+async function loadWithoutTour(page: any) {
+  await page.addInitScript(() => {
+    localStorage.setItem("aosTourDone", "1");
+    localStorage.setItem("aosVisitCount", "4");
+  });
+  await page.goto(FILE_URL, { waitUntil: "networkidle" });
+}
+
 // Constructs we have infographics for — key maps to slug
 const WIRED = [
   { label: "Intent Object", slug: "intent-object", stratum: "l7s1" },
@@ -32,10 +40,15 @@ const WIRED = [
   { label: "Relevance Score", slug: "relevance-score", stratum: "l5s1" },
   { label: "Rerank Pipeline", slug: "rerank-pipeline", stratum: "l5s1" },
   { label: "Search Index", slug: "search-index", stratum: "l2s1" },
+  { label: "Audit Entry", slug: "audit-entry", stratum: "l6s3" },
+  { label: "Compliance Check", slug: "compliance-check", stratum: "l6s3" },
+  { label: "Retention Policy", slug: "retention-policy", stratum: "l6s3" },
+  { label: "Evidence Chain", slug: "evidence-chain", stratum: "l6s3" },
+  { label: "Content Filter", slug: "content-filter", stratum: "l6s4" },
 ];
 
 test.describe("Infographics wired into construct detail panel", () => {
-  test("infographic images exist on disk for all 20 primitives", () => {
+  test("infographic images exist on disk for all wired constructs", () => {
     for (const { slug } of WIRED) {
       const imgPath = path.resolve(
         __dirname,
@@ -52,14 +65,7 @@ test.describe("Infographics wired into construct detail panel", () => {
     page,
   }) => {
     test.setTimeout(60000);
-    await page.goto(FILE_URL, { waitUntil: "networkidle" });
-
-    // Dismiss the coachmark tour overlay if present
-    const coachmark = page.locator("#coachmark");
-    if (await coachmark.isVisible()) {
-      await page.evaluate(() => (window as any).dismissCoach());
-      await page.waitForTimeout(300);
-    }
+    await loadWithoutTour(page);
 
     // Expand L7 stratum
     await page.locator("#l7").click();
@@ -105,13 +111,7 @@ test.describe("Infographics wired into construct detail panel", () => {
     page,
   }) => {
     test.setTimeout(60000);
-    await page.goto(FILE_URL, { waitUntil: "networkidle" });
-
-    const coachmark = page.locator("#coachmark");
-    if (await coachmark.isVisible()) {
-      await page.evaluate(() => (window as any).dismissCoach());
-      await page.waitForTimeout(300);
-    }
+    await loadWithoutTour(page);
 
     await page.locator("#l7").click();
     await page.waitForTimeout(500);
@@ -157,13 +157,7 @@ test.describe("Infographics wired into construct detail panel", () => {
     page,
   }) => {
     test.setTimeout(60000);
-    await page.goto(FILE_URL, { waitUntil: "networkidle" });
-
-    const coachmark = page.locator("#coachmark");
-    if (await coachmark.isVisible()) {
-      await page.evaluate(() => (window as any).dismissCoach());
-      await page.waitForTimeout(300);
-    }
+    await loadWithoutTour(page);
 
     const hoverCoverage = await page.evaluate(() => {
       const chips = Array.from(
