@@ -4770,6 +4770,27 @@
       .header.compact-nav .nav-action .nav-icon {
         display: none;
       }
+      /* Hover: expand nav-action to show full label (instant expand, delayed collapse) */
+      .header.compact-nav .nav-action:hover {
+        width: auto;
+        min-width: auto;
+        padding: 0 12px;
+        gap: 6px;
+        font-size: 12px !important;
+        transition: width 0.15s ease 0s, min-width 0.15s ease 0s, padding 0.15s ease 0s, font-size 0s ease 0s;
+      }
+      .header.compact-nav .nav-action:hover::before {
+        content: none;
+      }
+      .header.compact-nav .nav-action:hover .nav-label,
+      .header.compact-nav .nav-action:hover .nav-icon {
+        display: inline-flex;
+        align-items: center;
+        font-size: 14px;
+      }
+      .header.compact-nav .nav-action:hover .nav-label {
+        font-size: 12px;
+      }
       .header.compact-nav .compare-basket-btn .badge {
         position: absolute;
         top: -4px;
@@ -4862,6 +4883,16 @@
         }
         .header .nav-action .nav-icon {
           font-size: 14px;
+        }
+        /* Hover: expand nav-action to show full label */
+        .header .nav-action:hover {
+          padding: 0 12px;
+          gap: 6px;
+          transition: padding 0.15s ease 0s, gap 0.15s ease 0s;
+        }
+        .header .nav-action:hover .nav-label {
+          display: inline;
+          font-size: 12px;
         }
         .header .compare-basket-btn .badge {
           position: absolute;
@@ -5048,24 +5079,34 @@
           display: none;
         }
         .mode-pill {
-          width: 28px;
-          min-width: 28px;
-          height: 28px;
+          width: 36px;
+          min-width: 36px;
+          height: 40px;
           padding: 0;
           font-size: 0;
           border-radius: 8px;
           display: inline-flex;
+          flex-direction: column;
           align-items: center;
           justify-content: center;
+          gap: 1px;
           overflow: hidden;
         }
         .mode-pill::before {
           content: attr(data-emoji);
           font-size: 13px;
         }
+        .mode-pill::after {
+          content: attr(data-short);
+          font-size: 7px;
+          font-weight: 700;
+          color: var(--text-quaternary);
+          line-height: 1;
+          pointer-events: none;
+        }
         .mode-pill.active {
-          width: 28px;
-          min-width: 28px;
+          width: 36px;
+          min-width: 36px;
           font-size: 0;
           background: rgba(129, 140, 248, 0.15);
           border-color: rgba(129, 140, 248, 0.4);
@@ -5074,14 +5115,19 @@
           content: attr(data-emoji);
           font-size: 13px;
         }
-        /* Nav action buttons: emoji-only icons */
+        .mode-pill.active::after {
+          color: var(--accent-indigo);
+        }
+        /* Nav action buttons: emoji + 3-letter label stacked */
         .header .nav-action {
-          width: 28px;
-          min-width: 28px;
-          height: 28px;
+          width: 36px;
+          min-width: 36px;
+          height: 40px;
           padding: 0;
           gap: 0;
+          flex-direction: column;
           justify-content: center;
+          align-items: center;
           font-size: 0 !important;
           border-radius: 8px;
           flex: 0 0 auto;
@@ -5091,6 +5137,16 @@
         }
         .header .nav-action .nav-icon {
           font-size: 13px;
+          line-height: 1;
+        }
+        .header .nav-action::after {
+          content: attr(data-short);
+          font-size: 7px;
+          font-weight: 700;
+          color: var(--text-quaternary);
+          line-height: 1;
+          margin-top: 1px;
+          pointer-events: none;
         }
         .compare-basket-btn .badge {
           font-size: 8px;
@@ -6770,26 +6826,7 @@
         }
       }
 
-      /* ===== U2: SINGLE-LETTER FALLBACK FOR MODE PILLS ===== */
-      .mode-pill[data-letter] {
-        position: relative;
-      }
-      @media (max-width: 1900px) {
-        .mode-pill:not(.active)[data-letter]::after {
-          content: attr(data-letter);
-          font-size: 8px;
-          font-weight: 600;
-          color: var(--text-quaternary);
-          position: absolute;
-          bottom: 0;
-          right: 2px;
-          line-height: 1;
-          pointer-events: none;
-        }
-        .mode-pill:not(.active):hover::after {
-          display: none;
-        }
-      }
+      /* ===== U2: SINGLE-LETTER FALLBACK — removed; hover-expand handles discovery ===== */
 
       /* ===== U3: HIDE EMPTY COMPARE BADGE ===== */
       .compare-basket-btn .badge[data-count="0"] {
@@ -7243,6 +7280,7 @@
           data-emoji="&#x1F9E9;"
           data-label="Products"
           data-letter="P"
+          data-short="Pro"
           onclick="setMode(this)"
           title="Products — Commercial &amp; open-source AI tools mapped to the stack"
         >
@@ -7253,6 +7291,7 @@
           data-emoji="&#x1F6E0;&#xFE0F;"
           data-label="Frameworks"
           data-letter="F"
+          data-short="Frm"
           onclick="setMode(this)"
           title="Frameworks — Reference models, orchestration libraries &amp; architectural taxonomies"
         >
@@ -7263,6 +7302,7 @@
           data-emoji="&#x1F504;"
           data-label="Workflows"
           data-letter="W"
+          data-short="Wfl"
           onclick="setMode(this)"
           title="Workflows — Multi-step orchestrated processes (CI/CD, RAG, eval loops)"
         >
@@ -7273,6 +7313,7 @@
           data-emoji="&#x1F916;"
           data-label="Agents"
           data-letter="A"
+          data-short="Agt"
           onclick="setMode(this)"
           title="Agents — Autonomous or semi-autonomous AI actors"
         >
@@ -7283,6 +7324,7 @@
           data-emoji="&#x1F3AF;"
           data-label="Skills"
           data-letter="S"
+          data-short="Ski"
           onclick="setMode(this)"
           title="Skills — Reusable capability modules (code review, testing, security)"
         >
@@ -7293,6 +7335,7 @@
           data-emoji="&#x1F50C;"
           data-label="MCPs"
           data-letter="M"
+          data-short="MCP"
           onclick="setMode(this)"
           title="MCPs — Model Context Protocol servers for tool integration"
         >
@@ -7303,6 +7346,7 @@
           data-emoji="&#x1F3C6;"
           data-label="Golden Path"
           data-letter="★"
+          data-short="GP"
           onclick="setMode(this)"
           title="Golden Path — Curated recommended stack for each stratum"
           style="
@@ -7316,6 +7360,7 @@
       <button
         class="compare-basket-btn nav-action"
         data-emoji="&#x2696;&#xFE0F;"
+        data-short="Cmp"
         onclick="toggleCompare()"
         title="Compare — Side-by-side comparison of up to 4 products across strata"
       >
@@ -7326,6 +7371,7 @@
       <a
         class="build-stack-btn nav-action"
         data-emoji="&#x1F9F1;"
+        data-short="Bld"
         href="stack-mapper.html"
         title="Build &amp; Rank your Agentic Stack — drag products, score maturity"
         id="buildStackNavBtn"
@@ -7338,6 +7384,7 @@
         class="compare-basket-btn nav-action"
         style="border-color: rgba(52, 211, 153, 0.3); color: #34d399"
         data-emoji="&#x1F4CA;"
+        data-short="Ins"
         onclick="openInsights()"
         title="Insights — Ecosystem Gap Map: where tooling is mature vs thin"
       >
@@ -7348,6 +7395,7 @@
         href="docs.html"
         class="docs-link nav-action"
         data-emoji="&#x1F4D6;"
+        data-short="Doc"
         title="Docs — Documentation, classification guide &amp; design system"
         style="
           font-size: 12px;
@@ -7373,6 +7421,7 @@
       <button
         class="changelog-nav-btn nav-action"
         data-emoji="&#x1F4DD;"
+        data-short="Chg"
         onclick="openChangelog()"
         title="Changelog — Version history and taxonomy releases"
         id="changelogNavBtn"
@@ -7384,6 +7433,7 @@
       <button
         class="tm-toggle-btn nav-action nav-overflow-collapsible"
         data-emoji="&#x1F55B;"
+        data-short="TM"
         onclick="openTimeMachine()"
         title="Time Machine — Scrub through historical snapshots of the catalog"
         id="timeMachineNavBtn"
@@ -7394,6 +7444,7 @@
       <button
         class="weekly-nav-btn nav-action nav-overflow-collapsible"
         data-emoji="&#x1F4E6;"
+        data-short="Wkl"
         onclick="openWeekly()"
         title="What's New — Weekly digest of ecosystem updates"
         id="weeklyNavBtn"
@@ -7405,6 +7456,7 @@
       <button
         class="share-btn nav-action nav-overflow-collapsible"
         data-emoji="&#x1F517;"
+        data-short="Shr"
         onclick="shareCurrentView()"
         title="Share — Copy a shareable link to the current view"
       >
