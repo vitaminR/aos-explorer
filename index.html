@@ -1574,7 +1574,7 @@
         border-style: dashed;
       }
       .confidence.stale {
-        background: rgba(148, 163, 184, 0.10);
+        background: rgba(148, 163, 184, 0.1);
         color: #94a3b8;
         border: 1px dashed rgba(148, 163, 184, 0.3);
       }
@@ -1587,7 +1587,7 @@
         width: 40px;
         height: 4px;
         border-radius: 2px;
-        background: rgba(255,255,255,0.06);
+        background: rgba(255, 255, 255, 0.06);
         margin-left: 6px;
         vertical-align: middle;
         overflow: hidden;
@@ -1597,9 +1597,15 @@
         border-radius: 2px;
         transition: width 0.3s ease;
       }
-      .freshness-bar .fill.fresh { background: #34d399; }
-      .freshness-bar .fill.aging { background: #fbbf24; }
-      .freshness-bar .fill.stale { background: #f87171; }
+      .freshness-bar .fill.fresh {
+        background: #34d399;
+      }
+      .freshness-bar .fill.aging {
+        background: #fbbf24;
+      }
+      .freshness-bar .fill.stale {
+        background: #f87171;
+      }
 
       .product-card.filtered-out,
       .stratum-card.search-hidden {
@@ -3111,6 +3117,14 @@
         <button class="mode-pill" onclick="setMode(this)">Agents</button>
         <button class="mode-pill" onclick="setMode(this)">Skills</button>
         <button class="mode-pill" onclick="setMode(this)">MCPs</button>
+        <button
+          class="mode-pill"
+          onclick="setMode(this)"
+          style="border-color: rgba(245, 158, 11, 0.55); color: #fbbf24"
+          title="Token efficiency: best reasoning per dollar"
+        >
+          &#x26A1; Efficiency
+        </button>
         <button
           class="mode-pill"
           onclick="setMode(this)"
@@ -6707,6 +6721,434 @@
           <span class="confidence high">0.83</span>
         </div>
 
+        <!-- ===== TOKEN EFFICIENCY CARDS ===== -->
+        <!-- Bang-for-buck ranked techniques. Score = reasoning quality / token cost. -->
+        <div
+          class="product-card"
+          data-name="Prompt Caching"
+          data-type="efficiency"
+          data-vendor="Anthropic / OpenAI"
+          data-deployment="Cloud"
+          data-license="Platform"
+          onclick="selectProduct('effPromptCache')"
+        >
+          <button
+            class="add-compare-btn"
+            onclick="
+              event.stopPropagation();
+              addToCompare(this, 'Prompt Caching');
+            "
+          >
+            +
+          </button>
+          <div class="name">&#x26A1; Prompt Caching</div>
+          <div class="vendor">Anthropic &middot; Cloud &middot; Platform</div>
+          <div class="strata-dots">
+            <div class="strata-dot" style="background: var(--l7)"></div>
+            <div class="strata-dot" style="background: var(--l6)"></div>
+            <div class="strata-dot active" style="background: var(--l5)"></div>
+            <div class="strata-dot active" style="background: var(--l4)"></div>
+            <div class="strata-dot" style="background: var(--l3)"></div>
+            <div class="strata-dot active" style="background: var(--l2)"></div>
+            <div class="strata-dot" style="background: var(--l1)"></div>
+          </div>
+          <div class="spans-label">
+            Value: 0.94 &middot; ~90% input cost cut on cache hits
+          </div>
+          <span class="confidence high">0.94</span>
+        </div>
+
+        <div
+          class="product-card"
+          data-name="Aider Repo Map"
+          data-type="efficiency"
+          data-vendor="Aider"
+          data-deployment="Local"
+          data-license="Open Source"
+          onclick="selectProduct('effRepoMap')"
+        >
+          <button
+            class="add-compare-btn"
+            onclick="
+              event.stopPropagation();
+              addToCompare(this, 'Aider Repo Map');
+            "
+          >
+            +
+          </button>
+          <div class="name">&#x26A1; Aider Repo Map</div>
+          <div class="vendor">Aider &middot; Local &middot; Open Source</div>
+          <div class="strata-dots">
+            <div class="strata-dot" style="background: var(--l7)"></div>
+            <div class="strata-dot" style="background: var(--l6)"></div>
+            <div class="strata-dot" style="background: var(--l5)"></div>
+            <div class="strata-dot" style="background: var(--l4)"></div>
+            <div class="strata-dot active" style="background: var(--l3)"></div>
+            <div class="strata-dot active" style="background: var(--l2)"></div>
+            <div class="strata-dot" style="background: var(--l1)"></div>
+          </div>
+          <div class="spans-label">
+            Value: 0.91 &middot; 1k-token skeleton vs full files
+          </div>
+          <span class="confidence high">0.91</span>
+        </div>
+
+        <div
+          class="product-card"
+          data-name="Tier-Routing (Haiku → Sonnet → Opus)"
+          data-type="efficiency"
+          data-vendor="Pattern"
+          data-deployment="Hybrid"
+          data-license="Pattern"
+          onclick="selectProduct('effTierRouting')"
+        >
+          <button
+            class="add-compare-btn"
+            onclick="
+              event.stopPropagation();
+              addToCompare(this, 'Tier-Routing');
+            "
+          >
+            +
+          </button>
+          <div class="name">&#x26A1; Tier-Routing</div>
+          <div class="vendor">Pattern &middot; Hybrid &middot; Pattern</div>
+          <div class="strata-dots">
+            <div class="strata-dot" style="background: var(--l7)"></div>
+            <div class="strata-dot" style="background: var(--l6)"></div>
+            <div class="strata-dot" style="background: var(--l5)"></div>
+            <div class="strata-dot active" style="background: var(--l4)"></div>
+            <div class="strata-dot" style="background: var(--l3)"></div>
+            <div class="strata-dot" style="background: var(--l2)"></div>
+            <div class="strata-dot active" style="background: var(--l1)"></div>
+          </div>
+          <div class="spans-label">
+            Value: 0.92 &middot; Cheap router + selective escalation
+          </div>
+          <span class="confidence high">0.92</span>
+        </div>
+
+        <div
+          class="product-card"
+          data-name="DeepSeek V3 / R1 Reasoning"
+          data-type="efficiency"
+          data-vendor="DeepSeek"
+          data-deployment="Cloud"
+          data-license="Open Source"
+          onclick="selectProduct('effDeepSeek')"
+        >
+          <button
+            class="add-compare-btn"
+            onclick="
+              event.stopPropagation();
+              addToCompare(this, 'DeepSeek V3 / R1');
+            "
+          >
+            +
+          </button>
+          <div class="name">&#x26A1; DeepSeek V3 / R1</div>
+          <div class="vendor">DeepSeek &middot; Cloud &middot; Open Source</div>
+          <div class="strata-dots">
+            <div class="strata-dot" style="background: var(--l7)"></div>
+            <div class="strata-dot" style="background: var(--l6)"></div>
+            <div class="strata-dot" style="background: var(--l5)"></div>
+            <div class="strata-dot" style="background: var(--l4)"></div>
+            <div class="strata-dot" style="background: var(--l3)"></div>
+            <div class="strata-dot" style="background: var(--l2)"></div>
+            <div class="strata-dot active" style="background: var(--l1)"></div>
+          </div>
+          <div class="spans-label">
+            Value: 0.92 &middot; SOTA reasoning at ~10% Claude cost
+          </div>
+          <span class="confidence high">0.92</span>
+        </div>
+
+        <div
+          class="product-card"
+          data-name="DSPy Prompt Compilation"
+          data-type="efficiency"
+          data-vendor="Stanford NLP"
+          data-deployment="Local"
+          data-license="Open Source"
+          onclick="selectProduct('effDSPy')"
+        >
+          <button
+            class="add-compare-btn"
+            onclick="
+              event.stopPropagation();
+              addToCompare(this, 'DSPy Prompt Compilation');
+            "
+          >
+            +
+          </button>
+          <div class="name">&#x26A1; DSPy Compilation</div>
+          <div class="vendor">
+            Stanford NLP &middot; Local &middot; Open Source
+          </div>
+          <div class="strata-dots">
+            <div class="strata-dot" style="background: var(--l7)"></div>
+            <div class="strata-dot" style="background: var(--l6)"></div>
+            <div class="strata-dot active" style="background: var(--l5)"></div>
+            <div class="strata-dot active" style="background: var(--l4)"></div>
+            <div class="strata-dot" style="background: var(--l3)"></div>
+            <div class="strata-dot" style="background: var(--l2)"></div>
+            <div class="strata-dot" style="background: var(--l1)"></div>
+          </div>
+          <div class="spans-label">
+            Value: 0.88 &middot; Auto-optimized minimal prompts
+          </div>
+          <span class="confidence high">0.88</span>
+        </div>
+
+        <div
+          class="product-card"
+          data-name="Subagent Context Isolation"
+          data-type="efficiency"
+          data-vendor="Pattern"
+          data-deployment="Local"
+          data-license="Pattern"
+          onclick="selectProduct('effSubagent')"
+        >
+          <button
+            class="add-compare-btn"
+            onclick="
+              event.stopPropagation();
+              addToCompare(this, 'Subagent Context Isolation');
+            "
+          >
+            +
+          </button>
+          <div class="name">&#x26A1; Subagent Isolation</div>
+          <div class="vendor">Pattern &middot; Local &middot; Pattern</div>
+          <div class="strata-dots">
+            <div class="strata-dot" style="background: var(--l7)"></div>
+            <div class="strata-dot" style="background: var(--l6)"></div>
+            <div class="strata-dot" style="background: var(--l5)"></div>
+            <div class="strata-dot active" style="background: var(--l4)"></div>
+            <div class="strata-dot" style="background: var(--l3)"></div>
+            <div class="strata-dot active" style="background: var(--l2)"></div>
+            <div class="strata-dot" style="background: var(--l1)"></div>
+          </div>
+          <div class="spans-label">
+            Value: 0.87 &middot; Fresh window blocks main-thread bloat
+          </div>
+          <span class="confidence high">0.87</span>
+        </div>
+
+        <div
+          class="product-card"
+          data-name="Plan-then-Execute (Architect Mode)"
+          data-type="efficiency"
+          data-vendor="Aider / BMAD"
+          data-deployment="Local"
+          data-license="Open Source"
+          onclick="selectProduct('effArchitect')"
+        >
+          <button
+            class="add-compare-btn"
+            onclick="
+              event.stopPropagation();
+              addToCompare(this, 'Plan-then-Execute');
+            "
+          >
+            +
+          </button>
+          <div class="name">&#x26A1; Plan-then-Execute</div>
+          <div class="vendor">
+            Aider / BMAD &middot; Local &middot; Open Source
+          </div>
+          <div class="strata-dots">
+            <div class="strata-dot" style="background: var(--l7)"></div>
+            <div class="strata-dot" style="background: var(--l6)"></div>
+            <div class="strata-dot" style="background: var(--l5)"></div>
+            <div class="strata-dot active" style="background: var(--l4)"></div>
+            <div class="strata-dot active" style="background: var(--l3)"></div>
+            <div class="strata-dot" style="background: var(--l2)"></div>
+            <div class="strata-dot" style="background: var(--l1)"></div>
+          </div>
+          <div class="spans-label">
+            Value: 0.86 &middot; Cuts re-planning loop tokens ~30-40%
+          </div>
+          <span class="confidence high">0.86</span>
+        </div>
+
+        <div
+          class="product-card"
+          data-name="Semantic Search RAG"
+          data-type="efficiency"
+          data-vendor="Pattern"
+          data-deployment="Hybrid"
+          data-license="Mixed"
+          onclick="selectProduct('effRAG')"
+        >
+          <button
+            class="add-compare-btn"
+            onclick="
+              event.stopPropagation();
+              addToCompare(this, 'Semantic Search RAG');
+            "
+          >
+            +
+          </button>
+          <div class="name">&#x26A1; Semantic Search RAG</div>
+          <div class="vendor">Pattern &middot; Hybrid &middot; Mixed</div>
+          <div class="strata-dots">
+            <div class="strata-dot" style="background: var(--l7)"></div>
+            <div class="strata-dot" style="background: var(--l6)"></div>
+            <div class="strata-dot" style="background: var(--l5)"></div>
+            <div class="strata-dot" style="background: var(--l4)"></div>
+            <div class="strata-dot active" style="background: var(--l3)"></div>
+            <div class="strata-dot active" style="background: var(--l2)"></div>
+            <div class="strata-dot" style="background: var(--l1)"></div>
+          </div>
+          <div class="spans-label">
+            Value: 0.85 &middot; Pull only relevant chunks
+          </div>
+          <span class="confidence high">0.85</span>
+        </div>
+
+        <div
+          class="product-card"
+          data-name="Tool-Result Truncation"
+          data-type="efficiency"
+          data-vendor="Pattern"
+          data-deployment="Local"
+          data-license="Pattern"
+          onclick="selectProduct('effTruncation')"
+        >
+          <button
+            class="add-compare-btn"
+            onclick="
+              event.stopPropagation();
+              addToCompare(this, 'Tool-Result Truncation');
+            "
+          >
+            +
+          </button>
+          <div class="name">&#x26A1; Tool-Result Truncation</div>
+          <div class="vendor">Pattern &middot; Local &middot; Pattern</div>
+          <div class="strata-dots">
+            <div class="strata-dot" style="background: var(--l7)"></div>
+            <div class="strata-dot" style="background: var(--l6)"></div>
+            <div class="strata-dot active" style="background: var(--l5)"></div>
+            <div class="strata-dot" style="background: var(--l4)"></div>
+            <div class="strata-dot active" style="background: var(--l3)"></div>
+            <div class="strata-dot" style="background: var(--l2)"></div>
+            <div class="strata-dot" style="background: var(--l1)"></div>
+          </div>
+          <div class="spans-label">
+            Value: 0.81 &middot; Cap shell/MCP outputs at boundary
+          </div>
+          <span class="confidence med">0.81</span>
+        </div>
+
+        <div
+          class="product-card"
+          data-name="ReAct Pattern"
+          data-type="efficiency"
+          data-vendor="Yao et al. (2022)"
+          data-deployment="Local"
+          data-license="Open Source"
+          onclick="selectProduct('effReAct')"
+        >
+          <button
+            class="add-compare-btn"
+            onclick="
+              event.stopPropagation();
+              addToCompare(this, 'ReAct Pattern');
+            "
+          >
+            +
+          </button>
+          <div class="name">&#x26A1; ReAct Pattern</div>
+          <div class="vendor">Research &middot; Local &middot; Open</div>
+          <div class="strata-dots">
+            <div class="strata-dot" style="background: var(--l7)"></div>
+            <div class="strata-dot" style="background: var(--l6)"></div>
+            <div class="strata-dot" style="background: var(--l5)"></div>
+            <div class="strata-dot active" style="background: var(--l4)"></div>
+            <div class="strata-dot active" style="background: var(--l3)"></div>
+            <div class="strata-dot" style="background: var(--l2)"></div>
+            <div class="strata-dot" style="background: var(--l1)"></div>
+          </div>
+          <div class="spans-label">
+            Value: 0.78 &middot; Verbose but baseline-reliable loop
+          </div>
+          <span class="confidence med">0.78</span>
+        </div>
+
+        <div
+          class="product-card"
+          data-name="CodeBurn Cost Telemetry"
+          data-type="efficiency"
+          data-vendor="AgentSeal"
+          data-deployment="Local"
+          data-license="Open Source"
+          onclick="selectProduct('effCodeBurn')"
+        >
+          <button
+            class="add-compare-btn"
+            onclick="
+              event.stopPropagation();
+              addToCompare(this, 'CodeBurn Cost Telemetry');
+            "
+          >
+            +
+          </button>
+          <div class="name">&#x26A1; CodeBurn Telemetry</div>
+          <div class="vendor">
+            AgentSeal &middot; Local &middot; Open Source
+          </div>
+          <div class="strata-dots">
+            <div class="strata-dot" style="background: var(--l7)"></div>
+            <div class="strata-dot" style="background: var(--l6)"></div>
+            <div class="strata-dot active" style="background: var(--l5)"></div>
+            <div class="strata-dot" style="background: var(--l4)"></div>
+            <div class="strata-dot" style="background: var(--l3)"></div>
+            <div class="strata-dot" style="background: var(--l2)"></div>
+            <div class="strata-dot" style="background: var(--l1)"></div>
+          </div>
+          <div class="spans-label">
+            Value: 0.83 &middot; Per-call $ + one-shot rate
+          </div>
+          <span class="confidence high">0.83</span>
+        </div>
+
+        <div
+          class="product-card"
+          data-name="Context Compression (LongRoPE / H2O)"
+          data-type="efficiency"
+          data-vendor="Research"
+          data-deployment="Cloud"
+          data-license="Mixed"
+          onclick="selectProduct('effCompress')"
+        >
+          <button
+            class="add-compare-btn"
+            onclick="
+              event.stopPropagation();
+              addToCompare(this, 'Context Compression');
+            "
+          >
+            +
+          </button>
+          <div class="name">&#x26A1; Context Compression</div>
+          <div class="vendor">Research &middot; Cloud &middot; Mixed</div>
+          <div class="strata-dots">
+            <div class="strata-dot" style="background: var(--l7)"></div>
+            <div class="strata-dot" style="background: var(--l6)"></div>
+            <div class="strata-dot" style="background: var(--l5)"></div>
+            <div class="strata-dot" style="background: var(--l4)"></div>
+            <div class="strata-dot" style="background: var(--l3)"></div>
+            <div class="strata-dot active" style="background: var(--l2)"></div>
+            <div class="strata-dot active" style="background: var(--l1)"></div>
+          </div>
+          <div class="spans-label">
+            Value: 0.79 &middot; KV-cache pruning, token elimination
+          </div>
+          <span class="confidence med">0.79</span>
+        </div>
+
         <hr
           style="
             border: none;
@@ -7290,7 +7732,10 @@
       }
       function freshnessPercent(lastVerified) {
         const days = daysSinceVerified(lastVerified);
-        return Math.max(0, Math.min(100, Math.round((1 - days / FRESHNESS_WINDOW_DAYS) * 100)));
+        return Math.max(
+          0,
+          Math.min(100, Math.round((1 - days / FRESHNESS_WINDOW_DAYS) * 100)),
+        );
       }
       function freshnessClass(lastVerified) {
         const pct = freshnessPercent(lastVerified);
@@ -7303,7 +7748,7 @@
       }
       function confidenceWithFreshness(d) {
         const stale = isStale(d.lastVerified);
-        const tier = stale ? "stale" : (d.confidence >= 0.8 ? "high" : "medium");
+        const tier = stale ? "stale" : d.confidence >= 0.8 ? "high" : "medium";
         const icon = stale ? '<span class="stale-icon">&#x23F3;</span> ' : "";
         const prefix = d.confidence >= 0.8 && !stale ? "" : "~";
         const pct = freshnessPercent(d.lastVerified);
@@ -7314,6 +7759,177 @@
       }
 
       const PRODUCT_DETAILS = {
+        // ===== TOKEN EFFICIENCY ENTRIES (bang-for-buck) =====
+        // Each `confidence` field is reused as a Value Score.
+        effPromptCache: {
+          name: "Prompt Caching",
+          type: "efficiency",
+          vendor: "Anthropic / OpenAI",
+          deployment: "Cloud",
+          license: "Platform feature",
+          primary: "L2 Knowledge & Memory",
+          secondary: "L4, L5",
+          axisRoles: "Governance: Light · Observability: Medium",
+          confidence: 0.94,
+          lastVerified: "2026-04-25",
+          rationale:
+            "Anthropic prompt caching cuts cached input tokens to ~10% of normal price (write 1.25x, read 0.1x). On long agentic loops where the same system prompt + tool defs + repo context are re-sent every turn, this is the single biggest win available — typical 70–90% input-token reduction over a multi-turn session. Pair with stable system prompts and a static tool registry to maximize cache hit rate.",
+        },
+        effRepoMap: {
+          name: "Aider Repo Map",
+          type: "efficiency",
+          vendor: "Aider",
+          deployment: "Local",
+          license: "Open Source",
+          primary: "L2 Knowledge & Memory",
+          secondary: "L3",
+          axisRoles: "Governance: Light · Observability: Medium",
+          confidence: 0.91,
+          lastVerified: "2026-04-25",
+          rationale:
+            "Instead of dumping whole files into context, Aider sends a graph-ranked skeleton of the repo (functions, classes, imports) — typically ~1k tokens for repos that would otherwise need 50k+ tokens of full source. Combined with on-demand /read for specific files, this is the cheapest way to give a model meaningful repo understanding without burning the context window.",
+        },
+        effTierRouting: {
+          name: "Tier-Routing (Haiku → Sonnet → Opus)",
+          type: "efficiency",
+          vendor: "Pattern (Codepro standard)",
+          deployment: "Hybrid",
+          license: "Pattern",
+          primary: "L4 Orchestration & Decisioning",
+          secondary: "L1",
+          axisRoles: "Governance: Medium · Observability: Strong",
+          confidence: 0.92,
+          lastVerified: "2026-04-25",
+          rationale:
+            "Cheap router model (Haiku-tier) classifies the task and only escalates to Sonnet for normal work or Opus for true architecture problems. The Codepro budget rules (block Opus 4.7 unless user confirms, hard-lock under $2 remaining) implement this directly. In production this routinely cuts spend 60–80% vs 'Opus everywhere' while preserving quality on the work that needs it.",
+        },
+        effDeepSeek: {
+          name: "DeepSeek V3 / R1 Reasoning",
+          type: "efficiency",
+          vendor: "DeepSeek",
+          deployment: "Cloud / self-host",
+          license: "Open Source weights",
+          primary: "L1 Models & Infrastructure",
+          secondary: "—",
+          axisRoles: "Governance: Self · Observability: Self",
+          confidence: 0.92,
+          lastVerified: "2026-04-25",
+          rationale:
+            "DeepSeek V3 / R1 deliver SOTA-class reasoning at roughly 5–10% of Claude/GPT pricing, with open weights available for self-hosting. The trade-off is slower reasoning latency (longer chains-of-thought) — but per the user's premise this is exactly the 'takes longer but saves tokens long-term' bet. Best deployed as the reasoning tier behind a router that uses Sonnet/Opus only when DeepSeek fails the gate.",
+        },
+        effDSPy: {
+          name: "DSPy Prompt Compilation",
+          type: "efficiency",
+          vendor: "Stanford NLP",
+          deployment: "Local",
+          license: "Open Source",
+          primary: "L4 Orchestration & Decisioning",
+          secondary: "L5",
+          axisRoles: "Governance: Light · Observability: Medium",
+          confidence: 0.88,
+          lastVerified: "2026-04-25",
+          rationale:
+            "DSPy treats prompts as compiled artifacts: you specify the I/O signature and a metric, then DSPy optimizes the prompt to be as short as possible while still passing the metric. Removes hand-tuned mega-prompts and replaces them with minimal, evaluated programs. Big win where the same prompt runs many times — the optimization cost amortizes immediately.",
+        },
+        effSubagent: {
+          name: "Subagent Context Isolation",
+          type: "efficiency",
+          vendor: "Pattern (Claude Code, Codex Task tool)",
+          deployment: "Local",
+          license: "Pattern",
+          primary: "L4 Orchestration & Decisioning",
+          secondary: "L2",
+          axisRoles: "Governance: Medium · Observability: Medium",
+          confidence: 0.87,
+          lastVerified: "2026-04-25",
+          rationale:
+            "Spawn a subagent for narrow tasks (research, file scan, refactor) with its own fresh context window. The parent receives only the final summary — typically 200–800 tokens — instead of inheriting the subagent's exploratory churn. Prevents the main thread from bloating into 100k+ context, which is where per-turn cost balloons.",
+        },
+        effArchitect: {
+          name: "Plan-then-Execute (Architect Mode)",
+          type: "efficiency",
+          vendor: "Aider / BMAD",
+          deployment: "Local",
+          license: "Open Source",
+          primary: "L4 Orchestration & Decisioning",
+          secondary: "L3",
+          axisRoles: "Governance: Medium · Observability: Medium",
+          confidence: 0.86,
+          lastVerified: "2026-04-25",
+          rationale:
+            "Plan once with the strong (expensive) reasoner, then hand the plan to a cheap executor for mechanical edits. Aider's Architect/Editor split and BMAD's Architect→Dev role separation both implement this. Cuts per-iteration tokens 30–40% versus a pure ReAct loop where every step re-derives the plan.",
+        },
+        effRAG: {
+          name: "Semantic Search RAG",
+          type: "efficiency",
+          vendor: "Pattern (LlamaIndex / Pinecone / Chroma)",
+          deployment: "Hybrid",
+          license: "Mixed",
+          primary: "L2 Knowledge & Memory",
+          secondary: "L3",
+          axisRoles: "Governance: Light · Observability: Light",
+          confidence: 0.85,
+          lastVerified: "2026-04-25",
+          rationale:
+            "Embed the corpus once, retrieve only the top-k relevant chunks per query. Beats 'paste the whole doc into context' by 1–2 orders of magnitude on input tokens for any non-trivial knowledge base. Quality depends heavily on chunking strategy and reranker — without those it can underperform a focused full-document prompt.",
+        },
+        effTruncation: {
+          name: "Tool-Result Truncation",
+          type: "efficiency",
+          vendor: "Pattern",
+          deployment: "Local",
+          license: "Pattern",
+          primary: "L3 Execution & Interfaces",
+          secondary: "L5",
+          axisRoles: "Governance: Light · Observability: Medium",
+          confidence: 0.81,
+          lastVerified: "2026-04-25",
+          rationale:
+            "Cap shell/MCP/tool outputs at the boundary (e.g. first/last N lines, byte limits, regex filtering). A single un-truncated `npm install` log can dump 10k tokens of noise into context. Boring but cumulatively one of the highest-ROI hygiene rules.",
+        },
+        effReAct: {
+          name: "ReAct Pattern",
+          type: "efficiency",
+          vendor: "Yao et al. (2022)",
+          deployment: "Local",
+          license: "Open Source pattern",
+          primary: "L4 Orchestration & Decisioning",
+          secondary: "L3",
+          axisRoles: "Governance: Light · Observability: Medium",
+          confidence: 0.78,
+          lastVerified: "2026-04-25",
+          rationale:
+            "The reason+act+observe loop. Reliable and ubiquitous (every major framework supports it), but verbose — each step re-narrates reasoning, which inflates tokens. Listed here as the baseline you measure savings against. Plan-then-Execute, DSPy, and Subagent Isolation all dominate ReAct on tokens; ReAct still wins when the path is genuinely unknown.",
+        },
+        effCodeBurn: {
+          name: "CodeBurn Cost Telemetry",
+          type: "efficiency",
+          vendor: "AgentSeal",
+          deployment: "Local",
+          license: "Open Source",
+          primary: "L5 Observability & Evaluation",
+          secondary: "—",
+          axisRoles: "Governance: Light · Observability: Strong",
+          confidence: 0.83,
+          lastVerified: "2026-04-25",
+          rationale:
+            "Reads ~/.claude and ~/.codex session files, computes per-task cost, model breakdown, and one-shot success rate. You cannot optimize what you cannot measure — efficient stacks always include a telemetry layer. Codepro wires this into /codeburn and the budget gates.",
+        },
+        effCompress: {
+          name: "Context Compression (LongRoPE / H2O)",
+          type: "efficiency",
+          vendor: "Research",
+          deployment: "Cloud / self-host",
+          license: "Mixed",
+          primary: "L1 Models & Infrastructure",
+          secondary: "L2",
+          axisRoles: "Governance: Self · Observability: Self",
+          confidence: 0.79,
+          lastVerified: "2026-04-25",
+          rationale:
+            "Inference-time techniques (KV-cache eviction, token-elimination heads, LongRoPE position interpolation) that let you serve long contexts without paying full quadratic attention cost. Mostly relevant if you self-host; on the API tiers you get this implicitly via prompt caching. Listed for completeness — it's where the frontier is going.",
+        },
+
         af: {
           name: "Azure AI Foundry",
           type: "product",
@@ -17816,11 +18432,49 @@
         Agents: "agent",
         Skills: "skill",
         MCPs: "mcp",
+        "\u26A1 Efficiency": "efficiency",
         "Golden Path": null,
       };
 
       // ===== META BUILDS DATA =====
       const META_BUILDS = [
+        {
+          id: "tokeneff",
+          icon: "⚡",
+          title: "Token Efficiency Stack",
+          accent: "#FBBF24",
+          why: "Maximize reasoning per dollar. Optimized for long-running agentic loops where input tokens dominate cost. Slower wall-clock per step, but the wins compound — more tasks completed per budget cycle.",
+          stack: [
+            {
+              l: "l7",
+              text: "Plan-first UX (Architect mode). User confirms plan once → executor runs without re-prompting.",
+            },
+            {
+              l: "l6",
+              text: "Hard token budgets per task, max-context guards, kill-switch on runaway loops, /cost gate before Opus tier.",
+            },
+            {
+              l: "l5",
+              text: "CodeBurn telemetry, per-call $ tracking, one-shot rate, daily/weekly trend, alert when >$5/day.",
+            },
+            {
+              l: "l4",
+              text: "Tier-routing (Haiku → Sonnet → Opus), DSPy compiled prompts, Subagent isolation for narrow scans, BMAD/Aider Architect→Editor split.",
+            },
+            {
+              l: "l3",
+              text: "Aider Repo Map (skeleton not full files), tool-result truncation at boundary, scoped MCP servers, on-demand /read.",
+            },
+            {
+              l: "l2",
+              text: "Anthropic prompt caching (90% read discount), semantic-search RAG over full-file dumps, persistent /memories instead of re-stating context.",
+            },
+            {
+              l: "l1",
+              text: "DeepSeek V3 / R1 for cheap reasoning baseline, Sonnet 4.5 for normal coding, Opus 4.7 only on confirmed architecture problems.",
+            },
+          ],
+        },
         {
           id: "vscode",
           icon: "💎",
@@ -18118,6 +18772,7 @@
           Agents: "Agents",
           Skills: "Skills",
           MCPs: "MCP Servers",
+          "\u26A1 Efficiency": "Token Efficiency",
           "Golden Path": "Golden Path",
         };
         header.textContent = headerMap[currentMode] || "Featured Products";
@@ -18156,6 +18811,11 @@
             icon: "&#x1F50C;",
             title: "MCP Servers",
             desc: "Model Context Protocol servers that expose tools, resources, and prompts to LLM-based agents. Click any card for details.",
+          },
+          "\u26A1 Efficiency": {
+            icon: "&#x26A1;",
+            title: "Token Efficiency",
+            desc: "Frameworks, skills, and tools ranked by <strong>reasoning value per token</strong>. The Value Score weighs reasoning quality, token cost, and end-to-end task throughput. Higher scores survive longer runs because the wins compound. Click any card for the rationale and the cost-saving mechanism it exploits.",
           },
         };
         const hint = hintMap[currentMode] || {
@@ -19749,7 +20409,7 @@
             </div>
 
             <div class="an-footer">
-              <span class="brand-a">{</span><span class="brand-a">a</span><span class="brand-a">}</span>OS Explorer · Last verified: ${d.lastVerified || "—"} · ${isStale(d.lastVerified) ? '<span style="color:#f87171">&#x23F3; Stale — reassessment needed</span>' : 'Reassess quarterly'}
+              <span class="brand-a">{</span><span class="brand-a">a</span><span class="brand-a">}</span>OS Explorer · Last verified: ${d.lastVerified || "—"} · ${isStale(d.lastVerified) ? '<span style="color:#f87171">&#x23F3; Stale — reassessment needed</span>' : "Reassess quarterly"}
             </div>`;
         document.getElementById("analyticsOverlay").classList.add("visible");
         document.getElementById("analyticsContent").scrollTop = 0;
