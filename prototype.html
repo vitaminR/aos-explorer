@@ -3240,6 +3240,31 @@
       .right-rail .product-card.stratum-filtered-out {
         display: none !important;
       }
+      .right-rail-empty-state {
+        display: none;
+        margin: 0 0 16px;
+        padding: 14px 16px;
+        border: 1px dashed var(--border);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text-tertiary);
+        font-size: 12px;
+        line-height: 1.6;
+      }
+      .right-rail-empty-state.visible {
+        display: block;
+      }
+      .right-rail-empty-state strong {
+        color: var(--text-secondary);
+      }
+      .right-rail-empty-state a {
+        color: var(--accent-indigo);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .right-rail-empty-state a:hover {
+        text-decoration: underline;
+      }
 
       /* ===== PRODUCT LENS (dimmed strata) ===== */
       .stratum-card.dimmed {
@@ -9975,6 +10000,12 @@
             <div class="compare-body" id="compareBody"></div>
           </div>
         </div>
+
+        <div
+          class="right-rail-empty-state"
+          id="rightRailEmptyState"
+          aria-live="polite"
+        ></div>
 
         <div
           class="product-card"
@@ -25785,33 +25816,39 @@
 
       // ===== EXPAND / COLLAPSE ALL =====
       let allExpanded = false;
-      function toggleExpandAll() {
+      function syncExpandAllButton() {
         const btn = document.getElementById("expandAllBtn");
+        if (!btn) return;
+        btn.innerHTML = allExpanded
+          ? "&#x2195; Collapse All"
+          : "&#x2195; Expand All";
+      }
+      function toggleExpandAll() {
         const cards = document.querySelectorAll(
           ".stratum-card:not(.search-hidden):not(.dimmed)",
         );
         allExpanded = !allExpanded;
+        if (!allExpanded) {
+          collapseAll();
+          resetBreadcrumb();
+          refreshAxisBandsAfterTransition();
+          return;
+        }
         cards.forEach((card) => {
-          if (allExpanded) {
-            card.classList.add("expanded");
-          } else {
-            card.classList.remove("expanded");
-            card
-              .querySelectorAll(".construct-panel.visible")
-              .forEach((p) => p.classList.remove("visible"));
-            card
-              .querySelectorAll(".construct-chip.expanded")
-              .forEach((c) => c.classList.remove("expanded"));
-          }
+          card.classList.add("expanded");
         });
-        btn.innerHTML = allExpanded
-          ? "&#x2195; Collapse All"
-          : "&#x2195; Expand All";
+        expandedStratum = null;
+        setStackKeyboardFocus("stratum", null);
+        if (!activeLensProduct) filterRailByStratum(null);
+        syncExpandAllButton();
         refreshAxisBandsAfterTransition();
       }
 
       function toggleStratum(card, id) {
         const wasExpanded = card.classList.contains("expanded");
+
+        allExpanded = false;
+        syncExpandAllButton();
 
         // T20: mark user as toured on first stratum interaction
         markToured();
@@ -26356,6 +26393,9 @@
           });
         expandedStratum = null;
         setStackKeyboardFocus("stratum", null);
+        allExpanded = false;
+        syncExpandAllButton();
+        if (!activeLensProduct) filterRailByStratum(null);
       }
       function collapseSubs() {
         document.querySelectorAll(".construct-panel.visible").forEach((p) => {
@@ -29080,7 +29120,11 @@
       }
 
       function isProductCardVisible(card) {
-        return !!card && !card.classList.contains("filtered-out");
+        return (
+          !!card &&
+          !card.classList.contains("filtered-out") &&
+          !card.classList.contains("stratum-filtered-out")
+        );
       }
 
       function getRankedProductEntries(entries = []) {
@@ -29287,32 +29331,13 @@
           blankSlate.style.display = "none";
         }
 
-        // Blank slate: filter empty state (PRD 6.5.2)
-        let filterBlank = document.getElementById("filterBlankSlate");
-        if (!filterBlank) {
-          filterBlank = document.createElement("div");
-          filterBlank.id = "filterBlankSlate";
-          filterBlank.style.cssText =
-            "text-align:center;padding:20px 16px;color:var(--text-tertiary);font-size:12px;display:none;border:1px dashed var(--border);border-radius:10px;margin-top:8px;";
-          document
-            .querySelector(".right-rail")
-            .insertBefore(
-              filterBlank,
-              document.querySelector(".right-rail hr"),
-            );
-        }
         const hasActiveFilter =
           filterState.type !== "All" ||
           filterState.vendor !== "All" ||
           filterState.deployment !== "All" ||
           filterState.license !== "All" ||
           filterState.stratum !== "All";
-        if (visibleProducts === 0 && (q || hasActiveFilter)) {
-          filterBlank.innerHTML = `No products match these filters. <span style="cursor:pointer;color:var(--accent-indigo);text-decoration:underline" onclick="clearAllFilters({ resetModeLabel: 'Products' })">Clear all filters</span>`;
-          filterBlank.style.display = "block";
-        } else {
-          filterBlank.style.display = "none";
-        }
+        updateRightRailEmptyState();
 
         // Update active filter bar + product count
         updateActiveFilterBar(visibleProducts, q);
@@ -29751,6 +29776,7 @@
         l2: "L2 Knowledge",
         l1: "L1 Models",
       };
+      let activeRightRailStratumFilter = null;
       function productCardMatchesStratum(card, stratumId) {
         const dots = card.querySelectorAll(".strata-dots .strata-dot.active");
         for (const dot of dots) {
@@ -29764,31 +29790,79 @@
         if (attr && attr.split(/[,\s]+/).includes(stratumId)) return true;
         return false;
       }
+      function updateRightRailEmptyState() {
+        const emptyState = document.getElementById("rightRailEmptyState");
+        if (!emptyState) return;
+
+        const query = document.getElementById("searchInput")?.value?.trim() || "";
+        const hasActiveFilter =
+          filterState.type !== "All" ||
+          filterState.vendor !== "All" ||
+          filterState.deployment !== "All" ||
+          filterState.license !== "All" ||
+          filterState.stratum !== "All";
+        const visibleCards = document.querySelectorAll(
+          ".right-rail .product-card:not(.filtered-out):not(.stratum-filtered-out)",
+        ).length;
+        const stratumScopedCount = activeRightRailStratumFilter
+          ? document.querySelectorAll(
+              ".right-rail .product-card:not(.stratum-filtered-out)",
+            ).length
+          : visibleCards;
+
+        if (activeRightRailStratumFilter && visibleCards === 0) {
+          const label =
+            STRATUM_LABELS[activeRightRailStratumFilter] ||
+            activeRightRailStratumFilter.toUpperCase();
+
+          if (stratumScopedCount === 0) {
+            emptyState.innerHTML = `No featured products map to <strong>${label}</strong> yet. <a href="#" onclick="event.preventDefault(); filterRailByStratum(null);">Show all featured products</a>`;
+          } else {
+            emptyState.innerHTML = `No <strong>${label}</strong> products match your current search or filters. <a href="#" onclick="event.preventDefault(); clearAllFilters({ resetModeLabel: 'Products' });">Clear all filters</a>`;
+          }
+
+          emptyState.classList.add("visible");
+          return;
+        }
+
+        if (visibleCards === 0 && (query || hasActiveFilter)) {
+          emptyState.innerHTML = `No products match these filters. <a href="#" onclick="event.preventDefault(); clearAllFilters({ resetModeLabel: 'Products' });">Clear all filters</a>`;
+          emptyState.classList.add("visible");
+          return;
+        }
+
+        emptyState.classList.remove("visible");
+        emptyState.innerHTML = "";
+      }
       function filterRailByStratum(stratumId) {
         const cards = document.querySelectorAll(".right-rail .product-card");
         if (!cards.length) return;
         const header = document.getElementById("rightRailHeader");
+        activeRightRailStratumFilter = stratumId || null;
         if (!stratumId) {
           cards.forEach((c) => c.classList.remove("stratum-filtered-out"));
           if (header) header.textContent = "Featured Products";
+          updateRightRailEmptyState();
           return;
         }
-        let matched = 0;
         cards.forEach((card) => {
           if (productCardMatchesStratum(card, stratumId)) {
             card.classList.remove("stratum-filtered-out");
-            matched++;
           } else {
             card.classList.add("stratum-filtered-out");
           }
         });
         if (header) {
           const label = STRATUM_LABELS[stratumId] || stratumId.toUpperCase();
+          const visibleCards = document.querySelectorAll(
+            ".right-rail .product-card:not(.filtered-out):not(.stratum-filtered-out)",
+          ).length;
           header.innerHTML =
-            `${label} · <span style="opacity:0.85">${matched} product${matched === 1 ? "" : "s"}</span> ` +
+            `${label} · <span style="opacity:0.85">${visibleCards} product${visibleCards === 1 ? "" : "s"}</span> ` +
             `<a href="#" style="margin-left:8px;font-size:11px;color:var(--accent-indigo);text-decoration:none" ` +
             `onclick="event.preventDefault(); filterRailByStratum(null);">Show all</a>`;
         }
+        updateRightRailEmptyState();
       }
 
       // ===== COACHMARKS =====
@@ -32268,7 +32342,7 @@
       function navigateProducts(direction) {
         const cards = Array.from(
           document.querySelectorAll(
-            '.product-card:not(.filtered-out):not([style*="display: none"])',
+            '.product-card:not(.filtered-out):not(.stratum-filtered-out):not([style*="display: none"])',
           ),
         );
         if (!cards.length) return;
@@ -34829,7 +34903,7 @@
           if (e.key === "Enter" && kbProductIndex >= 0) {
             const cards = Array.from(
               document.querySelectorAll(
-                '.product-card:not(.filtered-out):not([style*="display: none"])',
+                '.product-card:not(.filtered-out):not(.stratum-filtered-out):not([style*="display: none"])',
               ),
             );
             if (cards[kbProductIndex]) cards[kbProductIndex].click();
