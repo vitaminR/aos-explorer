@@ -4777,7 +4777,11 @@
         padding: 0 12px;
         gap: 6px;
         font-size: 12px !important;
-        transition: width 0.15s ease 0s, min-width 0.15s ease 0s, padding 0.15s ease 0s, font-size 0s ease 0s;
+        transition:
+          width 0.15s ease 0s,
+          min-width 0.15s ease 0s,
+          padding 0.15s ease 0s,
+          font-size 0s ease 0s;
       }
       .header.compact-nav .nav-action:hover::before {
         content: none;
@@ -4888,7 +4892,9 @@
         .header .nav-action:hover {
           padding: 0 12px;
           gap: 6px;
-          transition: padding 0.15s ease 0s, gap 0.15s ease 0s;
+          transition:
+            padding 0.15s ease 0s,
+            gap 0.15s ease 0s;
         }
         .header .nav-action:hover .nav-label {
           display: inline;
@@ -5036,20 +5042,23 @@
 
       @media (max-width: 640px) {
         .header {
-          height: 48px;
-          flex-wrap: nowrap;
-          padding: 0 10px;
-          gap: 6px;
+          height: auto;
+          min-height: 48px;
+          flex-wrap: wrap;
+          padding: 10px;
+          gap: 8px;
+          align-items: center;
         }
         .logo {
+          order: 1;
           font-size: 13px;
           flex: 0 0 auto;
         }
         .search-bar {
-          flex: 1 1 0;
-          min-width: 0;
+          order: 2;
+          flex: 1 1 170px;
+          min-width: 150px;
           max-width: none;
-          order: 0;
         }
         .search-bar input {
           font-size: 13px;
@@ -5063,34 +5072,45 @@
           font-size: 12px;
           left: 10px;
         }
-        /* Mode pills: single row of emojis, no text */
+        .nav-overflow {
+          order: 3;
+          margin-left: auto;
+        }
+        .nav-overflow-trigger {
+          width: 36px;
+          height: 36px;
+        }
+        /* Mode pills: dedicated horizontal scroll row */
         .mode-pills {
           display: flex !important;
-          gap: 2px;
+          order: 4;
+          width: 100%;
+          flex: 1 0 100%;
+          gap: 6px;
           overflow-x: auto;
           flex-wrap: nowrap;
-          order: 0;
-          flex: 0 0 auto;
-          justify-content: center;
+          justify-content: flex-start;
           -webkit-overflow-scrolling: touch;
           scrollbar-width: none;
+          padding-bottom: 2px;
         }
         .mode-pills::-webkit-scrollbar {
           display: none;
         }
         .mode-pill {
-          width: 36px;
-          min-width: 36px;
-          height: 40px;
-          padding: 0;
+          width: auto;
+          min-width: max-content;
+          height: 32px;
+          padding: 0 10px;
           font-size: 0;
-          border-radius: 8px;
+          border-radius: 999px;
           display: inline-flex;
-          flex-direction: column;
+          flex-direction: row;
           align-items: center;
           justify-content: center;
-          gap: 1px;
-          overflow: hidden;
+          gap: 6px;
+          overflow: visible;
+          white-space: nowrap;
         }
         .mode-pill::before {
           content: attr(data-emoji);
@@ -5098,15 +5118,15 @@
         }
         .mode-pill::after {
           content: attr(data-short);
-          font-size: 7px;
+          font-size: 10px;
           font-weight: 700;
           color: var(--text-quaternary);
           line-height: 1;
           pointer-events: none;
         }
         .mode-pill.active {
-          width: 36px;
-          min-width: 36px;
+          width: auto;
+          min-width: max-content;
           font-size: 0;
           background: rgba(129, 140, 248, 0.15);
           border-color: rgba(129, 140, 248, 0.4);
@@ -5118,34 +5138,34 @@
         .mode-pill.active::after {
           color: var(--accent-indigo);
         }
-        /* Nav action buttons: emoji + 3-letter label stacked */
-        .header .nav-action {
-          width: 36px;
-          min-width: 36px;
-          height: 40px;
-          padding: 0;
-          gap: 0;
-          flex-direction: column;
+        /* Key nav actions: dedicated mobile action row */
+        .header > .nav-action {
+          order: 5;
+          width: auto;
+          min-width: max-content;
+          height: 32px;
+          padding: 0 10px;
+          gap: 6px;
+          flex-direction: row;
           justify-content: center;
           align-items: center;
           font-size: 0 !important;
-          border-radius: 8px;
+          border-radius: 999px;
           flex: 0 0 auto;
         }
-        .header .nav-action .nav-label {
+        .header > .nav-action .nav-label {
           display: none;
         }
-        .header .nav-action .nav-icon {
+        .header > .nav-action .nav-icon {
           font-size: 13px;
           line-height: 1;
         }
-        .header .nav-action::after {
+        .header > .nav-action::after {
           content: attr(data-short);
-          font-size: 7px;
+          font-size: 10px;
           font-weight: 700;
           color: var(--text-quaternary);
           line-height: 1;
-          margin-top: 1px;
           pointer-events: none;
         }
         .compare-basket-btn .badge {
@@ -5170,15 +5190,23 @@
         }
         .left-rail {
           display: none;
+          order: 1;
+          padding: 12px 14px 8px;
+          border-right: none;
+          border-bottom: 1px solid var(--border);
+          background: rgba(10, 12, 15, 0.92);
+        }
+        body.mobile-controls-open .left-rail {
+          display: block;
         }
         .right-rail {
           border-left: none;
           border-top: 1px solid var(--border);
-          order: 2;
+          order: 3;
         }
         .main-canvas {
-          padding: 12px 16px;
-          order: 1;
+          padding: 12px 12px 16px;
+          order: 2;
         }
         .hero-lens-name {
           font-size: 22px;
@@ -5200,7 +5228,7 @@
           justify-self: start;
         }
         .hero-product-quickref {
-          flex-wrap: nowrap;
+          flex-wrap: wrap;
         }
         .hero-context-instruction-list {
           grid-template-columns: 1fr 1fr;
@@ -6883,9 +6911,34 @@
         color: var(--accent-indigo);
         flex-shrink: 0;
       }
+      .mobile-controls-toggle {
+        display: none;
+        margin-left: auto;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        padding: 5px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(129, 140, 248, 0.2);
+        background: rgba(129, 140, 248, 0.08);
+        color: var(--accent-indigo);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        cursor: pointer;
+        flex-shrink: 0;
+      }
+      .mobile-controls-toggle[aria-expanded="true"] {
+        background: rgba(129, 140, 248, 0.14);
+        border-color: rgba(129, 140, 248, 0.35);
+      }
       @media (max-width: 640px) {
         .mobile-loc-bar {
           display: flex;
+          gap: 8px;
+        }
+        .mobile-controls-toggle {
+          display: inline-flex;
         }
       }
 
@@ -7133,16 +7186,22 @@
         .hero-tagline {
           font-size: 12px;
         }
-        .mode-pills {
-          flex-wrap: wrap;
-          gap: 4px;
-        }
-        .mode-pill {
-          font-size: 11px;
-          padding: 5px 10px;
+        .header {
+          padding: 8px;
+          gap: 6px;
         }
         .search-bar {
-          margin: 0 8px;
+          flex: 1 1 100%;
+          min-width: 0;
+        }
+        .mode-pill,
+        .header > .nav-action {
+          height: 30px;
+          padding: 0 9px;
+        }
+        .mode-pill::after,
+        .header > .nav-action::after {
+          font-size: 9px;
         }
         .expand-all-btn {
           font-size: 10px;
@@ -7162,37 +7221,24 @@
           padding: 10px;
         }
         .right-rail {
-          padding: 8px;
-        }
-        .left-rail {
-          display: none;
+          padding: 8px 10px 16px;
         }
         .main-canvas {
-          padding: 0 4px;
-        }
-        .header {
-          padding: 8px 12px;
-        }
-        .header-actions {
-          gap: 4px;
-        }
-        .header-actions button {
-          font-size: 10px;
-          padding: 5px 8px;
+          padding: 0 6px 12px;
         }
         .quick-filters {
           flex-wrap: wrap;
         }
-        .quick-filter-btn {
-          font-size: 10px;
-        }
         .afb-tag {
           font-size: 10px;
         }
-        .share-btn,
-        .suggest-cta {
-          font-size: 10px;
-          padding: 5px 10px;
+        .mobile-loc-bar {
+          padding: 6px 8px;
+          gap: 6px;
+        }
+        .mobile-loc-pill,
+        .mobile-controls-toggle {
+          font-size: 9px;
         }
       }
 
@@ -7512,6 +7558,16 @@
       <span class="mobile-loc-pill" id="mobileLocMode">&#x1F9E9; Products</span>
       <span style="color: var(--text-quaternary)">&#x203A;</span>
       <span class="mobile-loc-pill" id="mobileLocStratum">L7 Experience</span>
+      <button
+        class="mobile-controls-toggle"
+        id="mobileControlsToggle"
+        type="button"
+        onclick="toggleMobileControls()"
+        aria-expanded="false"
+        aria-controls="filterRailSection"
+      >
+        &#x2630; Browse
+      </button>
     </div>
 
     <!-- T5: TIME MACHINE BAR -->
@@ -26958,9 +27014,25 @@
         if (!headerEl) return;
 
         const isMobile = window.matchMedia("(max-width: 640px)").matches;
+        const mobileControlsToggle = document.getElementById(
+          "mobileControlsToggle",
+        );
         if (isMobile) {
           headerEl.classList.remove("compact-nav", "tiny-nav");
+          if (
+            mobileControlsToggle &&
+            !document.body.classList.contains("mobile-controls-open")
+          ) {
+            mobileControlsToggle.innerHTML = "&#x2630; Browse";
+            mobileControlsToggle.setAttribute("aria-expanded", "false");
+          }
           return;
+        }
+
+        document.body.classList.remove("mobile-controls-open");
+        if (mobileControlsToggle) {
+          mobileControlsToggle.innerHTML = "&#x2630; Browse";
+          mobileControlsToggle.setAttribute("aria-expanded", "false");
         }
 
         headerEl.classList.remove("compact-nav", "tiny-nav");
@@ -29960,15 +30032,47 @@
         }
       })();
 
+      function toggleMobileControls(forceOpen) {
+        if (!window.matchMedia("(max-width: 640px)").matches) return;
+
+        const nextState =
+          typeof forceOpen === "boolean"
+            ? forceOpen
+            : !document.body.classList.contains("mobile-controls-open");
+        const toggle = document.getElementById("mobileControlsToggle");
+
+        document.body.classList.toggle("mobile-controls-open", nextState);
+
+        if (toggle) {
+          toggle.innerHTML = nextState ? "&#x2715; Close" : "&#x2630; Browse";
+          toggle.setAttribute("aria-expanded", nextState ? "true" : "false");
+        }
+      }
+
       function focusFilterRail() {
         const leftRail = document.querySelector(".left-rail");
         const filterRail = document.getElementById("filterRailSection");
         if (!leftRail || !filterRail) return;
-        leftRail.classList.add("hint-filter-glow");
-        filterRail.scrollIntoView({ behavior: "smooth", block: "center" });
-        setTimeout(() => {
-          leftRail.classList.remove("hint-filter-glow");
-        }, 1400);
+        const isMobile = window.matchMedia("(max-width: 640px)").matches;
+
+        if (isMobile) {
+          toggleMobileControls(true);
+        }
+
+        const revealFilterRail = () => {
+          leftRail.classList.add("hint-filter-glow");
+          filterRail.scrollIntoView({ behavior: "smooth", block: "center" });
+          setTimeout(() => {
+            leftRail.classList.remove("hint-filter-glow");
+          }, 1400);
+        };
+
+        if (isMobile) {
+          setTimeout(revealFilterRail, 60);
+          return;
+        }
+
+        revealFilterRail();
       }
 
       // ===== HINT CHIP: FILTER GLOW ON HOVER =====
@@ -31019,9 +31123,9 @@
         l6: "L6 Governance",
         l5: "L5 Observability",
         l4: "L4 Orchestration",
-        l3: "L3 Memory",
-        l2: "L2 Integration",
-        l1: "L1 Infrastructure",
+        l3: "L3 Execution",
+        l2: "L2 Knowledge",
+        l1: "L1 Models",
       };
       function syncMobileLocBar() {
         const modeEl = document.getElementById("mobileLocMode");
