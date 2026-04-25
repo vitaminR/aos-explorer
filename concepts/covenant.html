@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{a}OS Concept — Execution Harness</title>
+  <title>{a}OS Concept — Agent Covenant</title>
   <style>
     :root {
       --bg: #0f0f14;
@@ -48,60 +48,57 @@
   </style>
 </head>
 <body>
-  <a class="back" href="../prototype.html#concept=harness">← Back to Explorer</a>
+  <a class="back" href="../prototype.html#concept=covenant">← Back to Explorer</a>
 
-  <h1>Execution Harness</h1>
-  <div class="slug">/harness</div>
-  <div class="short-def">A governing scaffold that constrains sequencing, context budgets, checkpoints, and stop conditions.</div>
+  <h1>Agent Covenant</h1>
+  <div class="slug">/covenant</div>
+  <div class="short-def">A formal pledge of agent capabilities, performance, and safety guarantees: latency, accuracy, uptime, and compliance.</div>
 
   <div class="meta">
-    <span>Strata: <strong>L0, L4</strong></span>
-    <span>Axes: <strong>Orchestration</strong></span>
-    <span>Status: <strong>complete</strong></span>
+    <span>Strata: <strong>L0</strong></span>
+    <span>Axes: <strong>Governance, Observability</strong></span>
+    <span>Status: <strong>seed</strong></span>
   </div>
 
   <section>
     <h2>Explainer</h2>
-    <p>A harness sits at L0/L4 (Meta/Orchestration) and is the assembled agent bundle: model + tools + memory + orchestration + policy. It defines how work is done, not just what to do. It wraps an agent or pipeline with lifecycle controls — sequencing steps, enforcing context budgets, persisting checkpoints, and triggering stop conditions. Examples include execution harnesses (GSD, BMAD), test harnesses (Superpowers), and CI/CD harnesses (Harness.io). Not to be confused with the agent or the tools it calls — the harness is the governing scaffold around them.</p>
+    <p>A covenant is the behavioral contract between an agent and its users/operators. It specifies: what the agent commits to do (capability boundary), how fast (latency SLA), with what accuracy (quality threshold), under what conditions (fault resilience), and in compliance with what policies (safety constraints). Covenants are machine-testable — they become the basis for automated eval frameworks and production monitoring.</p>
   </section>
 
   <section>
     <h2>Anti-Patterns</h2>
     <ul>
-      <li>Bolting agent execution onto generic container orchestrators without native lifecycle support leads to fragile systems that crash mid-task.</li>
+      <li>Deploying agents without explicit performance guarantees or safety pledges leads to misaligned expectations and production surprises.</li>
     </ul>
   </section>
 
   <section>
     <h2>Mitigations</h2>
     <ul>
-      <li>Utilize a dedicated agent runtime harness that natively provides durable execution, state isolation, and lifecycle management from day one.</li>
+      <li>Define a machine-testable covenant for each agent: capability boundary, latency SLA, quality threshold, fault resilience, and compliance policies. Instrument monitoring and evals against this covenant.</li>
     </ul>
   </section>
 
   <section>
     <h2>Top Products</h2>
     <ul>
-      <li><code>bmad</code></li>
-      <li><code>gsd</code></li>
-      <li><code>superpowers</code></li>
+      <li>None mapped yet.</li>
     </ul>
   </section>
 
   <section>
     <h2>Related Concepts</h2>
     <ul>
-      <li><a href="loop-core.html">loop-core</a> · <a href="../prototype.html#concept=loop-core" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
-      <li><a href="guardrails.html">guardrails</a> · <a href="../prototype.html#concept=guardrails" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
-      <li><a href="checkpoint.html">checkpoint</a> · <a href="../prototype.html#concept=checkpoint" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+      <li><a href="harness.html">harness</a> · <a href="../prototype.html#concept=harness" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+      <li><a href="persona.html">persona</a> · <a href="../prototype.html#concept=persona" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+      <li><a href="stack.html">stack</a> · <a href="../prototype.html#concept=stack" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
     </ul>
   </section>
 
   <section>
     <h2>Sources</h2>
     <ul>
-      <li><a href="../docs.html#glossary">Glossary — docs.html</a></li>
-      <li><a href="../prototype.html#concept=harness">Open in Explorer →</a></li>
+      <li><a href="../prototype.html#concept=covenant">Open in Explorer →</a></li>
     </ul>
   </section>
 

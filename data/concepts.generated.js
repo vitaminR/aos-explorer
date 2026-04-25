@@ -10,11 +10,14 @@
       "harnes",
       "orchestration harness",
       "execution harness",
-      "delivery harness"
+      "delivery harness",
+      "layer 0",
+      "stratum 0"
     ],
     "shortDefinition": "A governing scaffold that constrains sequencing, context budgets, checkpoints, and stop conditions.",
-    "explainer": "A harness sits at L4 (Orchestration) and defines how work is done, not just what to do. It wraps an agent or pipeline with lifecycle controls \u2014 sequencing steps, enforcing context budgets, persisting checkpoints, and triggering stop conditions. Examples include execution harnesses (GSD, BMAD), test harnesses (Superpowers), and CI/CD harnesses (Harness.io). Not to be confused with the agent or the tools it calls \u2014 the harness is the governing scaffold around them.",
+    "explainer": "A harness sits at L0/L4 (Meta/Orchestration) and is the assembled agent bundle: model + tools + memory + orchestration + policy. It defines how work is done, not just what to do. It wraps an agent or pipeline with lifecycle controls \u2014 sequencing steps, enforcing context budgets, persisting checkpoints, and triggering stop conditions. Examples include execution harnesses (GSD, BMAD), test harnesses (Superpowers), and CI/CD harnesses (Harness.io). Not to be confused with the agent or the tools it calls \u2014 the harness is the governing scaffold around them.",
     "strata": [
+      "L0",
       "L4"
     ],
     "axes": [
@@ -353,6 +356,293 @@
     "reviewPolicy": "quarterly",
     "confidence": 0.7,
     "status": "seed"
+  },
+  "stack": {
+    "slug": "stack",
+    "name": "Agentic Stack",
+    "aliases": [
+      "stack",
+      "agent stack",
+      "full stack"
+    ],
+    "shortDefinition": "Complete 7-layer configuration for a domain: model + memory + tools + orchestration + UX + governance.",
+    "explainer": "A stack is the full end-to-end instantiation of all 7 strata optimized for a specific domain or use case. It's not just the technologies, but their wiring: which model, which memory backend, which tool set, which orchestration pattern, which UI paradigm, and which governance policies. Stacks are repeatable blueprints \u2014 once assembled and battle-tested, they can be cloned for similar use cases. Examples: research loop stack, customer service stack, code generation stack.",
+    "strata": [
+      "L0"
+    ],
+    "axes": [
+      "Orchestration"
+    ],
+    "relatedProductIds": [],
+    "relatedConceptSlugs": [
+      "harness",
+      "persona",
+      "pattern",
+      "covenant"
+    ],
+    "antiPatterns": [
+      "Hand-assembling agents from loose components without a reproducible stack template leads to drift, inconsistency, and high maintenance cost across multiple similar applications."
+    ],
+    "mitigations": [
+      "Define canonical stacks as blueprints: reusable 7L configurations that can be versioned, tested, and cloned for new instances."
+    ],
+    "sources": [],
+    "freshnessTier": "A",
+    "lastReviewed": "2026-04-17",
+    "reviewPolicy": "quarterly",
+    "confidence": 0.88,
+    "status": "seed",
+    "hidden": true,
+    "easterEgg": true
+  },
+  "persona": {
+    "slug": "persona",
+    "name": "Agent Persona",
+    "aliases": [
+      "persona",
+      "identity",
+      "role",
+      "instructions",
+      "agent persona"
+    ],
+    "shortDefinition": "The identity, voice, role, and behavioral directives that define an agent's character and operating principles.",
+    "explainer": "A persona is the coherent identity and behavioral contract of an agent. It encompasses role (what the agent is), voice (how it communicates), core values (what it prioritizes), constraints (what it won't do), and operating principles (how it makes decisions). A well-defined persona ensures consistency across all interactions and makes agent behavior predictable and auditable. Personas can be hard-coded in system prompts, learned from examples, or emergent from reward models.",
+    "strata": [
+      "L0"
+    ],
+    "axes": [
+      "Governance"
+    ],
+    "relatedProductIds": [],
+    "relatedConceptSlugs": [
+      "harness",
+      "covenant",
+      "stack"
+    ],
+    "antiPatterns": [
+      "Deploying agents without a clear, documented persona results in unpredictable behavior and difficulty in debugging misalignment."
+    ],
+    "mitigations": [
+      "Define a canonical persona for each agent: explicit role, voice guidelines, core values, and decision-making principles."
+    ],
+    "sources": [],
+    "freshnessTier": "A",
+    "lastReviewed": "2026-04-17",
+    "reviewPolicy": "quarterly",
+    "confidence": 0.82,
+    "status": "seed",
+    "hidden": true,
+    "easterEgg": true
+  },
+  "pattern": {
+    "slug": "pattern",
+    "name": "Agentic Pattern",
+    "aliases": [
+      "pattern",
+      "orchestration pattern",
+      "control pattern",
+      "ReAct",
+      "chain of thought"
+    ],
+    "shortDefinition": "Repeatable architectural patterns for orchestrating agent reasoning, action, and feedback loops.",
+    "explainer": "Agentic patterns are proven choreographies of reasoning \u2192 planning \u2192 execution \u2192 evaluation. Examples include ReAct (Reasoning + Acting), Chain-of-Thought (CoT), Self-Ask, Tree-of-Thought, and multi-agent debate. A pattern defines the structure of the control loop and the format of prompts, but is agnostic to the underlying model or tools. Patterns are composable \u2014 they can be nested or sequenced to build complex multi-stage pipelines.",
+    "strata": [
+      "L0"
+    ],
+    "axes": [
+      "Orchestration"
+    ],
+    "relatedProductIds": [],
+    "relatedConceptSlugs": [
+      "harness",
+      "loop-core",
+      "stack"
+    ],
+    "antiPatterns": [
+      "Designing orchestration logic ad-hoc for each new task duplicates effort, introduces subtle bugs, and makes it impossible to compare or optimize approaches."
+    ],
+    "mitigations": [
+      "Identify and document repeatable patterns (ReAct, CoT, debate, retrieval loops) and encode them as reusable, testable orchestration templates."
+    ],
+    "sources": [],
+    "freshnessTier": "A",
+    "lastReviewed": "2026-04-17",
+    "reviewPolicy": "quarterly",
+    "confidence": 0.85,
+    "status": "seed",
+    "hidden": true,
+    "easterEgg": true
+  },
+  "config": {
+    "slug": "config",
+    "name": "Agent Configuration",
+    "aliases": [
+      "config",
+      "configuration",
+      "instantiation",
+      "parameters",
+      "agent config"
+    ],
+    "shortDefinition": "Runtime parameters that instantiate a harness for a specific task or domain: model, temperature, tools, context budget, etc.",
+    "explainer": "Configuration is the set of declarative, runtime-modifiable knobs that turn a generic harness into a domain-specific agent. Examples: which LLM, temperature, top-k, tool set, max context window, timeout, max retries, memory backend, guardrail policies. Good configs are externalized and version-controlled, making it easy to A/B test, audit, and roll back changes without code changes.",
+    "strata": [
+      "L0"
+    ],
+    "axes": [
+      "Orchestration",
+      "Governance"
+    ],
+    "relatedProductIds": [],
+    "relatedConceptSlugs": [
+      "harness",
+      "covenant",
+      "stack"
+    ],
+    "antiPatterns": [
+      "Hardcoding agent parameters (model, temperature, tool list) into application code makes it impossible to tune without redeploy and prevents safe A/B testing."
+    ],
+    "mitigations": [
+      "Externalize all agent configuration into declarative files or services that can be modified, versioned, and rolled back independently of application code."
+    ],
+    "sources": [],
+    "freshnessTier": "A",
+    "lastReviewed": "2026-04-17",
+    "reviewPolicy": "quarterly",
+    "confidence": 0.8,
+    "status": "seed",
+    "hidden": true,
+    "easterEgg": true
+  },
+  "covenant": {
+    "slug": "covenant",
+    "name": "Agent Covenant",
+    "aliases": [
+      "covenant",
+      "SLA",
+      "guarantee",
+      "pledge",
+      "behavioral contract"
+    ],
+    "shortDefinition": "A formal pledge of agent capabilities, performance, and safety guarantees: latency, accuracy, uptime, and compliance.",
+    "explainer": "A covenant is the behavioral contract between an agent and its users/operators. It specifies: what the agent commits to do (capability boundary), how fast (latency SLA), with what accuracy (quality threshold), under what conditions (fault resilience), and in compliance with what policies (safety constraints). Covenants are machine-testable \u2014 they become the basis for automated eval frameworks and production monitoring.",
+    "strata": [
+      "L0"
+    ],
+    "axes": [
+      "Governance",
+      "Observability"
+    ],
+    "relatedProductIds": [],
+    "relatedConceptSlugs": [
+      "harness",
+      "persona",
+      "stack"
+    ],
+    "antiPatterns": [
+      "Deploying agents without explicit performance guarantees or safety pledges leads to misaligned expectations and production surprises."
+    ],
+    "mitigations": [
+      "Define a machine-testable covenant for each agent: capability boundary, latency SLA, quality threshold, fault resilience, and compliance policies. Instrument monitoring and evals against this covenant."
+    ],
+    "sources": [],
+    "freshnessTier": "A",
+    "lastReviewed": "2026-04-17",
+    "reviewPolicy": "quarterly",
+    "confidence": 0.78,
+    "status": "seed",
+    "hidden": true,
+    "easterEgg": true
+  },
+  "decoupled-architecture": {
+    "slug": "decoupled-architecture",
+    "name": "Decoupled Architecture",
+    "aliases": [
+      "decoupled architecture",
+      "decoupled archetecture",
+      "decoupled-archetecture",
+      "decoupled-architecture",
+      "event-driven architecture",
+      "loose coupling",
+      "contract-driven design",
+      "interface segregation"
+    ],
+    "shortDefinition": "System design where agent components communicate via typed contracts rather than direct calls, enabling independent deployment and evolution.",
+    "explainer": "Decoupled Architecture is the practice of separating agent components \u2014 planners, executors, memory, tools, evaluators \u2014 so that each communicates only through well-defined interface contracts rather than direct function calls or shared mutable state. At L3 (Execution), this means tools and sub-agents expose typed input/output schemas (see Pydantic Contracts). At L4 (Orchestration), this means the orchestrator treats each sub-agent as a black box it can swap without rewiring the pipeline. The key benefit: any component can be upgraded, scaled, or replaced without cascading changes. Common patterns include event buses, message queues, and typed RPC schemas. Anti-pattern: tightly-coupled pipelines where a planner directly imports executor internals, making the system impossible to test or evolve in isolation.",
+    "strata": [
+      "L3",
+      "L4"
+    ],
+    "axes": [
+      "Orchestration",
+      "Execution"
+    ],
+    "relatedProductIds": [
+      "langgraph",
+      "langchain",
+      "claudecode"
+    ],
+    "relatedConceptSlugs": [
+      "harness",
+      "pydantic-contracts",
+      "loop-core"
+    ],
+    "antiPatterns": [
+      "Tightly-coupled pipelines where the orchestrator directly imports executor internals make individual components impossible to test, replace, or scale independently."
+    ],
+    "mitigations": [
+      "Define typed interface contracts at every component boundary. Use event buses or message queues between planners, executors, and evaluators. Validate contracts automatically with Pydantic or JSON Schema."
+    ],
+    "sources": [],
+    "freshnessTier": "A",
+    "lastReviewed": "2026-04-25",
+    "reviewPolicy": "quarterly",
+    "confidence": 0.88,
+    "status": "seed"
+  },
+  "pydantic-contracts": {
+    "slug": "pydantic-contracts",
+    "name": "Pydantic Contracts",
+    "aliases": [
+      "pydantic contracts",
+      "pydantic-contracts",
+      "pydantic",
+      "typed schemas",
+      "typed contracts",
+      "schema validation",
+      "structured outputs",
+      "output schema"
+    ],
+    "shortDefinition": "Typed data contracts enforced at agent boundaries using Pydantic models to validate inputs, outputs, and tool call arguments.",
+    "explainer": "Pydantic Contracts are the practice of using Pydantic BaseModel classes as the canonical type layer between agent components. At L3 (Execution), every tool call input and LLM output is validated against a Pydantic schema before being accepted. This catches hallucinated fields, missing required arguments, and type mismatches at the boundary rather than deep inside pipeline logic. Pydantic Contracts are the runtime enforcement of Decoupled Architecture: they make the contracts machine-testable, not just documented. Structured output APIs (OpenAI, Anthropic) can be driven directly from Pydantic model definitions, ensuring the LLM response parses cleanly. Key benefit: eliminates an entire class of silent failures where a malformed tool call propagates for many steps before producing an error.",
+    "strata": [
+      "L3"
+    ],
+    "axes": [
+      "Execution",
+      "Governance"
+    ],
+    "relatedProductIds": [
+      "langchain",
+      "claudecode",
+      "sksecurity"
+    ],
+    "relatedConceptSlugs": [
+      "decoupled-architecture",
+      "guardrails",
+      "tool_calling"
+    ],
+    "antiPatterns": [
+      "Accepting raw LLM-generated dicts and passing them directly to tool functions without schema validation causes silent type errors and hallucinated fields that corrupt pipeline state."
+    ],
+    "mitigations": [
+      "Declare a Pydantic model for every tool's input and output. Validate at the boundary before any downstream processing. Use structured output APIs to force LLM responses to conform to the schema."
+    ],
+    "sources": [],
+    "freshnessTier": "A",
+    "lastReviewed": "2026-04-25",
+    "reviewPolicy": "quarterly",
+    "confidence": 0.91,
+    "status": "seed"
   }
 };
   var aliasIndex = {
@@ -361,6 +651,8 @@
   "orchestration harness": "harness",
   "execution harness": "harness",
   "delivery harness": "harness",
+  "layer 0": "harness",
+  "stratum 0": "harness",
   "loop": "loop-core",
   "loops": "loop-core",
   "loop-core": "loop-core",
@@ -389,7 +681,46 @@
   "retrieval augmented generation": "rag",
   "governance": "governance",
   "compliance": "governance",
-  "policy enforcement": "governance"
+  "policy enforcement": "governance",
+  "stack": "stack",
+  "agent stack": "stack",
+  "full stack": "stack",
+  "persona": "persona",
+  "identity": "persona",
+  "role": "persona",
+  "instructions": "persona",
+  "agent persona": "persona",
+  "pattern": "pattern",
+  "orchestration pattern": "pattern",
+  "control pattern": "pattern",
+  "react": "pattern",
+  "chain of thought": "pattern",
+  "config": "config",
+  "configuration": "config",
+  "instantiation": "config",
+  "parameters": "config",
+  "agent config": "config",
+  "covenant": "covenant",
+  "sla": "covenant",
+  "guarantee": "covenant",
+  "pledge": "covenant",
+  "behavioral contract": "covenant",
+  "decoupled architecture": "decoupled-architecture",
+  "decoupled archetecture": "decoupled-architecture",
+  "decoupled-archetecture": "decoupled-architecture",
+  "decoupled-architecture": "decoupled-architecture",
+  "event-driven architecture": "decoupled-architecture",
+  "loose coupling": "decoupled-architecture",
+  "contract-driven design": "decoupled-architecture",
+  "interface segregation": "decoupled-architecture",
+  "pydantic contracts": "pydantic-contracts",
+  "pydantic-contracts": "pydantic-contracts",
+  "pydantic": "pydantic-contracts",
+  "typed schemas": "pydantic-contracts",
+  "typed contracts": "pydantic-contracts",
+  "schema validation": "pydantic-contracts",
+  "structured outputs": "pydantic-contracts",
+  "output schema": "pydantic-contracts"
 };
   window.AOS_CONCEPTS = concepts;
   window.AOS_ALIAS_INDEX = aliasIndex;

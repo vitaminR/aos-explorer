@@ -1,7 +1,7 @@
 {
   "version": "v1.1.0",
-  "generatedAt": "2026-04-20T03:00:49Z",
-  "count": 14,
+  "generatedAt": "2026-04-25T15:41:14Z",
+  "count": 16,
   "concepts": [
     {
       "slug": "harness",
@@ -364,10 +364,7 @@
       "aliases": [
         "stack",
         "agent stack",
-        "full stack",
-        "layer 0",
-        "stratum 0",
-        "sovereignty"
+        "full stack"
       ],
       "shortDefinition": "Complete 7-layer configuration for a domain: model + memory + tools + orchestration + UX + governance.",
       "explainer": "A stack is the full end-to-end instantiation of all 7 strata optimized for a specific domain or use case. It's not just the technologies, but their wiring: which model, which memory backend, which tool set, which orchestration pattern, which UI paradigm, and which governance policies. Stacks are repeatable blueprints — once assembled and battle-tested, they can be cloned for similar use cases. Examples: research loop stack, customer service stack, code generation stack.",
@@ -407,10 +404,7 @@
         "identity",
         "role",
         "instructions",
-        "agent persona",
-        "layer 0",
-        "stratum 0",
-        "sovereignty"
+        "agent persona"
       ],
       "shortDefinition": "The identity, voice, role, and behavioral directives that define an agent's character and operating principles.",
       "explainer": "A persona is the coherent identity and behavioral contract of an agent. It encompasses role (what the agent is), voice (how it communicates), core values (what it prioritizes), constraints (what it won't do), and operating principles (how it makes decisions). A well-defined persona ensures consistency across all interactions and makes agent behavior predictable and auditable. Personas can be hard-coded in system prompts, learned from examples, or emergent from reward models.",
@@ -449,10 +443,7 @@
         "orchestration pattern",
         "control pattern",
         "ReAct",
-        "chain of thought",
-        "layer 0",
-        "stratum 0",
-        "sovereignty"
+        "chain of thought"
       ],
       "shortDefinition": "Repeatable architectural patterns for orchestrating agent reasoning, action, and feedback loops.",
       "explainer": "Agentic patterns are proven choreographies of reasoning → planning → execution → evaluation. Examples include ReAct (Reasoning + Acting), Chain-of-Thought (CoT), Self-Ask, Tree-of-Thought, and multi-agent debate. A pattern defines the structure of the control loop and the format of prompts, but is agnostic to the underlying model or tools. Patterns are composable — they can be nested or sequenced to build complex multi-stage pipelines.",
@@ -491,10 +482,7 @@
         "configuration",
         "instantiation",
         "parameters",
-        "agent config",
-        "layer 0",
-        "stratum 0",
-        "sovereignty"
+        "agent config"
       ],
       "shortDefinition": "Runtime parameters that instantiate a harness for a specific task or domain: model, temperature, tools, context budget, etc.",
       "explainer": "Configuration is the set of declarative, runtime-modifiable knobs that turn a generic harness into a domain-specific agent. Examples: which LLM, temperature, top-k, tool set, max context window, timeout, max retries, memory backend, guardrail policies. Good configs are externalized and version-controlled, making it easy to A/B test, audit, and roll back changes without code changes.",
@@ -534,10 +522,7 @@
         "SLA",
         "guarantee",
         "pledge",
-        "behavioral contract",
-        "layer 0",
-        "stratum 0",
-        "sovereignty"
+        "behavioral contract"
       ],
       "shortDefinition": "A formal pledge of agent capabilities, performance, and safety guarantees: latency, accuracy, uptime, and compliance.",
       "explainer": "A covenant is the behavioral contract between an agent and its users/operators. It specifies: what the agent commits to do (capability boundary), how fast (latency SLA), with what accuracy (quality threshold), under what conditions (fault resilience), and in compliance with what policies (safety constraints). Covenants are machine-testable — they become the basis for automated eval frameworks and production monitoring.",
@@ -568,6 +553,97 @@
       "status": "seed",
       "hidden": true,
       "easterEgg": true
+    },
+    {
+      "slug": "decoupled-architecture",
+      "name": "Decoupled Architecture",
+      "aliases": [
+        "decoupled architecture",
+        "decoupled archetecture",
+        "decoupled-archetecture",
+        "decoupled-architecture",
+        "event-driven architecture",
+        "loose coupling",
+        "contract-driven design",
+        "interface segregation"
+      ],
+      "shortDefinition": "System design where agent components communicate via typed contracts rather than direct calls, enabling independent deployment and evolution.",
+      "explainer": "Decoupled Architecture is the practice of separating agent components — planners, executors, memory, tools, evaluators — so that each communicates only through well-defined interface contracts rather than direct function calls or shared mutable state. At L3 (Execution), this means tools and sub-agents expose typed input/output schemas (see Pydantic Contracts). At L4 (Orchestration), this means the orchestrator treats each sub-agent as a black box it can swap without rewiring the pipeline. The key benefit: any component can be upgraded, scaled, or replaced without cascading changes. Common patterns include event buses, message queues, and typed RPC schemas. Anti-pattern: tightly-coupled pipelines where a planner directly imports executor internals, making the system impossible to test or evolve in isolation.",
+      "strata": [
+        "L3",
+        "L4"
+      ],
+      "axes": [
+        "Orchestration",
+        "Execution"
+      ],
+      "relatedProductIds": [
+        "langgraph",
+        "langchain",
+        "claudecode"
+      ],
+      "relatedConceptSlugs": [
+        "harness",
+        "pydantic-contracts",
+        "loop-core"
+      ],
+      "antiPatterns": [
+        "Tightly-coupled pipelines where the orchestrator directly imports executor internals make individual components impossible to test, replace, or scale independently."
+      ],
+      "mitigations": [
+        "Define typed interface contracts at every component boundary. Use event buses or message queues between planners, executors, and evaluators. Validate contracts automatically with Pydantic or JSON Schema."
+      ],
+      "sources": [],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-04-25",
+      "reviewPolicy": "quarterly",
+      "confidence": 0.88,
+      "status": "seed"
+    },
+    {
+      "slug": "pydantic-contracts",
+      "name": "Pydantic Contracts",
+      "aliases": [
+        "pydantic contracts",
+        "pydantic-contracts",
+        "pydantic",
+        "typed schemas",
+        "typed contracts",
+        "schema validation",
+        "structured outputs",
+        "output schema"
+      ],
+      "shortDefinition": "Typed data contracts enforced at agent boundaries using Pydantic models to validate inputs, outputs, and tool call arguments.",
+      "explainer": "Pydantic Contracts are the practice of using Pydantic BaseModel classes as the canonical type layer between agent components. At L3 (Execution), every tool call input and LLM output is validated against a Pydantic schema before being accepted. This catches hallucinated fields, missing required arguments, and type mismatches at the boundary rather than deep inside pipeline logic. Pydantic Contracts are the runtime enforcement of Decoupled Architecture: they make the contracts machine-testable, not just documented. Structured output APIs (OpenAI, Anthropic) can be driven directly from Pydantic model definitions, ensuring the LLM response parses cleanly. Key benefit: eliminates an entire class of silent failures where a malformed tool call propagates for many steps before producing an error.",
+      "strata": [
+        "L3"
+      ],
+      "axes": [
+        "Execution",
+        "Governance"
+      ],
+      "relatedProductIds": [
+        "langchain",
+        "claudecode",
+        "sksecurity"
+      ],
+      "relatedConceptSlugs": [
+        "decoupled-architecture",
+        "guardrails",
+        "tool_calling"
+      ],
+      "antiPatterns": [
+        "Accepting raw LLM-generated dicts and passing them directly to tool functions without schema validation causes silent type errors and hallucinated fields that corrupt pipeline state."
+      ],
+      "mitigations": [
+        "Declare a Pydantic model for every tool's input and output. Validate at the boundary before any downstream processing. Use structured output APIs to force LLM responses to conform to the schema."
+      ],
+      "sources": [],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-04-25",
+      "reviewPolicy": "quarterly",
+      "confidence": 0.91,
+      "status": "seed"
     }
   ]
 }

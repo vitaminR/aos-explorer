@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{a}OS Concept — Execution Harness</title>
+  <title>{a}OS Concept — Agentic Stack</title>
   <style>
     :root {
       --bg: #0f0f14;
@@ -48,60 +48,58 @@
   </style>
 </head>
 <body>
-  <a class="back" href="../prototype.html#concept=harness">← Back to Explorer</a>
+  <a class="back" href="../prototype.html#concept=stack">← Back to Explorer</a>
 
-  <h1>Execution Harness</h1>
-  <div class="slug">/harness</div>
-  <div class="short-def">A governing scaffold that constrains sequencing, context budgets, checkpoints, and stop conditions.</div>
+  <h1>Agentic Stack</h1>
+  <div class="slug">/stack</div>
+  <div class="short-def">Complete 7-layer configuration for a domain: model + memory + tools + orchestration + UX + governance.</div>
 
   <div class="meta">
-    <span>Strata: <strong>L0, L4</strong></span>
+    <span>Strata: <strong>L0</strong></span>
     <span>Axes: <strong>Orchestration</strong></span>
-    <span>Status: <strong>complete</strong></span>
+    <span>Status: <strong>seed</strong></span>
   </div>
 
   <section>
     <h2>Explainer</h2>
-    <p>A harness sits at L0/L4 (Meta/Orchestration) and is the assembled agent bundle: model + tools + memory + orchestration + policy. It defines how work is done, not just what to do. It wraps an agent or pipeline with lifecycle controls — sequencing steps, enforcing context budgets, persisting checkpoints, and triggering stop conditions. Examples include execution harnesses (GSD, BMAD), test harnesses (Superpowers), and CI/CD harnesses (Harness.io). Not to be confused with the agent or the tools it calls — the harness is the governing scaffold around them.</p>
+    <p>A stack is the full end-to-end instantiation of all 7 strata optimized for a specific domain or use case. It&#x27;s not just the technologies, but their wiring: which model, which memory backend, which tool set, which orchestration pattern, which UI paradigm, and which governance policies. Stacks are repeatable blueprints — once assembled and battle-tested, they can be cloned for similar use cases. Examples: research loop stack, customer service stack, code generation stack.</p>
   </section>
 
   <section>
     <h2>Anti-Patterns</h2>
     <ul>
-      <li>Bolting agent execution onto generic container orchestrators without native lifecycle support leads to fragile systems that crash mid-task.</li>
+      <li>Hand-assembling agents from loose components without a reproducible stack template leads to drift, inconsistency, and high maintenance cost across multiple similar applications.</li>
     </ul>
   </section>
 
   <section>
     <h2>Mitigations</h2>
     <ul>
-      <li>Utilize a dedicated agent runtime harness that natively provides durable execution, state isolation, and lifecycle management from day one.</li>
+      <li>Define canonical stacks as blueprints: reusable 7L configurations that can be versioned, tested, and cloned for new instances.</li>
     </ul>
   </section>
 
   <section>
     <h2>Top Products</h2>
     <ul>
-      <li><code>bmad</code></li>
-      <li><code>gsd</code></li>
-      <li><code>superpowers</code></li>
+      <li>None mapped yet.</li>
     </ul>
   </section>
 
   <section>
     <h2>Related Concepts</h2>
     <ul>
-      <li><a href="loop-core.html">loop-core</a> · <a href="../prototype.html#concept=loop-core" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
-      <li><a href="guardrails.html">guardrails</a> · <a href="../prototype.html#concept=guardrails" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
-      <li><a href="checkpoint.html">checkpoint</a> · <a href="../prototype.html#concept=checkpoint" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+      <li><a href="harness.html">harness</a> · <a href="../prototype.html#concept=harness" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+      <li><a href="persona.html">persona</a> · <a href="../prototype.html#concept=persona" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+      <li><a href="pattern.html">pattern</a> · <a href="../prototype.html#concept=pattern" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+      <li><a href="covenant.html">covenant</a> · <a href="../prototype.html#concept=covenant" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
     </ul>
   </section>
 
   <section>
     <h2>Sources</h2>
     <ul>
-      <li><a href="../docs.html#glossary">Glossary — docs.html</a></li>
-      <li><a href="../prototype.html#concept=harness">Open in Explorer →</a></li>
+      <li><a href="../prototype.html#concept=stack">Open in Explorer →</a></li>
     </ul>
   </section>
 

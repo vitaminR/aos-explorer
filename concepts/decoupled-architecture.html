@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{a}OS Concept — Execution Harness</title>
+  <title>{a}OS Concept — Decoupled Architecture</title>
   <style>
     :root {
       --bg: #0f0f14;
@@ -48,60 +48,59 @@
   </style>
 </head>
 <body>
-  <a class="back" href="../prototype.html#concept=harness">← Back to Explorer</a>
+  <a class="back" href="../prototype.html#concept=decoupled-architecture">← Back to Explorer</a>
 
-  <h1>Execution Harness</h1>
-  <div class="slug">/harness</div>
-  <div class="short-def">A governing scaffold that constrains sequencing, context budgets, checkpoints, and stop conditions.</div>
+  <h1>Decoupled Architecture</h1>
+  <div class="slug">/decoupled-architecture</div>
+  <div class="short-def">System design where agent components communicate via typed contracts rather than direct calls, enabling independent deployment and evolution.</div>
 
   <div class="meta">
-    <span>Strata: <strong>L0, L4</strong></span>
-    <span>Axes: <strong>Orchestration</strong></span>
-    <span>Status: <strong>complete</strong></span>
+    <span>Strata: <strong>L3, L4</strong></span>
+    <span>Axes: <strong>Orchestration, Execution</strong></span>
+    <span>Status: <strong>seed</strong></span>
   </div>
 
   <section>
     <h2>Explainer</h2>
-    <p>A harness sits at L0/L4 (Meta/Orchestration) and is the assembled agent bundle: model + tools + memory + orchestration + policy. It defines how work is done, not just what to do. It wraps an agent or pipeline with lifecycle controls — sequencing steps, enforcing context budgets, persisting checkpoints, and triggering stop conditions. Examples include execution harnesses (GSD, BMAD), test harnesses (Superpowers), and CI/CD harnesses (Harness.io). Not to be confused with the agent or the tools it calls — the harness is the governing scaffold around them.</p>
+    <p>Decoupled Architecture is the practice of separating agent components — planners, executors, memory, tools, evaluators — so that each communicates only through well-defined interface contracts rather than direct function calls or shared mutable state. At L3 (Execution), this means tools and sub-agents expose typed input/output schemas (see Pydantic Contracts). At L4 (Orchestration), this means the orchestrator treats each sub-agent as a black box it can swap without rewiring the pipeline. The key benefit: any component can be upgraded, scaled, or replaced without cascading changes. Common patterns include event buses, message queues, and typed RPC schemas. Anti-pattern: tightly-coupled pipelines where a planner directly imports executor internals, making the system impossible to test or evolve in isolation.</p>
   </section>
 
   <section>
     <h2>Anti-Patterns</h2>
     <ul>
-      <li>Bolting agent execution onto generic container orchestrators without native lifecycle support leads to fragile systems that crash mid-task.</li>
+      <li>Tightly-coupled pipelines where the orchestrator directly imports executor internals make individual components impossible to test, replace, or scale independently.</li>
     </ul>
   </section>
 
   <section>
     <h2>Mitigations</h2>
     <ul>
-      <li>Utilize a dedicated agent runtime harness that natively provides durable execution, state isolation, and lifecycle management from day one.</li>
+      <li>Define typed interface contracts at every component boundary. Use event buses or message queues between planners, executors, and evaluators. Validate contracts automatically with Pydantic or JSON Schema.</li>
     </ul>
   </section>
 
   <section>
     <h2>Top Products</h2>
     <ul>
-      <li><code>bmad</code></li>
-      <li><code>gsd</code></li>
-      <li><code>superpowers</code></li>
+      <li><code>langgraph</code></li>
+      <li><code>langchain</code></li>
+      <li><code>claudecode</code></li>
     </ul>
   </section>
 
   <section>
     <h2>Related Concepts</h2>
     <ul>
+      <li><a href="harness.html">harness</a> · <a href="../prototype.html#concept=harness" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+      <li><a href="pydantic-contracts.html">pydantic-contracts</a> · <a href="../prototype.html#concept=pydantic-contracts" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
       <li><a href="loop-core.html">loop-core</a> · <a href="../prototype.html#concept=loop-core" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
-      <li><a href="guardrails.html">guardrails</a> · <a href="../prototype.html#concept=guardrails" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
-      <li><a href="checkpoint.html">checkpoint</a> · <a href="../prototype.html#concept=checkpoint" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
     </ul>
   </section>
 
   <section>
     <h2>Sources</h2>
     <ul>
-      <li><a href="../docs.html#glossary">Glossary — docs.html</a></li>
-      <li><a href="../prototype.html#concept=harness">Open in Explorer →</a></li>
+      <li><a href="../prototype.html#concept=decoupled-architecture">Open in Explorer →</a></li>
     </ul>
   </section>
 

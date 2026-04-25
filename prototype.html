@@ -28729,6 +28729,72 @@
             },
           ],
         },
+        decoupled_architecture: {
+          title: "Decoupled Architecture",
+          aliases: [
+            "decoupled architecture",
+            "decoupled archetecture",
+            "decoupled-archetecture",
+            "decoupled-architecture",
+            "event-driven architecture",
+            "loose coupling",
+            "contract-driven design",
+            "interface segregation",
+          ],
+          summary:
+            "System design where agent components communicate via typed contracts rather than direct calls, enabling independent deployment and evolution.",
+          antiPattern:
+            "Tightly-coupled pipelines where the orchestrator directly imports executor internals make individual components impossible to test, replace, or scale independently.",
+          mitigation:
+            "Define typed interface contracts at every component boundary. Use event buses or message queues between planners, executors, and evaluators. Validate contracts automatically with Pydantic or JSON Schema.",
+          top3: [
+            {
+              product: "langgraph",
+              why: "Best native support for decoupled multi-agent graphs where each node communicates via typed state channels.",
+            },
+            {
+              product: "langchain",
+              why: "Composable chain primitives with explicit input/output schemas that enforce component isolation.",
+            },
+            {
+              product: "claudecode",
+              why: "Structured tool-call contracts in subagent delegation naturally enforce decoupled boundaries.",
+            },
+          ],
+        },
+        pydantic_contracts: {
+          title: "Pydantic Contracts",
+          aliases: [
+            "pydantic contracts",
+            "pydantic-contracts",
+            "pydantic",
+            "typed schemas",
+            "typed contracts",
+            "schema validation",
+            "structured outputs",
+            "output schema",
+          ],
+          summary:
+            "Typed data contracts enforced at agent boundaries using Pydantic models to validate inputs, outputs, and tool call arguments.",
+          antiPattern:
+            "Accepting raw LLM-generated dicts and passing them directly to tool functions without schema validation causes silent type errors and hallucinated fields that corrupt pipeline state.",
+          mitigation:
+            "Declare a Pydantic model for every tool's input and output. Validate at the boundary before any downstream processing. Use structured output APIs to force LLM responses to conform to the schema.",
+          top3: [
+            {
+              product: "langchain",
+              why: "First-class Pydantic integration for tool definitions and structured output parsing throughout chains.",
+            },
+            {
+              product: "claudecode",
+              why: "Structured tool-call schemas enforce Pydantic-style contracts on every subagent delegation.",
+            },
+            {
+              product: "sksecurity",
+              why: "Security skill layer validates structured inputs against schema contracts before execution.",
+            },
+          ],
+        },
       };
 
       // ===== CONCEPT REGISTRY HELPERS (v0.1) =====
@@ -29794,7 +29860,8 @@
         const emptyState = document.getElementById("rightRailEmptyState");
         if (!emptyState) return;
 
-        const query = document.getElementById("searchInput")?.value?.trim() || "";
+        const query =
+          document.getElementById("searchInput")?.value?.trim() || "";
         const hasActiveFilter =
           filterState.type !== "All" ||
           filterState.vendor !== "All" ||
