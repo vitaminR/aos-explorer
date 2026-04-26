@@ -3161,6 +3161,28 @@
         "
         >&#x1F4D6; Docs</a
       >
+      <a
+        href="health.html"
+        style="
+          font-size: 12px;
+          font-weight: 500;
+          color: var(--text-tertiary);
+          text-decoration: none;
+          padding: 6px 14px;
+          border-radius: 8px;
+          border: 1px solid var(--border);
+          transition: all 0.2s;
+        "
+        onmouseover="
+          this.style.color = 'var(--green)';
+          this.style.borderColor = 'rgba(74,222,128,0.3)';
+        "
+        onmouseout="
+          this.style.color = 'var(--text-tertiary)';
+          this.style.borderColor = 'var(--border)';
+        "
+        >&#x1F4CA; Health</a
+      >
       <button
         class="share-btn"
         onclick="shareCurrentView()"
@@ -10059,46 +10081,50 @@
           name: "Intent Object",
           layer: "L7",
           desc: "Structured representation of user goals, constraints, and preferences that agents parse to determine action plans.",
+          infographic_url: "docs/infographic-output/intent-object.png",
           primitives: [
             "goal_statement",
             "constraint_set",
             "preference_weight",
             "intent_confidence",
           ],
-        },
+        }
         session_context: {
           name: "Session Context",
           layer: "L7",
           desc: "Persistent state tracking conversation history, user identity, and accumulated decisions within a session.",
+          infographic_url: "docs/infographic-output/session-context.png",
           primitives: [
             "conversation_history",
             "user_profile",
             "decision_log",
             "context_window",
           ],
-        },
+        }
         satisfaction_signal: {
           name: "Satisfaction Signal",
           layer: "L7",
           desc: "Feedback mechanisms (explicit and implicit) that measure whether the agent's output met the user's intent.",
+          infographic_url: "docs/infographic-output/satisfaction-signal.png",
           primitives: [
             "thumbs_signal",
             "completion_rate",
             "retry_count",
             "dwell_time",
           ],
-        },
+        }
         feedback_loop: {
           name: "Feedback Loop",
           layer: "L7",
           desc: "Closed-loop system routing satisfaction signals back to refine agent behavior and intent parsing.",
+          infographic_url: "docs/infographic-output/feedback-loop.png",
           primitives: [
             "signal_aggregator",
             "behavior_adjuster",
             "reward_shaper",
             "loop_frequency",
           ],
-        },
+        }
         // L4 — Orchestration (s1: Workflow Engines)
         execution_plan: {
           name: "Execution Plan",
@@ -10115,47 +10141,51 @@
           name: "State Checkpoint",
           layer: "L4",
           desc: "Serializable snapshot of orchestration state enabling resume, rollback, and debugging.",
+          infographic_url: "docs/infographic-output/state-checkpoint.png",
           primitives: [
             "state_blob",
             "checkpoint_id",
             "restore_fn",
             "ttl_seconds",
           ],
-        },
+        }
         dependency_graph: {
           name: "Dependency Graph",
           layer: "L4",
           desc: "Directed graph encoding task dependencies for parallel scheduling and critical-path analysis.",
+          infographic_url: "docs/infographic-output/dependency-graph.png",
           primitives: [
             "node_list",
             "edge_list",
             "critical_path",
             "cycle_detector",
           ],
-        },
+        }
         timeout_policy: {
           name: "Timeout Policy",
           layer: "L4",
           desc: "Configuration governing maximum wait times, escalation rules, and graceful degradation.",
+          infographic_url: "docs/infographic-output/timeout-policy.png",
           primitives: [
             "max_wait_ms",
             "escalation_target",
             "fallback_action",
             "jitter_range",
           ],
-        },
+        }
         // L4 — Orchestration (s2: Agent Frameworks)
         agent_roster: {
           name: "Agent Roster",
           layer: "L4",
           desc: "Registry of available agents with their capabilities, status, and resource constraints.",
+          infographic_url: "docs/infographic-output/agent-roster.png",
           primitives: [
             "agent_id",
             "capability_tags",
             "status_enum",
             "resource_quota",
           ],
-        },
+        }
         task_assignment: {
           name: "Task Assignment",
           layer: "L4",
@@ -10171,42 +10201,46 @@
           name: "Message Channel",
           layer: "L4",
           desc: "Communication bus between agents supporting sync/async messaging, pub/sub, and ordered delivery.",
+          infographic_url: "docs/infographic-output/message-channel.png",
           primitives: [
             "channel_id",
             "message_envelope",
             "delivery_guarantee",
             "subscriber_list",
           ],
-        },
+        }
         delegation_policy: {
           name: "Delegation Policy",
           layer: "L4",
           desc: "Rules governing when and how an agent may delegate subtasks to other agents.",
+          infographic_url: "docs/infographic-output/delegation-policy.png",
           primitives: [
             "delegation_trigger",
             "approval_gate",
             "max_depth",
             "escalation_path",
           ],
-        },
+        }
         // L3 — Execution (s1: Tool Use & Function Calling)
         tool_manifest: {
           name: "Tool Manifest",
           layer: "L3",
           desc: "Declarative registry of available tools with schemas, descriptions, and auth requirements.",
+          infographic_url: "docs/infographic-output/tool-manifest.png",
           primitives: ["tool_id", "json_schema", "auth_type", "rate_limit"],
-        },
+        }
         api_binding: {
           name: "API Binding",
           layer: "L3",
           desc: "Runtime adapter mapping tool calls to concrete API endpoints with serialization and error handling.",
+          infographic_url: "docs/infographic-output/api-binding.png",
           primitives: [
             "endpoint_url",
             "request_template",
             "response_parser",
             "error_handler",
           ],
-        },
+        }
         capability_schema: {
           name: "Capability Schema",
           layer: "L3",
@@ -10223,46 +10257,50 @@
           name: "Search Index",
           layer: "L2",
           desc: "Vector or hybrid index enabling semantic and keyword search over document collections.",
+          infographic_url: "docs/infographic-output/search-index.png",
           primitives: [
             "index_type",
             "embedding_dim",
             "doc_count",
             "refresh_interval",
           ],
-        },
+        }
         chunk_collection: {
           name: "Chunk Collection",
           layer: "L2",
           desc: "Segmented document store where each chunk preserves source metadata and embedding.",
+          infographic_url: "docs/infographic-output/chunk-collection.png",
           primitives: [
             "chunk_id",
             "source_doc",
             "token_count",
             "embedding_vector",
           ],
-        },
+        }
         relevance_score: {
           name: "Relevance Score",
           layer: "L2",
           desc: "Scoring function combining vector similarity, keyword overlap, and recency signals.",
+          infographic_url: "docs/infographic-output/relevance-score.png",
           primitives: [
             "cosine_sim",
             "bm25_score",
             "recency_boost",
             "combined_rank",
           ],
-        },
+        }
         rerank_pipeline: {
           name: "Rerank Pipeline",
           layer: "L2",
           desc: "Second-stage ranking model that re-orders initial retrieval results for higher precision.",
+          infographic_url: "docs/infographic-output/rerank-pipeline.png",
           primitives: [
             "reranker_model",
             "top_k",
             "score_threshold",
             "latency_budget_ms",
           ],
-        },
+        }
         // ===== L6 — Governance & Trust =====
         policy_rule: {
           name: "Policy Rule",
@@ -10290,13 +10328,14 @@
           name: "Guardrail Config",
           layer: "L6",
           desc: "Top-level configuration object that bundles policies, thresholds, and fallback behaviors into a named guardrail set.",
+          infographic_url: "docs/infographic-output/guardrail-config.png",
           primitives: [
             "guardrail_id",
             "policy_bundle",
             "gc_fallback_action",
             "activation_trigger",
           ],
-        },
+        }
         override_protocol: {
           name: "Override Protocol",
           layer: "L6",
@@ -10312,35 +10351,38 @@
           name: "Auth Token",
           layer: "L6",
           desc: "Short-lived credential (JWT, OAuth bearer, API key) scoped to an agent identity for authenticated tool calls.",
+          infographic_url: "docs/infographic-output/auth-token.png",
           primitives: [
             "token_value",
             "token_issuer",
             "token_scope",
             "expiry_epoch",
           ],
-        },
+        }
         role_binding: {
           name: "Role Binding",
           layer: "L6",
           desc: "Mapping of an agent or user identity to a named role with its associated permission set.",
+          infographic_url: "docs/infographic-output/role-binding.png",
           primitives: [
             "principal_id",
             "role_name",
             "resource_scope",
             "inherited_from",
           ],
-        },
+        }
         credential_vault: {
           name: "Credential Vault",
           layer: "L6",
           desc: "Encrypted store for secrets (API keys, DB passwords) with access-controlled retrieval and rotation policies.",
+          infographic_url: "docs/infographic-output/credential-vault.png",
           primitives: [
             "secret_id",
             "encryption_algo",
             "rotation_interval",
             "access_log_ref",
           ],
-        },
+        }
         permission_scope: {
           name: "Permission Scope",
           layer: "L6",
@@ -10356,30 +10398,33 @@
           name: "Audit Entry",
           layer: "L6",
           desc: "Immutable log record capturing who did what, when, and on which resource. Foundation of compliance evidence.",
+          infographic_url: "docs/infographic-output/audit-entry.png",
           primitives: ["entry_id", "actor_id", "action_type", "resource_urn"],
-        },
+        }
         compliance_check: {
           name: "Compliance Check",
           layer: "L6",
           desc: "Automated validation that a system configuration or action meets a regulatory or organizational requirement.",
+          infographic_url: "docs/infographic-output/compliance-check.png",
           primitives: [
             "check_id",
             "regulation_ref",
             "pass_fail",
             "remediation_hint",
           ],
-        },
+        }
         retention_policy: {
           name: "Retention Policy",
           layer: "L6",
           desc: "Rule governing how long data (logs, embeddings, PII) is kept before archival or deletion.",
+          infographic_url: "docs/infographic-output/retention-policy.png",
           primitives: [
             "data_class",
             "retention_days",
             "archive_target",
             "deletion_method",
           ],
-        },
+        }
         evidence_chain: {
           name: "Evidence Chain",
           layer: "L6",
@@ -10406,35 +10451,38 @@
           name: "Toxicity Scorer",
           layer: "L6",
           desc: "ML classifier that scores text on toxicity dimensions (hate, threat, self-harm, sexual) with calibrated thresholds.",
+          infographic_url: "docs/infographic-output/toxicity-scorer.png",
           primitives: [
             "scorer_model",
             "dimension_scores",
             "aggregate_score",
             "threshold_config",
           ],
-        },
+        }
         pii_redactor: {
           name: "PII Redactor",
           layer: "L6",
           desc: "NER-based pipeline that identifies and masks personally identifiable information before storage or output.",
+          infographic_url: "docs/infographic-output/pii-redactor.png",
           primitives: [
             "entity_types",
             "redaction_method",
             "confidence_floor",
             "allowlist",
           ],
-        },
+        }
         safety_boundary: {
           name: "Safety Boundary",
           layer: "L6",
           desc: "Hard limit that prevents agent actions from crossing defined risk thresholds (e.g., financial, destructive, PII exposure).",
+          infographic_url: "docs/infographic-output/safety-boundary.png",
           primitives: [
             "boundary_type",
             "risk_category",
             "block_action",
             "sb_escalation_target",
           ],
-        },
+        }
         // ===== L5 — Observability & Evaluation =====
         trace_span: {
           name: "Trace Span",
@@ -10451,118 +10499,129 @@
           name: "Log Entry",
           layer: "L5",
           desc: "Structured log record with severity, context tags, and correlation IDs for debugging agent behavior.",
+          infographic_url: "docs/infographic-output/log-entry.png",
           primitives: [
             "log_level",
             "message_template",
             "context_tags",
             "correlation_id",
           ],
-        },
+        }
         token_ledger: {
           name: "Token Ledger",
           layer: "L5",
           desc: "Running account of token consumption per model, per agent, per session. Foundation for cost observability.",
+          infographic_url: "docs/infographic-output/token-ledger.png",
           primitives: [
             "model_id",
             "prompt_tokens",
             "completion_tokens",
             "cost_usd",
           ],
-        },
+        }
         latency_histogram: {
           name: "Latency Histogram",
           layer: "L5",
           desc: "Distribution of response times bucketed by percentile (p50, p95, p99). Key SLO metric for agent responsiveness.",
+          infographic_url: "docs/infographic-output/latency-histogram.png",
           primitives: [
             "bucket_bounds_ms",
             "sample_count",
             "p99_ms",
             "slo_target_ms",
           ],
-        },
+        }
         eval_suite: {
           name: "Eval Suite",
           layer: "L5",
           desc: "Collection of test cases and scoring rubrics that systematically measure agent quality across task categories.",
+          infographic_url: "docs/infographic-output/eval-suite.png",
           primitives: ["suite_id", "test_count", "pass_rate", "last_run_ts"],
-        },
+        }
         test_case: {
           name: "Test Case",
           layer: "L5",
           desc: "Single evaluation scenario with input, expected output, and scoring function — the atomic unit of eval.",
+          infographic_url: "docs/infographic-output/test-case.png",
           primitives: [
             "case_id",
             "input_prompt",
             "expected_output",
             "scoring_fn",
           ],
-        },
+        }
         judge_prompt: {
           name: "Judge Prompt",
           layer: "L5",
           desc: "System prompt for an LLM-as-judge that evaluates agent outputs against rubric criteria and returns structured scores.",
+          infographic_url: "docs/infographic-output/judge-prompt.png",
           primitives: [
             "judge_model",
             "rubric_dimensions",
             "score_scale",
             "calibration_examples",
           ],
-        },
+        }
         score_aggregator: {
           name: "Score Aggregator",
           layer: "L5",
           desc: "Function that combines per-case scores into suite-level metrics (mean, weighted, min-of) for dashboard reporting.",
+          infographic_url: "docs/infographic-output/score-aggregator.png",
           primitives: [
             "aggregation_fn",
             "dimension_weights",
             "final_score",
             "confidence_interval",
           ],
-        },
+        }
         drift_detector: {
           name: "Drift Detector",
           layer: "L5",
           desc: "Statistical monitor that compares live model output distributions against a baseline and alerts on significant shifts.",
+          infographic_url: "docs/infographic-output/drift-detector.png",
           primitives: [
             "baseline_snapshot",
             "current_window",
             "drift_metric",
             "alert_threshold",
           ],
-        },
+        }
         anomaly_alert: {
           name: "Anomaly Alert",
           layer: "L5",
           desc: "Notification triggered when a metric exceeds normal bounds. Routes to on-call, Slack, or automated remediation.",
+          infographic_url: "docs/infographic-output/anomaly-alert.png",
           primitives: [
             "alert_id",
             "metric_name",
             "observed_value",
             "routing_channel",
           ],
-        },
+        }
         slo_monitor: {
           name: "SLO Monitor",
           layer: "L5",
           desc: "Continuous checker that tracks whether the agent meets its Service Level Objectives and burns through error budget.",
+          infographic_url: "docs/infographic-output/slo-monitor.png",
           primitives: [
             "slo_name",
             "target_pct",
             "current_pct",
             "error_budget_remaining",
           ],
-        },
+        }
         cost_tracker: {
           name: "Cost Tracker",
           layer: "L5",
           desc: "Aggregator correlating token usage, API calls, and compute time into dollar-denominated cost per agent session.",
+          infographic_url: "docs/infographic-output/cost-tracker.png",
           primitives: [
             "session_cost_usd",
             "daily_budget_usd",
             "burn_rate",
             "cost_alert_threshold",
           ],
-        },
+        }
         // ===== L3 — Execution (remaining substrates) =====
         sandbox_runtime: {
           name: "Sandbox Runtime",
@@ -10579,211 +10638,230 @@
           name: "Interpreter Session",
           layer: "L3",
           desc: "Stateful REPL session (Python, Node, shell) that persists variables across multiple code execution calls.",
+          infographic_url: "docs/infographic-output/interpreter-session.png",
           primitives: [
             "session_id_interp",
             "language_runtime",
             "variable_state",
             "history_length",
           ],
-        },
+        }
         execution_result: {
           name: "Execution Result",
           layer: "L3",
           desc: "Structured output from a code execution: stdout, stderr, exit code, and optional artifacts (files, images).",
+          infographic_url: "docs/infographic-output/execution-result.png",
           primitives: [
             "exit_code",
             "stdout_content",
             "stderr_content",
             "artifact_refs",
           ],
-        },
+        }
         resource_limit: {
           name: "Resource Limit",
           layer: "L3",
           desc: "Hard caps on CPU, memory, disk, and network for a single execution to prevent runaway processes.",
+          infographic_url: "docs/infographic-output/resource-limit.png",
           primitives: [
             "cpu_limit",
             "memory_limit_mb",
             "disk_limit_mb",
             "network_allowed",
           ],
-        },
+        }
         api_connector: {
           name: "API Connector",
           layer: "L3",
           desc: "Pre-configured HTTP client binding to an external API with auth, base URL, headers, and retry logic.",
+          infographic_url: "docs/infographic-output/api-connector.png",
           primitives: [
             "base_url",
             "auth_method",
             "default_headers",
             "retry_config",
           ],
-        },
+        }
         webhook_emitter: {
           name: "Webhook Emitter",
           layer: "L3",
           desc: "Outbound event sender that POSTs structured payloads to registered webhook URLs on trigger conditions.",
+          infographic_url: "docs/infographic-output/webhook-emitter.png",
           primitives: [
             "webhook_url",
             "event_type",
             "payload_template",
             "delivery_status",
           ],
-        },
+        }
         rate_limiter: {
           name: "Rate Limiter",
           layer: "L3",
           desc: "Token-bucket or sliding-window limiter that prevents agents from exceeding external API quotas.",
+          infographic_url: "docs/infographic-output/rate-limiter.png",
           primitives: [
             "limit_window",
             "max_requests",
             "current_usage",
             "backoff_strategy",
           ],
-        },
+        }
         response_cache: {
           name: "Response Cache",
           layer: "L3",
           desc: "TTL-based cache for expensive API responses to reduce latency and cost on repeated queries.",
+          infographic_url: "docs/infographic-output/response-cache.png",
           primitives: [
             "cache_key_pattern",
             "cache_ttl_seconds",
             "hit_rate_pct",
             "eviction_policy",
           ],
-        },
+        }
         browser_session: {
           name: "Browser Session",
           layer: "L3",
           desc: "Headless (or headed) browser instance managed by Playwright/Puppeteer for web interaction tasks.",
+          infographic_url: "docs/infographic-output/browser-session.png",
           primitives: [
             "browser_type",
             "viewport_size",
             "cookie_jar",
             "proxy_config",
           ],
-        },
+        }
         page_action: {
           name: "Page Action",
           layer: "L3",
           desc: "Atomic browser interaction: click, type, navigate, scroll, or wait for element — the verb of web automation.",
+          infographic_url: "docs/infographic-output/page-action.png",
           primitives: [
             "action_type_page",
             "target_selector",
             "input_value",
             "wait_condition",
           ],
-        },
+        }
         element_selector: {
           name: "Element Selector",
           layer: "L3",
           desc: "CSS, XPath, or ARIA selector string that uniquely identifies a DOM element for interaction or extraction.",
+          infographic_url: "docs/infographic-output/element-selector.png",
           primitives: [
             "selector_type",
             "selector_value",
             "fallback_selector",
             "visibility_check",
           ],
-        },
+        }
         screenshot_capture: {
           name: "Screenshot Capture",
           layer: "L3",
           desc: "Full-page or element screenshot taken during browser automation for visual verification or multimodal analysis.",
+          infographic_url: "docs/infographic-output/screenshot-capture.png",
           primitives: [
             "capture_format",
             "viewport_clip",
             "full_page_flag",
             "storage_path",
           ],
-        },
+        }
         file_handle: {
           name: "File Handle",
           layer: "L3",
           desc: "Reference to an open filesystem resource with read/write mode, encoding, and position tracking.",
+          infographic_url: "docs/infographic-output/file-handle.png",
           primitives: [
             "file_path",
             "open_mode",
             "encoding_type",
             "current_position",
           ],
-        },
+        }
         shell_command: {
           name: "Shell Command",
           layer: "L3",
           desc: "Operating system command executed in a subprocess with captured stdout/stderr and exit code.",
+          infographic_url: "docs/infographic-output/shell-command.png",
           primitives: [
             "command_string_sh",
             "working_dir",
             "env_vars",
             "timeout_sh_sec",
           ],
-        },
+        }
         directory_walker: {
           name: "Directory Walker",
           layer: "L3",
           desc: "Recursive file tree traversal with glob/regex filtering, depth limits, and gitignore awareness.",
+          infographic_url: "docs/infographic-output/directory-walker.png",
           primitives: [
             "root_path",
             "glob_pattern",
             "walk_max_depth",
             "ignore_rules",
           ],
-        },
+        }
         permission_check: {
           name: "Permission Check",
           layer: "L3",
           desc: "OS-level file/directory permission verification before read/write/execute operations.",
+          infographic_url: "docs/infographic-output/permission-check.png",
           primitives: [
             "target_path_perm",
             "required_perms",
             "effective_perms",
             "owner_uid",
           ],
-        },
+        }
         message_topic: {
           name: "Message Topic",
           layer: "L3",
           desc: "Named channel in a pub/sub system that routes messages from publishers to all subscribed consumers.",
+          infographic_url: "docs/infographic-output/message-topic.png",
           primitives: [
             "topic_name",
             "partition_count",
             "retention_hours",
             "schema_ref",
           ],
-        },
+        }
         event_subscriber: {
           name: "Event Subscriber",
           layer: "L3",
           desc: "Consumer registration that binds a handler function to specific event types on a topic.",
+          infographic_url: "docs/infographic-output/event-subscriber.png",
           primitives: [
             "subscriber_id",
             "topic_ref",
             "filter_expression",
             "handler_fn",
           ],
-        },
+        }
         dead_letter_queue: {
           name: "Dead Letter Queue",
           layer: "L3",
           desc: "Overflow queue for messages that failed processing after max retries. Used for debugging and manual replay.",
+          infographic_url: "docs/infographic-output/dead-letter-queue.png",
           primitives: [
             "dlq_name",
             "max_retries",
             "failed_message_count",
             "replay_policy",
           ],
-        },
+        }
         delivery_guarantee: {
           name: "Delivery Guarantee",
           layer: "L3",
           desc: "Semantic contract for message delivery: at-most-once, at-least-once, or exactly-once processing.",
+          infographic_url: "docs/infographic-output/delivery-guarantee.png",
           primitives: [
             "guarantee_level",
             "ack_mode",
             "dedup_window",
             "idempotency_key",
           ],
-        },
+        }
         // ===== L2 — Knowledge (remaining substrates) =====
         working_memory: {
           name: "Working Memory",
@@ -18299,6 +18377,14 @@
           antiHTML = `<div class="prim-section"><div class="prim-section-head"><span class="prim-section-icon">⚠️</span> Anti-patterns</div>${prim.anti_patterns.map((a) => `<div class="prim-antipattern-item">${a}</div>`).join("")}</div>`;
         }
 
+        // Build infographic HTML (from parent construct)
+        let infographicHTML = "";
+        const parentKey = prim.parent.replace(/\s/g, "_").toLowerCase();
+        const parentConstruct = CONSTRUCT_DETAILS[parentKey];
+        if (parentConstruct && parentConstruct.infographic_url) {
+          infographicHTML = `<div class="prim-section"><div class="prim-section-head"><span class="prim-section-icon">🎨</span> Construct Diagram</div><div style="width:100%;border-radius:6px;overflow:hidden;margin-top:8px;background:rgba(0,0,0,0.2);"><img src="${parentConstruct.infographic_url}" style="width:100%;height:auto;display:block;" alt="${parentConstruct.name} diagram" /></div></div>`;
+        }
+
         const modal = document.getElementById("primModal");
         modal.style.setProperty("--prim-accent", accent);
         modal.innerHTML = `
@@ -18314,6 +18400,7 @@
             ${metricsHTML}
             ${analogyHTML}
             ${vizHTML}
+            ${infographicHTML}
             ${toolsHTML}
             ${antiHTML}
           </div>
