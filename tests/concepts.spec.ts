@@ -33,6 +33,17 @@ test.describe("Concept Preview & Routing", () => {
     await expect(backLink).toContainText("Back to Explorer");
   });
 
+  test("hash deep-link alias prototype.html#concept=prefetch resolves to pre-fetch preview", async ({
+    page,
+  }) => {
+    await page.goto(explorerUrl() + "#concept=prefetch");
+
+    const detailPanel = page.locator("#detailPanel");
+    await expect(detailPanel).toContainText("Pre-Fetch");
+    await expect(detailPanel).toContainText("/pre-fetch");
+    await expect(detailPanel).toContainText("Full page");
+  });
+
   test("clicking concept link in detail panel opens preview (not full page)", async ({
     page,
   }) => {

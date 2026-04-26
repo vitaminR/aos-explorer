@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=65"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aos-core"
+version = "0.1.0"
+requires-python = ">=3.9"
+description = "{a}OS core — Pydantic models and loaders for the agentic OS knowledge base"
+dependencies = ["pydantic>=2.0"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["aos_core*"]

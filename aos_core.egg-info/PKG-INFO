@@ -1,0 +1,8 @@
+Metadata-Version: 2.4
+Name: aos-core
+Version: 0.1.0
+Summary: {a}OS core — Pydantic models and loaders for the agentic OS knowledge base
+Requires-Python: >=3.9
+License-File: LICENSE
+Requires-Dist: pydantic>=2.0
+Dynamic: license-file

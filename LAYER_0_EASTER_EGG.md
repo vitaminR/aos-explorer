@@ -68,9 +68,30 @@ User types: "layer 0"
 - **L0 glow:** `rgba(156, 163, 175, 0.12)`
 - **Visual indicator:** Dashed border + 🔓 emoji in stratum number
 
+## The Agentic Org Chart Lives at Layer 0
+
+Layer 0 is where organizational structure in agentic systems becomes visible. The five meta-concepts map directly to the roles that emerge in any mature multi-agent system:
+
+| L0 Concept | What it governs | Org chart alignment |
+|---|---|---|
+| **Persona** | Agent identity, voice, role, behavioral directives | The individual in a role — CEO, COO, department head |
+| **Covenant** | Formal pledge of capabilities, performance, safety guarantees | The job description and accountability contract |
+| **Harness** | Assembled agent bundle: model + tools + memory + orchestration + policy | The full resource package a role operates with |
+| **Stack** | Complete 7-layer configuration for a domain | The department's full operational footprint |
+| **Pattern** | Repeatable orchestration choreographies | Standard operating procedures |
+
+When you see a CEO-equivalent agent (strategic layer, L7), it is a **Persona** with a **Covenant** that routes intent. When you see a COO-equivalent (operational layer, L6), it is a **Persona** with a **Harness** that governs infrastructure. The org chart is not a metaphor — it is a direct consequence of how Layer 0 concepts compose.
+
+> A multi-agent system without a sovereign Persona at L7 is a set of departments with no CEO. It will produce work. It will not produce alignment.
+
+**See also:** [Agentic Org Chart — docs/agentic-org-chart.md](docs/agentic-org-chart.md)
+
+---
+
 ## Future Enhancements
 
 - Add more easter egg modes (e.g., "hidden", "debug", "omniscient")
 - Create L0-specific product mappings for meta-tools (APScheduler, Supervisor, etc.)
 - Add animation on Layer 0 reveal (shimmer, pulse, unlock sound)
 - Create "Sovereignty" axis band for L0
+- Add "Orchestrator hierarchy" as an L0 concept — the organizational pattern itself as a classifiable meta-primitive

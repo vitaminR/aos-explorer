@@ -1,6 +1,6 @@
 # {a}OS Explorer — Full Taxonomy Data
 # Version: v1.1.0
-# Generated: 2026-04-25T15:41:14Z
+# Generated: 2026-04-25T22:57:24Z
 # Source: https://aos7.tech
 
 ============================================================
@@ -71,7 +71,7 @@ Typical failures: model unavailable, cold start / scaling lag, network segmentat
 Core metrics: availability, model latency, tokens per second, error rate, infrastructure utilization, cost per call
 
 ============================================================
-CONCEPTS (16 entries)
+CONCEPTS (21 entries)
 ============================================================
 
 ## Execution Harness (/harness)
@@ -91,20 +91,60 @@ Anti-patterns: Relying on a single, open-ended prompt-response generation causes
 Mitigations: Implement an iterative control loop where the agent explicitly generates a thought trace to reason about observations before executing its next action.
 
 ## MCP Tooling (/mcp)
-Definition: Standardized interface for exposing tools, resources, and prompts to agents.
-Explainer: The Model Context Protocol (MCP) establishes a universal interface allowing agents to connect to any compliant tool or dataset. Instead of writing bespoke integrations for every data source, teams adopt MCP to provide plug-and-play tool surfaces. MCP servers expose file systems, APIs, databases, and browser actions through a consistent schema.
+Definition: Standardized interface for exposing tools, resources, and prompts to agents — strong for tool access, but not a replacement for hook-driven lifecycle automation.
+Explainer: The Model Context Protocol (MCP) establishes a universal interface allowing agents to connect to any compliant tool or dataset. Instead of writing bespoke integrations for every data source, teams adopt MCP to provide plug-and-play tool surfaces. MCP servers expose file systems, APIs, databases, and browser actions through a consistent schema. But MCP is ultimately a tool surface, not a memory operating system. If you need automatic lifecycle behavior — such as pre-fetching context before reasoning, post-turn capture after execution, or pre-compressing long sessions before truncation — native hooks or plugins are often the better mechanism. Use MCP for standardized access; use hooks when the lifecycle itself must run automatically.
 Strata: L2, L3
 Aliases: mcp, model context protocol, tool registry
-Anti-patterns: Writing bespoke, hardcoded integrations for every new data source creates an unsustainable maintenance burden and severe vendor lock-in.
-Mitigations: Adopt the Model Context Protocol (MCP) to establish a universal, standardized interface allowing agents to instantly connect to any compliant tool or dataset.
+Anti-patterns: Treating MCP alone as a shared brain forces the model to remember to call memory tools manually, making lifecycle-critical behavior like pre-fetch, post-turn capture, and pre-compress fragile.
+Mitigations: Use MCP as the standard tool interface for external capabilities, but pair it with native hooks or plugins when you need automatic lifecycle events such as context pre-fetch, post-turn capture, or pre-compress.
+
+## Lifecycle Hooks (/hooks)
+Definition: Native lifecycle callbacks that run automatically before or after agent actions, enabling memory automation that tools alone cannot guarantee.
+Explainer: Hooks are deterministic extension points in an agent runtime: code that runs before or after a lifecycle event such as a turn, tool call, file edit, or context compaction boundary. Unlike MCP, which exposes capabilities the model may choose to call, hooks run automatically at the exact lifecycle boundary you define. That makes them ideal for shared-brain systems: pre-fetch relevant memory before reasoning begins, capture decisions and file changes after the turn completes, and pre-compress state before the context window overflows. Hooks are not universally better than MCP — they solve a different problem. MCP is for tool access. Hooks are for lifecycle control.
+Strata: L3, L4
+Aliases: hooks, hook, lifecycle hooks, agent hooks, hook callbacks, pretooluse, posttooluse, plugin hooks
+Anti-patterns: Relying on the model to remember to call a memory tool every turn turns shared-brain behavior into a best-effort suggestion rather than a guaranteed system behavior.
+Mitigations: Attach memory operations to deterministic lifecycle hooks: pre-fetch context before reasoning, capture outcomes after the turn, and compress state before context loss.
+
+## Lifecycle Management (/lifecycle-management)
+Definition: Automatic orchestration of memory and context across the full agent turn: before reasoning, after execution, and before compaction or truncation.
+Explainer: Lifecycle Management is the discipline of treating memory as an active operating loop rather than a passive database. A robust shared brain does not wait for the model to decide when to search or write memory. Instead, it defines lifecycle stages around every task: pre-fetch relevant history before reasoning starts, post-turn capture decisions and file modifications after the agent acts, and pre-compress the session before the context window truncates away useful state. This sits at the junction of L2 (Knowledge & Memory) and L4 (Orchestration) because it coordinates both retrieval and control flow.
+Strata: L2, L4
+Aliases: lifecycle management, agent lifecycle, session lifecycle, memory lifecycle, turn lifecycle, lifecycle orchestration, context lifecycle
+Anti-patterns: Treating memory as a passive lookup tool instead of an orchestrated lifecycle causes cold starts, lost decisions, and context-window amnesia.
+Mitigations: Design explicit lifecycle stages for memory: pre-fetch before reasoning, post-turn capture after action, and pre-compress before truncation or handoff.
+
+## Pre-Fetch (/pre-fetch)
+Definition: Automatic retrieval and prompt injection of relevant history before the model begins reasoning.
+Explainer: Pre-Fetch is the lifecycle stage that runs before the model starts reasoning. Its job is to search the shared memory vault, rank the most relevant historical context, and inject that material into the prompt or working state automatically. Without pre-fetch, the model starts cold and must first remember that memory exists, then decide to query it, then reason about the result — a fragile chain. Good pre-fetch systems use retrieval, reranking, and graph traversal so only the highest-value context lands in the active window.
+Strata: L2, L4
+Aliases: pre-fetch, prefetch, context prefetch, pre-fetch context, pre reasoning retrieval, context injection
+Anti-patterns: Starting every task from a blank prompt and hoping the model will remember to query memory produces repeated rediscovery and missed historical context.
+Mitigations: Run retrieval automatically before reasoning begins. Rank and inject only the most relevant history so the model starts with the right context already loaded.
+
+## Post-Turn Capture (/post-turn-capture)
+Definition: Automatic extraction and storage of decisions, file modifications, and summaries after the agent finishes a turn or task.
+Explainer: Post-Turn Capture runs after the agent has acted. It inspects what happened — which files changed, which decisions were made, which tools failed, what the user prefers — and writes the durable pieces back into memory. This is the stage that converts ephemeral task activity into long-term learning. If capture is manual, it gets skipped. If it depends on the model remembering to call a tool, it becomes unreliable. Hook-driven post-turn capture turns memory into a compounding asset instead of a sparse scrapbook.
+Strata: L2, L4
+Aliases: post-turn capture, post turn capture, after turn capture, post-task capture, memory writeback, postturn capture
+Anti-patterns: Letting memory writes depend on manual summarization or explicit tool calls causes important decisions and task outcomes to evaporate at the end of the turn.
+Mitigations: Attach post-turn capture to a deterministic hook that extracts decisions, file modifications, summaries, and user preferences immediately after execution completes.
+
+## Pre-Compress (/pre-compress)
+Definition: Automatic checkpointing and compaction of working state before the context window truncates or a long session is compacted.
+Explainer: Pre-Compress is the lifecycle stage that runs before the active context window overflows, a conversation is compacted, or a handoff occurs. Its purpose is to distill the current session into a smaller durable representation: checkpoint critical state, summarize recent decisions, and write the compressed result somewhere the next turn can recover it. Without pre-compress, the agent loses hard-won context at exactly the moment the session becomes most complex. It is the memory equivalent of saving your work before the power flickers.
+Strata: L2, L4
+Aliases: pre-compress, pre compress, context compaction, pre-compaction, session compaction, pre-truncation compression
+Anti-patterns: Waiting until the context window is already full and then truncating blindly destroys state that should have been checkpointed or compressed first.
+Mitigations: Trigger compaction before truncation boundaries. Summarize the recent session, checkpoint critical state, and persist the compressed representation for the next turn or thread.
 
 ## Memory Systems (/memory)
 Definition: Stores and recalls contextual state across turns, sessions, and tasks.
-Explainer: Memory systems give agents the ability to persist and retrieve state beyond a single context window. A multi-tiered architecture typically includes working memory for active tasks, episodic memory for session history, and semantic memory for long-term knowledge. Without memory, agents suffer from amnesia — forcing users to repeatedly explain context and endure the same mistakes.
+Explainer: Memory systems give agents the ability to persist and retrieve state beyond a single context window. A multi-tiered architecture typically includes working memory for active tasks, episodic memory for session history, and semantic memory for long-term knowledge. Without memory, agents suffer from amnesia — forcing users to repeatedly explain context and endure the same mistakes. Strong modern memory systems add lifecycle automation around each turn: pre-fetch relevant context before reasoning, post-turn capture durable decisions after action, and pre-compress state before context truncation.
 Strata: L2
 Aliases: memory, episodic memory, working memory, context memory
 Anti-patterns: Deploying stateless agents that suffer from amnesia forces users to repeatedly explain their context and endure the same mistakes in every new session.
-Mitigations: Establish a multi-tiered memory architecture consisting of working memory for active tasks, episodic memory for session history, and semantic memory for long-term knowledge.
+Mitigations: Establish a multi-tiered memory architecture consisting of working memory for active tasks, episodic memory for session history, and semantic memory for long-term knowledge — then automate pre-fetch, post-turn capture, and pre-compress as lifecycle stages around each task.
 
 ## Guardrails & Safety (/guardrails)
 Definition: Validates inputs and outputs to ensure safety, policy compliance, and defense against prompt injection.
@@ -195,7 +235,7 @@ Anti-patterns: Accepting raw LLM-generated dicts and passing them directly to to
 Mitigations: Declare a Pydantic model for every tool's input and output. Validate at the boundary before any downstream processing. Use structured output APIs to force LLM responses to conform to the schema.
 
 ============================================================
-PRODUCTS (31 entries)
+PRODUCTS (32 entries)
 ============================================================
 
 ## BMAD (Community)
@@ -224,6 +264,15 @@ Deployment: Hybrid
 License: Open Source
 Rationale: Graph-based agent orchestration framework. Defines agent workflows as cyclic graphs with state management and tool execution.
 Confidence: 88%
+
+## ClawMem (Community)
+Type: tool
+Primary stratum: L2 Knowledge & Memory
+Secondary strata: L4, L3
+Deployment: Local
+License: Open Source
+Rationale: Local shared-brain memory engine for AI coding agents. Uses a shared SQLite/WAL vault, hybrid retrieval, and native hooks/plugins to pre-fetch context, capture post-turn decisions, and pre-compress long sessions before context loss. Exposes MCP for compatibility, but lifecycle automation is the main differentiator.
+Confidence: 84%
 
 ## Claude Code (Anthropic)
 Type: platform

@@ -17,7 +17,9 @@ async function load(page: any) {
 }
 
 test.describe("Right rail stratum filtering", () => {
-  test("clicking a stratum filters the featured products rail", async ({ page }) => {
+  test("clicking a stratum filters the featured products rail", async ({
+    page,
+  }) => {
     await load(page);
 
     await page.locator("#l7").click();
@@ -73,7 +75,8 @@ test.describe("Right rail stratum filtering", () => {
       document.querySelectorAll(".right-rail .product-card").forEach((card) => {
         card.querySelectorAll(".strata-dots .strata-dot").forEach((dot) => {
           const bg =
-            (dot.getAttribute("style") || "") + (dot as HTMLElement).style.cssText;
+            (dot.getAttribute("style") || "") +
+            (dot as HTMLElement).style.cssText;
           if (bg.includes("--l7") || bg.includes("var(--l7)")) {
             dot.classList.remove("active");
           }

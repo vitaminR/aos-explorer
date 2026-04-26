@@ -1,9 +1,9 @@
 {
   "version": "v1.1.0",
-  "generatedAt": "2026-04-25T15:41:14Z",
+  "generatedAt": "2026-04-25T22:57:24Z",
   "strataCount": 7,
-  "conceptCount": 16,
-  "productCount": 31,
+  "conceptCount": 21,
+  "productCount": 32,
   "endpoints": {
     "strata": "/api/v1/strata",
     "concepts": "/api/v1/concepts",

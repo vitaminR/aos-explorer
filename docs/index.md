@@ -86,12 +86,32 @@ The explorer supports multiple top-level entity types:
 
 ---
 
+## Agentic Organizational Patterns
+
+As agentic systems mature, they develop internal structure that aligns with human org charts — not by imitation, but because the same functional requirements produce the same structural solutions.
+
+The {a}OS reference model makes this visible:
+
+| Tier | Human Role | {a}OS Stratum |
+|------|-----------|---------------|
+| Strategic | CEO — holds the mission, routes intent, coaches | L7 — Experience & Intent |
+| Operational | COO — governs infrastructure, registry, memory | L6 — Governance & Trust |
+| Domain | Department heads — own and execute within scope | L4 — Orchestration & Decisioning |
+| Atomic | Individual contributors | L3 — Execution & Interfaces |
+
+A well-architected agentic system has agents or policies at each tier. Most commercial platforms cover L3–L4. Few address L6–L7.
+
+**[Full guide: Agentic Org Chart →](agentic-org-chart.md)**
+
+---
+
 ## Documentation
 
 | Document | Description |
 |----------|-------------|
 | [Getting Started](getting-started.md) | Setup, running locally, first exploration |
 | [Classification Guide](classification-guide.md) | How products are placed into strata |
+| [Agentic Org Chart](agentic-org-chart.md) | How multi-agent systems align with human organizational structures |
 | [Design System](awesome-design.md) | Colour tokens, components, responsive breakpoints, nav architecture |
 
 ---
@@ -142,7 +162,7 @@ Use the left rail to filter by:
 | Product | Vendor | Primary Stratum | Deployment | License |
 |---------|--------|-----------------|------------|---------|
 | Azure AI Foundry | Microsoft | L1 Models | Cloud | Proprietary |
-| Hermes | Internal | L4 Orchestration | Hybrid | Proprietary |
+| Kotana | Internal | L4 Orchestration | Hybrid | Proprietary |
 | Paperclip | Internal | L7 Experience | Local | Proprietary |
 | CrewAI | CrewAI Inc | L4 Orchestration | Cloud | Open Source |
 | Mem0 | Mem0 AI | L2 Knowledge | Cloud | Open Source |
@@ -212,7 +232,7 @@ Every placement shows its confidence score and rationale. Disputed classificatio
 ### Current (MVP)
 
 - [x] 7-stratum explorer with drilldown
-- [x] 8 product classifications (Azure AI Foundry, Hermes, Paperclip, CrewAI, Mem0, LangGraph, Azure AI Search, Open Policy Agent)
+- [x] 8 product classifications (Azure AI Foundry, Kotana, Paperclip, CrewAI, Mem0, LangGraph, Azure AI Search, Open Policy Agent)
 - [x] Compare basket with layer-coverage heatmap
 - [x] Keyboard navigation (number keys, arrows, shortcuts)
 - [x] Guided onboarding tour

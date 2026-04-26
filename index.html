@@ -5318,23 +5318,23 @@
 
         <div
           class="product-card"
-          data-name="Hermes"
+          data-name="Kotana"
           data-vendor="Internal"
           data-deployment="Hybrid"
           data-license="Proprietary"
           data-type="product"
-          onclick="selectProduct('hermes')"
+          onclick="selectProduct('kotana')"
         >
           <button
             class="add-compare-btn"
             onclick="
               event.stopPropagation();
-              addToCompare(this, 'Hermes');
+              addToCompare(this, 'Kotana');
             "
           >
             +
           </button>
-          <div class="name">Hermes</div>
+          <div class="name">Kotana</div>
           <div class="vendor">
             Internal &middot; Hybrid &middot; Proprietary
           </div>
@@ -5699,23 +5699,23 @@
 
         <div
           class="product-card"
-          data-name="Hermes Agent"
+          data-name="Kotana Agent"
           data-vendor="Community"
           data-deployment="Hybrid"
           data-license="Open Source"
           data-type="product"
-          onclick="selectProduct('hermesagent')"
+          onclick="selectProduct('kotanaagent')"
         >
           <button
             class="add-compare-btn"
             onclick="
               event.stopPropagation();
-              addToCompare(this, 'Hermes Agent');
+              addToCompare(this, 'Kotana Agent');
             "
           >
             +
           </button>
-          <div class="name">Hermes Agent</div>
+          <div class="name">Kotana Agent</div>
           <div class="vendor">
             Community &middot; Hybrid &middot; Open Source
           </div>
@@ -7966,8 +7966,8 @@
           rationale:
             "Built on Microsoft.CognitiveServices. Model hosting and inference is the core value prop; prompt flow, search, and agent capabilities are secondary strata.",
         },
-        hermes: {
-          name: "Hermes",
+        kotana: {
+          name: "Kotana",
           type: "product",
           vendor: "Internal",
           deployment: "Hybrid",
@@ -7978,7 +7978,7 @@
           confidence: 0.88,
           lastVerified: "2026-04-06",
           rationale:
-            "Hermes is an orchestration-first platform. Governance, observability, and UX layers are secondary capabilities.",
+            "Kotana is an orchestration-first platform. Governance, observability, and UX layers are secondary capabilities.",
         },
         paperclip: {
           name: "Paperclip",
@@ -8120,8 +8120,8 @@
           rationale:
             "Organization-model framework that maps founder/CEO interrogation to structured decision flow with security and viability challenge loops.",
         },
-        hermesagent: {
-          name: "Hermes Agent",
+        kotanaagent: {
+          name: "Kotana Agent",
           type: "product",
           vendor: "Community",
           deployment: "Hybrid",
@@ -8584,7 +8584,7 @@
             "Documented in Microsoft Learn, Azure architecture center, and multiple third-party agentic stack analyses. GA since 2024.",
           risks: [],
         },
-        hermes: {
+        kotana: {
           factors: [
             {
               key: "ev",
@@ -8656,7 +8656,7 @@
             "Internal product description and lightweight engineering review. No external documentation.",
           risks: [
             "Low evidence quality — scoring is based on internal claims without external validation.",
-            "Secondary strata (L3, L4) overlap with Hermes and CrewAI; boundaries are unclear.",
+            "Secondary strata (L3, L4) overlap with Kotana and CrewAI; boundaries are unclear.",
             "Desktop-only deployment limits cross-strata operability assessments.",
           ],
         },
@@ -8984,7 +8984,7 @@
           evidence: "GitHub repo, AI Labs YouTube analysis.",
           risks: ["Niche org-model focus may limit broader applicability."],
         },
-        hermesagent: {
+        kotanaagent: {
           factors: [
             {
               key: "ev",
@@ -19137,7 +19137,7 @@
         // Explicit abbreviation → product name lookup (product-dots use these abbreviations)
         const EXPLICIT_ABBREVS = {
           AF: "Azure AI Foundry",
-          HM: "Hermes",
+          HM: "Kotana",
           PC: "Paperclip",
           CW: "CrewAI",
           M0: "Mem0",
@@ -19153,7 +19153,7 @@
           LV: "Lovable",
           EX: "Exa MCP",
           SY: "Shipyard",
-          HA: "Hermes Agent",
+          HA: "Kotana Agent",
           GI: "Git Ingest",
           SK: "Agent Skills",
           DV: "Devin",
@@ -20038,7 +20038,7 @@
       // ===== PRODUCT LENS (strata highlight per product) =====
       const PRODUCT_STRATA_MAP = {
         af: ["l1", "l2", "l3", "l4"],
-        hermes: ["l4", "l5", "l6", "l7"],
+        kotana: ["l4", "l5", "l6", "l7"],
         paperclip: ["l7", "l3", "l4"],
         crewai: ["l4", "l3"],
         mem0: ["l2"],
@@ -20049,7 +20049,7 @@
         gsd: ["l4", "l2"],
         superpowers: ["l4", "l5", "l3"],
         gstack: ["l4", "l6", "l7"],
-        hermesagent: ["l2", "l4", "l3", "l1"],
+        kotanaagent: ["l2", "l4", "l3", "l1"],
         shipyard: ["l4", "l3", "l5", "l6"],
         cursor: ["l7", "l3"],
         gitingest: ["l2", "l3"],
@@ -20200,7 +20200,7 @@
         const abbrevMap = {
           AF: "Azure AI Foundry",
           PC: "Paperclip",
-          HM: "Hermes",
+          HM: "Kotana",
           CW: "CrewAI",
           M0: "Mem0",
           LG: "LangGraph",
@@ -20210,7 +20210,7 @@
           GD: "GSD",
           SP: "Superpowers",
           GS: "gstack",
-          HA: "Hermes Agent",
+          HA: "Kotana Agent",
           SY: "Shipyard",
           CI: "Cursor IDE",
           GI: "Git Ingest",

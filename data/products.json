@@ -111,6 +111,72 @@
       "status": "active"
     },
     {
+      "id": "clawmem",
+      "name": "ClawMem",
+      "type": "tool",
+      "vendor": "Community",
+      "deployment": "Local",
+      "license": "Open Source",
+      "primary": "L2 Knowledge & Memory",
+      "secondary": "L4, L3",
+      "axisRoles": "Knowledge: Primary · Orchestration: Secondary · Tool Integration: Secondary",
+      "confidence": 0.84,
+      "rationale": "Local shared-brain memory engine for AI coding agents. Uses a shared SQLite/WAL vault, hybrid retrieval, and native hooks/plugins to pre-fetch context, capture post-turn decisions, and pre-compress long sessions before context loss. Exposes MCP for compatibility, but lifecycle automation is the main differentiator.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "memory",
+          "role": "primary",
+          "rank": 1,
+          "why": "Purpose-built shared memory vault for multi-agent recall across coding sessions."
+        },
+        {
+          "conceptSlug": "hooks",
+          "role": "primary",
+          "rank": 1,
+          "why": "Native Claude Code hooks, OpenClaw plugins, and Kotana memory-provider integrations automate memory lifecycle events."
+        },
+        {
+          "conceptSlug": "lifecycle-management",
+          "role": "primary",
+          "rank": 1,
+          "why": "Coordinates pre-fetch, post-turn capture, and pre-compress as automatic stages around each task."
+        },
+        {
+          "conceptSlug": "pre-fetch",
+          "role": "secondary",
+          "rank": 1,
+          "why": "Retrieves relevant historical context before the model begins reasoning."
+        },
+        {
+          "conceptSlug": "post-turn-capture",
+          "role": "secondary",
+          "rank": 1,
+          "why": "Extracts and stores decisions, file modifications, and summaries after the agent finishes a turn."
+        },
+        {
+          "conceptSlug": "pre-compress",
+          "role": "secondary",
+          "rank": 1,
+          "why": "Compacts active session state before truncation so long-running work survives context boundaries."
+        },
+        {
+          "conceptSlug": "mcp",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Also exposes a standard MCP interface for clients that need tool-style access to the shared vault."
+        }
+      ],
+      "evidenceIds": ["ev-clawmem-001"],
+      "freshnessTier": "B",
+      "lastReviewed": "2026-04-25",
+      "lastVerified": "2026-04-25",
+      "updatePriority": 0.65,
+      "reviewPolicy": "triggered",
+      "changeRisk": "medium",
+      "sourceQuality": "medium",
+      "status": "active"
+    },
+    {
       "id": "claude-code",
       "name": "Claude Code",
       "type": "platform",

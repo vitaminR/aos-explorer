@@ -32,7 +32,7 @@ Every product gets exactly one `type`:
 | **Component** | Single-purpose building block or API | 🧩 | Mem0, OPA, Guardrails AI |
 | **CLI / Tool** | Command-line tool or developer utility | 🔧 | MCP CLI, Promptfoo, Braintrust |
 | **Harness** | Eval/test/benchmark harness | 🧪 | Promptfoo, Braintrust, RAGAS |
-| **Internal** | Org-specific product | 🏠 | Hermes, Paperclip |
+| **Internal** | Org-specific product | 🏠 | Kotana, Paperclip |
 
 ## 4. Coverage Plan — Target Products by Stratum
 

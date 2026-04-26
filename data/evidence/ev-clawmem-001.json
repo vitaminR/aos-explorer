@@ -1,0 +1,36 @@
+{
+  "$comment": "Tier C — Evidence packet stub for ClawMem. Based on user-supplied architecture summary; requires direct repo/doc validation in a future research pass.",
+  "id": "ev-clawmem-001",
+  "productId": "clawmem",
+  "type": "doc-review",
+  "title": "ClawMem shared-brain lifecycle architecture",
+  "summary": "Stub evidence: ClawMem appears to differentiate by combining local shared memory with hook-driven lifecycle automation and an optional MCP surface.",
+  "sourceType": "documentation",
+  "sourceQuality": "medium",
+  "trustLevel": "unverified",
+  "capturedDate": "2026-04-25",
+  "expiresDate": "2026-07-25",
+  "confidence": 0.6,
+  "claims": [
+    {
+      "claim": "ClawMem uses a local shared SQLite/WAL vault so multiple coding agents can access the same memory base.",
+      "confidence": 0.6
+    },
+    {
+      "claim": "ClawMem's differentiator is hook/plugin-driven lifecycle automation for pre-fetch, post-turn capture, and pre-compress, not MCP alone.",
+      "confidence": 0.6
+    }
+  ],
+  "tags": [
+    "memory",
+    "hooks",
+    "lifecycle-management",
+    "pre-fetch",
+    "post-turn-capture",
+    "pre-compress",
+    "mcp"
+  ],
+  "status": "stub",
+  "lastReviewed": null,
+  "reviewedBy": null
+}

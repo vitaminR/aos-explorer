@@ -52,7 +52,7 @@
 
   <h1>MCP Tooling</h1>
   <div class="slug">/mcp</div>
-  <div class="short-def">Standardized interface for exposing tools, resources, and prompts to agents.</div>
+  <div class="short-def">Standardized interface for exposing tools, resources, and prompts to agents — strong for tool access, but not a replacement for hook-driven lifecycle automation.</div>
 
   <div class="meta">
     <span>Strata: <strong>L2, L3</strong></span>
@@ -62,20 +62,20 @@
 
   <section>
     <h2>Explainer</h2>
-    <p>The Model Context Protocol (MCP) establishes a universal interface allowing agents to connect to any compliant tool or dataset. Instead of writing bespoke integrations for every data source, teams adopt MCP to provide plug-and-play tool surfaces. MCP servers expose file systems, APIs, databases, and browser actions through a consistent schema.</p>
+    <p>The Model Context Protocol (MCP) establishes a universal interface allowing agents to connect to any compliant tool or dataset. Instead of writing bespoke integrations for every data source, teams adopt MCP to provide plug-and-play tool surfaces. MCP servers expose file systems, APIs, databases, and browser actions through a consistent schema. But MCP is ultimately a tool surface, not a memory operating system. If you need automatic lifecycle behavior — such as pre-fetching context before reasoning, post-turn capture after execution, or pre-compressing long sessions before truncation — native hooks or plugins are often the better mechanism. Use MCP for standardized access; use hooks when the lifecycle itself must run automatically.</p>
   </section>
 
   <section>
     <h2>Anti-Patterns</h2>
     <ul>
-      <li>Writing bespoke, hardcoded integrations for every new data source creates an unsustainable maintenance burden and severe vendor lock-in.</li>
+      <li>Treating MCP alone as a shared brain forces the model to remember to call memory tools manually, making lifecycle-critical behavior like pre-fetch, post-turn capture, and pre-compress fragile.</li>
     </ul>
   </section>
 
   <section>
     <h2>Mitigations</h2>
     <ul>
-      <li>Adopt the Model Context Protocol (MCP) to establish a universal, standardized interface allowing agents to instantly connect to any compliant tool or dataset.</li>
+      <li>Use MCP as the standard tool interface for external capabilities, but pair it with native hooks or plugins when you need automatic lifecycle events such as context pre-fetch, post-turn capture, or pre-compress.</li>
     </ul>
   </section>
 
@@ -93,6 +93,8 @@
     <ul>
       <li><a href="tool_calling.html">tool_calling</a> · <a href="../prototype.html#concept=tool_calling" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
       <li><a href="harness.html">harness</a> · <a href="../prototype.html#concept=harness" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+      <li><a href="hooks.html">hooks</a> · <a href="../prototype.html#concept=hooks" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+      <li><a href="lifecycle-management.html">lifecycle-management</a> · <a href="../prototype.html#concept=lifecycle-management" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
     </ul>
   </section>
 
