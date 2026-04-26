@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{a}OS Concept — Skill</title>
+  <style>
+    :root {
+      --bg: #0f0f14;
+      --bg-surface: #1a1a24;
+      --text-primary: #e8e8f0;
+      --text-secondary: #a0a0b8;
+      --text-tertiary: #6b6b80;
+      --accent-indigo: #818cf8;
+      --border: rgba(255,255,255,0.08);
+      --danger: #f87171;
+      --success: #34d399;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      padding: 2rem;
+      max-width: 740px;
+      margin: 0 auto;
+    }
+    a { color: var(--accent-indigo); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1 { font-size: 1.8rem; margin-bottom: 0.3rem; }
+    .slug { font-size: 0.85rem; color: var(--text-tertiary); margin-bottom: 1.2rem; }
+    .short-def { font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 1.5rem; border-left: 3px solid var(--accent-indigo); padding-left: 12px; }
+    section { margin-bottom: 1.5rem; }
+    section h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-tertiary); margin-bottom: 0.5rem; }
+    section p { color: var(--text-secondary); margin-bottom: 0.6rem; }
+    .meta { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .meta span { font-size: 0.85rem; color: var(--text-tertiary); }
+    .meta strong { color: var(--text-primary); }
+    ul { padding-left: 1.2rem; color: var(--text-secondary); }
+    li { margin-bottom: 0.4rem; }
+    code { background: var(--bg-surface); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+    .callout { padding: 10px 14px; border-radius: 8px; margin-bottom: 0.8rem; font-size: 0.92rem; line-height: 1.5; }
+    .callout-note { background: rgba(129,140,248,0.08); border-left: 3px solid var(--accent-indigo); color: var(--text-secondary); }
+    .back { display: inline-block; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    .nav-footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--text-tertiary); }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 0.8rem; font-size: 0.9rem; }
+    th { text-align: left; padding: 8px 10px; background: var(--bg-surface); color: var(--text-tertiary); font-weight: 600; border-bottom: 1px solid var(--border); }
+    td { padding: 8px 10px; border-bottom: 1px solid var(--border); color: var(--text-secondary); vertical-align: top; }
+    td:first-child { color: var(--text-primary); font-weight: 500; }
+  </style>
+</head>
+<body>
+  <a class="back" href="../prototype.html#concept=skill">← Back to Explorer</a>
+
+  <h1>Skill</h1>
+  <div class="slug">/skill</div>
+  <div class="short-def">A named, self-contained capability that a human or agent can invoke on demand. The atomic unit of the {a}OS skill system. Always has a slash-command interface; never requires a long path command.</div>
+
+  <div class="meta">
+    <span>Strata: <strong>L2, L3</strong></span>
+    <span>Axes: <strong>Execution, Orchestration</strong></span>
+    <span>Status: <strong>seed</strong></span>
+  </div>
+
+  <section>
+    <h2>Explainer</h2>
+    <p>A skill is the agentic equivalent of a function or a CLI tool: it has a name, a defined input/output contract, and it does one thing well. In the {a}OS workspace, every skill lives in a canonical directory under <code>0.agentic/Skills/&lt;name&gt;/</code> with a <code>SKILL.md</code> that specifies its steps, model tier, constraints, and flags.</p>
+    <p>Skills are invoked — not scheduled, not automatically fired. A human types <code>/sentinel</code> or an orchestrating agent decides to call it as part of a larger plan. This is the key distinction from hooks (which fire on events) and cron jobs (which fire on time).</p>
+    <div class="callout callout-note">
+      <strong>Rule:</strong> Every skill must have a <code>/slash-command</code> in <code>.claude/commands/</code>. Never give a user a long <code>python path/to/script.py --flags</code> command. The slash command <em>is</em> the interface.
+    </div>
+  </section>
+
+  <section>
+    <h2>Anatomy of a skill</h2>
+    <ul>
+      <li><code>SKILL.md</code> — steps, model tier, constraints, expected inputs/outputs</li>
+      <li><code>*.py</code> / <code>*.ps1</code> — implementation script (optional; some skills are pure prompt instructions)</li>
+      <li><code>.claude/commands/&lt;name&gt;.md</code> — slash-command interface</li>
+      <li>Entry in <code>0.agentic/Skills/registry.json</code> — canonical path, model tier, description, related skills</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Skill vs Workflow vs Hook</h2>
+    <table>
+      <thead><tr><th>Concept</th><th>Trigger</th><th>Scope</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Skill</strong></td><td>Manual or agentic (on demand)</td><td>Single capability, one step or a few</td><td><code>/sentinel</code>, <code>/humanizer</code>, <code>/close</code></td></tr>
+        <tr><td><strong>Workflow</strong></td><td>Manual or agentic (on demand)</td><td>Multi-step, chains skills and decisions</td><td><code>/li-crucible</code>, <code>/acquire-skill</code></td></tr>
+        <tr><td><strong>Hook</strong></td><td>Lifecycle event (automatic)</td><td>Side effect at a runtime boundary</td><td>Sentinel on Stop, memory capture on PostToolUse</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Anti-Patterns</h2>
+    <ul>
+      <li>A skill that does too many things — if it has more than one primary output, split it.</li>
+      <li>A skill without a slash command — if it requires a long path command, it hasn't been properly registered.</li>
+      <li>Duplicating a skill that already exists — check <code>registry.json</code> and AntiGravity before building custom.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Related Concepts</h2>
+    <ul>
+      <li><a href="workflow.html">workflow (agentic)</a> · <a href="../prototype.html#concept=workflow" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+      <li><a href="hooks.html">hooks</a> · <a href="../prototype.html#concept=hooks" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+      <li><a href="heartbeat.html">heartbeat</a> · <a href="../prototype.html#concept=heartbeat" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+      <li><a href="harness.html">harness</a> · <a href="../prototype.html#concept=harness" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+    </ul>
+  </section>
+
+  <div class="nav-footer">
+    <a href="../prototype.html">Explorer</a> ·
+    <a href="../docs.html#concepts">Concepts Glossary</a> ·
+    <a href="../docs.html#terms">Terms Table</a>
+  </div>
+</body>
+</html>

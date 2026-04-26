@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{a}OS Concept — Pre-Fetch</title>
+  <style>
+    :root {
+      --bg: #0f0f14;
+      --bg-surface: #1a1a24;
+      --text-primary: #e8e8f0;
+      --text-secondary: #a0a0b8;
+      --text-tertiary: #6b6b80;
+      --accent-indigo: #818cf8;
+      --border: rgba(255,255,255,0.08);
+      --danger: #f87171;
+      --success: #34d399;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      padding: 2rem;
+      max-width: 740px;
+      margin: 0 auto;
+    }
+    a { color: var(--accent-indigo); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1 { font-size: 1.8rem; margin-bottom: 0.3rem; }
+    .slug { font-size: 0.85rem; color: var(--text-tertiary); margin-bottom: 1.2rem; }
+    .short-def { font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 1.5rem; border-left: 3px solid var(--accent-indigo); padding-left: 12px; }
+    section { margin-bottom: 1.5rem; }
+    section h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-tertiary); margin-bottom: 0.5rem; }
+    section p { color: var(--text-secondary); }
+    .meta { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .meta span { font-size: 0.85rem; color: var(--text-tertiary); }
+    .meta strong { color: var(--text-primary); }
+    ul { padding-left: 1.2rem; color: var(--text-secondary); }
+    li { margin-bottom: 0.4rem; }
+    code { background: var(--bg-surface); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+    .callout { padding: 10px 14px; border-radius: 8px; margin-bottom: 0.8rem; font-size: 0.92rem; line-height: 1.5; }
+    .callout-danger { background: rgba(248,113,113,0.08); border-left: 3px solid var(--danger); color: var(--text-secondary); }
+    .callout-success { background: rgba(52,211,153,0.08); border-left: 3px solid var(--success); color: var(--text-secondary); }
+    .back { display: inline-block; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    .nav-footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--text-tertiary); }
+  </style>
+</head>
+<body>
+  <a class="back" href="../prototype.html#concept=pre-fetch">← Back to Explorer</a>
+
+  <h1>Pre-Fetch</h1>
+  <div class="slug">/pre-fetch</div>
+  <div class="short-def">Automatic retrieval and prompt injection of relevant history before the model begins reasoning.</div>
+
+  <div class="meta">
+    <span>Strata: <strong>L2, L4</strong></span>
+    <span>Axes: <strong>Knowledge, Orchestration</strong></span>
+    <span>Status: <strong>seed</strong></span>
+  </div>
+
+  <section>
+    <h2>Explainer</h2>
+    <p>Pre-Fetch is the lifecycle stage that runs before the model starts reasoning. Its job is to search the shared memory vault, rank the most relevant historical context, and inject that material into the prompt or working state automatically. Without pre-fetch, the model starts cold and must first remember that memory exists, then decide to query it, then reason about the result — a fragile chain. Good pre-fetch systems use retrieval, reranking, and graph traversal so only the highest-value context lands in the active window.</p>
+  </section>
+
+  <section>
+    <h2>Anti-Patterns</h2>
+    <ul>
+      <li>Starting every task from a blank prompt and hoping the model will remember to query memory produces repeated rediscovery and missed historical context.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Mitigations</h2>
+    <ul>
+      <li>Run retrieval automatically before reasoning begins. Rank and inject only the most relevant history so the model starts with the right context already loaded.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Top Products</h2>
+    <ul>
+      <li><code>clawmem</code></li>
+      <li><code>langgraph</code></li>
+      <li><code>claude-code</code></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Related Concepts</h2>
+    <ul>
+      <li><a href="hooks.html">hooks</a> · <a href="../prototype.html#concept=hooks" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+      <li><a href="lifecycle-management.html">lifecycle-management</a> · <a href="../prototype.html#concept=lifecycle-management" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+      <li><a href="memory.html">memory</a> · <a href="../prototype.html#concept=memory" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+      <li><a href="rag.html">rag</a> · <a href="../prototype.html#concept=rag" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Sources</h2>
+    <ul>
+      <li><a href="../prototype.html#concept=pre-fetch">Open in Explorer →</a></li>
+    </ul>
+  </section>
+
+  <div class="nav-footer">
+    <a href="../prototype.html">Explorer</a> ·
+    <a href="../docs.html#glossary">Docs Glossary</a> ·
+    <a href="../docs.html#concepts">Concepts Table</a>
+  </div>
+</body>
+</html>

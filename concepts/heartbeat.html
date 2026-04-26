@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{a}OS Concept — Heartbeat</title>
+  <style>
+    :root {
+      --bg: #0f0f14;
+      --bg-surface: #1a1a24;
+      --text-primary: #e8e8f0;
+      --text-secondary: #a0a0b8;
+      --text-tertiary: #6b6b80;
+      --accent-indigo: #818cf8;
+      --border: rgba(255,255,255,0.08);
+      --danger: #f87171;
+      --success: #34d399;
+      --warning: #fbbf24;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      padding: 2rem;
+      max-width: 740px;
+      margin: 0 auto;
+    }
+    a { color: var(--accent-indigo); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1 { font-size: 1.8rem; margin-bottom: 0.3rem; }
+    .slug { font-size: 0.85rem; color: var(--text-tertiary); margin-bottom: 1.2rem; }
+    .short-def { font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 1.5rem; border-left: 3px solid var(--accent-indigo); padding-left: 12px; }
+    section { margin-bottom: 1.5rem; }
+    section h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-tertiary); margin-bottom: 0.5rem; }
+    section p { color: var(--text-secondary); margin-bottom: 0.6rem; }
+    .meta { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .meta span { font-size: 0.85rem; color: var(--text-tertiary); }
+    .meta strong { color: var(--text-primary); }
+    ul { padding-left: 1.2rem; color: var(--text-secondary); }
+    li { margin-bottom: 0.4rem; }
+    code { background: var(--bg-surface); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+    .callout { padding: 10px 14px; border-radius: 8px; margin-bottom: 0.8rem; font-size: 0.92rem; line-height: 1.5; }
+    .callout-note { background: rgba(129,140,248,0.08); border-left: 3px solid var(--accent-indigo); color: var(--text-secondary); }
+    .back { display: inline-block; margin-bottom: 1.5rem; font-size: 0.9rem; }
+    .nav-footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--text-tertiary); }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 0.8rem; font-size: 0.9rem; }
+    th { text-align: left; padding: 8px 10px; background: var(--bg-surface); color: var(--text-tertiary); font-weight: 600; border-bottom: 1px solid var(--border); }
+    td { padding: 8px 10px; border-bottom: 1px solid var(--border); color: var(--text-secondary); vertical-align: top; }
+    td:first-child { color: var(--text-primary); font-weight: 500; }
+  </style>
+</head>
+<body>
+  <a class="back" href="../prototype.html#concept=heartbeat">← Back to Explorer</a>
+
+  <h1>Heartbeat</h1>
+  <div class="slug">/heartbeat</div>
+  <div class="short-def">A recurring ambient check that runs quietly, surfaces findings to a log or clip file, and exits silently when clean. A pattern — not a mechanism. Implementable via hook, cron job, or VS Code task.</div>
+
+  <div class="meta">
+    <span>Strata: <strong>L3, L4</strong></span>
+    <span>Axes: <strong>Observability, Governance</strong></span>
+    <span>Status: <strong>seed</strong></span>
+  </div>
+
+  <section>
+    <h2>Explainer</h2>
+    <p>A heartbeat is the agentic equivalent of a health check endpoint or a smoke test in CI: it runs on a schedule (or triggered by a lifecycle event), checks some aspect of system state, and writes findings to a log. If everything is fine, it produces no noise. If something drifted, it clips a summary so the next human session starts with signal, not a blank slate.</p>
+    <p>The word "heartbeat" describes <em>what the thing does</em>, not <em>how it fires</em>. The same heartbeat behavior can be wired up three different ways:</p>
+    <table>
+      <thead><tr><th>Mechanism</th><th>When it fires</th><th>Best for</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Hook</strong> (Stop/SessionStart)</td><td>Every session end or open</td><td>Workspace audits, memory capture</td></tr>
+        <tr><td><strong>Cron job</strong></td><td>Fixed time interval (independent of sessions)</td><td>Daily briefs, weekly health scans</td></tr>
+        <tr><td><strong>VS Code Task</strong></td><td>IDE events (folder open, build trigger)</td><td>Pre-build lint, launch scripts</td></tr>
+      </tbody>
+    </table>
+    <div class="callout callout-note">
+      The sentinel heartbeat in this workspace is a <strong>Stop hook</strong>: it fires when Claude Code stops, runs a level-1 naming-convention audit, and clips any violations to <code>00_Ledger/clips/YYYY-MM-DD.md</code>. Silent when clean.
+    </div>
+  </section>
+
+  <section>
+    <h2>Design rules</h2>
+    <ul>
+      <li><strong>Silent success</strong> — a clean heartbeat produces zero output. Noise = friction = ignored.</li>
+      <li><strong>Clip, don't alert</strong> — violations append to a daily log file, not a blocking error. The human reads clips at their own pace.</li>
+      <li><strong>Fast</strong> — heartbeats should complete in under 5 seconds. Long-running checks belong in a scheduled cron, not a Stop hook.</li>
+      <li><strong>Idempotent</strong> — running twice should produce the same result. No side effects beyond appending to the log.</li>
+      <li><strong>Never block the lifecycle</strong> — use <code>async: true</code> or append <code>|| true</code> so a heartbeat failure never prevents a session from closing.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Anti-Patterns</h2>
+    <ul>
+      <li>A heartbeat that outputs on every run whether clean or not — creates noise that gets ignored.</li>
+      <li>A heartbeat that takes 30+ seconds — should be a cron, not a Stop hook.</li>
+      <li>Using a heartbeat for decisions that require model reasoning — heartbeats run blind scripts, not LLMs.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Related Concepts</h2>
+    <ul>
+      <li><a href="hooks.html">hooks</a> · <a href="../prototype.html#concept=hooks" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+      <li><a href="post-turn-capture.html">post-turn-capture</a> · <a href="../prototype.html#concept=post-turn-capture" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+      <li><a href="memory.html">memory</a> · <a href="../prototype.html#concept=memory" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+      <li><a href="governance.html">governance</a> · <a href="../prototype.html#concept=governance" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+    </ul>
+  </section>
+
+  <div class="nav-footer">
+    <a href="../prototype.html">Explorer</a> ·
+    <a href="../docs.html#concepts">Concepts Glossary</a> ·
+    <a href="../docs.html#terms">Terms Table</a>
+  </div>
+</body>
+</html>

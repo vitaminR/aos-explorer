@@ -998,7 +998,53 @@
             </tbody>
           </table>
 
-          <h2 id="terms">Glossary</h2>
+          <h2 id="concepts">Agentic Concepts Glossary</h2>
+          <table class="doc-table">
+            <thead>
+              <tr>
+                <th>Concept</th>
+                <th>Type</th>
+                <th>Definition</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong><a href="concepts/hooks.html">Hook</a></strong></td>
+                <td>Mechanism</td>
+                <td>Event-driven callback that fires automatically at a lifecycle boundary (Stop, PostToolUse, SessionStart…). The runtime executes it — the model does not choose to call it.</td>
+              </tr>
+              <tr>
+                <td><strong><a href="concepts/skill.html">Skill</a></strong></td>
+                <td>Capability unit</td>
+                <td>Named, self-contained capability invoked on demand by a human (<code>/name</code>) or by an orchestrating agent. Always has a slash-command interface. The atomic unit of the {a}OS skill system.</td>
+              </tr>
+              <tr>
+                <td><strong><a href="concepts/workflow.html">Workflow</a></strong></td>
+                <td>Orchestration</td>
+                <td>Multi-step sequence of skills, decisions, and human-confirmation gates that executes a complex goal. Workflows compose skills; skills do not compose workflows.</td>
+              </tr>
+              <tr>
+                <td><strong><a href="concepts/heartbeat.html">Heartbeat</a></strong></td>
+                <td>Pattern</td>
+                <td>A recurring ambient check that runs quietly, surfaces findings to a clip file, and exits silently when clean. A pattern — not a mechanism. Implementable via hook, cron, or VS Code task.</td>
+              </tr>
+              <tr>
+                <td><strong>Cron job</strong></td>
+                <td>Mechanism</td>
+                <td>Time-based scheduler that fires at fixed intervals, independent of agent sessions. Use for daily briefs, weekly health scans, anything time-driven rather than event-driven.</td>
+              </tr>
+              <tr>
+                <td><strong>VS Code Task</strong></td>
+                <td>Mechanism</td>
+                <td>IDE-event-driven command defined in <code>.vscode/tasks.json</code>. Fires on folder open, build trigger, or keyboard shortcut. Use for pre-build lint, launch scripts, rename queues.</td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="font-size:0.85rem;color:var(--text-tertiary);margin-top:0.5rem;margin-bottom:1.5rem;">
+            Rule of thumb: Hook / Cron / VS Code Task = <em>how</em> something fires (mechanisms). Heartbeat = <em>what</em> something does (pattern). Skill = <em>what capability</em> is available. Workflow = <em>how capabilities chain</em>.
+          </p>
+
+          <h2 id="terms">Classification Glossary</h2>
           <table class="doc-table">
             <thead>
               <tr>
@@ -1216,7 +1262,7 @@
           <div class="sidebar-title">Products</div>
           <a href="#mvp-set" class="sidebar-link active">MVP Product Set</a>
           <a href="#af" class="sidebar-link">Azure AI Foundry</a>
-          <a href="#hermes" class="sidebar-link">Hermes</a>
+          <a href="#kotana" class="sidebar-link">Kotana</a>
           <a href="#paperclip" class="sidebar-link">Paperclip</a>
           <a href="#crewai" class="sidebar-link">CrewAI</a>
           <a href="#mem0" class="sidebar-link">Mem0</a>
@@ -1252,7 +1298,7 @@
                 <td><span class="badge-high">0.92</span></td>
               </tr>
               <tr>
-                <td><strong>Hermes</strong></td>
+                <td><strong>Kotana</strong></td>
                 <td>Internal</td>
                 <td>L4</td>
                 <td>L5, L6, L7</td>
@@ -1325,7 +1371,7 @@
             search, and agent capabilities are secondary strata.
           </p>
 
-          <h2 id="hermes">Hermes</h2>
+          <h2 id="kotana">Kotana</h2>
           <p>
             <strong>Primary:</strong> L4 Orchestration & Decisioning &nbsp;
             <span class="badge-high">0.88</span>
@@ -1335,7 +1381,7 @@
             Experience
           </p>
           <p>
-            <strong>Rationale:</strong> Hermes is an orchestration-first
+            <strong>Rationale:</strong> Kotana is an orchestration-first
             platform. Governance, observability, and UX layers are secondary
             capabilities.
           </p>
