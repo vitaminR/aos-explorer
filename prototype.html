@@ -3468,12 +3468,156 @@
         border: 1px solid var(--border);
         border-radius: 10px;
         display: none;
-        flex-wrap: wrap;
-        gap: 6px;
       }
       .construct-panel.visible {
-        display: flex;
+        display: block;
         animation: slideDown 0.3s ease;
+      }
+      .construct-carousel-shell {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .construct-carousel-head {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .construct-carousel-label {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.1px;
+        text-transform: uppercase;
+        color: var(--text-quaternary);
+        white-space: nowrap;
+      }
+      .construct-active-lane {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        min-height: 36px;
+      }
+      .construct-active-lane .construct-chip {
+        border-color: color-mix(
+          in srgb,
+          var(--construct-accent, var(--accent-indigo)) 72%,
+          white 8%
+        );
+        background: linear-gradient(
+          135deg,
+          color-mix(
+              in srgb,
+              var(--construct-accent, var(--accent-indigo)) 28%,
+              transparent
+            )
+            0%,
+          color-mix(
+              in srgb,
+              var(--construct-accent, var(--accent-indigo)) 10%,
+              transparent
+            )
+            100%
+        );
+        color: var(--text-primary);
+        box-shadow:
+          0 0 0 1px
+            color-mix(
+              in srgb,
+              var(--construct-accent, var(--accent-indigo)) 52%,
+              transparent
+            ),
+          0 0 24px
+            color-mix(
+              in srgb,
+              var(--construct-accent, var(--accent-indigo)) 34%,
+              transparent
+            );
+      }
+      .construct-active-lane .construct-chip::after {
+        content: none;
+      }
+      .construct-active-lane .construct-chip.carousel-landing {
+        animation: constructSpotlightDrop 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+      .construct-orbit-lane {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        padding-top: 2px;
+      }
+      .construct-orbit-lane .construct-chip {
+        animation: constructOrbitFloat 3.4s ease-in-out infinite;
+        animation-delay: calc(var(--orbit-index, 0) * 90ms);
+      }
+      .construct-orbit-lane .construct-chip:nth-child(even) {
+        animation-duration: 4.2s;
+      }
+      @keyframes constructSpotlightDrop {
+        0% {
+          transform: translate(-18px, 22px) rotate(-18deg) scale(0.82);
+          opacity: 0.32;
+        }
+        58% {
+          transform: translate(4px, -3px) rotate(6deg) scale(1.05);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(0, 0) rotate(0deg) scale(1);
+          opacity: 1;
+        }
+      }
+      @keyframes constructOrbitFloat {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-2px);
+        }
+      }
+      @keyframes constructCycleIn {
+        0% {
+          transform: translateX(28px) scale(0.84);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0) scale(1);
+          opacity: 1;
+        }
+      }
+      @keyframes constructCycleOut {
+        0% {
+          transform: translateX(0) scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: translateX(-28px) scale(0.84);
+          opacity: 0;
+        }
+      }
+      @keyframes constructOrbitBuzz {
+        0%,
+        100% {
+          transform: translateX(0) scale(1);
+          opacity: 0.65;
+        }
+        50% {
+          transform: translateX(2px) scale(1.04);
+          opacity: 1;
+        }
+      }
+      .construct-chip.carousel-cycle-in {
+        animation: constructCycleIn 70ms ease-out forwards;
+      }
+      .construct-chip.carousel-cycle-out {
+        animation: constructCycleOut 65ms ease-in forwards;
+      }
+      .construct-carousel-shell.is-spinning
+        .construct-orbit-lane
+        .construct-chip {
+        animation: constructOrbitBuzz 130ms ease-in-out infinite !important;
+        animation-delay: calc(var(--orbit-index, 0) * 18ms) !important;
       }
       .construct-chip {
         position: relative;
@@ -6136,6 +6280,23 @@
         color: var(--accent-indigo);
         font-weight: 600;
       }
+      .stratum-dot {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-left: 5px;
+        vertical-align: middle;
+        flex-shrink: 0;
+      }
+      .rank-symbol {
+        font-size: 0.8em;
+        margin-right: 4px;
+        vertical-align: middle;
+        flex-shrink: 0;
+      }
+      .rank-primary { color: #818cf8; }
+      .rank-ancillary { color: #6b6b80; }
       .ac-item .ac-sub {
         font-size: 10px;
         color: var(--text-quaternary);
@@ -10044,23 +10205,23 @@
 
         <div
           class="product-card"
-          data-name="Hermes"
+          data-name="Kotana"
           data-vendor="Internal"
           data-deployment="Hybrid"
           data-license="Proprietary"
           data-type="product"
-          onclick="selectProduct('hermes')"
+          onclick="selectProduct('kotana')"
         >
           <button
             class="add-compare-btn"
             onclick="
               event.stopPropagation();
-              addToCompare(this, 'Hermes');
+              addToCompare(this, 'Kotana');
             "
           >
             +
           </button>
-          <div class="name">Hermes</div>
+          <div class="name">Kotana</div>
           <div class="vendor">
             Internal &middot; Hybrid &middot; Proprietary
           </div>
@@ -10176,6 +10337,42 @@
           </div>
           <div class="spans-label">Spans 1 stratum &middot; Primary: L2</div>
           <span class="confidence high">0.95</span>
+        </div>
+
+        <div
+          class="product-card"
+          data-name="ClawMem"
+          data-vendor="Community"
+          data-deployment="Local"
+          data-license="Open Source"
+          data-type="tool"
+          onclick="selectProduct('clawmem')"
+          oncontextmenu="showCtxMenu(event, 'clawmem')"
+        >
+          <button
+            class="add-compare-btn"
+            onclick="
+              event.stopPropagation();
+              addToCompare(this, 'ClawMem');
+            "
+          >
+            +
+          </button>
+          <div class="name">ClawMem</div>
+          <div class="vendor">
+            Community &middot; Local &middot; Open Source
+          </div>
+          <div class="strata-dots">
+            <div class="strata-dot" style="background: var(--l7)"></div>
+            <div class="strata-dot" style="background: var(--l6)"></div>
+            <div class="strata-dot" style="background: var(--l5)"></div>
+            <div class="strata-dot active" style="background: var(--l4)"></div>
+            <div class="strata-dot active" style="background: var(--l3)"></div>
+            <div class="strata-dot active" style="background: var(--l2)"></div>
+            <div class="strata-dot" style="background: var(--l1)"></div>
+          </div>
+          <div class="spans-label">Spans 3 strata &middot; Primary: L2</div>
+          <span class="confidence high">0.84</span>
         </div>
 
         <div
@@ -10425,23 +10622,23 @@
 
         <div
           class="product-card"
-          data-name="Hermes Agent"
+          data-name="Kotana Agent"
           data-vendor="Community"
           data-deployment="Hybrid"
           data-license="Open Source"
           data-type="product"
-          onclick="selectProduct('hermesagent')"
+          onclick="selectProduct('kotanaagent')"
         >
           <button
             class="add-compare-btn"
             onclick="
               event.stopPropagation();
-              addToCompare(this, 'Hermes Agent');
+              addToCompare(this, 'Kotana Agent');
             "
           >
             +
           </button>
-          <div class="name">Hermes Agent</div>
+          <div class="name">Kotana Agent</div>
           <div class="vendor">
             Community &middot; Hybrid &middot; Open Source
           </div>
@@ -12495,8 +12692,8 @@
           rationale:
             "Built on Microsoft.CognitiveServices. Model hosting and inference is the core value prop; prompt flow, search, and agent capabilities are secondary strata.",
         },
-        hermes: {
-          name: "Hermes",
+        kotana: {
+          name: "Kotana",
           type: "product",
           vendor: "Internal",
           deployment: "Hybrid",
@@ -12507,7 +12704,7 @@
           confidence: 0.88,
           lastVerified: "2026-04-06",
           rationale:
-            "Hermes is an orchestration-first platform. Governance, observability, and UX layers are secondary capabilities.",
+            "Kotana is an orchestration-first platform. Governance, observability, and UX layers are secondary capabilities.",
         },
         paperclip: {
           name: "Paperclip",
@@ -12550,6 +12747,20 @@
           lastVerified: "2026-04-06",
           rationale:
             "Purpose-built memory layer for AI. Manages context persistence, recall, and long-term agent memory.",
+        },
+        clawmem: {
+          name: "ClawMem",
+          type: "tool",
+          vendor: "Community",
+          deployment: "Local",
+          license: "Open Source",
+          primary: "L2 Knowledge & Memory",
+          secondary: "L4, L3",
+          axisRoles: "Knowledge: Primary · Orchestration · Tool Integration",
+          confidence: 0.84,
+          lastVerified: "2026-04-25",
+          rationale:
+            "Local shared-brain memory engine for AI coding agents. Uses a shared SQLite/WAL vault, hybrid retrieval, and native hooks/plugins to pre-fetch context, capture post-turn decisions, and pre-compress long sessions before context loss. Exposes MCP for compatibility, but lifecycle automation is the real moat.",
         },
         langgraph: {
           name: "LangGraph",
@@ -12649,8 +12860,8 @@
           rationale:
             "Organization-model framework that maps founder/CEO interrogation to structured decision flow with security and viability challenge loops.",
         },
-        hermesagent: {
-          name: "Hermes Agent",
+        kotanaagent: {
+          name: "Kotana Agent",
           type: "product",
           vendor: "Community",
           deployment: "Hybrid",
@@ -13155,7 +13366,7 @@
             "Documented in Microsoft Learn, Azure architecture center, and multiple third-party agentic stack analyses. GA since 2024.",
           risks: [],
         },
-        hermes: {
+        kotana: {
           factors: [
             {
               key: "ev",
@@ -13227,7 +13438,7 @@
             "Internal product description and lightweight engineering review. No external documentation.",
           risks: [
             "Low evidence quality — scoring is based on internal claims without external validation.",
-            "Secondary strata (L3, L4) overlap with Hermes and CrewAI; boundaries are unclear.",
+            "Secondary strata (L3, L4) overlap with Kotana and CrewAI; boundaries are unclear.",
             "Desktop-only deployment limits cross-strata operability assessments.",
           ],
         },
@@ -13300,6 +13511,44 @@
           evidence:
             "Mem0 docs, arXiv preprints on agent memory, open-source benchmarks, and enterprise testimonials.",
           risks: [],
+        },
+        clawmem: {
+          factors: [
+            {
+              key: "ev",
+              label: "Evidence Quality",
+              weight: 0.3,
+              score: 0.74,
+              desc: "Backed in this session by a detailed architecture summary, but still needs a direct repo/docs validation pass.",
+            },
+            {
+              key: "al",
+              label: "Strata Alignment",
+              weight: 0.3,
+              score: 0.95,
+              desc: "L2 primary with L4/L3 secondary is an excellent fit for shared memory plus lifecycle automation.",
+            },
+            {
+              key: "df",
+              label: "Differentiation",
+              weight: 0.2,
+              score: 0.92,
+              desc: "Strong distinction between MCP tool access and hook-driven lifecycle control for a true shared brain.",
+            },
+            {
+              key: "mt",
+              label: "Maturity",
+              weight: 0.2,
+              score: 0.78,
+              desc: "Appears real and purpose-built, but maturity still needs first-hand validation.",
+            },
+          ],
+          evidence:
+            "Current placement is based on a detailed architecture summary describing local SQLite/WAL shared memory, hook/plugin integrations, and optional MCP compatibility. Needs direct repo/docs verification next pass.",
+          risks: [
+            "Evidence quality is still medium until the repo/docs are reviewed directly.",
+            "Its MCP surface can be mistaken for the main differentiator even though lifecycle hooks appear to be the stronger moat.",
+          ],
         },
         langgraph: {
           factors: [
@@ -13555,7 +13804,7 @@
           evidence: "GitHub repo, AI Labs YouTube analysis.",
           risks: ["Niche org-model focus may limit broader applicability."],
         },
-        hermesagent: {
+        kotanaagent: {
           factors: [
             {
               key: "ev",
@@ -25993,6 +26242,187 @@
         dp.classList.add("flash");
       }
 
+      function ensureConstructCarousel(panel) {
+        if (!panel || panel.dataset.carouselReady === "1") return;
+
+        const directChildren = Array.from(panel.children);
+        const constructChips = directChildren.filter((node) =>
+          node.classList?.contains("construct-chip"),
+        );
+
+        if (!constructChips.length) return;
+
+        const legacyLabel = directChildren.find((node) =>
+          node.classList?.contains("substrates-label"),
+        );
+        if (legacyLabel) legacyLabel.remove();
+
+        const shell = document.createElement("div");
+        shell.className = "construct-carousel-shell";
+
+        const head = document.createElement("div");
+        head.className = "construct-carousel-head";
+
+        const label = document.createElement("div");
+        label.className = "construct-carousel-label";
+        label.textContent = "Constructs";
+
+        const activeLane = document.createElement("div");
+        activeLane.className = "construct-active-lane";
+
+        const orbitLane = document.createElement("div");
+        orbitLane.className = "construct-orbit-lane";
+
+        head.appendChild(label);
+        head.appendChild(activeLane);
+        shell.appendChild(head);
+        shell.appendChild(orbitLane);
+        panel.prepend(shell);
+
+        constructChips.forEach((chip, index) => {
+          if (!chip.dataset.constructId) {
+            const constructId = getConstructId(chip);
+            if (constructId) chip.dataset.constructId = constructId;
+          }
+          chip.style.setProperty("--orbit-index", String(index));
+          orbitLane.appendChild(chip);
+        });
+
+        panel.dataset.carouselReady = "1";
+      }
+
+      function getPreferredConstructChip(panel) {
+        if (!panel) return null;
+        return (
+          panel.querySelector(".construct-chip.expanded") ||
+          panel.querySelector(".construct-chip.selected") ||
+          panel.querySelector(".construct-active-lane .construct-chip") ||
+          panel.querySelector(".construct-orbit-lane .construct-chip") ||
+          panel.querySelector(".construct-chip")
+        );
+      }
+
+      function spinCarouselToChip(panel, targetChip) {
+        ensureConstructCarousel(panel);
+        const activeLane = panel.querySelector(".construct-active-lane");
+        const orbitLane = panel.querySelector(".construct-orbit-lane");
+        if (!activeLane || !orbitLane) {
+          stageActiveConstructChip(panel, targetChip);
+          return;
+        }
+
+        const shell = panel.querySelector(".construct-carousel-shell");
+
+        // Already spinning — just land immediately
+        if (panel.dataset.carouselSpinning === "1") {
+          stageActiveConstructChip(panel, targetChip);
+          return;
+        }
+
+        // Gather all chips in their current positions
+        const activeNow = activeLane.querySelector(".construct-chip");
+        const orbitNow = Array.from(
+          orbitLane.querySelectorAll(".construct-chip"),
+        );
+        const allChips = activeNow ? [activeNow, ...orbitNow] : [...orbitNow];
+
+        // With only one chip there's nothing to spin through
+        if (allChips.length <= 1) {
+          stageActiveConstructChip(panel, targetChip);
+          return;
+        }
+
+        panel.dataset.carouselSpinning = "1";
+        if (shell) shell.classList.add("is-spinning");
+
+        // Move everything to orbit so we start from a clean state
+        allChips.forEach((c) => {
+          if (c.parentElement === activeLane) orbitLane.appendChild(c);
+        });
+
+        // Build the cycle sequence: a shuffled subset of the others, then target last
+        const others = allChips.filter((c) => c !== targetChip);
+        const shuffled = [...others].sort(() => Math.random() - 0.5);
+        const loopCount = Math.min(
+          shuffled.length,
+          Math.max(3, Math.ceil(others.length * 0.75)),
+        );
+        const sequence = [...shuffled.slice(0, loopCount), targetChip];
+
+        let elapsed = 0;
+        sequence.forEach((chip, i) => {
+          const isLast = i === sequence.length - 1;
+          // Ease timing: start fast (~70ms), ramp to ~140ms just before target
+          const progress = i / Math.max(sequence.length - 2, 1);
+          const stepMs = isLast ? 0 : Math.round(70 + progress * 70);
+
+          window.setTimeout(() => {
+            // Kick out the current active chip
+            const current = activeLane.querySelector(".construct-chip");
+            if (current) {
+              current.classList.remove("carousel-cycle-in");
+              current.classList.add("carousel-cycle-out");
+              const evicted = current;
+              window.setTimeout(() => {
+                evicted.classList.remove("carousel-cycle-out");
+                orbitLane.appendChild(evicted);
+              }, 65);
+            }
+
+            if (isLast) {
+              // Clean up spinning state, then do the proper landing
+              delete panel.dataset.carouselSpinning;
+              if (shell) shell.classList.remove("is-spinning");
+              stageActiveConstructChip(panel, chip);
+            } else {
+              // Flash this chip through the active lane
+              chip.classList.add("carousel-cycle-in");
+              activeLane.appendChild(chip);
+            }
+          }, elapsed);
+
+          elapsed += stepMs;
+        });
+      }
+
+      function stageActiveConstructChip(panel, chip) {
+        if (!panel || !chip) return;
+        ensureConstructCarousel(panel);
+
+        const activeLane = panel.querySelector(".construct-active-lane");
+        const orbitLane = panel.querySelector(".construct-orbit-lane");
+        if (!activeLane || !orbitLane) return;
+
+        const previous = activeLane.querySelector(".construct-chip");
+        if (previous && previous !== chip) {
+          orbitLane.appendChild(previous);
+        }
+
+        if (chip.parentElement !== activeLane) {
+          chip.classList.add("carousel-landing");
+          activeLane.appendChild(chip);
+          window.setTimeout(() => {
+            chip.classList.remove("carousel-landing");
+          }, 520);
+        }
+
+        const accentColor = chip
+          .closest(".stratum-card")
+          ?.style.getPropertyValue("--stratum-color");
+        panel.style.setProperty(
+          "--construct-accent",
+          accentColor?.trim() || "var(--accent-indigo)",
+        );
+
+        orbitLane
+          .querySelectorAll(".construct-chip")
+          .forEach((orbitChip, index) => {
+            orbitChip.style.setProperty("--orbit-index", String(index));
+          });
+
+        panel.dataset.activeConstructId = chip.dataset.constructId || "";
+      }
+
       function showConstructs(el, id, options = {}) {
         const { toggle = true, collapseOthers = false } = options;
         const panel = document.getElementById(id + "-constructs");
@@ -26020,6 +26450,13 @@
             ? !panel.classList.contains("visible")
             : true;
           panel.classList.toggle("visible", shouldShow);
+          if (shouldShow) {
+            ensureConstructCarousel(panel);
+            const preferredChip = getPreferredConstructChip(panel);
+            if (preferredChip) {
+              stageActiveConstructChip(panel, preferredChip);
+            }
+          }
           if (!shouldShow) {
             panel
               .querySelectorAll(".primitive-panel.visible")
@@ -26093,6 +26530,7 @@
         if (typeof event !== "undefined" && event?.stopPropagation) {
           event.stopPropagation();
         }
+        chip.dataset.constructId = id;
         const constructPanel = chip.closest(".construct-panel");
         if (!constructPanel) {
           renderConstructDetail(chip);
@@ -26172,6 +26610,7 @@
         // Collapse other open primitive panels in the same stratum
         const scope = chip.closest(".stratum-card") || document;
         if (shouldShow) {
+          spinCarouselToChip(constructPanel, chip);
           renderPrimitivePanel(panel);
           panel.dataset.activeConstructId = id;
           panel.dataset.activeConstructKey = cleanKey || key;
@@ -26276,8 +26715,39 @@
           analogyHTML = `<div class="prim-section"><div class="prim-section-head"><span class="prim-section-icon">💡</span> Analogy</div><p>${prim.analogy}</p></div>`;
         }
 
-        // Build viz prompt HTML — hidden until infographic batch is generated
+        // Build infographic HTML (primitive first, parent construct fallback)
         let vizHTML = "";
+        const primitiveInfographicSlug = key.replace(/_/g, "-");
+        const parentInfographicSlug = prim.parent
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/^-+|-+$/g, "");
+        const primitiveInfographicPath = `docs/infographic-output/${primitiveInfographicSlug}.png`;
+        const parentInfographicPath = `docs/infographic-output/${parentInfographicSlug}.png`;
+        vizHTML = `
+          <div class="prim-section">
+            <div class="prim-section-head"><span class="prim-section-icon">🖼️</span> Infographic</div>
+            <img
+              src="${primitiveInfographicPath}"
+              data-fallback="${parentInfographicPath}"
+              alt="${prim.name} infographic"
+              loading="eager"
+              onerror="
+                const fallback = this.dataset.fallback;
+                if (fallback && this.getAttribute('src') !== fallback) {
+                  this.setAttribute('src', fallback);
+                  this.dataset.fallback = '';
+                  const note = this.parentElement.querySelector('.prim-viz-note');
+                  if (note) note.textContent = 'Showing parent construct infographic';
+                  return;
+                }
+                this.parentElement.style.display = 'none';
+              "
+              style="width:100%;border-radius:10px;border:1px solid var(--border);box-shadow:0 10px 30px rgba(0,0,0,0.35);margin-top:6px"
+            />
+            <div class="prim-viz-note" style="font-size:11px;color:var(--text-quaternary);margin-top:6px">Primitive infographic (auto-fallback enabled)</div>
+          </div>
+        `;
 
         // Build tools HTML
         let toolsHTML = "";
@@ -27759,7 +28229,7 @@
         // Explicit abbreviation → product name lookup (product-dots use these abbreviations)
         const EXPLICIT_ABBREVS = {
           AF: "Azure AI Foundry",
-          HM: "Hermes",
+          HM: "Kotana",
           PC: "Paperclip",
           CW: "CrewAI",
           M0: "Mem0",
@@ -27775,7 +28245,7 @@
           LV: "Lovable",
           EX: "Exa MCP",
           SY: "Shipyard",
-          HA: "Hermes Agent",
+          HA: "Kotana Agent",
           GI: "Git Ingest",
           SK: "Agent Skills",
           DV: "Devin",
@@ -28104,6 +28574,8 @@
               why: "Best guardrailed implementation harness when test gates must constrain forward motion.",
             },
           ],
+          strata: ["L3","L4"],
+          ancillary: false,
         },
         loop: {
           title: "loop-core",
@@ -28137,6 +28609,8 @@
               why: "Best human-in-the-loop loop when approval and edits are part of the cycle.",
             },
           ],
+          strata: ["L3","L4"],
+          ancillary: false,
         },
         loop_research: {
           title: "loop-research",
@@ -28167,6 +28641,8 @@
               why: "Best canonical retrieval workflow pattern for structuring the research loop itself.",
             },
           ],
+          strata: ["L3","L4"],
+          ancillary: false,
         },
         loop_eval: {
           title: "loop-eval",
@@ -28198,6 +28674,8 @@
               why: "Best quality-loop companion for systematic test strategy and regression coverage.",
             },
           ],
+          strata: ["L3","L5"],
+          ancillary: false,
         },
         loop_implementation: {
           title: "loop-implementation",
@@ -28232,6 +28710,8 @@
               why: "Best autonomous implementation loop for multi-step build-test-debug cycles.",
             },
           ],
+          strata: ["L3"],
+          ancillary: false,
         },
         loop_recovery: {
           title: "loop-recovery",
@@ -28263,6 +28743,8 @@
               why: "Strong state graph foundation for retry branches and conditional recovery paths.",
             },
           ],
+          strata: ["L3","L4"],
+          ancillary: false,
         },
         planning: {
           title: "Planning & Routing",
@@ -28283,10 +28765,12 @@
               why: "Routes sub-tasks to designated agents based on assigned roles and expertise.",
             },
             {
-              product: "hermes",
+              product: "kotana",
               why: "Integrates planning natively into its multi-agent coordination layer.",
             },
           ],
+          strata: ["L4"],
+          ancillary: false,
         },
         tool_calling: {
           title: "Tool Calling",
@@ -28317,6 +28801,8 @@
               why: "Equips models with an extended repertoire of executable programmatic actions.",
             },
           ],
+          strata: ["L3"],
+          ancillary: false,
         },
         multi_agent: {
           title: "Multi-Agent",
@@ -28348,6 +28834,8 @@
               why: "Employs isolated, specialized agents that interact within a shared workspace.",
             },
           ],
+          strata: ["L4"],
+          ancillary: false,
         },
         handoff: {
           title: "Handoff",
@@ -28379,6 +28867,8 @@
               why: "Manages the escalation handoff from an autonomous agent to a human supervisor.",
             },
           ],
+          strata: ["L3","L4"],
+          ancillary: false,
         },
         checkpoint: {
           title: "Checkpoint & Rollback",
@@ -28409,6 +28899,8 @@
               why: "Standardizes preservation and recall of working context checkpoints across disconnected runs.",
             },
           ],
+          strata: ["L3","L4"],
+          ancillary: false,
         },
         fallback: {
           title: "Fallback & Resilience",
@@ -28440,6 +28932,8 @@
               why: "Degrades gracefully to semantic search or smaller contexts when exact retrieval fails.",
             },
           ],
+          strata: ["L3","L4"],
+          ancillary: false,
         },
         routing: {
           title: "Routing & Dispatch",
@@ -28470,6 +28964,8 @@
               why: "Routes specific sub-tasks to designated agents based on their assigned roles.",
             },
           ],
+          strata: ["L4"],
+          ancillary: false,
         },
         guardrails: {
           title: "Guardrails & Safety",
@@ -28501,6 +28997,8 @@
               why: "Serves as an un-bypassable manual guardrail for high-risk, sensitive actions.",
             },
           ],
+          strata: ["L6"],
+          ancillary: false,
         },
         observability_loop: {
           title: "Observability Loop",
@@ -28531,6 +29029,8 @@
               why: "Automates regression testing and evaluation of agent prompts before deployment.",
             },
           ],
+          strata: ["L5"],
+          ancillary: false,
         },
         approval_loop: {
           title: "Approval Loop",
@@ -28561,6 +29061,8 @@
               why: "Uses interactive planning to await developer validation before applying multi-file changes.",
             },
           ],
+          strata: ["L6"],
+          ancillary: false,
         },
         memory_loop: {
           title: "Memory Loop",
@@ -28591,6 +29093,8 @@
               why: "Standardizes preservation and recall of working context checkpoints across disconnected runs.",
             },
           ],
+          strata: ["L2"],
+          ancillary: false,
         },
         context_engineering: {
           title: "Context Engineering",
@@ -28622,6 +29126,8 @@
               why: "Employs auto-compaction techniques to keep long coding sessions coherent within its context window.",
             },
           ],
+          strata: ["L3","L4"],
+          ancillary: false,
         },
         rag: {
           title: "RAG / Retrieval",
@@ -28651,30 +29157,201 @@
               why: "Useful when retrieval must blend long-term memory with search results.",
             },
           ],
+          strata: ["L2","L3"],
+          ancillary: false,
         },
         mcp: {
           title: "MCP Tooling",
-          aliases: ["mcp", "model context protocol", "tool registry"],
+          aliases: [
+            "mcp",
+            "model context protocol",
+            "tool registry",
+            "tool surface",
+            "tool protocol",
+          ],
           summary:
-            "Standardized interface for exposing tools/resources/prompts to agents.",
+            "Standardized interface for exposing tools, resources, and prompts to agents — powerful for access, but weaker than hooks when you need automatic lifecycle behavior.",
           antiPattern:
-            "Writing bespoke, hardcoded integrations for every new data source creates an unsustainable maintenance burden and severe vendor lock-in.",
+            "Treating MCP alone as a shared-brain operating system leads teams to over-index on tool access while ignoring when context should be preloaded, captured, or compressed across turns.",
           mitigation:
-            "Adopt the Model Context Protocol (MCP) to establish a universal, standardized interface allowing agents to instantly connect to any compliant tool or dataset.",
+            "Use MCP as the universal tool surface, then pair it with hooks or plugins for lifecycle management so agents can pre-fetch context, capture post-turn decisions, and compress long sessions automatically.",
           top3: [
+            {
+              product: "clawmem",
+              why: "Best example of MCP being useful as compatibility glue while hooks handle the real lifecycle orchestration.",
+            },
             {
               product: "mcpgithub",
               why: "Best high-value MCP example because it exposes rich software-delivery operations.",
-            },
-            {
-              product: "mcpplaywright",
-              why: "Best browser-action MCP for real-world UI interaction and verification.",
             },
             {
               product: "mcpfs",
               why: "Best foundational MCP because file operations are the base tool surface for many agents.",
             },
           ],
+          strata: ["L3"],
+          ancillary: false,
+        },
+        hooks: {
+          title: "Lifecycle Hooks",
+          aliases: [
+            "hooks",
+            "hook",
+            "plugin hooks",
+            "lifecycle hooks",
+            "plugins",
+            "callbacks",
+          ],
+          summary:
+            "Automatic lifecycle entry points that run before, during, or after a turn so memory and orchestration work happens without the user manually calling tools.",
+          antiPattern:
+            "Forcing the agent to remember every preload, save, or compress step as an explicit manual tool call makes memory brittle and easy to forget.",
+          mitigation:
+            "Attach hooks at the lifecycle boundaries so relevant context is prefetched before reasoning, high-value facts are captured after the turn, and long sessions are compressed before context is lost.",
+          top3: [
+            {
+              product: "clawmem",
+              why: "Best fit when hooks are the core mechanism for lifecycle-aware shared memory rather than an afterthought.",
+            },
+            {
+              product: "claudecode",
+              why: "Strong example of lifecycle-aware compaction and coding flow where automatic behavior matters more than raw tool count.",
+            },
+            {
+              product: "langgraph",
+              why: "Useful when hook-like lifecycle stages need to be modeled explicitly inside a stateful orchestration graph.",
+            },
+          ],
+          strata: ["L3","L4"],
+          ancillary: false,
+        },
+        "lifecycle-management": {
+          title: "Lifecycle Management",
+          aliases: [
+            "lifecycle management",
+            "lifecycle-management",
+            "turn lifecycle",
+            "session lifecycle",
+            "context lifecycle",
+          ],
+          summary:
+            "The discipline of deciding what should happen before a turn, after a turn, and before context compaction so agent state stays coherent over time.",
+          antiPattern:
+            "Treating each turn as an isolated request causes agents to forget what to load, what to save, and what to preserve before the context window collapses.",
+          mitigation:
+            "Design explicit pre-fetch, post-turn capture, and pre-compress stages so memory behavior becomes deterministic instead of accidental.",
+          top3: [
+            {
+              product: "clawmem",
+              why: "Best direct fit because its pitch is lifecycle-aware shared memory across multiple agent turns and sessions.",
+            },
+            {
+              product: "gsd",
+              why: "Strong workflow example where context lifecycle checkpoints are treated as a first-class execution concern.",
+            },
+            {
+              product: "langgraph",
+              why: "Useful when lifecycle stages need to be made explicit inside a durable execution graph.",
+            },
+          ],
+          strata: ["L3","L4","L5"],
+          ancillary: false,
+        },
+        "pre-fetch": {
+          title: "Pre-Fetch",
+          aliases: [
+            "pre-fetch",
+            "prefetch",
+            "context preload",
+            "preload context",
+            "load before turn",
+          ],
+          summary:
+            "Loading the most relevant memory, artifacts, or working state before the model starts reasoning on the current turn.",
+          antiPattern:
+            "Starting every turn cold and hoping the model will ask for exactly the right context wastes tokens and produces avoidable omissions.",
+          mitigation:
+            "Run a pre-fetch stage that assembles only the most relevant memories, files, and prior decisions before inference begins.",
+          top3: [
+            {
+              product: "clawmem",
+              why: "Best match when shared memory is supposed to hydrate the agent automatically before the turn starts.",
+            },
+            {
+              product: "langgraph",
+              why: "Strong orchestration fit when preload logic is modeled as an explicit graph step.",
+            },
+            {
+              product: "claudecode",
+              why: "Relevant because coding agents win big when the right files and prior decisions are loaded before action.",
+            },
+          ],
+          strata: ["L3"],
+          ancillary: false,
+        },
+        "post-turn-capture": {
+          title: "Post-Turn Capture",
+          aliases: [
+            "post-turn-capture",
+            "post turn capture",
+            "save after turn",
+            "decision capture",
+            "post response save",
+          ],
+          summary:
+            "Capturing decisions, artifacts, and memory-worthy facts immediately after a turn finishes so they are not lost.",
+          antiPattern:
+            "Relying on manual note-taking after the response means important decisions vanish as soon as the next turn starts.",
+          mitigation:
+            "Attach a post-turn capture stage that extracts durable facts, saves artifacts, and updates memory automatically once the turn completes.",
+          top3: [
+            {
+              product: "clawmem",
+              why: "Best fit when post-turn memory capture is a native lifecycle feature instead of a manual extra step.",
+            },
+            {
+              product: "claudecode",
+              why: "Strong example because long coding sessions improve when decisions and patches are consolidated immediately.",
+            },
+            {
+              product: "langgraph",
+              why: "Useful when capture needs to happen as a deterministic state transition after execution.",
+            },
+          ],
+          strata: ["L3"],
+          ancillary: false,
+        },
+        "pre-compress": {
+          title: "Pre-Compress",
+          aliases: [
+            "pre-compress",
+            "pre compress",
+            "pre-compaction",
+            "before compaction",
+            "before context loss",
+          ],
+          summary:
+            "Condensing the session into a smaller durable state before the context window rolls over or a thread gets compacted.",
+          antiPattern:
+            "Waiting until the context window is already blown up before trying to summarize or save the session causes silent information loss.",
+          mitigation:
+            "Trigger a pre-compress stage that distills the current session into structured memory before compaction or handoff happens.",
+          top3: [
+            {
+              product: "clawmem",
+              why: "Best fit when long-run shared memory depends on capturing a compacted state before the session falls off the cliff.",
+            },
+            {
+              product: "gsd",
+              why: "Strong workflow example because it treats context budget and handoff checkpoints as operational concerns.",
+            },
+            {
+              product: "claudecode",
+              why: "Relevant because compaction-aware coding sessions depend on preserving signal before the window resets.",
+            },
+          ],
+          strata: ["L3"],
+          ancillary: false,
         },
         memory: {
           title: "Memory Systems",
@@ -28685,25 +29362,27 @@
             "context memory",
           ],
           summary:
-            "Stores and recalls contextual state across turns, sessions, and tasks.",
+            "Stores and recalls contextual state across turns, sessions, and tasks — ideally with lifecycle automation that decides what to load, save, and compress.",
           antiPattern:
-            "Deploying stateless agents that suffer from amnesia forces users to repeatedly explain their context and endure the same mistakes in every new session.",
+            "Deploying stateless agents, or memory systems with no lifecycle hooks, forces users to repeatedly restate context while important decisions disappear between turns.",
           mitigation:
-            "Establish a multi-tiered memory architecture consisting of working memory for active tasks, episodic memory for session history, and semantic memory for long-term knowledge.",
+            "Establish a multi-tiered memory architecture with explicit pre-fetch, post-turn capture, and pre-compress stages so working, episodic, and semantic memory stay synchronized.",
           top3: [
             {
               product: "mem0",
-              why: "Best dedicated memory product for persistent context recall and consolidation.",
+              why: "Best dedicated memory product when you want a focused memory API for persistent recall and consolidation.",
+            },
+            {
+              product: "clawmem",
+              why: "Best local shared-brain memory engine when multiple coding agents need one hook-aware SQLite/WAL vault.",
             },
             {
               product: "mcpmemory",
-              why: "Best protocol-native memory interface when agents need portable graph memory access.",
-            },
-            {
-              product: "hermesagent",
-              why: "Best product example where memory is embedded into the agent platform itself.",
+              why: "Useful when you mainly need protocol-native memory access, though it is weaker than full lifecycle-aware memory automation.",
             },
           ],
+          strata: ["L2"],
+          ancillary: false,
         },
         governance: {
           title: "Governance & Guardrails",
@@ -28728,8 +29407,10 @@
               why: "Best approval-centric governance loop when a human must remain in the trust boundary.",
             },
           ],
+          strata: ["L6"],
+          ancillary: false,
         },
-        decoupled_architecture: {
+        "decoupled-architecture": {
           title: "Decoupled Architecture",
           aliases: [
             "decoupled architecture",
@@ -28761,8 +29442,10 @@
               why: "Structured tool-call contracts in subagent delegation naturally enforce decoupled boundaries.",
             },
           ],
+          strata: ["L3","L4"],
+          ancillary: false,
         },
-        pydantic_contracts: {
+        "pydantic-contracts": {
           title: "Pydantic Contracts",
           aliases: [
             "pydantic contracts",
@@ -28794,6 +29477,105 @@
               why: "Security skill layer validates structured inputs against schema contracts before execution.",
             },
           ],
+          strata: ["L3"],
+          ancillary: false,
+        },
+        heartbeat: {
+          title: "Heartbeat",
+          aliases: [
+            "heartbeat",
+            "heartbeats",
+            "ambient check",
+            "recurring check",
+            "background check",
+          ],
+          summary:
+            "A recurring, ambient check pattern that fires silently and clips findings without blocking the user. Implementable via hook, cron, or VS Code task.",
+          antiPattern:
+            "Turning a heartbeat into a noisy alert system that interrupts the user on every fire — defeating its purpose as a background ambient signal.",
+          mitigation:
+            "Keep heartbeat output silent on success; write to a clip file. Only surface issues at human-readable report time.",
+          top3: [
+            {
+              product: "claudecode",
+              why: "Native Stop hook fires heartbeat silently on every session end without user intervention.",
+            },
+            {
+              product: "langgraph",
+              why: "Cron-triggered graph node can implement a time-based heartbeat independent of user sessions.",
+            },
+            {
+              product: "gsd",
+              why: "Workspace audit pattern naturally maps to a heartbeat that tracks drift from standards.",
+            },
+          ],
+          strata: [],
+          ancillary: true,
+        },
+        skill: {
+          title: "Skill",
+          aliases: [
+            "skill",
+            "skills",
+            "slash command",
+            "slash-command",
+            "agentic skill",
+            "skill system",
+          ],
+          summary:
+            "A named, self-contained capability invoked on demand by a human or orchestrating agent. The atomic unit of the aOS skill system. Always has a /slash-command interface.",
+          antiPattern:
+            "Building a skill with no slash command that requires a long path command to invoke — the command is the interface contract.",
+          mitigation:
+            "Every skill must be registered in Skills/registry.json with a .claude/commands/ slash command. Check the registry before building custom logic.",
+          top3: [
+            {
+              product: "claudecode",
+              why: "Native slash-command interface is the canonical skill invocation pattern in Claude Code.",
+            },
+            {
+              product: "langgraph",
+              why: "Graph nodes can wrap skills as typed tool calls with explicit input/output contracts.",
+            },
+            {
+              product: "langchain",
+              why: "Chain primitives map naturally to skills — named, composable, input→output.",
+            },
+          ],
+          strata: ["L2","L3"],
+          ancillary: false,
+        },
+        workflow: {
+          title: "Agentic Workflow",
+          aliases: [
+            "workflow",
+            "workflows",
+            "agentic workflow",
+            "runbook",
+            "multi-step workflow",
+          ],
+          summary:
+            "A structured, multi-step sequence of skills, decisions, and human-confirmation gates. Workflows compose skills; skills do not compose workflows.",
+          antiPattern:
+            "A workflow with no human-confirmation gates — if every step is automatic, it is a script, not a workflow.",
+          mitigation:
+            "Define numbered phases, explicit gate checkpoints for human review, skill call references, and a final log step that writes findings.",
+          top3: [
+            {
+              product: "langgraph",
+              why: "Stateful execution graphs with explicit human-in-the-loop interrupt points map directly to workflow gates.",
+            },
+            {
+              product: "gsd",
+              why: "Best workflow harness with explicit context budget, checkpoint, and handoff semantics.",
+            },
+            {
+              product: "claudecode",
+              why: "Multi-step workflows execute naturally in Claude Code sessions with skill invocations as subroutines.",
+            },
+          ],
+          strata: ["L3","L4"],
+          ancillary: false,
         },
       };
 
@@ -29123,6 +29905,8 @@
               antiPattern: concept.antiPattern,
               mitigation: concept.mitigation,
               top3: concept.top3 || [],
+              strata: concept.strata || [],
+              ancillary: concept.ancillary || false,
               score: bestScore,
               matchedAlias,
             });
@@ -30372,7 +31156,7 @@
       // ===== PRODUCT LENS (strata highlight per product) =====
       const PRODUCT_STRATA_MAP = {
         af: ["l1", "l2", "l3", "l4"],
-        hermes: ["l4", "l5", "l6", "l7"],
+        kotana: ["l4", "l5", "l6", "l7"],
         paperclip: ["l7", "l3", "l4"],
         crewai: ["l4", "l3"],
         mem0: ["l2"],
@@ -30383,7 +31167,7 @@
         gsd: ["l4", "l2"],
         superpowers: ["l4", "l5", "l3"],
         gstack: ["l4", "l6", "l7"],
-        hermesagent: ["l2", "l4", "l3", "l1"],
+        kotanaagent: ["l2", "l4", "l3", "l1"],
         shipyard: ["l4", "l3", "l5", "l6"],
         cursor: ["l7", "l3"],
         gitingest: ["l2", "l3"],
@@ -30416,6 +31200,7 @@
         mcppg: ["l3", "l2"],
         mcpbrave: ["l3", "l2"],
         mcpmemory: ["l2"],
+        clawmem: ["l4", "l3", "l2"],
         blader: ["l3", "l7"],
         codeburn: ["l5", "l7", "l4"],
         aosexplorer: ["l5", "l7"],
@@ -30527,11 +31312,11 @@
           identityCopy:
             "Azure AI Foundry is the umbrella platform for building, deploying, and governing AI systems.",
         },
-        hermes: {
+        kotana: {
           subtitle:
             "Orchestration-first platform for routing work, policy, and telemetry.",
           identityCopy:
-            "Hermes acts like the coordination brain: it routes tasks, enforces structure, and keeps system state moving.",
+            "Kotana acts like the coordination brain: it routes tasks, enforces structure, and keeps system state moving.",
         },
         paperclip: {
           subtitle:
@@ -30549,6 +31334,12 @@
           subtitle: "Persistent memory layer for long-term agent recall.",
           identityCopy:
             "Mem0 stores context, history, and remembered facts so agents can pick up where they left off.",
+        },
+        clawmem: {
+          subtitle:
+            "Local shared-brain memory engine with hook-driven lifecycle automation.",
+          identityCopy:
+            "ClawMem is a persistent context layer that preloads relevant history before reasoning, captures decisions after the turn, and compresses long-running sessions before context is lost.",
         },
         langgraph: {
           subtitle:
@@ -30592,11 +31383,11 @@
           identityCopy:
             "gstack packages repeated decision patterns into a reusable execution stack.",
         },
-        hermesagent: {
+        kotanaagent: {
           subtitle:
             "Memory-forward agent runtime with learned skills and tool use.",
           identityCopy:
-            "Hermes Agent combines persistent context, skills, and orchestration behavior in a reusable agent runtime.",
+            "Kotana Agent combines persistent context, skills, and orchestration behavior in a reusable agent runtime.",
         },
         shipyard: {
           subtitle:
@@ -31378,7 +32169,7 @@
         const abbrevMap = {
           AF: "Azure AI Foundry",
           PC: "Paperclip",
-          HM: "Hermes",
+          HM: "Kotana",
           CW: "CrewAI",
           M0: "Mem0",
           LG: "LangGraph",
@@ -31388,7 +32179,7 @@
           GD: "GSD",
           SP: "Superpowers",
           GS: "gstack",
-          HA: "Hermes Agent",
+          HA: "Kotana Agent",
           SY: "Shipyard",
           CI: "Cursor IDE",
           GI: "Git Ingest",
@@ -32141,7 +32932,13 @@
               .filter(Boolean)
               .slice(0, 3)
               .join(" · ");
-            html += `<div class="ac-item" onclick="acSelectConcept('${c.id}')" data-ac-type="concept"><span class="ac-icon">&#x1F9E0;</span>${c.title}<span class="ac-sub">Top: ${topNames || "No mapping yet"}</span></div>`;
+            const strataDots = (c.strata || []).map(s => {
+              const colorMap = {L7:'#c75a00',L6:'#e15759',L5:'#b07aa1',L4:'#59a14f',L3:'#edc948',L2:'#22d3ee',L1:'#1e40af',L0:'#9ca3af'};
+              const col = colorMap[s] || '#6b6b80';
+              return `<span class="stratum-dot" style="background:${col}" title="${s}"></span>`;
+            }).join('');
+            const rankSymbol = c.ancillary ? '<span class="rank-symbol rank-ancillary" title="Ancillary — not stratum-bound">◇</span>' : '<span class="rank-symbol rank-primary" title="Primary — stratum-bound">◆</span>';
+            html += `<div class="ac-item" onclick="acSelectConcept('${c.id}')" data-ac-type="concept">${rankSymbol}<span class="ac-icon">&#x1F9E0;</span>${c.title}${strataDots}<span class="ac-sub">Top: ${topNames || "No mapping yet"}</span></div>`;
           });
         }
 
@@ -33142,7 +33939,7 @@
           l1: 2,
           products: {
             l4: ["CrewAI", "AutoGen", "LangGraph"],
-            l5: ["Hermes"],
+            l5: ["Kotana"],
             l6: ["LangSmith"],
           },
         },
@@ -34481,7 +35278,7 @@
           label: "Jul 2025",
           products: [
             "af",
-            "hermes",
+            "kotana",
             "crewai",
             "langgraph",
             "mem0",
