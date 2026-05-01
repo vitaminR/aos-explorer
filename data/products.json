@@ -1198,6 +1198,29 @@
       "changeRisk": "low",
       "sourceQuality": "high",
       "status": "active"
+    },
+    {
+      "id": "aosnaming",
+      "name": "{a}OS Hybrid Skill Naming Convention",
+      "type": "skill",
+      "vendor": "{a}OS",
+      "deployment": "Local",
+      "license": "Proprietary",
+      "primary": "L6 Trust & Governance",
+      "secondary": "L7, L5",
+      "axisRoles": "Governance: Primary · UX Discovery · Catalog Quality",
+      "confidence": 0.95,
+      "rationale": "First formal {a}OS governance standard for naming slash commands and skills across the agentic workspace. Defines a hybrid convention with three rules: product-prefix (li-crucible) when a domain has 3+ skills, action-product (catalog-aos7) when a domain has 1–2 skills, and bare action words (scout, fix, close) for general workspace tools. The convention exists to make autocomplete intentional — typing a prefix should land on a coherent group rather than an accidental collision. Applied uniformly across Claude Code, Copilot, Gemini, and Opencode harnesses, and enforced by the unified skill registry. Sits at L6 because it governs how the catalog is structured, with secondary impact at L7 (how users discover skills) and L5 (catalog quality control).",
+      "conceptMappings": [],
+      "evidenceIds": [],
+      "freshnessTier": "B",
+      "lastReviewed": "2026-05-01",
+      "lastVerified": "2026-05-01",
+      "updatePriority": 0.3,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "low",
+      "sourceQuality": "high",
+      "status": "active"
     }
   ]
 }

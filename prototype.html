@@ -11489,6 +11489,40 @@
           <span class="confidence high">0.84</span>
         </div>
 
+        <div
+          class="product-card"
+          data-name="{a}OS Hybrid Skill Naming Convention"
+          data-type="skill"
+          data-vendor="{a}OS"
+          data-deployment="Local"
+          data-license="Proprietary"
+          onclick="selectProduct('aosnaming')"
+          oncontextmenu="showCtxMenu(event, 'aosnaming')"
+        >
+          <button
+            class="add-compare-btn"
+            onclick="
+              event.stopPropagation();
+              addToCompare(this, '{a}OS Hybrid Skill Naming Convention');
+            "
+          >
+            +
+          </button>
+          <div class="name">{a}OS Hybrid Skill Naming Convention</div>
+          <div class="vendor">{a}OS &middot; Local &middot; Proprietary</div>
+          <div class="strata-dots">
+            <div class="strata-dot active" style="background: var(--l7)"></div>
+            <div class="strata-dot active" style="background: var(--l6)"></div>
+            <div class="strata-dot active" style="background: var(--l5)"></div>
+            <div class="strata-dot" style="background: var(--l4)"></div>
+            <div class="strata-dot" style="background: var(--l3)"></div>
+            <div class="strata-dot" style="background: var(--l2)"></div>
+            <div class="strata-dot" style="background: var(--l1)"></div>
+          </div>
+          <div class="spans-label">Spans 3 strata &middot; Primary: L6</div>
+          <span class="confidence high">0.95</span>
+        </div>
+
         <!-- MCP SERVER CARDS -->
         <div
           class="product-card"
@@ -13461,6 +13495,20 @@
           lastVerified: "2026-04-28",
           rationale:
             "Open-source LLM series (Hermes 2, Hermes 3) fine-tuned on structured function-calling and agentic JSON datasets. One of the strongest open-source models for tool-use and structured output. Backbone model for Hermes Agent and widely used in community self-hosted agentic builds.",
+        },
+        aosnaming: {
+          name: "{a}OS Hybrid Skill Naming Convention",
+          type: "skill",
+          vendor: "{a}OS",
+          deployment: "Local",
+          license: "Proprietary",
+          primary: "L6 Trust & Governance",
+          secondary: "L7, L5",
+          axisRoles: "Governance: Primary · UX Discovery · Catalog Quality",
+          confidence: 0.95,
+          lastVerified: "2026-05-01",
+          rationale:
+            "First formal {a}OS governance standard for naming slash commands and skills across the agentic workspace. Defines a hybrid convention with three rules: product-prefix (li-crucible) when a domain has 3+ skills, action-product (catalog-aos7) when a domain has 1–2 skills, and bare action words (scout, fix, close) for general workspace tools. The convention exists to make autocomplete intentional — typing a prefix should land on a coherent group rather than an accidental collision. Applied uniformly across Claude Code, Copilot, Gemini, and Opencode harnesses, and enforced by the unified skill registry. Sits at L6 because it governs how the catalog is structured, with secondary impact at L7 (how users discover skills) and L5 (catalog quality control).",
         },
       };
 
@@ -31350,6 +31398,7 @@
         skperf: ["l5", "l3", "l1"],
         skapi: ["l3"],
         skdb: ["l2"],
+        aosnaming: ["l6", "l7", "l5"],
         // MCPs
         mcpgithub: ["l3", "l6"],
         mcpplaywright: ["l3"],
