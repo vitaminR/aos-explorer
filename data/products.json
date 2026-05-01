@@ -1114,6 +1114,90 @@
       "changeRisk": "high",
       "sourceQuality": "high",
       "status": "active"
+    },
+    {
+      "id": "hermes-agent",
+      "name": "Hermes Agent",
+      "type": "agent",
+      "vendor": "NousResearch",
+      "deployment": "Self-hosted / Cloud",
+      "license": "Open Source",
+      "primary": "L4 Orchestration & Decisioning",
+      "secondary": "L2, L3",
+      "axisRoles": "Governance: Medium · Observability: Medium",
+      "confidence": 0.84,
+      "rationale": "Self-improving autonomous agent with a built-in learning loop. Creates and refines skills from experience, maintains persistent memory across sessions, and supports multi-agent parallelism. Runs on any infrastructure from a VPS to a GPU cluster.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "loop-core",
+          "role": "primary",
+          "rank": 1,
+          "why": "The defining feature: a continuous self-improvement loop that creates skills from experience and refines them during use."
+        },
+        {
+          "conceptSlug": "memory",
+          "role": "primary",
+          "rank": 1,
+          "why": "Persistent cross-session memory with self-nudging to retain knowledge and recall past conversations."
+        },
+        {
+          "conceptSlug": "harness",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Coordinator can route tasks to specialized subagents and share experience across agent pools."
+        },
+        {
+          "conceptSlug": "tool_calling",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Full web control, MCP support, and programmatic tool calling via execute_code for collapsing multi-step pipelines."
+        }
+      ],
+      "evidenceIds": [],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-04-28",
+      "lastVerified": "2026-04-28",
+      "updatePriority": 0.7,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "medium",
+      "sourceQuality": "medium",
+      "status": "active"
+    },
+    {
+      "id": "hermes-model",
+      "name": "Hermes (Model Series)",
+      "type": "model",
+      "vendor": "NousResearch",
+      "deployment": "Self-hosted",
+      "license": "Open Source",
+      "primary": "L1 Models & Infrastructure",
+      "secondary": "L3",
+      "axisRoles": "Governance: Light · Observability: Light",
+      "confidence": 0.87,
+      "rationale": "Open-source LLM series (Hermes 2, Hermes 3) fine-tuned on structured function-calling and agentic JSON datasets. The backbone model for Hermes Agent and a popular base for community agentic builds requiring strong tool-use without proprietary APIs.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "tool_calling",
+          "role": "primary",
+          "rank": 1,
+          "why": "Trained on the hermes-function-calling-v1 dataset — one of the strongest open-source models for structured tool-use and agentic JSON mode."
+        },
+        {
+          "conceptSlug": "rag",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Commonly used as the inference backbone in self-hosted RAG pipelines due to its structured-output reliability."
+        }
+      ],
+      "evidenceIds": [],
+      "freshnessTier": "B",
+      "lastReviewed": "2026-04-28",
+      "lastVerified": "2026-04-28",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "low",
+      "sourceQuality": "high",
+      "status": "active"
     }
   ]
 }

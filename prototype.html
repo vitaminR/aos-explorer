@@ -177,6 +177,8 @@
         background: var(--accent-gradient);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        text-decoration: none;
+        cursor: pointer;
       }
       .logo span {
         font-weight: 300;
@@ -3976,6 +3978,37 @@
         margin-bottom: 18px;
         padding: 0 4px;
       }
+      .right-rail-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        margin-bottom: 18px;
+        padding: 0 4px;
+      }
+      .right-rail-home {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--accent-indigo);
+        text-decoration: none;
+        cursor: pointer;
+        opacity: 0.8;
+        transition: opacity 0.15s;
+        line-height: 1;
+      }
+      .right-rail-home:hover { opacity: 1; }
+      .right-rail-context {
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--text-quaternary);
+        cursor: pointer;
+        line-height: 1;
+        transition: color 0.15s;
+      }
+      .right-rail-context:hover { color: var(--text-secondary); }
       .detail-section {
         position: sticky;
         top: 0;
@@ -7485,10 +7518,10 @@
 
     <!-- HEADER -->
     <header class="header">
-      <div class="logo">
+      <a class="logo" href="#" onclick="resetExplorerView(); return false;" title="Home — reset to default view">
         <span class="brand-a">{</span><span class="brand-a">a</span
         ><span class="brand-a">}</span>OS <span>Explorer</span>
-      </div>
+      </a>
       <div class="search-bar" style="position: relative">
         <span class="search-icon">&#x1F50D;</span>
         <input
@@ -10100,7 +10133,10 @@
 
       <!-- RIGHT RAIL -->
       <aside class="right-rail">
-        <div class="detail-header" id="rightRailHeader">Featured Products</div>
+        <div class="right-rail-nav">
+          <a class="right-rail-home" href="#" onclick="resetExplorerView(); return false;" title="Reset to home">{a}OS</a>
+          <div class="right-rail-context" id="rightRailHeader" onclick="resetExplorerView()" title="Click to reset view">Featured Products</div>
+        </div>
 
         <!-- Compare trigger button (near products) -->
         <button
@@ -11770,6 +11806,78 @@
           <span class="confidence high">0.88</span>
         </div>
 
+        <div
+          class="product-card"
+          data-name="Hermes Agent"
+          data-vendor="NousResearch"
+          data-deployment="Self-hosted / Cloud"
+          data-license="Open Source"
+          data-type="agent"
+          onclick="selectProduct('hermesagent')"
+          oncontextmenu="showCtxMenu(event, 'hermesagent')"
+        >
+          <button
+            class="add-compare-btn"
+            onclick="
+              event.stopPropagation();
+              addToCompare(this, 'Hermes Agent');
+            "
+          >
+            +
+          </button>
+          <div class="name">Hermes Agent</div>
+          <div class="vendor">
+            NousResearch &middot; Self-hosted / Cloud &middot; Open Source
+          </div>
+          <div class="strata-dots">
+            <div class="strata-dot" style="background: var(--l7)"></div>
+            <div class="strata-dot" style="background: var(--l6)"></div>
+            <div class="strata-dot" style="background: var(--l5)"></div>
+            <div class="strata-dot active" style="background: var(--l4)"></div>
+            <div class="strata-dot active" style="background: var(--l3)"></div>
+            <div class="strata-dot active" style="background: var(--l2)"></div>
+            <div class="strata-dot" style="background: var(--l1)"></div>
+          </div>
+          <div class="spans-label">Spans 3 strata &middot; Primary: L4</div>
+          <span class="confidence high">0.84</span>
+        </div>
+
+        <div
+          class="product-card"
+          data-name="Hermes (Model Series)"
+          data-vendor="NousResearch"
+          data-deployment="Self-hosted"
+          data-license="Open Source"
+          data-type="model"
+          onclick="selectProduct('hermesmodel')"
+          oncontextmenu="showCtxMenu(event, 'hermesmodel')"
+        >
+          <button
+            class="add-compare-btn"
+            onclick="
+              event.stopPropagation();
+              addToCompare(this, 'Hermes (Model Series)');
+            "
+          >
+            +
+          </button>
+          <div class="name">Hermes (Model Series)</div>
+          <div class="vendor">
+            NousResearch &middot; Self-hosted &middot; Open Source
+          </div>
+          <div class="strata-dots">
+            <div class="strata-dot" style="background: var(--l7)"></div>
+            <div class="strata-dot" style="background: var(--l6)"></div>
+            <div class="strata-dot" style="background: var(--l5)"></div>
+            <div class="strata-dot" style="background: var(--l4)"></div>
+            <div class="strata-dot active" style="background: var(--l3)"></div>
+            <div class="strata-dot" style="background: var(--l2)"></div>
+            <div class="strata-dot active" style="background: var(--l1)"></div>
+          </div>
+          <div class="spans-label">Spans 2 strata &middot; Primary: L1</div>
+          <span class="confidence high">0.87</span>
+        </div>
+
         <hr
           style="
             border: none;
@@ -13325,6 +13433,34 @@
           lastVerified: "2026-04-15",
           rationale:
             "AI coding cost observability TUI. Reads Claude Code and Codex session transcripts from disk to track token spend by task type, tool, model, MCP server, and project. Classifies 13 activity categories deterministically, tracks one-shot success rate, and exports CSV/JSON. Primary value is observability (L5); secondary is the interactive TUI dashboard (L7) and task classification that informs orchestration decisions (L4).",
+        },
+        hermesagent: {
+          name: "Hermes Agent",
+          type: "agent",
+          vendor: "NousResearch",
+          deployment: "Self-hosted / Cloud",
+          license: "Open Source",
+          primary: "L4 Orchestration & Decisioning",
+          secondary: "L2, L3",
+          axisRoles: "Governance: Medium · Observability: Medium",
+          confidence: 0.84,
+          lastVerified: "2026-04-28",
+          rationale:
+            "Self-improving autonomous agent with a built-in learning loop. Creates and refines skills from experience, maintains persistent memory across sessions, supports multi-agent parallelism, and runs on any infrastructure from a $5 VPS to a GPU cluster.",
+        },
+        hermesmodel: {
+          name: "Hermes (Model Series)",
+          type: "model",
+          vendor: "NousResearch",
+          deployment: "Self-hosted",
+          license: "Open Source",
+          primary: "L1 Models & Infrastructure",
+          secondary: "L3",
+          axisRoles: "Governance: Light · Observability: Light",
+          confidence: 0.87,
+          lastVerified: "2026-04-28",
+          rationale:
+            "Open-source LLM series (Hermes 2, Hermes 3) fine-tuned on structured function-calling and agentic JSON datasets. One of the strongest open-source models for tool-use and structured output. Backbone model for Hermes Agent and widely used in community self-hosted agentic builds.",
         },
       };
 
@@ -26849,6 +26985,27 @@
         document.getElementById("breadcrumb").innerHTML =
           '<span class="crumb current"><span class="brand-a">{</span><span class="brand-a">a</span><span class="brand-a">}</span>OS Reference Stack</span>';
       }
+      function resetExplorerView() {
+        // Clear persisted stratum so it doesn't reopen on next load
+        try { localStorage.removeItem("aosLastStratum"); } catch (_) {}
+        // Clear URL hash without reloading
+        if (location.hash) history.replaceState(null, "", location.pathname);
+        // Clear search
+        const searchInput = document.getElementById("searchInput");
+        if (searchInput) { searchInput.value = ""; applySearchAndFilters(); }
+        // Exit product lens
+        if (activeLensProduct) exitProductLens();
+        // Collapse all strata
+        collapseAll();
+        // Reset breadcrumb
+        resetBreadcrumb();
+        // Reset mode to Products
+        const productsPill = document.querySelector('.mode-pill[data-label="Products"]');
+        if (productsPill && !productsPill.classList.contains("active")) setMode(productsPill);
+        // Reset right rail header
+        const header = document.getElementById("rightRailHeader");
+        if (header) header.textContent = "Featured Products";
+      }
       function collapseAll() {
         document
           .querySelectorAll(".stratum-card.expanded")
@@ -31204,6 +31361,8 @@
         blader: ["l3", "l7"],
         codeburn: ["l5", "l7", "l4"],
         aosexplorer: ["l5", "l7"],
+        hermesagent: ["l4", "l2", "l3"],
+        hermesmodel: ["l1", "l3"],
       };
 
       let activeLensProduct = null;
@@ -31219,7 +31378,9 @@
         const selectedCard = document.querySelector(
           `.product-card[data-product-id="${productKey}"]`,
         );
-        selectedCard?.classList.add("product-selected");
+        if (!selectedCard) return;
+        selectedCard.classList.add("product-selected");
+        selectedCard.scrollIntoView({ block: "nearest", behavior: "smooth" });
       }
 
       function enterProductLens(productKey) {
@@ -32964,7 +33125,7 @@
               ),
               '<span class="ac-match">$1</span>',
             );
-            html += `<div class="ac-item" onclick="acSelectProduct('${p.name}')" data-ac-type="product"><span class="ac-icon">&#x1F4E6;</span>${hl}<span class="ac-sub">${p.vendor}</span></div>`;
+            html += `<div class="ac-item" onclick="acSelectProduct('${p.name}')" data-ac-type="product"><span class="ac-icon">&#x1F4E6;</span><span>${hl}</span><span class="ac-sub">${p.vendor}</span></div>`;
           });
         }
         // Strata
