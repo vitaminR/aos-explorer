@@ -1221,6 +1221,29 @@
       "changeRisk": "low",
       "sourceQuality": "high",
       "status": "active"
+    },
+    {
+      "id": "fallow",
+      "name": "Fallow",
+      "type": "tool",
+      "vendor": "fallow-rs",
+      "deployment": "Local",
+      "license": "MIT (Runtime tier paid)",
+      "primary": "L5 Evaluation & Quality",
+      "secondary": "L3, L6",
+      "axisRoles": "Observability: Strong · Governance: Medium",
+      "confidence": 0.86,
+      "rationale": "Rust-native codebase intelligence engine for TypeScript and JavaScript that builds a project-wide graph instead of working file-by-file like a linter. The free static layer analyzes a wide spread of code-quality dimensions — unused/dead code, duplication, circular dependencies, complexity hotspots, and architecture-boundary drift — with sub-second performance and roughly 90 framework plugins. An optional paid Runtime tier adds production-traffic evidence for hot-path review and cold-path deletion, turning quality scores into deployment-grade signals. In the agentic stack, Fallow is the deterministic check that pairs with non-deterministic AI codegen: Claude Code, Cursor, Codex, and other agents call it via CLI or MCP to verify that generated changes don't introduce slop, dead branches, or boundary violations. Primary fit is L5 Evaluation & Quality because the entire product is a multi-metric quality oracle; L3 captures the CLI/MCP tool surface that agents actually invoke, and L6 captures the architecture-boundary enforcement that nudges it into the governance lane. In plain English: it's a fast, graph-aware code reviewer that scores codebase health across many axes at once and gives AI coding agents a structured way to catch their own mistakes.",
+      "conceptMappings": [],
+      "evidenceIds": [],
+      "freshnessTier": "B",
+      "lastReviewed": "2026-05-01",
+      "lastVerified": "2026-05-01",
+      "updatePriority": 0.4,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "medium",
+      "sourceQuality": "high",
+      "status": "active"
     }
   ]
 }

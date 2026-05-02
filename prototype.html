@@ -1032,9 +1032,9 @@
         background: rgba(148, 163, 184, 0.07);
       }
       .hero-strata-role.primary {
-        color: rgba(129, 140, 248, 0.95);
-        border-color: rgba(129, 140, 248, 0.35);
-        background: rgba(129, 140, 248, 0.12);
+        color: rgba(52, 211, 153, 0.95);
+        border-color: rgba(52, 211, 153, 0.4);
+        background: rgba(52, 211, 153, 0.1);
       }
       .hero-strata-role.secondary {
         color: rgba(167, 139, 250, 0.9);
@@ -3269,6 +3269,10 @@
       }
 
       /* ===== PRODUCT LENS (dimmed strata) ===== */
+      body.lens-active .axis-band {
+        opacity: 0.06 !important;
+        transition: opacity 0.3s;
+      }
       .stratum-card.dimmed {
         opacity: 0.25;
         filter: grayscale(0.6);
@@ -11842,6 +11846,42 @@
 
         <div
           class="product-card"
+          data-name="Fallow"
+          data-vendor="fallow-rs"
+          data-deployment="Local"
+          data-license="MIT (Runtime tier paid)"
+          data-type="tool"
+          onclick="selectProduct('fallow')"
+          oncontextmenu="showCtxMenu(event, 'fallow')"
+        >
+          <button
+            class="add-compare-btn"
+            onclick="
+              event.stopPropagation();
+              addToCompare(this, 'Fallow');
+            "
+          >
+            +
+          </button>
+          <div class="name">Fallow</div>
+          <div class="vendor">
+            fallow-rs &middot; Local &middot; MIT (Runtime tier paid)
+          </div>
+          <div class="strata-dots">
+            <div class="strata-dot" style="background: var(--l7)"></div>
+            <div class="strata-dot active" style="background: var(--l6)"></div>
+            <div class="strata-dot active" style="background: var(--l5)"></div>
+            <div class="strata-dot" style="background: var(--l4)"></div>
+            <div class="strata-dot active" style="background: var(--l3)"></div>
+            <div class="strata-dot" style="background: var(--l2)"></div>
+            <div class="strata-dot" style="background: var(--l1)"></div>
+          </div>
+          <div class="spans-label">Spans 3 strata &middot; Primary: L5</div>
+          <span class="confidence high">0.86</span>
+        </div>
+
+        <div
+          class="product-card"
           data-name="Hermes Agent"
           data-vendor="NousResearch"
           data-deployment="Self-hosted / Cloud"
@@ -13509,6 +13549,20 @@
           lastVerified: "2026-05-01",
           rationale:
             "First formal {a}OS governance standard for naming slash commands and skills across the agentic workspace. Defines a hybrid convention with three rules: product-prefix (li-crucible) when a domain has 3+ skills, action-product (catalog-aos7) when a domain has 1–2 skills, and bare action words (scout, fix, close) for general workspace tools. The convention exists to make autocomplete intentional — typing a prefix should land on a coherent group rather than an accidental collision. Applied uniformly across Claude Code, Copilot, Gemini, and Opencode harnesses, and enforced by the unified skill registry. Sits at L6 because it governs how the catalog is structured, with secondary impact at L7 (how users discover skills) and L5 (catalog quality control).",
+        },
+        fallow: {
+          name: "Fallow",
+          type: "tool",
+          vendor: "fallow-rs",
+          deployment: "Local",
+          license: "MIT (Runtime tier paid)",
+          primary: "L5 Evaluation & Quality",
+          secondary: "L3, L6",
+          axisRoles: "Observability: Strong · Governance: Medium",
+          confidence: 0.86,
+          lastVerified: "2026-05-01",
+          rationale:
+            "Rust-native codebase intelligence engine for TypeScript and JavaScript that builds a project-wide graph instead of working file-by-file like a linter. The free static layer analyzes a wide spread of code-quality dimensions — unused/dead code, duplication, circular dependencies, complexity hotspots, and architecture-boundary drift — with sub-second performance and roughly 90 framework plugins. An optional paid Runtime tier adds production-traffic evidence for hot-path review and cold-path deletion, turning quality scores into deployment-grade signals. In the agentic stack, Fallow is the deterministic check that pairs with non-deterministic AI codegen: Claude Code, Cursor, Codex, and other agents call it via CLI or MCP to verify that generated changes don't introduce slop, dead branches, or boundary violations. Primary fit is L5 Evaluation & Quality because the entire product is a multi-metric quality oracle; L3 captures the CLI/MCP tool surface that agents actually invoke, and L6 captures the architecture-boundary enforcement that nudges it into the governance lane. In plain English: it's a fast, graph-aware code reviewer that scores codebase health across many axes at once and gives AI coding agents a structured way to catch their own mistakes.",
         },
       };
 
@@ -31412,6 +31466,7 @@
         aosexplorer: ["l5", "l7"],
         hermesagent: ["l4", "l2", "l3"],
         hermesmodel: ["l1", "l3"],
+        fallow: ["l5", "l3", "l6"],
       };
 
       let activeLensProduct = null;
@@ -31463,9 +31518,18 @@
             }
           } else {
             card.classList.add("dimmed");
+            // Collapse expanded strata that aren't touched by this product
+            if (card.classList.contains("expanded")) {
+              card.classList.remove("expanded");
+              const h = card.querySelector(".stratum-header");
+              if (h) h.setAttribute("aria-expanded", "false");
+              card.querySelectorAll(".construct-panel.visible").forEach((p) => p.classList.remove("visible"));
+              card.querySelectorAll(".construct-chip.expanded").forEach((chip) => chip.classList.remove("expanded"));
+            }
           }
         });
         document.getElementById("lensClearBtn").classList.add("visible");
+        document.body.classList.add("lens-active");
         // Dynamic title: show product name
         const _pd = PRODUCT_DETAILS[productKey];
         if (_pd) document.title = _pd.name + " — {a}OS Explorer";
@@ -31475,6 +31539,7 @@
       function exitProductLens() {
         activeLensProduct = null;
         activeLensSelectionSource = null;
+        document.body.classList.remove("lens-active");
         clearProductStrataHighlight();
         syncSelectedProductCard(null);
         const allStrata = ["l7", "l6", "l5", "l4", "l3", "l2", "l1"];
@@ -31658,6 +31723,39 @@
           identityCopy:
             "SWE-agent is built around the inspect → edit → run → verify loop for real software tasks.",
         },
+        fallow: {
+          subtitle: "Static codebase intelligence — finds what AI codegen introduces before it compounds.",
+          identityCopy: `<div style="display:flex;flex-direction:column;gap:10px">
+            <p style="margin:0;font-size:12px;color:var(--text-secondary);line-height:1.5">Fallow scans your entire repo and surfaces structural debt across five dimensions. Unlike linters that catch style issues, Fallow catches <strong style="color:var(--text-primary)">architectural problems</strong> — the kind that AI agents introduce silently at speed.</p>
+            <div style="font-size:10px;font-weight:700;color:var(--text-quaternary);letter-spacing:0.08em;text-transform:uppercase">What it catches</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+              <div style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.22);border-radius:7px;padding:7px 10px">
+                <div style="font-size:11px;font-weight:700;color:rgba(239,68,68,0.9);margin-bottom:2px">💀 Dead Code</div>
+                <div style="font-size:11px;color:var(--text-secondary)">Unused exports, zombie functions, unreachable branches</div>
+              </div>
+              <div style="background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.22);border-radius:7px;padding:7px 10px">
+                <div style="font-size:11px;font-weight:700;color:rgba(245,158,11,0.9);margin-bottom:2px">📋 Duplication</div>
+                <div style="font-size:11px;color:var(--text-secondary)">Clones, near-duplicates, copy-paste chains</div>
+              </div>
+              <div style="background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.22);border-radius:7px;padding:7px 10px">
+                <div style="font-size:11px;font-weight:700;color:rgba(139,92,246,0.9);margin-bottom:2px">🔄 Circular Deps</div>
+                <div style="font-size:11px;color:var(--text-secondary)">Modules looped into each other, breaking modularity</div>
+              </div>
+              <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.22);border-radius:7px;padding:7px 10px">
+                <div style="font-size:11px;font-weight:700;color:rgba(16,185,129,0.9);margin-bottom:2px">📊 Complexity</div>
+                <div style="font-size:11px;color:var(--text-secondary)">Cognitive complexity hotspots, deeply nested logic</div>
+              </div>
+              <div style="background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.22);border-radius:7px;padding:7px 10px;grid-column:span 2">
+                <div style="font-size:11px;font-weight:700;color:rgba(59,130,246,0.9);margin-bottom:2px">🏗️ Architecture Drift</div>
+                <div style="font-size:11px;color:var(--text-secondary)">Boundary violations — modules reaching outside their layer into places they shouldn't</div>
+              </div>
+            </div>
+            <div style="background:rgba(52,211,153,0.07);border:1px solid rgba(52,211,153,0.2);border-radius:7px;padding:8px 10px">
+              <div style="font-size:11px;font-weight:700;color:rgba(52,211,153,0.9);margin-bottom:3px">⚡ Why this matters for AI stacks</div>
+              <div style="font-size:11px;color:var(--text-secondary)">AI agents write code fast. Fallow catches what they silently broke — runs as an MCP server or CI gate so structural debt is caught before it spreads.</div>
+            </div>
+          </div>`,
+        },
       };
 
       function getPrimaryFocusLabel(primary = "") {
@@ -31750,7 +31848,7 @@
         return `<div class="hero-strata-stack">${touched
           .map((entry) => {
             const isPrimary = primarySet.has(entry.id);
-            return `<div class="hero-strata-stack-row ${isPrimary ? "primary" : ""}">
+            return `<div class="hero-strata-stack-row ${isPrimary ? "primary" : ""}" style="cursor:pointer" onclick="scrollToStratum('${entry.id}')" title="Jump to ${entry.label} ${entry.name}">
                 <span class="hero-strata-swatch" style="background:${entry.color}"></span>
                 <span class="hero-strata-label">${entry.label} ${entry.name}</span>
                 <span class="hero-strata-role ${isPrimary ? "primary" : "secondary"}">${isPrimary ? "Primary" : "Secondary"}</span>
