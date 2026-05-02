@@ -31489,6 +31489,14 @@
 
       function enterProductLens(productKey) {
         activeLensProduct = productKey;
+        // Collapse all open strata before applying lens so nothing stays expanded behind dimmed cards
+        document.querySelectorAll(".stratum-card.expanded").forEach((c) => {
+          c.classList.remove("expanded");
+          const h = c.querySelector(".stratum-header");
+          if (h) h.setAttribute("aria-expanded", "false");
+        });
+        document.querySelectorAll(".construct-panel.visible").forEach((p) => p.classList.remove("visible"));
+        document.querySelectorAll(".construct-chip.expanded").forEach((chip) => chip.classList.remove("expanded"));
         clearProductStrataHighlight();
         syncSelectedProductCard(productKey);
         const touchedStrata = PRODUCT_STRATA_MAP[productKey] || [];
