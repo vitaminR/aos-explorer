@@ -1,0 +1,1305 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]: "{a}OS Explorer"
+    - generic [ref=e4]:
+      - generic [ref=e5]: 🔍
+      - textbox "Search products, strata, constructs..." [ref=e6]
+      - generic [ref=e7]: /
+    - generic [ref=e8]:
+      - button "Products" [ref=e9] [cursor=pointer]
+      - button "Frameworks" [ref=e10] [cursor=pointer]
+      - button "Workflows" [ref=e11] [cursor=pointer]
+      - button "Agents" [ref=e12] [cursor=pointer]
+      - button "Skills" [ref=e13] [cursor=pointer]
+      - button "MCPs" [ref=e14] [cursor=pointer]
+      - button "⚡ Efficiency" [ref=e15] [cursor=pointer]
+      - button "Golden Path" [ref=e16] [cursor=pointer]
+    - button "⚖ Compare 0" [ref=e17] [cursor=pointer]:
+      - text: ⚖ Compare
+      - generic [ref=e18]: "0"
+    - link "📖 Docs" [ref=e19] [cursor=pointer]:
+      - /url: docs.html
+    - link "📊 Health" [ref=e20] [cursor=pointer]:
+      - /url: health.html
+    - button "🔗 Share" [ref=e21] [cursor=pointer]
+  - generic [ref=e23]: "{a}OS Reference Stack"
+  - generic [ref=e24]:
+    - complementary [ref=e25]:
+      - generic [ref=e26]:
+        - 'generic "A horizontal layer in the {a}OS reference model. Each stratum groups related capabilities at one level of abstraction." [ref=e27]': Strata
+        - generic [ref=e28] [cursor=pointer]:
+          - text: L7 Experience
+          - generic [ref=e30]: "3"
+        - generic [ref=e31] [cursor=pointer]:
+          - text: L6 Governance
+          - generic [ref=e33]: "4"
+        - generic [ref=e34] [cursor=pointer]:
+          - text: L5 Observability
+          - generic [ref=e36]: "3"
+        - generic [ref=e37] [cursor=pointer]:
+          - text: L4 Orchestration
+          - generic [ref=e39]: "8"
+        - generic [ref=e40] [cursor=pointer]:
+          - text: L3 Execution
+          - generic [ref=e42]: "6"
+        - generic [ref=e43] [cursor=pointer]:
+          - text: L2 Knowledge
+          - generic [ref=e45]: "4"
+        - generic [ref=e46] [cursor=pointer]:
+          - text: L1 Models
+          - generic [ref=e48]: "3"
+      - generic [ref=e49]:
+        - generic "Cross-cutting concerns that span multiple strata vertically, such as Governance and Observability." [ref=e50]: Axes
+        - generic [ref=e51] [cursor=pointer]: Governance & Trust
+        - generic [ref=e53] [cursor=pointer]: Observability & Eval
+      - generic [ref=e55]:
+        - generic "Narrow the catalog by type, vendor, deployment model, or license type." [ref=e56]: Filters
+        - generic [ref=e58] [cursor=pointer]:
+          - text: 🗂 Type
+          - generic [ref=e59]: All
+          - generic [ref=e60]: ▼
+        - generic [ref=e62] [cursor=pointer]:
+          - text: 🏢 Vendor
+          - generic [ref=e63]: All
+          - generic [ref=e64]: ▼
+        - generic [ref=e66] [cursor=pointer]:
+          - text: ☁ Deployment
+          - generic [ref=e67]: All
+          - generic [ref=e68]: ▼
+        - generic [ref=e70] [cursor=pointer]:
+          - text: 🔓 License
+          - generic [ref=e71]: All
+          - generic [ref=e72]: ▼
+        - generic [ref=e75] [cursor=pointer]:
+          - text: 📚 Stratum
+          - generic [ref=e76]: All
+          - generic [ref=e77]: ▼
+      - link "➕ Suggest a Product" [ref=e78] [cursor=pointer]:
+        - /url: https://github.com/nymil/aos-explorer/issues/new?template=product-suggestion.md&title=%5BProduct+Suggestion%5D+
+    - main [ref=e79]:
+      - generic [ref=e80]:
+        - generic [ref=e81]:
+          - 'heading "{a}OS Agentic Reference Stack" [level=1] [ref=e82]'
+          - paragraph [ref=e83]: A vendor-neutral reference model for agentic AI systems — like the OSI model, but for the AI era.
+        - generic [ref=e84]:
+          - generic [ref=e85]:
+            - generic [ref=e86]: 🧱
+            - text: Click a stratum to drill down
+          - generic [ref=e87]:
+            - generic [ref=e88]: ➕
+            - text: Add products to compare
+          - generic [ref=e89]:
+            - generic [ref=e90]: 🔍
+            - text: Filter by vendor or deployment
+          - generic [ref=e91]:
+            - generic [ref=e92]: ⌨
+            - text: Press
+            - strong [ref=e93]: "?"
+            - text: for shortcuts
+        - generic [ref=e94]:
+          - generic [ref=e95]:
+            - generic [ref=e96]: "12"
+            - generic [ref=e97]: Products
+          - generic [ref=e98]:
+            - generic [ref=e99]: "7"
+            - generic [ref=e100]: Strata
+          - generic [ref=e101]:
+            - generic [ref=e102]: "12"
+            - generic [ref=e103]: Substrates
+          - generic [ref=e104]:
+            - generic [ref=e105]: "24"
+            - generic [ref=e106]: Constructs
+          - generic [ref=e107]:
+            - generic [ref=e108]: "2"
+            - generic [ref=e109]: Axes
+        - generic [ref=e110]:
+          - generic [ref=e111] [cursor=pointer]: 🏠 Run Locally
+          - generic [ref=e112] [cursor=pointer]: ☁️ Enterprise Cloud
+          - generic [ref=e113] [cursor=pointer]: 🔗 Flexible Deploy
+          - generic [ref=e114] [cursor=pointer]: 🏢 Microsoft
+      - generic [ref=e115]:
+        - generic:
+          - generic "Governance & Trust": GOV
+        - generic:
+          - generic "Observability & Eval": OBS
+        - generic [ref=e116] [cursor=pointer]:
+          - generic [ref=e118]:
+            - generic [ref=e119]: L7
+            - generic [ref=e120]:
+              - 'generic "A horizontal layer in the {a}OS reference model grouping capabilities at this level of abstraction." [ref=e121]': Experience & Intent
+              - generic [ref=e122]: What did the human actually want — and did they get it?
+            - generic [ref=e123]:
+              - generic [ref=e124]: 3 substrates
+              - generic [ref=e125]: ❯
+            - generic "11 products at this layer" [ref=e126]: 📦 11
+          - generic:
+            - generic "A functional sub-domain within a stratum. Each substrate groups related constructs that serve a common purpose." [ref=e127]: Substrates
+            - generic [ref=e128]:
+              - generic [ref=e129]: 💬
+              - generic [ref=e130]:
+                - generic "Click to expand and see constructs within this substrate." [ref=e131]: Intent Parsers & UX
+                - generic [ref=e132]: Chat interfaces, voice agents, intent classifiers
+              - generic [ref=e133]:
+                - generic "Azure AI Foundry" [ref=e134]: AF
+                - generic "Paperclip" [ref=e135]: PC
+                - generic "Cursor IDE" [ref=e136]: CI
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e137]:
+              - generic [ref=e138]: 🎨
+              - generic [ref=e139]:
+                - generic "Click to expand and see constructs within this substrate." [ref=e140]: Generative UI
+                - generic [ref=e141]: Dynamic interfaces assembled by agents
+              - generic [ref=e142]:
+                - generic "v0" [ref=e143]: V0
+                - generic "Lovable" [ref=e144]: LV
+            - generic [ref=e145]:
+              - generic [ref=e146]: 🔄
+              - generic [ref=e147]:
+                - generic "Click to expand and see constructs within this substrate." [ref=e148]: Human-in-the-Loop Controls
+                - generic [ref=e149]: Approval gates, escalation paths, override mechanisms
+              - generic "gstack" [ref=e151]: GS
+        - generic [ref=e152] [cursor=pointer]:
+          - generic [ref=e154]:
+            - generic [ref=e155]: L6
+            - generic [ref=e156]:
+              - 'generic "A horizontal layer in the {a}OS reference model grouping capabilities at this level of abstraction." [ref=e157]': Governance & Trust
+              - generic [ref=e158]: Who approved this action and under which policy?
+            - generic [ref=e159]:
+              - generic [ref=e160]: 4 substrates
+              - generic [ref=e161]: ❯
+            - generic "10 products at this layer" [ref=e162]: 📦 10
+          - generic:
+            - generic "A functional sub-domain within a stratum. Each substrate groups related constructs that serve a common purpose." [ref=e163]: Substrates
+            - generic [ref=e164]:
+              - generic [ref=e165]: 🛡
+              - generic [ref=e166]:
+                - generic "Click to expand and see constructs within this substrate." [ref=e167]: Policy Engines
+                - generic [ref=e168]: OPA, Azure Policy, guardrails-as-code
+              - generic [ref=e169]:
+                - generic "OPA" [ref=e170]: OP
+                - generic "gstack" [ref=e171]: GS
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e172]:
+              - generic [ref=e173]: 🔒
+              - generic [ref=e174]:
+                - generic "Click to expand and see constructs within this substrate." [ref=e175]: Identity & Access
+                - generic [ref=e176]: Auth, RBAC, credential vaults
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e177]:
+              - generic [ref=e178]: 📜
+              - generic [ref=e179]:
+                - generic "Click to expand and see constructs within this substrate." [ref=e180]: Audit & Compliance
+                - generic [ref=e181]: Immutable logs, regulatory frameworks
+              - generic "Shipyard" [ref=e183]: SY
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e184]:
+              - generic [ref=e185]: ⚠
+              - generic [ref=e186]:
+                - generic "Click to expand and see constructs within this substrate." [ref=e187]: Safety & Content Filters
+                - generic [ref=e188]: Content moderation, toxicity detection, PII redaction
+            - text: ▸ ▸ ▸ ▸
+        - generic [ref=e189] [cursor=pointer]:
+          - generic [ref=e191]:
+            - generic [ref=e192]: L5
+            - generic [ref=e193]:
+              - 'generic "A horizontal layer in the {a}OS reference model grouping capabilities at this level of abstraction." [ref=e194]': Observability & Evaluation
+              - generic [ref=e195]: How well did this work, and can we prove it?
+            - generic [ref=e196]:
+              - generic [ref=e197]: 3 substrates
+              - generic [ref=e198]: ❯
+            - generic "15 products at this layer" [ref=e199]: 📦 15
+          - generic:
+            - generic "A functional sub-domain within a stratum. Each substrate groups related constructs that serve a common purpose." [ref=e200]: Substrates
+            - generic [ref=e201]:
+              - generic [ref=e202]: 📊
+              - generic [ref=e203]:
+                - generic "Click to expand and see constructs within this substrate." [ref=e204]: Tracing & Logging
+                - generic [ref=e205]: Distributed tracing, structured logs, token accounting
+              - generic "Shipyard" [ref=e207]: SY
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e208]:
+              - generic [ref=e209]: 🧪
+              - generic [ref=e210]:
+                - generic "Click to expand and see constructs within this substrate." [ref=e211]: Eval Frameworks
+                - generic [ref=e212]: Benchmarks, A/B testing, LLM-as-judge
+              - generic "Superpowers" [ref=e214]: SP
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e215]:
+              - generic [ref=e216]: 📈
+              - generic [ref=e217]:
+                - generic "Click to expand and see constructs within this substrate." [ref=e218]: Drift & Anomaly Detection
+                - generic [ref=e219]: Model drift monitors, SLO alerting, cost anomalies
+            - text: ▸ ▸ ▸ ▸
+        - generic [ref=e220] [cursor=pointer]:
+          - generic [ref=e222]:
+            - generic [ref=e223]: L4
+            - generic [ref=e224]:
+              - 'generic "A horizontal layer in the {a}OS reference model grouping capabilities at this level of abstraction." [ref=e225]': Orchestration & Decisioning
+              - generic [ref=e226]: What happens next, in what order, with which agent?
+            - generic [ref=e227]:
+              - generic [ref=e228]: 8 substrates
+              - generic [ref=e229]: ❯
+            - generic "33 products at this layer" [ref=e230]: 📦 33
+          - generic:
+            - generic "A functional sub-domain within a stratum. Each substrate groups related constructs that serve a common purpose." [ref=e231]: Substrates
+            - generic [ref=e232]:
+              - generic [ref=e233]: 💠
+              - generic [ref=e234]:
+                - generic "Click to expand and see constructs within this substrate." [ref=e235]: Workflow Engines
+                - generic [ref=e236]: DAG runners, state machines, orchestration graphs
+              - generic [ref=e237]:
+                - generic "Azure AI Foundry" [ref=e238]: AF
+                - generic "Kotana" [ref=e239]: HM
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e240]:
+              - generic [ref=e241]: 🤖
+              - generic [ref=e242]:
+                - generic "Click to expand and see constructs within this substrate." [ref=e243]: Agent Frameworks
+                - generic [ref=e244]: Multi-agent coordination, task delegation, crew patterns
+              - generic [ref=e245]:
+                - generic "CrewAI" [ref=e246]: CW
+                - generic "LangGraph" [ref=e247]: LG
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e248]:
+              - generic [ref=e249]: 🎲
+              - generic [ref=e250]:
+                - generic "Click to expand and see constructs within this substrate." [ref=e251]: Routing & Planning
+                - generic [ref=e252]: LLM routers, cost-aware selectors, plan generators
+            - generic [ref=e253]:
+              - generic [ref=e254]: ⏰
+              - generic [ref=e255]:
+                - generic "Click to expand and see constructs within this substrate." [ref=e256]: Scheduling & Triggers
+                - generic [ref=e257]: Cron jobs, event listeners, webhook handlers
+            - generic [ref=e258]:
+              - generic [ref=e259]: 🔀
+              - generic [ref=e260]:
+                - generic "Click to expand and see constructs within this substrate." [ref=e261]: Retry & Recovery
+                - generic [ref=e262]: Circuit breakers, fallback chains, checkpoint/resume
+            - generic [ref=e263]:
+              - generic [ref=e264]: ⚡
+              - generic [ref=e265]:
+                - generic "Click to expand and see constructs within this substrate." [ref=e266]: GSD — Speed-First Orchestration
+                - generic [ref=e267]: Context state lifecycle, budget management, checkpoint/resume harness
+              - generic "GSD" [ref=e269]: GD
+            - text: ▸ ▸ ▸
+            - generic [ref=e270]:
+              - generic [ref=e271]: 📋
+              - generic [ref=e272]:
+                - generic "Click to expand and see constructs within this substrate." [ref=e273]: BMAD Method — Spec-First Orchestration
+                - generic [ref=e274]: Requirement hardening, persona handoffs, specification-before-build harness
+              - generic "BMAD Method" [ref=e276]: BM
+            - text: ▸ ▸ ▸
+            - generic [ref=e277]:
+              - generic [ref=e278]: 🧪
+              - generic [ref=e279]:
+                - generic "Click to expand and see constructs within this substrate." [ref=e280]: Superpowers — TDD-Constrained Harness
+                - generic [ref=e281]: Test-first gates, guarded execution, tmux-based workflow enforcement
+              - generic "Superpowers" [ref=e283]: SP
+            - text: ▸ ▸ ▸
+        - generic [ref=e284] [cursor=pointer]:
+          - generic [ref=e286]:
+            - generic [ref=e287]: L3
+            - generic [ref=e288]:
+              - 'generic "A horizontal layer in the {a}OS reference model grouping capabilities at this level of abstraction." [ref=e289]': Execution & Interfaces
+              - generic [ref=e290]: How does the agent act on the world?
+            - generic [ref=e291]:
+              - generic [ref=e292]: 6 substrates
+              - generic [ref=e293]: ❯
+            - generic "32 products at this layer" [ref=e294]: 📦 32
+          - generic:
+            - generic "A functional sub-domain within a stratum. Each substrate groups related constructs that serve a common purpose." [ref=e295]: Substrates
+            - generic [ref=e296]:
+              - generic [ref=e297]: 🔧
+              - generic [ref=e298]:
+                - generic "Click to expand and see constructs within this substrate." [ref=e299]: Tool Registries & MCP
+                - generic [ref=e300]: Tool catalogs, Model Context Protocol, API gateways
+              - generic "Exa MCP" [ref=e302]: EX
+            - text: ▸ ▸ ▸
+            - generic [ref=e303]:
+              - generic [ref=e304]: 💻
+              - generic [ref=e305]:
+                - generic "Click to expand and see constructs within this substrate." [ref=e306]: Code Execution
+                - generic [ref=e307]: Sandboxes, interpreters, REPL environments
+              - generic [ref=e308]:
+                - generic "Superpowers" [ref=e309]: SP
+                - generic "Cursor IDE" [ref=e310]: CI
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e311]:
+              - generic [ref=e312]: 🌐
+              - generic [ref=e313]:
+                - generic "Click to expand and see constructs within this substrate." [ref=e314]: External APIs
+                - generic [ref=e315]: REST/GraphQL connectors, webhook emitters, data sinks
+              - generic "Kotana Agent" [ref=e317]: HA
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e318]:
+              - generic [ref=e319]: 📡
+              - generic [ref=e320]:
+                - generic "Click to expand and see constructs within this substrate." [ref=e321]: Browser & UI Automation
+                - generic [ref=e322]: Playwright, Puppeteer, screen scraping, RPA bridges
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e323]:
+              - generic [ref=e324]: 📂
+              - generic [ref=e325]:
+                - generic "Click to expand and see constructs within this substrate." [ref=e326]: File & OS Interfaces
+                - generic [ref=e327]: Filesystem access, shell execution, system commands
+              - generic [ref=e328]:
+                - generic "Git Ingest" [ref=e329]: GI
+                - generic "Shipyard" [ref=e330]: SY
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e331]:
+              - generic [ref=e332]: 📨
+              - generic [ref=e333]:
+                - generic "Click to expand and see constructs within this substrate." [ref=e334]: Message Queues & Events
+                - generic [ref=e335]: Pub/sub, event buses, async message passing
+            - text: ▸ ▸ ▸ ▸
+        - generic [ref=e336] [cursor=pointer]:
+          - generic [ref=e338]:
+            - generic [ref=e339]: L2
+            - generic [ref=e340]:
+              - 'generic "A horizontal layer in the {a}OS reference model grouping capabilities at this level of abstraction." [ref=e341]': Knowledge & Memory
+              - generic [ref=e342]: What does the system know, and how does it recall?
+            - generic [ref=e343]:
+              - generic [ref=e344]: 4 substrates
+              - generic [ref=e345]: ❯
+            - generic "21 products at this layer" [ref=e346]: 📦 21
+          - generic:
+            - generic "A functional sub-domain within a stratum. Each substrate groups related constructs that serve a common purpose." [ref=e347]: Substrates
+            - generic [ref=e348]:
+              - generic [ref=e349]: 🔍
+              - generic [ref=e350]:
+                - generic "Click to expand and see constructs within this substrate." [ref=e351]: RAG Pipelines & Search
+                - generic [ref=e352]: Vector search, hybrid retrieval, re-ranking
+              - generic [ref=e353]:
+                - generic "Azure AI Search" [ref=e354]: AS
+                - generic "Exa MCP" [ref=e355]: EX
+                - generic "Git Ingest" [ref=e356]: GI
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e357]:
+              - generic [ref=e358]: 🧠
+              - generic [ref=e359]:
+                - generic "Click to expand and see constructs within this substrate." [ref=e360]: Memory Systems
+                - generic [ref=e361]: Short-term context, long-term persistence, episodic recall
+              - generic [ref=e362]:
+                - generic "Mem0" [ref=e363]: M0
+                - generic "Kotana Agent" [ref=e364]: HA
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e365]:
+              - generic [ref=e366]: 📁
+              - generic [ref=e367]:
+                - generic "Click to expand and see constructs within this substrate." [ref=e368]: Knowledge Graphs
+                - generic [ref=e369]: Entity relationships, ontologies, semantic networks
+              - generic [ref=e370]:
+                - generic "GSD" [ref=e371]: GD
+                - generic "BMAD Method" [ref=e372]: BM
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e373]:
+              - generic [ref=e374]: 📦
+              - generic [ref=e375]:
+                - generic "Click to expand and see constructs within this substrate." [ref=e376]: Embedding Stores
+                - generic [ref=e377]: Vector databases, index management, chunking strategies
+            - text: ▸ ▸ ▸ ▸
+        - generic [ref=e378] [cursor=pointer]:
+          - generic [ref=e380]:
+            - generic [ref=e381]: L1
+            - generic [ref=e382]:
+              - 'generic "A horizontal layer in the {a}OS reference model grouping capabilities at this level of abstraction." [ref=e383]': Models & Infrastructure
+              - generic [ref=e384]: What is the raw intelligence, and where does it run?
+            - generic [ref=e385]:
+              - generic [ref=e386]: 3 substrates
+              - generic [ref=e387]: ❯
+            - generic "11 products at this layer" [ref=e388]: 📦 11
+          - generic:
+            - generic "A functional sub-domain within a stratum. Each substrate groups related constructs that serve a common purpose." [ref=e389]: Substrates
+            - generic [ref=e390]:
+              - generic [ref=e391]: 🧬
+              - generic [ref=e392]:
+                - generic "Click to expand and see constructs within this substrate." [ref=e393]: Foundation Models
+                - generic [ref=e394]: GPT-4o, Claude, Gemini, Llama, Mistral, fine-tunes
+              - generic [ref=e395]:
+                - generic "Azure AI Foundry" [ref=e396]: AF
+                - generic "Kotana Agent" [ref=e397]: HA
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e398]:
+              - generic [ref=e399]: ☁
+              - generic [ref=e400]:
+                - generic "Click to expand and see constructs within this substrate." [ref=e401]: Compute & Serving
+                - generic [ref=e402]: GPU clusters, serverless inference, model endpoints
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e403]:
+              - generic [ref=e404]: 🔄
+              - generic [ref=e405]:
+                - generic "Click to expand and see constructs within this substrate." [ref=e406]: Training & Fine-tuning
+                - generic [ref=e407]: RLHF pipelines, LoRA adapters, distillation
+            - text: ▸ ▸ ▸ ▸
+    - complementary [ref=e408]:
+      - generic [ref=e409]: Featured Products
+      - generic [ref=e410] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e411]
+        - generic [ref=e412]: Azure AI Foundry
+        - generic [ref=e413]: Microsoft · Cloud · Proprietary
+        - generic [ref=e414]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e415]
+          - generic "L6 – Governance & Trust – not covered" [ref=e416]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e417]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e418]
+          - generic "L3 – Execution & Interfaces ✓ covered" [ref=e419]
+          - generic "L2 – Knowledge & Memory ✓ covered" [ref=e420]
+          - generic "L1 – Models & Infrastructure ✓ covered" [ref=e421]
+        - generic [ref=e422]: "Spans 4 strata · Primary: L1"
+        - generic [ref=e423]: "0.92"
+      - generic [ref=e424] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e425]
+        - generic [ref=e426]: Kotana
+        - generic [ref=e427]: Internal · Hybrid · Proprietary
+        - generic [ref=e428]:
+          - generic "L7 – Experience & Intent ✓ covered" [ref=e429]
+          - generic "L6 – Governance & Trust ✓ covered" [ref=e430]
+          - generic "L5 – Observability & Evaluation ✓ covered" [ref=e431]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e432]
+          - generic "L3 – Execution & Interfaces – not covered" [ref=e433]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e434]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e435]
+        - generic [ref=e436]: "Spans 4 strata · Primary: L4"
+        - generic [ref=e437]: "0.88"
+      - generic [ref=e438] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e439]
+        - generic [ref=e440]: Paperclip
+        - generic [ref=e441]: Internal · Local · Proprietary
+        - generic [ref=e442]:
+          - generic "L7 – Experience & Intent ✓ covered" [ref=e443]
+          - generic "L6 – Governance & Trust – not covered" [ref=e444]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e445]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e446]
+          - generic "L3 – Execution & Interfaces ✓ covered" [ref=e447]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e448]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e449]
+        - generic [ref=e450]: "Spans 3 strata · Primary: L7"
+        - generic [ref=e451]: ~0.75
+      - generic [ref=e452] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e453]
+        - generic [ref=e454]: Agno
+        - generic [ref=e455]: Agno · Local · Open Source
+        - generic [ref=e456]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e457]
+          - generic "L6 – Governance & Trust – not covered" [ref=e458]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e459]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e460]
+          - generic "L3 – Execution & Interfaces – not covered" [ref=e461]
+          - generic "L2 – Knowledge & Memory ✓ covered" [ref=e462]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e463]
+        - generic [ref=e464]: "Spans 2 strata · Primary: L4"
+        - generic [ref=e465]: "0.87"
+      - generic [ref=e466] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e467]
+        - generic [ref=e468]: Google ADK
+        - generic [ref=e469]: Google · Cloud · Open Source
+        - generic [ref=e470]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e471]
+          - generic "L6 – Governance & Trust – not covered" [ref=e472]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e473]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e474]
+          - generic "L3 – Execution & Interfaces ✓ covered" [ref=e475]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e476]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e477]
+        - generic [ref=e478]: "Spans 2 strata · Primary: L4"
+        - generic [ref=e479]: "0.88"
+      - generic [ref=e480] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e481]
+        - generic [ref=e482]: Smolagents
+        - generic [ref=e483]: HuggingFace · Local · Open Source
+        - generic [ref=e484]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e485]
+          - generic "L6 – Governance & Trust – not covered" [ref=e486]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e487]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e488]
+          - generic "L3 – Execution & Interfaces – not covered" [ref=e489]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e490]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e491]
+        - generic [ref=e492]: "Primary: L4"
+        - generic [ref=e493]: "0.84"
+      - generic [ref=e494] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e495]
+        - generic [ref=e496]: CrewAI
+        - generic [ref=e497]: CrewAI Inc · Cloud · Open Source
+        - generic [ref=e498]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e499]
+          - generic "L6 – Governance & Trust – not covered" [ref=e500]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e501]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e502]
+          - generic "L3 – Execution & Interfaces ✓ covered" [ref=e503]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e504]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e505]
+        - generic [ref=e506]: "Spans 2 strata · Primary: L4"
+        - generic [ref=e507]: "0.90"
+      - generic [ref=e508] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e509]
+        - generic [ref=e510]: Mem0
+        - generic [ref=e511]: Mem0 AI · Cloud · Open Source
+        - generic [ref=e512]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e513]
+          - generic "L6 – Governance & Trust – not covered" [ref=e514]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e515]
+          - generic "L4 – Orchestration & Decisioning – not covered" [ref=e516]
+          - generic "L3 – Execution & Interfaces – not covered" [ref=e517]
+          - generic "L2 – Knowledge & Memory ✓ covered" [ref=e518]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e519]
+        - generic [ref=e520]: "Spans 1 stratum · Primary: L2"
+        - generic [ref=e521]: "0.95"
+      - generic [ref=e522] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e523]
+        - generic [ref=e524]: LangGraph
+        - generic [ref=e525]: LangChain · Hybrid · Open Source
+        - generic [ref=e526]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e527]
+          - generic "L6 – Governance & Trust – not covered" [ref=e528]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e529]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e530]
+          - generic "L3 – Execution & Interfaces ✓ covered" [ref=e531]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e532]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e533]
+        - generic [ref=e534]: "Spans 2 strata · Primary: L4"
+        - generic [ref=e535]: "0.88"
+      - generic [ref=e536] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e537]
+        - generic [ref=e538]: Azure AI Search
+        - generic [ref=e539]: Microsoft · Cloud · Proprietary
+        - generic [ref=e540]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e541]
+          - generic "L6 – Governance & Trust – not covered" [ref=e542]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e543]
+          - generic "L4 – Orchestration & Decisioning – not covered" [ref=e544]
+          - generic "L3 – Execution & Interfaces – not covered" [ref=e545]
+          - generic "L2 – Knowledge & Memory ✓ covered" [ref=e546]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e547]
+        - generic [ref=e548]: "Spans 1 stratum · Primary: L2"
+        - generic [ref=e549]: "0.93"
+      - generic [ref=e550] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e551]
+        - generic [ref=e552]: Open Policy Agent
+        - generic [ref=e553]: CNCF · Hybrid · Open Source
+        - generic [ref=e554]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e555]
+          - generic "L6 – Governance & Trust ✓ covered" [ref=e556]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e557]
+          - generic "L4 – Orchestration & Decisioning – not covered" [ref=e558]
+          - generic "L3 – Execution & Interfaces – not covered" [ref=e559]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e560]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e561]
+        - generic [ref=e562]: "Spans 1 stratum · Primary: L6"
+        - generic [ref=e563]: "0.91"
+      - generic [ref=e564] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e565]
+        - generic [ref=e566]: GSD
+        - generic [ref=e567]: Community · Local · Open Source
+        - generic [ref=e568]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e569]
+          - generic "L6 – Governance & Trust – not covered" [ref=e570]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e571]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e572]
+          - generic "L3 – Execution & Interfaces – not covered" [ref=e573]
+          - generic "L2 – Knowledge & Memory ✓ covered" [ref=e574]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e575]
+        - generic [ref=e576]: "Spans 2 strata · Primary: L4"
+        - generic [ref=e577]: "0.82"
+      - generic [ref=e578] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e579]
+        - generic [ref=e580]: BMAD Method
+        - generic [ref=e581]: Community · Local · Open Source
+        - generic [ref=e582]:
+          - generic "L7 – Experience & Intent ✓ covered" [ref=e583]
+          - generic "L6 – Governance & Trust – not covered" [ref=e584]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e585]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e586]
+          - generic "L3 – Execution & Interfaces – not covered" [ref=e587]
+          - generic "L2 – Knowledge & Memory ✓ covered" [ref=e588]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e589]
+        - generic [ref=e590]: "Spans 3 strata · Primary: L4"
+        - generic [ref=e591]: "0.80"
+      - generic [ref=e592] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e593]
+        - generic [ref=e594]: Superpowers
+        - generic [ref=e595]: Community · Local · Open Source
+        - generic [ref=e596]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e597]
+          - generic "L6 – Governance & Trust – not covered" [ref=e598]
+          - generic "L5 – Observability & Evaluation ✓ covered" [ref=e599]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e600]
+          - generic "L3 – Execution & Interfaces ✓ covered" [ref=e601]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e602]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e603]
+        - generic [ref=e604]: "Spans 3 strata · Primary: L4"
+        - generic [ref=e605]: ~0.79
+      - generic [ref=e606] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e607]
+        - generic [ref=e608]: gstack
+        - generic [ref=e609]: Community · Local · Open Source
+        - generic [ref=e610]:
+          - generic "L7 – Experience & Intent ✓ covered" [ref=e611]
+          - generic "L6 – Governance & Trust ✓ covered" [ref=e612]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e613]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e614]
+          - generic "L3 – Execution & Interfaces – not covered" [ref=e615]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e616]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e617]
+        - generic [ref=e618]: "Spans 3 strata · Primary: L4"
+        - generic [ref=e619]: ~0.74
+      - generic [ref=e620] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e621]
+        - generic [ref=e622]: Kotana Agent
+        - generic [ref=e623]: Community · Hybrid · Open Source
+        - generic [ref=e624]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e625]
+          - generic "L6 – Governance & Trust – not covered" [ref=e626]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e627]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e628]
+          - generic "L3 – Execution & Interfaces ✓ covered" [ref=e629]
+          - generic "L2 – Knowledge & Memory ✓ covered" [ref=e630]
+          - generic "L1 – Models & Infrastructure ✓ covered" [ref=e631]
+        - generic [ref=e632]: "Spans 4 strata · Primary: L2"
+        - generic [ref=e633]: "0.83"
+      - generic [ref=e634] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e635]
+        - generic [ref=e636]: Shipyard
+        - generic [ref=e637]: Community · Local · Open Source
+        - generic [ref=e638]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e639]
+          - generic "L6 – Governance & Trust ✓ covered" [ref=e640]
+          - generic "L5 – Observability & Evaluation ✓ covered" [ref=e641]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e642]
+          - generic "L3 – Execution & Interfaces ✓ covered" [ref=e643]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e644]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e645]
+        - generic [ref=e646]: "Spans 4 strata · Primary: L4"
+        - generic [ref=e647]: ~0.76
+      - generic [ref=e648] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e649]
+        - generic [ref=e650]: Cursor IDE
+        - generic [ref=e651]: Anysphere · Local · Proprietary
+        - generic [ref=e652]:
+          - generic "L7 – Experience & Intent ✓ covered" [ref=e653]
+          - generic "L6 – Governance & Trust – not covered" [ref=e654]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e655]
+          - generic "L4 – Orchestration & Decisioning – not covered" [ref=e656]
+          - generic "L3 – Execution & Interfaces ✓ covered" [ref=e657]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e658]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e659]
+        - generic [ref=e660]: "Spans 2 strata · Primary: L7"
+        - generic [ref=e661]: ~0.78
+      - generic [ref=e662] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e663]
+        - generic [ref=e664]: Git Ingest
+        - generic [ref=e665]: Community · Local · Open Source
+        - generic [ref=e666]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e667]
+          - generic "L6 – Governance & Trust – not covered" [ref=e668]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e669]
+          - generic "L4 – Orchestration & Decisioning – not covered" [ref=e670]
+          - generic "L3 – Execution & Interfaces ✓ covered" [ref=e671]
+          - generic "L2 – Knowledge & Memory ✓ covered" [ref=e672]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e673]
+        - generic [ref=e674]: "Spans 2 strata · Primary: L2"
+        - generic [ref=e675]: ~0.78
+      - generic [ref=e676] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e677]
+        - generic [ref=e678]: Lovable
+        - generic [ref=e679]: Lovable · Cloud · Proprietary
+        - generic [ref=e680]:
+          - generic "L7 – Experience & Intent ✓ covered" [ref=e681]
+          - generic "L6 – Governance & Trust – not covered" [ref=e682]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e683]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e684]
+          - generic "L3 – Execution & Interfaces – not covered" [ref=e685]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e686]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e687]
+        - generic [ref=e688]: "Spans 2 strata · Primary: L7"
+        - generic [ref=e689]: ~0.72
+      - generic [ref=e690] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e691]
+        - generic [ref=e692]: v0
+        - generic [ref=e693]: Vercel · Cloud · Proprietary
+        - generic [ref=e694]:
+          - generic "L7 – Experience & Intent ✓ covered" [ref=e695]
+          - generic "L6 – Governance & Trust – not covered" [ref=e696]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e697]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e698]
+          - generic "L3 – Execution & Interfaces – not covered" [ref=e699]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e700]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e701]
+        - generic [ref=e702]: "Spans 2 strata · Primary: L7"
+        - generic [ref=e703]: ~0.74
+      - generic [ref=e704] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e705]
+        - generic [ref=e706]: Exa MCP
+        - generic [ref=e707]: Exa · Cloud · Proprietary
+        - generic [ref=e708]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e709]
+          - generic "L6 – Governance & Trust – not covered" [ref=e710]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e711]
+          - generic "L4 – Orchestration & Decisioning – not covered" [ref=e712]
+          - generic "L3 – Execution & Interfaces ✓ covered" [ref=e713]
+          - generic "L2 – Knowledge & Memory ✓ covered" [ref=e714]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e715]
+        - generic [ref=e716]: "Spans 2 strata · Primary: L3"
+        - generic [ref=e717]: "0.81"
+      - generic [ref=e718] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e719]
+        - generic [ref=e720]: Agent Skills
+        - generic [ref=e721]: Addy Osmani · Local · Open Source
+        - generic [ref=e722]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e723]
+          - generic "L6 – Governance & Trust ✓ covered" [ref=e724]
+          - generic "L5 – Observability & Evaluation ✓ covered" [ref=e725]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e726]
+          - generic "L3 – Execution & Interfaces – not covered" [ref=e727]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e728]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e729]
+        - generic [ref=e730]: "Spans 3 strata · Primary: L4"
+        - generic [ref=e731]: "0.87"
+      - generic [ref=e732] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e733]
+        - generic [ref=e734]: RAG Pipeline
+        - generic [ref=e735]: Pattern · Hybrid · Open
+        - generic [ref=e736]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e737]
+          - generic "L6 – Governance & Trust – not covered" [ref=e738]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e739]
+          - generic "L4 – Orchestration & Decisioning – not covered" [ref=e740]
+          - generic "L3 – Execution & Interfaces – not covered" [ref=e741]
+          - generic "L2 – Knowledge & Memory ✓ covered" [ref=e742]
+          - generic "L1 – Models & Infrastructure ✓ covered" [ref=e743]
+        - generic [ref=e744]: "Spans 2 strata · Primary: L2"
+        - generic [ref=e745]: "0.91"
+      - generic [ref=e746] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e747]
+        - generic [ref=e748]: Agent CI/CD
+        - generic [ref=e749]: Pattern · Cloud · Open
+        - generic [ref=e750]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e751]
+          - generic "L6 – Governance & Trust ✓ covered" [ref=e752]
+          - generic "L5 – Observability & Evaluation ✓ covered" [ref=e753]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e754]
+          - generic "L3 – Execution & Interfaces – not covered" [ref=e755]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e756]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e757]
+        - generic [ref=e758]: "Spans 3 strata · Primary: L4"
+        - generic [ref=e759]: "0.84"
+      - generic [ref=e760] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e761]
+        - generic [ref=e762]: Eval & Improve Loop
+        - generic [ref=e763]: Pattern · Hybrid · Open
+        - generic [ref=e764]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e765]
+          - generic "L6 – Governance & Trust – not covered" [ref=e766]
+          - generic "L5 – Observability & Evaluation ✓ covered" [ref=e767]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e768]
+          - generic "L3 – Execution & Interfaces ✓ covered" [ref=e769]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e770]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e771]
+        - generic [ref=e772]: "Spans 3 strata · Primary: L5"
+        - generic [ref=e773]: "0.88"
+      - generic [ref=e774] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e775]
+        - generic [ref=e776]: Human-in-the-Loop
+        - generic [ref=e777]: Pattern · Hybrid · Open
+        - generic [ref=e778]:
+          - generic "L7 – Experience & Intent ✓ covered" [ref=e779]
+          - generic "L6 – Governance & Trust ✓ covered" [ref=e780]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e781]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e782]
+          - generic "L3 – Execution & Interfaces – not covered" [ref=e783]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e784]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e785]
+        - generic [ref=e786]: "Spans 3 strata · Primary: L7"
+        - generic [ref=e787]: "0.86"
+      - generic [ref=e788] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e789]
+        - generic [ref=e790]: Devin
+        - generic [ref=e791]: Cognition · Cloud · Proprietary
+        - generic [ref=e792]:
+          - generic "L7 – Experience & Intent ✓ covered" [ref=e793]
+          - generic "L6 – Governance & Trust – not covered" [ref=e794]
+          - generic "L5 – Observability & Evaluation ✓ covered" [ref=e795]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e796]
+          - generic "L3 – Execution & Interfaces ✓ covered" [ref=e797]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e798]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e799]
+        - generic [ref=e800]: "Spans 4 strata · Primary: L4"
+        - generic [ref=e801]: "0.88"
+      - generic [ref=e802] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e803]
+        - generic [ref=e804]: SWE-agent
+        - generic [ref=e805]: Princeton NLP · Local · Open Source
+        - generic [ref=e806]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e807]
+          - generic "L6 – Governance & Trust – not covered" [ref=e808]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e809]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e810]
+          - generic "L3 – Execution & Interfaces ✓ covered" [ref=e811]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e812]
+          - generic "L1 – Models & Infrastructure ✓ covered" [ref=e813]
+        - generic [ref=e814]: "Spans 3 strata · Primary: L3"
+        - generic [ref=e815]: "0.85"
+      - generic [ref=e816] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e817]
+        - generic [ref=e818]: OpenHands
+        - generic [ref=e819]: All Hands AI · Local · Open Source
+        - generic [ref=e820]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e821]
+          - generic "L6 – Governance & Trust – not covered" [ref=e822]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e823]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e824]
+          - generic "L3 – Execution & Interfaces ✓ covered" [ref=e825]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e826]
+          - generic "L1 – Models & Infrastructure ✓ covered" [ref=e827]
+        - generic [ref=e828]: "Spans 3 strata · Primary: L4"
+        - generic [ref=e829]: "0.84"
+      - generic [ref=e830] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e831]
+        - generic [ref=e832]: Aider
+        - generic [ref=e833]: Paul Gauthier · Local · Open Source
+        - generic [ref=e834]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e835]
+          - generic "L6 – Governance & Trust – not covered" [ref=e836]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e837]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e838]
+          - generic "L3 – Execution & Interfaces ✓ covered" [ref=e839]
+          - generic "L2 – Knowledge & Memory ✓ covered" [ref=e840]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e841]
+        - generic [ref=e842]: "Spans 3 strata · Primary: L3"
+        - generic [ref=e843]: "0.90"
+      - generic [ref=e844] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e845]
+        - generic [ref=e846]: Claude Code
+        - generic [ref=e847]: Anthropic · Local · Proprietary
+        - generic [ref=e848]:
+          - generic "L7 – Experience & Intent ✓ covered" [ref=e849]
+          - generic "L6 – Governance & Trust – not covered" [ref=e850]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e851]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e852]
+          - generic "L3 – Execution & Interfaces ✓ covered" [ref=e853]
+          - generic "L2 – Knowledge & Memory ✓ covered" [ref=e854]
+          - generic "L1 – Models & Infrastructure ✓ covered" [ref=e855]
+        - generic [ref=e856]: "Spans 5 strata · Primary: L4"
+        - generic [ref=e857]: "0.92"
+      - generic [ref=e858] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e859]
+        - generic [ref=e860]: Cline
+        - generic [ref=e861]: Cline Bot · Local · Open Source
+        - generic [ref=e862]:
+          - generic "L7 – Experience & Intent ✓ covered" [ref=e863]
+          - generic "L6 – Governance & Trust – not covered" [ref=e864]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e865]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e866]
+          - generic "L3 – Execution & Interfaces ✓ covered" [ref=e867]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e868]
+          - generic "L1 – Models & Infrastructure ✓ covered" [ref=e869]
+        - generic [ref=e870]: "Spans 4 strata · Primary: L3"
+        - generic [ref=e871]: "0.87"
+      - generic [ref=e872] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e873]
+        - generic [ref=e874]: Code Review
+        - generic [ref=e875]: Pattern · Local · Open
+        - generic [ref=e876]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e877]
+          - generic "L6 – Governance & Trust ✓ covered" [ref=e878]
+          - generic "L5 – Observability & Evaluation ✓ covered" [ref=e879]
+          - generic "L4 – Orchestration & Decisioning – not covered" [ref=e880]
+          - generic "L3 – Execution & Interfaces ✓ covered" [ref=e881]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e882]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e883]
+        - generic [ref=e884]: "Spans 3 strata · Primary: L6"
+        - generic [ref=e885]: "0.89"
+      - generic [ref=e886] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e887]
+        - generic [ref=e888]: Testing Strategy
+        - generic [ref=e889]: Pattern · Local · Open
+        - generic [ref=e890]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e891]
+          - generic "L6 – Governance & Trust – not covered" [ref=e892]
+          - generic "L5 – Observability & Evaluation ✓ covered" [ref=e893]
+          - generic "L4 – Orchestration & Decisioning – not covered" [ref=e894]
+          - generic "L3 – Execution & Interfaces ✓ covered" [ref=e895]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e896]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e897]
+        - generic [ref=e898]: "Spans 2 strata · Primary: L5"
+        - generic [ref=e899]: "0.86"
+      - generic [ref=e900] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e901]
+        - generic [ref=e902]: Security Audit
+        - generic [ref=e903]: Pattern · Local · Open
+        - generic [ref=e904]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e905]
+          - generic "L6 – Governance & Trust ✓ covered" [ref=e906]
+          - generic "L5 – Observability & Evaluation ✓ covered" [ref=e907]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e908]
+          - generic "L3 – Execution & Interfaces – not covered" [ref=e909]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e910]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e911]
+        - generic [ref=e912]: "Spans 3 strata · Primary: L6"
+        - generic [ref=e913]: "0.91"
+      - generic [ref=e914] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e915]
+        - generic [ref=e916]: Perf Profiling
+        - generic [ref=e917]: Pattern · Local · Open
+        - generic [ref=e918]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e919]
+          - generic "L6 – Governance & Trust – not covered" [ref=e920]
+          - generic "L5 – Observability & Evaluation ✓ covered" [ref=e921]
+          - generic "L4 – Orchestration & Decisioning – not covered" [ref=e922]
+          - generic "L3 – Execution & Interfaces ✓ covered" [ref=e923]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e924]
+          - generic "L1 – Models & Infrastructure ✓ covered" [ref=e925]
+        - generic [ref=e926]: "Spans 3 strata · Primary: L5"
+        - generic [ref=e927]: "0.85"
+      - generic [ref=e928] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e929]
+        - generic [ref=e930]: API Design
+        - generic [ref=e931]: Pattern · Local · Open
+        - generic [ref=e932]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e933]
+          - generic "L6 – Governance & Trust – not covered" [ref=e934]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e935]
+          - generic "L4 – Orchestration & Decisioning – not covered" [ref=e936]
+          - generic "L3 – Execution & Interfaces ✓ covered" [ref=e937]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e938]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e939]
+        - generic [ref=e940]: "Spans 1 stratum · Primary: L3"
+        - generic [ref=e941]: "0.83"
+      - generic [ref=e942] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e943]
+        - generic [ref=e944]: DB Optimization
+        - generic [ref=e945]: Pattern · Local · Open
+        - generic [ref=e946]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e947]
+          - generic "L6 – Governance & Trust – not covered" [ref=e948]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e949]
+          - generic "L4 – Orchestration & Decisioning – not covered" [ref=e950]
+          - generic "L3 – Execution & Interfaces – not covered" [ref=e951]
+          - generic "L2 – Knowledge & Memory ✓ covered" [ref=e952]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e953]
+        - generic [ref=e954]: "Spans 1 stratum · Primary: L2"
+        - generic [ref=e955]: "0.84"
+      - generic [ref=e956] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e957]
+        - generic [ref=e958]: GitHub MCP
+        - generic [ref=e959]: GitHub · Cloud · Open Source
+        - generic [ref=e960]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e961]
+          - generic "L6 – Governance & Trust ✓ covered" [ref=e962]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e963]
+          - generic "L4 – Orchestration & Decisioning – not covered" [ref=e964]
+          - generic "L3 – Execution & Interfaces ✓ covered" [ref=e965]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e966]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e967]
+        - generic [ref=e968]: "Spans 2 strata · Primary: L3"
+        - generic [ref=e969]: "0.90"
+      - generic [ref=e970] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e971]
+        - generic [ref=e972]: Playwright MCP
+        - generic [ref=e973]: Microsoft · Local · Open Source
+        - generic [ref=e974]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e975]
+          - generic "L6 – Governance & Trust – not covered" [ref=e976]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e977]
+          - generic "L4 – Orchestration & Decisioning – not covered" [ref=e978]
+          - generic "L3 – Execution & Interfaces ✓ covered" [ref=e979]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e980]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e981]
+        - generic [ref=e982]: "Spans 1 stratum · Primary: L3"
+        - generic [ref=e983]: "0.88"
+      - generic [ref=e984] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e985]
+        - generic [ref=e986]: Filesystem MCP
+        - generic [ref=e987]: Anthropic · Local · Open Source
+        - generic [ref=e988]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e989]
+          - generic "L6 – Governance & Trust – not covered" [ref=e990]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e991]
+          - generic "L4 – Orchestration & Decisioning – not covered" [ref=e992]
+          - generic "L3 – Execution & Interfaces ✓ covered" [ref=e993]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e994]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e995]
+        - generic [ref=e996]: "Spans 1 stratum · Primary: L3"
+        - generic [ref=e997]: "0.86"
+      - generic [ref=e998] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e999]
+        - generic [ref=e1000]: PostgreSQL MCP
+        - generic [ref=e1001]: Community · Local · Open Source
+        - generic [ref=e1002]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e1003]
+          - generic "L6 – Governance & Trust – not covered" [ref=e1004]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e1005]
+          - generic "L4 – Orchestration & Decisioning – not covered" [ref=e1006]
+          - generic "L3 – Execution & Interfaces ✓ covered" [ref=e1007]
+          - generic "L2 – Knowledge & Memory ✓ covered" [ref=e1008]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e1009]
+        - generic [ref=e1010]: "Spans 2 strata · Primary: L2"
+        - generic [ref=e1011]: "0.87"
+      - generic [ref=e1012] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e1013]
+        - generic [ref=e1014]: Brave Search MCP
+        - generic [ref=e1015]: Brave · Cloud · Open Source
+        - generic [ref=e1016]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e1017]
+          - generic "L6 – Governance & Trust – not covered" [ref=e1018]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e1019]
+          - generic "L4 – Orchestration & Decisioning – not covered" [ref=e1020]
+          - generic "L3 – Execution & Interfaces ✓ covered" [ref=e1021]
+          - generic "L2 – Knowledge & Memory ✓ covered" [ref=e1022]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e1023]
+        - generic [ref=e1024]: "Spans 2 strata · Primary: L2"
+        - generic [ref=e1025]: "0.85"
+      - generic [ref=e1026] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e1027]
+        - generic [ref=e1028]: Memory MCP
+        - generic [ref=e1029]: Anthropic · Local · Open Source
+        - generic [ref=e1030]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e1031]
+          - generic "L6 – Governance & Trust – not covered" [ref=e1032]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e1033]
+          - generic "L4 – Orchestration & Decisioning – not covered" [ref=e1034]
+          - generic "L3 – Execution & Interfaces – not covered" [ref=e1035]
+          - generic "L2 – Knowledge & Memory ✓ covered" [ref=e1036]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e1037]
+        - generic [ref=e1038]: "Spans 1 stratum · Primary: L2"
+        - generic [ref=e1039]: "0.83"
+      - generic [ref=e1040] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e1041]
+        - generic [ref=e1042]: ⚡ Prompt Caching
+        - generic [ref=e1043]: Anthropic · Cloud · Platform
+        - generic [ref=e1044]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e1045]
+          - generic "L6 – Governance & Trust – not covered" [ref=e1046]
+          - generic "L5 – Observability & Evaluation ✓ covered" [ref=e1047]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e1048]
+          - generic "L3 – Execution & Interfaces – not covered" [ref=e1049]
+          - generic "L2 – Knowledge & Memory ✓ covered" [ref=e1050]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e1051]
+        - generic [ref=e1052]: "Value: 0.94 · ~90% input cost cut on cache hits"
+        - generic [ref=e1053]: "0.94"
+      - generic [ref=e1054] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e1055]
+        - generic [ref=e1056]: ⚡ Aider Repo Map
+        - generic [ref=e1057]: Aider · Local · Open Source
+        - generic [ref=e1058]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e1059]
+          - generic "L6 – Governance & Trust – not covered" [ref=e1060]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e1061]
+          - generic "L4 – Orchestration & Decisioning – not covered" [ref=e1062]
+          - generic "L3 – Execution & Interfaces ✓ covered" [ref=e1063]
+          - generic "L2 – Knowledge & Memory ✓ covered" [ref=e1064]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e1065]
+        - generic [ref=e1066]: "Value: 0.91 · 1k-token skeleton vs full files"
+        - generic [ref=e1067]: "0.91"
+      - generic [ref=e1068] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e1069]
+        - generic [ref=e1070]: ⚡ Tier-Routing
+        - generic [ref=e1071]: Pattern · Hybrid · Pattern
+        - generic [ref=e1072]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e1073]
+          - generic "L6 – Governance & Trust – not covered" [ref=e1074]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e1075]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e1076]
+          - generic "L3 – Execution & Interfaces – not covered" [ref=e1077]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e1078]
+          - generic "L1 – Models & Infrastructure ✓ covered" [ref=e1079]
+        - generic [ref=e1080]: "Value: 0.92 · Cheap router + selective escalation"
+        - generic [ref=e1081]: "0.92"
+      - generic [ref=e1082] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e1083]
+        - generic [ref=e1084]: ⚡ DeepSeek V3 / R1
+        - generic [ref=e1085]: DeepSeek · Cloud · Open Source
+        - generic [ref=e1086]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e1087]
+          - generic "L6 – Governance & Trust – not covered" [ref=e1088]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e1089]
+          - generic "L4 – Orchestration & Decisioning – not covered" [ref=e1090]
+          - generic "L3 – Execution & Interfaces – not covered" [ref=e1091]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e1092]
+          - generic "L1 – Models & Infrastructure ✓ covered" [ref=e1093]
+        - generic [ref=e1094]: "Value: 0.92 · SOTA reasoning at ~10% Claude cost"
+        - generic [ref=e1095]: "0.92"
+      - generic [ref=e1096] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e1097]
+        - generic [ref=e1098]: ⚡ DSPy Compilation
+        - generic [ref=e1099]: Stanford NLP · Local · Open Source
+        - generic [ref=e1100]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e1101]
+          - generic "L6 – Governance & Trust – not covered" [ref=e1102]
+          - generic "L5 – Observability & Evaluation ✓ covered" [ref=e1103]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e1104]
+          - generic "L3 – Execution & Interfaces – not covered" [ref=e1105]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e1106]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e1107]
+        - generic [ref=e1108]: "Value: 0.88 · Auto-optimized minimal prompts"
+        - generic [ref=e1109]: "0.88"
+      - generic [ref=e1110] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e1111]
+        - generic [ref=e1112]: ⚡ Subagent Isolation
+        - generic [ref=e1113]: Pattern · Local · Pattern
+        - generic [ref=e1114]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e1115]
+          - generic "L6 – Governance & Trust – not covered" [ref=e1116]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e1117]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e1118]
+          - generic "L3 – Execution & Interfaces – not covered" [ref=e1119]
+          - generic "L2 – Knowledge & Memory ✓ covered" [ref=e1120]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e1121]
+        - generic [ref=e1122]: "Value: 0.87 · Fresh window blocks main-thread bloat"
+        - generic [ref=e1123]: "0.87"
+      - generic [ref=e1124] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e1125]
+        - generic [ref=e1126]: ⚡ Plan-then-Execute
+        - generic [ref=e1127]: Aider / BMAD · Local · Open Source
+        - generic [ref=e1128]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e1129]
+          - generic "L6 – Governance & Trust – not covered" [ref=e1130]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e1131]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e1132]
+          - generic "L3 – Execution & Interfaces ✓ covered" [ref=e1133]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e1134]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e1135]
+        - generic [ref=e1136]: "Value: 0.86 · Cuts re-planning loop tokens ~30-40%"
+        - generic [ref=e1137]: "0.86"
+      - generic [ref=e1138] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e1139]
+        - generic [ref=e1140]: ⚡ Semantic Search RAG
+        - generic [ref=e1141]: Pattern · Hybrid · Mixed
+        - generic [ref=e1142]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e1143]
+          - generic "L6 – Governance & Trust – not covered" [ref=e1144]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e1145]
+          - generic "L4 – Orchestration & Decisioning – not covered" [ref=e1146]
+          - generic "L3 – Execution & Interfaces ✓ covered" [ref=e1147]
+          - generic "L2 – Knowledge & Memory ✓ covered" [ref=e1148]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e1149]
+        - generic [ref=e1150]: "Value: 0.85 · Pull only relevant chunks"
+        - generic [ref=e1151]: "0.85"
+      - generic [ref=e1152] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e1153]
+        - generic [ref=e1154]: ⚡ Tool-Result Truncation
+        - generic [ref=e1155]: Pattern · Local · Pattern
+        - generic [ref=e1156]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e1157]
+          - generic "L6 – Governance & Trust – not covered" [ref=e1158]
+          - generic "L5 – Observability & Evaluation ✓ covered" [ref=e1159]
+          - generic "L4 – Orchestration & Decisioning – not covered" [ref=e1160]
+          - generic "L3 – Execution & Interfaces ✓ covered" [ref=e1161]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e1162]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e1163]
+        - generic [ref=e1164]: "Value: 0.81 · Cap shell/MCP outputs at boundary"
+        - generic [ref=e1165]: "0.81"
+      - generic [ref=e1166] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e1167]
+        - generic [ref=e1168]: ⚡ ReAct Pattern
+        - generic [ref=e1169]: Research · Local · Open
+        - generic [ref=e1170]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e1171]
+          - generic "L6 – Governance & Trust – not covered" [ref=e1172]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e1173]
+          - generic "L4 – Orchestration & Decisioning ✓ covered" [ref=e1174]
+          - generic "L3 – Execution & Interfaces ✓ covered" [ref=e1175]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e1176]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e1177]
+        - generic [ref=e1178]: "Value: 0.78 · Verbose but baseline-reliable loop"
+        - generic [ref=e1179]: "0.78"
+      - generic [ref=e1180] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e1181]
+        - generic [ref=e1182]: ⚡ CodeBurn Telemetry
+        - generic [ref=e1183]: AgentSeal · Local · Open Source
+        - generic [ref=e1184]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e1185]
+          - generic "L6 – Governance & Trust – not covered" [ref=e1186]
+          - generic "L5 – Observability & Evaluation ✓ covered" [ref=e1187]
+          - generic "L4 – Orchestration & Decisioning – not covered" [ref=e1188]
+          - generic "L3 – Execution & Interfaces – not covered" [ref=e1189]
+          - generic "L2 – Knowledge & Memory – not covered" [ref=e1190]
+          - generic "L1 – Models & Infrastructure – not covered" [ref=e1191]
+        - generic [ref=e1192]: "Value: 0.83 · Per-call $ + one-shot rate"
+        - generic [ref=e1193]: "0.83"
+      - generic [ref=e1194] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e1195]
+        - generic [ref=e1196]: ⚡ Context Compression
+        - generic [ref=e1197]: Research · Cloud · Mixed
+        - generic [ref=e1198]:
+          - generic "L7 – Experience & Intent – not covered" [ref=e1199]
+          - generic "L6 – Governance & Trust – not covered" [ref=e1200]
+          - generic "L5 – Observability & Evaluation – not covered" [ref=e1201]
+          - generic "L4 – Orchestration & Decisioning – not covered" [ref=e1202]
+          - generic "L3 – Execution & Interfaces – not covered" [ref=e1203]
+          - generic "L2 – Knowledge & Memory ✓ covered" [ref=e1204]
+          - generic "L1 – Models & Infrastructure ✓ covered" [ref=e1205]
+        - generic [ref=e1206]: "Value: 0.79 · KV-cache pruning, token elimination"
+        - generic [ref=e1207]: "0.79"
+      - separator [ref=e1208]
+      - generic [ref=e1209]:
+        - generic [ref=e1210]: Selected Detail
+        - generic [ref=e1211]:
+          - heading "💡 Click a stratum or product" [level=4] [ref=e1212]
+          - paragraph [ref=e1213]: Detail panel shows rationale, evidence, confidence scores, and overlap notes for whatever you select.
+  - generic [ref=e1214]:
+    - generic [ref=e1215] [cursor=pointer]: L7 Experience
+    - generic [ref=e1216] [cursor=pointer]: L6 Governance
+    - generic [ref=e1217] [cursor=pointer]: L5 Observability
+    - generic [ref=e1218] [cursor=pointer]: L4 Orchestration
+    - generic [ref=e1219] [cursor=pointer]: L3 Execution
+    - generic [ref=e1220] [cursor=pointer]: L2 Knowledge
+    - generic [ref=e1221] [cursor=pointer]: L1 Models
+  - button "↑" [ref=e1222] [cursor=pointer]

@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -2579,6 +2579,82 @@
         font-size: 11px;
         color: var(--text-quaternary);
         text-align: center;
+      }
+      .an-source-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 8px;
+      }
+      .an-source-col-title {
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-bottom: 7px;
+        padding: 3px 7px;
+        border-radius: 4px;
+        display: block;
+      }
+      .an-source-col-title.pro {
+        color: #34d399;
+        background: rgba(52, 211, 153, 0.08);
+        border: 1px solid rgba(52, 211, 153, 0.2);
+      }
+      .an-source-col-title.con {
+        color: #f87171;
+        background: rgba(248, 113, 113, 0.08);
+        border: 1px solid rgba(248, 113, 113, 0.2);
+      }
+      .an-source-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 7px;
+        padding: 7px 8px;
+        border-radius: 6px;
+        text-decoration: none;
+        margin-bottom: 5px;
+        border: 1px solid transparent;
+        transition: border-color 0.15s, background 0.15s;
+        cursor: pointer;
+      }
+      .an-source-item.pro { border-color: rgba(52, 211, 153, 0.12); }
+      .an-source-item.con { border-color: rgba(248, 113, 113, 0.12); }
+      .an-source-item:hover { background: rgba(255, 255, 255, 0.04); }
+      .an-source-item.pro:hover { border-color: rgba(52, 211, 153, 0.35); }
+      .an-source-item.con:hover { border-color: rgba(248, 113, 113, 0.35); }
+      .an-source-icon {
+        font-size: 11px;
+        font-weight: 700;
+        margin-top: 1px;
+        flex-shrink: 0;
+        width: 14px;
+        text-align: center;
+      }
+      .an-source-item.pro .an-source-icon { color: #34d399; }
+      .an-source-item.con .an-source-icon { color: #f87171; }
+      .an-source-body {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        min-width: 0;
+      }
+      .an-source-name {
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--text-primary);
+        line-height: 1.3;
+      }
+      .an-source-note {
+        font-size: 10px;
+        color: var(--text-tertiary);
+        line-height: 1.4;
+      }
+      .an-source-empty {
+        font-size: 11px;
+        color: var(--text-quaternary);
+        font-style: italic;
+        padding: 8px 0;
       }
 
       /* ===== IMPROVEMENT 2: Ecosystem Stats Counter ===== */
@@ -5354,10 +5430,10 @@
         <div
           class="product-card"
           data-name="Paperclip"
-          data-vendor="Internal"
-          data-deployment="Local"
-          data-license="Proprietary"
-          data-type="product"
+          data-vendor="Paperclip AI"
+          data-deployment="Self-hosted"
+          data-license="Open Source"
+          data-type="platform"
           onclick="selectProduct('paperclip')"
         >
           <button
@@ -5370,9 +5446,75 @@
             +
           </button>
           <div class="name">Paperclip</div>
-          <div class="vendor">Internal &middot; Local &middot; Proprietary</div>
+          <div class="vendor">Paperclip AI &middot; Self-hosted &middot; MIT</div>
           <div class="strata-dots">
-            <div class="strata-dot active" style="background: var(--l7)"></div>
+            <div class="strata-dot" style="background: var(--l7)"></div>
+            <div class="strata-dot active" style="background: var(--l6)"></div>
+            <div class="strata-dot" style="background: var(--l5)"></div>
+            <div class="strata-dot active" style="background: var(--l4)"></div>
+            <div class="strata-dot" style="background: var(--l3)"></div>
+            <div class="strata-dot" style="background: var(--l2)"></div>
+            <div class="strata-dot" style="background: var(--l1)"></div>
+          </div>
+          <div class="spans-label">Spans 2 strata &middot; Primary: L4</div>
+          <span class="confidence high">0.89</span>
+        </div>
+
+        <div
+          class="product-card"
+          data-name="Agno"
+          data-vendor="Agno"
+          data-deployment="Local"
+          data-license="Open Source"
+          data-type="framework"
+          onclick="selectProduct('agno')"
+        >
+          <button
+            class="add-compare-btn"
+            onclick="
+              event.stopPropagation();
+              addToCompare(this, 'Agno');
+            "
+          >
+            +
+          </button>
+          <div class="name">Agno</div>
+          <div class="vendor">Agno &middot; Local &middot; Open Source</div>
+          <div class="strata-dots">
+            <div class="strata-dot" style="background: var(--l7)"></div>
+            <div class="strata-dot" style="background: var(--l6)"></div>
+            <div class="strata-dot" style="background: var(--l5)"></div>
+            <div class="strata-dot active" style="background: var(--l4)"></div>
+            <div class="strata-dot" style="background: var(--l3)"></div>
+            <div class="strata-dot active" style="background: var(--l2)"></div>
+            <div class="strata-dot" style="background: var(--l1)"></div>
+          </div>
+          <div class="spans-label">Spans 2 strata &middot; Primary: L4</div>
+          <span class="confidence high">0.87</span>
+        </div>
+
+        <div
+          class="product-card"
+          data-name="Google ADK"
+          data-vendor="Google"
+          data-deployment="Cloud"
+          data-license="Open Source"
+          data-type="framework"
+          onclick="selectProduct('googleadk')"
+        >
+          <button
+            class="add-compare-btn"
+            onclick="
+              event.stopPropagation();
+              addToCompare(this, 'Google ADK');
+            "
+          >
+            +
+          </button>
+          <div class="name">Google ADK</div>
+          <div class="vendor">Google &middot; Cloud &middot; Open Source</div>
+          <div class="strata-dots">
+            <div class="strata-dot" style="background: var(--l7)"></div>
             <div class="strata-dot" style="background: var(--l6)"></div>
             <div class="strata-dot" style="background: var(--l5)"></div>
             <div class="strata-dot active" style="background: var(--l4)"></div>
@@ -5380,8 +5522,41 @@
             <div class="strata-dot" style="background: var(--l2)"></div>
             <div class="strata-dot" style="background: var(--l1)"></div>
           </div>
-          <div class="spans-label">Spans 3 strata &middot; Primary: L7</div>
-          <span class="confidence medium">~0.75</span>
+          <div class="spans-label">Spans 2 strata &middot; Primary: L4</div>
+          <span class="confidence high">0.88</span>
+        </div>
+
+        <div
+          class="product-card"
+          data-name="Smolagents"
+          data-vendor="HuggingFace"
+          data-deployment="Local"
+          data-license="Open Source"
+          data-type="framework"
+          onclick="selectProduct('smolagents')"
+        >
+          <button
+            class="add-compare-btn"
+            onclick="
+              event.stopPropagation();
+              addToCompare(this, 'Smolagents');
+            "
+          >
+            +
+          </button>
+          <div class="name">Smolagents</div>
+          <div class="vendor">HuggingFace &middot; Local &middot; Open Source</div>
+          <div class="strata-dots">
+            <div class="strata-dot" style="background: var(--l7)"></div>
+            <div class="strata-dot" style="background: var(--l6)"></div>
+            <div class="strata-dot" style="background: var(--l5)"></div>
+            <div class="strata-dot active" style="background: var(--l4)"></div>
+            <div class="strata-dot" style="background: var(--l3)"></div>
+            <div class="strata-dot" style="background: var(--l2)"></div>
+            <div class="strata-dot" style="background: var(--l1)"></div>
+          </div>
+          <div class="spans-label">Primary: L4</div>
+          <span class="confidence high">0.84</span>
         </div>
 
         <div
@@ -7982,17 +8157,59 @@
         },
         paperclip: {
           name: "Paperclip",
-          type: "product",
-          vendor: "Internal",
-          deployment: "Local",
-          license: "Proprietary",
-          primary: "L7 Experience & Intent",
-          secondary: "L3, L4",
-          axisRoles: "Governance: Light · Observability: Light",
-          confidence: 0.75,
-          lastVerified: "2026-04-06",
+          type: "platform",
+          vendor: "Paperclip AI",
+          deployment: "Self-hosted",
+          license: "Open Source (MIT)",
+          primary: "L4 Orchestration & Decisioning",
+          secondary: "L6",
+          axisRoles: "Governance: Strong · Observability: Medium",
+          confidence: 0.89,
+          lastVerified: "2026-05-03",
           rationale:
-            "Desktop copilot with strong UX + intent parsing. Orchestration and execution are secondary.",
+            "Multi-agent OS that structures AI agents as a virtual company with org charts, job roles, budgets, schedules, and immutable audit logs. Governs and orchestrates any HTTP-compatible agent runtime — does not execute tasks itself.",
+        },
+        agno: {
+          name: "Agno",
+          type: "framework",
+          vendor: "Agno",
+          deployment: "Local",
+          license: "Open Source",
+          primary: "L4 Orchestration & Decisioning",
+          secondary: "L2",
+          axisRoles: "Governance: Light · Observability: Light",
+          confidence: 0.87,
+          lastVerified: "2026-05-03",
+          rationale:
+            "Model-agnostic Python framework for building AI agents and multi-agent teams with built-in memory, knowledge retrieval, guardrails, and 100+ tool integrations. 38,700+ GitHub stars.",
+        },
+        googleadk: {
+          name: "Google ADK",
+          type: "framework",
+          vendor: "Google",
+          deployment: "Cloud",
+          license: "Open Source",
+          primary: "L4 Orchestration & Decisioning",
+          secondary: "L3",
+          axisRoles: "Governance: Medium · Observability: Medium",
+          confidence: 0.88,
+          lastVerified: "2026-05-03",
+          rationale:
+            "Google's official Agent Development Kit — v1.0 stable across Python, TypeScript, Java, and Go. Native A2A protocol support, visual Agent Designer in GCP console, and multi-agent workflow primitives.",
+        },
+        smolagents: {
+          name: "Smolagents",
+          type: "framework",
+          vendor: "HuggingFace",
+          deployment: "Local",
+          license: "Open Source",
+          primary: "L4 Orchestration & Decisioning",
+          secondary: "-",
+          axisRoles: "Governance: Light · Observability: Light",
+          confidence: 0.84,
+          lastVerified: "2026-05-03",
+          rationale:
+            "Minimal (~1000-line) model-agnostic agent framework from HuggingFace. 25,000+ GitHub stars. Designed for simplicity and portability — runs any model, minimal dependencies.",
         },
         crewai: {
           name: "CrewAI",
@@ -8627,37 +8844,173 @@
               key: "ev",
               label: "Evidence Quality",
               weight: 0.3,
-              score: 0.6,
-              desc: "Internal docs only; no public benchmarks or case studies available.",
+              score: 0.92,
+              desc: "55,600+ GitHub stars as of April 2026 — one of the fastest-rising OSS AI repos of Q1 2026. Crossed 30k stars in under 3 weeks post-launch.",
             },
             {
               key: "al",
               label: "Strata Alignment",
               weight: 0.3,
-              score: 0.8,
-              desc: "UX & Intent layer fit is clear; L3/L4 secondary claims are less documented.",
+              score: 0.9,
+              desc: "Purpose-built to sit above agent runtimes: assigns tasks, enforces budgets, maintains audit logs. Clean L4 orchestration core with genuine L6 governance primitives.",
             },
             {
               key: "df",
               label: "Differentiation",
               weight: 0.2,
-              score: 0.75,
-              desc: "Niche desktop copilot use-case; differentiation is plausible but unverified.",
+              score: 0.88,
+              desc: "Only open-source platform modeling AI teams as a full virtual company — org charts, job roles, schedules, and budget enforcement are first-class primitives, not afterthoughts.",
             },
             {
               key: "mt",
               label: "Maturity",
               weight: 0.2,
-              score: 0.85,
-              desc: "Internally deployed but limited production track record.",
+              score: 0.8,
+              desc: "Launched March 2026 — extremely fast community adoption but limited long-run production case studies at this stage.",
             },
           ],
           evidence:
-            "Internal product description and lightweight engineering review. No external documentation.",
+            "GitHub repo (paperclipai/paperclip, 55.6k stars), paperclip.ing docs, Towards AI breakdown, MindStudio overview, Zeabur deployment guide.",
           risks: [
-            "Low evidence quality — scoring is based on internal claims without external validation.",
-            "Secondary strata (L3, L4) overlap with Kotana and CrewAI; boundaries are unclear.",
-            "Desktop-only deployment limits cross-strata operability assessments.",
+            "Launched March 2026 — very new; production edge cases and long-run stability not yet proven.",
+            "Governance-at-orchestration-layer may conflict with dedicated L6 tools in regulated environments.",
+          ],
+          sources: [
+            { stance: "pro", name: "GitHub — paperclipai/paperclip", url: "https://github.com/paperclipai/paperclip", note: "55,600+ stars — fastest-rising open-source AI platform of Q1 2026, crossed 30k in under 3 weeks" },
+            { stance: "pro", name: "Towards AI — Paperclip Breakdown", url: "https://pub.towardsai.net/paperclip-the-open-source-operating-system-for-zero-human-companies-2c16f3f22182", note: "Positioned as the 'OS for zero-human AI companies' — org chart, budget enforcement, audit trail as first-class primitives" },
+            { stance: "pro", name: "Paperclip Official Docs (paperclip.ing)", url: "https://paperclip.ing/", note: "Self-hosted, MIT license, works with any HTTP-compatible agent — no lock-in to specific LLM provider" },
+            { stance: "con", name: "Gartner Hype Cycle — Agentic AI", url: "https://www.gartner.com/en/articles/hype-cycle-for-agentic-ai", note: "Launched March 2026 — too new to appear in enterprise analyst coverage; no enterprise case studies yet" },
+            { stance: "con", name: "morphLLM Framework Tracker", url: "https://www.morphllm.com/ai-agent-framework", note: "Not yet in major framework comparison databases — ecosystem integrations and third-party tooling still sparse" },
+            { stance: "con", name: "VentureBeat AI", url: "https://venturebeat.com/category/ai/", note: "Limited enterprise adoption data; community-driven momentum hasn't yet translated to documented production deployments" },
+          ],
+        },
+        agno: {
+          factors: [
+            {
+              key: "ev",
+              label: "Evidence Quality",
+              weight: 0.3,
+              score: 0.88,
+              desc: "38,700+ GitHub stars, active production use, comprehensive docs and examples.",
+            },
+            {
+              key: "al",
+              label: "Strata Alignment",
+              weight: 0.3,
+              score: 0.9,
+              desc: "Purpose-built orchestration runtime with native memory and knowledge retrieval — clean L4/L2 fit.",
+            },
+            {
+              key: "df",
+              label: "Differentiation",
+              weight: 0.2,
+              score: 0.85,
+              desc: "Model-agnostic runtime with guardrails and 100+ integrations built-in, unlike narrower peers.",
+            },
+            {
+              key: "mt",
+              label: "Maturity",
+              weight: 0.2,
+              score: 0.83,
+              desc: "Production-proven, rapid iteration cadence, but younger than LangChain/CrewAI.",
+            },
+          ],
+          evidence:
+            "GitHub repo (agno-agi/agno), official docs, StackOne landscape 2026, hot products run 2026-05-03.",
+          risks: ["Younger ecosystem than LangChain — fewer third-party tutorials and integrations."],
+          sources: [
+            { stance: "pro", name: "GitHub — agno-agi/agno", url: "https://github.com/agno-agi/agno", note: "38,700+ stars confirms strong developer adoption and momentum" },
+            { stance: "pro", name: "StackOne AI Tools Landscape 2026", url: "https://www.stackone.com/blog/ai-agent-tools-landscape-2026/", note: "Listed among top 120 agentic tools with production deployments" },
+            { stance: "pro", name: "morphLLM Framework Tracker", url: "https://www.morphllm.com/ai-agent-framework", note: "Ranked competitively vs CrewAI and LangGraph on feature breadth" },
+            { stance: "con", name: "Gartner Hype Cycle — Agentic AI", url: "https://www.gartner.com/en/articles/hype-cycle-for-agentic-ai", note: "No specific enterprise analyst mention — awareness still building outside OSS community" },
+            { stance: "con", name: "VentureBeat AI", url: "https://venturebeat.com/category/ai/", note: "Fewer enterprise case studies and named production customers than LangChain / CrewAI" },
+            { stance: "con", name: "HuggingFace Blog", url: "https://huggingface.co/blog", note: "Not featured as a HuggingFace-native tool — less mindshare in that ecosystem" },
+          ],
+        },
+        googleadk: {
+          factors: [
+            {
+              key: "ev",
+              label: "Evidence Quality",
+              weight: 0.3,
+              score: 0.9,
+              desc: "v1.0 stable release, 17k+ GitHub stars, Google Cloud official SDK with ADK docs site.",
+            },
+            {
+              key: "al",
+              label: "Strata Alignment",
+              weight: 0.3,
+              score: 0.92,
+              desc: "Designed explicitly for multi-agent orchestration and tool execution — textbook L4/L3.",
+            },
+            {
+              key: "df",
+              label: "Differentiation",
+              weight: 0.2,
+              score: 0.88,
+              desc: "Only framework with native A2A protocol support and visual Agent Designer in GCP console.",
+            },
+            {
+              key: "mt",
+              label: "Maturity",
+              weight: 0.2,
+              score: 0.82,
+              desc: "v1.0 stable but still maturing ecosystem; 150 orgs using A2A in production.",
+            },
+          ],
+          evidence:
+            "Google ADK docs (google.github.io/adk-docs), Google Cloud Next 2026 announcements, TheNextWeb, SiliconAngle coverage.",
+          risks: ["GCP-native bias — optimal on Google Cloud; portable but best-in-class only within that stack."],
+          sources: [
+            { stance: "pro", name: "Google ADK Docs (google.github.io/adk-docs)", url: "https://google.github.io/adk-docs/", note: "v1.0 stable; 4 language SDKs, native A2A support, visual Agent Designer in GCP console" },
+            { stance: "pro", name: "TheNextWeb — Google Cloud Next 2026", url: "https://thenextweb.com/news/google-cloud-next-ai-agents-agentic-era", note: "Featured as Google's flagship agentic platform announcement at Cloud Next" },
+            { stance: "pro", name: "StackOne AI Tools Landscape 2026", url: "https://www.stackone.com/blog/ai-agent-tools-landscape-2026/", note: "Top-tier L4 orchestration framework — 150 orgs using A2A protocol in production" },
+            { stance: "con", name: "morphLLM Framework Tracker", url: "https://www.morphllm.com/ai-agent-framework", note: "Noted GCP-native optimization creates friction for multi-cloud or AWS-primary teams" },
+            { stance: "con", name: "GitHub — google/adk-python", url: "https://github.com/google/adk-python", note: "17k stars — lower than LangGraph (24k), Agno (38.7k), CrewAI (44k) indicating smaller community" },
+            { stance: "con", name: "Awesome AI Agents 2026 (GitHub)", url: "https://github.com/caramaschiHG/awesome-ai-agents-2026", note: "Newer entrant with fewer community-contributed examples than established peers" },
+          ],
+        },
+        smolagents: {
+          factors: [
+            {
+              key: "ev",
+              label: "Evidence Quality",
+              weight: 0.3,
+              score: 0.85,
+              desc: "25,000+ GitHub stars, HuggingFace-backed with published benchmarks and cookbook.",
+            },
+            {
+              key: "al",
+              label: "Strata Alignment",
+              weight: 0.3,
+              score: 0.88,
+              desc: "Pure orchestration abstraction — CodeAgent + ToolCallingAgent patterns map cleanly to L4.",
+            },
+            {
+              key: "df",
+              label: "Differentiation",
+              weight: 0.2,
+              score: 0.86,
+              desc: "Minimal codebase (~1000 lines) and true model-agnosticism set it apart from heavier frameworks.",
+            },
+            {
+              key: "mt",
+              label: "Maturity",
+              weight: 0.2,
+              score: 0.78,
+              desc: "Newer than CrewAI/LangGraph; ecosystem building out rapidly given HuggingFace backing.",
+            },
+          ],
+          evidence:
+            "GitHub repo (huggingface/smolagents), HuggingFace blog, AI Trends 2026 post, StackOne landscape.",
+          risks: ["Lighter ecosystem — fewer production case studies than CrewAI or LangGraph at this stage."],
+          sources: [
+            { stance: "pro", name: "HuggingFace Blog — AI Trends 2026", url: "https://huggingface.co/blog/aufklarer/ai-trends-2026-test-time-reasoning-reflective-agen", note: "Highlighted as HuggingFace's recommended lightweight agent framework for research and production" },
+            { stance: "pro", name: "GitHub — huggingface/smolagents", url: "https://github.com/huggingface/smolagents", note: "25,000+ stars with ~1,000-line codebase — fastest-growing minimal agent framework in 2025" },
+            { stance: "pro", name: "StackOne AI Tools Landscape 2026", url: "https://www.stackone.com/blog/ai-agent-tools-landscape-2026/", note: "Recognized as standout minimal-footprint orchestration framework alongside heavier peers" },
+            { stance: "con", name: "Gartner Hype Cycle — Agentic AI", url: "https://www.gartner.com/en/articles/hype-cycle-for-agentic-ai", note: "Not cited by enterprise analysts — HuggingFace ecosystem positioning limits enterprise narrative" },
+            { stance: "con", name: "morphLLM Framework Tracker", url: "https://www.morphllm.com/ai-agent-framework", note: "Lacks built-in memory and persistence layers that heavier frameworks provide out-of-the-box" },
+            { stance: "con", name: "VentureBeat AI", url: "https://venturebeat.com/category/ai/", note: "Fewer enterprise production case studies than CrewAI (44k stars) or LangGraph at this stage" },
           ],
         },
         crewai: {
@@ -10088,7 +10441,7 @@
             "preference_weight",
             "intent_confidence",
           ],
-        }
+        },
         session_context: {
           name: "Session Context",
           layer: "L7",
@@ -10100,7 +10453,7 @@
             "decision_log",
             "context_window",
           ],
-        }
+        },
         satisfaction_signal: {
           name: "Satisfaction Signal",
           layer: "L7",
@@ -10112,7 +10465,7 @@
             "retry_count",
             "dwell_time",
           ],
-        }
+        },
         feedback_loop: {
           name: "Feedback Loop",
           layer: "L7",
@@ -10124,7 +10477,7 @@
             "reward_shaper",
             "loop_frequency",
           ],
-        }
+        },
         // L4 — Orchestration (s1: Workflow Engines)
         execution_plan: {
           name: "Execution Plan",
@@ -10148,7 +10501,7 @@
             "restore_fn",
             "ttl_seconds",
           ],
-        }
+        },
         dependency_graph: {
           name: "Dependency Graph",
           layer: "L4",
@@ -10160,7 +10513,7 @@
             "critical_path",
             "cycle_detector",
           ],
-        }
+        },
         timeout_policy: {
           name: "Timeout Policy",
           layer: "L4",
@@ -10172,7 +10525,7 @@
             "fallback_action",
             "jitter_range",
           ],
-        }
+        },
         // L4 — Orchestration (s2: Agent Frameworks)
         agent_roster: {
           name: "Agent Roster",
@@ -10185,7 +10538,7 @@
             "status_enum",
             "resource_quota",
           ],
-        }
+        },
         task_assignment: {
           name: "Task Assignment",
           layer: "L4",
@@ -10208,7 +10561,7 @@
             "delivery_guarantee",
             "subscriber_list",
           ],
-        }
+        },
         delegation_policy: {
           name: "Delegation Policy",
           layer: "L4",
@@ -10220,7 +10573,7 @@
             "max_depth",
             "escalation_path",
           ],
-        }
+        },
         // L3 — Execution (s1: Tool Use & Function Calling)
         tool_manifest: {
           name: "Tool Manifest",
@@ -10228,7 +10581,7 @@
           desc: "Declarative registry of available tools with schemas, descriptions, and auth requirements.",
           infographic_url: "docs/infographic-output/tool-manifest.png",
           primitives: ["tool_id", "json_schema", "auth_type", "rate_limit"],
-        }
+        },
         api_binding: {
           name: "API Binding",
           layer: "L3",
@@ -10240,7 +10593,7 @@
             "response_parser",
             "error_handler",
           ],
-        }
+        },
         capability_schema: {
           name: "Capability Schema",
           layer: "L3",
@@ -10264,7 +10617,7 @@
             "doc_count",
             "refresh_interval",
           ],
-        }
+        },
         chunk_collection: {
           name: "Chunk Collection",
           layer: "L2",
@@ -10276,7 +10629,7 @@
             "token_count",
             "embedding_vector",
           ],
-        }
+        },
         relevance_score: {
           name: "Relevance Score",
           layer: "L2",
@@ -10288,7 +10641,7 @@
             "recency_boost",
             "combined_rank",
           ],
-        }
+        },
         rerank_pipeline: {
           name: "Rerank Pipeline",
           layer: "L2",
@@ -10300,7 +10653,7 @@
             "score_threshold",
             "latency_budget_ms",
           ],
-        }
+        },
         // ===== L6 — Governance & Trust =====
         policy_rule: {
           name: "Policy Rule",
@@ -10335,7 +10688,7 @@
             "gc_fallback_action",
             "activation_trigger",
           ],
-        }
+        },
         override_protocol: {
           name: "Override Protocol",
           layer: "L6",
@@ -10358,7 +10711,7 @@
             "token_scope",
             "expiry_epoch",
           ],
-        }
+        },
         role_binding: {
           name: "Role Binding",
           layer: "L6",
@@ -10370,7 +10723,7 @@
             "resource_scope",
             "inherited_from",
           ],
-        }
+        },
         credential_vault: {
           name: "Credential Vault",
           layer: "L6",
@@ -10382,7 +10735,7 @@
             "rotation_interval",
             "access_log_ref",
           ],
-        }
+        },
         permission_scope: {
           name: "Permission Scope",
           layer: "L6",
@@ -10400,7 +10753,7 @@
           desc: "Immutable log record capturing who did what, when, and on which resource. Foundation of compliance evidence.",
           infographic_url: "docs/infographic-output/audit-entry.png",
           primitives: ["entry_id", "actor_id", "action_type", "resource_urn"],
-        }
+        },
         compliance_check: {
           name: "Compliance Check",
           layer: "L6",
@@ -10412,7 +10765,7 @@
             "pass_fail",
             "remediation_hint",
           ],
-        }
+        },
         retention_policy: {
           name: "Retention Policy",
           layer: "L6",
@@ -10424,7 +10777,7 @@
             "archive_target",
             "deletion_method",
           ],
-        }
+        },
         evidence_chain: {
           name: "Evidence Chain",
           layer: "L6",
@@ -10458,7 +10811,7 @@
             "aggregate_score",
             "threshold_config",
           ],
-        }
+        },
         pii_redactor: {
           name: "PII Redactor",
           layer: "L6",
@@ -10470,7 +10823,7 @@
             "confidence_floor",
             "allowlist",
           ],
-        }
+        },
         safety_boundary: {
           name: "Safety Boundary",
           layer: "L6",
@@ -10482,7 +10835,7 @@
             "block_action",
             "sb_escalation_target",
           ],
-        }
+        },
         // ===== L5 — Observability & Evaluation =====
         trace_span: {
           name: "Trace Span",
@@ -10506,7 +10859,7 @@
             "context_tags",
             "correlation_id",
           ],
-        }
+        },
         token_ledger: {
           name: "Token Ledger",
           layer: "L5",
@@ -10518,7 +10871,7 @@
             "completion_tokens",
             "cost_usd",
           ],
-        }
+        },
         latency_histogram: {
           name: "Latency Histogram",
           layer: "L5",
@@ -10530,14 +10883,14 @@
             "p99_ms",
             "slo_target_ms",
           ],
-        }
+        },
         eval_suite: {
           name: "Eval Suite",
           layer: "L5",
           desc: "Collection of test cases and scoring rubrics that systematically measure agent quality across task categories.",
           infographic_url: "docs/infographic-output/eval-suite.png",
           primitives: ["suite_id", "test_count", "pass_rate", "last_run_ts"],
-        }
+        },
         test_case: {
           name: "Test Case",
           layer: "L5",
@@ -10549,7 +10902,7 @@
             "expected_output",
             "scoring_fn",
           ],
-        }
+        },
         judge_prompt: {
           name: "Judge Prompt",
           layer: "L5",
@@ -10561,7 +10914,7 @@
             "score_scale",
             "calibration_examples",
           ],
-        }
+        },
         score_aggregator: {
           name: "Score Aggregator",
           layer: "L5",
@@ -10573,7 +10926,7 @@
             "final_score",
             "confidence_interval",
           ],
-        }
+        },
         drift_detector: {
           name: "Drift Detector",
           layer: "L5",
@@ -10585,7 +10938,7 @@
             "drift_metric",
             "alert_threshold",
           ],
-        }
+        },
         anomaly_alert: {
           name: "Anomaly Alert",
           layer: "L5",
@@ -10597,7 +10950,7 @@
             "observed_value",
             "routing_channel",
           ],
-        }
+        },
         slo_monitor: {
           name: "SLO Monitor",
           layer: "L5",
@@ -10609,7 +10962,7 @@
             "current_pct",
             "error_budget_remaining",
           ],
-        }
+        },
         cost_tracker: {
           name: "Cost Tracker",
           layer: "L5",
@@ -10621,7 +10974,7 @@
             "burn_rate",
             "cost_alert_threshold",
           ],
-        }
+        },
         // ===== L3 — Execution (remaining substrates) =====
         sandbox_runtime: {
           name: "Sandbox Runtime",
@@ -10645,7 +10998,7 @@
             "variable_state",
             "history_length",
           ],
-        }
+        },
         execution_result: {
           name: "Execution Result",
           layer: "L3",
@@ -10657,7 +11010,7 @@
             "stderr_content",
             "artifact_refs",
           ],
-        }
+        },
         resource_limit: {
           name: "Resource Limit",
           layer: "L3",
@@ -10669,7 +11022,7 @@
             "disk_limit_mb",
             "network_allowed",
           ],
-        }
+        },
         api_connector: {
           name: "API Connector",
           layer: "L3",
@@ -10681,7 +11034,7 @@
             "default_headers",
             "retry_config",
           ],
-        }
+        },
         webhook_emitter: {
           name: "Webhook Emitter",
           layer: "L3",
@@ -10693,7 +11046,7 @@
             "payload_template",
             "delivery_status",
           ],
-        }
+        },
         rate_limiter: {
           name: "Rate Limiter",
           layer: "L3",
@@ -10705,7 +11058,7 @@
             "current_usage",
             "backoff_strategy",
           ],
-        }
+        },
         response_cache: {
           name: "Response Cache",
           layer: "L3",
@@ -10717,7 +11070,7 @@
             "hit_rate_pct",
             "eviction_policy",
           ],
-        }
+        },
         browser_session: {
           name: "Browser Session",
           layer: "L3",
@@ -10729,7 +11082,7 @@
             "cookie_jar",
             "proxy_config",
           ],
-        }
+        },
         page_action: {
           name: "Page Action",
           layer: "L3",
@@ -10741,7 +11094,7 @@
             "input_value",
             "wait_condition",
           ],
-        }
+        },
         element_selector: {
           name: "Element Selector",
           layer: "L3",
@@ -10753,7 +11106,7 @@
             "fallback_selector",
             "visibility_check",
           ],
-        }
+        },
         screenshot_capture: {
           name: "Screenshot Capture",
           layer: "L3",
@@ -10765,7 +11118,7 @@
             "full_page_flag",
             "storage_path",
           ],
-        }
+        },
         file_handle: {
           name: "File Handle",
           layer: "L3",
@@ -10777,7 +11130,7 @@
             "encoding_type",
             "current_position",
           ],
-        }
+        },
         shell_command: {
           name: "Shell Command",
           layer: "L3",
@@ -10789,7 +11142,7 @@
             "env_vars",
             "timeout_sh_sec",
           ],
-        }
+        },
         directory_walker: {
           name: "Directory Walker",
           layer: "L3",
@@ -10801,7 +11154,7 @@
             "walk_max_depth",
             "ignore_rules",
           ],
-        }
+        },
         permission_check: {
           name: "Permission Check",
           layer: "L3",
@@ -10813,7 +11166,7 @@
             "effective_perms",
             "owner_uid",
           ],
-        }
+        },
         message_topic: {
           name: "Message Topic",
           layer: "L3",
@@ -10825,7 +11178,7 @@
             "retention_hours",
             "schema_ref",
           ],
-        }
+        },
         event_subscriber: {
           name: "Event Subscriber",
           layer: "L3",
@@ -10837,7 +11190,7 @@
             "filter_expression",
             "handler_fn",
           ],
-        }
+        },
         dead_letter_queue: {
           name: "Dead Letter Queue",
           layer: "L3",
@@ -10849,7 +11202,7 @@
             "failed_message_count",
             "replay_policy",
           ],
-        }
+        },
         delivery_guarantee: {
           name: "Delivery Guarantee",
           layer: "L3",
@@ -10861,7 +11214,7 @@
             "dedup_window",
             "idempotency_key",
           ],
-        }
+        },
         // ===== L2 — Knowledge (remaining substrates) =====
         working_memory: {
           name: "Working Memory",
@@ -18310,7 +18663,29 @@
         if (typeof event !== "undefined" && event?.stopPropagation) {
           event.stopPropagation();
         }
-        const panel = document.getElementById(id + "-primitives");
+        let panel = document.getElementById(id + "-primitives");
+
+        // Dynamically create inline panel if it doesn't exist in DOM
+        if (!panel) {
+          const constructName = chip.textContent.trim().replace(/^[^\s]+\s/, "");
+          const key = constructName.replace(/\s/g, "_").toLowerCase();
+          const detail = CONSTRUCT_DETAILS[key];
+          if (detail && detail.primitives && detail.primitives.length) {
+            panel = document.createElement("div");
+            panel.className = "primitive-panel";
+            panel.id = id + "-primitives";
+            panel.innerHTML =
+              `<div class="substrates-label">Primitives</div>` +
+              detail.primitives
+                .map(
+                  (p) =>
+                    `<div class="primitive-chip" style="cursor:pointer" onclick="event.stopPropagation();showPrimitive('${p}')">${p}</div>`,
+                )
+                .join("");
+            chip.after(panel);
+          }
+        }
+
         if (panel) {
           const shouldShow = toggle
             ? !panel.classList.contains("visible")
@@ -19853,9 +20228,13 @@
         } catch (e) {}
       }
 
-      // Skip tour if already completed or visited 3+ times without completing
+      // Skip tour if already completed, visited 3+ times, or on the default (no-hash) entry
       (function initTourGate() {
         try {
+          if (!location.hash) {
+            document.getElementById("coachmark").classList.add("hidden");
+            return;
+          }
           const done = localStorage.getItem("aosTourDone") === "1";
           const visits =
             parseInt(localStorage.getItem("aosVisitCount") || "0", 10) + 1;
@@ -20039,7 +20418,10 @@
       const PRODUCT_STRATA_MAP = {
         af: ["l1", "l2", "l3", "l4"],
         kotana: ["l4", "l5", "l6", "l7"],
-        paperclip: ["l7", "l3", "l4"],
+        paperclip: ["l4", "l6"],
+        agno: ["l4", "l2"],
+        googleadk: ["l4", "l3"],
+        smolagents: ["l4"],
         crewai: ["l4", "l3"],
         mem0: ["l2"],
         langgraph: ["l4", "l3"],
@@ -20448,6 +20830,33 @@
             )
             .join("");
         }
+        function sourceSection() {
+          const sources = meta.sources;
+          if (!sources || !sources.length) return "";
+          const pros = sources.filter((s) => s.stance === "pro").slice(0, 3);
+          const cons = sources.filter((s) => s.stance === "con").slice(0, 3);
+          if (!pros.length && !cons.length) return "";
+          const renderItems = (items, cls, icon) =>
+            items
+              .map(
+                (s) =>
+                  `<a class="an-source-item ${cls}" href="${s.url}" target="_blank" rel="noopener noreferrer">
+                    <span class="an-source-icon">${icon}</span>
+                    <div class="an-source-body">
+                      <span class="an-source-name">${s.name}</span>
+                      <span class="an-source-note">${s.note}</span>
+                    </div>
+                  </a>`,
+              )
+              .join("");
+          return `<div class="an-section">
+            <div class="an-section-title">Source Intelligence</div>
+            <div class="an-source-grid">
+              ${pros.length ? `<div class="an-source-col"><span class="an-source-col-title pro">Supports Placement</span>${renderItems(pros, "pro", "↑")}</div>` : ""}
+              ${cons.length ? `<div class="an-source-col"><span class="an-source-col-title con">Caveats / Concerns</span>${renderItems(cons, "con", "↓")}</div>` : ""}
+            </div>
+          </div>`;
+        }
         function riskList() {
           if (!meta.risks.length) {
             return `<div class="an-no-risk">✅ No significant confidence risks identified for this placement.</div>`;
@@ -20489,6 +20898,8 @@
               <div class="an-section-title">Evidence Basis</div>
               <div class="an-evidence-box">${meta.evidence}</div>
             </div>
+
+            ${sourceSection()}
 
             <div class="an-section">
               <div class="an-section-title">Risk Flags</div>

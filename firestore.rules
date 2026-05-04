@@ -43,6 +43,34 @@ service cloud.firestore {
       allow delete: if false;
     }
 
+    // ─── Vote aggregates ─────────────────────────────────────────────────────
+    // Public read; auth required to update the count field
+    match /votes/{productId} {
+      allow read: if true;
+      allow create, update: if request.auth != null;
+      allow delete: if false;
+    }
+
+    // ─── Per-user vote records ────────────────────────────────────────────────
+    // Doc ID format: "{uid}_{productId}". Users can only write their own.
+    match /user_votes/{docId} {
+      allow read: if request.auth != null && resource.data.uid == request.auth.uid;
+      allow create: if request.auth != null
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.keys().hasAll(['uid', 'productId', 'votedAt']);
+      allow delete: if request.auth != null && resource.data.uid == request.auth.uid;
+      allow update: if false;
+    }
+
+    // ─── Email waitlist ───────────────────────────────────────────────────────
+    // Anyone can join; only admins can read or manage entries
+    match /waitlist/{docId} {
+      allow create: if request.resource.data.keys().hasAll(['email', 'joinedAt'])
+        && request.resource.data.email is string
+        && request.resource.data.email.size() > 5;
+      allow read, update, delete: if isAdmin();
+    }
+
     // ─── Catch-all: deny everything else ─────────────────────────────────────
     match /{document=**} {
       allow read, write: if false;

@@ -1,0 +1,829 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]: "{a}OS Explorer"
+    - generic [ref=e4]:
+      - generic [ref=e5]: 🔍
+      - textbox "Search products, strata, constructs..." [ref=e6]
+      - generic [ref=e7]: /
+    - generic [ref=e8]:
+      - button "Products" [ref=e9] [cursor=pointer]
+      - button "Frameworks" [ref=e10] [cursor=pointer]
+      - button "Workflows" [ref=e11] [cursor=pointer]
+      - button "Agents" [ref=e12] [cursor=pointer]
+      - button "Skills" [ref=e13] [cursor=pointer]
+      - button "MCPs" [ref=e14] [cursor=pointer]
+      - button "⚡ Efficiency" [ref=e15] [cursor=pointer]
+      - button "Golden Path" [ref=e16] [cursor=pointer]
+    - button "⚖ Compare 0" [ref=e17] [cursor=pointer]:
+      - text: ⚖ Compare
+      - generic [ref=e18]: "0"
+    - link "📖 Docs" [ref=e19] [cursor=pointer]:
+      - /url: docs.html
+    - link "📊 Health" [ref=e20] [cursor=pointer]:
+      - /url: health.html
+    - button "🔗 Share" [ref=e21] [cursor=pointer]
+  - generic [ref=e23]: "{a}OS Reference Stack"
+  - generic [ref=e24]:
+    - complementary [ref=e25]:
+      - generic [ref=e26]:
+        - 'generic "A horizontal layer in the {a}OS reference model. Each stratum groups related capabilities at one level of abstraction." [ref=e27]': Strata
+        - generic [ref=e28] [cursor=pointer]:
+          - text: L7 Experience
+          - generic [ref=e30]: "3"
+        - generic [ref=e31] [cursor=pointer]:
+          - text: L6 Governance
+          - generic [ref=e33]: "4"
+        - generic [ref=e34] [cursor=pointer]:
+          - text: L5 Observability
+          - generic [ref=e36]: "3"
+        - generic [ref=e37] [cursor=pointer]:
+          - text: L4 Orchestration
+          - generic [ref=e39]: "8"
+        - generic [ref=e40] [cursor=pointer]:
+          - text: L3 Execution
+          - generic [ref=e42]: "6"
+        - generic [ref=e43] [cursor=pointer]:
+          - text: L2 Knowledge
+          - generic [ref=e45]: "4"
+        - generic [ref=e46] [cursor=pointer]:
+          - text: L1 Models
+          - generic [ref=e48]: "3"
+      - generic [ref=e49]:
+        - generic "Cross-cutting concerns that span multiple strata vertically, such as Governance and Observability." [ref=e50]: Axes
+        - generic [ref=e51] [cursor=pointer]: Governance & Trust
+        - generic [ref=e53] [cursor=pointer]: Observability & Eval
+      - generic [ref=e55]:
+        - generic "Narrow the catalog by type, vendor, deployment model, or license type." [ref=e56]: Filters
+        - generic [ref=e58] [cursor=pointer]:
+          - text: 🗂 Type
+          - generic [ref=e59]: All
+          - generic [ref=e60]: ▼
+        - generic [ref=e62] [cursor=pointer]:
+          - text: 🏢 Vendor
+          - generic [ref=e63]: All
+          - generic [ref=e64]: ▼
+        - generic [ref=e66] [cursor=pointer]:
+          - text: ☁ Deployment
+          - generic [ref=e67]: All
+          - generic [ref=e68]: ▼
+        - generic [ref=e70] [cursor=pointer]:
+          - text: 🔓 License
+          - generic [ref=e71]: All
+          - generic [ref=e72]: ▼
+        - generic [ref=e75] [cursor=pointer]:
+          - text: 📚 Stratum
+          - generic [ref=e76]: All
+          - generic [ref=e77]: ▼
+      - link "➕ Suggest a Product" [ref=e78] [cursor=pointer]:
+        - /url: https://github.com/nymil/aos-explorer/issues/new?template=product-suggestion.md&title=%5BProduct+Suggestion%5D+
+    - main [ref=e79]:
+      - generic [ref=e80]:
+        - generic [ref=e81]:
+          - 'heading "{a}OS Agentic Reference Stack" [level=1] [ref=e82]'
+          - paragraph [ref=e83]: A vendor-neutral reference model for agentic AI systems — like the OSI model, but for the AI era.
+        - generic [ref=e84]:
+          - generic [ref=e85]:
+            - generic [ref=e86]: 🧱
+            - text: Click a stratum to drill down
+          - generic [ref=e87]:
+            - generic [ref=e88]: ➕
+            - text: Add products to compare
+          - generic [ref=e89]:
+            - generic [ref=e90]: 🔍
+            - text: Filter by vendor or deployment
+          - generic [ref=e91]:
+            - generic [ref=e92]: ⌨
+            - text: Press
+            - strong [ref=e93]: "?"
+            - text: for shortcuts
+        - generic [ref=e94]:
+          - generic [ref=e95]:
+            - generic [ref=e96]: "0"
+            - generic [ref=e97]: Products
+          - generic [ref=e98]:
+            - generic [ref=e99]: "7"
+            - generic [ref=e100]: Strata
+          - generic [ref=e101]:
+            - generic [ref=e102]: "0"
+            - generic [ref=e103]: Substrates
+          - generic [ref=e104]:
+            - generic [ref=e105]: "0"
+            - generic [ref=e106]: Constructs
+          - generic [ref=e107]:
+            - generic [ref=e108]: "2"
+            - generic [ref=e109]: Axes
+        - generic [ref=e110]:
+          - generic [ref=e111] [cursor=pointer]: 🔓 Open Source
+          - generic [ref=e112] [cursor=pointer]: ☁ Cloud-Native
+          - generic [ref=e113] [cursor=pointer]: 🤖 Coding Agents
+          - generic [ref=e114] [cursor=pointer]: 🏢 Microsoft
+          - generic [ref=e115] [cursor=pointer]: 🔧 Frameworks
+          - generic [ref=e116] [cursor=pointer]: 🔌 MCPs
+      - generic [ref=e117]:
+        - generic:
+          - generic "Governance & Trust": GOV
+        - generic:
+          - generic "Observability & Eval": OBS
+        - generic [ref=e118] [cursor=pointer]:
+          - generic [ref=e120]:
+            - generic [ref=e121]: L7
+            - generic [ref=e122]:
+              - generic [ref=e123]: Experience & Intent
+              - generic [ref=e124]: What did the human actually want — and did they get it?
+            - generic [ref=e125]:
+              - generic [ref=e126]: 3 substrates
+              - generic [ref=e127]: ❯
+          - generic:
+            - generic [ref=e128]: Substrates
+            - generic [ref=e129]:
+              - generic [ref=e130]: 💬
+              - generic [ref=e131]:
+                - generic [ref=e132]: Intent Parsers & UX
+                - generic [ref=e133]: Chat interfaces, voice agents, intent classifiers
+              - generic [ref=e134]:
+                - generic [ref=e135]: AF
+                - generic [ref=e136]: PC
+                - generic [ref=e137]: CI
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e138]:
+              - generic [ref=e139]: 🎨
+              - generic [ref=e140]:
+                - generic [ref=e141]: Generative UI
+                - generic [ref=e142]: Dynamic interfaces assembled by agents
+              - generic [ref=e143]:
+                - generic [ref=e144]: V0
+                - generic [ref=e145]: LV
+            - generic [ref=e146]:
+              - generic [ref=e147]: 🔄
+              - generic [ref=e148]:
+                - generic [ref=e149]: Human-in-the-Loop Controls
+                - generic [ref=e150]: Approval gates, escalation paths, override mechanisms
+              - generic [ref=e152]: GS
+        - generic [ref=e153] [cursor=pointer]:
+          - generic [ref=e155]:
+            - generic [ref=e156]: L6
+            - generic [ref=e157]:
+              - generic [ref=e158]: Governance & Trust
+              - generic [ref=e159]: Who approved this action and under which policy?
+            - generic [ref=e160]:
+              - generic [ref=e161]: 4 substrates
+              - generic [ref=e162]: ❯
+          - generic:
+            - generic [ref=e163]: Substrates
+            - generic [ref=e164]:
+              - generic [ref=e165]: 🛡
+              - generic [ref=e166]:
+                - generic [ref=e167]: Policy Engines
+                - generic [ref=e168]: OPA, Azure Policy, guardrails-as-code
+              - generic [ref=e169]:
+                - generic [ref=e170]: OP
+                - generic [ref=e171]: GS
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e172]:
+              - generic [ref=e173]: 🔒
+              - generic [ref=e174]:
+                - generic [ref=e175]: Identity & Access
+                - generic [ref=e176]: Auth, RBAC, credential vaults
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e177]:
+              - generic [ref=e178]: 📜
+              - generic [ref=e179]:
+                - generic [ref=e180]: Audit & Compliance
+                - generic [ref=e181]: Immutable logs, regulatory frameworks
+              - generic [ref=e183]: SY
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e184]:
+              - generic [ref=e185]: ⚠
+              - generic [ref=e186]:
+                - generic [ref=e187]: Safety & Content Filters
+                - generic [ref=e188]: Content moderation, toxicity detection, PII redaction
+            - text: ▸ ▸ ▸ ▸
+        - generic [ref=e189] [cursor=pointer]:
+          - generic [ref=e191]:
+            - generic [ref=e192]: L5
+            - generic [ref=e193]:
+              - generic [ref=e194]: Observability & Evaluation
+              - generic [ref=e195]: How well did this work, and can we prove it?
+            - generic [ref=e196]:
+              - generic [ref=e197]: 3 substrates
+              - generic [ref=e198]: ❯
+          - generic:
+            - generic [ref=e199]: Substrates
+            - generic [ref=e200]:
+              - generic [ref=e201]: 📊
+              - generic [ref=e202]:
+                - generic [ref=e203]: Tracing & Logging
+                - generic [ref=e204]: Distributed tracing, structured logs, token accounting
+              - generic [ref=e206]: SY
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e207]:
+              - generic [ref=e208]: 🧪
+              - generic [ref=e209]:
+                - generic [ref=e210]: Eval Frameworks
+                - generic [ref=e211]: Benchmarks, A/B testing, LLM-as-judge
+              - generic [ref=e213]: SP
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e214]:
+              - generic [ref=e215]: 📈
+              - generic [ref=e216]:
+                - generic [ref=e217]: Drift & Anomaly Detection
+                - generic [ref=e218]: Model drift monitors, SLO alerting, cost anomalies
+            - text: ▸ ▸ ▸ ▸
+        - generic [ref=e219] [cursor=pointer]:
+          - generic [ref=e221]:
+            - generic [ref=e222]: L4
+            - generic [ref=e223]:
+              - generic [ref=e224]: Orchestration & Decisioning
+              - generic [ref=e225]: What happens next, in what order, with which agent?
+            - generic [ref=e226]:
+              - generic [ref=e227]: 8 substrates
+              - generic [ref=e228]: ❯
+          - generic:
+            - generic [ref=e229]: Substrates
+            - generic [ref=e230]:
+              - generic [ref=e231]: 💠
+              - generic [ref=e232]:
+                - generic [ref=e233]: Workflow Engines
+                - generic [ref=e234]: DAG runners, state machines, orchestration graphs
+              - generic [ref=e235]:
+                - generic [ref=e236]: AF
+                - generic [ref=e237]: HM
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e238]:
+              - generic [ref=e239]: 🤖
+              - generic [ref=e240]:
+                - generic [ref=e241]: Agent Frameworks
+                - generic [ref=e242]: Multi-agent coordination, task delegation, crew patterns
+              - generic [ref=e243]:
+                - generic [ref=e244]: CW
+                - generic [ref=e245]: LG
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e246]:
+              - generic [ref=e247]: 🎲
+              - generic [ref=e248]:
+                - generic [ref=e249]: Routing & Planning
+                - generic [ref=e250]: LLM routers, cost-aware selectors, plan generators
+            - generic [ref=e251]:
+              - generic [ref=e252]: ⏰
+              - generic [ref=e253]:
+                - generic [ref=e254]: Scheduling & Triggers
+                - generic [ref=e255]: Cron jobs, event listeners, webhook handlers
+            - generic [ref=e256]:
+              - generic [ref=e257]: 🔀
+              - generic [ref=e258]:
+                - generic [ref=e259]: Retry & Recovery
+                - generic [ref=e260]: Circuit breakers, fallback chains, checkpoint/resume
+            - generic [ref=e261]:
+              - generic [ref=e262]: ⚡
+              - generic [ref=e263]:
+                - generic [ref=e264]: GSD — Speed-First Orchestration
+                - generic [ref=e265]: Context state lifecycle, budget management, checkpoint/resume harness
+              - generic [ref=e267]: GD
+            - text: ▸ ▸ ▸
+            - generic [ref=e268]:
+              - generic [ref=e269]: 📋
+              - generic [ref=e270]:
+                - generic [ref=e271]: BMAD Method — Spec-First Orchestration
+                - generic [ref=e272]: Requirement hardening, persona handoffs, specification-before-build harness
+              - generic [ref=e274]: BM
+            - text: ▸ ▸ ▸
+            - generic [ref=e275]:
+              - generic [ref=e276]: 🧪
+              - generic [ref=e277]:
+                - generic [ref=e278]: Superpowers — TDD-Constrained Harness
+                - generic [ref=e279]: Test-first gates, guarded execution, tmux-based workflow enforcement
+              - generic [ref=e281]: SP
+            - text: ▸ ▸ ▸
+        - generic [ref=e282] [cursor=pointer]:
+          - generic [ref=e284]:
+            - generic [ref=e285]: L3
+            - generic [ref=e286]:
+              - generic [ref=e287]: Execution & Interfaces
+              - generic [ref=e288]: How does the agent act on the world?
+            - generic [ref=e289]:
+              - generic [ref=e290]: 6 substrates
+              - generic [ref=e291]: ❯
+          - generic:
+            - generic [ref=e292]: Substrates
+            - generic [ref=e293]:
+              - generic [ref=e294]: 🔧
+              - generic [ref=e295]:
+                - generic [ref=e296]: Tool Registries & MCP
+                - generic [ref=e297]: Tool catalogs, Model Context Protocol, API gateways
+              - generic [ref=e299]: EX
+            - text: ▸ ▸ ▸
+            - generic [ref=e300]:
+              - generic [ref=e301]: 💻
+              - generic [ref=e302]:
+                - generic [ref=e303]: Code Execution
+                - generic [ref=e304]: Sandboxes, interpreters, REPL environments
+              - generic [ref=e305]:
+                - generic [ref=e306]: SP
+                - generic [ref=e307]: CI
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e308]:
+              - generic [ref=e309]: 🌐
+              - generic [ref=e310]:
+                - generic [ref=e311]: External APIs
+                - generic [ref=e312]: REST/GraphQL connectors, webhook emitters, data sinks
+              - generic [ref=e314]: HA
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e315]:
+              - generic [ref=e316]: 📡
+              - generic [ref=e317]:
+                - generic [ref=e318]: Browser & UI Automation
+                - generic [ref=e319]: Playwright, Puppeteer, screen scraping, RPA bridges
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e320]:
+              - generic [ref=e321]: 📂
+              - generic [ref=e322]:
+                - generic [ref=e323]: File & OS Interfaces
+                - generic [ref=e324]: Filesystem access, shell execution, system commands
+              - generic [ref=e325]:
+                - generic [ref=e326]: GI
+                - generic [ref=e327]: SY
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e328]:
+              - generic [ref=e329]: 📨
+              - generic [ref=e330]:
+                - generic [ref=e331]: Message Queues & Events
+                - generic [ref=e332]: Pub/sub, event buses, async message passing
+            - text: ▸ ▸ ▸ ▸
+        - generic [ref=e333] [cursor=pointer]:
+          - generic [ref=e335]:
+            - generic [ref=e336]: L2
+            - generic [ref=e337]:
+              - generic [ref=e338]: Knowledge & Memory
+              - generic [ref=e339]: What does the system know, and how does it recall?
+            - generic [ref=e340]:
+              - generic [ref=e341]: 4 substrates
+              - generic [ref=e342]: ❯
+          - generic:
+            - generic [ref=e343]: Substrates
+            - generic [ref=e344]:
+              - generic [ref=e345]: 🔍
+              - generic [ref=e346]:
+                - generic [ref=e347]: RAG Pipelines & Search
+                - generic [ref=e348]: Vector search, hybrid retrieval, re-ranking
+              - generic [ref=e349]:
+                - generic [ref=e350]: AS
+                - generic [ref=e351]: EX
+                - generic [ref=e352]: GI
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e353]:
+              - generic [ref=e354]: 🧠
+              - generic [ref=e355]:
+                - generic [ref=e356]: Memory Systems
+                - generic [ref=e357]: Short-term context, long-term persistence, episodic recall
+              - generic [ref=e358]:
+                - generic [ref=e359]: M0
+                - generic [ref=e360]: HA
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e361]:
+              - generic [ref=e362]: 📁
+              - generic [ref=e363]:
+                - generic [ref=e364]: Knowledge Graphs
+                - generic [ref=e365]: Entity relationships, ontologies, semantic networks
+              - generic [ref=e366]:
+                - generic [ref=e367]: GD
+                - generic [ref=e368]: BM
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e369]:
+              - generic [ref=e370]: 📦
+              - generic [ref=e371]:
+                - generic [ref=e372]: Embedding Stores
+                - generic [ref=e373]: Vector databases, index management, chunking strategies
+            - text: ▸ ▸ ▸ ▸
+        - generic [ref=e374] [cursor=pointer]:
+          - generic [ref=e376]:
+            - generic [ref=e377]: L1
+            - generic [ref=e378]:
+              - generic [ref=e379]: Models & Infrastructure
+              - generic [ref=e380]: What is the raw intelligence, and where does it run?
+            - generic [ref=e381]:
+              - generic [ref=e382]: 3 substrates
+              - generic [ref=e383]: ❯
+          - generic:
+            - generic [ref=e384]: Substrates
+            - generic [ref=e385]:
+              - generic [ref=e386]: 🧬
+              - generic [ref=e387]:
+                - generic [ref=e388]: Foundation Models
+                - generic [ref=e389]: GPT-4o, Claude, Gemini, Llama, Mistral, fine-tunes
+              - generic [ref=e390]:
+                - generic [ref=e391]: AF
+                - generic [ref=e392]: HA
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e393]:
+              - generic [ref=e394]: ☁
+              - generic [ref=e395]:
+                - generic [ref=e396]: Compute & Serving
+                - generic [ref=e397]: GPU clusters, serverless inference, model endpoints
+            - text: ▸ ▸ ▸ ▸
+            - generic [ref=e398]:
+              - generic [ref=e399]: 🔄
+              - generic [ref=e400]:
+                - generic [ref=e401]: Training & Fine-tuning
+                - generic [ref=e402]: RLHF pipelines, LoRA adapters, distillation
+            - text: ▸ ▸ ▸ ▸
+    - complementary [ref=e403]:
+      - generic [ref=e404]: Featured Products
+      - generic [ref=e405] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e406]
+        - generic [ref=e407]: Azure AI Foundry
+        - generic [ref=e408]: Microsoft · Cloud · Proprietary
+        - generic [ref=e417]: "Spans 4 strata · Primary: L1"
+        - generic [ref=e418]: "0.92"
+      - generic [ref=e419] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e420]
+        - generic [ref=e421]: Kotana
+        - generic [ref=e422]: Internal · Hybrid · Proprietary
+        - generic [ref=e431]: "Spans 4 strata · Primary: L4"
+        - generic [ref=e432]: "0.88"
+      - generic [ref=e433] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e434]
+        - generic [ref=e435]: Paperclip
+        - generic [ref=e436]: Internal · Local · Proprietary
+        - generic [ref=e445]: "Spans 3 strata · Primary: L7"
+        - generic [ref=e446]: ~0.75
+      - generic [ref=e447] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e448]
+        - generic [ref=e449]: CrewAI
+        - generic [ref=e450]: CrewAI Inc · Cloud · Open Source
+        - generic [ref=e459]: "Spans 2 strata · Primary: L4"
+        - generic [ref=e460]: "0.90"
+      - generic [ref=e461] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e462]
+        - generic [ref=e463]: Mem0
+        - generic [ref=e464]: Mem0 AI · Cloud · Open Source
+        - generic [ref=e473]: "Spans 1 stratum · Primary: L2"
+        - generic [ref=e474]: "0.95"
+      - generic [ref=e475] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e476]
+        - generic [ref=e477]: LangGraph
+        - generic [ref=e478]: LangChain · Hybrid · Open Source
+        - generic [ref=e487]: "Spans 2 strata · Primary: L4"
+        - generic [ref=e488]: "0.88"
+      - generic [ref=e489] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e490]
+        - generic [ref=e491]: Azure AI Search
+        - generic [ref=e492]: Microsoft · Cloud · Proprietary
+        - generic [ref=e501]: "Spans 1 stratum · Primary: L2"
+        - generic [ref=e502]: "0.93"
+      - generic [ref=e503] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e504]
+        - generic [ref=e505]: Open Policy Agent
+        - generic [ref=e506]: CNCF · Hybrid · Open Source
+        - generic [ref=e515]: "Spans 1 stratum · Primary: L6"
+        - generic [ref=e516]: "0.91"
+      - generic [ref=e517] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e518]
+        - generic [ref=e519]: GSD
+        - generic [ref=e520]: Community · Local · Open Source
+        - generic [ref=e529]: "Spans 2 strata · Primary: L4"
+        - generic [ref=e530]: "0.82"
+      - generic [ref=e531] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e532]
+        - generic [ref=e533]: BMAD Method
+        - generic [ref=e534]: Community · Local · Open Source
+        - generic [ref=e543]: "Spans 3 strata · Primary: L4"
+        - generic [ref=e544]: "0.80"
+      - generic [ref=e545] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e546]
+        - generic [ref=e547]: Superpowers
+        - generic [ref=e548]: Community · Local · Open Source
+        - generic [ref=e557]: "Spans 3 strata · Primary: L4"
+        - generic [ref=e558]: ~0.79
+      - generic [ref=e559] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e560]
+        - generic [ref=e561]: gstack
+        - generic [ref=e562]: Community · Local · Open Source
+        - generic [ref=e571]: "Spans 3 strata · Primary: L4"
+        - generic [ref=e572]: ~0.74
+      - generic [ref=e573] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e574]
+        - generic [ref=e575]: Kotana Agent
+        - generic [ref=e576]: Community · Hybrid · Open Source
+        - generic [ref=e585]: "Spans 4 strata · Primary: L2"
+        - generic [ref=e586]: "0.83"
+      - generic [ref=e587] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e588]
+        - generic [ref=e589]: Shipyard
+        - generic [ref=e590]: Community · Local · Open Source
+        - generic [ref=e599]: "Spans 4 strata · Primary: L4"
+        - generic [ref=e600]: ~0.76
+      - generic [ref=e601] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e602]
+        - generic [ref=e603]: Cursor IDE
+        - generic [ref=e604]: Anysphere · Local · Proprietary
+        - generic [ref=e613]: "Spans 2 strata · Primary: L7"
+        - generic [ref=e614]: ~0.78
+      - generic [ref=e615] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e616]
+        - generic [ref=e617]: Git Ingest
+        - generic [ref=e618]: Community · Local · Open Source
+        - generic [ref=e627]: "Spans 2 strata · Primary: L2"
+        - generic [ref=e628]: ~0.78
+      - generic [ref=e629] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e630]
+        - generic [ref=e631]: Lovable
+        - generic [ref=e632]: Lovable · Cloud · Proprietary
+        - generic [ref=e641]: "Spans 2 strata · Primary: L7"
+        - generic [ref=e642]: ~0.72
+      - generic [ref=e643] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e644]
+        - generic [ref=e645]: v0
+        - generic [ref=e646]: Vercel · Cloud · Proprietary
+        - generic [ref=e655]: "Spans 2 strata · Primary: L7"
+        - generic [ref=e656]: ~0.74
+      - generic [ref=e657] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e658]
+        - generic [ref=e659]: Exa MCP
+        - generic [ref=e660]: Exa · Cloud · Proprietary
+        - generic [ref=e669]: "Spans 2 strata · Primary: L3"
+        - generic [ref=e670]: "0.81"
+      - generic [ref=e671] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e672]
+        - generic [ref=e673]: Agent Skills
+        - generic [ref=e674]: Addy Osmani · Local · Open Source
+        - generic [ref=e683]: "Spans 3 strata · Primary: L4"
+        - generic [ref=e684]: "0.87"
+      - generic [ref=e685] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e686]
+        - generic [ref=e687]: RAG Pipeline
+        - generic [ref=e688]: Pattern · Hybrid · Open
+        - generic [ref=e697]: "Spans 2 strata · Primary: L2"
+        - generic [ref=e698]: "0.91"
+      - generic [ref=e699] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e700]
+        - generic [ref=e701]: Agent CI/CD
+        - generic [ref=e702]: Pattern · Cloud · Open
+        - generic [ref=e711]: "Spans 3 strata · Primary: L4"
+        - generic [ref=e712]: "0.84"
+      - generic [ref=e713] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e714]
+        - generic [ref=e715]: Eval & Improve Loop
+        - generic [ref=e716]: Pattern · Hybrid · Open
+        - generic [ref=e725]: "Spans 3 strata · Primary: L5"
+        - generic [ref=e726]: "0.88"
+      - generic [ref=e727] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e728]
+        - generic [ref=e729]: Human-in-the-Loop
+        - generic [ref=e730]: Pattern · Hybrid · Open
+        - generic [ref=e739]: "Spans 3 strata · Primary: L7"
+        - generic [ref=e740]: "0.86"
+      - generic [ref=e741] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e742]
+        - generic [ref=e743]: Devin
+        - generic [ref=e744]: Cognition · Cloud · Proprietary
+        - generic [ref=e753]: "Spans 4 strata · Primary: L4"
+        - generic [ref=e754]: "0.88"
+      - generic [ref=e755] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e756]
+        - generic [ref=e757]: SWE-agent
+        - generic [ref=e758]: Princeton NLP · Local · Open Source
+        - generic [ref=e767]: "Spans 3 strata · Primary: L3"
+        - generic [ref=e768]: "0.85"
+      - generic [ref=e769] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e770]
+        - generic [ref=e771]: OpenHands
+        - generic [ref=e772]: All Hands AI · Local · Open Source
+        - generic [ref=e781]: "Spans 3 strata · Primary: L4"
+        - generic [ref=e782]: "0.84"
+      - generic [ref=e783] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e784]
+        - generic [ref=e785]: Aider
+        - generic [ref=e786]: Paul Gauthier · Local · Open Source
+        - generic [ref=e795]: "Spans 3 strata · Primary: L3"
+        - generic [ref=e796]: "0.90"
+      - generic [ref=e797] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e798]
+        - generic [ref=e799]: Claude Code
+        - generic [ref=e800]: Anthropic · Local · Proprietary
+        - generic [ref=e809]: "Spans 5 strata · Primary: L4"
+        - generic [ref=e810]: "0.92"
+      - generic [ref=e811] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e812]
+        - generic [ref=e813]: Cline
+        - generic [ref=e814]: Cline Bot · Local · Open Source
+        - generic [ref=e823]: "Spans 4 strata · Primary: L3"
+        - generic [ref=e824]: "0.87"
+      - generic [ref=e825] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e826]
+        - generic [ref=e827]: Code Review
+        - generic [ref=e828]: Pattern · Local · Open
+        - generic [ref=e837]: "Spans 3 strata · Primary: L6"
+        - generic [ref=e838]: "0.89"
+      - generic [ref=e839] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e840]
+        - generic [ref=e841]: Testing Strategy
+        - generic [ref=e842]: Pattern · Local · Open
+        - generic [ref=e851]: "Spans 2 strata · Primary: L5"
+        - generic [ref=e852]: "0.86"
+      - generic [ref=e853] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e854]
+        - generic [ref=e855]: Security Audit
+        - generic [ref=e856]: Pattern · Local · Open
+        - generic [ref=e865]: "Spans 3 strata · Primary: L6"
+        - generic [ref=e866]: "0.91"
+      - generic [ref=e867] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e868]
+        - generic [ref=e869]: Perf Profiling
+        - generic [ref=e870]: Pattern · Local · Open
+        - generic [ref=e879]: "Spans 3 strata · Primary: L5"
+        - generic [ref=e880]: "0.85"
+      - generic [ref=e881] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e882]
+        - generic [ref=e883]: API Design
+        - generic [ref=e884]: Pattern · Local · Open
+        - generic [ref=e893]: "Spans 1 stratum · Primary: L3"
+        - generic [ref=e894]: "0.83"
+      - generic [ref=e895] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e896]
+        - generic [ref=e897]: DB Optimization
+        - generic [ref=e898]: Pattern · Local · Open
+        - generic [ref=e907]: "Spans 1 stratum · Primary: L2"
+        - generic [ref=e908]: "0.84"
+      - generic [ref=e909] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e910]
+        - generic [ref=e911]: GitHub MCP
+        - generic [ref=e912]: GitHub · Cloud · Open Source
+        - generic [ref=e921]: "Spans 2 strata · Primary: L3"
+        - generic [ref=e922]: "0.90"
+      - generic [ref=e923] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e924]
+        - generic [ref=e925]: Playwright MCP
+        - generic [ref=e926]: Microsoft · Local · Open Source
+        - generic [ref=e935]: "Spans 1 stratum · Primary: L3"
+        - generic [ref=e936]: "0.88"
+      - generic [ref=e937] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e938]
+        - generic [ref=e939]: Filesystem MCP
+        - generic [ref=e940]: Anthropic · Local · Open Source
+        - generic [ref=e949]: "Spans 1 stratum · Primary: L3"
+        - generic [ref=e950]: "0.86"
+      - generic [ref=e951] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e952]
+        - generic [ref=e953]: PostgreSQL MCP
+        - generic [ref=e954]: Community · Local · Open Source
+        - generic [ref=e963]: "Spans 2 strata · Primary: L2"
+        - generic [ref=e964]: "0.87"
+      - generic [ref=e965] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e966]
+        - generic [ref=e967]: Brave Search MCP
+        - generic [ref=e968]: Brave · Cloud · Open Source
+        - generic [ref=e977]: "Spans 2 strata · Primary: L2"
+        - generic [ref=e978]: "0.85"
+      - generic [ref=e979] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e980]
+        - generic [ref=e981]: Memory MCP
+        - generic [ref=e982]: Anthropic · Local · Open Source
+        - generic [ref=e991]: "Spans 1 stratum · Primary: L2"
+        - generic [ref=e992]: "0.83"
+      - generic [ref=e993] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e994]
+        - generic [ref=e995]: ⚡ Prompt Caching
+        - generic [ref=e996]: Anthropic · Cloud · Platform
+        - generic [ref=e1005]: "Value: 0.94 · ~90% input cost cut on cache hits"
+        - generic [ref=e1006]: "0.94"
+      - generic [ref=e1007] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e1008]
+        - generic [ref=e1009]: ⚡ Aider Repo Map
+        - generic [ref=e1010]: Aider · Local · Open Source
+        - generic [ref=e1019]: "Value: 0.91 · 1k-token skeleton vs full files"
+        - generic [ref=e1020]: "0.91"
+      - generic [ref=e1021] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e1022]
+        - generic [ref=e1023]: ⚡ Tier-Routing
+        - generic [ref=e1024]: Pattern · Hybrid · Pattern
+        - generic [ref=e1033]: "Value: 0.92 · Cheap router + selective escalation"
+        - generic [ref=e1034]: "0.92"
+      - generic [ref=e1035] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e1036]
+        - generic [ref=e1037]: ⚡ DeepSeek V3 / R1
+        - generic [ref=e1038]: DeepSeek · Cloud · Open Source
+        - generic [ref=e1047]: "Value: 0.92 · SOTA reasoning at ~10% Claude cost"
+        - generic [ref=e1048]: "0.92"
+      - generic [ref=e1049] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e1050]
+        - generic [ref=e1051]: ⚡ DSPy Compilation
+        - generic [ref=e1052]: Stanford NLP · Local · Open Source
+        - generic [ref=e1061]: "Value: 0.88 · Auto-optimized minimal prompts"
+        - generic [ref=e1062]: "0.88"
+      - generic [ref=e1063] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e1064]
+        - generic [ref=e1065]: ⚡ Subagent Isolation
+        - generic [ref=e1066]: Pattern · Local · Pattern
+        - generic [ref=e1075]: "Value: 0.87 · Fresh window blocks main-thread bloat"
+        - generic [ref=e1076]: "0.87"
+      - generic [ref=e1077] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e1078]
+        - generic [ref=e1079]: ⚡ Plan-then-Execute
+        - generic [ref=e1080]: Aider / BMAD · Local · Open Source
+        - generic [ref=e1089]: "Value: 0.86 · Cuts re-planning loop tokens ~30-40%"
+        - generic [ref=e1090]: "0.86"
+      - generic [ref=e1091] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e1092]
+        - generic [ref=e1093]: ⚡ Semantic Search RAG
+        - generic [ref=e1094]: Pattern · Hybrid · Mixed
+        - generic [ref=e1103]: "Value: 0.85 · Pull only relevant chunks"
+        - generic [ref=e1104]: "0.85"
+      - generic [ref=e1105] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e1106]
+        - generic [ref=e1107]: ⚡ Tool-Result Truncation
+        - generic [ref=e1108]: Pattern · Local · Pattern
+        - generic [ref=e1117]: "Value: 0.81 · Cap shell/MCP outputs at boundary"
+        - generic [ref=e1118]: "0.81"
+      - generic [ref=e1119] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e1120]
+        - generic [ref=e1121]: ⚡ ReAct Pattern
+        - generic [ref=e1122]: Research · Local · Open
+        - generic [ref=e1131]: "Value: 0.78 · Verbose but baseline-reliable loop"
+        - generic [ref=e1132]: "0.78"
+      - generic [ref=e1133] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e1134]
+        - generic [ref=e1135]: ⚡ CodeBurn Telemetry
+        - generic [ref=e1136]: AgentSeal · Local · Open Source
+        - generic [ref=e1145]: "Value: 0.83 · Per-call $ + one-shot rate"
+        - generic [ref=e1146]: "0.83"
+      - generic [ref=e1147] [cursor=pointer]:
+        - text: ⤢
+        - button "+" [ref=e1148]
+        - generic [ref=e1149]: ⚡ Context Compression
+        - generic [ref=e1150]: Research · Cloud · Mixed
+        - generic [ref=e1159]: "Value: 0.79 · KV-cache pruning, token elimination"
+        - generic [ref=e1160]: "0.79"
+      - separator [ref=e1161]
+      - generic [ref=e1162]:
+        - generic [ref=e1163]: Selected Detail
+        - generic [ref=e1164]:
+          - heading "💡 Click a stratum or product" [level=4] [ref=e1165]
+          - paragraph [ref=e1166]: Detail panel shows rationale, evidence, confidence scores, and overlap notes for whatever you select.
+  - generic [ref=e1168]:
+    - 'heading "Welcome to {a}OS Explorer" [level=3] [ref=e1169]'
+    - paragraph [ref=e1170]: This is the Golden Path reference stack — 7 strata from Experience & Intent down to Models & Infrastructure. It's the OSI model for the agentic era.
+    - generic [ref=e1176]:
+      - button "Skip tour" [ref=e1177] [cursor=pointer]
+      - button "Next" [ref=e1178] [cursor=pointer]
+  - generic [ref=e1179]:
+    - generic [ref=e1180] [cursor=pointer]: L7 Experience
+    - generic [ref=e1181] [cursor=pointer]: L6 Governance
+    - generic [ref=e1182] [cursor=pointer]: L5 Observability
+    - generic [ref=e1183] [cursor=pointer]: L4 Orchestration
+    - generic [ref=e1184] [cursor=pointer]: L3 Execution
+    - generic [ref=e1185] [cursor=pointer]: L2 Knowledge
+    - generic [ref=e1186] [cursor=pointer]: L1 Models
+  - button "↑" [ref=e1187] [cursor=pointer]

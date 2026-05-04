@@ -501,6 +501,23 @@
         border-color: var(--border-hover);
         transform: translateY(-1px);
       }
+      a.feature-card {
+        display: block;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      a.feature-card:hover {
+        border-color: rgba(129,140,248,0.35);
+        background: var(--bg-surface);
+      }
+      .feature-card .cta {
+        display: inline-block;
+        margin-top: 10px;
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--accent-indigo);
+        letter-spacing: 0.3px;
+      }
       .feature-card .icon {
         font-size: 20px;
         margin-bottom: 8px;
@@ -782,6 +799,28 @@
                 shortcuts.
               </div>
             </div>
+          </div>
+
+          <h2 id="tools">Interactive Tools</h2>
+          <div class="feature-grid">
+            <a class="feature-card" href="prototype.html?open=quiz">
+              <div class="icon">&#x1F9E0;</div>
+              <div class="title">Daily Stratum Quiz</div>
+              <div class="desc">
+                One question per day — test which stratum a tool belongs to,
+                see the rationale, and build a streak.
+              </div>
+              <span class="cta">Open Quiz &rarr;</span>
+            </a>
+            <a class="feature-card" href="fingerprint.html">
+              <div class="icon">&#x1F9EC;</div>
+              <div class="title">Stack Fingerprint</div>
+              <div class="desc">
+                Generate a shareable image of your personal AI tool stack
+                mapped across all 7 strata.
+              </div>
+              <span class="cta">Generate Card &rarr;</span>
+            </a>
           </div>
 
           <h2 id="tech">Tech Stack</h2>

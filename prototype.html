@@ -7494,6 +7494,873 @@
         white-space: nowrap;
         border: 0;
       }
+      /* ===== REFERRAL ===== */
+      .referral-nudge {
+        font-size: 12px;
+        color: var(--text-tertiary);
+        margin-top: 16px;
+        margin-bottom: 8px;
+      }
+      .referral-link-row {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+      .referral-link-input {
+        flex: 1;
+        padding: 9px 12px;
+        background: var(--bg-surface);
+        border: 1px solid var(--border-hover);
+        border-radius: 9px;
+        color: var(--text-primary);
+        font-size: 12px;
+        font-family: inherit;
+        outline: none;
+        cursor: text;
+        min-width: 0;
+      }
+      .referral-copy-btn {
+        padding: 9px 16px;
+        border-radius: 9px;
+        background: rgba(129,140,248,0.12);
+        border: 1px solid rgba(129,140,248,0.3);
+        color: var(--accent-indigo);
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.15s;
+        white-space: nowrap;
+        font-family: inherit;
+        flex-shrink: 0;
+      }
+      .referral-copy-btn:hover { background: rgba(129,140,248,0.2); }
+      .referral-copy-btn.copied {
+        background: rgba(52,211,153,0.12);
+        border-color: rgba(52,211,153,0.3);
+        color: #34d399;
+      }
+      .referral-share-btns {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 4px;
+      }
+      .referral-share-btn {
+        flex: 1;
+        padding: 9px 12px;
+        border-radius: 9px;
+        border: 1px solid var(--border-hover);
+        background: var(--bg-card);
+        color: var(--text-secondary);
+        font-size: 12px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.15s;
+        font-family: inherit;
+      }
+      .referral-share-btn:hover { background: var(--bg-card-hover); color: var(--text-primary); }
+
+      /* ===== DETAIL PANEL VOTE ROW ===== */
+      .panel-vote-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 0;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        margin: 10px 0 4px;
+      }
+      .panel-vote-btn {
+        padding: 5px 12px;
+        border-radius: 7px;
+        border: 1px solid var(--border-hover);
+        background: var(--bg-surface);
+        color: var(--text-secondary);
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.15s;
+        font-family: inherit;
+      }
+      .panel-vote-btn:hover {
+        border-color: rgba(129,140,248,0.4);
+        color: var(--accent-indigo);
+        background: rgba(129,140,248,0.08);
+      }
+      .panel-vote-btn.voted {
+        border-color: rgba(129,140,248,0.5);
+        background: rgba(129,140,248,0.12);
+        color: var(--accent-indigo);
+      }
+      .panel-vote-count {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--text-primary);
+        line-height: 1;
+        min-width: 20px;
+      }
+      .panel-vote-label {
+        font-size: 11px;
+        color: var(--text-quaternary);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      /* ===== DAILY QUIZ ===== */
+      .quiz-overlay {
+        position: fixed; inset: 0;
+        background: rgba(0,0,0,0.65);
+        backdrop-filter: blur(6px);
+        z-index: 9999;
+        display: flex; align-items: center; justify-content: center;
+        opacity: 0; pointer-events: none;
+        transition: opacity 0.2s;
+      }
+      .quiz-overlay.open { opacity: 1; pointer-events: all; }
+      .quiz-modal {
+        background: var(--bg-modal, #0e1117);
+        border: 1px solid var(--border-hover);
+        border-radius: 18px;
+        padding: 28px 28px 22px;
+        max-width: 460px;
+        width: 90%;
+        position: relative;
+        box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+      }
+      .quiz-modal-close {
+        position: absolute; top: 14px; right: 16px;
+        background: none; border: none; color: var(--text-tertiary);
+        font-size: 18px; cursor: pointer; padding: 4px 8px; line-height: 1;
+        border-radius: 6px; transition: all 0.15s;
+      }
+      .quiz-modal-close:hover { background: var(--bg-card); color: var(--text-primary); }
+      .quiz-header {
+        display: flex; align-items: center; gap: 10px;
+        margin-bottom: 18px; flex-wrap: wrap;
+      }
+      .quiz-title { font-size: 15px; font-weight: 700; color: var(--text-primary); }
+      .quiz-subtitle { font-size: 11px; color: var(--text-tertiary); margin-left: auto; }
+      .quiz-streak-badge {
+        display: flex; align-items: center; gap: 5px;
+        background: rgba(251,191,36,0.12);
+        border: 1px solid rgba(251,191,36,0.3);
+        border-radius: 20px; padding: 4px 10px;
+        font-size: 12px; font-weight: 700; color: #fbbf24;
+        transition: transform 0.15s;
+      }
+      .quiz-streak-badge.bump { transform: scale(1.3); }
+      .quiz-question {
+        font-size: 16px; color: var(--text-primary); font-weight: 500;
+        line-height: 1.55; margin-bottom: 18px;
+      }
+      .quiz-choices {
+        display: flex; flex-direction: column; gap: 8px;
+        margin-bottom: 16px;
+      }
+      .quiz-choice-btn {
+        width: 100%; text-align: left; padding: 10px 14px;
+        border-radius: 10px; border: 1px solid var(--border-hover);
+        background: var(--bg-card); color: var(--text-secondary);
+        font-size: 13px; font-weight: 500; cursor: pointer;
+        transition: all 0.15s; font-family: inherit;
+      }
+      .quiz-choice-btn:hover:not(:disabled) {
+        background: var(--bg-card-hover); color: var(--text-primary);
+        border-color: rgba(129,140,248,0.4);
+      }
+      .quiz-choice-btn.correct {
+        background: rgba(52,211,153,0.12);
+        border-color: rgba(52,211,153,0.4); color: #34d399;
+      }
+      .quiz-choice-btn.wrong {
+        background: rgba(239,68,68,0.12);
+        border-color: rgba(239,68,68,0.4); color: #f87171;
+      }
+      .quiz-choice-btn.dimmed { opacity: 0.35; }
+      .quiz-choice-btn:disabled { cursor: default; }
+      .quiz-result-box {
+        padding: 12px 14px; border-radius: 10px;
+        font-size: 13px; line-height: 1.55; margin-bottom: 10px;
+      }
+      .quiz-result-box.correct {
+        background: rgba(52,211,153,0.08);
+        border: 1px solid rgba(52,211,153,0.25); color: #34d399;
+      }
+      .quiz-result-box.wrong {
+        background: rgba(239,68,68,0.08);
+        border: 1px solid rgba(239,68,68,0.25); color: var(--text-secondary);
+      }
+      .quiz-rationale {
+        display: block; margin-top: 6px;
+        font-size: 11px; color: var(--text-tertiary); font-style: italic;
+      }
+      .quiz-tomorrow {
+        font-size: 11px; color: var(--text-quaternary); text-align: center; padding-top: 4px;
+      }
+
+      /* ===== TRENDING BANNER & CARD BADGES ===== */
+      .trending-banner {
+        display: flex; align-items: center; gap: 12px;
+        padding: 10px 14px; margin-bottom: 14px;
+        background: rgba(251,191,36,0.06);
+        border: 1px solid rgba(251,191,36,0.18);
+        border-radius: 12px; flex-wrap: wrap;
+      }
+      .trending-label {
+        font-size: 12px; font-weight: 700; color: #fbbf24;
+        white-space: nowrap; flex-shrink: 0;
+      }
+      .trending-pill {
+        padding: 4px 11px; border-radius: 20px;
+        background: rgba(251,191,36,0.1);
+        border: 1px solid rgba(251,191,36,0.25);
+        color: #fcd34d; font-size: 12px; font-weight: 500;
+        cursor: pointer; transition: all 0.15s;
+        font-family: inherit;
+      }
+      .trending-pill:hover {
+        background: rgba(251,191,36,0.18);
+        border-color: rgba(251,191,36,0.45);
+      }
+      /* Card badges */
+      .card-badge {
+        display: inline-block; font-size: 9px; font-weight: 700;
+        padding: 2px 6px; border-radius: 20px; margin-left: 4px;
+        text-transform: uppercase; letter-spacing: 0.5px; vertical-align: middle;
+      }
+      .rising-badge {
+        background: rgba(251,191,36,0.12);
+        border: 1px solid rgba(251,191,36,0.3);
+        color: #fbbf24;
+      }
+      .stale-badge {
+        background: rgba(156,163,175,0.1);
+        border: 1px solid rgba(156,163,175,0.2);
+        color: rgba(156,163,175,0.7);
+      }
+
+      /* ===== VERIFIED BADGE ===== */
+      .verified-badge {
+        background: rgba(52,211,153,0.12);
+        border: 1px solid rgba(52,211,153,0.3);
+        color: #34d399;
+      }
+      .verified-panel-row {
+        display: flex; align-items: center; gap: 8px;
+        padding: 8px 0; font-size: 12px;
+        border-top: 1px solid var(--border); margin-top: 4px;
+      }
+      .verified-panel-badge {
+        display: inline-flex; align-items: center; gap: 4px;
+        padding: 3px 9px; border-radius: 20px;
+        background: rgba(52,211,153,0.1);
+        border: 1px solid rgba(52,211,153,0.3);
+        color: #34d399; font-size: 11px; font-weight: 700;
+      }
+      .verify-cta {
+        font-size: 11px; color: var(--text-quaternary);
+        margin-left: auto;
+      }
+      .verify-cta a {
+        color: var(--accent-indigo); text-decoration: none;
+      }
+      .verify-cta a:hover { text-decoration: underline; }
+
+      /* ===== EMBED MODAL ===== */
+      .embed-overlay {
+        position: fixed; inset: 0; background: rgba(0,0,0,0.65);
+        backdrop-filter: blur(6px); z-index: 9999;
+        display: flex; align-items: center; justify-content: center;
+        opacity: 0; pointer-events: none; transition: opacity 0.2s;
+      }
+      .embed-overlay.open { opacity: 1; pointer-events: all; }
+      .embed-modal {
+        background: var(--bg-modal, #0e1117); border: 1px solid var(--border-hover);
+        border-radius: 16px; padding: 24px; max-width: 500px; width: 92%;
+        position: relative; box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+      }
+      .embed-modal h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+      .embed-modal p { font-size: 12px; color: var(--text-tertiary); margin-bottom: 14px; }
+      .embed-preview {
+        border: 1px solid var(--border); border-radius: 10px;
+        overflow: hidden; margin-bottom: 14px; background: var(--bg-card);
+        height: 180px;
+      }
+      .embed-preview iframe { width: 100%; height: 100%; border: none; }
+      .embed-snippet {
+        background: var(--bg-surface); border: 1px solid var(--border-hover);
+        border-radius: 8px; padding: 10px 12px; font-family: monospace;
+        font-size: 11px; color: var(--text-secondary); word-break: break-all;
+        white-space: pre-wrap; margin-bottom: 12px; line-height: 1.5;
+      }
+      .embed-actions { display: flex; gap: 8px; justify-content: flex-end; }
+      .embed-copy-btn {
+        padding: 7px 16px; border-radius: 8px;
+        background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.35);
+        color: var(--accent-indigo); font-size: 12px; font-weight: 600;
+        cursor: pointer; transition: all 0.15s; font-family: inherit;
+      }
+      .embed-copy-btn:hover { background: rgba(99,102,241,0.25); }
+      .embed-close-btn {
+        padding: 7px 14px; border-radius: 8px; border: 1px solid var(--border-hover);
+        background: none; color: var(--text-secondary); font-size: 12px;
+        cursor: pointer; font-family: inherit; transition: all 0.15s;
+      }
+      .embed-close-btn:hover { background: var(--bg-card); color: var(--text-primary); }
+
+      /* ===== WHAT'S NEW BANNER ===== */
+      .whats-new-banner {
+        display: flex; align-items: center; gap: 10px;
+        padding: 10px 14px; margin-bottom: 12px;
+        background: rgba(99,102,241,0.07);
+        border: 1px solid rgba(99,102,241,0.2);
+        border-radius: 12px; transition: opacity 0.2s;
+      }
+      .whats-new-inner {
+        display: flex; align-items: center; gap: 10px; flex: 1; flex-wrap: wrap;
+      }
+      .whats-new-tag {
+        font-size: 11px; font-weight: 700; color: var(--accent-indigo);
+        white-space: nowrap; background: rgba(99,102,241,0.12);
+        padding: 2px 8px; border-radius: 20px;
+      }
+      .whats-new-text { font-size: 12px; color: var(--text-secondary); flex: 1; }
+      .whats-new-link {
+        font-size: 11px; font-weight: 600; color: var(--accent-indigo);
+        cursor: pointer; white-space: nowrap;
+      }
+      .whats-new-link:hover { text-decoration: underline; }
+      .whats-new-dismiss {
+        background: none; border: none; color: var(--text-quaternary);
+        font-size: 16px; cursor: pointer; padding: 2px 6px; flex-shrink: 0;
+        border-radius: 4px; line-height: 1; transition: all 0.15s;
+        font-family: inherit;
+      }
+      .whats-new-dismiss:hover { color: var(--text-secondary); background: var(--bg-card); }
+
+      /* ===== STRATUM WATCHLIST ===== */
+      .watch-btn {
+        background: none; border: 1px solid var(--border);
+        border-radius: 6px; padding: 2px 8px; font-size: 11px;
+        color: var(--text-quaternary); cursor: pointer; transition: all 0.15s;
+        font-family: inherit; white-space: nowrap; flex-shrink: 0;
+      }
+      .watch-btn:hover { border-color: rgba(251,191,36,0.4); color: #fbbf24; }
+      .watch-btn.watching {
+        border-color: rgba(251,191,36,0.4);
+        background: rgba(251,191,36,0.08); color: #fbbf24;
+      }
+
+      /* ===== FIND MY STACK WIZARD ===== */
+      .wizard-overlay {
+        position: fixed; inset: 0;
+        background: rgba(0,0,0,0.65);
+        backdrop-filter: blur(6px);
+        z-index: 9999;
+        display: flex; align-items: center; justify-content: center;
+        opacity: 0; pointer-events: none;
+        transition: opacity 0.2s;
+      }
+      .wizard-overlay.open { opacity: 1; pointer-events: all; }
+      .wizard-modal {
+        background: var(--bg-modal, #0e1117);
+        border: 1px solid var(--border-hover);
+        border-radius: 18px;
+        padding: 28px 28px 24px;
+        max-width: 520px;
+        width: 92%;
+        position: relative;
+        box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+      }
+      .wizard-close {
+        position: absolute; top: 14px; right: 16px;
+        background: none; border: none; color: var(--text-tertiary);
+        font-size: 18px; cursor: pointer; padding: 4px 8px; line-height: 1;
+        border-radius: 6px; transition: all 0.15s;
+      }
+      .wizard-close:hover { background: var(--bg-card); color: var(--text-primary); }
+      .wizard-header {
+        display: flex; align-items: flex-start; gap: 12px; margin-bottom: 22px;
+      }
+      .wizard-title { font-size: 16px; font-weight: 700; color: var(--text-primary); }
+      .wizard-subtitle { font-size: 12px; color: var(--text-tertiary); margin-top: 2px; }
+      .wizard-steps { display: flex; gap: 6px; margin-left: auto; padding-top: 4px; }
+      .wizard-dot {
+        width: 8px; height: 8px; border-radius: 50%;
+        background: var(--border-hover); transition: background 0.2s;
+      }
+      .wizard-dot.active { background: var(--accent-indigo); }
+      .wizard-question {
+        font-size: 15px; font-weight: 600; color: var(--text-primary);
+        margin-bottom: 16px;
+      }
+      .wizard-choices {
+        display: flex; flex-direction: column; gap: 8px;
+      }
+      .wizard-choices-2col {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+      }
+      .wizard-choice {
+        padding: 12px 16px; border-radius: 10px;
+        border: 1px solid var(--border-hover);
+        background: var(--bg-card); color: var(--text-secondary);
+        font-size: 13px; font-weight: 500; cursor: pointer;
+        transition: all 0.15s; font-family: inherit; text-align: left;
+      }
+      .wizard-choice:hover {
+        background: var(--bg-card-hover); color: var(--text-primary);
+        border-color: rgba(129,140,248,0.4);
+        transform: translateY(-1px);
+      }
+      .wizard-choice-wide { grid-column: 1 / -1; }
+      .wizard-archetype-name {
+        font-size: 18px; font-weight: 700; color: var(--text-primary);
+        margin-bottom: 4px;
+      }
+      .wizard-archetype-tagline {
+        font-size: 13px; color: var(--text-tertiary); margin-bottom: 18px;
+      }
+      .wizard-result-products {
+        display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px;
+      }
+      .wizard-product-row {
+        display: flex; align-items: center; gap: 10px;
+        padding: 10px 14px; border-radius: 10px;
+        background: var(--bg-card); border: 1px solid var(--border);
+        cursor: pointer; transition: all 0.15s;
+      }
+      .wizard-product-row:hover {
+        border-color: var(--border-hover);
+        background: var(--bg-card-hover);
+      }
+      .wizard-product-name {
+        font-size: 13px; font-weight: 600; color: var(--text-primary); flex: 1;
+      }
+      .wizard-product-stratum {
+        font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 20px;
+        background: rgba(129,140,248,0.1); color: var(--accent-indigo);
+        border: 1px solid rgba(129,140,248,0.2);
+      }
+      .wizard-result-actions {
+        display: flex; gap: 10px; justify-content: flex-end;
+      }
+      .wizard-restart-btn {
+        padding: 8px 16px; border-radius: 8px;
+        border: 1px solid var(--border-hover);
+        background: none; color: var(--text-secondary);
+        font-size: 12px; cursor: pointer; font-family: inherit;
+        transition: all 0.15s;
+      }
+      .wizard-restart-btn:hover { background: var(--bg-card); color: var(--text-primary); }
+      .wizard-stack-btn {
+        padding: 8px 16px; border-radius: 8px;
+        background: rgba(99,102,241,0.15);
+        border: 1px solid rgba(99,102,241,0.35);
+        color: var(--accent-indigo); font-size: 12px; font-weight: 600;
+        cursor: pointer; transition: all 0.15s; font-family: inherit;
+      }
+      .wizard-stack-btn:hover {
+        background: rgba(99,102,241,0.25); border-color: rgba(99,102,241,0.55);
+      }
+
+      /* ===== FIND MY STACK CTA ===== */
+      .find-stack-banner {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 10px 16px; margin-bottom: 12px;
+        background: rgba(99,102,241,0.06);
+        border: 1px solid rgba(99,102,241,0.18);
+        border-radius: 12px; flex-wrap: wrap; gap: 8px;
+      }
+      .find-stack-text {
+        font-size: 13px; color: var(--text-secondary);
+      }
+      .find-stack-btn {
+        padding: 6px 14px; border-radius: 8px;
+        background: rgba(99,102,241,0.15);
+        border: 1px solid rgba(99,102,241,0.35);
+        color: var(--accent-indigo); font-size: 12px; font-weight: 600;
+        cursor: pointer; transition: all 0.15s; white-space: nowrap;
+        font-family: inherit;
+      }
+      .find-stack-btn:hover {
+        background: rgba(99,102,241,0.25); border-color: rgba(99,102,241,0.55);
+      }
+
+      /* ===== COMMUNITY AUTH ZONE ===== */
+      .auth-zone {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-shrink: 0;
+        position: relative;
+        margin-left: 4px;
+      }
+      .community-join-btn {
+        padding: 7px 13px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, rgba(99,102,241,0.18), rgba(139,92,246,0.18));
+        border: 1px solid rgba(129,140,248,0.35);
+        color: var(--accent-indigo);
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        white-space: nowrap;
+      }
+      .community-join-btn:hover {
+        background: linear-gradient(135deg, rgba(99,102,241,0.28), rgba(139,92,246,0.28));
+        border-color: rgba(129,140,248,0.6);
+        box-shadow: 0 0 14px rgba(129,140,248,0.22);
+      }
+      .auth-signin-btn {
+        padding: 7px 13px;
+        border-radius: 10px;
+        background: var(--bg-surface);
+        border: 1px solid var(--border);
+        color: var(--text-secondary);
+        font-size: 12px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        white-space: nowrap;
+      }
+      .auth-signin-btn:hover {
+        border-color: var(--border-hover);
+        color: var(--text-primary);
+      }
+      .auth-provider-menu {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        background: var(--bg-elevated);
+        border: 1px solid var(--border-hover);
+        border-radius: 12px;
+        padding: 8px;
+        display: none;
+        flex-direction: column;
+        gap: 6px;
+        z-index: 9999;
+        min-width: 210px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+      }
+      .auth-provider-menu.open { display: flex; }
+      .auth-provider-btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 13px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: var(--bg-card);
+        color: var(--text-primary);
+        font-size: 13px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.15s;
+        text-align: left;
+        width: 100%;
+      }
+      .auth-provider-btn:hover { background: var(--bg-card-hover); border-color: var(--border-hover); }
+      .auth-user-panel {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .auth-avatar {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        border: 1px solid var(--border-hover);
+        object-fit: cover;
+        flex-shrink: 0;
+      }
+      .auth-username {
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--text-primary);
+        max-width: 72px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .auth-xp-badge {
+        font-size: 10px;
+        font-weight: 600;
+        padding: 2px 7px;
+        border-radius: 10px;
+        background: rgba(129,140,248,0.12);
+        border: 1px solid rgba(129,140,248,0.22);
+        color: var(--accent-indigo);
+        white-space: nowrap;
+      }
+      .auth-signout-link {
+        font-size: 11px;
+        color: var(--text-tertiary);
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 2px 4px;
+        border-radius: 4px;
+        transition: color 0.15s;
+        white-space: nowrap;
+      }
+      .auth-signout-link:hover { color: var(--text-secondary); }
+
+      /* ===== VOTE BUTTONS ===== */
+      .vote-btn {
+        position: absolute;
+        bottom: 9px;
+        right: 10px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: 3px 8px;
+        border-radius: 6px;
+        border: 1px solid var(--border);
+        background: var(--bg-elevated);
+        color: var(--text-quaternary);
+        font-size: 11px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.15s;
+        z-index: 2;
+        line-height: 1.4;
+      }
+      .vote-btn:hover {
+        border-color: rgba(129,140,248,0.3);
+        color: var(--text-secondary);
+        background: var(--bg-card-hover);
+      }
+      .vote-btn.voted {
+        border-color: rgba(129,140,248,0.45);
+        background: rgba(129,140,248,0.1);
+        color: var(--accent-indigo);
+      }
+      .vote-arrow { font-size: 9px; line-height: 1; }
+      .vote-nudge {
+        position: fixed;
+        bottom: 72px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--bg-elevated);
+        border: 1px solid rgba(129,140,248,0.3);
+        border-radius: 10px;
+        padding: 10px 16px;
+        font-size: 12px;
+        color: var(--text-secondary);
+        z-index: 9998;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.45);
+        white-space: nowrap;
+        animation: nudgeIn 0.2s ease;
+      }
+      .vote-nudge button {
+        padding: 4px 10px;
+        border-radius: 6px;
+        border: 1px solid rgba(129,140,248,0.4);
+        background: rgba(129,140,248,0.12);
+        color: var(--accent-indigo);
+        font-size: 11px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      @keyframes nudgeIn {
+        from { opacity: 0; transform: translateY(6px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      /* ===== COMMUNITY MODAL ===== */
+      .community-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.72);
+        backdrop-filter: blur(6px);
+        z-index: 8000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s;
+      }
+      .community-overlay.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+      .community-modal {
+        background: var(--bg-elevated);
+        border: 1px solid var(--border-hover);
+        border-radius: 20px;
+        padding: 36px;
+        max-width: 500px;
+        width: calc(100vw - 40px);
+        position: relative;
+        transform: translateY(14px);
+        transition: transform 0.25s;
+        box-shadow: 0 28px 80px rgba(0,0,0,0.55);
+      }
+      .community-overlay.open .community-modal { transform: translateY(0); }
+      .community-modal-close {
+        position: absolute;
+        top: 14px;
+        right: 16px;
+        background: none;
+        border: none;
+        color: var(--text-tertiary);
+        font-size: 16px;
+        cursor: pointer;
+        padding: 4px 8px;
+        border-radius: 6px;
+        transition: color 0.15s;
+        line-height: 1;
+      }
+      .community-modal-close:hover { color: var(--text-primary); }
+      .community-modal h2 {
+        font-size: 21px;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 4px;
+      }
+      .community-modal .modal-tagline {
+        font-size: 13px;
+        color: var(--text-secondary);
+        margin-bottom: 16px;
+        line-height: 1.5;
+      }
+      .community-member-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        color: var(--text-secondary);
+        background: rgba(52,211,153,0.07);
+        border: 1px solid rgba(52,211,153,0.18);
+        padding: 4px 12px;
+        border-radius: 20px;
+        margin-bottom: 18px;
+      }
+      .community-member-pill .live-dot {
+        width: 6px; height: 6px;
+        border-radius: 50%;
+        background: #34d399;
+        flex-shrink: 0;
+        animation: pulseDot 2s ease-in-out infinite;
+      }
+      @keyframes pulseDot {
+        0%,100% { opacity: 1; } 50% { opacity: 0.3; }
+      }
+      .perks-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 9px;
+        margin-bottom: 20px;
+      }
+      .perk-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 13px;
+        transition: border-color 0.15s;
+      }
+      .perk-card:hover { border-color: var(--border-hover); }
+      .perk-icon { font-size: 18px; margin-bottom: 5px; display: block; }
+      .perk-title { font-size: 12px; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; }
+      .perk-desc { font-size: 11px; color: var(--text-tertiary); line-height: 1.4; }
+      .community-form { display: flex; flex-direction: column; gap: 9px; }
+      .community-form input {
+        padding: 10px 14px;
+        background: var(--bg-surface);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        color: var(--text-primary);
+        font-size: 13px;
+        outline: none;
+        transition: border-color 0.15s, box-shadow 0.15s;
+        font-family: inherit;
+      }
+      .community-form input:focus {
+        border-color: var(--accent-indigo);
+        box-shadow: 0 0 0 3px var(--glow-indigo);
+      }
+      .community-form input::placeholder { color: var(--text-quaternary); }
+      .community-submit-btn {
+        padding: 11px 20px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #6366f1, #818cf8);
+        border: none;
+        color: white;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-family: inherit;
+      }
+      .community-submit-btn:hover:not(:disabled) {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 18px rgba(99,102,241,0.4);
+      }
+      .community-submit-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+      .community-divider {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--text-quaternary);
+        font-size: 11px;
+        margin: 6px 0;
+      }
+      .community-divider::before,
+      .community-divider::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+      }
+      .community-oauth-btns { display: flex; flex-direction: column; gap: 8px; }
+      .community-oauth-btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: center;
+        padding: 10px 20px;
+        border-radius: 10px;
+        border: 1px solid var(--border-hover);
+        background: var(--bg-card);
+        color: var(--text-primary);
+        font-size: 13px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.15s;
+        font-family: inherit;
+        width: 100%;
+      }
+      .community-oauth-btn:hover { background: var(--bg-card-hover); border-color: rgba(255,255,255,0.14); }
+      .community-success {
+        text-align: center;
+        padding: 24px 0 8px;
+      }
+      .community-success .success-icon { font-size: 52px; margin-bottom: 14px; display: block; }
+      .community-success h3 { font-size: 22px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+      .community-success p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+      .early-adopter-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 5px 12px;
+        border-radius: 20px;
+        background: rgba(251,191,36,0.1);
+        border: 1px solid rgba(251,191,36,0.3);
+        color: #fbbf24;
+        font-size: 12px;
+        font-weight: 600;
+        margin-top: 14px;
+      }
     </style>
   </head>
   <body>
@@ -7732,6 +8599,56 @@
         <span class="nav-icon">&#x1F517;</span>
         <span class="nav-label">Share</span>
       </button>
+      <button
+        class="fingerprint-btn nav-action nav-overflow-collapsible"
+        data-emoji="&#x1F9EC;"
+        data-short="FP"
+        onclick="openFingerprint()"
+        title="Fingerprint — Generate a shareable image of your AI stack fingerprint"
+      >
+        <span class="nav-icon">&#x1F9EC;</span>
+        <span class="nav-label">Fingerprint</span>
+      </button>
+      <!-- COMMUNITY AUTH ZONE -->
+      <div class="auth-zone" id="authZone">
+        <button
+          class="community-join-btn nav-action"
+          id="communityJoinNavBtn"
+          onclick="openCommunityModal()"
+          title="Join the {a}OS community — Early Adopter badge, voting, Founders Pool"
+        >
+          <span class="nav-icon">&#x2728;</span>
+          <span class="nav-label">Join</span>
+        </button>
+        <button
+          class="auth-signin-btn nav-action"
+          id="auth-signin-btn"
+          onclick="openAuthMenu(event)"
+          title="Sign in to vote, track your impact, and join the Founders Pool"
+        >
+          <span class="nav-icon">&#x1F511;</span>
+          <span class="nav-label">Sign In</span>
+        </button>
+        <!-- Provider dropdown -->
+        <div class="auth-provider-menu" id="authProviderMenu">
+          <button class="auth-provider-btn" onclick="authSignInGoogle()">
+            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+            Continue with Google
+          </button>
+          <button class="auth-provider-btn" onclick="authSignInGitHub()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="opacity:0.85"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+            Continue with GitHub
+          </button>
+        </div>
+        <!-- Signed-in user panel -->
+        <div class="auth-user-panel" id="auth-user-panel" style="display:none">
+          <img class="auth-avatar" id="auth-avatar" src="" alt="User avatar" width="28" height="28" />
+          <span class="auth-username" id="auth-username"></span>
+          <span class="auth-xp-badge" id="auth-xp-badge">0 XP</span>
+          <button class="auth-signout-link" id="auth-signout-btn">Sign Out</button>
+        </div>
+      </div>
+
       <!-- U1: Overflow menu for collapsed nav items -->
       <div class="nav-overflow" id="navOverflow">
         <button
@@ -7763,6 +8680,16 @@
             role="menuitem"
           >
             &#x1F517; Share
+          </button>
+          <button
+            class="overflow-item"
+            onclick="
+              openFingerprint();
+              toggleNavOverflow();
+            "
+            role="menuitem"
+          >
+            &#x1F9EC; Fingerprint
           </button>
         </div>
       </div>
@@ -8339,6 +9266,27 @@
               </div>
             </div>
           </div>
+          <!-- WHAT'S NEW BANNER -->
+          <div id="whatsNewBanner" class="whats-new-banner">
+            <div class="whats-new-inner">
+              <span class="whats-new-tag">&#x1F195; New</span>
+              <span class="whats-new-text"><strong>Community features landed</strong> &mdash; voting, Trending This Week, Verified badges, Find My Stack wizard &amp; Daily Quiz.</span>
+              <span class="whats-new-link" onclick="openChangelog()">See all changes</span>
+            </div>
+            <button class="whats-new-dismiss" onclick="dismissWhatsNew()" aria-label="Dismiss">&#x00D7;</button>
+          </div>
+
+          <!-- FIND MY STACK CTA -->
+          <div class="find-stack-banner">
+            <span class="find-stack-text">Not sure where to start?</span>
+            <button class="find-stack-btn" onclick="openWizard()">Find My Stack &rarr;</button>
+          </div>
+
+          <!-- TRENDING BANNER -->
+          <div id="trendingBanner" style="display:none" class="trending-banner">
+            <span class="trending-label">🔥 Trending this week</span>
+            <div class="trending-pills" id="trendingPills"></div>
+          </div>
           <!-- L7 -->
           <div
             class="stratum-card"
@@ -8372,6 +9320,7 @@
               </div>
               <div class="stratum-meta">
                 <span class="stratum-badge">3 substrates</span>
+                <button class="watch-btn" id="watchBtn_l7" onclick="event.stopPropagation();toggleWatch('l7')" title="Watch this stratum for changes">&#x2606; Watch</button>
                 <span class="stratum-chevron">&#x276F;</span>
               </div>
             </div>
@@ -8517,6 +9466,7 @@
               </div>
               <div class="stratum-meta">
                 <span class="stratum-badge">4 substrates</span>
+                <button class="watch-btn" id="watchBtn_l6" onclick="event.stopPropagation();toggleWatch('l6')" title="Watch this stratum for changes">&#x2606; Watch</button>
                 <span class="stratum-chevron">&#x276F;</span>
               </div>
             </div>
@@ -8743,6 +9693,7 @@
               </div>
               <div class="stratum-meta">
                 <span class="stratum-badge">3 substrates</span>
+                <button class="watch-btn" id="watchBtn_l5" onclick="event.stopPropagation();toggleWatch('l5')" title="Watch this stratum for changes">&#x2606; Watch</button>
                 <span class="stratum-chevron">&#x276F;</span>
               </div>
             </div>
@@ -8928,6 +9879,7 @@
               </div>
               <div class="stratum-meta">
                 <span class="stratum-badge">6 substrates</span>
+                <button class="watch-btn" id="watchBtn_l4" onclick="event.stopPropagation();toggleWatch('l4')" title="Watch this stratum for changes">&#x2606; Watch</button>
                 <span class="stratum-chevron">&#x276F;</span>
               </div>
             </div>
@@ -9381,6 +10333,7 @@
               </div>
               <div class="stratum-meta">
                 <span class="stratum-badge">6 substrates</span>
+                <button class="watch-btn" id="watchBtn_l3" onclick="event.stopPropagation();toggleWatch('l3')" title="Watch this stratum for changes">&#x2606; Watch</button>
                 <span class="stratum-chevron">&#x276F;</span>
               </div>
             </div>
@@ -9733,6 +10686,7 @@
               </div>
               <div class="stratum-meta">
                 <span class="stratum-badge">4 substrates</span>
+                <button class="watch-btn" id="watchBtn_l2" onclick="event.stopPropagation();toggleWatch('l2')" title="Watch this stratum for changes">&#x2606; Watch</button>
                 <span class="stratum-chevron">&#x276F;</span>
               </div>
             </div>
@@ -9985,6 +10939,7 @@
               </div>
               <div class="stratum-meta">
                 <span class="stratum-badge">3 substrates</span>
+                <button class="watch-btn" id="watchBtn_l1" onclick="event.stopPropagation();toggleWatch('l1')" title="Watch this stratum for changes">&#x2606; Watch</button>
                 <span class="stratum-chevron">&#x276F;</span>
               </div>
             </div>
@@ -10194,6 +11149,9 @@
                   Head-to-Head
                 </button>
               </div>
+              <button class="compare-close" onclick="shareCurrentView(); showToast('Comparison link copied!', '&#x1F517;')" title="Copy a shareable link to this comparison">
+                Share
+              </button>
               <button class="compare-close" onclick="toggleCompare(false)">
                 Close
               </button>
@@ -12066,6 +13024,7 @@
     >
       <div class="shortcut-panel" onclick="event.stopPropagation()">
         <h3>Keyboard Shortcuts</h3>
+        <div class="shortcut-row"><span>Command palette</span><kbd>⌘</kbd><kbd>K</kbd></div>
         <div class="shortcut-row"><span>Focus search</span><kbd>/</kbd></div>
         <div class="shortcut-row">
           <span>Close / collapse</span><kbd>Esc</kbd>
@@ -12084,6 +13043,7 @@
         <div class="shortcut-row">
           <span>Jump to stratum</span><kbd>1</kbd> &ndash; <kbd>7</kbd>
         </div>
+        <div class="shortcut-row"><span>Daily stratum quiz</span><kbd>q</kbd></div>
         <div class="shortcut-row"><span>Show shortcuts</span><kbd>?</kbd></div>
         <div class="shortcut-row"><span>Next product</span><kbd>j</kbd></div>
         <div class="shortcut-row"><span>Prev product</span><kbd>k</kbd></div>
@@ -12871,6 +13831,7 @@
           axisRoles: "Governance: Secondary · Observability: Secondary",
           confidence: 0.92,
           lastVerified: "2026-04-06",
+          verified: true,
           rationale:
             "Built on Microsoft.CognitiveServices. Model hosting and inference is the core value prop; prompt flow, search, and agent capabilities are secondary strata.",
         },
@@ -12913,6 +13874,7 @@
           axisRoles: "Governance: Medium · Observability: Medium",
           confidence: 0.9,
           lastVerified: "2026-04-06",
+          verified: true,
           rationale:
             "Multi-agent crew framework focused on orchestrating agent collaboration and task delegation.",
         },
@@ -12927,6 +13889,7 @@
           axisRoles: "Governance: Light · Observability: Medium",
           confidence: 0.95,
           lastVerified: "2026-04-06",
+          verified: true,
           rationale:
             "Purpose-built memory layer for AI. Manages context persistence, recall, and long-term agent memory.",
         },
@@ -12955,6 +13918,7 @@
           axisRoles: "Governance: Light · Observability: Medium",
           confidence: 0.88,
           lastVerified: "2026-04-06",
+          verified: true,
           rationale:
             "Graph-based agent orchestration framework. Defines agent workflows as cyclic graphs with state management and tool execution.",
         },
@@ -12969,6 +13933,7 @@
           axisRoles: "Governance: Medium · Observability: Medium",
           confidence: 0.93,
           lastVerified: "2026-04-06",
+          verified: true,
           rationale:
             "Enterprise search service with vector, semantic, and hybrid retrieval. Core RAG infrastructure for Azure AI stack.",
         },
@@ -12983,6 +13948,7 @@
           axisRoles: "Governance: Primary · Observability: Light",
           confidence: 0.91,
           lastVerified: "2026-04-06",
+          verified: true,
           rationale:
             "General-purpose policy engine. Enforces fine-grained authorization and compliance rules across the stack via Rego policies.",
         },
@@ -13222,6 +14188,7 @@
           axisRoles: "Orchestration: Primary · Code Generation · Execution",
           confidence: 0.88,
           lastVerified: "2026-04-06",
+          verified: true,
           rationale:
             "Fully autonomous software engineer agent. Plans, codes, debugs, and deploys. Cloud-hosted with sandboxed environment for end-to-end task execution.",
         },
@@ -13264,6 +14231,7 @@
           axisRoles: "Code Editing: Primary · Orchestration · Data",
           confidence: 0.9,
           lastVerified: "2026-04-06",
+          verified: true,
           rationale:
             "Terminal-based pair programming agent. Best-in-class git integration, multi-file editing, and repo-map context. Works with any LLM provider.",
         },
@@ -13279,6 +14247,7 @@
             "Orchestration: Primary · Intent · Tools · Data · Execution",
           confidence: 0.92,
           lastVerified: "2026-04-06",
+          verified: true,
           rationale:
             "Anthropic's agentic coding tool. Terminal-native with extended thinking, multi-tool use, and deep codebase understanding. Supports MCP servers.",
         },
@@ -13293,6 +14262,7 @@
           axisRoles: "Tool Use: Primary · Intent · Orchestration · Execution",
           confidence: 0.87,
           lastVerified: "2026-04-06",
+          verified: true,
           rationale:
             "VS Code extension agent with autonomous multi-step task execution. Creates files, runs commands, and uses browser. Human-in-the-loop approvals.",
         },
@@ -13393,6 +14363,7 @@
           axisRoles: "Tool Integration: Primary · Governance",
           confidence: 0.9,
           lastVerified: "2026-04-06",
+          verified: true,
           rationale:
             "MCP server exposing GitHub API as tools: issues, PRs, repos, code search, reviews. Enables agents to interact with GitHub programmatically.",
         },
@@ -32108,6 +33079,18 @@
           <div class="product-quickstart">Type: ${d.type}  ·  Vendor: ${d.vendor}  ·  Deploy: ${d.deployment}  ·  License: ${d.license}\nConfidence: ${confidenceWithFreshness(d)}  ·  Axis: ${d.axisRoles}</div>
         </div>
         ${callouts}
+        <div class="panel-vote-row">
+          <button class="panel-vote-btn" id="panelVoteBtn" onclick="if(window.togglePanelVote)window.togglePanelVote()">▲ Vote</button>
+          <button class="panel-vote-btn" onclick="openEmbedModal(window._currentEmbedId)" style="margin-left:auto;font-size:11px">&lt;/&gt; Embed</button>
+          <span class="panel-vote-count" id="panelVoteCount">loading…</span>
+          <span class="panel-vote-label">community votes</span>
+        </div>
+        <div class="verified-panel-row">
+          ${d.verified
+            ? `<span class="verified-panel-badge">✓ Verified</span><span style="font-size:11px;color:var(--text-tertiary)">Classification confirmed by evidence review</span>`
+            : `<span style="font-size:11px;color:var(--text-quaternary)">Not yet verified</span><span class="verify-cta"><a href="mailto:verify@onneural.ai?subject=Verification request: ${d.name}">Get verified →</a></span>`
+          }
+        </div>
         <div style="margin-top:4px;padding-top:12px;border-top:1px solid var(--border)">
           <span onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='none'?'block':'none';this.textContent=this.nextElementSibling.style.display==='none'?'Show rationale ▸':'Hide rationale ▾'" style="cursor:pointer;color:var(--accent-indigo);font-size:12px;font-weight:600;user-select:none">Show rationale ▸</span>
           <p style="display:none;margin-top:8px"><strong style="color:var(--text-primary)">Rationale:</strong><br>${linkedRationale}</p>
@@ -32310,6 +33293,8 @@
         }
 
         renderProductSideDetail(d);
+        window._currentEmbedId = id;
+        if (window._communityProductSelected) window._communityProductSelected(id);
       }
 
       function getStrataDotLayerId(dot) {
@@ -33156,6 +34141,8 @@
         if (q) params.set("q", q);
         // Concept preview deep-link
         if (activeConceptPreview) params.set("concept", activeConceptPreview);
+        // Comparison permalink
+        if (compareItems.length) params.set("compare", compareItems.join(","));
         const hash = params.toString();
         history.replaceState(null, "", hash ? "#" + hash : location.pathname);
       }
@@ -33194,6 +34181,32 @@
           renderQuickFilters();
           syncAllFilterUIFromState();
           applySearchAndFilters();
+          // Restore compare basket from hash
+          var compareParam = params.get("compare");
+          if (compareParam) {
+            var names = compareParam.split(",").map(function(n){ return n.trim(); }).filter(Boolean);
+            names.slice(0, 4).forEach(function(name) {
+              if (!compareItems.includes(name)) {
+                compareItems.push(name);
+                document.querySelectorAll(".add-compare-btn").forEach(function(btn) {
+                  var onc = btn.getAttribute("onclick") || "";
+                  if (onc.indexOf("'" + name + "'") !== -1 || onc.indexOf('"' + name + '"') !== -1) {
+                    btn.classList.add("added");
+                    btn.textContent = "✓";
+                  }
+                });
+              }
+            });
+            if (compareItems.length > 0) {
+              var badge = document.getElementById("compareBadge");
+              var countEl = document.getElementById("compareCount");
+              var triggerBtn = document.getElementById("compareTriggerBtn");
+              if (badge) { badge.textContent = compareItems.length; badge.setAttribute("data-count", compareItems.length); }
+              if (countEl) countEl.textContent = compareItems.length;
+              if (triggerBtn) triggerBtn.classList.remove("hidden");
+              toggleCompare(true);
+            }
+          }
           // Restore concept preview from hash
           var conceptParam = params.get("concept");
           if (conceptParam) {
@@ -33222,6 +34235,460 @@
           .catch(() => {
             showToast("Could not copy — check permissions", "&#x26A0;");
           });
+      }
+
+      function openFingerprint() {
+        // Collect voted product IDs from localStorage
+        const raw = localStorage.getItem("aos7_votes") || localStorage.getItem("aos_votes") || "";
+        let voteIds = [];
+        if (raw) {
+          try {
+            const parsed = JSON.parse(raw);
+            if (Array.isArray(parsed)) {
+              voteIds = parsed.map(String);
+            } else if (parsed && typeof parsed === "object") {
+              voteIds = Object.keys(parsed); // {productId: timestamp} format
+            }
+          } catch (_) {
+            voteIds = raw.split(",").map(v => v.trim()).filter(Boolean);
+          }
+        }
+
+        // Get display name from signed-in user (read DOM element set by auth system)
+        const usernameEl = document.getElementById("auth-username");
+        const name = (usernameEl && usernameEl.textContent.trim()) || "";
+
+        const params = new URLSearchParams();
+        if (voteIds.length) params.set("votes", voteIds.join(","));
+        if (name)           params.set("name",  name);
+        const url = "fingerprint.html" + (params.toString() ? "?" + params.toString() : "");
+        window.open(url, "_blank");
+      }
+
+      // ===== TRENDING BANNER & CARD BADGES =====
+      function injectCardBadges() {
+        document.querySelectorAll(".product-card").forEach((card) => {
+          const onclickAttr = card.getAttribute("onclick") || "";
+          const match = onclickAttr.match(/selectProduct\(['"]([^'"]+)['"]\)/);
+          if (!match) return;
+          const id = match[1];
+
+          // Stale badge
+          if (!card.querySelector(".stale-badge")) {
+            const detail = typeof PRODUCT_DETAILS !== "undefined" ? PRODUCT_DETAILS[id] : null;
+            if (detail && detail.lastVerified) {
+              const daysSince = (Date.now() - new Date(detail.lastVerified).getTime()) / 86400000;
+              if (daysSince > 90) {
+                const badge = document.createElement("span");
+                badge.className = "card-badge stale-badge";
+                badge.textContent = "Stale";
+                const conf = card.querySelector(".confidence");
+                if (conf) conf.after(badge);
+                else card.appendChild(badge);
+              }
+            }
+          }
+
+          // Rising badge
+          const trendingIds = window._trendingIds || [];
+          const existingRising = card.querySelector(".rising-badge");
+          if (trendingIds.includes(id)) {
+            if (!existingRising) {
+              const badge = document.createElement("span");
+              badge.className = "card-badge rising-badge";
+              badge.textContent = "🔥 Rising";
+              const conf = card.querySelector(".confidence");
+              if (conf) conf.after(badge);
+              else card.appendChild(badge);
+            }
+          } else {
+            if (existingRising) existingRising.remove();
+          }
+
+          // Verified badge
+          if (!card.querySelector(".verified-badge")) {
+            const detail = typeof PRODUCT_DETAILS !== "undefined" ? PRODUCT_DETAILS[id] : null;
+            if (detail && detail.verified) {
+              const badge = document.createElement("span");
+              badge.className = "card-badge verified-badge";
+              badge.title = "Community Verified — classification confirmed by evidence review";
+              badge.textContent = "✓ Verified";
+              const conf = card.querySelector(".confidence");
+              if (conf) conf.after(badge);
+              else card.appendChild(badge);
+            }
+          }
+        });
+      }
+      window.injectCardBadges = injectCardBadges;
+
+      window.renderTrendingBanner = function(ids) {
+        window._trendingIds = ids;
+        const banner = document.getElementById("trendingBanner");
+        const pills = document.getElementById("trendingPills");
+        if (!banner || !pills || !ids.length) return;
+        pills.innerHTML = ids.map(id => {
+          const name = (typeof PRODUCT_DETAILS !== "undefined" && PRODUCT_DETAILS[id]?.name) || id;
+          return `<button class="trending-pill" onclick="selectProduct('${id}')">${name}</button>`;
+        }).join("");
+        banner.style.display = "flex";
+        // Re-run badge injection now that we know trending ids
+        if (typeof injectCardBadges === "function") injectCardBadges();
+      };
+
+      // Run badge injection on DOM ready
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", injectCardBadges);
+      } else {
+        injectCardBadges();
+      }
+
+      // ===== EMBED WIDGET =====
+      function openEmbedModal(productId) {
+        if (!productId) return;
+        const base = window.location.origin + window.location.pathname.replace(/[^/]*$/, "");
+        const src = base + "embed.html?product=" + productId;
+        const snippet = `<iframe src="${src}" width="420" height="200" style="border:none;border-radius:16px;" loading="lazy" title="${(PRODUCT_DETAILS[productId]?.name || productId)} — {a}OS Explorer"></iframe>`;
+        document.getElementById("embedSnippet").textContent = snippet;
+        const frame = document.getElementById("embedPreviewFrame");
+        if (frame) frame.src = src;
+        document.getElementById("embedOverlay")?.classList.add("open");
+      }
+
+      function closeEmbedModal() {
+        document.getElementById("embedOverlay")?.classList.remove("open");
+        const frame = document.getElementById("embedPreviewFrame");
+        if (frame) frame.src = "";
+      }
+
+      function copyEmbedSnippet() {
+        const snippet = document.getElementById("embedSnippet")?.textContent || "";
+        const btn = document.getElementById("embedCopyBtn");
+        navigator.clipboard.writeText(snippet).then(() => {
+          if (btn) { const orig = btn.textContent; btn.textContent = "Copied!"; setTimeout(() => btn.textContent = orig, 2000); }
+        }).catch(() => {
+          const el = document.getElementById("embedSnippet");
+          if (el) { const range = document.createRange(); range.selectNode(el); window.getSelection()?.removeAllRanges(); window.getSelection()?.addRange(range); document.execCommand("copy"); }
+        });
+      }
+
+      // ===== WHAT'S NEW + STRATUM WATCHLIST =====
+      const _WHATS_NEW_VERSION = "v1.2.0";
+
+      function initWhatsNew() {
+        const key = "aos7_dismissed_" + _WHATS_NEW_VERSION;
+        const banner = document.getElementById("whatsNewBanner");
+        if (!banner) return;
+        if (localStorage.getItem(key)) banner.style.display = "none";
+      }
+
+      function dismissWhatsNew() {
+        localStorage.setItem("aos7_dismissed_" + _WHATS_NEW_VERSION, "1");
+        const banner = document.getElementById("whatsNewBanner");
+        if (banner) {
+          banner.style.opacity = "0";
+          setTimeout(() => { banner.style.display = "none"; }, 200);
+        }
+      }
+
+      // Watchlist stored as {l1: true, l4: true, ...} in localStorage
+      function _getWatched() {
+        try { return JSON.parse(localStorage.getItem("aos7_watched") || "{}"); } catch { return {}; }
+      }
+
+      function toggleWatch(stratumId) {
+        const watched = _getWatched();
+        const isWatching = !!watched[stratumId];
+        if (isWatching) {
+          delete watched[stratumId];
+        } else {
+          watched[stratumId] = true;
+        }
+        localStorage.setItem("aos7_watched", JSON.stringify(watched));
+        _syncWatchButtons(watched);
+        // Persist to Firestore if signed in
+        if (window._firestoreToggleWatch) window._firestoreToggleWatch(stratumId, !isWatching);
+        // Nudge to sign in if anonymous
+        if (!isWatching && !window._currentUserUid) _showWatchNudge();
+      }
+
+      function _syncWatchButtons(watched) {
+        ["l1","l2","l3","l4","l5","l6","l7"].forEach(id => {
+          const btn = document.getElementById("watchBtn_" + id);
+          if (!btn) return;
+          const on = !!watched[id];
+          btn.classList.toggle("watching", on);
+          btn.innerHTML = on ? "&#x2605; Watching" : "&#x2606; Watch";
+        });
+      }
+      window._syncWatchButtons = _syncWatchButtons;
+
+      function _showWatchNudge() {
+        document.getElementById("voteNudge")?.remove();
+        const n = document.createElement("div");
+        n.id = "voteNudge"; n.className = "vote-nudge";
+        n.innerHTML = `Sign in to get notified when watched strata change &nbsp;<button onclick="openCommunityModal()">Join free</button>`;
+        document.body.appendChild(n);
+        setTimeout(() => n.remove(), 4000);
+      }
+
+      function initWatchButtons() {
+        _syncWatchButtons(_getWatched());
+      }
+
+      // ===== FIND MY STACK WIZARD =====
+      const WIZARD_ARCHETYPES = {
+        "quick-coder":   { name: "The Rapid Builder",             tagline: "Optimized for speed — ship a working agent fast.",             products: ["cursor","claudecode","cline","langgraph"] },
+        "power-dev":     { name: "The Power Developer",           tagline: "Full control over your coding pipeline.",                       products: ["claudecode","aider","langgraph","gitingest","mem0"] },
+        "secure-dev":    { name: "The Secure Developer",          tagline: "On-prem or airgapped — security first.",                        products: ["cline","opa","mcpfs","mcppg"] },
+        "rag-fast":      { name: "The RAG Starter",               tagline: "Cloud-hosted retrieval — up and running quickly.",               products: ["af","azuresearch","mem0","langgraph"] },
+        "rag-secure":    { name: "The Secure RAG Stack",          tagline: "Self-hosted retrieval with policy enforcement.",                 products: ["mem0","mcppg","opa","langgraph"] },
+        "agent-factory": { name: "The Agent Factory",             tagline: "Orchestrate multiple specialized agents.",                       products: ["crewai","langgraph","mcpgithub","wfeval"] },
+        "agent-secure":  { name: "The Governed Agent Stack",      tagline: "Multi-agent with compliance gates.",                            products: ["langgraph","crewai","opa","wfhuman"] },
+        "customer-exp":  { name: "The Customer Experience Stack", tagline: "Customer-facing assistants with memory and guardrails.",         products: ["langgraph","mem0","opa","af"] },
+        "internal-auto": { name: "The Internal Automation Stack", tagline: "Automate internal workflows and dev pipelines.",                products: ["crewai","mcpgithub","wfcicd","opa"] },
+      };
+
+      let _wizardAnswers = [null, null, null];
+
+      function openWizard() {
+        document.getElementById("wizardOverlay")?.classList.add("open");
+        restartWizard();
+      }
+
+      function closeWizard() {
+        document.getElementById("wizardOverlay")?.classList.remove("open");
+      }
+
+      function restartWizard() {
+        _wizardAnswers = [null, null, null];
+        [0,1,2].forEach(i => {
+          const s = document.getElementById("wizardStep" + i);
+          if (s) s.style.display = i === 0 ? "" : "none";
+          s?.querySelectorAll(".wizard-choice").forEach(b => b.classList.remove("selected"));
+        });
+        const r = document.getElementById("wizardResult");
+        if (r) r.style.display = "none";
+        _updateWizardDots(0);
+        const sub = document.getElementById("wizardSubtitle");
+        if (sub) sub.textContent = "3 quick questions → your recommended AI stack";
+      }
+
+      function _updateWizardDots(activeStep) {
+        [0,1,2].forEach(i => {
+          document.getElementById("wdot" + i)?.classList.toggle("active", i <= activeStep);
+        });
+      }
+
+      function wizardAnswer(step, value) {
+        _wizardAnswers[step] = value;
+        document.getElementById("wizardStep" + step).style.display = "none";
+        const nextStep = step + 1;
+        if (nextStep < 3) {
+          document.getElementById("wizardStep" + nextStep).style.display = "";
+          _updateWizardDots(nextStep);
+          const subtitles = ["", "Step 2 of 3 — deployment", "Step 3 of 3 — priority"];
+          const sub = document.getElementById("wizardSubtitle");
+          if (sub && subtitles[nextStep]) sub.textContent = subtitles[nextStep];
+        } else {
+          _showWizardResult();
+        }
+      }
+
+      function _getArchetype(domain, deployment, priority) {
+        if (domain === "coding") {
+          if (deployment === "airgapped") return "secure-dev";
+          if (deployment === "onprem" && priority === "control") return "secure-dev";
+          if (priority === "fast") return "quick-coder";
+          return "power-dev";
+        }
+        if (domain === "rag") return deployment === "cloud" ? "rag-fast" : "rag-secure";
+        if (domain === "multiagent") return priority === "control" ? "agent-secure" : "agent-factory";
+        if (domain === "customerbot") return "customer-exp";
+        if (domain === "internal") return "internal-auto";
+        return "quick-coder";
+      }
+
+      function _showWizardResult() {
+        const [domain, deployment, priority] = _wizardAnswers;
+        const key = _getArchetype(domain, deployment, priority);
+        const arch = WIZARD_ARCHETYPES[key];
+
+        document.getElementById("wizardArchetypeName").textContent = arch.name;
+        document.getElementById("wizardArchetypeTagline").textContent = arch.tagline;
+
+        const productsEl = document.getElementById("wizardResultProducts");
+        productsEl.innerHTML = arch.products.map(pid => {
+          const p = PRODUCT_DETAILS[pid];
+          if (!p) return "";
+          const stratum = (p.primary || "").match(/^(L[1-7])/)?.[1] || "?";
+          return `<div class="wizard-product-row" onclick="closeWizard();selectProduct('${pid}')">
+            <span class="wizard-product-name">${p.name}</span>
+            <span class="wizard-product-stratum">${stratum}: ${(p.primary||"").replace(/^L[1-7]\s*/,"")}</span>
+          </div>`;
+        }).join("");
+
+        document.getElementById("wizardResult").style.display = "";
+        _updateWizardDots(3);
+        const sub = document.getElementById("wizardSubtitle");
+        if (sub) sub.textContent = "Your recommended stack";
+
+        window._wizardProductIds = arch.products;
+      }
+
+      function wizardSendToStackBuilder() {
+        const ids = window._wizardProductIds || [];
+        closeWizard();
+        if (typeof openStackBuilder === "function") openStackBuilder();
+        setTimeout(() => {
+          ids.forEach(pid => {
+            const p = PRODUCT_DETAILS[pid];
+            if (p && typeof addToStackLayer === "function") {
+              const level = (p.primary || "").match(/^L([1-7])/)?.[1];
+              if (level) addToStackLayer(pid, "l" + level, p.name);
+            }
+          });
+        }, 300);
+      }
+
+      // ===== DAILY STRATUM QUIZ =====
+      const QUIZ_STRATUM_LABELS = {
+        L1: "Models & Infrastructure",
+        L2: "Data & Context",
+        L3: "Tools & Actions",
+        L4: "Orchestration & Decisioning",
+        L5: "Evaluation & Trust",
+        L6: "Governance & Compliance",
+        L7: "Experience & Intent",
+      };
+
+      function _quizDateKey() {
+        const d = new Date();
+        return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+      }
+
+      function _quizRng(seed) {
+        let s = seed >>> 0;
+        return () => {
+          s = Math.imul(s, 1664525) + 1013904223 >>> 0;
+          return s / 4294967296;
+        };
+      }
+
+      function _getQuizState() {
+        try { return JSON.parse(localStorage.getItem("aos7_quiz") || "{}"); } catch { return {}; }
+      }
+
+      function _buildTodaysQuiz() {
+        const today = _quizDateKey();
+        const seed = parseInt(today.replace(/-/g, ""), 10);
+        const rng = _quizRng(seed);
+
+        const ids = Object.keys(PRODUCT_DETAILS).filter(id => {
+          const p = PRODUCT_DETAILS[id];
+          return p && p.primary && /^L[1-7]/.test(p.primary);
+        });
+
+        const productId = ids[Math.floor(rng() * ids.length)];
+        const product = PRODUCT_DETAILS[productId];
+        const correctLevel = (product.primary.match(/^(L[1-7])/) || [])[1] || "L1";
+
+        const allLevels = ["L1","L2","L3","L4","L5","L6","L7"];
+        const wrongLevels = allLevels.filter(l => l !== correctLevel);
+        // Fisher-Yates with seeded rng
+        for (let i = wrongLevels.length - 1; i > 0; i--) {
+          const j = Math.floor(rng() * (i + 1));
+          [wrongLevels[i], wrongLevels[j]] = [wrongLevels[j], wrongLevels[i]];
+        }
+        const choices = [correctLevel, ...wrongLevels.slice(0, 3)];
+        for (let i = choices.length - 1; i > 0; i--) {
+          const j = Math.floor(rng() * (i + 1));
+          [choices[i], choices[j]] = [choices[j], choices[i]];
+        }
+        return { productId, product, correctLevel, choices, today };
+      }
+
+      function openQuiz() {
+        const overlay = document.getElementById("quizOverlay");
+        if (!overlay) return;
+        overlay.classList.add("open");
+        _renderQuiz();
+      }
+
+      function closeQuiz() {
+        document.getElementById("quizOverlay")?.classList.remove("open");
+      }
+
+      function _renderQuiz() {
+        const state = _getQuizState();
+        const { product, correctLevel, choices, today } = _buildTodaysQuiz();
+        const answered = state.lastDate === today;
+
+        // Streak
+        const streak = state.streak || 0;
+        const streakEl = document.getElementById("quizStreak");
+        if (streakEl) streakEl.textContent = streak;
+
+        // Question
+        const qEl = document.getElementById("quizQuestion");
+        if (qEl) qEl.innerHTML = `Which stratum does <strong>${product.name}</strong> primarily operate in?`;
+
+        // Choices
+        const choicesEl = document.getElementById("quizChoices");
+        if (choicesEl) {
+          choicesEl.innerHTML = choices.map(level => {
+            let cls = "quiz-choice-btn";
+            if (answered) {
+              if (level === correctLevel) cls += " correct";
+              else if (level === state.chosenLevel) cls += " wrong";
+              else cls += " dimmed";
+            }
+            const label = QUIZ_STRATUM_LABELS[level];
+            return `<button class="${cls}" ${answered ? "disabled" : ""} onclick="submitQuizAnswer('${level}')">${level}: ${label}</button>`;
+          }).join("");
+        }
+
+        // Result
+        const resultEl = document.getElementById("quizResult");
+        const tmrEl = document.getElementById("quizTomorrow");
+        if (resultEl) {
+          if (answered) {
+            const won = state.lastResult === "correct";
+            const icon = won ? "&#x2705;" : "&#x274C;";
+            const boxCls = won ? "correct" : "wrong";
+            const text = won
+              ? `${icon} Correct! +10 XP`
+              : `${icon} Not quite — it's <strong>${correctLevel}: ${QUIZ_STRATUM_LABELS[correctLevel]}</strong>`;
+            const rationale = product.rationale ? `<span class="quiz-rationale">${product.rationale}</span>` : "";
+            resultEl.innerHTML = `<div class="quiz-result-box ${boxCls}">${text}${rationale}</div>`;
+            if (tmrEl) tmrEl.style.display = "";
+          } else {
+            resultEl.innerHTML = "";
+            if (tmrEl) tmrEl.style.display = "none";
+          }
+        }
+      }
+
+      function submitQuizAnswer(chosenLevel) {
+        const state = _getQuizState();
+        const { correctLevel, today } = _buildTodaysQuiz();
+        if (state.lastDate === today) return;
+
+        const isCorrect = chosenLevel === correctLevel;
+        const newStreak = isCorrect ? (state.streak || 0) + 1 : 0;
+        localStorage.setItem("aos7_quiz", JSON.stringify({
+          streak: newStreak,
+          lastDate: today,
+          lastResult: isCorrect ? "correct" : "wrong",
+          chosenLevel,
+        }));
+
+        _renderQuiz();
+
+        if (isCorrect) {
+          const badge = document.getElementById("quizStreakBadge");
+          if (badge) { badge.classList.add("bump"); setTimeout(() => badge.classList.remove("bump"), 400); }
+        }
       }
 
       // ===== IMPROVEMENT 5: Search Autocomplete =====
@@ -34472,6 +35939,11 @@
           }
         }
         if (_isTyping()) return;
+        // Q → daily quiz
+        if (e.key.toLowerCase() === "q" && noMod) {
+          openQuiz();
+          return;
+        }
         // ? → show shortcuts
         if (e.key === "?" && noMod) {
           openShortcutModal();
@@ -34652,7 +36124,7 @@
             icon: "&#x1F517;",
             label: "Embed Stack Widget",
             meta: "Get iframe snippet",
-            action: openEmbedModal,
+            action: openStackEmbedModal,
           },
           {
             icon: "&#x1F55B;",
@@ -35342,8 +36814,8 @@
         }
       }
 
-      // ===== T18: EMBED SNIPPET MODAL =====
-      function openEmbedModal() {
+      // ===== T18: EMBED SNIPPET MODAL (Stack Builder) =====
+      function openStackEmbedModal() {
         const el = document.getElementById("embedModalOverlay");
         if (!el) return;
         el.classList.remove("hidden");
@@ -35353,7 +36825,7 @@
         const box = document.getElementById("embedSnippetBox");
         if (box) box.textContent = snippet;
       }
-      function closeEmbedModal(event) {
+      function closeStackEmbedModal(event) {
         if (
           event &&
           event.target !== document.getElementById("embedModalOverlay")
@@ -35362,7 +36834,7 @@
         const el = document.getElementById("embedModalOverlay");
         if (el) el.classList.add("hidden");
       }
-      function copyEmbedSnippet() {
+      function copyStackEmbedSnippet() {
         const box = document.getElementById("embedSnippetBox");
         if (!box) return;
         navigator.clipboard
@@ -36113,6 +37585,13 @@
         initResponsiveHeader();
         restoreFromHash();
 
+        // Deep-link: ?open=quiz auto-opens the quiz modal
+        if (new URLSearchParams(window.location.search).get("open") === "quiz") {
+          setTimeout(openQuiz, 300);
+        }
+        initWhatsNew();
+        initWatchButtons();
+
         // ===== ARIA ATTRIBUTES SETUP =====
         // Strata cards
         document.querySelectorAll(".stratum-card").forEach((card) => {
@@ -36306,7 +37785,7 @@
             <button class="sb-btn" onclick="exportStackJSON()">
               &#x1F4E5; Export JSON
             </button>
-            <button class="sb-btn" onclick="openEmbedModal()" id="sbEmbedBtn">
+            <button class="sb-btn" onclick="openStackEmbedModal()" id="sbEmbedBtn">
               &#x1F517; Embed
             </button>
           </div>
@@ -36445,11 +37924,11 @@
       <div class="weekly-body" id="weeklyBody"></div>
     </div>
 
-    <!-- T18: Embed Snippet Modal -->
+    <!-- T18: Embed Snippet Modal (Stack Builder) -->
     <div
       class="embed-modal-overlay hidden"
       id="embedModalOverlay"
-      onclick="closeEmbedModal(event)"
+      onclick="closeStackEmbedModal(event)"
     >
       <div class="embed-modal" onclick="event.stopPropagation()">
         <h3>&#x1F517; Embed this stack</h3>
@@ -36459,14 +37938,14 @@
           Paste this snippet into any HTML page to embed your current stack.
         </p>
         <div class="embed-snippet-box" id="embedSnippetBox"></div>
-        <button class="cite-copy-btn" onclick="copyEmbedSnippet()">
+        <button class="cite-copy-btn" onclick="copyStackEmbedSnippet()">
           &#x1F4CB; Copy snippet
         </button>
         <div style="text-align: right; margin-top: 10px">
           <button
             class="sb-btn"
             style="width: auto"
-            onclick="closeEmbedModal()"
+            onclick="closeStackEmbedModal()"
           >
             Close
           </button>
@@ -36896,5 +38375,232 @@
         }, 50);
       }
     </script>
+
+    <!-- EMBED MODAL -->
+    <div class="embed-overlay" id="embedOverlay" onclick="if(event.target===this)closeEmbedModal()">
+      <div class="embed-modal">
+        <h3>&lt;/&gt; Embed this card</h3>
+        <p>Paste the snippet below into any webpage, blog post, or documentation site.</p>
+        <div class="embed-preview">
+          <iframe id="embedPreviewFrame" src="" loading="lazy"></iframe>
+        </div>
+        <div class="embed-snippet" id="embedSnippet"></div>
+        <div class="embed-actions">
+          <button class="embed-close-btn" onclick="closeEmbedModal()">Close</button>
+          <button class="embed-copy-btn" id="embedCopyBtn" onclick="copyEmbedSnippet()">Copy snippet</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FIND MY STACK WIZARD -->
+    <div class="wizard-overlay" id="wizardOverlay" onclick="if(event.target===this)closeWizard()">
+      <div class="wizard-modal" role="dialog" aria-modal="true" aria-label="Find My Stack">
+        <button class="wizard-close" onclick="closeWizard()" aria-label="Close">&#x2715;</button>
+        <div class="wizard-header">
+          <span style="font-size:22px">&#x1F9ED;</span>
+          <div>
+            <div class="wizard-title">Find My Stack</div>
+            <div class="wizard-subtitle" id="wizardSubtitle">3 quick questions &rarr; your recommended AI stack</div>
+          </div>
+          <div class="wizard-steps" id="wizardStepDots">
+            <span class="wizard-dot active" id="wdot0"></span>
+            <span class="wizard-dot" id="wdot1"></span>
+            <span class="wizard-dot" id="wdot2"></span>
+          </div>
+        </div>
+
+        <!-- Step 1 -->
+        <div id="wizardStep0">
+          <p class="wizard-question">What are you building?</p>
+          <div class="wizard-choices wizard-choices-2col">
+            <button class="wizard-choice" onclick="wizardAnswer(0,'coding')">&#x1F4BB; Coding agent</button>
+            <button class="wizard-choice" onclick="wizardAnswer(0,'rag')">&#x1F4DA; RAG / knowledge retrieval</button>
+            <button class="wizard-choice" onclick="wizardAnswer(0,'multiagent')">&#x1F916; Multi-agent workflow</button>
+            <button class="wizard-choice" onclick="wizardAnswer(0,'customerbot')">&#x1F4AC; Customer-facing assistant</button>
+            <button class="wizard-choice wizard-choice-wide" onclick="wizardAnswer(0,'internal')">&#x2699;&#xFE0F; Internal automation</button>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div id="wizardStep1" style="display:none">
+          <p class="wizard-question">Where does it run?</p>
+          <div class="wizard-choices">
+            <button class="wizard-choice" onclick="wizardAnswer(1,'cloud')">&#x2601;&#xFE0F; Cloud &mdash; managed &amp; hosted</button>
+            <button class="wizard-choice" onclick="wizardAnswer(1,'onprem')">&#x1F3E0; On-prem / self-hosted</button>
+            <button class="wizard-choice" onclick="wizardAnswer(1,'airgapped')">&#x1F512; Airgapped / high-security</button>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div id="wizardStep2" style="display:none">
+          <p class="wizard-question">What&rsquo;s your top priority?</p>
+          <div class="wizard-choices">
+            <button class="wizard-choice" onclick="wizardAnswer(2,'fast')">&#x26A1; Ship fast</button>
+            <button class="wizard-choice" onclick="wizardAnswer(2,'control')">&#x1F6E1;&#xFE0F; Control &amp; security</button>
+            <button class="wizard-choice" onclick="wizardAnswer(2,'scale')">&#x1F4C8; Scale &amp; cost efficiency</button>
+          </div>
+        </div>
+
+        <!-- Result -->
+        <div id="wizardResult" style="display:none">
+          <div class="wizard-archetype-name" id="wizardArchetypeName"></div>
+          <div class="wizard-archetype-tagline" id="wizardArchetypeTagline"></div>
+          <div class="wizard-result-products" id="wizardResultProducts"></div>
+          <div class="wizard-result-actions">
+            <button class="wizard-restart-btn" onclick="restartWizard()">&#x21BA; Start over</button>
+            <button class="wizard-stack-btn" onclick="wizardSendToStackBuilder()">Open in Stack Builder &rarr;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAILY QUIZ MODAL -->
+    <div class="quiz-overlay" id="quizOverlay" onclick="if(event.target===this)closeQuiz()">
+      <div class="quiz-modal" role="dialog" aria-modal="true" aria-label="Daily Stratum Quiz">
+        <button class="quiz-modal-close" onclick="closeQuiz()" aria-label="Close">&#x2715;</button>
+        <div class="quiz-header">
+          <span style="font-size:20px">&#x1F9E0;</span>
+          <span class="quiz-title">Daily Stratum Quiz</span>
+          <span class="quiz-subtitle">One question per day</span>
+          <div class="quiz-streak-badge" id="quizStreakBadge">
+            &#x1F525;&nbsp;<span id="quizStreak">0</span>&nbsp;day streak
+          </div>
+        </div>
+        <p class="quiz-question" id="quizQuestion">Loading…</p>
+        <div class="quiz-choices" id="quizChoices"></div>
+        <div id="quizResult"></div>
+        <p class="quiz-tomorrow" id="quizTomorrow" style="display:none">
+          Come back tomorrow for a new question.
+        </p>
+      </div>
+    </div>
+
+    <!-- COMMUNITY MODAL -->
+    <div
+      class="community-overlay"
+      id="communityOverlay"
+      onclick="if(event.target===this)closeCommunityModal()"
+    >
+      <div class="community-modal" role="dialog" aria-modal="true" aria-label="Join the {a}OS Community">
+        <button class="community-modal-close" onclick="closeCommunityModal()" aria-label="Close">&#x2715;</button>
+
+        <!-- Form view -->
+        <div id="communityFormView">
+          <h2>{a}OS Community</h2>
+          <p class="modal-tagline">
+            Help shape the future of the AI stack reference model.<br>
+            Join free — perks start on day one.
+          </p>
+
+          <div class="community-member-pill">
+            <span class="live-dot"></span>
+            <span id="communityMemberCount">Loading…</span>&ensp;members
+          </div>
+
+          <div class="perks-grid">
+            <div class="perk-card">
+              <span class="perk-icon">&#x1F30C;</span>
+              <div class="perk-title">Early Adopter Badge</div>
+              <div class="perk-desc">Permanent badge, only for the first 90 days.</div>
+            </div>
+            <div class="perk-card">
+              <span class="perk-icon">&#x1F5F3;&#xFE0F;</span>
+              <div class="perk-title">Vote on Tools</div>
+              <div class="perk-desc">Your votes shape the community-ranked catalog.</div>
+            </div>
+            <div class="perk-card">
+              <span class="perk-icon">&#x1F451;</span>
+              <div class="perk-title">Founders Pool</div>
+              <div class="perk-desc">Top contributors eligible for future revenue sharing.</div>
+            </div>
+            <div class="perk-card">
+              <span class="perk-icon">&#x1F4CA;</span>
+              <div class="perk-title">Contribution Score</div>
+              <div class="perk-desc">Public XP profile, level, and badges.</div>
+            </div>
+          </div>
+
+          <!-- Email waitlist (no sign-in required) -->
+          <form class="community-form" id="communityWaitlistForm" onsubmit="submitWaitlist(event)">
+            <input type="text" id="waitlistName" placeholder="Your name (optional)" autocomplete="name" />
+            <input type="email" id="waitlistEmail" placeholder="Email address *" required autocomplete="email" />
+            <button type="submit" class="community-submit-btn" id="waitlistSubmitBtn">
+              Join the Community
+            </button>
+          </form>
+
+          <div class="community-divider">or sign in to start voting now</div>
+
+          <div class="community-oauth-btns">
+            <button class="community-oauth-btn" onclick="authSignInGoogle()">
+              <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+              Continue with Google
+            </button>
+            <button class="community-oauth-btn" onclick="authSignInGitHub()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="opacity:0.85"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+              Continue with GitHub
+            </button>
+          </div>
+        </div>
+
+        <!-- Success view -->
+        <div id="communitySuccessView" style="display:none">
+          <div class="community-success">
+            <span class="success-icon">&#x1F389;</span>
+            <h3>You're in!</h3>
+            <p>Welcome to the {a}OS community.<br>We'll keep you updated as the ecosystem grows.</p>
+            <div class="early-adopter-tag">&#x1F30C; Early Adopter &mdash; Badge reserved for you</div>
+            <div class="referral-nudge">
+              Want to earn XP? Share your link &darr;
+            </div>
+            <div class="referral-link-row" id="successReferralRow" style="display:none">
+              <input class="referral-link-input" id="successReferralInput" type="text" readonly />
+              <button class="referral-copy-btn" onclick="window.copyReferralLink('successReferralInput', this)">Copy</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Referral view (shown when already signed in) -->
+        <div id="communityReferralView" style="display:none">
+          <h2>Refer &amp; Earn</h2>
+          <p class="modal-tagline">
+            Share your link — earn <strong style="color:var(--accent-indigo)">40 XP</strong> for every person who joins and contributes.
+          </p>
+          <div class="referral-link-row">
+            <input class="referral-link-input" id="referralLinkInput" type="text" readonly />
+            <button class="referral-copy-btn" id="referralCopyBtn" onclick="window.copyReferralLink('referralLinkInput', this)">Copy</button>
+          </div>
+          <div class="referral-share-btns">
+            <button class="referral-share-btn referral-twitter" id="referralTwitterBtn">&#x1D54F; Post on X</button>
+            <button class="referral-share-btn referral-linkedin" id="referralLinkedinBtn">in Share</button>
+          </div>
+          <div class="perks-grid" style="margin-top:18px">
+            <div class="perk-card">
+              <span class="perk-icon">&#x1F4B0;</span>
+              <div class="perk-title">40 XP per referral</div>
+              <div class="perk-desc">Credited when your referral makes their first contribution.</div>
+            </div>
+            <div class="perk-card">
+              <span class="perk-icon">&#x1F451;</span>
+              <div class="perk-title">Founders Pool</div>
+              <div class="perk-desc">Referrals count toward your eligibility weight.</div>
+            </div>
+            <div class="perk-card">
+              <span class="perk-icon">&#x1F3C6;</span>
+              <div class="perk-title">Referral Leaderboard</div>
+              <div class="perk-desc">Top referrers get a public badge and recognition.</div>
+            </div>
+            <div class="perk-card">
+              <span class="perk-icon">&#x1F517;</span>
+              <div class="perk-title">Stackable</div>
+              <div class="perk-desc">No cap — every referral earns. Invite your whole team.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Firebase community modules -->
+    <script type="module" src="js/firebase-community.js"></script>
   </body>
 </html>

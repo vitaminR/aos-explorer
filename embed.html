@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{a}OS Explorer — Product Card</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #080a0c; --card: #0e1117; --border: rgba(255,255,255,0.08);
+      --text: rgba(255,255,255,0.88); --sub: rgba(255,255,255,0.5);
+      --dim: rgba(255,255,255,0.3); --accent: #818cf8;
+      --l7: #c75a00; --l6: #e15759; --l5: #b07aa1; --l4: #59a14f;
+      --l3: #edc948; --l2: #22d3ee; --l1: #1e40af;
+    }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", system-ui, sans-serif;
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      padding: 24px;
+    }
+    .card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 24px; max-width: 400px; width: 100%;
+    }
+    .stratum-pill {
+      display: inline-block; padding: 3px 10px; border-radius: 20px;
+      font-size: 11px; font-weight: 700; margin-bottom: 14px;
+      letter-spacing: 0.3px;
+    }
+    .name { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+    .meta { font-size: 12px; color: var(--sub); margin-bottom: 14px; }
+    .rationale { font-size: 13px; color: var(--sub); line-height: 1.6; margin-bottom: 18px; }
+    .confidence { font-size: 11px; color: var(--dim); margin-bottom: 18px; }
+    .view-link {
+      display: inline-block; padding: 8px 16px; border-radius: 8px;
+      background: rgba(129,140,248,0.12); border: 1px solid rgba(129,140,248,0.3);
+      color: var(--accent); font-size: 12px; font-weight: 600;
+      text-decoration: none; transition: all 0.15s;
+    }
+    .view-link:hover { background: rgba(129,140,248,0.22); }
+    .brand {
+      margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border);
+      font-size: 10px; color: var(--dim); text-align: center;
+    }
+    .brand a { color: var(--accent); text-decoration: none; }
+    .error { text-align: center; color: var(--sub); padding: 40px 0; }
+  </style>
+</head>
+<body>
+  <div class="card" id="card">
+    <div class="error">Loading…</div>
+  </div>
+  <script>
+    const STRATUM_COLORS = {
+      L1: "#1e40af", L2: "#22d3ee", L3: "#edc948",
+      L4: "#59a14f", L5: "#b07aa1", L6: "#e15759", L7: "#c75a00",
+    };
+    const params = new URLSearchParams(window.location.search);
+    const pid = params.get("product");
+    const card = document.getElementById("card");
+
+    if (!pid) {
+      card.innerHTML = '<div class="error">No product specified.<br>Add <code>?product=claudecode</code> to the URL.</div>';
+    } else {
+      fetch("/api/v1/products.json")
+        .then(r => r.json())
+        .then(data => {
+          const p = data.products?.[pid] || data[pid];
+          if (!p) {
+            card.innerHTML = '<div class="error">Product not found: ' + pid + '</div>';
+            return;
+          }
+          const level = (p.primary || "").match(/^(L[1-7])/)?.[1] || "";
+          const color = STRATUM_COLORS[level] || "#818cf8";
+          document.title = p.name + " — {a}OS Explorer";
+          card.innerHTML = `
+            <span class="stratum-pill" style="background:${color}22;color:${color};border:1px solid ${color}44">${p.primary || level}</span>
+            <div class="name">${p.name}</div>
+            <div class="meta">${p.vendor || ""} &middot; ${p.deployment || ""} &middot; ${p.license || ""}</div>
+            <div class="rationale">${p.rationale || ""}</div>
+            <div class="confidence">Confidence: ${p.confidence || "—"} &nbsp;&middot;&nbsp; Last verified: ${p.lastVerified || "—"}</div>
+            <a class="view-link" href="prototype.html?product=${pid}" target="_blank">View in Explorer &rarr;</a>
+            <div class="brand">Powered by <a href="https://aos-explorer.web.app" target="_blank">{a}OS Explorer</a> &mdash; the 7-stratum AI reference model</div>
+          `;
+        })
+        .catch(() => {
+          card.innerHTML = '<div class="error">Failed to load product data.</div>';
+        });
+    }
+  </script>
+</body>
+</html>
