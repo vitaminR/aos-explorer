@@ -1,0 +1,14 @@
+{
+  "color": "#00bcd4",
+  "label": "aOS EXPLORER",
+  "repo_id": "7.aOS-Explorer",
+  "icon": "🔭",
+  "name": "7.aOS-Explorer",
+  "telemetry": {
+    "otel": {
+      "service_name": "7.aOS-Explorer",
+      "stream_file": "CRUCIBLE_STREAM.jsonl",
+      "enabled": true
+    }
+  }
+}
