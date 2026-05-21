@@ -1244,6 +1244,42 @@
       "changeRisk": "medium",
       "sourceQuality": "high",
       "status": "active"
+    },
+    {
+      "id": "routa",
+      "name": "Routa",
+      "type": "agent",
+      "vendor": "Routa",
+      "deployment": "Local",
+      "license": "Proprietary",
+      "primary": "L5 Orchestration",
+      "secondary": "L6, L4, L3, L2, L1, L7",
+      "axisRoles": "Orchestration: Primary · Governance: Primary · Tool Integration · Decisioning · Memory",
+      "confidence": 0.75,
+      "rationale": "Workspace-first agentic delivery orchestrator using a file-based control plane. Tasks flow through a strict lane state machine (backlog → todo → dev → review → done | blocked). Strong governance enforced via file-budget, deletion-safety, and acceptance-criteria gates. Heartbeat pulse counter is a protected 50-year invariant.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "harness",
+          "role": "primary",
+          "rank": 3,
+          "why": "File-based control plane with explicit lane policies, review gates, and artifact contracts is a disciplined spec-first harness."
+        },
+        {
+          "conceptSlug": "loop-core",
+          "role": "primary",
+          "rank": 2,
+          "why": "Lane state machine (backlog → todo → dev → review → done) is a strict task execution loop with built-in gate enforcement."
+        }
+      ],
+      "evidenceIds": [],
+      "freshnessTier": "B",
+      "lastReviewed": "2026-05-21",
+      "lastVerified": "2026-05-21",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "low",
+      "sourceQuality": "medium",
+      "status": "active"
     }
   ]
 }

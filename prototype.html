@@ -12246,6 +12246,42 @@
           <span class="confidence high">0.87</span>
         </div>
 
+        <div
+          class="product-card"
+          data-name="Routa"
+          data-type="agent"
+          data-vendor="Routa"
+          data-deployment="Local"
+          data-license="Proprietary"
+          onclick="selectProduct('routa')"
+          oncontextmenu="showCtxMenu(event, 'routa')"
+        >
+          <button
+            class="add-compare-btn"
+            onclick="
+              event.stopPropagation();
+              addToCompare(this, 'Routa');
+            "
+          >
+            +
+          </button>
+          <div class="name">Routa</div>
+          <div class="vendor">
+            Routa &middot; Local &middot; Proprietary
+          </div>
+          <div class="strata-dots">
+            <div class="strata-dot" style="background: var(--l7)"></div>
+            <div class="strata-dot active" style="background: var(--l6)"></div>
+            <div class="strata-dot active" style="background: var(--l5)"></div>
+            <div class="strata-dot" style="background: var(--l4)"></div>
+            <div class="strata-dot" style="background: var(--l3)"></div>
+            <div class="strata-dot" style="background: var(--l2)"></div>
+            <div class="strata-dot" style="background: var(--l1)"></div>
+          </div>
+          <div class="spans-label">Spans 2 strata &middot; Primary: L5</div>
+          <span class="confidence medium">0.75</span>
+        </div>
+
         <!-- SKILL CARDS -->
         <div
           class="product-card"
@@ -14266,6 +14302,23 @@
           rationale:
             "VS Code extension agent with autonomous multi-step task execution. Creates files, runs commands, and uses browser. Human-in-the-loop approvals.",
         },
+        // ===== WORKFLOW / ORCHESTRATOR ENTITIES =====
+        routa: {
+          name: "Routa",
+          type: "agent",
+          vendor: "Routa",
+          deployment: "Local",
+          license: "Proprietary",
+          primary: "L5 Orchestration",
+          secondary: "L6, L4, L3, L2, L1, L7",
+          axisRoles:
+            "Orchestration: Primary · Governance: Primary · Tool Integration · Decisioning · Memory",
+          confidence: 0.75,
+          lastVerified: "2026-05-21",
+          verified: false,
+          rationale:
+            "Workspace-first agentic delivery orchestrator using a file-based control plane (workspace → task → lane policy → specialist → session → trace → review gate). Tasks flow through a strict lane state machine (backlog → todo → dev → review → done | blocked). All provider quirks are absorbed at the adapter boundary; normalized Events are what higher-level code sees. Strong governance enforced via file-budget, deletion-safety, and acceptance-criteria gates. Heartbeat pulse counter is a protected 50-year invariant — never touched by board operations.",
+        },
         // ===== SKILL ENTITIES =====
         skreview: {
           name: "Code Review",
@@ -16210,6 +16263,45 @@
             "GitHub repo (AgentSeal/codeburn), MIT license, npm package, 13-category deterministic classifier, multi-provider (Claude Code + Codex), SwiftBar menu bar widget, CSV/JSON export, 162-currency support.",
           risks: [
             "Depends on Claude/Codex session file formats which could change without notice.",
+          ],
+        },
+        routa: {
+          factors: [
+            {
+              key: "ev",
+              label: "Evidence Quality",
+              weight: 0.3,
+              score: 0.7,
+              desc: "Internal architecture documentation and engineering team review. No public sources; design doc and SPEC verified 2026-05-21.",
+            },
+            {
+              key: "al",
+              label: "Strata Alignment",
+              weight: 0.3,
+              score: 0.85,
+              desc: "L5 orchestration via lane state machine is well-evidenced. L6 governance via gate policies and deletion-safety is clear. Broader secondary strata claims are plausible but unverified.",
+            },
+            {
+              key: "df",
+              label: "Differentiation",
+              weight: 0.2,
+              score: 0.8,
+              desc: "File-based control plane (no Postgres, no web UI) is a meaningful differentiator vs. heavier orchestrators. Heartbeat-as-durable-timestamp invariant is unique.",
+            },
+            {
+              key: "mt",
+              label: "Maturity",
+              weight: 0.2,
+              score: 0.6,
+              desc: "First implementation slice shipped 2026-05-21. Core lane machine and gate policy validated. Broader provider ecosystem not yet tested.",
+            },
+          ],
+          evidence:
+            "Internal SPEC-routa-ingestion.md, PRD-routa-ingestion.md, and engineering implementation review 2026-05-21. No external benchmarks or public record.",
+          risks: [
+            "Evidence relies entirely on internal sources — external validation would strengthen score.",
+            "Provider adapter beyond OpenCode is stubbed but unvalidated.",
+            "Heartbeat migration to Hetzner means Windows-side pulse files are a stale mirror; observer must target the canonical Hetzner path.",
           ],
         },
       };
@@ -32416,6 +32508,7 @@
         aider: ["l3", "l4", "l2"],
         claudecode: ["l4", "l7", "l3", "l2", "l1"],
         cline: ["l3", "l7", "l4", "l1"],
+        routa: ["l5", "l6", "l4", "l3", "l2", "l1", "l7"],
         // Skills
         skreview: ["l6", "l5", "l3"],
         sktesting: ["l5", "l3"],
