@@ -71,13 +71,20 @@ Rationale:   Multi-agent crew framework focused on orchestrating agent
 
 ```
 Primary:     L5 Orchestration & Decisioning
-Secondary:   L6 (Governance), L4 (Memory), L2 (Platform), L1 (Data)
-Confidence:  0.91 (High)
+Secondary:   L6 (Governance), L4 (Memory), L3 (Execution), L2 (Platform),
+             L1 (Data), L7 (Mission)
+Confidence:  0.75 (Medium)
 Rationale:   File-based agentic delivery orchestrator living inside 0.agentic.
-             Core value is the 5-lane task state machine (backlog → todo →
+             Core value is the 6-lane task state machine (backlog → todo →
              dev → review → done | blocked) and the 7-item deterministic
-             review gate. Shipped 2026-05-21 as part of the Codepro workspace.
+             review gate. Spans all seven strata. Shipped 2026-05-21.
 ```
+
+**Confidence breakdown** (from `prototype.html` CONFIDENCE_META):
+- Evidence Quality: 0.7 (internal docs only, no external benchmarks)
+- Strata Alignment: 0.85 (L5/L6 well-evidenced; broader secondaries plausible)
+- Differentiation: 0.8 (file-based control plane is meaningful vs heavier orchestrators)
+- Maturity: 0.6 (first slice shipped 2026-05-21; provider adapters beyond OpenCode unvalidated)
 
 **Why L5 is primary**: Routa's entire architecture is task orchestration — allocating sessions, routing work to specialist adapters, enforcing lane transitions, and dispatching the review gate.
 
@@ -85,7 +92,11 @@ Rationale:   File-based agentic delivery orchestrator living inside 0.agentic.
 
 **Why L4 is secondary**: Traces, Paperclip sessions, EMA events, and the `artifacts/` store are memory and capture artifacts at L4.
 
+**Why L3 is secondary**: Adapters (`opencode`, `claude-code`, `codex`, `continue-dev`) are the execution interface to provider runtimes.
+
 **Why L1–L2 are secondary**: The `.agentic-orchestrator/` YAML files and `git` worktrees are L1 data; the `codepro_tools.agentic` CLI package is L2 platform.
+
+**Why L7 is touched**: Routa tasks ladder up to Goals (G1–G4) via the meta delivery stack — every PRD that spawns Routa tickets is anchored to a Goal.
 
 **The meta delivery stack** (how Routa maps across all 7 strata):
 
