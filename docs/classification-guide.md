@@ -67,6 +67,40 @@ Rationale:   Multi-agent crew framework focused on orchestrating agent
 
 ---
 
+## Example: Routa (first-party — workspace delivery orchestrator)
+
+```
+Primary:     L5 Orchestration & Decisioning
+Secondary:   L6 (Governance), L4 (Memory), L2 (Platform), L1 (Data)
+Confidence:  0.91 (High)
+Rationale:   File-based agentic delivery orchestrator living inside 0.agentic.
+             Core value is the 5-lane task state machine (backlog → todo →
+             dev → review → done | blocked) and the 7-item deterministic
+             review gate. Shipped 2026-05-21 as part of the Codepro workspace.
+```
+
+**Why L5 is primary**: Routa's entire architecture is task orchestration — allocating sessions, routing work to specialist adapters, enforcing lane transitions, and dispatching the review gate.
+
+**Why L6 is strong secondary**: The review gate (`gate.py`), policy YAMLs (`evidence-required`, `deletion-safety`, `file-budget`, `test-required`), and the PRD/SPEC/Ticket hierarchy are all Governance artifacts living at L6.
+
+**Why L4 is secondary**: Traces, Paperclip sessions, EMA events, and the `artifacts/` store are memory and capture artifacts at L4.
+
+**Why L1–L2 are secondary**: The `.agentic-orchestrator/` YAML files and `git` worktrees are L1 data; the `codepro_tools.agentic` CLI package is L2 platform.
+
+**The meta delivery stack** (how Routa maps across all 7 strata):
+
+| Stratum | Role |
+|---------|------|
+| L7 Mission | Goal (G1/G2/G3/G4) drives the PRD |
+| L6 Governance | PRD → SPEC → Policies → Gate → Traces |
+| L5 Orchestration | Routa board → task → lane → specialist |
+| L4 Memory | Paperclip + EMA capture layer (below the stack) |
+| L3 Execution | Adapters: opencode (active), claude-code / codex / continue-dev (stub) |
+| L2 Platform | `agentic` CLI + `codepro_tools.agentic` Python package |
+| L1 Data | `.agentic-orchestrator/` YAML files + JSONL traces + git |
+
+---
+
 ## Multi-Residency Rules
 
 1. **Every product gets exactly one primary stratum** — this is where its core value proposition lives
