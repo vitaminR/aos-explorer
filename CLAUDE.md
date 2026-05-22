@@ -9,7 +9,7 @@ npx skills add pbakaus/impeccable
 
 **Pre-deploy gate — always run before any `firebase deploy`:**
 ```
-npx impeccable detect prototype.html --json
+npx impeccable detect explorer.html --json
 ```
 If the JSON output contains any `severity: "critical"` entries, fix them before deploying. Medium/low are warnings only.
 

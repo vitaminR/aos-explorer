@@ -1,7 +1,7 @@
 # mPRD-003 — UI/UX Improvements Backlog (Prototype)
 
-> **Status:** IMPLEMENTED — all 15 items shipped in prototype.html + docs.html
-> **Scope:** `prototype.html`, `docs.html`
+> **Status:** IMPLEMENTED — all 15 items shipped in explorer.html + docs.html
+> **Scope:** `explorer.html`, `docs.html`
 
 Captured during the header-responsiveness pass. All items implemented.
 
@@ -89,7 +89,7 @@ legend key.
 
 ## U11 — Stack-builder drop zone feedback ✅
 
-**Problem:** In `stack-builder.html`, the layer drop zones highlight
+**Problem:** In `build.html`, the layer drop zones highlight
 uniformly during drag, making it hard to tell which layer is valid for the
 dragged product.
 **Proposal:** Green outline on valid layers, red on invalid, based on product

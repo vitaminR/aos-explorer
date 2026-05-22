@@ -3,9 +3,9 @@ import path from 'path';
 
 test.describe('AOS Explorer Tour', () => {
   test('should display tour automatically on load, move spotlight, and allow skipping', async ({ page }) => {
-    // Determine the absolute path to prototype.html
+    // Determine the absolute path to explorer.html
     // Use the file:// protocol to load it directly
-    const filePath = `file:///${path.resolve(__dirname, '../prototype.html').replace(/\\/g, '/')}`;
+    const filePath = `file:///${path.resolve(__dirname, '../explorer.html').replace(/\\/g, '/')}`;
     await page.goto(filePath);
 
     // 1. Tour Initialization: Welcome step

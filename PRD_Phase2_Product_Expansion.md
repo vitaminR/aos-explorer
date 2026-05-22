@@ -3,7 +3,7 @@
 **Status:** Draft  
 **Date:** 2026-04-08  
 **Owner:** nymil  
-**Depends on:** Phase 1 prototype (prototype.html — 8 products, 7 strata, 2 axes)
+**Depends on:** Phase 1 prototype (explorer.html — 8 products, 7 strata, 2 axes)
 
 ---
 

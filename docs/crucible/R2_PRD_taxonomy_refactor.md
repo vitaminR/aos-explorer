@@ -47,7 +47,7 @@ ranking signal. The taxonomy conflates **what a pattern is** (substrate) with **
 ### 4.1 Current Model
 
 ```
-prototype.html (HTML)
+explorer.html (HTML)
   └── substrate-item (flat list per layer, some are products)
         └── construct-panel
               └── primitive-panel
@@ -241,7 +241,7 @@ that feed directly into the `PRODUCT_DETAILS` enhancement.
 
 | Criteria | Test |
 |----------|------|
-| No named products as substrates | `grep "substrate-name" prototype.html` returns 0 branded names |
+| No named products as substrates | `grep "substrate-name" explorer.html` returns 0 branded names |
 | Core substrates ≤8 per layer | Manual count |
 | Top-3 visible per substrate | Visual check at each substrate |
 | GSD/BMAD/SP constructs preserved | All 94 primitives still present in the DOM |

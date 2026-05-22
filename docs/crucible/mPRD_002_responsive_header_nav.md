@@ -1,7 +1,7 @@
 # mPRD-002 — Responsive Header Navigation
 
 > **Status:** IMPLEMENTED (initial pass)
-> **File touched:** `prototype.html`
+> **File touched:** `explorer.html`
 > **Related:** `mSPEC_002_responsive_header_nav.md`
 
 ## Problem

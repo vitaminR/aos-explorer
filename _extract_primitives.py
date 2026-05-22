@@ -1,4 +1,4 @@
-"""Extract all primitives from prototype.html into a JSON inventory."""
+"""Extract all primitives from explorer.html into a JSON inventory."""
 
 import json
 import re
@@ -98,7 +98,7 @@ def parse_primitive_entries(block_text: str):
     return entries
 
 
-with open("prototype.html", "r", encoding="utf-8") as f:
+with open("explorer.html", "r", encoding="utf-8") as f:
     text = f.read()
 
 primitive_details_block = find_object_block(text, "const PRIMITIVE_DETAILS =")

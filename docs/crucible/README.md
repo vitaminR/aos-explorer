@@ -10,7 +10,7 @@
 | **R1 — Taxonomy Audit** | [`R1_taxonomy_audit.md`](R1_taxonomy_audit.md) | ✅ R1:AUDITED |
 | **R2 — Refactoring PRD** | [`R2_PRD_taxonomy_refactor.md`](R2_PRD_taxonomy_refactor.md) | ✅ R2:DESIGNED |
 | **R3 — Product mPRDs** | [`R3_mPRD_template.md`](R3_mPRD_template.md) + per-product mPRDs | Template ready |
-| **R4 — Implementation** | Code changes to `prototype.html` | Not started |
+| **R4 — Implementation** | Code changes to `explorer.html` | Not started |
 
 ## Gate System
 

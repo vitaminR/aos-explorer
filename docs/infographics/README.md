@@ -12,4 +12,4 @@ Store generated visual assets here for use in the explorer site and docs.
 
 ## Usage
 
-These are referenced from `prototype.html` and `docs.html` once embedded.
+These are referenced from `explorer.html` and `docs.html` once embedded.

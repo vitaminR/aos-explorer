@@ -3,7 +3,7 @@ import path from "path";
 import fs from "fs";
 
 const FILE_URL = `file:///${path
-  .resolve(__dirname, "../prototype.html")
+  .resolve(__dirname, "../explorer.html")
   .replace(/\\/g, "/")}`;
 
 async function loadWithoutTour(page: any) {

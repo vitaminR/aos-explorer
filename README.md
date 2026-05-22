@@ -198,7 +198,7 @@ Next.js 15 + TypeScript + Tailwind CSS v4
 
 **Interactive prototype live.**
 
-- `prototype.html` delivers the cinematic explorer shell with drilldown, compare basket, search, and basic filter interactions.
+- `explorer.html` delivers the cinematic explorer shell with drilldown, compare basket, search, and basic filter interactions.
 - `docs.html` provides an in-app client documentation hub.
 - `/docs/` contains markdown docs for onboarding and classification reference.
 >>>>>>> Stashed changes

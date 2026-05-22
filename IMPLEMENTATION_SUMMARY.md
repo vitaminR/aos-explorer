@@ -27,7 +27,7 @@
 
 ---
 
-### 2. **UI Layer (prototype.html)**
+### 2. **UI Layer (explorer.html)**
 
 **Color Variables Added:**
 
@@ -46,7 +46,7 @@
 
 ---
 
-### 3. **Easter Egg Logic (prototype.html - JavaScript)**
+### 3. **Easter Egg Logic (explorer.html - JavaScript)**
 
 **Trigger Mechanism:**
 
@@ -134,7 +134,7 @@ const isLayer0Triggered = layer0Triggers.some(trigger => q.includes(trigger));
 ## Files Changed
 
 1. `90.aOS-Explorer/data/concepts.json` — Added 5 new concepts + updated harness
-2. `90.aOS-Explorer/prototype.html` — CSS variables, L0 card HTML, search logic
+2. `90.aOS-Explorer/explorer.html` — CSS variables, L0 card HTML, search logic
 3. `90.aOS-Explorer/LAYER_0_EASTER_EGG.md` — This documentation
 
 ---

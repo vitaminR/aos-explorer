@@ -64,7 +64,7 @@ Concept cards are the taxonomy backbone. Each concept maps to one or more strata
 | Auto-refresh   | No — human approval required          |
 | Change risk    | Medium (placements, confidence)       |
 
-Product cards carry placement metadata, confidence scores, and concept mappings. Each product links to one or more evidence packets. The prototype UI renders products from `PRODUCT_DETAILS` in `prototype.html` — product cards here are the structured source of truth that will eventually replace inline definitions.
+Product cards carry placement metadata, confidence scores, and concept mappings. Each product links to one or more evidence packets. The prototype UI renders products from `PRODUCT_DETAILS` in `explorer.html` — product cards here are the structured source of truth that will eventually replace inline definitions.
 
 ### How to add a product
 

@@ -3,7 +3,7 @@
 > **Status:** COMPLETE
 > **Date:** 2026-04-12
 > **Auditor:** aOS-Explorer Orchestrator
-> **Source:** `90.aOS-Explorer/prototype.html` (31 substrate-items) + `6.aOS/01.Reference-Model/agentic-reference-stack-v1.md`
+> **Source:** `90.aOS-Explorer/explorer.html` (31 substrate-items) + `6.aOS/01.Reference-Model/agentic-reference-stack-v1.md`
 
 ---
 

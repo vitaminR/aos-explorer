@@ -17,7 +17,7 @@ import { test, expect } from "@playwright/test";
 import path from "path";
 
 const FILE_URL = `file:///${path
-  .resolve(__dirname, "../prototype.html")
+  .resolve(__dirname, "../explorer.html")
   .replace(/\\/g, "/")}`;
 
 async function load(page: any) {

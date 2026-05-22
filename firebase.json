@@ -18,6 +18,7 @@
       "scripts/**",
       "tests/**",
       "test-results/**",
+      "logo-preview.html",
       "docs/*.md",
       "docs/*.csv",
       "docs/crucible/**",
@@ -67,13 +68,21 @@
         ]
       }
     ],
+    "redirects": [
+      { "source": "/prototype", "destination": "/explorer", "type": 301 },
+      { "source": "/prototype.html", "destination": "/explorer", "type": 301 },
+      { "source": "/stack-mapper", "destination": "/build", "type": 301 },
+      { "source": "/stack-mapper.html", "destination": "/build", "type": 301 },
+      { "source": "/stack-builder", "destination": "/build", "type": 301 },
+      { "source": "/stack-builder.html", "destination": "/build", "type": 301 }
+    ],
     "rewrites": [
       { "source": "/api/v1/strata", "destination": "/api/v1/strata.json" },
       { "source": "/api/v1/concepts", "destination": "/api/v1/concepts.json" },
       { "source": "/api/v1/products", "destination": "/api/v1/products.json" },
       { "source": "/api/v1/version", "destination": "/api/v1/version.json" }
     ],
-    "cleanUrls": false,
+    "cleanUrls": true,
     "trailingSlash": false
   },
   "firestore": {

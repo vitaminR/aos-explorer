@@ -1,6 +1,6 @@
 import { chromium } from "playwright";
 
-const url = "http://localhost:8765/prototype.html";
+const url = "http://localhost:8765/explorer.html";
 const browser = await chromium.launch();
 const ctx = await browser.newContext({
   viewport: { width: 1400, height: 900 },

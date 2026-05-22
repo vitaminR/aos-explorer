@@ -3,11 +3,11 @@ import path from "path";
 
 test.describe("Concept Preview & Routing", () => {
   const explorerUrl = () =>
-    `file:///${path.resolve(__dirname, "../prototype.html").replace(/\\/g, "/")}`;
+    `file:///${path.resolve(__dirname, "../explorer.html").replace(/\\/g, "/")}`;
   const conceptPageUrl = (slug: string) =>
     `file:///${path.resolve(__dirname, `../concepts/${slug}.html`).replace(/\\/g, "/")}`;
 
-  test("hash deep-link prototype.html#concept=harness opens concept preview", async ({
+  test("hash deep-link explorer.html#concept=harness opens concept preview", async ({
     page,
   }) => {
     await page.goto(explorerUrl() + "#concept=harness");
@@ -33,7 +33,7 @@ test.describe("Concept Preview & Routing", () => {
     await expect(backLink).toContainText("Back to Explorer");
   });
 
-  test("hash deep-link alias prototype.html#concept=prefetch resolves to pre-fetch preview", async ({
+  test("hash deep-link alias explorer.html#concept=prefetch resolves to pre-fetch preview", async ({
     page,
   }) => {
     await page.goto(explorerUrl() + "#concept=prefetch");

@@ -34,13 +34,13 @@ When Layer 0 is triggered:
 - All marked with `"strata": ["L0"]` and `"hidden": true`, `"easterEgg": true`
 - Aliases include trigger words at concept level for search matching
 
-### UI Layer (prototype.html)
+### UI Layer (explorer.html)
 
 - L0 stratum card added to HTML (before L7) with `display: none` by default
 - Styled with platinum color (`#9ca3af`) and dashed border to indicate "secret"
 - Contains 5 construct chips representing the meta-concepts
 
-### Logic Layer (prototype.html)
+### Logic Layer (explorer.html)
 
 - Easter egg trigger logic in `applySearchAndFilters()`
 - Detects any of the 3 trigger phrases in search input

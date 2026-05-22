@@ -80,7 +80,7 @@ Rationale:   File-based agentic delivery orchestrator living inside 0.agentic.
              review gate. Spans all seven strata. Shipped 2026-05-21.
 ```
 
-**Confidence breakdown** (from `prototype.html` CONFIDENCE_META):
+**Confidence breakdown** (from `explorer.html` CONFIDENCE_META):
 - Evidence Quality: 0.7 (internal docs only, no external benchmarks)
 - Strata Alignment: 0.85 (L5/L6 well-evidenced; broader secondaries plausible)
 - Differentiation: 0.8 (file-based control plane is meaningful vs heavier orchestrators)

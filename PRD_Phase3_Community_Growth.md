@@ -388,7 +388,7 @@ Every embed = free backlink + SEO + brand impression.
 
 | From | To | When |
 |------|-----|------|
-| Single prototype.html | Multi-page static site | Phase 3a Week 1 |
+| Single explorer.html | Multi-page static site | Phase 3a Week 1 |
 | Inline JS product data | Firestore `products` collection | Phase 3a Week 2 |
 | No auth | GitHub OAuth (Firebase Auth) | Phase 3a Week 1 |
 | Manual deploys | GitHub Actions CI/CD | Phase 3a Week 1 |

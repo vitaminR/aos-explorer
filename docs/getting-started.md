@@ -2,7 +2,7 @@
 
 ## Quick Start
 
-1. Open `prototype.html` in your browser
+1. Open `explorer.html` in your browser
 2. The guided tour will walk you through the interface
 3. Click any stratum (layer) to expand it
 4. Explore substrates and constructs inside each layer

@@ -79,8 +79,8 @@ def build_llms_txt(strata_data, concepts_data, products_data):
 
 ## Documentation
 
-- [Explorer UI](https://aos7.tech/prototype.html): Interactive taxonomy browser
-- [Stack Builder](https://aos7.tech/stack-builder.html): Build and compare agentic stacks
+- [Explorer UI](https://aos7.tech/explorer.html): Interactive taxonomy browser
+- [Stack Builder](https://aos7.tech/build.html): Build and compare agentic stacks
 
 ## Optional
 

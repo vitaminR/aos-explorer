@@ -85,8 +85,8 @@ test.describe("Image loading", () => {
     }
   });
 
-  test("prototype.html — no broken images", async ({ page }) => {
-    const filePath = `file:///${path.resolve(__dirname, "../prototype.html").replace(/\\/g, "/")}`;
+  test("explorer.html — no broken images", async ({ page }) => {
+    const filePath = `file:///${path.resolve(__dirname, "../explorer.html").replace(/\\/g, "/")}`;
     await page.goto(filePath, { waitUntil: "networkidle" });
 
     const images = page.locator("img");

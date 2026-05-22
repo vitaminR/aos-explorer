@@ -116,5 +116,5 @@ In the compact media queries:
 ## Regression guards
 
 - `validate.py` must not emit *new* warnings above the 403 baseline.
-- `tests/` Playwright specs for `prototype.html` should add a visual-diff case
+- `tests/` Playwright specs for `explorer.html` should add a visual-diff case
   for the 1440, 1600, and 1920 viewports (v2 work).

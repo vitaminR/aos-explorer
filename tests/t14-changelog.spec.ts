@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import path from "path";
 
-const FILE_URL = `file:///${path.resolve(__dirname, "../prototype.html").replace(/\\/g, "/")}`;
+const FILE_URL = `file:///${path.resolve(__dirname, "../explorer.html").replace(/\\/g, "/")}`;
 
 async function load(page: any) {
   await page.goto(FILE_URL, { waitUntil: "networkidle" });

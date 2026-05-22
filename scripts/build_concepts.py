@@ -97,7 +97,7 @@ def generate_concept_page(concept):
     for rs in concept.get("relatedConceptSlugs", []):
         related_html += (
             f'      <li><a href="{_esc(rs)}.html">{_esc(rs)}</a>'
-            f' · <a href="../prototype.html#concept={_esc(rs)}"'
+            f' · <a href="../explorer.html#concept={_esc(rs)}"'
             f' style="font-size:0.85em;opacity:0.7">'
             f"preview in explorer →</a></li>\n"
         )
@@ -118,7 +118,7 @@ def generate_concept_page(concept):
 
     # Always add the explorer deep-link as a source
     sources_html += (
-        f'      <li><a href="../prototype.html#concept={_esc(slug)}">'
+        f'      <li><a href="../explorer.html#concept={_esc(slug)}">'
         f"Open in Explorer →</a></li>\n"
     )
 
@@ -172,7 +172,7 @@ def generate_concept_page(concept):
   </style>
 </head>
 <body>
-  <a class="back" href="../prototype.html#concept={_esc(slug)}">← Back to Explorer</a>
+  <a class="back" href="../explorer.html#concept={_esc(slug)}">← Back to Explorer</a>
 
   <h1>{name}</h1>
   <div class="slug">/{_esc(slug)}</div>
@@ -221,7 +221,7 @@ def generate_concept_page(concept):
   </section>
 
   <div class="nav-footer">
-    <a href="../prototype.html">Explorer</a> ·
+    <a href="../explorer.html">Explorer</a> ·
     <a href="../docs.html#glossary">Docs Glossary</a> ·
     <a href="../docs.html#concepts">Concepts Table</a>
   </div>

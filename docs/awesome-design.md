@@ -1,6 +1,6 @@
 # {a}OS Explorer — Design System
 
-> Living reference for every visual pattern, component, and responsive behaviour in `prototype.html`.
+> Living reference for every visual pattern, component, and responsive behaviour in `explorer.html`.
 
 ---
 

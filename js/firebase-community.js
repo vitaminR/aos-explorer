@@ -345,7 +345,7 @@ async function syncVotesFromFirestore(uid) {
 }
 
 // ─── Detail panel vote integration ───────────────────────────────────────────
-// Called by selectProduct() in prototype.html after the panel renders.
+// Called by selectProduct() in explorer.html after the panel renders.
 window._communityProductSelected = async (productId) => {
   const panelBtn = document.getElementById("panelVoteBtn");
   const panelCount = document.getElementById("panelVoteCount");
