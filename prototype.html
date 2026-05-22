@@ -31479,9 +31479,29 @@
           if (visible) visibleProducts++;
         });
 
+        // Build set of strata spanned by matching product-cards (e.g. right-rail
+        // featured products like Routa that don't live inside any stratum-card
+        // but still span strata via PRODUCT_STRATA_MAP). Without this, searching
+        // for a right-rail-only product would hide every stratum card.
+        const productMatchStrata = new Set();
+        if (q) {
+          document
+            .querySelectorAll(".product-card.search-hit:not(.filtered-out)")
+            .forEach((card) => {
+              const pid = getCardProductId(card);
+              const strata =
+                (typeof PRODUCT_STRATA_MAP !== "undefined" &&
+                  PRODUCT_STRATA_MAP[pid]) ||
+                [];
+              strata.forEach((s) => productMatchStrata.add(s));
+            });
+        }
+
         document.querySelectorAll(".stratum-card").forEach((card) => {
           const haystack = card.textContent.toLowerCase();
-          const match = !q || haystack.includes(q);
+          const textMatch = !q || haystack.includes(q);
+          const productMatch = !!q && productMatchStrata.has(card.id);
+          const match = textMatch || productMatch;
           card.classList.toggle("search-hidden", !match);
           card.classList.toggle("search-hit", !!q && match);
           if (match) visibleStrata++;
@@ -31496,7 +31516,13 @@
             "text-align:center;padding:32px 16px;color:var(--text-tertiary);font-size:13px;display:none;";
           document.querySelector(".stack-container").appendChild(blankSlate);
         }
-        if (q && visibleStrata === 0 && conceptMatches.length === 0) {
+        // Suppress blank slate if any product (right-rail or otherwise) matched
+        if (
+          q &&
+          visibleStrata === 0 &&
+          conceptMatches.length === 0 &&
+          visibleProducts === 0
+        ) {
           blankSlate.innerHTML = `No matches for "<strong style="color:var(--text-secondary)">${q}</strong>" &mdash; try browsing by stratum or <span style="cursor:pointer;color:var(--accent-indigo);text-decoration:underline" onclick="document.getElementById('searchInput').value='';applySearchAndFilters()">clearing your search</span>.`;
           blankSlate.style.display = "block";
         } else {
