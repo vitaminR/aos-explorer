@@ -1,0 +1,30 @@
+name: catalog-drift
+
+on:
+  pull_request:
+    paths:
+      - 'data/products.json'
+      - 'explorer.html'
+      - 'scripts/check-catalog-drift.py'
+      - '.github/workflows/catalog-drift.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'data/products.json'
+      - 'explorer.html'
+      - 'scripts/check-catalog-drift.py'
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  drift-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Detect catalog drift
+        run: python3 scripts/check-catalog-drift.py
