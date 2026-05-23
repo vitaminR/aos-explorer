@@ -1052,7 +1052,7 @@
     {
       "id": "cursor",
       "name": "Cursor",
-      "type": "platform",
+      "type": "product",
       "vendor": "Anysphere",
       "deployment": "Local",
       "license": "Proprietary",
