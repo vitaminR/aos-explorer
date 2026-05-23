@@ -274,7 +274,7 @@ Follows an 8-point base with 4-point tweaks:
 | Focus rings | `--card-highlight-ring` glow on keyboard-focused cards |
 | ARIA | Buttons have `aria-label` and `role` attributes |
 | Colour contrast | Text tokens maintain ≥ 4.5:1 against `--bg-base` |
-| Reduced motion | No `prefers-reduced-motion` override yet (TODO) |
+| Reduced motion | `@media (prefers-reduced-motion: reduce)` collapses all `transition`/`animation` durations to ~0ms and forces a single iteration (covers aurora-drift, lensGlow, and every card transition) |
 
 ---
 
