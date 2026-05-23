@@ -4250,6 +4250,62 @@
         margin-bottom: 10px;
         line-height: 1.45;
       }
+      /* Phase 2a: type badge surfaced inline on product cards */
+      .product-card .type-badge {
+        display: inline-flex;
+        align-items: center;
+        height: 16px;
+        padding: 0 6px;
+        margin: -2px 0 8px;
+        border-radius: 4px;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        color: var(--text-secondary);
+        background: var(--bg-surface);
+        border: 1px solid var(--border);
+        line-height: 1;
+        user-select: none;
+      }
+      .product-card .type-badge[data-type-key="framework"] {
+        color: #c4b5fd;
+        border-color: rgba(196, 181, 253, 0.35);
+        background: rgba(124, 58, 237, 0.08);
+      }
+      .product-card .type-badge[data-type-key="agent"] {
+        color: #fca5a5;
+        border-color: rgba(252, 165, 165, 0.35);
+        background: rgba(220, 38, 38, 0.08);
+      }
+      .product-card .type-badge[data-type-key="tool"] {
+        color: #93c5fd;
+        border-color: rgba(147, 197, 253, 0.35);
+        background: rgba(37, 99, 235, 0.08);
+      }
+      .product-card .type-badge[data-type-key="skill"] {
+        color: #fcd34d;
+        border-color: rgba(252, 211, 77, 0.35);
+        background: rgba(202, 138, 4, 0.08);
+      }
+      .product-card .type-badge[data-type-key="mcp"] {
+        color: #a7f3d0;
+        border-color: rgba(167, 243, 208, 0.35);
+        background: rgba(5, 150, 105, 0.08);
+      }
+      .product-card .type-badge[data-type-key="workflow"] {
+        color: #fdba74;
+        border-color: rgba(253, 186, 116, 0.35);
+        background: rgba(234, 88, 12, 0.08);
+      }
+      .product-card .type-badge[data-type-key="model"] {
+        color: #f9a8d4;
+        border-color: rgba(249, 168, 212, 0.35);
+        background: rgba(190, 24, 93, 0.08);
+      }
+      .product-card .type-badge[data-type-key="product"] {
+        color: var(--text-tertiary);
+      }
       .product-card .strata-dots {
         display: flex;
         gap: 3px;
@@ -32690,6 +32746,13 @@
         skill: "Skill",
         tool: "Tool",
         mcp: "MCP server",
+        model: "Model",
+        // Phase 2a: also label the taxonomy types used in data/products.json
+        // so future PRODUCT_DETAILS entries that carry these values render
+        // cleanly without inventing new vocabulary.
+        platform: "Platform",
+        infrastructure: "Infrastructure",
+        "model-api": "Model API",
       };
 
       const PRODUCT_HERO_COPY = {
@@ -37546,6 +37609,34 @@
           // Hover → highlight strata in center view
           card.addEventListener("mouseenter", () => highlightProductStrata(id));
           card.addEventListener("mouseleave", clearProductStrataHighlight);
+
+          // Phase 2a: surface product `type` as a badge on each card.
+          // Reads from PRODUCT_DETAILS (the live source) and falls back to
+          // card.dataset.type so future cards stay covered even before
+          // PRODUCT_DETAILS is updated.
+          if (!card.querySelector(".type-badge")) {
+            const pd =
+              (typeof PRODUCT_DETAILS !== "undefined" && PRODUCT_DETAILS[id]) ||
+              null;
+            const rawType =
+              (pd && pd.type) || card.dataset.type || "product";
+            const label =
+              (typeof ENTITY_TYPE_LABELS !== "undefined" &&
+                ENTITY_TYPE_LABELS[rawType]) ||
+              rawType.charAt(0).toUpperCase() + rawType.slice(1);
+            const badge = document.createElement("span");
+            badge.className = "type-badge";
+            badge.setAttribute("data-type-key", rawType);
+            badge.textContent = label;
+            const vendorEl = card.querySelector(".vendor");
+            if (vendorEl && vendorEl.nextSibling) {
+              vendorEl.parentNode.insertBefore(badge, vendorEl.nextSibling);
+            } else if (vendorEl) {
+              vendorEl.parentNode.appendChild(badge);
+            } else {
+              card.insertBefore(badge, card.firstChild);
+            }
+          }
         });
 
         attachProductCardCopyButtons();
