@@ -1,9 +1,28 @@
 # PRD: {a}OS Explorer — Phase 2: Product Catalog Expansion
 
-**Status:** Draft  
-**Date:** 2026-04-08  
+**Status:** Phase 2a Done · Phase 2b/2c Draft  
+**Date:** 2026-04-08 (Phase 2a closeout: 2026-05-23)  
 **Owner:** nymil  
 **Depends on:** Phase 1 prototype (explorer.html — 8 products, 7 strata, 2 axes)
+
+---
+
+## Phase 2a Completion Note — 2026-05-23
+
+Phase 2a ("Taxonomy visible end-to-end") shipped:
+
+- **Data quality**: Audited both `data/products.json` (37 entries) and the live `PRODUCT_DETAILS` inline catalog in `explorer.html` (51 entries). Type coverage was already 100% in both sources before this pass — no fills were required. Vocabularies differ by design: `products.json` uses taxonomy values (`platform`, `framework`, `infrastructure`, `model-api`, `tool`, `agent`, `skill`, `model`); `PRODUCT_DETAILS` uses entity-class values (`product`, `framework`, `tool`, `agent`, `skill`, `mcp`, `workflow`, `model`).
+- **UI surface**: Added a type badge on every product card in `explorer.html`. Badge is injected at DOMContentLoaded by reading `PRODUCT_DETAILS[id].type` (with `card.dataset.type` fallback), labeled via `ENTITY_TYPE_LABELS`, and colored per type (framework/agent/tool/skill/mcp/workflow/model/product). The existing left-rail Type filter (All / Products / Tools / Frameworks / Workflows / Agents / Skills / MCPs) was already wired and unchanged.
+- **Label map extended**: `ENTITY_TYPE_LABELS` now also covers the taxonomy vocabulary (`platform`, `infrastructure`, `model-api`, `model`) so future PRODUCT_DETAILS entries that carry those values render cleanly.
+- **One reconciliation note (deferred to 2b)**: `cursor` is `product` in `PRODUCT_DETAILS` vs `platform` in `products.json`. Left as-is for this pass — PRODUCT_DETAILS is the live source and "product" is the entity-class catch-all there. Phase 2b should harmonize the two vocabularies (single source of truth).
+
+**Deferred to Phase 2b**:
+
+- Compare-matrix "Type" row
+- Single source of truth between `products.json` and `PRODUCT_DETAILS` (vocab + ID convention)
+- Adding the new high-priority products listed in Section 4
+- Section 6.3 Compare Matrix Type column
+- Section 6.4 search highlighting of type strings
 
 ---
 
