@@ -2,795 +2,1352 @@
 // Source of truth: data/concepts.json
 (function () {
   var concepts = {
-    harness: {
-      slug: "harness",
-      name: "Execution Harness",
-      aliases: [
-        "harness",
-        "harnes",
-        "orchestration harness",
-        "execution harness",
-        "delivery harness",
-        "layer 0",
-        "stratum 0",
-      ],
-      shortDefinition:
-        "A governing scaffold that constrains sequencing, context budgets, checkpoints, and stop conditions.",
-      explainer:
-        "A harness sits at L0/L4 (Meta/Orchestration) and is the assembled agent bundle: model + tools + memory + orchestration + policy. It defines how work is done, not just what to do. It wraps an agent or pipeline with lifecycle controls \u2014 sequencing steps, enforcing context budgets, persisting checkpoints, and triggering stop conditions. Examples include execution harnesses (GSD, BMAD), test harnesses (Superpowers), and CI/CD harnesses (Harness.io). Not to be confused with the agent or the tools it calls \u2014 the harness is the governing scaffold around them.",
-      strata: ["L0", "L4"],
-      axes: ["Orchestration"],
-      relatedProductIds: ["bmad", "gsd", "superpowers"],
-      relatedConceptSlugs: ["loop-core", "guardrails", "checkpoint"],
-      antiPatterns: [
-        "Bolting agent execution onto generic container orchestrators without native lifecycle support leads to fragile systems that crash mid-task.",
-      ],
-      mitigations: [
-        "Utilize a dedicated agent runtime harness that natively provides durable execution, state isolation, and lifecycle management from day one.",
-      ],
-      sources: [
-        {
-          label: "Glossary \u2014 docs.html",
-          href: "docs.html#glossary",
-        },
-      ],
-      freshnessTier: "A",
-      lastReviewed: "2026-04-14",
-      reviewPolicy: "quarterly",
-      confidence: 0.95,
-      status: "complete",
-    },
-    "loop-core": {
-      slug: "loop-core",
-      name: "loop-core",
-      aliases: ["loop", "loops", "loop-core", "agentic loop", "feedback loop"],
-      shortDefinition:
-        "Iterative cycle of plan \u2192 act \u2192 evaluate \u2192 adjust until stop conditions are met.",
-      explainer:
-        "The canonical agentic control cycle. An agent enters a loop where it plans the next action, executes it via tools or generation, evaluates the result against success criteria, and adjusts strategy. The loop repeats until stop conditions are satisfied or a budget is exhausted. Variants include research loops, evaluation loops, implementation loops, and recovery loops.",
-      strata: ["L3", "L4"],
-      axes: ["Execution", "Orchestration"],
-      relatedProductIds: ["langgraph", "wfeval", "wfhuman"],
-      relatedConceptSlugs: ["harness", "checkpoint", "memory"],
-      antiPatterns: [
-        "Relying on a single, open-ended prompt-response generation causes the agent to hallucinate actions instead of dynamically adapting to environment feedback.",
-      ],
-      mitigations: [
-        "Implement an iterative control loop where the agent explicitly generates a thought trace to reason about observations before executing its next action.",
-      ],
-      sources: [
-        {
-          label: "Glossary \u2014 docs.html",
-          href: "docs.html#glossary",
-        },
-      ],
-      freshnessTier: "A",
-      lastReviewed: "2026-04-14",
-      reviewPolicy: "quarterly",
-      confidence: 0.88,
-      status: "seed",
-    },
-    mcp: {
-      slug: "mcp",
-      name: "MCP Tooling",
-      aliases: ["mcp", "model context protocol", "tool registry"],
-      shortDefinition:
-        "Standardized interface for exposing tools, resources, and prompts to agents \u2014 strong for tool access, but not a replacement for hook-driven lifecycle automation.",
-      explainer:
-        "The Model Context Protocol (MCP) establishes a universal interface allowing agents to connect to any compliant tool or dataset. Instead of writing bespoke integrations for every data source, teams adopt MCP to provide plug-and-play tool surfaces. MCP servers expose file systems, APIs, databases, and browser actions through a consistent schema. But MCP is ultimately a tool surface, not a memory operating system. If you need automatic lifecycle behavior \u2014 such as pre-fetching context before reasoning, post-turn capture after execution, or pre-compressing long sessions before truncation \u2014 native hooks or plugins are often the better mechanism. Use MCP for standardized access; use hooks when the lifecycle itself must run automatically.",
-      strata: ["L2", "L3"],
-      axes: ["Knowledge", "Execution"],
-      relatedProductIds: ["mcpgithub", "mcpplaywright", "mcpfs"],
-      relatedConceptSlugs: [
-        "tool_calling",
-        "harness",
-        "hooks",
-        "lifecycle-management",
-      ],
-      antiPatterns: [
-        "Treating MCP alone as a shared brain forces the model to remember to call memory tools manually, making lifecycle-critical behavior like pre-fetch, post-turn capture, and pre-compress fragile.",
-      ],
-      mitigations: [
-        "Use MCP as the standard tool interface for external capabilities, but pair it with native hooks or plugins when you need automatic lifecycle events such as context pre-fetch, post-turn capture, or pre-compress.",
-      ],
-      sources: [
-        {
-          label: "Glossary \u2014 docs.html",
-          href: "docs.html#glossary",
-        },
-      ],
-      freshnessTier: "A",
-      lastReviewed: "2026-04-14",
-      reviewPolicy: "quarterly",
-      confidence: 0.85,
-      status: "seed",
-    },
-    hooks: {
-      slug: "hooks",
-      name: "Lifecycle Hooks",
-      aliases: [
-        "hooks",
-        "hook",
-        "lifecycle hooks",
-        "agent hooks",
-        "hook callbacks",
-        "pretooluse",
-        "posttooluse",
-        "plugin hooks",
-      ],
-      shortDefinition:
-        "Native lifecycle callbacks that run automatically before or after agent actions, enabling memory automation that tools alone cannot guarantee.",
-      explainer:
-        "Hooks are deterministic extension points in an agent runtime: code that runs before or after a lifecycle event such as a turn, tool call, file edit, or context compaction boundary. Unlike MCP, which exposes capabilities the model may choose to call, hooks run automatically at the exact lifecycle boundary you define. That makes them ideal for shared-brain systems: pre-fetch relevant memory before reasoning begins, capture decisions and file changes after the turn completes, and pre-compress state before the context window overflows. Hooks are not universally better than MCP \u2014 they solve a different problem. MCP is for tool access. Hooks are for lifecycle control.",
-      strata: ["L3", "L4"],
-      axes: ["Execution", "Orchestration"],
-      relatedProductIds: ["clawmem", "claude-code", "langgraph"],
-      relatedConceptSlugs: [
-        "mcp",
-        "lifecycle-management",
-        "memory",
-        "pre-fetch",
-        "post-turn-capture",
-        "pre-compress",
-      ],
-      antiPatterns: [
-        "Relying on the model to remember to call a memory tool every turn turns shared-brain behavior into a best-effort suggestion rather than a guaranteed system behavior.",
-      ],
-      mitigations: [
-        "Attach memory operations to deterministic lifecycle hooks: pre-fetch context before reasoning, capture outcomes after the turn, and compress state before context loss.",
-      ],
-      sources: [],
-      freshnessTier: "A",
-      lastReviewed: "2026-04-25",
-      reviewPolicy: "quarterly",
-      confidence: 0.9,
-      status: "seed",
-    },
-    "lifecycle-management": {
-      slug: "lifecycle-management",
-      name: "Lifecycle Management",
-      aliases: [
-        "lifecycle management",
-        "agent lifecycle",
-        "session lifecycle",
-        "memory lifecycle",
-        "turn lifecycle",
-        "lifecycle orchestration",
-        "context lifecycle",
-      ],
-      shortDefinition:
-        "Automatic orchestration of memory and context across the full agent turn: before reasoning, after execution, and before compaction or truncation.",
-      explainer:
-        "Lifecycle Management is the discipline of treating memory as an active operating loop rather than a passive database. A robust shared brain does not wait for the model to decide when to search or write memory. Instead, it defines lifecycle stages around every task: pre-fetch relevant history before reasoning starts, post-turn capture decisions and file modifications after the agent acts, and pre-compress the session before the context window truncates away useful state. This sits at the junction of L2 (Knowledge & Memory) and L4 (Orchestration) because it coordinates both retrieval and control flow.",
-      strata: ["L2", "L4"],
-      axes: ["Knowledge", "Orchestration"],
-      relatedProductIds: ["clawmem", "langgraph", "gsd"],
-      relatedConceptSlugs: [
-        "hooks",
-        "memory",
-        "checkpoint",
-        "pre-fetch",
-        "post-turn-capture",
-        "pre-compress",
-        "mcp",
-      ],
-      antiPatterns: [
-        "Treating memory as a passive lookup tool instead of an orchestrated lifecycle causes cold starts, lost decisions, and context-window amnesia.",
-      ],
-      mitigations: [
-        "Design explicit lifecycle stages for memory: pre-fetch before reasoning, post-turn capture after action, and pre-compress before truncation or handoff.",
-      ],
-      sources: [],
-      freshnessTier: "A",
-      lastReviewed: "2026-04-25",
-      reviewPolicy: "quarterly",
-      confidence: 0.89,
-      status: "seed",
-    },
-    "pre-fetch": {
-      slug: "pre-fetch",
-      name: "Pre-Fetch",
-      aliases: [
-        "pre-fetch",
-        "prefetch",
-        "context prefetch",
-        "pre-fetch context",
-        "pre reasoning retrieval",
-        "context injection",
-      ],
-      shortDefinition:
-        "Automatic retrieval and prompt injection of relevant history before the model begins reasoning.",
-      explainer:
-        "Pre-Fetch is the lifecycle stage that runs before the model starts reasoning. Its job is to search the shared memory vault, rank the most relevant historical context, and inject that material into the prompt or working state automatically. Without pre-fetch, the model starts cold and must first remember that memory exists, then decide to query it, then reason about the result \u2014 a fragile chain. Good pre-fetch systems use retrieval, reranking, and graph traversal so only the highest-value context lands in the active window.",
-      strata: ["L2", "L4"],
-      axes: ["Knowledge", "Orchestration"],
-      relatedProductIds: ["clawmem", "langgraph", "claude-code"],
-      relatedConceptSlugs: ["hooks", "lifecycle-management", "memory", "rag"],
-      antiPatterns: [
-        "Starting every task from a blank prompt and hoping the model will remember to query memory produces repeated rediscovery and missed historical context.",
-      ],
-      mitigations: [
-        "Run retrieval automatically before reasoning begins. Rank and inject only the most relevant history so the model starts with the right context already loaded.",
-      ],
-      sources: [],
-      freshnessTier: "A",
-      lastReviewed: "2026-04-25",
-      reviewPolicy: "quarterly",
-      confidence: 0.87,
-      status: "seed",
-    },
-    "post-turn-capture": {
-      slug: "post-turn-capture",
-      name: "Post-Turn Capture",
-      aliases: [
-        "post-turn capture",
-        "post turn capture",
-        "after turn capture",
-        "post-task capture",
-        "memory writeback",
-        "postturn capture",
-      ],
-      shortDefinition:
-        "Automatic extraction and storage of decisions, file modifications, and summaries after the agent finishes a turn or task.",
-      explainer:
-        "Post-Turn Capture runs after the agent has acted. It inspects what happened \u2014 which files changed, which decisions were made, which tools failed, what the user prefers \u2014 and writes the durable pieces back into memory. This is the stage that converts ephemeral task activity into long-term learning. If capture is manual, it gets skipped. If it depends on the model remembering to call a tool, it becomes unreliable. Hook-driven post-turn capture turns memory into a compounding asset instead of a sparse scrapbook.",
-      strata: ["L2", "L4"],
-      axes: ["Knowledge", "Observability"],
-      relatedProductIds: ["clawmem", "claude-code", "langgraph"],
-      relatedConceptSlugs: [
-        "hooks",
-        "lifecycle-management",
-        "memory",
-        "checkpoint",
-      ],
-      antiPatterns: [
-        "Letting memory writes depend on manual summarization or explicit tool calls causes important decisions and task outcomes to evaporate at the end of the turn.",
-      ],
-      mitigations: [
-        "Attach post-turn capture to a deterministic hook that extracts decisions, file modifications, summaries, and user preferences immediately after execution completes.",
-      ],
-      sources: [],
-      freshnessTier: "A",
-      lastReviewed: "2026-04-25",
-      reviewPolicy: "quarterly",
-      confidence: 0.88,
-      status: "seed",
-    },
-    "pre-compress": {
-      slug: "pre-compress",
-      name: "Pre-Compress",
-      aliases: [
-        "pre-compress",
-        "pre compress",
-        "context compaction",
-        "pre-compaction",
-        "session compaction",
-        "pre-truncation compression",
-      ],
-      shortDefinition:
-        "Automatic checkpointing and compaction of working state before the context window truncates or a long session is compacted.",
-      explainer:
-        "Pre-Compress is the lifecycle stage that runs before the active context window overflows, a conversation is compacted, or a handoff occurs. Its purpose is to distill the current session into a smaller durable representation: checkpoint critical state, summarize recent decisions, and write the compressed result somewhere the next turn can recover it. Without pre-compress, the agent loses hard-won context at exactly the moment the session becomes most complex. It is the memory equivalent of saving your work before the power flickers.",
-      strata: ["L2", "L4"],
-      axes: ["Knowledge", "Orchestration"],
-      relatedProductIds: ["clawmem", "gsd", "claude-code"],
-      relatedConceptSlugs: [
-        "hooks",
-        "lifecycle-management",
-        "memory",
-        "checkpoint",
-      ],
-      antiPatterns: [
-        "Waiting until the context window is already full and then truncating blindly destroys state that should have been checkpointed or compressed first.",
-      ],
-      mitigations: [
-        "Trigger compaction before truncation boundaries. Summarize the recent session, checkpoint critical state, and persist the compressed representation for the next turn or thread.",
-      ],
-      sources: [],
-      freshnessTier: "A",
-      lastReviewed: "2026-04-25",
-      reviewPolicy: "quarterly",
-      confidence: 0.86,
-      status: "seed",
-    },
-    memory: {
-      slug: "memory",
-      name: "Memory Systems",
-      aliases: [
-        "memory",
-        "episodic memory",
-        "working memory",
-        "context memory",
-      ],
-      shortDefinition:
-        "Stores and recalls contextual state across turns, sessions, and tasks.",
-      explainer:
-        "Memory systems give agents the ability to persist and retrieve state beyond a single context window. A multi-tiered architecture typically includes working memory for active tasks, episodic memory for session history, and semantic memory for long-term knowledge. Without memory, agents suffer from amnesia \u2014 forcing users to repeatedly explain context and endure the same mistakes. Strong modern memory systems add lifecycle automation around each turn: pre-fetch relevant context before reasoning, post-turn capture durable decisions after action, and pre-compress state before context truncation.",
-      strata: ["L2"],
-      axes: ["Knowledge"],
-      relatedProductIds: ["clawmem", "mem0", "mcpmemory", "kotanaagent"],
-      relatedConceptSlugs: [
-        "loop-core",
-        "checkpoint",
-        "rag",
-        "hooks",
-        "lifecycle-management",
-      ],
-      antiPatterns: [
-        "Deploying stateless agents that suffer from amnesia forces users to repeatedly explain their context and endure the same mistakes in every new session.",
-      ],
-      mitigations: [
-        "Establish a multi-tiered memory architecture consisting of working memory for active tasks, episodic memory for session history, and semantic memory for long-term knowledge \u2014 then automate pre-fetch, post-turn capture, and pre-compress as lifecycle stages around each task.",
-      ],
-      sources: [
-        {
-          label: "Glossary \u2014 docs.html",
-          href: "docs.html#glossary",
-        },
-      ],
-      freshnessTier: "A",
-      lastReviewed: "2026-04-14",
-      reviewPolicy: "quarterly",
-      confidence: 0.9,
-      status: "seed",
-    },
-    guardrails: {
-      slug: "guardrails",
-      name: "Guardrails & Safety",
-      aliases: [
-        "guardrails",
-        "safety",
-        "output validation",
-        "content safety",
-        "prompt injection defense",
-        "input validation",
-      ],
-      shortDefinition:
-        "Validates inputs and outputs to ensure safety, policy compliance, and defense against prompt injection.",
-      explainer:
-        "Guardrails are deterministic validation layers embedded directly into the orchestration pipeline. They inspect every input, output, and tool invocation against policy-as-code rules before execution proceeds. Without them, agents are vulnerable to prompt injection, unauthorized privilege escalation, and compliance violations. Guardrails should be baked in from day one, not bolted on after deployment.",
-      strata: ["L6"],
-      axes: ["Governance"],
-      relatedProductIds: ["opa", "sksecurity", "wfhuman"],
-      relatedConceptSlugs: ["harness", "governance"],
-      antiPatterns: [
-        "Bolting security guardrails onto an application after deployment results in fragmented policies that agents can easily bypass through prompt manipulation.",
-      ],
-      mitigations: [
-        "Embed deterministic, policy-as-code guardrails directly into the orchestration layer from day one to validate all inputs, outputs, and tool invocations.",
-      ],
-      sources: [
-        {
-          label: "Glossary \u2014 docs.html",
-          href: "docs.html#glossary",
-        },
-      ],
-      freshnessTier: "A",
-      lastReviewed: "2026-04-14",
-      reviewPolicy: "quarterly",
-      confidence: 0.92,
-      status: "seed",
-    },
-    checkpoint: {
-      slug: "checkpoint",
-      name: "Checkpoints & State Persistence",
-      aliases: ["checkpoint", "checkpointing", "state snapshot"],
-      shortDefinition:
-        "Durable snapshots of agent state that enable resume, rollback, and crash recovery.",
-      explainer:
-        "Checkpoints capture a serializable snapshot of agent state \u2014 including context, progress, and intermediate results \u2014 at defined intervals. If the agent crashes, times out, or is preempted, execution resumes from the last checkpoint rather than restarting from scratch. Essential for long-running tasks and multi-step pipelines.",
-      strata: ["L4"],
-      axes: ["Orchestration"],
-      relatedProductIds: [],
-      relatedConceptSlugs: ["harness", "loop-core", "memory"],
-      antiPatterns: [],
-      mitigations: [],
-      sources: [],
-      freshnessTier: "A",
-      lastReviewed: "2026-04-14",
-      reviewPolicy: "quarterly",
-      confidence: 0.7,
-      status: "seed",
-    },
-    tool_calling: {
-      slug: "tool_calling",
-      name: "Tool Calling",
-      aliases: ["tool calling", "tool use", "function calling"],
-      shortDefinition:
-        "The mechanism by which an agent invokes external tools, APIs, or functions to act on the world.",
-      explainer:
-        "Tool calling is the bridge between an agent's reasoning and real-world side effects. The agent generates a structured tool invocation (name + arguments), the runtime validates and dispatches it, and the result is fed back into the agent's context. Standardized via protocols like MCP and OpenAI function calling.",
-      strata: ["L2", "L3"],
-      axes: ["Execution"],
-      relatedProductIds: [],
-      relatedConceptSlugs: ["mcp", "harness"],
-      antiPatterns: [],
-      mitigations: [],
-      sources: [],
-      freshnessTier: "A",
-      lastReviewed: "2026-04-14",
-      reviewPolicy: "quarterly",
-      confidence: 0.7,
-      status: "seed",
-    },
-    rag: {
-      slug: "rag",
-      name: "Retrieval-Augmented Generation",
-      aliases: ["rag", "retrieval augmented generation", "RAG"],
-      shortDefinition:
-        "Augments LLM generation with retrieved external knowledge to reduce hallucination and improve accuracy.",
-      explainer:
-        "RAG pipelines retrieve relevant documents from a knowledge base before generating a response, grounding the agent's output in real data rather than parametric memory alone. Implementations range from simple vector-search retrieval to multi-hop re-ranking pipelines with hybrid search.",
-      strata: ["L2"],
-      axes: ["Knowledge"],
-      relatedProductIds: [],
-      relatedConceptSlugs: ["memory"],
-      antiPatterns: [],
-      mitigations: [],
-      sources: [],
-      freshnessTier: "A",
-      lastReviewed: "2026-04-14",
-      reviewPolicy: "quarterly",
-      confidence: 0.7,
-      status: "seed",
-    },
-    governance: {
-      slug: "governance",
-      name: "Governance & Compliance",
-      aliases: ["governance", "compliance", "policy enforcement"],
-      shortDefinition:
-        "Organizational policies, audit trails, and compliance controls that govern agent behavior at scale.",
-      explainer:
-        "Governance encompasses the policies, audit mechanisms, and compliance controls that ensure agents operate within organizational boundaries. This includes access control, usage quotas, logging, approval workflows, and regulatory compliance. Distinct from runtime guardrails \u2014 governance operates at the organizational and fleet level.",
-      strata: ["L6", "L7"],
-      axes: ["Governance"],
-      relatedProductIds: [],
-      relatedConceptSlugs: ["guardrails", "harness"],
-      antiPatterns: [],
-      mitigations: [],
-      sources: [],
-      freshnessTier: "A",
-      lastReviewed: "2026-04-14",
-      reviewPolicy: "quarterly",
-      confidence: 0.7,
-      status: "seed",
-    },
-    stack: {
-      slug: "stack",
-      name: "Agentic Stack",
-      aliases: ["stack", "agent stack", "full stack"],
-      shortDefinition:
-        "Complete 7-layer configuration for a domain: model + memory + tools + orchestration + UX + governance.",
-      explainer:
-        "A stack is the full end-to-end instantiation of all 7 strata optimized for a specific domain or use case. It's not just the technologies, but their wiring: which model, which memory backend, which tool set, which orchestration pattern, which UI paradigm, and which governance policies. Stacks are repeatable blueprints \u2014 once assembled and battle-tested, they can be cloned for similar use cases. Examples: research loop stack, customer service stack, code generation stack.",
-      strata: ["L0"],
-      axes: ["Orchestration"],
-      relatedProductIds: [],
-      relatedConceptSlugs: ["harness", "persona", "pattern", "covenant"],
-      antiPatterns: [
-        "Hand-assembling agents from loose components without a reproducible stack template leads to drift, inconsistency, and high maintenance cost across multiple similar applications.",
-      ],
-      mitigations: [
-        "Define canonical stacks as blueprints: reusable 7L configurations that can be versioned, tested, and cloned for new instances.",
-      ],
-      sources: [],
-      freshnessTier: "A",
-      lastReviewed: "2026-04-17",
-      reviewPolicy: "quarterly",
-      confidence: 0.88,
-      status: "seed",
-      hidden: true,
-      easterEgg: true,
-    },
-    persona: {
-      slug: "persona",
-      name: "Agent Persona",
-      aliases: ["persona", "identity", "role", "instructions", "agent persona"],
-      shortDefinition:
-        "The identity, voice, role, and behavioral directives that define an agent's character and operating principles.",
-      explainer:
-        "A persona is the coherent identity and behavioral contract of an agent. It encompasses role (what the agent is), voice (how it communicates), core values (what it prioritizes), constraints (what it won't do), and operating principles (how it makes decisions). A well-defined persona ensures consistency across all interactions and makes agent behavior predictable and auditable. Personas can be hard-coded in system prompts, learned from examples, or emergent from reward models.",
-      strata: ["L0"],
-      axes: ["Governance"],
-      relatedProductIds: [],
-      relatedConceptSlugs: ["harness", "covenant", "stack"],
-      antiPatterns: [
-        "Deploying agents without a clear, documented persona results in unpredictable behavior and difficulty in debugging misalignment.",
-      ],
-      mitigations: [
-        "Define a canonical persona for each agent: explicit role, voice guidelines, core values, and decision-making principles.",
-      ],
-      sources: [],
-      freshnessTier: "A",
-      lastReviewed: "2026-04-17",
-      reviewPolicy: "quarterly",
-      confidence: 0.82,
-      status: "seed",
-      hidden: true,
-      easterEgg: true,
-    },
-    pattern: {
-      slug: "pattern",
-      name: "Agentic Pattern",
-      aliases: [
-        "pattern",
-        "orchestration pattern",
-        "control pattern",
-        "ReAct",
-        "chain of thought",
-      ],
-      shortDefinition:
-        "Repeatable architectural patterns for orchestrating agent reasoning, action, and feedback loops.",
-      explainer:
-        "Agentic patterns are proven choreographies of reasoning \u2192 planning \u2192 execution \u2192 evaluation. Examples include ReAct (Reasoning + Acting), Chain-of-Thought (CoT), Self-Ask, Tree-of-Thought, and multi-agent debate. A pattern defines the structure of the control loop and the format of prompts, but is agnostic to the underlying model or tools. Patterns are composable \u2014 they can be nested or sequenced to build complex multi-stage pipelines.",
-      strata: ["L0"],
-      axes: ["Orchestration"],
-      relatedProductIds: [],
-      relatedConceptSlugs: ["harness", "loop-core", "stack"],
-      antiPatterns: [
-        "Designing orchestration logic ad-hoc for each new task duplicates effort, introduces subtle bugs, and makes it impossible to compare or optimize approaches.",
-      ],
-      mitigations: [
-        "Identify and document repeatable patterns (ReAct, CoT, debate, retrieval loops) and encode them as reusable, testable orchestration templates.",
-      ],
-      sources: [],
-      freshnessTier: "A",
-      lastReviewed: "2026-04-17",
-      reviewPolicy: "quarterly",
-      confidence: 0.85,
-      status: "seed",
-      hidden: true,
-      easterEgg: true,
-    },
-    config: {
-      slug: "config",
-      name: "Agent Configuration",
-      aliases: [
-        "config",
-        "configuration",
-        "instantiation",
-        "parameters",
-        "agent config",
-      ],
-      shortDefinition:
-        "Runtime parameters that instantiate a harness for a specific task or domain: model, temperature, tools, context budget, etc.",
-      explainer:
-        "Configuration is the set of declarative, runtime-modifiable knobs that turn a generic harness into a domain-specific agent. Examples: which LLM, temperature, top-k, tool set, max context window, timeout, max retries, memory backend, guardrail policies. Good configs are externalized and version-controlled, making it easy to A/B test, audit, and roll back changes without code changes.",
-      strata: ["L0"],
-      axes: ["Orchestration", "Governance"],
-      relatedProductIds: [],
-      relatedConceptSlugs: ["harness", "covenant", "stack"],
-      antiPatterns: [
-        "Hardcoding agent parameters (model, temperature, tool list) into application code makes it impossible to tune without redeploy and prevents safe A/B testing.",
-      ],
-      mitigations: [
-        "Externalize all agent configuration into declarative files or services that can be modified, versioned, and rolled back independently of application code.",
-      ],
-      sources: [],
-      freshnessTier: "A",
-      lastReviewed: "2026-04-17",
-      reviewPolicy: "quarterly",
-      confidence: 0.8,
-      status: "seed",
-      hidden: true,
-      easterEgg: true,
-    },
-    covenant: {
-      slug: "covenant",
-      name: "Agent Covenant",
-      aliases: [
-        "covenant",
-        "SLA",
-        "guarantee",
-        "pledge",
-        "behavioral contract",
-      ],
-      shortDefinition:
-        "A formal pledge of agent capabilities, performance, and safety guarantees: latency, accuracy, uptime, and compliance.",
-      explainer:
-        "A covenant is the behavioral contract between an agent and its users/operators. It specifies: what the agent commits to do (capability boundary), how fast (latency SLA), with what accuracy (quality threshold), under what conditions (fault resilience), and in compliance with what policies (safety constraints). Covenants are machine-testable \u2014 they become the basis for automated eval frameworks and production monitoring.",
-      strata: ["L0"],
-      axes: ["Governance", "Observability"],
-      relatedProductIds: [],
-      relatedConceptSlugs: ["harness", "persona", "stack"],
-      antiPatterns: [
-        "Deploying agents without explicit performance guarantees or safety pledges leads to misaligned expectations and production surprises.",
-      ],
-      mitigations: [
-        "Define a machine-testable covenant for each agent: capability boundary, latency SLA, quality threshold, fault resilience, and compliance policies. Instrument monitoring and evals against this covenant.",
-      ],
-      sources: [],
-      freshnessTier: "A",
-      lastReviewed: "2026-04-17",
-      reviewPolicy: "quarterly",
-      confidence: 0.78,
-      status: "seed",
-      hidden: true,
-      easterEgg: true,
-    },
-    "decoupled-architecture": {
-      slug: "decoupled-architecture",
-      name: "Decoupled Architecture",
-      aliases: [
-        "decoupled architecture",
-        "decoupled archetecture",
-        "decoupled-archetecture",
-        "decoupled-architecture",
-        "event-driven architecture",
-        "loose coupling",
-        "contract-driven design",
-        "interface segregation",
-      ],
-      shortDefinition:
-        "System design where agent components communicate via typed contracts rather than direct calls, enabling independent deployment and evolution.",
-      explainer:
-        "Decoupled Architecture is the practice of separating agent components \u2014 planners, executors, memory, tools, evaluators \u2014 so that each communicates only through well-defined interface contracts rather than direct function calls or shared mutable state. At L3 (Execution), this means tools and sub-agents expose typed input/output schemas (see Pydantic Contracts). At L4 (Orchestration), this means the orchestrator treats each sub-agent as a black box it can swap without rewiring the pipeline. The key benefit: any component can be upgraded, scaled, or replaced without cascading changes. Common patterns include event buses, message queues, and typed RPC schemas. Anti-pattern: tightly-coupled pipelines where a planner directly imports executor internals, making the system impossible to test or evolve in isolation.",
-      strata: ["L3", "L4"],
-      axes: ["Orchestration", "Execution"],
-      relatedProductIds: ["langgraph", "langchain", "claudecode"],
-      relatedConceptSlugs: ["harness", "pydantic-contracts", "loop-core"],
-      antiPatterns: [
-        "Tightly-coupled pipelines where the orchestrator directly imports executor internals make individual components impossible to test, replace, or scale independently.",
-      ],
-      mitigations: [
-        "Define typed interface contracts at every component boundary. Use event buses or message queues between planners, executors, and evaluators. Validate contracts automatically with Pydantic or JSON Schema.",
-      ],
-      sources: [],
-      freshnessTier: "A",
-      lastReviewed: "2026-04-25",
-      reviewPolicy: "quarterly",
-      confidence: 0.88,
-      status: "seed",
-    },
-    "pydantic-contracts": {
-      slug: "pydantic-contracts",
-      name: "Pydantic Contracts",
-      aliases: [
-        "pydantic contracts",
-        "pydantic-contracts",
-        "pydantic",
-        "typed schemas",
-        "typed contracts",
-        "schema validation",
-        "structured outputs",
-        "output schema",
-      ],
-      shortDefinition:
-        "Typed data contracts enforced at agent boundaries using Pydantic models to validate inputs, outputs, and tool call arguments.",
-      explainer:
-        "Pydantic Contracts are the practice of using Pydantic BaseModel classes as the canonical type layer between agent components. At L3 (Execution), every tool call input and LLM output is validated against a Pydantic schema before being accepted. This catches hallucinated fields, missing required arguments, and type mismatches at the boundary rather than deep inside pipeline logic. Pydantic Contracts are the runtime enforcement of Decoupled Architecture: they make the contracts machine-testable, not just documented. Structured output APIs (OpenAI, Anthropic) can be driven directly from Pydantic model definitions, ensuring the LLM response parses cleanly. Key benefit: eliminates an entire class of silent failures where a malformed tool call propagates for many steps before producing an error.",
-      strata: ["L3"],
-      axes: ["Execution", "Governance"],
-      relatedProductIds: ["langchain", "claudecode", "sksecurity"],
-      relatedConceptSlugs: [
-        "decoupled-architecture",
-        "guardrails",
-        "tool_calling",
-      ],
-      antiPatterns: [
-        "Accepting raw LLM-generated dicts and passing them directly to tool functions without schema validation causes silent type errors and hallucinated fields that corrupt pipeline state.",
-      ],
-      mitigations: [
-        "Declare a Pydantic model for every tool's input and output. Validate at the boundary before any downstream processing. Use structured output APIs to force LLM responses to conform to the schema.",
-      ],
-      sources: [],
-      freshnessTier: "A",
-      lastReviewed: "2026-04-25",
-      reviewPolicy: "quarterly",
-      confidence: 0.91,
-      status: "seed",
-    },
-  };
+  "harness": {
+    "slug": "harness",
+    "name": "Execution Harness",
+    "aliases": [
+      "harness",
+      "harnes",
+      "orchestration harness",
+      "execution harness",
+      "delivery harness",
+      "layer 0",
+      "stratum 0"
+    ],
+    "shortDefinition": "A governing scaffold that constrains sequencing, context budgets, checkpoints, and stop conditions.",
+    "explainer": "A harness sits at L0/L4 (Meta/Orchestration) and is the assembled agent bundle: model + tools + memory + orchestration + policy. It defines how work is done, not just what to do. It wraps an agent or pipeline with lifecycle controls \u2014 sequencing steps, enforcing context budgets, persisting checkpoints, and triggering stop conditions. Examples include execution harnesses (GSD, BMAD), test harnesses (Superpowers), and CI/CD harnesses (Harness.io). Not to be confused with the agent or the tools it calls \u2014 the harness is the governing scaffold around them.",
+    "strata": [
+      "L0",
+      "L4"
+    ],
+    "axes": [
+      "Orchestration"
+    ],
+    "relatedProductIds": [
+      "bmad",
+      "gsd",
+      "superpowers"
+    ],
+    "relatedConceptSlugs": [
+      "loop-core",
+      "guardrails",
+      "checkpoint"
+    ],
+    "antiPatterns": [
+      "Bolting agent execution onto generic container orchestrators without native lifecycle support leads to fragile systems that crash mid-task."
+    ],
+    "mitigations": [
+      "Utilize a dedicated agent runtime harness that natively provides durable execution, state isolation, and lifecycle management from day one."
+    ],
+    "sources": [
+      {
+        "label": "Glossary \u2014 docs.html",
+        "href": "docs.html#glossary"
+      }
+    ],
+    "freshnessTier": "A",
+    "lastReviewed": "2026-04-14",
+    "reviewPolicy": "quarterly",
+    "confidence": 0.95,
+    "status": "complete"
+  },
+  "loop-core": {
+    "slug": "loop-core",
+    "name": "loop-core",
+    "aliases": [
+      "loop",
+      "loops",
+      "loop-core",
+      "agentic loop",
+      "feedback loop"
+    ],
+    "shortDefinition": "Iterative cycle of plan \u2192 act \u2192 evaluate \u2192 adjust until stop conditions are met.",
+    "explainer": "The canonical agentic control cycle. An agent enters a loop where it plans the next action, executes it via tools or generation, evaluates the result against success criteria, and adjusts strategy. The loop repeats until stop conditions are satisfied or a budget is exhausted. Variants include research loops, evaluation loops, implementation loops, and recovery loops.",
+    "strata": [
+      "L3",
+      "L4"
+    ],
+    "axes": [
+      "Execution",
+      "Orchestration"
+    ],
+    "relatedProductIds": [
+      "langgraph",
+      "wfeval",
+      "wfhuman"
+    ],
+    "relatedConceptSlugs": [
+      "harness",
+      "checkpoint",
+      "memory"
+    ],
+    "antiPatterns": [
+      "Relying on a single, open-ended prompt-response generation causes the agent to hallucinate actions instead of dynamically adapting to environment feedback."
+    ],
+    "mitigations": [
+      "Implement an iterative control loop where the agent explicitly generates a thought trace to reason about observations before executing its next action."
+    ],
+    "sources": [
+      {
+        "label": "Glossary \u2014 docs.html",
+        "href": "docs.html#glossary"
+      }
+    ],
+    "freshnessTier": "A",
+    "lastReviewed": "2026-04-14",
+    "reviewPolicy": "quarterly",
+    "confidence": 0.88,
+    "status": "seed"
+  },
+  "mcp": {
+    "slug": "mcp",
+    "name": "MCP Tooling",
+    "aliases": [
+      "mcp",
+      "model context protocol",
+      "tool registry"
+    ],
+    "shortDefinition": "Standardized interface for exposing tools, resources, and prompts to agents \u2014 strong for tool access, but not a replacement for hook-driven lifecycle automation.",
+    "explainer": "The Model Context Protocol (MCP) establishes a universal interface allowing agents to connect to any compliant tool or dataset. Instead of writing bespoke integrations for every data source, teams adopt MCP to provide plug-and-play tool surfaces. MCP servers expose file systems, APIs, databases, and browser actions through a consistent schema. But MCP is ultimately a tool surface, not a memory operating system. If you need automatic lifecycle behavior \u2014 such as pre-fetching context before reasoning, post-turn capture after execution, or pre-compressing long sessions before truncation \u2014 native hooks or plugins are often the better mechanism. Use MCP for standardized access; use hooks when the lifecycle itself must run automatically.",
+    "strata": [
+      "L2",
+      "L3"
+    ],
+    "axes": [
+      "Knowledge",
+      "Execution"
+    ],
+    "relatedProductIds": [
+      "mcpgithub",
+      "mcpplaywright",
+      "mcpfs"
+    ],
+    "relatedConceptSlugs": [
+      "tool_calling",
+      "harness",
+      "hooks",
+      "lifecycle-management"
+    ],
+    "antiPatterns": [
+      "Treating MCP alone as a shared brain forces the model to remember to call memory tools manually, making lifecycle-critical behavior like pre-fetch, post-turn capture, and pre-compress fragile."
+    ],
+    "mitigations": [
+      "Use MCP as the standard tool interface for external capabilities, but pair it with native hooks or plugins when you need automatic lifecycle events such as context pre-fetch, post-turn capture, or pre-compress."
+    ],
+    "sources": [
+      {
+        "label": "Glossary \u2014 docs.html",
+        "href": "docs.html#glossary"
+      }
+    ],
+    "freshnessTier": "A",
+    "lastReviewed": "2026-04-14",
+    "reviewPolicy": "quarterly",
+    "confidence": 0.85,
+    "status": "seed"
+  },
+  "hooks": {
+    "slug": "hooks",
+    "name": "Lifecycle Hooks",
+    "aliases": [
+      "hooks",
+      "hook",
+      "lifecycle hooks",
+      "agent hooks",
+      "hook callbacks",
+      "pretooluse",
+      "posttooluse",
+      "plugin hooks"
+    ],
+    "shortDefinition": "Native lifecycle callbacks that run automatically before or after agent actions, enabling memory automation that tools alone cannot guarantee.",
+    "explainer": "Hooks are deterministic extension points in an agent runtime: code that runs before or after a lifecycle event such as a turn, tool call, file edit, or context compaction boundary. Unlike MCP, which exposes capabilities the model may choose to call, hooks run automatically at the exact lifecycle boundary you define. That makes them ideal for shared-brain systems: pre-fetch relevant memory before reasoning begins, capture decisions and file changes after the turn completes, and pre-compress state before the context window overflows. Hooks are not universally better than MCP \u2014 they solve a different problem. MCP is for tool access. Hooks are for lifecycle control.",
+    "strata": [
+      "L3",
+      "L4"
+    ],
+    "axes": [
+      "Execution",
+      "Orchestration"
+    ],
+    "relatedProductIds": [
+      "clawmem",
+      "claude-code",
+      "langgraph"
+    ],
+    "relatedConceptSlugs": [
+      "mcp",
+      "lifecycle-management",
+      "memory",
+      "pre-fetch",
+      "post-turn-capture",
+      "pre-compress"
+    ],
+    "antiPatterns": [
+      "Relying on the model to remember to call a memory tool every turn turns shared-brain behavior into a best-effort suggestion rather than a guaranteed system behavior."
+    ],
+    "mitigations": [
+      "Attach memory operations to deterministic lifecycle hooks: pre-fetch context before reasoning, capture outcomes after the turn, and compress state before context loss."
+    ],
+    "sources": [],
+    "freshnessTier": "A",
+    "lastReviewed": "2026-04-25",
+    "reviewPolicy": "quarterly",
+    "confidence": 0.9,
+    "status": "seed"
+  },
+  "lifecycle-management": {
+    "slug": "lifecycle-management",
+    "name": "Lifecycle Management",
+    "aliases": [
+      "lifecycle management",
+      "agent lifecycle",
+      "session lifecycle",
+      "memory lifecycle",
+      "turn lifecycle",
+      "lifecycle orchestration",
+      "context lifecycle"
+    ],
+    "shortDefinition": "Automatic orchestration of memory and context across the full agent turn: before reasoning, after execution, and before compaction or truncation.",
+    "explainer": "Lifecycle Management is the discipline of treating memory as an active operating loop rather than a passive database. A robust shared brain does not wait for the model to decide when to search or write memory. Instead, it defines lifecycle stages around every task: pre-fetch relevant history before reasoning starts, post-turn capture decisions and file modifications after the agent acts, and pre-compress the session before the context window truncates away useful state. This sits at the junction of L2 (Knowledge & Memory) and L4 (Orchestration) because it coordinates both retrieval and control flow.",
+    "strata": [
+      "L2",
+      "L4"
+    ],
+    "axes": [
+      "Knowledge",
+      "Orchestration"
+    ],
+    "relatedProductIds": [
+      "clawmem",
+      "langgraph",
+      "gsd"
+    ],
+    "relatedConceptSlugs": [
+      "hooks",
+      "memory",
+      "checkpoint",
+      "pre-fetch",
+      "post-turn-capture",
+      "pre-compress",
+      "mcp"
+    ],
+    "antiPatterns": [
+      "Treating memory as a passive lookup tool instead of an orchestrated lifecycle causes cold starts, lost decisions, and context-window amnesia."
+    ],
+    "mitigations": [
+      "Design explicit lifecycle stages for memory: pre-fetch before reasoning, post-turn capture after action, and pre-compress before truncation or handoff."
+    ],
+    "sources": [],
+    "freshnessTier": "A",
+    "lastReviewed": "2026-04-25",
+    "reviewPolicy": "quarterly",
+    "confidence": 0.89,
+    "status": "seed"
+  },
+  "pre-fetch": {
+    "slug": "pre-fetch",
+    "name": "Pre-Fetch",
+    "aliases": [
+      "pre-fetch",
+      "prefetch",
+      "context prefetch",
+      "pre-fetch context",
+      "pre reasoning retrieval",
+      "context injection"
+    ],
+    "shortDefinition": "Automatic retrieval and prompt injection of relevant history before the model begins reasoning.",
+    "explainer": "Pre-Fetch is the lifecycle stage that runs before the model starts reasoning. Its job is to search the shared memory vault, rank the most relevant historical context, and inject that material into the prompt or working state automatically. Without pre-fetch, the model starts cold and must first remember that memory exists, then decide to query it, then reason about the result \u2014 a fragile chain. Good pre-fetch systems use retrieval, reranking, and graph traversal so only the highest-value context lands in the active window.",
+    "strata": [
+      "L2",
+      "L4"
+    ],
+    "axes": [
+      "Knowledge",
+      "Orchestration"
+    ],
+    "relatedProductIds": [
+      "clawmem",
+      "langgraph",
+      "claude-code"
+    ],
+    "relatedConceptSlugs": [
+      "hooks",
+      "lifecycle-management",
+      "memory",
+      "rag"
+    ],
+    "antiPatterns": [
+      "Starting every task from a blank prompt and hoping the model will remember to query memory produces repeated rediscovery and missed historical context."
+    ],
+    "mitigations": [
+      "Run retrieval automatically before reasoning begins. Rank and inject only the most relevant history so the model starts with the right context already loaded."
+    ],
+    "sources": [],
+    "freshnessTier": "A",
+    "lastReviewed": "2026-04-25",
+    "reviewPolicy": "quarterly",
+    "confidence": 0.87,
+    "status": "seed"
+  },
+  "post-turn-capture": {
+    "slug": "post-turn-capture",
+    "name": "Post-Turn Capture",
+    "aliases": [
+      "post-turn capture",
+      "post turn capture",
+      "after turn capture",
+      "post-task capture",
+      "memory writeback",
+      "postturn capture"
+    ],
+    "shortDefinition": "Automatic extraction and storage of decisions, file modifications, and summaries after the agent finishes a turn or task.",
+    "explainer": "Post-Turn Capture runs after the agent has acted. It inspects what happened \u2014 which files changed, which decisions were made, which tools failed, what the user prefers \u2014 and writes the durable pieces back into memory. This is the stage that converts ephemeral task activity into long-term learning. If capture is manual, it gets skipped. If it depends on the model remembering to call a tool, it becomes unreliable. Hook-driven post-turn capture turns memory into a compounding asset instead of a sparse scrapbook.",
+    "strata": [
+      "L2",
+      "L4"
+    ],
+    "axes": [
+      "Knowledge",
+      "Observability"
+    ],
+    "relatedProductIds": [
+      "clawmem",
+      "claude-code",
+      "langgraph"
+    ],
+    "relatedConceptSlugs": [
+      "hooks",
+      "lifecycle-management",
+      "memory",
+      "checkpoint"
+    ],
+    "antiPatterns": [
+      "Letting memory writes depend on manual summarization or explicit tool calls causes important decisions and task outcomes to evaporate at the end of the turn."
+    ],
+    "mitigations": [
+      "Attach post-turn capture to a deterministic hook that extracts decisions, file modifications, summaries, and user preferences immediately after execution completes."
+    ],
+    "sources": [],
+    "freshnessTier": "A",
+    "lastReviewed": "2026-04-25",
+    "reviewPolicy": "quarterly",
+    "confidence": 0.88,
+    "status": "seed"
+  },
+  "pre-compress": {
+    "slug": "pre-compress",
+    "name": "Pre-Compress",
+    "aliases": [
+      "pre-compress",
+      "pre compress",
+      "context compaction",
+      "pre-compaction",
+      "session compaction",
+      "pre-truncation compression"
+    ],
+    "shortDefinition": "Automatic checkpointing and compaction of working state before the context window truncates or a long session is compacted.",
+    "explainer": "Pre-Compress is the lifecycle stage that runs before the active context window overflows, a conversation is compacted, or a handoff occurs. Its purpose is to distill the current session into a smaller durable representation: checkpoint critical state, summarize recent decisions, and write the compressed result somewhere the next turn can recover it. Without pre-compress, the agent loses hard-won context at exactly the moment the session becomes most complex. It is the memory equivalent of saving your work before the power flickers.",
+    "strata": [
+      "L2",
+      "L4"
+    ],
+    "axes": [
+      "Knowledge",
+      "Orchestration"
+    ],
+    "relatedProductIds": [
+      "clawmem",
+      "gsd",
+      "claude-code"
+    ],
+    "relatedConceptSlugs": [
+      "hooks",
+      "lifecycle-management",
+      "memory",
+      "checkpoint"
+    ],
+    "antiPatterns": [
+      "Waiting until the context window is already full and then truncating blindly destroys state that should have been checkpointed or compressed first."
+    ],
+    "mitigations": [
+      "Trigger compaction before truncation boundaries. Summarize the recent session, checkpoint critical state, and persist the compressed representation for the next turn or thread."
+    ],
+    "sources": [],
+    "freshnessTier": "A",
+    "lastReviewed": "2026-04-25",
+    "reviewPolicy": "quarterly",
+    "confidence": 0.86,
+    "status": "seed"
+  },
+  "memory": {
+    "slug": "memory",
+    "name": "Memory Systems",
+    "aliases": [
+      "memory",
+      "episodic memory",
+      "working memory",
+      "context memory"
+    ],
+    "shortDefinition": "Stores and recalls contextual state across turns, sessions, and tasks.",
+    "explainer": "Memory systems give agents the ability to persist and retrieve state beyond a single context window. A multi-tiered architecture typically includes working memory for active tasks, episodic memory for session history, and semantic memory for long-term knowledge. Without memory, agents suffer from amnesia \u2014 forcing users to repeatedly explain context and endure the same mistakes. Strong modern memory systems add lifecycle automation around each turn: pre-fetch relevant context before reasoning, post-turn capture durable decisions after action, and pre-compress state before context truncation.",
+    "strata": [
+      "L2"
+    ],
+    "axes": [
+      "Knowledge"
+    ],
+    "relatedProductIds": [
+      "clawmem",
+      "mem0",
+      "mcpmemory",
+      "kotanaagent"
+    ],
+    "relatedConceptSlugs": [
+      "loop-core",
+      "checkpoint",
+      "rag",
+      "hooks",
+      "lifecycle-management"
+    ],
+    "antiPatterns": [
+      "Deploying stateless agents that suffer from amnesia forces users to repeatedly explain their context and endure the same mistakes in every new session."
+    ],
+    "mitigations": [
+      "Establish a multi-tiered memory architecture consisting of working memory for active tasks, episodic memory for session history, and semantic memory for long-term knowledge \u2014 then automate pre-fetch, post-turn capture, and pre-compress as lifecycle stages around each task."
+    ],
+    "sources": [
+      {
+        "label": "Glossary \u2014 docs.html",
+        "href": "docs.html#glossary"
+      }
+    ],
+    "freshnessTier": "A",
+    "lastReviewed": "2026-04-14",
+    "reviewPolicy": "quarterly",
+    "confidence": 0.9,
+    "status": "seed"
+  },
+  "guardrails": {
+    "slug": "guardrails",
+    "name": "Guardrails & Safety",
+    "aliases": [
+      "guardrails",
+      "safety",
+      "output validation",
+      "content safety",
+      "prompt injection defense",
+      "input validation"
+    ],
+    "shortDefinition": "Validates inputs and outputs to ensure safety, policy compliance, and defense against prompt injection.",
+    "explainer": "Guardrails are deterministic validation layers embedded directly into the orchestration pipeline. They inspect every input, output, and tool invocation against policy-as-code rules before execution proceeds. Without them, agents are vulnerable to prompt injection, unauthorized privilege escalation, and compliance violations. Guardrails should be baked in from day one, not bolted on after deployment.",
+    "strata": [
+      "L6"
+    ],
+    "axes": [
+      "Governance"
+    ],
+    "relatedProductIds": [
+      "opa",
+      "sksecurity",
+      "wfhuman"
+    ],
+    "relatedConceptSlugs": [
+      "harness",
+      "governance"
+    ],
+    "antiPatterns": [
+      "Bolting security guardrails onto an application after deployment results in fragmented policies that agents can easily bypass through prompt manipulation."
+    ],
+    "mitigations": [
+      "Embed deterministic, policy-as-code guardrails directly into the orchestration layer from day one to validate all inputs, outputs, and tool invocations."
+    ],
+    "sources": [
+      {
+        "label": "Glossary \u2014 docs.html",
+        "href": "docs.html#glossary"
+      }
+    ],
+    "freshnessTier": "A",
+    "lastReviewed": "2026-04-14",
+    "reviewPolicy": "quarterly",
+    "confidence": 0.92,
+    "status": "seed"
+  },
+  "checkpoint": {
+    "slug": "checkpoint",
+    "name": "Checkpoints & State Persistence",
+    "aliases": [
+      "checkpoint",
+      "checkpointing",
+      "state snapshot"
+    ],
+    "shortDefinition": "Durable snapshots of agent state that enable resume, rollback, and crash recovery.",
+    "explainer": "Checkpoints capture a serializable snapshot of agent state \u2014 including context, progress, and intermediate results \u2014 at defined intervals. If the agent crashes, times out, or is preempted, execution resumes from the last checkpoint rather than restarting from scratch. Essential for long-running tasks and multi-step pipelines.",
+    "strata": [
+      "L4"
+    ],
+    "axes": [
+      "Orchestration"
+    ],
+    "relatedProductIds": [],
+    "relatedConceptSlugs": [
+      "harness",
+      "loop-core",
+      "memory"
+    ],
+    "antiPatterns": [],
+    "mitigations": [],
+    "sources": [],
+    "freshnessTier": "A",
+    "lastReviewed": "2026-04-14",
+    "reviewPolicy": "quarterly",
+    "confidence": 0.7,
+    "status": "seed"
+  },
+  "tool_calling": {
+    "slug": "tool_calling",
+    "name": "Tool Calling",
+    "aliases": [
+      "tool calling",
+      "tool use",
+      "function calling"
+    ],
+    "shortDefinition": "The mechanism by which an agent invokes external tools, APIs, or functions to act on the world.",
+    "explainer": "Tool calling is the bridge between an agent's reasoning and real-world side effects. The agent generates a structured tool invocation (name + arguments), the runtime validates and dispatches it, and the result is fed back into the agent's context. Standardized via protocols like MCP and OpenAI function calling.",
+    "strata": [
+      "L2",
+      "L3"
+    ],
+    "axes": [
+      "Execution"
+    ],
+    "relatedProductIds": [],
+    "relatedConceptSlugs": [
+      "mcp",
+      "harness"
+    ],
+    "antiPatterns": [],
+    "mitigations": [],
+    "sources": [],
+    "freshnessTier": "A",
+    "lastReviewed": "2026-04-14",
+    "reviewPolicy": "quarterly",
+    "confidence": 0.7,
+    "status": "seed"
+  },
+  "rag": {
+    "slug": "rag",
+    "name": "Retrieval-Augmented Generation",
+    "aliases": [
+      "rag",
+      "retrieval augmented generation",
+      "RAG"
+    ],
+    "shortDefinition": "Augments LLM generation with retrieved external knowledge to reduce hallucination and improve accuracy.",
+    "explainer": "RAG pipelines retrieve relevant documents from a knowledge base before generating a response, grounding the agent's output in real data rather than parametric memory alone. Implementations range from simple vector-search retrieval to multi-hop re-ranking pipelines with hybrid search.",
+    "strata": [
+      "L2"
+    ],
+    "axes": [
+      "Knowledge"
+    ],
+    "relatedProductIds": [],
+    "relatedConceptSlugs": [
+      "memory"
+    ],
+    "antiPatterns": [],
+    "mitigations": [],
+    "sources": [],
+    "freshnessTier": "A",
+    "lastReviewed": "2026-04-14",
+    "reviewPolicy": "quarterly",
+    "confidence": 0.7,
+    "status": "seed"
+  },
+  "governance": {
+    "slug": "governance",
+    "name": "Governance & Compliance",
+    "aliases": [
+      "governance",
+      "compliance",
+      "policy enforcement"
+    ],
+    "shortDefinition": "Organizational policies, audit trails, and compliance controls that govern agent behavior at scale.",
+    "explainer": "Governance encompasses the policies, audit mechanisms, and compliance controls that ensure agents operate within organizational boundaries. This includes access control, usage quotas, logging, approval workflows, and regulatory compliance. Distinct from runtime guardrails \u2014 governance operates at the organizational and fleet level.",
+    "strata": [
+      "L6",
+      "L7"
+    ],
+    "axes": [
+      "Governance"
+    ],
+    "relatedProductIds": [],
+    "relatedConceptSlugs": [
+      "guardrails",
+      "harness"
+    ],
+    "antiPatterns": [],
+    "mitigations": [],
+    "sources": [],
+    "freshnessTier": "A",
+    "lastReviewed": "2026-04-14",
+    "reviewPolicy": "quarterly",
+    "confidence": 0.7,
+    "status": "seed"
+  },
+  "stack": {
+    "slug": "stack",
+    "name": "Agentic Stack",
+    "aliases": [
+      "stack",
+      "agent stack",
+      "full stack"
+    ],
+    "shortDefinition": "Complete 7-layer configuration for a domain: model + memory + tools + orchestration + UX + governance.",
+    "explainer": "A stack is the full end-to-end instantiation of all 7 strata optimized for a specific domain or use case. It's not just the technologies, but their wiring: which model, which memory backend, which tool set, which orchestration pattern, which UI paradigm, and which governance policies. Stacks are repeatable blueprints \u2014 once assembled and battle-tested, they can be cloned for similar use cases. Examples: research loop stack, customer service stack, code generation stack.",
+    "strata": [
+      "L0"
+    ],
+    "axes": [
+      "Orchestration"
+    ],
+    "relatedProductIds": [],
+    "relatedConceptSlugs": [
+      "harness",
+      "persona",
+      "pattern",
+      "covenant"
+    ],
+    "antiPatterns": [
+      "Hand-assembling agents from loose components without a reproducible stack template leads to drift, inconsistency, and high maintenance cost across multiple similar applications."
+    ],
+    "mitigations": [
+      "Define canonical stacks as blueprints: reusable 7L configurations that can be versioned, tested, and cloned for new instances."
+    ],
+    "sources": [],
+    "freshnessTier": "A",
+    "lastReviewed": "2026-04-17",
+    "reviewPolicy": "quarterly",
+    "confidence": 0.88,
+    "status": "seed",
+    "hidden": true,
+    "easterEgg": true
+  },
+  "persona": {
+    "slug": "persona",
+    "name": "Agent Persona",
+    "aliases": [
+      "persona",
+      "identity",
+      "role",
+      "instructions",
+      "agent persona"
+    ],
+    "shortDefinition": "The identity, voice, role, and behavioral directives that define an agent's character and operating principles.",
+    "explainer": "A persona is the coherent identity and behavioral contract of an agent. It encompasses role (what the agent is), voice (how it communicates), core values (what it prioritizes), constraints (what it won't do), and operating principles (how it makes decisions). A well-defined persona ensures consistency across all interactions and makes agent behavior predictable and auditable. Personas can be hard-coded in system prompts, learned from examples, or emergent from reward models.",
+    "strata": [
+      "L0"
+    ],
+    "axes": [
+      "Governance"
+    ],
+    "relatedProductIds": [],
+    "relatedConceptSlugs": [
+      "harness",
+      "covenant",
+      "stack"
+    ],
+    "antiPatterns": [
+      "Deploying agents without a clear, documented persona results in unpredictable behavior and difficulty in debugging misalignment."
+    ],
+    "mitigations": [
+      "Define a canonical persona for each agent: explicit role, voice guidelines, core values, and decision-making principles."
+    ],
+    "sources": [],
+    "freshnessTier": "A",
+    "lastReviewed": "2026-04-17",
+    "reviewPolicy": "quarterly",
+    "confidence": 0.82,
+    "status": "seed",
+    "hidden": true,
+    "easterEgg": true
+  },
+  "pattern": {
+    "slug": "pattern",
+    "name": "Agentic Pattern",
+    "aliases": [
+      "pattern",
+      "orchestration pattern",
+      "control pattern",
+      "ReAct",
+      "chain of thought"
+    ],
+    "shortDefinition": "Repeatable architectural patterns for orchestrating agent reasoning, action, and feedback loops.",
+    "explainer": "Agentic patterns are proven choreographies of reasoning \u2192 planning \u2192 execution \u2192 evaluation. Examples include ReAct (Reasoning + Acting), Chain-of-Thought (CoT), Self-Ask, Tree-of-Thought, and multi-agent debate. A pattern defines the structure of the control loop and the format of prompts, but is agnostic to the underlying model or tools. Patterns are composable \u2014 they can be nested or sequenced to build complex multi-stage pipelines.",
+    "strata": [
+      "L0"
+    ],
+    "axes": [
+      "Orchestration"
+    ],
+    "relatedProductIds": [],
+    "relatedConceptSlugs": [
+      "harness",
+      "loop-core",
+      "stack"
+    ],
+    "antiPatterns": [
+      "Designing orchestration logic ad-hoc for each new task duplicates effort, introduces subtle bugs, and makes it impossible to compare or optimize approaches."
+    ],
+    "mitigations": [
+      "Identify and document repeatable patterns (ReAct, CoT, debate, retrieval loops) and encode them as reusable, testable orchestration templates."
+    ],
+    "sources": [],
+    "freshnessTier": "A",
+    "lastReviewed": "2026-04-17",
+    "reviewPolicy": "quarterly",
+    "confidence": 0.85,
+    "status": "seed",
+    "hidden": true,
+    "easterEgg": true
+  },
+  "config": {
+    "slug": "config",
+    "name": "Agent Configuration",
+    "aliases": [
+      "config",
+      "configuration",
+      "instantiation",
+      "parameters",
+      "agent config"
+    ],
+    "shortDefinition": "Runtime parameters that instantiate a harness for a specific task or domain: model, temperature, tools, context budget, etc.",
+    "explainer": "Configuration is the set of declarative, runtime-modifiable knobs that turn a generic harness into a domain-specific agent. Examples: which LLM, temperature, top-k, tool set, max context window, timeout, max retries, memory backend, guardrail policies. Good configs are externalized and version-controlled, making it easy to A/B test, audit, and roll back changes without code changes.",
+    "strata": [
+      "L0"
+    ],
+    "axes": [
+      "Orchestration",
+      "Governance"
+    ],
+    "relatedProductIds": [],
+    "relatedConceptSlugs": [
+      "harness",
+      "covenant",
+      "stack"
+    ],
+    "antiPatterns": [
+      "Hardcoding agent parameters (model, temperature, tool list) into application code makes it impossible to tune without redeploy and prevents safe A/B testing."
+    ],
+    "mitigations": [
+      "Externalize all agent configuration into declarative files or services that can be modified, versioned, and rolled back independently of application code."
+    ],
+    "sources": [],
+    "freshnessTier": "A",
+    "lastReviewed": "2026-04-17",
+    "reviewPolicy": "quarterly",
+    "confidence": 0.8,
+    "status": "seed",
+    "hidden": true,
+    "easterEgg": true
+  },
+  "covenant": {
+    "slug": "covenant",
+    "name": "Agent Covenant",
+    "aliases": [
+      "covenant",
+      "SLA",
+      "guarantee",
+      "pledge",
+      "behavioral contract"
+    ],
+    "shortDefinition": "A formal pledge of agent capabilities, performance, and safety guarantees: latency, accuracy, uptime, and compliance.",
+    "explainer": "A covenant is the behavioral contract between an agent and its users/operators. It specifies: what the agent commits to do (capability boundary), how fast (latency SLA), with what accuracy (quality threshold), under what conditions (fault resilience), and in compliance with what policies (safety constraints). Covenants are machine-testable \u2014 they become the basis for automated eval frameworks and production monitoring.",
+    "strata": [
+      "L0"
+    ],
+    "axes": [
+      "Governance",
+      "Observability"
+    ],
+    "relatedProductIds": [],
+    "relatedConceptSlugs": [
+      "harness",
+      "persona",
+      "stack"
+    ],
+    "antiPatterns": [
+      "Deploying agents without explicit performance guarantees or safety pledges leads to misaligned expectations and production surprises."
+    ],
+    "mitigations": [
+      "Define a machine-testable covenant for each agent: capability boundary, latency SLA, quality threshold, fault resilience, and compliance policies. Instrument monitoring and evals against this covenant."
+    ],
+    "sources": [],
+    "freshnessTier": "A",
+    "lastReviewed": "2026-04-17",
+    "reviewPolicy": "quarterly",
+    "confidence": 0.78,
+    "status": "seed",
+    "hidden": true,
+    "easterEgg": true
+  },
+  "decoupled-architecture": {
+    "slug": "decoupled-architecture",
+    "name": "Decoupled Architecture",
+    "aliases": [
+      "decoupled architecture",
+      "decoupled archetecture",
+      "decoupled-archetecture",
+      "decoupled-architecture",
+      "event-driven architecture",
+      "loose coupling",
+      "contract-driven design",
+      "interface segregation"
+    ],
+    "shortDefinition": "System design where agent components communicate via typed contracts rather than direct calls, enabling independent deployment and evolution.",
+    "explainer": "Decoupled Architecture is the practice of separating agent components \u2014 planners, executors, memory, tools, evaluators \u2014 so that each communicates only through well-defined interface contracts rather than direct function calls or shared mutable state. At L3 (Execution), this means tools and sub-agents expose typed input/output schemas (see Pydantic Contracts). At L4 (Orchestration), this means the orchestrator treats each sub-agent as a black box it can swap without rewiring the pipeline. The key benefit: any component can be upgraded, scaled, or replaced without cascading changes. Common patterns include event buses, message queues, and typed RPC schemas. Anti-pattern: tightly-coupled pipelines where a planner directly imports executor internals, making the system impossible to test or evolve in isolation.",
+    "strata": [
+      "L3",
+      "L4"
+    ],
+    "axes": [
+      "Orchestration",
+      "Execution"
+    ],
+    "relatedProductIds": [
+      "langgraph",
+      "langchain",
+      "claudecode"
+    ],
+    "relatedConceptSlugs": [
+      "harness",
+      "pydantic-contracts",
+      "loop-core"
+    ],
+    "antiPatterns": [
+      "Tightly-coupled pipelines where the orchestrator directly imports executor internals make individual components impossible to test, replace, or scale independently."
+    ],
+    "mitigations": [
+      "Define typed interface contracts at every component boundary. Use event buses or message queues between planners, executors, and evaluators. Validate contracts automatically with Pydantic or JSON Schema."
+    ],
+    "sources": [],
+    "freshnessTier": "A",
+    "lastReviewed": "2026-04-25",
+    "reviewPolicy": "quarterly",
+    "confidence": 0.88,
+    "status": "seed"
+  },
+  "pydantic-contracts": {
+    "slug": "pydantic-contracts",
+    "name": "Pydantic Contracts",
+    "aliases": [
+      "pydantic contracts",
+      "pydantic-contracts",
+      "pydantic",
+      "typed schemas",
+      "typed contracts",
+      "schema validation",
+      "structured outputs",
+      "output schema"
+    ],
+    "shortDefinition": "Typed data contracts enforced at agent boundaries using Pydantic models to validate inputs, outputs, and tool call arguments.",
+    "explainer": "Pydantic Contracts are the practice of using Pydantic BaseModel classes as the canonical type layer between agent components. At L3 (Execution), every tool call input and LLM output is validated against a Pydantic schema before being accepted. This catches hallucinated fields, missing required arguments, and type mismatches at the boundary rather than deep inside pipeline logic. Pydantic Contracts are the runtime enforcement of Decoupled Architecture: they make the contracts machine-testable, not just documented. Structured output APIs (OpenAI, Anthropic) can be driven directly from Pydantic model definitions, ensuring the LLM response parses cleanly. Key benefit: eliminates an entire class of silent failures where a malformed tool call propagates for many steps before producing an error.",
+    "strata": [
+      "L3"
+    ],
+    "axes": [
+      "Execution",
+      "Governance"
+    ],
+    "relatedProductIds": [
+      "langchain",
+      "claudecode",
+      "sksecurity"
+    ],
+    "relatedConceptSlugs": [
+      "decoupled-architecture",
+      "guardrails",
+      "tool_calling"
+    ],
+    "antiPatterns": [
+      "Accepting raw LLM-generated dicts and passing them directly to tool functions without schema validation causes silent type errors and hallucinated fields that corrupt pipeline state."
+    ],
+    "mitigations": [
+      "Declare a Pydantic model for every tool's input and output. Validate at the boundary before any downstream processing. Use structured output APIs to force LLM responses to conform to the schema."
+    ],
+    "sources": [],
+    "freshnessTier": "A",
+    "lastReviewed": "2026-04-25",
+    "reviewPolicy": "quarterly",
+    "confidence": 0.91,
+    "status": "seed"
+  },
+  "dynamic-agent-workflows": {
+    "freshnessTier": "A",
+    "lastReviewed": "2026-06-05",
+    "reviewPolicy": "quarterly",
+    "status": "seed",
+    "sources": [
+      {
+        "label": "Mark Kashef \u2014 Every Claude Code Dynamic Workflow (video)",
+        "href": "https://www.youtube.com/watch?v=g9b9G8dcS8Y"
+      },
+      {
+        "label": "PRD \u2014 Claude Code Dynamic Workflows",
+        "href": "0.agentic/00_Ledger/PRDs/PRD-claude-code-dynamic-workflows.md"
+      }
+    ],
+    "slug": "dynamic-agent-workflows",
+    "name": "Dynamic Agent Workflows",
+    "aliases": [
+      "dynamic workflows",
+      "dynamic agent workflows",
+      "multi-agent workflow patterns",
+      "agent orchestration patterns"
+    ],
+    "shortDefinition": "A family of multi-agent orchestration patterns that spin up fresh, scoped agent harnesses to beat single-context failure modes.",
+    "explainer": "Long, complex work inside one context window breaks down structurally: context unwinding (~500-600k tokens), agent laziness (under-delivering on a batch), self-preference bias (an agent grading its own output), and goal drift. Dynamic Agent Workflows replace the single session with scoped sub-agents on fresh contexts, explicit stop conditions, and a separate verifier. The six member patterns are Classify & Act, Fan Out & Synthesize, Adversarial Verification, Generate & Filter, Tournament, and Loop Until Done; they compose (e.g. Fan Out into Adversarial Verification, wrapped in Loop Until Done).",
+    "strata": [
+      "L4"
+    ],
+    "axes": [
+      "Orchestration"
+    ],
+    "relatedProductIds": [],
+    "relatedConceptSlugs": [
+      "harness",
+      "loop-core",
+      "classify-and-act",
+      "fan-out-synthesize",
+      "adversarial-verification",
+      "generate-and-filter",
+      "tournament-pattern",
+      "loop-until-done"
+    ],
+    "antiPatterns": [
+      "Running long, complex work in a single context window until it unwinds, gets lazy, grades itself, and drifts from the goal."
+    ],
+    "mitigations": [
+      "Decompose into scoped sub-agents with fresh contexts, explicit stop conditions, and a separate verifier; pick the pattern that matches the failure mode."
+    ],
+    "confidence": 0.82
+  },
+  "classify-and-act": {
+    "freshnessTier": "A",
+    "lastReviewed": "2026-06-05",
+    "reviewPolicy": "quarterly",
+    "status": "seed",
+    "sources": [
+      {
+        "label": "Mark Kashef \u2014 Every Claude Code Dynamic Workflow (video)",
+        "href": "https://www.youtube.com/watch?v=g9b9G8dcS8Y"
+      },
+      {
+        "label": "PRD \u2014 Claude Code Dynamic Workflows",
+        "href": "0.agentic/00_Ledger/PRDs/PRD-claude-code-dynamic-workflows.md"
+      }
+    ],
+    "slug": "classify-and-act",
+    "name": "Classify & Act",
+    "aliases": [
+      "classify and act",
+      "router pattern",
+      "triage agent",
+      "receptionist routing"
+    ],
+    "shortDefinition": "A lightweight classifier routes each input to the correct specialized agent.",
+    "explainer": "A cheap 'receptionist' model reads each inbound item, classifies its intent against a strict system prompt, and dispatches it to a trusted, specialized agent (bug, refund, spam, etc.). This keeps any single context small and ensures work reaches the right handler instead of being force-fit into one general session.",
+    "strata": [
+      "L4"
+    ],
+    "axes": [
+      "Orchestration"
+    ],
+    "relatedProductIds": [],
+    "relatedConceptSlugs": [
+      "dynamic-agent-workflows",
+      "harness"
+    ],
+    "antiPatterns": [
+      "Handling mixed task types in one session bloats context and routes work to the wrong handler."
+    ],
+    "mitigations": [
+      "Use a cheap classifier model to label intent, then dispatch to a trusted specialized agent per category."
+    ],
+    "confidence": 0.85
+  },
+  "fan-out-synthesize": {
+    "freshnessTier": "A",
+    "lastReviewed": "2026-06-05",
+    "reviewPolicy": "quarterly",
+    "status": "seed",
+    "sources": [
+      {
+        "label": "Mark Kashef \u2014 Every Claude Code Dynamic Workflow (video)",
+        "href": "https://www.youtube.com/watch?v=g9b9G8dcS8Y"
+      },
+      {
+        "label": "PRD \u2014 Claude Code Dynamic Workflows",
+        "href": "0.agentic/00_Ledger/PRDs/PRD-claude-code-dynamic-workflows.md"
+      }
+    ],
+    "slug": "fan-out-synthesize",
+    "name": "Fan Out & Synthesize",
+    "aliases": [
+      "fan out and synthesize",
+      "fan-out synthesize",
+      "parallel sub-agents",
+      "map reduce agents",
+      "scatter gather"
+    ],
+    "shortDefinition": "Split a master task into parallel, mutually-exclusive sub-agents on clean contexts, then merge at a barrier.",
+    "explainer": "For heavy research or due diligence, decompose the master task into mutually-exclusive micro-parts (one per folder, lens, or source). Each runs in parallel on a clean context and returns a structured, cited summary. A synthesizer waits at a barrier for all legs to finish, then merges them. This defeats both agent laziness and context unwinding.",
+    "strata": [
+      "L4"
+    ],
+    "axes": [
+      "Orchestration"
+    ],
+    "relatedProductIds": [],
+    "relatedConceptSlugs": [
+      "dynamic-agent-workflows",
+      "loop-until-done"
+    ],
+    "antiPatterns": [
+      "One agent given a large batch under-delivers and unwinds its context."
+    ],
+    "mitigations": [
+      "Fan the work out to parallel sub-agents on clean contexts and synthesize their structured, cited outputs at a barrier."
+    ],
+    "confidence": 0.85
+  },
+  "adversarial-verification": {
+    "freshnessTier": "A",
+    "lastReviewed": "2026-06-05",
+    "reviewPolicy": "quarterly",
+    "status": "seed",
+    "sources": [
+      {
+        "label": "Mark Kashef \u2014 Every Claude Code Dynamic Workflow (video)",
+        "href": "https://www.youtube.com/watch?v=g9b9G8dcS8Y"
+      },
+      {
+        "label": "PRD \u2014 Claude Code Dynamic Workflows",
+        "href": "0.agentic/00_Ledger/PRDs/PRD-claude-code-dynamic-workflows.md"
+      }
+    ],
+    "slug": "adversarial-verification",
+    "name": "Adversarial Verification",
+    "aliases": [
+      "adversarial verification",
+      "devil's advocate agents",
+      "skeptic agents",
+      "claim checking",
+      "cross-examination pattern"
+    ],
+    "shortDefinition": "Separate skeptic agents test each extracted claim against a strict rubric \u2014 the verifier is never the author.",
+    "explainer": "To defeat self-preference bias, never let a session grade its own work. An extractor pulls individual claims from the draft; independent devil's-advocate agents each test a claim against a source-of-truth rubric and return pass/fail with the exact reason for any failure. This is the principle behind the shield rule: the verifier must be a different session/model than the builder.",
+    "strata": [
+      "L5",
+      "L6"
+    ],
+    "axes": [
+      "Observability",
+      "Governance"
+    ],
+    "relatedProductIds": [],
+    "relatedConceptSlugs": [
+      "dynamic-agent-workflows",
+      "generate-and-filter"
+    ],
+    "antiPatterns": [
+      "A session that audits its own output favors its own work and over-grades it (self-preference bias)."
+    ],
+    "mitigations": [
+      "Extract claims and have independent skeptic agents check each against a source-of-truth rubric, returning pass/fail with reasons."
+    ],
+    "confidence": 0.86
+  },
+  "generate-and-filter": {
+    "freshnessTier": "A",
+    "lastReviewed": "2026-06-05",
+    "reviewPolicy": "quarterly",
+    "status": "seed",
+    "sources": [
+      {
+        "label": "Mark Kashef \u2014 Every Claude Code Dynamic Workflow (video)",
+        "href": "https://www.youtube.com/watch?v=g9b9G8dcS8Y"
+      },
+      {
+        "label": "PRD \u2014 Claude Code Dynamic Workflows",
+        "href": "0.agentic/00_Ledger/PRDs/PRD-claude-code-dynamic-workflows.md"
+      }
+    ],
+    "slug": "generate-and-filter",
+    "name": "Generate & Filter",
+    "aliases": [
+      "generate and filter",
+      "over-generate then judge",
+      "generator judge",
+      "ideate and rank"
+    ],
+    "shortDefinition": "Over-generate with one agent, then a separate judge agent filters to the best few by criteria.",
+    "explainer": "Creativity stagnates when one agent both ideates and selects. Instead, have a generator produce massive variety (e.g. 500 options), then a separate judge agent score them against explicit criteria and return the top 3-5. The separation is what removes self-bias from selection.",
+    "strata": [
+      "L4",
+      "L5"
+    ],
+    "axes": [
+      "Orchestration",
+      "Observability"
+    ],
+    "relatedProductIds": [],
+    "relatedConceptSlugs": [
+      "dynamic-agent-workflows",
+      "adversarial-verification"
+    ],
+    "antiPatterns": [
+      "A single agent both ideating and selecting produces low variety and rubber-stamps its own ideas."
+    ],
+    "mitigations": [
+      "Separate generation from judgment: one agent maximizes variety, a different agent scores against criteria."
+    ],
+    "confidence": 0.84
+  },
+  "tournament-pattern": {
+    "freshnessTier": "A",
+    "lastReviewed": "2026-06-05",
+    "reviewPolicy": "quarterly",
+    "status": "seed",
+    "sources": [
+      {
+        "label": "Mark Kashef \u2014 Every Claude Code Dynamic Workflow (video)",
+        "href": "https://www.youtube.com/watch?v=g9b9G8dcS8Y"
+      },
+      {
+        "label": "PRD \u2014 Claude Code Dynamic Workflows",
+        "href": "0.agentic/00_Ledger/PRDs/PRD-claude-code-dynamic-workflows.md"
+      }
+    ],
+    "slug": "tournament-pattern",
+    "name": "Tournament",
+    "aliases": [
+      "tournament pattern",
+      "bracket ranking",
+      "pair-wise comparison",
+      "head-to-head ranking",
+      "elo agents"
+    ],
+    "shortDefinition": "Rank a massive set via pair-wise head-to-heads, a fresh agent per match, winners advancing in a bracket.",
+    "explainer": "When the candidate set is too large to compare in one context (thousands of resumes, vendors, titles), run pair-wise comparisons. A fresh agent judges each head-to-head against a rubric; winners advance to the next round, where the rubric may change. The bracket continues until a single champion remains. Fresh agents per match keep every comparison context small and unbiased.",
+    "strata": [
+      "L4"
+    ],
+    "axes": [
+      "Orchestration"
+    ],
+    "relatedProductIds": [],
+    "relatedConceptSlugs": [
+      "dynamic-agent-workflows",
+      "generate-and-filter"
+    ],
+    "antiPatterns": [
+      "Comparing thousands of items in one context bloats and degrades the comparison."
+    ],
+    "mitigations": [
+      "Run pair-wise comparisons with a fresh agent per match against a rubric; advance winners through bracket rounds."
+    ],
+    "confidence": 0.8
+  },
+  "loop-until-done": {
+    "freshnessTier": "A",
+    "lastReviewed": "2026-06-05",
+    "reviewPolicy": "quarterly",
+    "status": "seed",
+    "sources": [
+      {
+        "label": "Mark Kashef \u2014 Every Claude Code Dynamic Workflow (video)",
+        "href": "https://www.youtube.com/watch?v=g9b9G8dcS8Y"
+      },
+      {
+        "label": "PRD \u2014 Claude Code Dynamic Workflows",
+        "href": "0.agentic/00_Ledger/PRDs/PRD-claude-code-dynamic-workflows.md"
+      }
+    ],
+    "slug": "loop-until-done",
+    "name": "Loop Until Done",
+    "aliases": [
+      "loop until done",
+      "loop-until-done",
+      "unbounded retry loop",
+      "spawn until success",
+      "persistence loop"
+    ],
+    "shortDefinition": "Spawn fresh isolated attempts with no fixed pass count until a deterministic goal is met \u2014 bounded by a guardrail.",
+    "explainer": "For elusive or flaky targets (catch a 1-in-50 flaky test, exhaustive search), don't pre-set a pass count. An investigator forms a theory and spawns an isolated work-tree with a fresh agent; a deterministic condition check decides whether the goal was met, looping with a new agent until it is. Critical guardrail: any loop that can reach a metered endpoint MUST be bounded (max-attempts, backoff, circuit breaker, kill-switch) \u2014 the unbounded version is the runaway-loop that burned $300 twice.",
+    "strata": [
+      "L4"
+    ],
+    "axes": [
+      "Orchestration"
+    ],
+    "relatedProductIds": [],
+    "relatedConceptSlugs": [
+      "dynamic-agent-workflows",
+      "loop-core",
+      "fan-out-synthesize"
+    ],
+    "antiPatterns": [
+      "Declaring a task done prematurely, or looping forever with no stop condition (the runaway-loop money burn)."
+    ],
+    "mitigations": [
+      "Loop fresh isolated attempts until a deterministic goal check passes; always bound metered loops with max-attempts, backoff, and a circuit breaker."
+    ],
+    "confidence": 0.85
+  }
+};
   var aliasIndex = {
-    harness: "harness",
-    harnes: "harness",
-    "orchestration harness": "harness",
-    "execution harness": "harness",
-    "delivery harness": "harness",
-    "layer 0": "harness",
-    "stratum 0": "harness",
-    loop: "loop-core",
-    loops: "loop-core",
-    "loop-core": "loop-core",
-    "agentic loop": "loop-core",
-    "feedback loop": "loop-core",
-    mcp: "mcp",
-    "model context protocol": "mcp",
-    "tool registry": "mcp",
-    hooks: "hooks",
-    hook: "hooks",
-    "lifecycle hooks": "hooks",
-    "agent hooks": "hooks",
-    "hook callbacks": "hooks",
-    pretooluse: "hooks",
-    posttooluse: "hooks",
-    "plugin hooks": "hooks",
-    "lifecycle management": "lifecycle-management",
-    "agent lifecycle": "lifecycle-management",
-    "session lifecycle": "lifecycle-management",
-    "memory lifecycle": "lifecycle-management",
-    "turn lifecycle": "lifecycle-management",
-    "lifecycle orchestration": "lifecycle-management",
-    "context lifecycle": "lifecycle-management",
-    "pre-fetch": "pre-fetch",
-    prefetch: "pre-fetch",
-    "context prefetch": "pre-fetch",
-    "pre-fetch context": "pre-fetch",
-    "pre reasoning retrieval": "pre-fetch",
-    "context injection": "pre-fetch",
-    "post-turn capture": "post-turn-capture",
-    "post turn capture": "post-turn-capture",
-    "after turn capture": "post-turn-capture",
-    "post-task capture": "post-turn-capture",
-    "memory writeback": "post-turn-capture",
-    "postturn capture": "post-turn-capture",
-    "pre-compress": "pre-compress",
-    "pre compress": "pre-compress",
-    "context compaction": "pre-compress",
-    "pre-compaction": "pre-compress",
-    "session compaction": "pre-compress",
-    "pre-truncation compression": "pre-compress",
-    memory: "memory",
-    "episodic memory": "memory",
-    "working memory": "memory",
-    "context memory": "memory",
-    guardrails: "guardrails",
-    safety: "guardrails",
-    "output validation": "guardrails",
-    "content safety": "guardrails",
-    "prompt injection defense": "guardrails",
-    "input validation": "guardrails",
-    checkpoint: "checkpoint",
-    checkpointing: "checkpoint",
-    "state snapshot": "checkpoint",
-    "tool calling": "tool_calling",
-    "tool use": "tool_calling",
-    "function calling": "tool_calling",
-    rag: "rag",
-    "retrieval augmented generation": "rag",
-    governance: "governance",
-    compliance: "governance",
-    "policy enforcement": "governance",
-    stack: "stack",
-    "agent stack": "stack",
-    "full stack": "stack",
-    persona: "persona",
-    identity: "persona",
-    role: "persona",
-    instructions: "persona",
-    "agent persona": "persona",
-    pattern: "pattern",
-    "orchestration pattern": "pattern",
-    "control pattern": "pattern",
-    react: "pattern",
-    "chain of thought": "pattern",
-    config: "config",
-    configuration: "config",
-    instantiation: "config",
-    parameters: "config",
-    "agent config": "config",
-    covenant: "covenant",
-    sla: "covenant",
-    guarantee: "covenant",
-    pledge: "covenant",
-    "behavioral contract": "covenant",
-    "decoupled architecture": "decoupled-architecture",
-    "decoupled archetecture": "decoupled-architecture",
-    "decoupled-archetecture": "decoupled-architecture",
-    "decoupled-architecture": "decoupled-architecture",
-    "event-driven architecture": "decoupled-architecture",
-    "loose coupling": "decoupled-architecture",
-    "contract-driven design": "decoupled-architecture",
-    "interface segregation": "decoupled-architecture",
-    "pydantic contracts": "pydantic-contracts",
-    "pydantic-contracts": "pydantic-contracts",
-    pydantic: "pydantic-contracts",
-    "typed schemas": "pydantic-contracts",
-    "typed contracts": "pydantic-contracts",
-    "schema validation": "pydantic-contracts",
-    "structured outputs": "pydantic-contracts",
-    "output schema": "pydantic-contracts",
-  };
+  "harness": "harness",
+  "harnes": "harness",
+  "orchestration harness": "harness",
+  "execution harness": "harness",
+  "delivery harness": "harness",
+  "layer 0": "harness",
+  "stratum 0": "harness",
+  "loop": "loop-core",
+  "loops": "loop-core",
+  "loop-core": "loop-core",
+  "agentic loop": "loop-core",
+  "feedback loop": "loop-core",
+  "mcp": "mcp",
+  "model context protocol": "mcp",
+  "tool registry": "mcp",
+  "hooks": "hooks",
+  "hook": "hooks",
+  "lifecycle hooks": "hooks",
+  "agent hooks": "hooks",
+  "hook callbacks": "hooks",
+  "pretooluse": "hooks",
+  "posttooluse": "hooks",
+  "plugin hooks": "hooks",
+  "lifecycle management": "lifecycle-management",
+  "agent lifecycle": "lifecycle-management",
+  "session lifecycle": "lifecycle-management",
+  "memory lifecycle": "lifecycle-management",
+  "turn lifecycle": "lifecycle-management",
+  "lifecycle orchestration": "lifecycle-management",
+  "context lifecycle": "lifecycle-management",
+  "pre-fetch": "pre-fetch",
+  "prefetch": "pre-fetch",
+  "context prefetch": "pre-fetch",
+  "pre-fetch context": "pre-fetch",
+  "pre reasoning retrieval": "pre-fetch",
+  "context injection": "pre-fetch",
+  "post-turn capture": "post-turn-capture",
+  "post turn capture": "post-turn-capture",
+  "after turn capture": "post-turn-capture",
+  "post-task capture": "post-turn-capture",
+  "memory writeback": "post-turn-capture",
+  "postturn capture": "post-turn-capture",
+  "pre-compress": "pre-compress",
+  "pre compress": "pre-compress",
+  "context compaction": "pre-compress",
+  "pre-compaction": "pre-compress",
+  "session compaction": "pre-compress",
+  "pre-truncation compression": "pre-compress",
+  "memory": "memory",
+  "episodic memory": "memory",
+  "working memory": "memory",
+  "context memory": "memory",
+  "guardrails": "guardrails",
+  "safety": "guardrails",
+  "output validation": "guardrails",
+  "content safety": "guardrails",
+  "prompt injection defense": "guardrails",
+  "input validation": "guardrails",
+  "checkpoint": "checkpoint",
+  "checkpointing": "checkpoint",
+  "state snapshot": "checkpoint",
+  "tool calling": "tool_calling",
+  "tool use": "tool_calling",
+  "function calling": "tool_calling",
+  "rag": "rag",
+  "retrieval augmented generation": "rag",
+  "governance": "governance",
+  "compliance": "governance",
+  "policy enforcement": "governance",
+  "stack": "stack",
+  "agent stack": "stack",
+  "full stack": "stack",
+  "persona": "persona",
+  "identity": "persona",
+  "role": "persona",
+  "instructions": "persona",
+  "agent persona": "persona",
+  "pattern": "pattern",
+  "orchestration pattern": "pattern",
+  "control pattern": "pattern",
+  "react": "pattern",
+  "chain of thought": "pattern",
+  "config": "config",
+  "configuration": "config",
+  "instantiation": "config",
+  "parameters": "config",
+  "agent config": "config",
+  "covenant": "covenant",
+  "sla": "covenant",
+  "guarantee": "covenant",
+  "pledge": "covenant",
+  "behavioral contract": "covenant",
+  "decoupled architecture": "decoupled-architecture",
+  "decoupled archetecture": "decoupled-architecture",
+  "decoupled-archetecture": "decoupled-architecture",
+  "decoupled-architecture": "decoupled-architecture",
+  "event-driven architecture": "decoupled-architecture",
+  "loose coupling": "decoupled-architecture",
+  "contract-driven design": "decoupled-architecture",
+  "interface segregation": "decoupled-architecture",
+  "pydantic contracts": "pydantic-contracts",
+  "pydantic-contracts": "pydantic-contracts",
+  "pydantic": "pydantic-contracts",
+  "typed schemas": "pydantic-contracts",
+  "typed contracts": "pydantic-contracts",
+  "schema validation": "pydantic-contracts",
+  "structured outputs": "pydantic-contracts",
+  "output schema": "pydantic-contracts",
+  "dynamic workflows": "dynamic-agent-workflows",
+  "dynamic agent workflows": "dynamic-agent-workflows",
+  "multi-agent workflow patterns": "dynamic-agent-workflows",
+  "agent orchestration patterns": "dynamic-agent-workflows",
+  "classify and act": "classify-and-act",
+  "router pattern": "classify-and-act",
+  "triage agent": "classify-and-act",
+  "receptionist routing": "classify-and-act",
+  "fan out and synthesize": "fan-out-synthesize",
+  "fan-out synthesize": "fan-out-synthesize",
+  "parallel sub-agents": "fan-out-synthesize",
+  "map reduce agents": "fan-out-synthesize",
+  "scatter gather": "fan-out-synthesize",
+  "adversarial verification": "adversarial-verification",
+  "devil's advocate agents": "adversarial-verification",
+  "skeptic agents": "adversarial-verification",
+  "claim checking": "adversarial-verification",
+  "cross-examination pattern": "adversarial-verification",
+  "generate and filter": "generate-and-filter",
+  "over-generate then judge": "generate-and-filter",
+  "generator judge": "generate-and-filter",
+  "ideate and rank": "generate-and-filter",
+  "tournament pattern": "tournament-pattern",
+  "bracket ranking": "tournament-pattern",
+  "pair-wise comparison": "tournament-pattern",
+  "head-to-head ranking": "tournament-pattern",
+  "elo agents": "tournament-pattern",
+  "loop until done": "loop-until-done",
+  "loop-until-done": "loop-until-done",
+  "unbounded retry loop": "loop-until-done",
+  "spawn until success": "loop-until-done",
+  "persistence loop": "loop-until-done"
+};
   window.AOS_CONCEPTS = concepts;
   window.AOS_ALIAS_INDEX = aliasIndex;
 })();

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{a}OS Concept — Memory Systems</title>
+  <title>{a}OS Concept — Classify &amp; Act</title>
   <style>
     :root {
       --bg: #0f0f14;
@@ -48,63 +48,58 @@
   </style>
 </head>
 <body>
-  <a class="back" href="../explorer.html#concept=memory">← Back to Explorer</a>
+  <a class="back" href="../explorer.html#concept=classify-and-act">← Back to Explorer</a>
 
-  <h1>Memory Systems</h1>
-  <div class="slug">/memory</div>
-  <div class="short-def">Stores and recalls contextual state across turns, sessions, and tasks.</div>
+  <h1>Classify &amp; Act</h1>
+  <div class="slug">/classify-and-act</div>
+  <div class="short-def">A lightweight classifier routes each input to the correct specialized agent.</div>
 
   <div class="meta">
-    <span>Strata: <strong>L2</strong></span>
-    <span>Axes: <strong>Knowledge</strong></span>
+    <span>Strata: <strong>L4</strong></span>
+    <span>Axes: <strong>Orchestration</strong></span>
     <span>Status: <strong>seed</strong></span>
   </div>
 
   <section>
     <h2>Explainer</h2>
-    <p>Memory systems give agents the ability to persist and retrieve state beyond a single context window. A multi-tiered architecture typically includes working memory for active tasks, episodic memory for session history, and semantic memory for long-term knowledge. Without memory, agents suffer from amnesia — forcing users to repeatedly explain context and endure the same mistakes. Strong modern memory systems add lifecycle automation around each turn: pre-fetch relevant context before reasoning, post-turn capture durable decisions after action, and pre-compress state before context truncation.</p>
+    <p>A cheap &#x27;receptionist&#x27; model reads each inbound item, classifies its intent against a strict system prompt, and dispatches it to a trusted, specialized agent (bug, refund, spam, etc.). This keeps any single context small and ensures work reaches the right handler instead of being force-fit into one general session.</p>
   </section>
 
   <section>
     <h2>Anti-Patterns</h2>
     <ul>
-      <li>Deploying stateless agents that suffer from amnesia forces users to repeatedly explain their context and endure the same mistakes in every new session.</li>
+      <li>Handling mixed task types in one session bloats context and routes work to the wrong handler.</li>
     </ul>
   </section>
 
   <section>
     <h2>Mitigations</h2>
     <ul>
-      <li>Establish a multi-tiered memory architecture consisting of working memory for active tasks, episodic memory for session history, and semantic memory for long-term knowledge — then automate pre-fetch, post-turn capture, and pre-compress as lifecycle stages around each task.</li>
+      <li>Use a cheap classifier model to label intent, then dispatch to a trusted specialized agent per category.</li>
     </ul>
   </section>
 
   <section>
     <h2>Top Products</h2>
     <ul>
-      <li><code>clawmem</code></li>
-      <li><code>mem0</code></li>
-      <li><code>mcpmemory</code></li>
-      <li><code>kotanaagent</code></li>
+      <li>None mapped yet.</li>
     </ul>
   </section>
 
   <section>
     <h2>Related Concepts</h2>
     <ul>
-      <li><a href="loop-core.html">loop-core</a> · <a href="../explorer.html#concept=loop-core" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
-      <li><a href="checkpoint.html">checkpoint</a> · <a href="../explorer.html#concept=checkpoint" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
-      <li><a href="rag.html">rag</a> · <a href="../explorer.html#concept=rag" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
-      <li><a href="hooks.html">hooks</a> · <a href="../explorer.html#concept=hooks" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
-      <li><a href="lifecycle-management.html">lifecycle-management</a> · <a href="../explorer.html#concept=lifecycle-management" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+      <li><a href="dynamic-agent-workflows.html">dynamic-agent-workflows</a> · <a href="../explorer.html#concept=dynamic-agent-workflows" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+      <li><a href="harness.html">harness</a> · <a href="../explorer.html#concept=harness" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
     </ul>
   </section>
 
   <section>
     <h2>Sources</h2>
     <ul>
-      <li><a href="../docs.html#glossary">Glossary — docs.html</a></li>
-      <li><a href="../explorer.html#concept=memory">Open in Explorer →</a></li>
+      <li><a href="../https://www.youtube.com/watch?v=g9b9G8dcS8Y">Mark Kashef — Every Claude Code Dynamic Workflow (video)</a></li>
+      <li><a href="../0.agentic/00_Ledger/PRDs/PRD-claude-code-dynamic-workflows.md">PRD — Claude Code Dynamic Workflows</a></li>
+      <li><a href="../explorer.html#concept=classify-and-act">Open in Explorer →</a></li>
     </ul>
   </section>
 

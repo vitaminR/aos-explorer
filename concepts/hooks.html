@@ -15,7 +15,6 @@
       --border: rgba(255,255,255,0.08);
       --danger: #f87171;
       --success: #34d399;
-      --warning: #fbbf24;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -34,7 +33,7 @@
     .short-def { font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 1.5rem; border-left: 3px solid var(--accent-indigo); padding-left: 12px; }
     section { margin-bottom: 1.5rem; }
     section h2 { font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-tertiary); margin-bottom: 0.5rem; }
-    section p { color: var(--text-secondary); margin-bottom: 0.6rem; }
+    section p { color: var(--text-secondary); }
     .meta { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
     .meta span { font-size: 0.85rem; color: var(--text-tertiary); }
     .meta strong { color: var(--text-primary); }
@@ -42,15 +41,10 @@
     li { margin-bottom: 0.4rem; }
     code { background: var(--bg-surface); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
     .callout { padding: 10px 14px; border-radius: 8px; margin-bottom: 0.8rem; font-size: 0.92rem; line-height: 1.5; }
-    .callout-danger  { background: rgba(248,113,113,0.08); border-left: 3px solid var(--danger);  color: var(--text-secondary); }
-    .callout-success { background: rgba(52,211,153,0.08);  border-left: 3px solid var(--success); color: var(--text-secondary); }
-    .callout-note    { background: rgba(129,140,248,0.08); border-left: 3px solid var(--accent-indigo); color: var(--text-secondary); }
+    .callout-danger { background: rgba(248,113,113,0.08); border-left: 3px solid var(--danger); color: var(--text-secondary); }
+    .callout-success { background: rgba(52,211,153,0.08); border-left: 3px solid var(--success); color: var(--text-secondary); }
     .back { display: inline-block; margin-bottom: 1.5rem; font-size: 0.9rem; }
     .nav-footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--text-tertiary); }
-    table { width: 100%; border-collapse: collapse; margin-bottom: 0.8rem; font-size: 0.9rem; }
-    th { text-align: left; padding: 8px 10px; background: var(--bg-surface); color: var(--text-tertiary); font-weight: 600; border-bottom: 1px solid var(--border); }
-    td { padding: 8px 10px; border-bottom: 1px solid var(--border); color: var(--text-secondary); vertical-align: top; }
-    td:first-child { color: var(--text-primary); font-weight: 500; white-space: nowrap; }
   </style>
 </head>
 <body>
@@ -58,7 +52,7 @@
 
   <h1>Lifecycle Hooks</h1>
   <div class="slug">/hooks</div>
-  <div class="short-def">Event-driven callbacks that fire automatically at defined points in an agent runtime — before or after a tool call, turn, file edit, or session boundary. The runtime runs them; the model does not choose to call them.</div>
+  <div class="short-def">Native lifecycle callbacks that run automatically before or after agent actions, enabling memory automation that tools alone cannot guarantee.</div>
 
   <div class="meta">
     <span>Strata: <strong>L3, L4</strong></span>
@@ -68,121 +62,55 @@
 
   <section>
     <h2>Explainer</h2>
-    <p>Hooks are deterministic extension points in an agent runtime. Code runs before or after a lifecycle event — a turn, tool call, file edit, session stop, or context compaction boundary — without any model decision required. That makes them different from MCP tools (which the model chooses to call) and from skills or workflows (which a human or agent invokes on demand).</p>
-    <p>Think of hooks like React lifecycle methods or Express middleware: they fire because of where you are in the lifecycle, not because anyone asked for them. That guarantee is exactly what makes them useful for ambient behavior — memory capture, auditing, heartbeat checks — that must happen reliably, not best-effort.</p>
-  </section>
-
-  <section>
-    <h2>Mechanism vs Pattern — the key distinction</h2>
-    <p>Hook, cron, and VS Code task are <strong>mechanisms</strong> (how something fires). Heartbeat is a <strong>pattern</strong> (what something does — quiet recurring check, clips findings). A heartbeat can be implemented via any of the three mechanisms.</p>
-    <table>
-      <thead><tr><th>Concept</th><th>Type</th><th>Trigger</th><th>Who runs it</th><th>Typical use</th></tr></thead>
-      <tbody>
-        <tr>
-          <td><strong>Hook</strong></td>
-          <td>Mechanism</td>
-          <td>Lifecycle event (Stop, PostToolUse, SessionStart…)</td>
-          <td>Agent runtime (Claude Code harness)</td>
-          <td>Memory capture, audit, sentinel check on session end</td>
-        </tr>
-        <tr>
-          <td><strong>Cron job</strong></td>
-          <td>Mechanism</td>
-          <td>Fixed time interval (independent of sessions)</td>
-          <td>OS scheduler / task runner</td>
-          <td>Daily brief at 07:00, weekly repo health scan</td>
-        </tr>
-        <tr>
-          <td><strong>VS Code Task</strong></td>
-          <td>Mechanism</td>
-          <td>IDE events (folder open, build trigger, Ctrl+Shift+B)</td>
-          <td>VS Code task runner</td>
-          <td>Pre-build linting, launch scripts, rename queues</td>
-        </tr>
-        <tr>
-          <td><strong>Skill</strong></td>
-          <td>Capability unit</td>
-          <td>Manual (<code>/sentinel</code>) or agentic (model decides)</td>
-          <td>Human or model</td>
-          <td>On-demand audit, pipeline step, named tool</td>
-        </tr>
-        <tr>
-          <td><strong>Workflow</strong></td>
-          <td>Orchestration</td>
-          <td>Manual or agentic, multi-step sequence</td>
-          <td>Human or model</td>
-          <td>LinkedIn crucible, acquire-skill, post-ship checklist</td>
-        </tr>
-        <tr>
-          <td><strong>Heartbeat</strong></td>
-          <td>Pattern</td>
-          <td>Any recurring mechanism above</td>
-          <td>Whichever mechanism implements it</td>
-          <td>Sentinel clips violations every session end; brief every morning</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="callout callout-note">
-      <strong>Rule of thumb:</strong> If you need it to happen <em>without anyone asking</em>, use a hook (session-scoped) or cron (time-scoped). If you need it on demand, build a skill. If you need it to chain multiple skills, build a workflow.
-    </div>
-  </section>
-
-  <section>
-    <h2>Hook events (Claude Code)</h2>
-    <ul>
-      <li><code>Stop</code> — fires when the session ends (close, /exit, compact). Use for ambient audits.</li>
-      <li><code>SessionStart</code> — fires when a session opens. Use for context pre-fetch.</li>
-      <li><code>PostToolUse</code> — fires after any tool call. Use for post-edit formatters, loggers.</li>
-      <li><code>PreToolUse</code> — fires before any tool call. Use for guard checks, input validation.</li>
-      <li><code>PreCompact</code> — fires before context compaction. Use for state capture.</li>
-      <li><code>UserPromptSubmit</code> — fires when user submits. Use for routing or pre-processing.</li>
-    </ul>
+    <p>Hooks are deterministic extension points in an agent runtime: code that runs before or after a lifecycle event such as a turn, tool call, file edit, or context compaction boundary. Unlike MCP, which exposes capabilities the model may choose to call, hooks run automatically at the exact lifecycle boundary you define. That makes them ideal for shared-brain systems: pre-fetch relevant memory before reasoning begins, capture decisions and file changes after the turn completes, and pre-compress state before the context window overflows. Hooks are not universally better than MCP — they solve a different problem. MCP is for tool access. Hooks are for lifecycle control.</p>
   </section>
 
   <section>
     <h2>Anti-Patterns</h2>
     <ul>
-      <li>Relying on the model to remember to call a memory tool every turn — this degrades to best-effort instead of guaranteed behavior.</li>
-      <li>Using a hook for something that needs context from the model's reasoning — hooks run blind, outside the model's turn.</li>
-      <li>Putting blocking logic in a Stop hook — it delays session close for the user.</li>
+      <li>Relying on the model to remember to call a memory tool every turn turns shared-brain behavior into a best-effort suggestion rather than a guaranteed system behavior.</li>
     </ul>
   </section>
 
   <section>
     <h2>Mitigations</h2>
     <ul>
-      <li>Attach memory operations to deterministic lifecycle hooks: pre-fetch before reasoning, capture outcomes after the turn, compress state before context loss.</li>
-      <li>Use <code>async: true</code> in the hook config for long-running operations that shouldn't block the lifecycle event.</li>
-      <li>Always add <code>|| true</code> to hook commands so a failure doesn't surface as a harness error.</li>
+      <li>Attach memory operations to deterministic lifecycle hooks: pre-fetch context before reasoning, capture outcomes after the turn, and compress state before context loss.</li>
     </ul>
   </section>
 
   <section>
     <h2>Top Products</h2>
     <ul>
+      <li><code>clawmem</code></li>
       <li><code>claude-code</code></li>
       <li><code>langgraph</code></li>
-      <li><code>clawmem</code></li>
     </ul>
   </section>
 
   <section>
     <h2>Related Concepts</h2>
     <ul>
-      <li><a href="heartbeat.html">heartbeat</a> · <a href="../explorer.html#concept=heartbeat" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
-      <li><a href="skill.html">skill</a> · <a href="../explorer.html#concept=skill" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
-      <li><a href="workflow.html">workflow (agentic)</a> · <a href="../explorer.html#concept=workflow" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
       <li><a href="mcp.html">mcp</a> · <a href="../explorer.html#concept=mcp" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
       <li><a href="lifecycle-management.html">lifecycle-management</a> · <a href="../explorer.html#concept=lifecycle-management" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
       <li><a href="memory.html">memory</a> · <a href="../explorer.html#concept=memory" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+      <li><a href="pre-fetch.html">pre-fetch</a> · <a href="../explorer.html#concept=pre-fetch" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
       <li><a href="post-turn-capture.html">post-turn-capture</a> · <a href="../explorer.html#concept=post-turn-capture" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+      <li><a href="pre-compress.html">pre-compress</a> · <a href="../explorer.html#concept=pre-compress" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Sources</h2>
+    <ul>
+      <li><a href="../explorer.html#concept=hooks">Open in Explorer →</a></li>
     </ul>
   </section>
 
   <div class="nav-footer">
     <a href="../explorer.html">Explorer</a> ·
-    <a href="../docs.html#concepts">Concepts Glossary</a> ·
-    <a href="../docs.html#terms">Terms Table</a>
+    <a href="../docs.html#glossary">Docs Glossary</a> ·
+    <a href="../docs.html#concepts">Concepts Table</a>
   </div>
 </body>
 </html>

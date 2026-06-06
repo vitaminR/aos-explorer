@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{a}OS Concept — Memory Systems</title>
+  <title>{a}OS Concept — Dynamic Agent Workflows</title>
   <style>
     :root {
       --bg: #0f0f14;
@@ -48,63 +48,64 @@
   </style>
 </head>
 <body>
-  <a class="back" href="../explorer.html#concept=memory">← Back to Explorer</a>
+  <a class="back" href="../explorer.html#concept=dynamic-agent-workflows">← Back to Explorer</a>
 
-  <h1>Memory Systems</h1>
-  <div class="slug">/memory</div>
-  <div class="short-def">Stores and recalls contextual state across turns, sessions, and tasks.</div>
+  <h1>Dynamic Agent Workflows</h1>
+  <div class="slug">/dynamic-agent-workflows</div>
+  <div class="short-def">A family of multi-agent orchestration patterns that spin up fresh, scoped agent harnesses to beat single-context failure modes.</div>
 
   <div class="meta">
-    <span>Strata: <strong>L2</strong></span>
-    <span>Axes: <strong>Knowledge</strong></span>
+    <span>Strata: <strong>L4</strong></span>
+    <span>Axes: <strong>Orchestration</strong></span>
     <span>Status: <strong>seed</strong></span>
   </div>
 
   <section>
     <h2>Explainer</h2>
-    <p>Memory systems give agents the ability to persist and retrieve state beyond a single context window. A multi-tiered architecture typically includes working memory for active tasks, episodic memory for session history, and semantic memory for long-term knowledge. Without memory, agents suffer from amnesia — forcing users to repeatedly explain context and endure the same mistakes. Strong modern memory systems add lifecycle automation around each turn: pre-fetch relevant context before reasoning, post-turn capture durable decisions after action, and pre-compress state before context truncation.</p>
+    <p>Long, complex work inside one context window breaks down structurally: context unwinding (~500-600k tokens), agent laziness (under-delivering on a batch), self-preference bias (an agent grading its own output), and goal drift. Dynamic Agent Workflows replace the single session with scoped sub-agents on fresh contexts, explicit stop conditions, and a separate verifier. The six member patterns are Classify &amp; Act, Fan Out &amp; Synthesize, Adversarial Verification, Generate &amp; Filter, Tournament, and Loop Until Done; they compose (e.g. Fan Out into Adversarial Verification, wrapped in Loop Until Done).</p>
   </section>
 
   <section>
     <h2>Anti-Patterns</h2>
     <ul>
-      <li>Deploying stateless agents that suffer from amnesia forces users to repeatedly explain their context and endure the same mistakes in every new session.</li>
+      <li>Running long, complex work in a single context window until it unwinds, gets lazy, grades itself, and drifts from the goal.</li>
     </ul>
   </section>
 
   <section>
     <h2>Mitigations</h2>
     <ul>
-      <li>Establish a multi-tiered memory architecture consisting of working memory for active tasks, episodic memory for session history, and semantic memory for long-term knowledge — then automate pre-fetch, post-turn capture, and pre-compress as lifecycle stages around each task.</li>
+      <li>Decompose into scoped sub-agents with fresh contexts, explicit stop conditions, and a separate verifier; pick the pattern that matches the failure mode.</li>
     </ul>
   </section>
 
   <section>
     <h2>Top Products</h2>
     <ul>
-      <li><code>clawmem</code></li>
-      <li><code>mem0</code></li>
-      <li><code>mcpmemory</code></li>
-      <li><code>kotanaagent</code></li>
+      <li>None mapped yet.</li>
     </ul>
   </section>
 
   <section>
     <h2>Related Concepts</h2>
     <ul>
+      <li><a href="harness.html">harness</a> · <a href="../explorer.html#concept=harness" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
       <li><a href="loop-core.html">loop-core</a> · <a href="../explorer.html#concept=loop-core" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
-      <li><a href="checkpoint.html">checkpoint</a> · <a href="../explorer.html#concept=checkpoint" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
-      <li><a href="rag.html">rag</a> · <a href="../explorer.html#concept=rag" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
-      <li><a href="hooks.html">hooks</a> · <a href="../explorer.html#concept=hooks" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
-      <li><a href="lifecycle-management.html">lifecycle-management</a> · <a href="../explorer.html#concept=lifecycle-management" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+      <li><a href="classify-and-act.html">classify-and-act</a> · <a href="../explorer.html#concept=classify-and-act" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+      <li><a href="fan-out-synthesize.html">fan-out-synthesize</a> · <a href="../explorer.html#concept=fan-out-synthesize" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+      <li><a href="adversarial-verification.html">adversarial-verification</a> · <a href="../explorer.html#concept=adversarial-verification" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+      <li><a href="generate-and-filter.html">generate-and-filter</a> · <a href="../explorer.html#concept=generate-and-filter" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+      <li><a href="tournament-pattern.html">tournament-pattern</a> · <a href="../explorer.html#concept=tournament-pattern" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
+      <li><a href="loop-until-done.html">loop-until-done</a> · <a href="../explorer.html#concept=loop-until-done" style="font-size:0.85em;opacity:0.7">preview in explorer →</a></li>
     </ul>
   </section>
 
   <section>
     <h2>Sources</h2>
     <ul>
-      <li><a href="../docs.html#glossary">Glossary — docs.html</a></li>
-      <li><a href="../explorer.html#concept=memory">Open in Explorer →</a></li>
+      <li><a href="../https://www.youtube.com/watch?v=g9b9G8dcS8Y">Mark Kashef — Every Claude Code Dynamic Workflow (video)</a></li>
+      <li><a href="../0.agentic/00_Ledger/PRDs/PRD-claude-code-dynamic-workflows.md">PRD — Claude Code Dynamic Workflows</a></li>
+      <li><a href="../explorer.html#concept=dynamic-agent-workflows">Open in Explorer →</a></li>
     </ul>
   </section>
 
