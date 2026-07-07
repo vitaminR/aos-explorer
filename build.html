@@ -531,6 +531,24 @@
         color: var(--text-tertiary);
         font-weight: 600;
       }
+      .sz-count.is-empty {
+        color: var(--text-tertiary);
+        font-style: italic;
+      }
+      .sz-count.is-filled {
+        color: var(--accent-indigo);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .sz-count.is-filled::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: currentColor;
+        flex-shrink: 0;
+      }
       .stratum-zone-items {
         display: flex;
         flex-wrap: wrap;
@@ -1273,7 +1291,11 @@
       <div class="stratum-zone-header">
         <span class="sz-tag" style="background:${s.color}">${s.id}</span>
         <span class="sz-name">${s.name}</span>
-        <span class="sz-count">${items.length} item${items.length !== 1 ? "s" : ""}</span>
+        <span class="sz-count ${items.length ? "is-filled" : "is-empty"}">${
+          items.length
+            ? `${items.length} product${items.length !== 1 ? "s" : ""}`
+            : "not yet covered"
+        }</span>
       </div>
       <div class="stratum-zone-items">${chips}</div>
       ${empty}
