@@ -1,0 +1,11 @@
+{
+  "$comment": "Tier C evidence packet from the 2026-08 whitepaper research run (15 agent fleet, web verified, adversarially fact checked).",
+  "id": "ev-langfuse-001",
+  "productId": "langfuse",
+  "type": "doc-review",
+  "title": "Langfuse: 2026-08 stack research verification",
+  "summary": "Self hosted LLM tracing that speaks OTLP, so the OTel GenAI spans Atlas and Kotana already emit land without rework. Also the canonical audit trail store for L6.",
+  "sourceUrl": "https://langfuse.com/",
+  "status": "active",
+  "capturedAt": "2026-08-01"
+}

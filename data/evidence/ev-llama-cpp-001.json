@@ -1,0 +1,11 @@
+{
+  "$comment": "Tier C evidence packet from the 2026-08 whitepaper research run (15 agent fleet, web verified, adversarially fact checked).",
+  "id": "ev-llama-cpp-001",
+  "productId": "llama-cpp",
+  "type": "doc-review",
+  "title": "llama.cpp: 2026-08 stack research verification",
+  "summary": "CPU first local inference runtime serving an OpenAI style endpoint. The degraded mode backbone: keeps reasoning alive on the existing GPU-less server with ally origin GGUF weights at zero cost.",
+  "sourceUrl": "https://github.com/ggml-org/llama.cpp",
+  "status": "active",
+  "capturedAt": "2026-08-01"
+}

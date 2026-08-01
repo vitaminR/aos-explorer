@@ -1,0 +1,11 @@
+{
+  "$comment": "Tier C evidence packet from the 2026-08 whitepaper research run (15 agent fleet, web verified, adversarially fact checked).",
+  "id": "ev-dagu-001",
+  "productId": "dagu",
+  "type": "doc-review",
+  "title": "Dagu: 2026-08 stack research verification",
+  "summary": "One binary scheduler that matches the files as truth style: YAML jobs in git, cron plus retries plus a web UI, and a built in MCP server so agents can inspect and trigger jobs.",
+  "sourceUrl": "https://dagu.cloud/",
+  "status": "active",
+  "capturedAt": "2026-08-01"
+}

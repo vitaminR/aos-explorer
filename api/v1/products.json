@@ -1,7 +1,7 @@
 {
   "version": "v1.1.0",
-  "generatedAt": "2026-04-25T22:57:24Z",
-  "count": 32,
+  "generatedAt": "2026-08-01T03:33:28Z",
+  "count": 60,
   "products": [
     {
       "id": "bmad",
@@ -11,7 +11,7 @@
       "deployment": "Local",
       "license": "Open Source",
       "primary": "L4 Orchestration & Decisioning",
-      "secondary": "L3",
+      "secondary": "L7, L6",
       "axisRoles": "Governance: Strong · Observability: Medium",
       "confidence": 0.91,
       "rationale": "Spec-first agent harness for turning vague goals into disciplined execution. Enforces planning, checkpointing, and quality gates before implementation begins.",
@@ -29,7 +29,9 @@
           "why": "Best spec-first implementation loop when requirements discipline matters most."
         }
       ],
-      "evidenceIds": ["ev-bmad-001"],
+      "evidenceIds": [
+        "ev-bmad-001"
+      ],
       "freshnessTier": "B",
       "lastReviewed": "2026-04-06",
       "lastVerified": "2026-04-06",
@@ -47,7 +49,7 @@
       "deployment": "Local",
       "license": "Open Source",
       "primary": "L4 Orchestration & Decisioning",
-      "secondary": "L3",
+      "secondary": "L2, L6",
       "axisRoles": "Governance: Medium · Observability: Medium",
       "confidence": 0.89,
       "rationale": "Context-lifecycle harness with explicit checkpoints, budget control, and resume semantics. Best for durable multi-step agent execution.",
@@ -65,7 +67,9 @@
           "why": "Best explicit checkpoint/resume model for recovering work without losing context."
         }
       ],
-      "evidenceIds": ["ev-gsd-001"],
+      "evidenceIds": [
+        "ev-gsd-001"
+      ],
       "freshnessTier": "B",
       "lastReviewed": "2026-04-06",
       "lastVerified": "2026-04-06",
@@ -101,7 +105,9 @@
           "why": "Features built-in central state persistence for branching, time travel, and durable execution."
         }
       ],
-      "evidenceIds": ["ev-langgraph-001"],
+      "evidenceIds": [
+        "ev-langgraph-001"
+      ],
       "freshnessTier": "B",
       "lastReviewed": "2026-04-06",
       "lastVerified": "2026-04-06",
@@ -167,7 +173,9 @@
           "why": "Also exposes a standard MCP interface for clients that need tool-style access to the shared vault."
         }
       ],
-      "evidenceIds": ["ev-clawmem-001"],
+      "evidenceIds": [
+        "ev-clawmem-001"
+      ],
       "freshnessTier": "B",
       "lastReviewed": "2026-04-25",
       "lastVerified": "2026-04-25",
@@ -1053,7 +1061,7 @@
     {
       "id": "cursor",
       "name": "Cursor",
-      "type": "platform",
+      "type": "product",
       "vendor": "Anysphere",
       "deployment": "Local",
       "license": "Proprietary",
@@ -1114,6 +1122,843 @@
       "reviewPolicy": "scheduled",
       "changeRisk": "high",
       "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "hermes-agent",
+      "name": "Hermes Agent",
+      "type": "agent",
+      "vendor": "NousResearch",
+      "deployment": "Self-hosted / Cloud",
+      "license": "Open Source",
+      "primary": "L4 Orchestration & Decisioning",
+      "secondary": "L2, L3",
+      "axisRoles": "Governance: Medium · Observability: Medium",
+      "confidence": 0.84,
+      "rationale": "Self-improving autonomous agent with a built-in learning loop. Creates and refines skills from experience, maintains persistent memory across sessions, and supports multi-agent parallelism. Runs on any infrastructure from a VPS to a GPU cluster.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "loop-core",
+          "role": "primary",
+          "rank": 1,
+          "why": "The defining feature: a continuous self-improvement loop that creates skills from experience and refines them during use."
+        },
+        {
+          "conceptSlug": "memory",
+          "role": "primary",
+          "rank": 1,
+          "why": "Persistent cross-session memory with self-nudging to retain knowledge and recall past conversations."
+        },
+        {
+          "conceptSlug": "harness",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Coordinator can route tasks to specialized subagents and share experience across agent pools."
+        },
+        {
+          "conceptSlug": "tool_calling",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Full web control, MCP support, and programmatic tool calling via execute_code for collapsing multi-step pipelines."
+        }
+      ],
+      "evidenceIds": [],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-04-28",
+      "lastVerified": "2026-04-28",
+      "updatePriority": 0.7,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "medium",
+      "sourceQuality": "medium",
+      "status": "active"
+    },
+    {
+      "id": "hermes-model",
+      "name": "Hermes (Model Series)",
+      "type": "model",
+      "vendor": "NousResearch",
+      "deployment": "Self-hosted",
+      "license": "Open Source",
+      "primary": "L1 Models & Infrastructure",
+      "secondary": "L3",
+      "axisRoles": "Governance: Light · Observability: Light",
+      "confidence": 0.87,
+      "rationale": "Open-source LLM series (Hermes 2, Hermes 3) fine-tuned on structured function-calling and agentic JSON datasets. The backbone model for Hermes Agent and a popular base for community agentic builds requiring strong tool-use without proprietary APIs.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "tool_calling",
+          "role": "primary",
+          "rank": 1,
+          "why": "Trained on the hermes-function-calling-v1 dataset — one of the strongest open-source models for structured tool-use and agentic JSON mode."
+        },
+        {
+          "conceptSlug": "rag",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Commonly used as the inference backbone in self-hosted RAG pipelines due to its structured-output reliability."
+        }
+      ],
+      "evidenceIds": [],
+      "freshnessTier": "B",
+      "lastReviewed": "2026-04-28",
+      "lastVerified": "2026-04-28",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "low",
+      "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "aosnaming",
+      "name": "{a}OS Hybrid Skill Naming Convention",
+      "type": "skill",
+      "vendor": "{a}OS",
+      "deployment": "Local",
+      "license": "Proprietary",
+      "primary": "L6 Governance & Trust",
+      "secondary": "L7, L5",
+      "axisRoles": "Governance: Primary · UX Discovery · Catalog Quality",
+      "confidence": 0.95,
+      "rationale": "First formal {a}OS governance standard for naming slash commands and skills across the agentic workspace. Defines a hybrid convention with three rules: product-prefix (li-crucible) when a domain has 3+ skills, action-product (catalog-aos7) when a domain has 1–2 skills, and bare action words (scout, fix, close) for general workspace tools. The convention exists to make autocomplete intentional — typing a prefix should land on a coherent group rather than an accidental collision. Applied uniformly across Claude Code, Copilot, Gemini, and Opencode harnesses, and enforced by the unified skill registry. Sits at L6 because it governs how the catalog is structured, with secondary impact at L7 (how users discover skills) and L5 (catalog quality control).",
+      "conceptMappings": [],
+      "evidenceIds": [],
+      "freshnessTier": "B",
+      "lastReviewed": "2026-05-01",
+      "lastVerified": "2026-05-01",
+      "updatePriority": 0.3,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "low",
+      "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "fallow",
+      "name": "Fallow",
+      "type": "tool",
+      "vendor": "fallow-rs",
+      "deployment": "Local",
+      "license": "MIT (Runtime tier paid)",
+      "primary": "L5 Observability & Evaluation",
+      "secondary": "L3, L6",
+      "axisRoles": "Observability: Strong · Governance: Medium",
+      "confidence": 0.86,
+      "rationale": "Rust-native codebase intelligence engine for TypeScript and JavaScript that builds a project-wide graph instead of working file-by-file like a linter. The free static layer analyzes a wide spread of code-quality dimensions — unused/dead code, duplication, circular dependencies, complexity hotspots, and architecture-boundary drift — with sub-second performance and roughly 90 framework plugins. An optional paid Runtime tier adds production-traffic evidence for hot-path review and cold-path deletion, turning quality scores into deployment-grade signals. In the agentic stack, Fallow is the deterministic check that pairs with non-deterministic AI codegen: Claude Code, Cursor, Codex, and other agents call it via CLI or MCP to verify that generated changes don't introduce slop, dead branches, or boundary violations. Primary fit is L5 Evaluation & Quality because the entire product is a multi-metric quality oracle; L3 captures the CLI/MCP tool surface that agents actually invoke, and L6 captures the architecture-boundary enforcement that nudges it into the governance lane. In plain English: it's a fast, graph-aware code reviewer that scores codebase health across many axes at once and gives AI coding agents a structured way to catch their own mistakes.",
+      "conceptMappings": [],
+      "evidenceIds": [],
+      "freshnessTier": "B",
+      "lastReviewed": "2026-05-01",
+      "lastVerified": "2026-05-01",
+      "updatePriority": 0.4,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "medium",
+      "sourceQuality": "high",
+      "status": "active"
+    },
+    {
+      "id": "routa",
+      "name": "Routa",
+      "type": "agent",
+      "vendor": "Routa",
+      "deployment": "Local",
+      "license": "Proprietary",
+      "primary": "L4 Orchestration & Decisioning",
+      "secondary": "L7, L6, L5, L3, L2, L1",
+      "axisRoles": "Orchestration: Primary · Governance: Primary · Tool Integration · Decisioning · Memory",
+      "confidence": 0.75,
+      "rationale": "Workspace-first agentic delivery orchestrator using a file-based control plane. Tasks flow through a strict lane state machine (backlog → todo → dev → review → done | blocked). Strong governance enforced via file-budget, deletion-safety, and acceptance-criteria gates. Heartbeat pulse counter is a protected 50-year invariant.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "harness",
+          "role": "primary",
+          "rank": 3,
+          "why": "File-based control plane with explicit lane policies, review gates, and artifact contracts is a disciplined spec-first harness."
+        },
+        {
+          "conceptSlug": "loop-core",
+          "role": "primary",
+          "rank": 2,
+          "why": "Lane state machine (backlog → todo → dev → review → done) is a strict task execution loop with built-in gate enforcement."
+        }
+      ],
+      "evidenceIds": [],
+      "freshnessTier": "B",
+      "lastReviewed": "2026-05-21",
+      "lastVerified": "2026-05-21",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "low",
+      "sourceQuality": "medium",
+      "status": "active"
+    },
+    {
+      "id": "litellm",
+      "name": "LiteLLM Proxy",
+      "type": "tool",
+      "vendor": "BerriAI",
+      "deployment": "Self-hosted",
+      "license": "MIT (open source core)",
+      "primary": "L1 Models & Infrastructure",
+      "secondary": "L5, L6",
+      "axisRoles": "Governance: Strong · Observability: Strong",
+      "confidence": 0.9,
+      "rationale": "One OpenAI compatible gateway over 100+ providers with fallback chains, per key budgets, spend tracking, and OTel export. Canonical gateway for the stack; also carries the L5 cost line and L6 hard budget enforcement.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "governance",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Virtual keys enforce hard per-agent budgets at the gateway."
+        }
+      ],
+      "evidenceIds": [
+        "ev-litellm-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "llama-cpp",
+      "name": "llama.cpp",
+      "type": "tool",
+      "vendor": "ggml.ai (team joined Hugging Face 2026)",
+      "deployment": "Local",
+      "license": "MIT",
+      "primary": "L1 Models & Infrastructure",
+      "secondary": "",
+      "axisRoles": "Governance: Light · Observability: Light",
+      "confidence": 0.88,
+      "rationale": "CPU first local inference runtime serving an OpenAI style endpoint. The degraded mode backbone: keeps reasoning alive on the existing GPU-less server with ally origin GGUF weights at zero cost.",
+      "conceptMappings": [],
+      "evidenceIds": [
+        "ev-llama-cpp-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "ollama",
+      "name": "Ollama",
+      "type": "tool",
+      "vendor": "Ollama Inc",
+      "deployment": "Local",
+      "license": "MIT",
+      "primary": "L1 Models & Infrastructure",
+      "secondary": "",
+      "axisRoles": "Governance: Light · Observability: Light",
+      "confidence": 0.85,
+      "rationale": "Friendly wrapper over llama.cpp with a model registry and one line pulls. The dev laptop convenience lane for local models.",
+      "conceptMappings": [],
+      "evidenceIds": [
+        "ev-ollama-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "qdrant",
+      "name": "Qdrant",
+      "type": "product",
+      "vendor": "Qdrant (Germany)",
+      "deployment": "Self-hosted",
+      "license": "Apache 2.0",
+      "primary": "L2 Knowledge & Memory",
+      "secondary": "",
+      "axisRoles": "Governance: Light · Observability: Medium",
+      "confidence": 0.9,
+      "rationale": "Ally origin vector database that runs as one small container on the existing box. Chosen over hosted stores for zero license cost and over Chinese origin alternatives by policy.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "rag",
+          "role": "primary",
+          "rank": 1,
+          "why": "The vector store under the retrieval lane."
+        },
+        {
+          "conceptSlug": "memory",
+          "role": "secondary",
+          "rank": 3,
+          "why": "Backing store for semantic agent memory."
+        }
+      ],
+      "evidenceIds": [
+        "ev-qdrant-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "docling",
+      "name": "Docling",
+      "type": "tool",
+      "vendor": "IBM Research",
+      "deployment": "Self-hosted",
+      "license": "MIT",
+      "primary": "L2 Knowledge & Memory",
+      "secondary": "",
+      "axisRoles": "Governance: Light · Observability: Light",
+      "confidence": 0.87,
+      "rationale": "Parses the whole office document spread (PDF, Word, PowerPoint, Excel) with real table structure on CPU. Native LlamaIndex integration makes it the ingest front door of the retrieval lane.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "rag",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Turns PDF and office documents into structured RAG input."
+        }
+      ],
+      "evidenceIds": [
+        "ev-docling-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "falkordb",
+      "name": "FalkorDB",
+      "type": "product",
+      "vendor": "FalkorDB (Israel)",
+      "deployment": "Self-hosted",
+      "license": "Source-available (FalkorDB license)",
+      "primary": "L2 Knowledge & Memory",
+      "secondary": "",
+      "axisRoles": "Governance: Light · Observability: Light",
+      "confidence": 0.8,
+      "rationale": "Light RAM footprint graph store and a first class backend for Graphiti temporal memory. The runtime graph pick beside graphify code analysis.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "memory",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Runtime graph under agent memory and GraphRAG."
+        }
+      ],
+      "evidenceIds": [
+        "ev-falkordb-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "fastmcp",
+      "name": "FastMCP",
+      "type": "framework",
+      "vendor": "Prefect (jlowin)",
+      "deployment": "Self-hosted",
+      "license": "Apache 2.0",
+      "primary": "L3 Execution & Interfaces",
+      "secondary": "",
+      "axisRoles": "Governance: Medium · Observability: Medium",
+      "confidence": 0.9,
+      "rationale": "Turns the Python orchestration already on the box into clean MCP tool servers, tracking the official spec closely. The standard way the stack grows new tools.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "mcp",
+          "role": "primary",
+          "rank": 1,
+          "why": "The fastest path from Python functions to spec current MCP servers."
+        },
+        {
+          "conceptSlug": "tool_calling",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Wraps existing orchestration as typed tools."
+        }
+      ],
+      "evidenceIds": [
+        "ev-fastmcp-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "playwright-mcp",
+      "name": "Playwright MCP",
+      "type": "mcp",
+      "vendor": "Microsoft",
+      "deployment": "Self-hosted",
+      "license": "Apache 2.0",
+      "primary": "L3 Execution & Interfaces",
+      "secondary": "L5",
+      "axisRoles": "Governance: Light · Observability: Medium",
+      "confidence": 0.9,
+      "rationale": "Lets agents drive the same Playwright and Chromium stack the verification walks use, through MCP, with no new vendor. Work time and verify time share one browser truth.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "mcp",
+          "role": "primary",
+          "rank": 1,
+          "why": "Official MCP server over the browser stack the ghost tours already trust."
+        }
+      ],
+      "evidenceIds": [
+        "ev-playwright-mcp-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "gvisor",
+      "name": "gVisor",
+      "type": "tool",
+      "vendor": "Google",
+      "deployment": "Self-hosted",
+      "license": "Apache 2.0",
+      "primary": "L3 Execution & Interfaces",
+      "secondary": "L6",
+      "axisRoles": "Governance: Strong · Observability: Light",
+      "confidence": 0.85,
+      "rationale": "Application kernel sandbox that hardens the Docker runtime under semi trusted agent code for zero dollars and one afternoon of setup.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "guardrails",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Kernel level syscall isolation under agent-run code."
+        }
+      ],
+      "evidenceIds": [
+        "ev-gvisor-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "composio",
+      "name": "Composio",
+      "type": "product",
+      "vendor": "Composio (US)",
+      "deployment": "Cloud",
+      "license": "Open source SDK, hosted platform",
+      "primary": "L3 Execution & Interfaces",
+      "secondary": "",
+      "axisRoles": "Governance: Medium · Observability: Light",
+      "confidence": 0.8,
+      "rationale": "Broadest catalog of prebuilt integrations that surface as MCP tools. Hosted SaaS with a free tier, flagged as a deliberate step off the self hosted posture when integration breadth pays for it.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "tool_calling",
+          "role": "primary",
+          "rank": 1,
+          "why": "Hundreds of prebuilt LLM tuned integration toolkits, exposed as MCP tools."
+        }
+      ],
+      "evidenceIds": [
+        "ev-composio-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "hatchet",
+      "name": "Hatchet",
+      "type": "tool",
+      "vendor": "Hatchet (US)",
+      "deployment": "Self-hosted",
+      "license": "MIT",
+      "primary": "L4 Orchestration & Decisioning",
+      "secondary": "",
+      "axisRoles": "Governance: Medium · Observability: Strong",
+      "confidence": 0.85,
+      "rationale": "Durable workflow engine on a single Postgres container. Layers under the overnight brain loops so a crash resumes from the last step; the file floor and board stay in charge.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "loop-core",
+          "role": "secondary",
+          "rank": 3,
+          "why": "Overnight loops resume after crashes instead of vanishing."
+        }
+      ],
+      "evidenceIds": [
+        "ev-hatchet-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "dagu",
+      "name": "Dagu",
+      "type": "tool",
+      "vendor": "Dagu project",
+      "deployment": "Self-hosted",
+      "license": "GPL-3.0",
+      "primary": "L4 Orchestration & Decisioning",
+      "secondary": "",
+      "axisRoles": "Governance: Light · Observability: Medium",
+      "confidence": 0.82,
+      "rationale": "One binary scheduler that matches the files as truth style: YAML jobs in git, cron plus retries plus a web UI, and a built in MCP server so agents can inspect and trigger jobs.",
+      "conceptMappings": [],
+      "evidenceIds": [
+        "ev-dagu-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "pydantic-ai",
+      "name": "Pydantic AI",
+      "type": "framework",
+      "vendor": "Pydantic Services (UK)",
+      "deployment": "Self-hosted",
+      "license": "MIT",
+      "primary": "L4 Orchestration & Decisioning",
+      "secondary": "L3",
+      "axisRoles": "Governance: Medium · Observability: Medium",
+      "confidence": 0.87,
+      "rationale": "MIT typed agent framework from the Pydantic team. Forces schema valid JSON across all three providers through one interface, which the zero dollar LLM lane already demands.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "pydantic-contracts",
+          "role": "primary",
+          "rank": 1,
+          "why": "Typed, validated model outputs as the contract layer."
+        },
+        {
+          "conceptSlug": "harness",
+          "role": "secondary",
+          "rank": 2,
+          "why": "A tiny typed agent harness when a job needs one agent, not a fleet."
+        }
+      ],
+      "evidenceIds": [
+        "ev-pydantic-ai-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "langfuse",
+      "name": "Langfuse",
+      "type": "tool",
+      "vendor": "Langfuse (Berlin, ClickHouse Inc)",
+      "deployment": "Self-hosted",
+      "license": "MIT core",
+      "primary": "L5 Observability & Evaluation",
+      "secondary": "L6",
+      "axisRoles": "Governance: Medium · Observability: Strong",
+      "confidence": 0.9,
+      "rationale": "Self hosted LLM tracing that speaks OTLP, so the OTel GenAI spans Atlas and Kotana already emit land without rework. Also the canonical audit trail store for L6.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "post-turn-capture",
+          "role": "primary",
+          "rank": 1,
+          "why": "Every turn lands as an OTel GenAI trace with sessions and users."
+        }
+      ],
+      "evidenceIds": [
+        "ev-langfuse-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "deepeval",
+      "name": "DeepEval",
+      "type": "framework",
+      "vendor": "Confident AI (US)",
+      "deployment": "Self-hosted",
+      "license": "Apache 2.0",
+      "primary": "L5 Observability & Evaluation",
+      "secondary": "",
+      "axisRoles": "Governance: Light · Observability: Strong",
+      "confidence": 0.85,
+      "rationale": "Pytest native eval framework that gives the aos7 crucible judge a spine: versioned test cases, repeatable metrics, and exit codes for gates.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "checkpoint",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Versioned eval cases with a pass or fail exit code gates can trust."
+        }
+      ],
+      "evidenceIds": [
+        "ev-deepeval-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "healthchecks",
+      "name": "Healthchecks.io",
+      "type": "tool",
+      "vendor": "Healthchecks (EU)",
+      "deployment": "Hybrid",
+      "license": "BSD-3 (self-hostable) / hosted free tier",
+      "primary": "L5 Observability & Evaluation",
+      "secondary": "",
+      "axisRoles": "Governance: Light · Observability: Strong",
+      "confidence": 0.85,
+      "rationale": "Dead man monitoring for cron and loops: a job that goes silent triggers an alert from outside the box, closing the recorded external monitor gap.",
+      "conceptMappings": [],
+      "evidenceIds": [
+        "ev-healthchecks-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "infisical",
+      "name": "Infisical",
+      "type": "product",
+      "vendor": "Infisical (US)",
+      "deployment": "Self-hosted",
+      "license": "MIT core",
+      "primary": "L6 Governance & Trust",
+      "secondary": "",
+      "axisRoles": "Governance: Strong · Observability: Light",
+      "confidence": 0.87,
+      "rationale": "Machine secret manager beside Vaultwarden human passwords: per agent tokens, rotation, and env var injection, self hosted free.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "governance",
+          "role": "primary",
+          "rank": 1,
+          "why": "Machine secrets with rotation and env injection for the agent fleet."
+        },
+        {
+          "conceptSlug": "config",
+          "role": "secondary",
+          "rank": 3,
+          "why": "Keys stop living in files on the box."
+        }
+      ],
+      "evidenceIds": [
+        "ev-infisical-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "opa",
+      "name": "Open Policy Agent",
+      "type": "framework",
+      "vendor": "CNCF / Styra",
+      "deployment": "Self-hosted",
+      "license": "Apache 2.0",
+      "primary": "L6 Governance & Trust",
+      "secondary": "-",
+      "axisRoles": "Governance: Strong · Observability: Medium",
+      "confidence": 0.88,
+      "rationale": "A single free binary answering allow or deny over HTTP with policy as code. The one gate every risky agent action passes through.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "governance",
+          "role": "primary",
+          "rank": 1,
+          "why": "One auditable yes or no gate in front of risky tool calls."
+        },
+        {
+          "conceptSlug": "guardrails",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Policy as code the fleet can version and test."
+        }
+      ],
+      "evidenceIds": [
+        "ev-opa-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "llm-guard",
+      "name": "LLM Guard",
+      "type": "tool",
+      "vendor": "Protect AI (US)",
+      "deployment": "Self-hosted",
+      "license": "MIT",
+      "primary": "L6 Governance & Trust",
+      "secondary": "",
+      "axisRoles": "Governance: Strong · Observability: Light",
+      "confidence": 0.83,
+      "rationale": "Injection defense for the biggest real surface: agents reading hostile web pages, emails, and floor messages. CPU detector models, inserted as a gateway scan step.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "guardrails",
+          "role": "primary",
+          "rank": 1,
+          "why": "Prompt injection and content scanning on the CPU only box."
+        }
+      ],
+      "evidenceIds": [
+        "ev-llm-guard-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "assistant-ui",
+      "name": "assistant-ui",
+      "type": "framework",
+      "vendor": "assistant-ui (US)",
+      "deployment": "Self-hosted",
+      "license": "MIT",
+      "primary": "L7 Experience & Intent",
+      "secondary": "",
+      "axisRoles": "Governance: Light · Observability: Light",
+      "confidence": 0.85,
+      "rationale": "Headless React chat primitives that drop into the existing Next.js dashboards, so Cyber Nouveau and the Compass pane style survive while chat UX stops being hand rolled.",
+      "conceptMappings": [],
+      "evidenceIds": [
+        "ev-assistant-ui-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "copilotkit",
+      "name": "CopilotKit + AG-UI",
+      "type": "framework",
+      "vendor": "CopilotKit (US)",
+      "deployment": "Self-hosted",
+      "license": "MIT",
+      "primary": "L7 Experience & Intent",
+      "secondary": "L4",
+      "axisRoles": "Governance: Medium · Observability: Light",
+      "confidence": 0.83,
+      "rationale": "AG-UI is the approval wire: every agent raises a hand into the founder decision dock the same way. CopilotKit is its reference React implementation.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "hooks",
+          "role": "secondary",
+          "rank": 3,
+          "why": "Standard wire for agents raising a hand into the decision dock."
+        }
+      ],
+      "evidenceIds": [
+        "ev-copilotkit-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "pipecat",
+      "name": "Pipecat",
+      "type": "framework",
+      "vendor": "Daily (US)",
+      "deployment": "Self-hosted",
+      "license": "BSD-2",
+      "primary": "L7 Experience & Intent",
+      "secondary": "L1",
+      "axisRoles": "Governance: Light · Observability: Light",
+      "confidence": 0.84,
+      "rationale": "Voice pipeline that runs the whole loop on owned hardware: local Whisper ears and local TTS mouth, zero dollars per minute and no cloud outage between an assistive user and the assistant.",
+      "conceptMappings": [],
+      "evidenceIds": [
+        "ev-pipecat-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "typst",
+      "name": "Typst",
+      "type": "tool",
+      "vendor": "Typst GmbH (Germany)",
+      "deployment": "Self-hosted",
+      "license": "Apache 2.0 (compiler)",
+      "primary": "L7 Experience & Intent",
+      "secondary": "",
+      "axisRoles": "Governance: Light · Observability: Light",
+      "confidence": 0.84,
+      "rationale": "Compiles plain text into branded PDF artifacts in milliseconds on the server. Agents write text well, so daily briefs and reports become one command deliverables.",
+      "conceptMappings": [],
+      "evidenceIds": [
+        "ev-typst-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
       "status": "active"
     }
   ]

@@ -1,0 +1,11 @@
+{
+  "$comment": "Tier C evidence packet from the 2026-08 whitepaper research run (15 agent fleet, web verified, adversarially fact checked).",
+  "id": "ev-deepeval-001",
+  "productId": "deepeval",
+  "type": "doc-review",
+  "title": "DeepEval: 2026-08 stack research verification",
+  "summary": "Pytest native eval framework that gives the aos7 crucible judge a spine: versioned test cases, repeatable metrics, and exit codes for gates.",
+  "sourceUrl": "https://deepeval.com/",
+  "status": "active",
+  "capturedAt": "2026-08-01"
+}

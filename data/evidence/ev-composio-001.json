@@ -1,0 +1,11 @@
+{
+  "$comment": "Tier C evidence packet from the 2026-08 whitepaper research run (15 agent fleet, web verified, adversarially fact checked).",
+  "id": "ev-composio-001",
+  "productId": "composio",
+  "type": "doc-review",
+  "title": "Composio: 2026-08 stack research verification",
+  "summary": "Broadest catalog of prebuilt integrations that surface as MCP tools. Hosted SaaS with a free tier, flagged as a deliberate step off the self hosted posture when integration breadth pays for it.",
+  "sourceUrl": "https://composio.dev/",
+  "status": "active",
+  "capturedAt": "2026-08-01"
+}

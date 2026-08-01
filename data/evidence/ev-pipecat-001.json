@@ -1,0 +1,11 @@
+{
+  "$comment": "Tier C evidence packet from the 2026-08 whitepaper research run (15 agent fleet, web verified, adversarially fact checked).",
+  "id": "ev-pipecat-001",
+  "productId": "pipecat",
+  "type": "doc-review",
+  "title": "Pipecat: 2026-08 stack research verification",
+  "summary": "Voice pipeline that runs the whole loop on owned hardware: local Whisper ears and local TTS mouth, zero dollars per minute and no cloud outage between an assistive user and the assistant.",
+  "sourceUrl": "https://pipecat.ai/",
+  "status": "active",
+  "capturedAt": "2026-08-01"
+}

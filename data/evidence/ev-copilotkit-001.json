@@ -1,0 +1,11 @@
+{
+  "$comment": "Tier C evidence packet from the 2026-08 whitepaper research run (15 agent fleet, web verified, adversarially fact checked).",
+  "id": "ev-copilotkit-001",
+  "productId": "copilotkit",
+  "type": "doc-review",
+  "title": "CopilotKit + AG-UI: 2026-08 stack research verification",
+  "summary": "AG-UI is the approval wire: every agent raises a hand into the founder decision dock the same way. CopilotKit is its reference React implementation.",
+  "sourceUrl": "https://www.copilotkit.ai/",
+  "status": "active",
+  "capturedAt": "2026-08-01"
+}

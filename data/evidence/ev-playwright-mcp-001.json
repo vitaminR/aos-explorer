@@ -1,0 +1,11 @@
+{
+  "$comment": "Tier C evidence packet from the 2026-08 whitepaper research run (15 agent fleet, web verified, adversarially fact checked).",
+  "id": "ev-playwright-mcp-001",
+  "productId": "playwright-mcp",
+  "type": "doc-review",
+  "title": "Playwright MCP: 2026-08 stack research verification",
+  "summary": "Lets agents drive the same Playwright and Chromium stack the verification walks use, through MCP, with no new vendor. Work time and verify time share one browser truth.",
+  "sourceUrl": "https://github.com/microsoft/playwright-mcp",
+  "status": "active",
+  "capturedAt": "2026-08-01"
+}

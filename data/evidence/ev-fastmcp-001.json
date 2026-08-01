@@ -1,0 +1,11 @@
+{
+  "$comment": "Tier C evidence packet from the 2026-08 whitepaper research run (15 agent fleet, web verified, adversarially fact checked).",
+  "id": "ev-fastmcp-001",
+  "productId": "fastmcp",
+  "type": "doc-review",
+  "title": "FastMCP: 2026-08 stack research verification",
+  "summary": "Turns the Python orchestration already on the box into clean MCP tool servers, tracking the official spec closely. The standard way the stack grows new tools.",
+  "sourceUrl": "https://gofastmcp.com/",
+  "status": "active",
+  "capturedAt": "2026-08-01"
+}

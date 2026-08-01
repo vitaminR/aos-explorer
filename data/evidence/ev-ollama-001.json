@@ -1,0 +1,11 @@
+{
+  "$comment": "Tier C evidence packet from the 2026-08 whitepaper research run (15 agent fleet, web verified, adversarially fact checked).",
+  "id": "ev-ollama-001",
+  "productId": "ollama",
+  "type": "doc-review",
+  "title": "Ollama: 2026-08 stack research verification",
+  "summary": "Friendly wrapper over llama.cpp with a model registry and one line pulls. The dev laptop convenience lane for local models.",
+  "sourceUrl": "https://ollama.com/",
+  "status": "active",
+  "capturedAt": "2026-08-01"
+}

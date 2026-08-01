@@ -1,0 +1,11 @@
+{
+  "$comment": "Tier C evidence packet from the 2026-08 whitepaper research run (15 agent fleet, web verified, adversarially fact checked).",
+  "id": "ev-infisical-001",
+  "productId": "infisical",
+  "type": "doc-review",
+  "title": "Infisical: 2026-08 stack research verification",
+  "summary": "Machine secret manager beside Vaultwarden human passwords: per agent tokens, rotation, and env var injection, self hosted free.",
+  "sourceUrl": "https://infisical.com/",
+  "status": "active",
+  "capturedAt": "2026-08-01"
+}

@@ -1,0 +1,11 @@
+{
+  "$comment": "Tier C evidence packet from the 2026-08 whitepaper research run (15 agent fleet, web verified, adversarially fact checked).",
+  "id": "ev-healthchecks-001",
+  "productId": "healthchecks",
+  "type": "doc-review",
+  "title": "Healthchecks.io: 2026-08 stack research verification",
+  "summary": "Dead man monitoring for cron and loops: a job that goes silent triggers an alert from outside the box, closing the recorded external monitor gap.",
+  "sourceUrl": "https://healthchecks.io/",
+  "status": "active",
+  "capturedAt": "2026-08-01"
+}

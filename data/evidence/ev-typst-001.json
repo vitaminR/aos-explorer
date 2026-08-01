@@ -1,0 +1,11 @@
+{
+  "$comment": "Tier C evidence packet from the 2026-08 whitepaper research run (15 agent fleet, web verified, adversarially fact checked).",
+  "id": "ev-typst-001",
+  "productId": "typst",
+  "type": "doc-review",
+  "title": "Typst: 2026-08 stack research verification",
+  "summary": "Compiles plain text into branded PDF artifacts in milliseconds on the server. Agents write text well, so daily briefs and reports become one command deliverables.",
+  "sourceUrl": "https://typst.app/",
+  "status": "active",
+  "capturedAt": "2026-08-01"
+}

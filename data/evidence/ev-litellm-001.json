@@ -1,0 +1,11 @@
+{
+  "$comment": "Tier C evidence packet from the 2026-08 whitepaper research run (15 agent fleet, web verified, adversarially fact checked).",
+  "id": "ev-litellm-001",
+  "productId": "litellm",
+  "type": "doc-review",
+  "title": "LiteLLM Proxy: 2026-08 stack research verification",
+  "summary": "One OpenAI compatible gateway over 100+ providers with fallback chains, per key budgets, spend tracking, and OTel export. Canonical gateway for the stack; also carries the L5 cost line and L6 hard budget enforcement.",
+  "sourceUrl": "https://docs.litellm.ai/",
+  "status": "active",
+  "capturedAt": "2026-08-01"
+}

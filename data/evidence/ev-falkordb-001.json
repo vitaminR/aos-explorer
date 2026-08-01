@@ -1,0 +1,11 @@
+{
+  "$comment": "Tier C evidence packet from the 2026-08 whitepaper research run (15 agent fleet, web verified, adversarially fact checked).",
+  "id": "ev-falkordb-001",
+  "productId": "falkordb",
+  "type": "doc-review",
+  "title": "FalkorDB: 2026-08 stack research verification",
+  "summary": "Light RAM footprint graph store and a first class backend for Graphiti temporal memory. The runtime graph pick beside graphify code analysis.",
+  "sourceUrl": "https://www.falkordb.com/",
+  "status": "active",
+  "capturedAt": "2026-08-01"
+}

@@ -1,0 +1,11 @@
+{
+  "$comment": "Tier C evidence packet from the 2026-08 whitepaper research run (15 agent fleet, web verified, adversarially fact checked).",
+  "id": "ev-hatchet-001",
+  "productId": "hatchet",
+  "type": "doc-review",
+  "title": "Hatchet: 2026-08 stack research verification",
+  "summary": "Durable workflow engine on a single Postgres container. Layers under the overnight brain loops so a crash resumes from the last step; the file floor and board stay in charge.",
+  "sourceUrl": "https://hatchet.run/",
+  "status": "active",
+  "capturedAt": "2026-08-01"
+}

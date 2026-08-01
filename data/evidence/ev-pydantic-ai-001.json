@@ -1,0 +1,11 @@
+{
+  "$comment": "Tier C evidence packet from the 2026-08 whitepaper research run (15 agent fleet, web verified, adversarially fact checked).",
+  "id": "ev-pydantic-ai-001",
+  "productId": "pydantic-ai",
+  "type": "doc-review",
+  "title": "Pydantic AI: 2026-08 stack research verification",
+  "summary": "MIT typed agent framework from the Pydantic team. Forces schema valid JSON across all three providers through one interface, which the zero dollar LLM lane already demands.",
+  "sourceUrl": "https://ai.pydantic.dev/",
+  "status": "active",
+  "capturedAt": "2026-08-01"
+}

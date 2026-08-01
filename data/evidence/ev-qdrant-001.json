@@ -1,0 +1,11 @@
+{
+  "$comment": "Tier C evidence packet from the 2026-08 whitepaper research run (15 agent fleet, web verified, adversarially fact checked).",
+  "id": "ev-qdrant-001",
+  "productId": "qdrant",
+  "type": "doc-review",
+  "title": "Qdrant: 2026-08 stack research verification",
+  "summary": "Ally origin vector database that runs as one small container on the existing box. Chosen over hosted stores for zero license cost and over Chinese origin alternatives by policy.",
+  "sourceUrl": "https://qdrant.tech/",
+  "status": "active",
+  "capturedAt": "2026-08-01"
+}

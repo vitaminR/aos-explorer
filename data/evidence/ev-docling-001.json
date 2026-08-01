@@ -1,0 +1,11 @@
+{
+  "$comment": "Tier C evidence packet from the 2026-08 whitepaper research run (15 agent fleet, web verified, adversarially fact checked).",
+  "id": "ev-docling-001",
+  "productId": "docling",
+  "type": "doc-review",
+  "title": "Docling: 2026-08 stack research verification",
+  "summary": "Parses the whole office document spread (PDF, Word, PowerPoint, Excel) with real table structure on CPU. Native LlamaIndex integration makes it the ingest front door of the retrieval lane.",
+  "sourceUrl": "https://github.com/docling-project/docling",
+  "status": "active",
+  "capturedAt": "2026-08-01"
+}

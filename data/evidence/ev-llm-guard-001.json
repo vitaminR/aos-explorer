@@ -1,0 +1,11 @@
+{
+  "$comment": "Tier C evidence packet from the 2026-08 whitepaper research run (15 agent fleet, web verified, adversarially fact checked).",
+  "id": "ev-llm-guard-001",
+  "productId": "llm-guard",
+  "type": "doc-review",
+  "title": "LLM Guard: 2026-08 stack research verification",
+  "summary": "Injection defense for the biggest real surface: agents reading hostile web pages, emails, and floor messages. CPU detector models, inserted as a gateway scan step.",
+  "sourceUrl": "https://llm-guard.com/",
+  "status": "active",
+  "capturedAt": "2026-08-01"
+}

@@ -1,0 +1,11 @@
+{
+  "$comment": "Tier C evidence packet from the 2026-08 whitepaper research run (15 agent fleet, web verified, adversarially fact checked).",
+  "id": "ev-gvisor-001",
+  "productId": "gvisor",
+  "type": "doc-review",
+  "title": "gVisor: 2026-08 stack research verification",
+  "summary": "Application kernel sandbox that hardens the Docker runtime under semi trusted agent code for zero dollars and one afternoon of setup.",
+  "sourceUrl": "https://gvisor.dev/",
+  "status": "active",
+  "capturedAt": "2026-08-01"
+}

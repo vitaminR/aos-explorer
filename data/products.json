@@ -1,5 +1,5 @@
 {
-  "$comment": "Tier B — Product cards. Medium-volatility. Source of truth for product metadata, freshness, and evidence links. Generated views are built from this + evidence packets.",
+  "$comment": "Tier B \u2014 Product cards. Medium-volatility. Source of truth for product metadata, freshness, and evidence links. Generated views are built from this + evidence packets.",
   "schemaVersion": "0.1.0",
   "products": [
     {
@@ -11,7 +11,7 @@
       "license": "Open Source",
       "primary": "L4 Orchestration & Decisioning",
       "secondary": "L7, L6",
-      "axisRoles": "Governance: Strong · Observability: Medium",
+      "axisRoles": "Governance: Strong \u00b7 Observability: Medium",
       "confidence": 0.91,
       "rationale": "Spec-first agent harness for turning vague goals into disciplined execution. Enforces planning, checkpointing, and quality gates before implementation begins.",
       "conceptMappings": [
@@ -28,7 +28,9 @@
           "why": "Best spec-first implementation loop when requirements discipline matters most."
         }
       ],
-      "evidenceIds": ["ev-bmad-001"],
+      "evidenceIds": [
+        "ev-bmad-001"
+      ],
       "freshnessTier": "B",
       "lastReviewed": "2026-04-06",
       "lastVerified": "2026-04-06",
@@ -47,7 +49,7 @@
       "license": "Open Source",
       "primary": "L4 Orchestration & Decisioning",
       "secondary": "L2, L6",
-      "axisRoles": "Governance: Medium · Observability: Medium",
+      "axisRoles": "Governance: Medium \u00b7 Observability: Medium",
       "confidence": 0.89,
       "rationale": "Context-lifecycle harness with explicit checkpoints, budget control, and resume semantics. Best for durable multi-step agent execution.",
       "conceptMappings": [
@@ -64,7 +66,9 @@
           "why": "Best explicit checkpoint/resume model for recovering work without losing context."
         }
       ],
-      "evidenceIds": ["ev-gsd-001"],
+      "evidenceIds": [
+        "ev-gsd-001"
+      ],
       "freshnessTier": "B",
       "lastReviewed": "2026-04-06",
       "lastVerified": "2026-04-06",
@@ -83,7 +87,7 @@
       "license": "Open Source",
       "primary": "L4 Orchestration & Decisioning",
       "secondary": "L3",
-      "axisRoles": "Governance: Light · Observability: Medium",
+      "axisRoles": "Governance: Light \u00b7 Observability: Medium",
       "confidence": 0.88,
       "rationale": "Graph-based agent orchestration framework. Defines agent workflows as cyclic graphs with state management and tool execution.",
       "conceptMappings": [
@@ -100,7 +104,9 @@
           "why": "Features built-in central state persistence for branching, time travel, and durable execution."
         }
       ],
-      "evidenceIds": ["ev-langgraph-001"],
+      "evidenceIds": [
+        "ev-langgraph-001"
+      ],
       "freshnessTier": "B",
       "lastReviewed": "2026-04-06",
       "lastVerified": "2026-04-06",
@@ -119,7 +125,7 @@
       "license": "Open Source",
       "primary": "L2 Knowledge & Memory",
       "secondary": "L4, L3",
-      "axisRoles": "Knowledge: Primary · Orchestration: Secondary · Tool Integration: Secondary",
+      "axisRoles": "Knowledge: Primary \u00b7 Orchestration: Secondary \u00b7 Tool Integration: Secondary",
       "confidence": 0.84,
       "rationale": "Local shared-brain memory engine for AI coding agents. Uses a shared SQLite/WAL vault, hybrid retrieval, and native hooks/plugins to pre-fetch context, capture post-turn decisions, and pre-compress long sessions before context loss. Exposes MCP for compatibility, but lifecycle automation is the main differentiator.",
       "conceptMappings": [
@@ -166,7 +172,9 @@
           "why": "Also exposes a standard MCP interface for clients that need tool-style access to the shared vault."
         }
       ],
-      "evidenceIds": ["ev-clawmem-001"],
+      "evidenceIds": [
+        "ev-clawmem-001"
+      ],
       "freshnessTier": "B",
       "lastReviewed": "2026-04-25",
       "lastVerified": "2026-04-25",
@@ -185,7 +193,7 @@
       "license": "Proprietary",
       "primary": "L7 Experience & Intent",
       "secondary": "L4, L3",
-      "axisRoles": "Governance: Strong · Observability: Medium",
+      "axisRoles": "Governance: Strong \u00b7 Observability: Medium",
       "confidence": 0.9,
       "rationale": "Agentic coding assistant with CLI, desktop, and IDE interfaces. Orchestrates multi-step coding tasks with tool use, file editing, and terminal execution within a governed session.",
       "conceptMappings": [
@@ -233,7 +241,7 @@
       "license": "Proprietary",
       "primary": "L7 Experience & Intent",
       "secondary": "L3",
-      "axisRoles": "Governance: Medium · Observability: Light",
+      "axisRoles": "Governance: Medium \u00b7 Observability: Light",
       "confidence": 0.85,
       "rationale": "Desktop chat interface for Claude with MCP server support, file/image upload, and project-scoped conversations. Consumer-facing experience layer for Anthropic models.",
       "conceptMappings": [
@@ -269,7 +277,7 @@
       "license": "Proprietary",
       "primary": "L1 Models & Infrastructure",
       "secondary": "L3",
-      "axisRoles": "Governance: Medium · Observability: Medium",
+      "axisRoles": "Governance: Medium \u00b7 Observability: Medium",
       "confidence": 0.92,
       "rationale": "Foundation model API providing inference for Claude model family. Supports tool use, vision, extended thinking, and streaming. The compute substrate that other Anthropic products build on.",
       "conceptMappings": [
@@ -299,7 +307,7 @@
       "license": "Proprietary",
       "primary": "L1 Models & Infrastructure",
       "secondary": "L3",
-      "axisRoles": "Governance: Medium · Observability: Medium",
+      "axisRoles": "Governance: Medium \u00b7 Observability: Medium",
       "confidence": 0.92,
       "rationale": "Foundation model API for GPT and o-series models. Supports function calling, vision, embeddings, and assistants. The dominant commercial inference platform.",
       "conceptMappings": [
@@ -329,7 +337,7 @@
       "license": "Proprietary",
       "primary": "L4 Orchestration & Decisioning",
       "secondary": "L2, L3",
-      "axisRoles": "Governance: Light · Observability: Light",
+      "axisRoles": "Governance: Light \u00b7 Observability: Light",
       "confidence": 0.82,
       "rationale": "Managed agent runtime with built-in threads, file search (RAG), code interpreter, and tool execution. Opinionated orchestration layer that handles state, memory, and tool dispatch.",
       "conceptMappings": [
@@ -337,7 +345,7 @@
           "conceptSlug": "harness",
           "role": "primary",
           "rank": 3,
-          "why": "Managed harness with threads, runs, and built-in tool dispatch — but limited customization."
+          "why": "Managed harness with threads, runs, and built-in tool dispatch \u2014 but limited customization."
         },
         {
           "conceptSlug": "rag",
@@ -371,7 +379,7 @@
       "license": "Proprietary",
       "primary": "L7 Experience & Intent",
       "secondary": "L4, L2",
-      "axisRoles": "Governance: Medium · Observability: Light",
+      "axisRoles": "Governance: Medium \u00b7 Observability: Light",
       "confidence": 0.85,
       "rationale": "Consumer and enterprise chat interface with GPTs (custom agents), plugins, code interpreter, and web browsing. The dominant L7 experience surface for AI interactions.",
       "conceptMappings": [
@@ -407,7 +415,7 @@
       "license": "Proprietary",
       "primary": "L1 Models & Infrastructure",
       "secondary": "L4, L5",
-      "axisRoles": "Governance: Strong · Observability: Strong",
+      "axisRoles": "Governance: Strong \u00b7 Observability: Strong",
       "confidence": 0.87,
       "rationale": "Google's unified ML platform spanning model hosting, fine-tuning, evaluation, and agent building. Provides Gemini model endpoints, Model Garden, and Agent Builder for full-stack AI development.",
       "conceptMappings": [
@@ -443,7 +451,7 @@
       "license": "Proprietary",
       "primary": "L1 Models & Infrastructure",
       "secondary": "L3",
-      "axisRoles": "Governance: Medium · Observability: Medium",
+      "axisRoles": "Governance: Medium \u00b7 Observability: Medium",
       "confidence": 0.9,
       "rationale": "Google's foundation model API for Gemini models. Supports multimodal input, function calling, code execution, and grounded generation. Available via AI Studio and Vertex AI.",
       "conceptMappings": [
@@ -473,7 +481,7 @@
       "license": "Proprietary",
       "primary": "L1 Models & Infrastructure",
       "secondary": "L6, L5",
-      "axisRoles": "Governance: Strong · Observability: Strong",
+      "axisRoles": "Governance: Strong \u00b7 Observability: Strong",
       "confidence": 0.83,
       "rationale": "Enterprise AI platform with Granite model family, prompt engineering studio, fine-tuning, and watsonx.governance for AI lifecycle management. Strong focus on regulated industries.",
       "conceptMappings": [
@@ -509,7 +517,7 @@
       "license": "Proprietary",
       "primary": "L1 Models & Infrastructure",
       "secondary": "L6",
-      "axisRoles": "Governance: Strong · Observability: Strong",
+      "axisRoles": "Governance: Strong \u00b7 Observability: Strong",
       "confidence": 0.9,
       "rationale": "Enterprise-grade OpenAI model hosting on Azure with content filtering, private networking, managed identity, and compliance certifications. Adds enterprise governance to OpenAI models.",
       "conceptMappings": [
@@ -545,7 +553,7 @@
       "license": "Proprietary",
       "primary": "L1 Models & Infrastructure",
       "secondary": "L4, L6",
-      "axisRoles": "Governance: Strong · Observability: Medium",
+      "axisRoles": "Governance: Strong \u00b7 Observability: Medium",
       "confidence": 0.86,
       "rationale": "Managed multi-model platform with Agents, Knowledge Bases (RAG), Guardrails, and model evaluation. Provides serverless access to Claude, Llama, Titan, and other foundation models on AWS.",
       "conceptMappings": [
@@ -587,7 +595,7 @@
       "license": "Open Source",
       "primary": "L4 Orchestration & Decisioning",
       "secondary": "L3",
-      "axisRoles": "Governance: Light · Observability: Light",
+      "axisRoles": "Governance: Light \u00b7 Observability: Light",
       "confidence": 0.84,
       "rationale": "Multi-agent orchestration framework using role-based agents with hierarchical or sequential process flows. Emphasizes agent personas and delegation patterns.",
       "conceptMappings": [
@@ -595,7 +603,7 @@
           "conceptSlug": "persona",
           "role": "primary",
           "rank": 1,
-          "why": "Agents defined by role, goal, and backstory — strongest persona-driven orchestration model."
+          "why": "Agents defined by role, goal, and backstory \u2014 strongest persona-driven orchestration model."
         },
         {
           "conceptSlug": "loop-core",
@@ -623,7 +631,7 @@
       "license": "Open Source",
       "primary": "L4 Orchestration & Decisioning",
       "secondary": "L3",
-      "axisRoles": "Governance: Medium · Observability: Medium",
+      "axisRoles": "Governance: Medium \u00b7 Observability: Medium",
       "confidence": 0.85,
       "rationale": "Multi-agent conversation framework with customizable agent types, group chat patterns, and code execution. Supports human-in-the-loop and nested agent conversations.",
       "conceptMappings": [
@@ -659,7 +667,7 @@
       "license": "Open Source",
       "primary": "L4 Orchestration & Decisioning",
       "secondary": "L2, L3",
-      "axisRoles": "Governance: Medium · Observability: Medium",
+      "axisRoles": "Governance: Medium \u00b7 Observability: Medium",
       "confidence": 0.84,
       "rationale": "Enterprise AI orchestration SDK for .NET, Python, and Java. Provides planner, plugin system, memory connectors, and process framework for building AI agents in enterprise codebases.",
       "conceptMappings": [
@@ -695,7 +703,7 @@
       "license": "Open Source",
       "primary": "L3 Execution & Interfaces",
       "secondary": "L2, L4",
-      "axisRoles": "Governance: Light · Observability: Light",
+      "axisRoles": "Governance: Light \u00b7 Observability: Light",
       "confidence": 0.86,
       "rationale": "Composable framework for building LLM applications. Provides chains, agents, tool integrations, document loaders, and output parsers. The most widely adopted LLM integration layer.",
       "conceptMappings": [
@@ -731,7 +739,7 @@
       "license": "Proprietary",
       "primary": "L5 Observability & Evaluation",
       "secondary": "L4",
-      "axisRoles": "Governance: Light · Observability: Strong",
+      "axisRoles": "Governance: Light \u00b7 Observability: Strong",
       "confidence": 0.87,
       "rationale": "LLM observability and evaluation platform. Provides tracing, prompt playground, dataset management, automated evaluation, and annotation queues for monitoring agent quality.",
       "conceptMappings": [
@@ -761,7 +769,7 @@
       "license": "Proprietary",
       "primary": "L2 Knowledge & Memory",
       "secondary": "",
-      "axisRoles": "Governance: Light · Observability: Light",
+      "axisRoles": "Governance: Light \u00b7 Observability: Light",
       "confidence": 0.9,
       "rationale": "Managed vector database optimized for similarity search at scale. Provides serverless and pod-based indexes, metadata filtering, and sparse-dense hybrid search for RAG pipelines.",
       "conceptMappings": [
@@ -797,7 +805,7 @@
       "license": "Open Source",
       "primary": "L2 Knowledge & Memory",
       "secondary": "",
-      "axisRoles": "Governance: Light · Observability: Light",
+      "axisRoles": "Governance: Light \u00b7 Observability: Light",
       "confidence": 0.86,
       "rationale": "Open-source embedding database for AI applications. Runs embedded or as a server with collections, metadata filtering, and multi-modal embeddings. Popular for local RAG development.",
       "conceptMappings": [
@@ -833,7 +841,7 @@
       "license": "Open Source",
       "primary": "L2 Knowledge & Memory",
       "secondary": "L3",
-      "axisRoles": "Governance: Light · Observability: Light",
+      "axisRoles": "Governance: Light \u00b7 Observability: Light",
       "confidence": 0.86,
       "rationale": "Data framework for building RAG and knowledge-augmented LLM applications. Provides data connectors, indexing strategies, query engines, and agentic RAG patterns.",
       "conceptMappings": [
@@ -869,7 +877,7 @@
       "license": "Open Source",
       "primary": "L6 Governance & Trust",
       "secondary": "L5",
-      "axisRoles": "Governance: Strong · Observability: Medium",
+      "axisRoles": "Governance: Strong \u00b7 Observability: Medium",
       "confidence": 0.85,
       "rationale": "Input/output validation framework for LLM applications. Provides validators for hallucination, toxicity, PII, bias, and custom rules via the Guardrails Hub.",
       "conceptMappings": [
@@ -899,7 +907,7 @@
       "license": "Open Source",
       "primary": "L6 Governance & Trust",
       "secondary": "L4",
-      "axisRoles": "Governance: Strong · Observability: Medium",
+      "axisRoles": "Governance: Strong \u00b7 Observability: Medium",
       "confidence": 0.84,
       "rationale": "Programmable guardrails toolkit using Colang DSL. Defines conversational rails for topical control, safety, fact-checking, and jailbreak prevention in LLM applications.",
       "conceptMappings": [
@@ -929,7 +937,7 @@
       "license": "Open Source",
       "primary": "L5 Observability & Evaluation",
       "secondary": "",
-      "axisRoles": "Governance: Light · Observability: Strong",
+      "axisRoles": "Governance: Light \u00b7 Observability: Strong",
       "confidence": 0.88,
       "rationale": "Time-series metrics collection and alerting system. Pull-based scraping, PromQL query language, and AlertManager. Industry standard for infrastructure and application monitoring.",
       "conceptMappings": [],
@@ -952,7 +960,7 @@
       "license": "Open Source",
       "primary": "L5 Observability & Evaluation",
       "secondary": "L7",
-      "axisRoles": "Governance: Light · Observability: Strong",
+      "axisRoles": "Governance: Light \u00b7 Observability: Strong",
       "confidence": 0.86,
       "rationale": "Observability dashboard and visualization platform. Connects to Prometheus, Loki, Tempo, and other data sources. Provides alerting, annotations, and team dashboards for monitoring agent systems.",
       "conceptMappings": [],
@@ -975,7 +983,7 @@
       "license": "Open Source",
       "primary": "L5 Observability & Evaluation",
       "secondary": "",
-      "axisRoles": "Governance: Light · Observability: Strong",
+      "axisRoles": "Governance: Light \u00b7 Observability: Strong",
       "confidence": 0.9,
       "rationale": "Vendor-neutral observability framework for traces, metrics, and logs. Provides SDKs, collectors, and semantic conventions. The emerging standard for instrumenting AI/agent systems.",
       "conceptMappings": [],
@@ -998,7 +1006,7 @@
       "license": "Open Source",
       "primary": "L6 Governance & Trust",
       "secondary": "",
-      "axisRoles": "Governance: Strong · Observability: Medium",
+      "axisRoles": "Governance: Strong \u00b7 Observability: Medium",
       "confidence": 0.88,
       "rationale": "Secrets management and encryption platform. Dynamic secrets, PKI, transit encryption, and identity-based access. Critical L6 substrate for securing agent credentials and API keys.",
       "conceptMappings": [
@@ -1028,7 +1036,7 @@
       "license": "Open Source",
       "primary": "L4 Orchestration & Decisioning",
       "secondary": "L5",
-      "axisRoles": "Governance: Light · Observability: Medium",
+      "axisRoles": "Governance: Light \u00b7 Observability: Medium",
       "confidence": 0.83,
       "rationale": "Programming framework for optimizing LLM prompts and pipelines. Replaces hand-tuned prompts with compiled, optimized modules using teleprompters and metrics-driven prompt tuning.",
       "conceptMappings": [
@@ -1058,7 +1066,7 @@
       "license": "Proprietary",
       "primary": "L7 Experience & Intent",
       "secondary": "L4, L3",
-      "axisRoles": "Governance: Medium · Observability: Light",
+      "axisRoles": "Governance: Medium \u00b7 Observability: Light",
       "confidence": 0.84,
       "rationale": "AI-native code editor forked from VS Code. Provides inline chat, multi-file editing, codebase-aware completions, and agent mode for autonomous coding tasks.",
       "conceptMappings": [
@@ -1094,7 +1102,7 @@
       "license": "Proprietary",
       "primary": "L7 Experience & Intent",
       "secondary": "L3",
-      "axisRoles": "Governance: Medium · Observability: Light",
+      "axisRoles": "Governance: Medium \u00b7 Observability: Light",
       "confidence": 0.86,
       "rationale": "AI pair programmer with inline suggestions, chat, and agent mode. Integrates into VS Code, JetBrains, and CLI. Coding agent can create PRs from issue descriptions.",
       "conceptMappings": [
@@ -1124,7 +1132,7 @@
       "license": "Open Source",
       "primary": "L4 Orchestration & Decisioning",
       "secondary": "L2, L3",
-      "axisRoles": "Governance: Medium · Observability: Medium",
+      "axisRoles": "Governance: Medium \u00b7 Observability: Medium",
       "confidence": 0.84,
       "rationale": "Self-improving autonomous agent with a built-in learning loop. Creates and refines skills from experience, maintains persistent memory across sessions, and supports multi-agent parallelism. Runs on any infrastructure from a VPS to a GPU cluster.",
       "conceptMappings": [
@@ -1172,7 +1180,7 @@
       "license": "Open Source",
       "primary": "L1 Models & Infrastructure",
       "secondary": "L3",
-      "axisRoles": "Governance: Light · Observability: Light",
+      "axisRoles": "Governance: Light \u00b7 Observability: Light",
       "confidence": 0.87,
       "rationale": "Open-source LLM series (Hermes 2, Hermes 3) fine-tuned on structured function-calling and agentic JSON datasets. The backbone model for Hermes Agent and a popular base for community agentic builds requiring strong tool-use without proprietary APIs.",
       "conceptMappings": [
@@ -1180,7 +1188,7 @@
           "conceptSlug": "tool_calling",
           "role": "primary",
           "rank": 1,
-          "why": "Trained on the hermes-function-calling-v1 dataset — one of the strongest open-source models for structured tool-use and agentic JSON mode."
+          "why": "Trained on the hermes-function-calling-v1 dataset \u2014 one of the strongest open-source models for structured tool-use and agentic JSON mode."
         },
         {
           "conceptSlug": "rag",
@@ -1208,9 +1216,9 @@
       "license": "Proprietary",
       "primary": "L6 Governance & Trust",
       "secondary": "L7, L5",
-      "axisRoles": "Governance: Primary · UX Discovery · Catalog Quality",
+      "axisRoles": "Governance: Primary \u00b7 UX Discovery \u00b7 Catalog Quality",
       "confidence": 0.95,
-      "rationale": "First formal {a}OS governance standard for naming slash commands and skills across the agentic workspace. Defines a hybrid convention with three rules: product-prefix (li-crucible) when a domain has 3+ skills, action-product (catalog-aos7) when a domain has 1–2 skills, and bare action words (scout, fix, close) for general workspace tools. The convention exists to make autocomplete intentional — typing a prefix should land on a coherent group rather than an accidental collision. Applied uniformly across Claude Code, Copilot, Gemini, and Opencode harnesses, and enforced by the unified skill registry. Sits at L6 because it governs how the catalog is structured, with secondary impact at L7 (how users discover skills) and L5 (catalog quality control).",
+      "rationale": "First formal {a}OS governance standard for naming slash commands and skills across the agentic workspace. Defines a hybrid convention with three rules: product-prefix (li-crucible) when a domain has 3+ skills, action-product (catalog-aos7) when a domain has 1\u20132 skills, and bare action words (scout, fix, close) for general workspace tools. The convention exists to make autocomplete intentional \u2014 typing a prefix should land on a coherent group rather than an accidental collision. Applied uniformly across Claude Code, Copilot, Gemini, and Opencode harnesses, and enforced by the unified skill registry. Sits at L6 because it governs how the catalog is structured, with secondary impact at L7 (how users discover skills) and L5 (catalog quality control).",
       "conceptMappings": [],
       "evidenceIds": [],
       "freshnessTier": "B",
@@ -1231,9 +1239,9 @@
       "license": "MIT (Runtime tier paid)",
       "primary": "L5 Observability & Evaluation",
       "secondary": "L3, L6",
-      "axisRoles": "Observability: Strong · Governance: Medium",
+      "axisRoles": "Observability: Strong \u00b7 Governance: Medium",
       "confidence": 0.86,
-      "rationale": "Rust-native codebase intelligence engine for TypeScript and JavaScript that builds a project-wide graph instead of working file-by-file like a linter. The free static layer analyzes a wide spread of code-quality dimensions — unused/dead code, duplication, circular dependencies, complexity hotspots, and architecture-boundary drift — with sub-second performance and roughly 90 framework plugins. An optional paid Runtime tier adds production-traffic evidence for hot-path review and cold-path deletion, turning quality scores into deployment-grade signals. In the agentic stack, Fallow is the deterministic check that pairs with non-deterministic AI codegen: Claude Code, Cursor, Codex, and other agents call it via CLI or MCP to verify that generated changes don't introduce slop, dead branches, or boundary violations. Primary fit is L5 Evaluation & Quality because the entire product is a multi-metric quality oracle; L3 captures the CLI/MCP tool surface that agents actually invoke, and L6 captures the architecture-boundary enforcement that nudges it into the governance lane. In plain English: it's a fast, graph-aware code reviewer that scores codebase health across many axes at once and gives AI coding agents a structured way to catch their own mistakes.",
+      "rationale": "Rust-native codebase intelligence engine for TypeScript and JavaScript that builds a project-wide graph instead of working file-by-file like a linter. The free static layer analyzes a wide spread of code-quality dimensions \u2014 unused/dead code, duplication, circular dependencies, complexity hotspots, and architecture-boundary drift \u2014 with sub-second performance and roughly 90 framework plugins. An optional paid Runtime tier adds production-traffic evidence for hot-path review and cold-path deletion, turning quality scores into deployment-grade signals. In the agentic stack, Fallow is the deterministic check that pairs with non-deterministic AI codegen: Claude Code, Cursor, Codex, and other agents call it via CLI or MCP to verify that generated changes don't introduce slop, dead branches, or boundary violations. Primary fit is L5 Evaluation & Quality because the entire product is a multi-metric quality oracle; L3 captures the CLI/MCP tool surface that agents actually invoke, and L6 captures the architecture-boundary enforcement that nudges it into the governance lane. In plain English: it's a fast, graph-aware code reviewer that scores codebase health across many axes at once and gives AI coding agents a structured way to catch their own mistakes.",
       "conceptMappings": [],
       "evidenceIds": [],
       "freshnessTier": "B",
@@ -1254,9 +1262,9 @@
       "license": "Proprietary",
       "primary": "L4 Orchestration & Decisioning",
       "secondary": "L7, L6, L5, L3, L2, L1",
-      "axisRoles": "Orchestration: Primary · Governance: Primary · Tool Integration · Decisioning · Memory",
+      "axisRoles": "Orchestration: Primary \u00b7 Governance: Primary \u00b7 Tool Integration \u00b7 Decisioning \u00b7 Memory",
       "confidence": 0.75,
-      "rationale": "Workspace-first agentic delivery orchestrator using a file-based control plane. Tasks flow through a strict lane state machine (backlog → todo → dev → review → done | blocked). Strong governance enforced via file-budget, deletion-safety, and acceptance-criteria gates. Heartbeat pulse counter is a protected 50-year invariant.",
+      "rationale": "Workspace-first agentic delivery orchestrator using a file-based control plane. Tasks flow through a strict lane state machine (backlog \u2192 todo \u2192 dev \u2192 review \u2192 done | blocked). Strong governance enforced via file-budget, deletion-safety, and acceptance-criteria gates. Heartbeat pulse counter is a protected 50-year invariant.",
       "conceptMappings": [
         {
           "conceptSlug": "harness",
@@ -1268,7 +1276,7 @@
           "conceptSlug": "loop-core",
           "role": "primary",
           "rank": 2,
-          "why": "Lane state machine (backlog → todo → dev → review → done) is a strict task execution loop with built-in gate enforcement."
+          "why": "Lane state machine (backlog \u2192 todo \u2192 dev \u2192 review \u2192 done) is a strict task execution loop with built-in gate enforcement."
         }
       ],
       "evidenceIds": [],
@@ -1279,6 +1287,677 @@
       "reviewPolicy": "scheduled",
       "changeRisk": "low",
       "sourceQuality": "medium",
+      "status": "active"
+    },
+    {
+      "id": "litellm",
+      "name": "LiteLLM Proxy",
+      "type": "tool",
+      "vendor": "BerriAI",
+      "deployment": "Self-hosted",
+      "license": "MIT (open source core)",
+      "primary": "L1 Models & Infrastructure",
+      "secondary": "L5, L6",
+      "axisRoles": "Governance: Strong \u00b7 Observability: Strong",
+      "confidence": 0.9,
+      "rationale": "One OpenAI compatible gateway over 100+ providers with fallback chains, per key budgets, spend tracking, and OTel export. Canonical gateway for the stack; also carries the L5 cost line and L6 hard budget enforcement.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "governance",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Virtual keys enforce hard per-agent budgets at the gateway."
+        }
+      ],
+      "evidenceIds": [
+        "ev-litellm-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "llama-cpp",
+      "name": "llama.cpp",
+      "type": "tool",
+      "vendor": "ggml.ai (team joined Hugging Face 2026)",
+      "deployment": "Local",
+      "license": "MIT",
+      "primary": "L1 Models & Infrastructure",
+      "secondary": "",
+      "axisRoles": "Governance: Light \u00b7 Observability: Light",
+      "confidence": 0.88,
+      "rationale": "CPU first local inference runtime serving an OpenAI style endpoint. The degraded mode backbone: keeps reasoning alive on the existing GPU-less server with ally origin GGUF weights at zero cost.",
+      "conceptMappings": [],
+      "evidenceIds": [
+        "ev-llama-cpp-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "ollama",
+      "name": "Ollama",
+      "type": "tool",
+      "vendor": "Ollama Inc",
+      "deployment": "Local",
+      "license": "MIT",
+      "primary": "L1 Models & Infrastructure",
+      "secondary": "",
+      "axisRoles": "Governance: Light \u00b7 Observability: Light",
+      "confidence": 0.85,
+      "rationale": "Friendly wrapper over llama.cpp with a model registry and one line pulls. The dev laptop convenience lane for local models.",
+      "conceptMappings": [],
+      "evidenceIds": [
+        "ev-ollama-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "qdrant",
+      "name": "Qdrant",
+      "type": "product",
+      "vendor": "Qdrant (Germany)",
+      "deployment": "Self-hosted",
+      "license": "Apache 2.0",
+      "primary": "L2 Knowledge & Memory",
+      "secondary": "",
+      "axisRoles": "Governance: Light \u00b7 Observability: Medium",
+      "confidence": 0.9,
+      "rationale": "Ally origin vector database that runs as one small container on the existing box. Chosen over hosted stores for zero license cost and over Chinese origin alternatives by policy.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "rag",
+          "role": "primary",
+          "rank": 1,
+          "why": "The vector store under the retrieval lane."
+        },
+        {
+          "conceptSlug": "memory",
+          "role": "secondary",
+          "rank": 3,
+          "why": "Backing store for semantic agent memory."
+        }
+      ],
+      "evidenceIds": [
+        "ev-qdrant-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "docling",
+      "name": "Docling",
+      "type": "tool",
+      "vendor": "IBM Research",
+      "deployment": "Self-hosted",
+      "license": "MIT",
+      "primary": "L2 Knowledge & Memory",
+      "secondary": "",
+      "axisRoles": "Governance: Light \u00b7 Observability: Light",
+      "confidence": 0.87,
+      "rationale": "Parses the whole office document spread (PDF, Word, PowerPoint, Excel) with real table structure on CPU. Native LlamaIndex integration makes it the ingest front door of the retrieval lane.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "rag",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Turns PDF and office documents into structured RAG input."
+        }
+      ],
+      "evidenceIds": [
+        "ev-docling-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "falkordb",
+      "name": "FalkorDB",
+      "type": "product",
+      "vendor": "FalkorDB (Israel)",
+      "deployment": "Self-hosted",
+      "license": "Source-available (FalkorDB license)",
+      "primary": "L2 Knowledge & Memory",
+      "secondary": "",
+      "axisRoles": "Governance: Light \u00b7 Observability: Light",
+      "confidence": 0.8,
+      "rationale": "Light RAM footprint graph store and a first class backend for Graphiti temporal memory. The runtime graph pick beside graphify code analysis.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "memory",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Runtime graph under agent memory and GraphRAG."
+        }
+      ],
+      "evidenceIds": [
+        "ev-falkordb-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "fastmcp",
+      "name": "FastMCP",
+      "type": "framework",
+      "vendor": "Prefect (jlowin)",
+      "deployment": "Self-hosted",
+      "license": "Apache 2.0",
+      "primary": "L3 Execution & Interfaces",
+      "secondary": "",
+      "axisRoles": "Governance: Medium \u00b7 Observability: Medium",
+      "confidence": 0.9,
+      "rationale": "Turns the Python orchestration already on the box into clean MCP tool servers, tracking the official spec closely. The standard way the stack grows new tools.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "mcp",
+          "role": "primary",
+          "rank": 1,
+          "why": "The fastest path from Python functions to spec current MCP servers."
+        },
+        {
+          "conceptSlug": "tool_calling",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Wraps existing orchestration as typed tools."
+        }
+      ],
+      "evidenceIds": [
+        "ev-fastmcp-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "playwright-mcp",
+      "name": "Playwright MCP",
+      "type": "mcp",
+      "vendor": "Microsoft",
+      "deployment": "Self-hosted",
+      "license": "Apache 2.0",
+      "primary": "L3 Execution & Interfaces",
+      "secondary": "L5",
+      "axisRoles": "Governance: Light \u00b7 Observability: Medium",
+      "confidence": 0.9,
+      "rationale": "Lets agents drive the same Playwright and Chromium stack the verification walks use, through MCP, with no new vendor. Work time and verify time share one browser truth.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "mcp",
+          "role": "primary",
+          "rank": 1,
+          "why": "Official MCP server over the browser stack the ghost tours already trust."
+        }
+      ],
+      "evidenceIds": [
+        "ev-playwright-mcp-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "gvisor",
+      "name": "gVisor",
+      "type": "tool",
+      "vendor": "Google",
+      "deployment": "Self-hosted",
+      "license": "Apache 2.0",
+      "primary": "L3 Execution & Interfaces",
+      "secondary": "L6",
+      "axisRoles": "Governance: Strong \u00b7 Observability: Light",
+      "confidence": 0.85,
+      "rationale": "Application kernel sandbox that hardens the Docker runtime under semi trusted agent code for zero dollars and one afternoon of setup.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "guardrails",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Kernel level syscall isolation under agent-run code."
+        }
+      ],
+      "evidenceIds": [
+        "ev-gvisor-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "composio",
+      "name": "Composio",
+      "type": "product",
+      "vendor": "Composio (US)",
+      "deployment": "Cloud",
+      "license": "Open source SDK, hosted platform",
+      "primary": "L3 Execution & Interfaces",
+      "secondary": "",
+      "axisRoles": "Governance: Medium \u00b7 Observability: Light",
+      "confidence": 0.8,
+      "rationale": "Broadest catalog of prebuilt integrations that surface as MCP tools. Hosted SaaS with a free tier, flagged as a deliberate step off the self hosted posture when integration breadth pays for it.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "tool_calling",
+          "role": "primary",
+          "rank": 1,
+          "why": "Hundreds of prebuilt LLM tuned integration toolkits, exposed as MCP tools."
+        }
+      ],
+      "evidenceIds": [
+        "ev-composio-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "hatchet",
+      "name": "Hatchet",
+      "type": "tool",
+      "vendor": "Hatchet (US)",
+      "deployment": "Self-hosted",
+      "license": "MIT",
+      "primary": "L4 Orchestration & Decisioning",
+      "secondary": "",
+      "axisRoles": "Governance: Medium \u00b7 Observability: Strong",
+      "confidence": 0.85,
+      "rationale": "Durable workflow engine on a single Postgres container. Layers under the overnight brain loops so a crash resumes from the last step; the file floor and board stay in charge.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "loop-core",
+          "role": "secondary",
+          "rank": 3,
+          "why": "Overnight loops resume after crashes instead of vanishing."
+        }
+      ],
+      "evidenceIds": [
+        "ev-hatchet-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "dagu",
+      "name": "Dagu",
+      "type": "tool",
+      "vendor": "Dagu project",
+      "deployment": "Self-hosted",
+      "license": "GPL-3.0",
+      "primary": "L4 Orchestration & Decisioning",
+      "secondary": "",
+      "axisRoles": "Governance: Light \u00b7 Observability: Medium",
+      "confidence": 0.82,
+      "rationale": "One binary scheduler that matches the files as truth style: YAML jobs in git, cron plus retries plus a web UI, and a built in MCP server so agents can inspect and trigger jobs.",
+      "conceptMappings": [],
+      "evidenceIds": [
+        "ev-dagu-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "pydantic-ai",
+      "name": "Pydantic AI",
+      "type": "framework",
+      "vendor": "Pydantic Services (UK)",
+      "deployment": "Self-hosted",
+      "license": "MIT",
+      "primary": "L4 Orchestration & Decisioning",
+      "secondary": "L3",
+      "axisRoles": "Governance: Medium \u00b7 Observability: Medium",
+      "confidence": 0.87,
+      "rationale": "MIT typed agent framework from the Pydantic team. Forces schema valid JSON across all three providers through one interface, which the zero dollar LLM lane already demands.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "pydantic-contracts",
+          "role": "primary",
+          "rank": 1,
+          "why": "Typed, validated model outputs as the contract layer."
+        },
+        {
+          "conceptSlug": "harness",
+          "role": "secondary",
+          "rank": 2,
+          "why": "A tiny typed agent harness when a job needs one agent, not a fleet."
+        }
+      ],
+      "evidenceIds": [
+        "ev-pydantic-ai-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "langfuse",
+      "name": "Langfuse",
+      "type": "tool",
+      "vendor": "Langfuse (Berlin, ClickHouse Inc)",
+      "deployment": "Self-hosted",
+      "license": "MIT core",
+      "primary": "L5 Observability & Evaluation",
+      "secondary": "L6",
+      "axisRoles": "Governance: Medium \u00b7 Observability: Strong",
+      "confidence": 0.9,
+      "rationale": "Self hosted LLM tracing that speaks OTLP, so the OTel GenAI spans Atlas and Kotana already emit land without rework. Also the canonical audit trail store for L6.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "post-turn-capture",
+          "role": "primary",
+          "rank": 1,
+          "why": "Every turn lands as an OTel GenAI trace with sessions and users."
+        }
+      ],
+      "evidenceIds": [
+        "ev-langfuse-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "deepeval",
+      "name": "DeepEval",
+      "type": "framework",
+      "vendor": "Confident AI (US)",
+      "deployment": "Self-hosted",
+      "license": "Apache 2.0",
+      "primary": "L5 Observability & Evaluation",
+      "secondary": "",
+      "axisRoles": "Governance: Light \u00b7 Observability: Strong",
+      "confidence": 0.85,
+      "rationale": "Pytest native eval framework that gives the aos7 crucible judge a spine: versioned test cases, repeatable metrics, and exit codes for gates.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "checkpoint",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Versioned eval cases with a pass or fail exit code gates can trust."
+        }
+      ],
+      "evidenceIds": [
+        "ev-deepeval-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "healthchecks",
+      "name": "Healthchecks.io",
+      "type": "tool",
+      "vendor": "Healthchecks (EU)",
+      "deployment": "Hybrid",
+      "license": "BSD-3 (self-hostable) / hosted free tier",
+      "primary": "L5 Observability & Evaluation",
+      "secondary": "",
+      "axisRoles": "Governance: Light \u00b7 Observability: Strong",
+      "confidence": 0.85,
+      "rationale": "Dead man monitoring for cron and loops: a job that goes silent triggers an alert from outside the box, closing the recorded external monitor gap.",
+      "conceptMappings": [],
+      "evidenceIds": [
+        "ev-healthchecks-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "infisical",
+      "name": "Infisical",
+      "type": "product",
+      "vendor": "Infisical (US)",
+      "deployment": "Self-hosted",
+      "license": "MIT core",
+      "primary": "L6 Governance & Trust",
+      "secondary": "",
+      "axisRoles": "Governance: Strong \u00b7 Observability: Light",
+      "confidence": 0.87,
+      "rationale": "Machine secret manager beside Vaultwarden human passwords: per agent tokens, rotation, and env var injection, self hosted free.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "governance",
+          "role": "primary",
+          "rank": 1,
+          "why": "Machine secrets with rotation and env injection for the agent fleet."
+        },
+        {
+          "conceptSlug": "config",
+          "role": "secondary",
+          "rank": 3,
+          "why": "Keys stop living in files on the box."
+        }
+      ],
+      "evidenceIds": [
+        "ev-infisical-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "opa",
+      "name": "Open Policy Agent",
+      "type": "framework",
+      "vendor": "CNCF / Styra",
+      "deployment": "Self-hosted",
+      "license": "Apache 2.0",
+      "primary": "L6 Governance & Trust",
+      "secondary": "-",
+      "axisRoles": "Governance: Strong \u00b7 Observability: Medium",
+      "confidence": 0.88,
+      "rationale": "A single free binary answering allow or deny over HTTP with policy as code. The one gate every risky agent action passes through.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "governance",
+          "role": "primary",
+          "rank": 1,
+          "why": "One auditable yes or no gate in front of risky tool calls."
+        },
+        {
+          "conceptSlug": "guardrails",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Policy as code the fleet can version and test."
+        }
+      ],
+      "evidenceIds": [
+        "ev-opa-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "llm-guard",
+      "name": "LLM Guard",
+      "type": "tool",
+      "vendor": "Protect AI (US)",
+      "deployment": "Self-hosted",
+      "license": "MIT",
+      "primary": "L6 Governance & Trust",
+      "secondary": "",
+      "axisRoles": "Governance: Strong \u00b7 Observability: Light",
+      "confidence": 0.83,
+      "rationale": "Injection defense for the biggest real surface: agents reading hostile web pages, emails, and floor messages. CPU detector models, inserted as a gateway scan step.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "guardrails",
+          "role": "primary",
+          "rank": 1,
+          "why": "Prompt injection and content scanning on the CPU only box."
+        }
+      ],
+      "evidenceIds": [
+        "ev-llm-guard-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "assistant-ui",
+      "name": "assistant-ui",
+      "type": "framework",
+      "vendor": "assistant-ui (US)",
+      "deployment": "Self-hosted",
+      "license": "MIT",
+      "primary": "L7 Experience & Intent",
+      "secondary": "",
+      "axisRoles": "Governance: Light \u00b7 Observability: Light",
+      "confidence": 0.85,
+      "rationale": "Headless React chat primitives that drop into the existing Next.js dashboards, so Cyber Nouveau and the Compass pane style survive while chat UX stops being hand rolled.",
+      "conceptMappings": [],
+      "evidenceIds": [
+        "ev-assistant-ui-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "copilotkit",
+      "name": "CopilotKit + AG-UI",
+      "type": "framework",
+      "vendor": "CopilotKit (US)",
+      "deployment": "Self-hosted",
+      "license": "MIT",
+      "primary": "L7 Experience & Intent",
+      "secondary": "L4",
+      "axisRoles": "Governance: Medium \u00b7 Observability: Light",
+      "confidence": 0.83,
+      "rationale": "AG-UI is the approval wire: every agent raises a hand into the founder decision dock the same way. CopilotKit is its reference React implementation.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "hooks",
+          "role": "secondary",
+          "rank": 3,
+          "why": "Standard wire for agents raising a hand into the decision dock."
+        }
+      ],
+      "evidenceIds": [
+        "ev-copilotkit-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "pipecat",
+      "name": "Pipecat",
+      "type": "framework",
+      "vendor": "Daily (US)",
+      "deployment": "Self-hosted",
+      "license": "BSD-2",
+      "primary": "L7 Experience & Intent",
+      "secondary": "L1",
+      "axisRoles": "Governance: Light \u00b7 Observability: Light",
+      "confidence": 0.84,
+      "rationale": "Voice pipeline that runs the whole loop on owned hardware: local Whisper ears and local TTS mouth, zero dollars per minute and no cloud outage between an assistive user and the assistant.",
+      "conceptMappings": [],
+      "evidenceIds": [
+        "ev-pipecat-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "status": "active"
+    },
+    {
+      "id": "typst",
+      "name": "Typst",
+      "type": "tool",
+      "vendor": "Typst GmbH (Germany)",
+      "deployment": "Self-hosted",
+      "license": "Apache 2.0 (compiler)",
+      "primary": "L7 Experience & Intent",
+      "secondary": "",
+      "axisRoles": "Governance: Light \u00b7 Observability: Light",
+      "confidence": 0.84,
+      "rationale": "Compiles plain text into branded PDF artifacts in milliseconds on the server. Agents write text well, so daily briefs and reports become one command deliverables.",
+      "conceptMappings": [],
+      "evidenceIds": [
+        "ev-typst-001"
+      ],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-01",
+      "lastVerified": "2026-08-01",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
       "status": "active"
     }
   ]

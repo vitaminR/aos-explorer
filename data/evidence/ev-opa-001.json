@@ -1,0 +1,11 @@
+{
+  "$comment": "Tier C evidence packet from the 2026-08 whitepaper research run (15 agent fleet, web verified, adversarially fact checked).",
+  "id": "ev-opa-001",
+  "productId": "opa",
+  "type": "doc-review",
+  "title": "Open Policy Agent: 2026-08 stack research verification",
+  "summary": "A single free binary answering allow or deny over HTTP with policy as code. The one gate every risky agent action passes through.",
+  "sourceUrl": "https://www.openpolicyagent.org/",
+  "status": "active",
+  "capturedAt": "2026-08-01"
+}

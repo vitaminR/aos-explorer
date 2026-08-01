@@ -1,0 +1,11 @@
+{
+  "$comment": "Tier C evidence packet from the 2026-08 whitepaper research run (15 agent fleet, web verified, adversarially fact checked).",
+  "id": "ev-assistant-ui-001",
+  "productId": "assistant-ui",
+  "type": "doc-review",
+  "title": "assistant-ui: 2026-08 stack research verification",
+  "summary": "Headless React chat primitives that drop into the existing Next.js dashboards, so Cyber Nouveau and the Compass pane style survive while chat UX stops being hand rolled.",
+  "sourceUrl": "https://www.assistant-ui.com/",
+  "status": "active",
+  "capturedAt": "2026-08-01"
+}
