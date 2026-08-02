@@ -10,14 +10,29 @@ service cloud.firestore {
         && get(/databases/$(database)/documents/user_profiles/$(request.auth.uid)).data.role == 'admin';
     }
 
+    // SECURITY (F-0311-D Setzer): Ally-Only origin must be server-enforced.
+    // Client isAllyOrigin is UX only. Fail closed on missing/non-string/deny-list.
+    // Case-insensitive RE2 match; codes + common names.
+    function isAllyOriginCountry(country) {
+      return country is string
+        && country.size() >= 2
+        && country.size() <= 64
+        && !country.matches('(?i).*(china|\bcn\b|\bprc\b|russia|\bru\b|iran|\bir\b|north.?korea|\bkp\b|\bdprk\b).*');
+    }
+
     // ─── Tools ───────────────────────────────────────────────────────────────
     // Public read on approved tools only; auth required to submit (pending status)
     match /tools/{toolId} {
       allow read: if resource.data.status == 'approved' || isAdmin();
+      // SECURITY (F-0311-D): require ally originCountry on create; cannot submit non-ally pending.
       allow create: if request.auth != null
         && request.resource.data.submittedBy == request.auth.uid
-        && request.resource.data.status == 'pending';
-      allow update: if isAdmin();
+        && request.resource.data.status == 'pending'
+        && isAllyOriginCountry(request.resource.data.originCountry);
+      // Admin update: cannot approve (or keep approved) a non-ally origin tool.
+      allow update: if isAdmin()
+        && (request.resource.data.status != 'approved'
+            || isAllyOriginCountry(request.resource.data.originCountry));
       allow delete: if isAdmin();
     }
 
