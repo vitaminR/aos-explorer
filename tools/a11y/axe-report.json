@@ -1,0 +1,823 @@
+{
+  "target": "explorer.html",
+  "axe": "4.12.1",
+  "tags": [
+    "wcag2a",
+    "wcag2aa",
+    "wcag21a",
+    "wcag21aa",
+    "section508"
+  ],
+  "timestamp_note": "stamped by the caller; this file records COUNTS, not a conformance claim",
+  "summary": {
+    "critical": 1,
+    "serious": 3,
+    "moderate": 0,
+    "minor": 0,
+    "passes": 26,
+    "incomplete": 1
+  },
+  "violations": [
+    {
+      "id": "aria-allowed-attr",
+      "impact": "critical",
+      "help": "Elements must only use supported ARIA attributes",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/aria-allowed-attr?application=axeAPI",
+      "nodes": [
+        {
+          "target": [
+            ".axis-gov"
+          ],
+          "failureSummary": "Fix all of the following:\n  ARIA attribute is not allowed: aria-pressed=\"true\""
+        },
+        {
+          "target": [
+            ".axis-obs"
+          ],
+          "failureSummary": "Fix all of the following:\n  ARIA attribute is not allowed: aria-pressed=\"true\""
+        }
+      ]
+    },
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/color-contrast?application=axeAPI",
+      "nodes": [
+        {
+          "target": [
+            "#filterType > .count"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.85 (foreground color: #414348, background color: #12141a, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "#filterVendor > .count"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.85 (foreground color: #414348, background color: #12141a, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "#filterDeployment > .count"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.85 (foreground color: #414348, background color: #12141a, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "#filterLicense > .count"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.85 (foreground color: #414348, background color: #12141a, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "#filterStratum > .count"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.85 (foreground color: #414348, background color: #12141a, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            ".hero-tagline"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.56 (foreground color: #6b6d6e, background color: #10131d, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "#expandAllBtn"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.83 (foreground color: #717273, background color: #121416, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "#l7 > .stratum-header > .stratum-meta > .stratum-badge"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.83 (foreground color: #717276, background color: #12141a, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "#l6 > .stratum-header > .stratum-meta > .stratum-badge"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.83 (foreground color: #717276, background color: #12141a, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "#l5 > .stratum-header > .stratum-meta > .stratum-badge"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.83 (foreground color: #717276, background color: #12141a, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "#l4 > .stratum-header > .stratum-meta > .stratum-badge"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.83 (foreground color: #717276, background color: #12141a, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "#l3 > .stratum-header > .stratum-meta > .stratum-badge"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.83 (foreground color: #717276, background color: #12141a, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "#l2 > .stratum-header > .stratum-meta > .stratum-badge"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.83 (foreground color: #717276, background color: #12141a, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "#l1 > .stratum-header > .stratum-meta > .stratum-badge"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.83 (foreground color: #717276, background color: #12141a, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Azure AI Foundry\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Azure AI Foundry\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Kotana\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Kotana\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Paperclip\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Paperclip\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"CrewAI\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"CrewAI\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Mem0\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Mem0\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"ClawMem\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"ClawMem\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"LangGraph\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"LangGraph\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Azure AI Search\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Azure AI Search\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Open Policy Agent\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Open Policy Agent\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"GSD\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"GSD\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"BMAD Method\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"BMAD Method\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Superpowers\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Superpowers\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"gstack\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"gstack\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Kotana Agent\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Kotana Agent\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Shipyard\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Shipyard\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Cursor IDE\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Cursor IDE\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Git Ingest\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Git Ingest\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Lovable\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Lovable\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"v0\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"v0\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Exa MCP\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Exa MCP\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Agent Skills\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Agent Skills\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"RAG Pipeline\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"RAG Pipeline\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Agent CI/CD\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Agent CI/CD\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Eval & Improve Loop\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Eval & Improve Loop\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Human-in-the-Loop\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Human-in-the-Loop\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Devin\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Devin\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"SWE-agent\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"SWE-agent\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"OpenHands\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"OpenHands\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Aider\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Aider\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Claude Code\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Claude Code\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Cline\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Cline\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Routa\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Routa\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Code Review\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Code Review\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Testing Strategy\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Testing Strategy\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Security Audit\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Security Audit\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Perf Profiling\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Perf Profiling\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"API Design\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"API Design\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"DB Optimization\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"DB Optimization\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-vendor=\"{a}OS\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-vendor=\"{a}OS\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"GitHub MCP\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"GitHub MCP\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Playwright MCP\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Playwright MCP\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Filesystem MCP\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Filesystem MCP\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"PostgreSQL MCP\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"PostgreSQL MCP\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Brave Search MCP\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Brave Search MCP\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Memory MCP\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Memory MCP\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"{a}OS Explorer\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"{a}OS Explorer\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Blader Humanizer\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Blader Humanizer\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"CodeBurn\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"CodeBurn\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Fallow\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Fallow\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Hermes Agent\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Hermes Agent\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Hermes (Model Series)\"] > .vendor"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.82 (foreground color: #6e7072, background color: #0e1014, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "div[data-name=\"Hermes (Model Series)\"] > .spans-label"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.83 (foreground color: #3e4043, background color: #0e1014, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "footer"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 1.76 (foreground color: #393b3d, background color: #080a0c, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            ".footer-links > a[href$=\"docs.html\"]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.76 (foreground color: #6b6c6d, background color: #080a0c, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "a[href=\"#\"]:nth-child(3)"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.76 (foreground color: #6b6c6d, background color: #080a0c, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "a[href=\"#\"]:nth-child(5)"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.76 (foreground color: #6b6c6d, background color: #080a0c, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "footer > a[href$=\"docs.html\"]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.76 (foreground color: #6b6c6d, background color: #080a0c, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            ".ghost"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.81 (foreground color: #74767a, background color: #181a22, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "target": [
+            "#coachNext"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.98 (foreground color: #ffffff, background color: #818cf8, font size: 9.8pt (13px), font weight: normal). Expected contrast ratio of 4.5:1"
+        }
+      ]
+    },
+    {
+      "id": "frame-title",
+      "impact": "serious",
+      "help": "Frames must have an accessible name",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/frame-title?application=axeAPI",
+      "nodes": [
+        {
+          "target": [
+            "#embedPreviewFrame"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has no title attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        }
+      ]
+    },
+    {
+      "id": "link-in-text-block",
+      "impact": "serious",
+      "help": "Links must be distinguishable without relying on color",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.12/link-in-text-block?application=axeAPI",
+      "nodes": [
+        {
+          "target": [
+            "footer > a[href$=\"docs.html\"]"
+          ],
+          "failureSummary": "Fix any of the following:\n  The link has insufficient color contrast of 2.13:1 with the surrounding text. (Minimum contrast is 3:1, link text: #6b6c6d, surrounding text: #393b3d)\n  The link has no styling (such as underline) to distinguish it from the surrounding text"
+        }
+      ]
+    }
+  ],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "nodes": 90
+    }
+  ]
+}
