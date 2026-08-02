@@ -472,21 +472,45 @@ window.loadRecentActivityFeed = async (limitCount = 10) => {
   }
 };
 
+// SECURITY (task-0312 F-0312-C Setzer): never interpolate untrusted activity fields into
+// innerHTML. Admin-written activity is still attacker-shaped if an admin account is
+// compromised or a future rule slip lets non-admin write. Use textContent + DOM nodes.
 window.renderRecentActivity = async (containerId = "communityActivityFeed") => {
   const container = document.getElementById(containerId);
   if (!container) return;
   const items = await window.loadRecentActivityFeed(10);
+  container.replaceChildren();
   if (!items || items.length === 0) {
-    container.innerHTML = `<div class="activity-empty-state"><p>No recent community activity yet. Approved contributions and catalog updates will appear here.</p></div>`;
+    const empty = document.createElement("div");
+    empty.className = "activity-empty-state";
+    const p = document.createElement("p");
+    p.textContent = "No recent community activity yet. Approved contributions and catalog updates will appear here.";
+    empty.appendChild(p);
+    container.appendChild(empty);
     return;
   }
-  container.innerHTML = items.map(item => `
-    <div class="activity-item" data-id="${item.id}">
-      <span class="activity-type-badge">${item.type ||  Update}</span>
-      <span class="activity-title">${item.title || item.name || Catalog Item}</span>
-      <span class="activity-desc">${item.description || '}</span>
-    </div>
-  `).join("");
+  const frag = document.createDocumentFragment();
+  for (const item of items) {
+    const row = document.createElement("div");
+    row.className = "activity-item";
+    row.dataset.id = String(item.id ?? "");
+
+    const typeEl = document.createElement("span");
+    typeEl.className = "activity-type-badge";
+    typeEl.textContent = item.type || "Update";
+
+    const titleEl = document.createElement("span");
+    titleEl.className = "activity-title";
+    titleEl.textContent = item.title || item.name || "Catalog Item";
+
+    const descEl = document.createElement("span");
+    descEl.className = "activity-desc";
+    descEl.textContent = item.description || "";
+
+    row.append(typeEl, titleEl, descEl);
+    frag.appendChild(row);
+  }
+  container.appendChild(frag);
 };
 
 // ─── DOM ready ────────────────────────────────────────────────────────────────
