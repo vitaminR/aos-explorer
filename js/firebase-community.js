@@ -205,12 +205,14 @@ async function bootstrapUserProfile(user) {
   try {
     const snap = await getDoc(profileRef);
     if (!snap.exists()) {
+      // SECURITY (F-0310-D Setzer): never write role from client.
+      // firestore.rules bans role on create; default non-admin = no role field.
+      // Admin role is Admin-SDK-only (isAdmin() reads role=='admin').
       await setDoc(profileRef, {
         username: user.displayName || user.email?.split("@")[0] || "Anonymous",
         avatarUrl: user.photoURL || "",
         xp: 0, level: 1, streakDays: 0,
         badges: ["early_adopter"],
-        role: "contributor",
         referredBy: storedRef || null,
         lastActive: serverTimestamp(),
         createdAt: serverTimestamp(),
