@@ -8895,7 +8895,10 @@
           </div>
           <div
             class="rail-toggle axis-gov axis-active"
+            role="button"
+            tabindex="0"
             onclick="toggleAxis(this)"
+            onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleAxis(this);}"
             aria-pressed="true"
           >
             <div class="toggle-switch on"></div>
@@ -8903,7 +8906,10 @@
           </div>
           <div
             class="rail-toggle axis-obs axis-active"
+            role="button"
+            tabindex="0"
             onclick="toggleAxis(this)"
+            onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleAxis(this);}"
             aria-pressed="true"
           >
             <div class="toggle-switch on"></div>
