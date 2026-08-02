@@ -8,7 +8,7 @@ import {
   onAuthStateChanged,
 } from "./firebase-auth.js";
 import {
-  doc, getDoc, setDoc, deleteDoc,
+  doc, getDoc, setDoc, updateDoc, deleteDoc,
   collection, query, where, getDocs, addDoc,
   serverTimestamp, increment, getCountFromServer, Timestamp,
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
@@ -447,6 +447,119 @@ window._firestoreToggleWatch = async (stratumId, isWatching) => {
   } catch (err) {
     console.warn("[{a}OS Community] Watchlist toggle error:", err.message);
   }
+};
+
+
+// ─── Ally-Only AI Policy Gate (task-0311) ────────────────────────────────────
+const NON_ALLY_COUNTRIES = ["CHINA", "CN", "PRC", "RUSSIA", "RU", "IRAN", "IR", "NORTH KOREA", "KP"];
+
+function isAllyOrigin(originCountry) {
+  if (!originCountry) return false;
+  const normalized = originCountry.trim().toUpperCase();
+  return !NON_ALLY_COUNTRIES.some(c => normalized === c || normalized.includes("CHINA") || normalized.includes("RUSSIA"));
+}
+
+// ─── Contribution Flow & Moderation Queue (task-0311) ─────────────────────────
+window.isAllyOrigin = isAllyOrigin;
+
+window.submitToolContribution = async (toolData) => {
+  if (!db || !currentUser) {
+    throw new Error("Sign-in required to submit a tool contribution.");
+  }
+  const { name, category, stratum, originCountry, description, link } = toolData || {};
+  if (!name || !stratum || !originCountry) {
+    throw new Error("Missing required fields: name, stratum, and originCountry are required.");
+  }
+  if (!isAllyOrigin(originCountry)) {
+    throw new Error("Ally-Only AI Policy violation: non-ally origin products are strictly excluded from {a}OS.");
+  }
+
+  const ref = await addDoc(collection(db, "tools"), {
+    name,
+    category: category || "general",
+    stratum,
+    originCountry,
+    description: description || "",
+    link: link || "",
+    submittedBy: currentUser.uid,
+    submittedByEmail: currentUser.email || "",
+    status: "pending",
+    createdAt: serverTimestamp(),
+  });
+  return { id: ref.id, status: "pending" };
+};
+
+window.submitReviewContribution = async (reviewData) => {
+  if (!db || !currentUser) {
+    throw new Error("Sign-in required to submit a review.");
+  }
+  const { productId, rating, comment } = reviewData || {};
+  if (!productId || !comment) {
+    throw new Error("Missing required fields: productId and comment are required.");
+  }
+
+  const ref = await addDoc(collection(db, "reviews"), {
+    productId,
+    rating: Number(rating) || 5,
+    comment,
+    userId: currentUser.uid,
+    userEmail: currentUser.email || "",
+    status: "pending",
+    createdAt: serverTimestamp(),
+  });
+  return { id: ref.id, status: "pending" };
+};
+
+window.checkIsAdmin = async (uid) => {
+  if (!db || !uid) return false;
+  try {
+    const snap = await getDoc(doc(db, "user_profiles", uid));
+    return snap.exists() && snap.data().role === "admin";
+  } catch {
+    return false;
+  }
+};
+
+window.loadAdminModerationQueue = async () => {
+  if (!db || !currentUser) return { tools: [], reviews: [] };
+  const isAdmin = await window.checkIsAdmin(currentUser.uid);
+  if (!isAdmin) {
+    throw new Error("Admin access required to view moderation queue.");
+  }
+  try {
+    const toolsSnap = await getDocs(query(collection(db, "tools"), where("status", "==", "pending")));
+    const reviewsSnap = await getDocs(query(collection(db, "reviews"), where("status", "==", "pending")));
+    const tools = [];
+    const reviews = [];
+    toolsSnap.forEach(d => tools.push({ id: d.id, ...d.data() }));
+    reviewsSnap.forEach(d => reviews.push({ id: d.id, ...d.data() }));
+    return { tools, reviews };
+  } catch (err) {
+    console.warn("[{a}OS Community] Moderation queue load error:", err.message);
+    return { tools: [], reviews: [] };
+  }
+};
+
+window.approveSubmission = async (collectionName, docId) => {
+  if (!db || !currentUser) return;
+  const isAdmin = await window.checkIsAdmin(currentUser.uid);
+  if (!isAdmin) throw new Error("Admin access required to approve submissions.");
+  await updateDoc(doc(db, collectionName, docId), {
+    status: "approved",
+    approvedAt: serverTimestamp(),
+    approvedBy: currentUser.uid,
+  });
+};
+
+window.rejectSubmission = async (collectionName, docId) => {
+  if (!db || !currentUser) return;
+  const isAdmin = await window.checkIsAdmin(currentUser.uid);
+  if (!isAdmin) throw new Error("Admin access required to reject submissions.");
+  await updateDoc(doc(db, collectionName, docId), {
+    status: "rejected",
+    rejectedAt: serverTimestamp(),
+    rejectedBy: currentUser.uid,
+  });
 };
 
 // ─── DOM ready ────────────────────────────────────────────────────────────────
