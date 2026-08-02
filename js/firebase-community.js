@@ -426,7 +426,12 @@ async function syncWatchlistFromFirestore(uid) {
   try {
     const snap = await getDocs(query(collection(db, "watchlists"), where("uid", "==", uid)));
     const watched = {};
-    snap.forEach(d => { if (d.data().stratum) watched[d.data().stratum] = true; });
+    // Old docs used {stratum}; hardened-rules docs use {itemId, itemType}.
+    snap.forEach(d => {
+      const data = d.data();
+      const stratum = data.stratum || (data.itemType === "stratum" ? data.itemId : null);
+      if (stratum) watched[stratum] = true;
+    });
     localStorage.setItem("aos7_watched", JSON.stringify(watched));
     if (window._syncWatchButtons) window._syncWatchButtons(watched);
   } catch (err) {
@@ -440,7 +445,14 @@ window._firestoreToggleWatch = async (stratumId, isWatching) => {
   const ref = doc(db, "watchlists", docId);
   try {
     if (isWatching) {
-      await setDoc(ref, { uid: currentUser.uid, stratum: stratumId, createdAt: serverTimestamp() });
+      // Schema matches the hardened firestore.rules watchlists block:
+      // docId must be `${uid}_${itemId}` and the doc must carry these four keys.
+      await setDoc(ref, {
+        uid: currentUser.uid,
+        itemId: stratumId,
+        itemType: "stratum",
+        savedAt: serverTimestamp(),
+      });
     } else {
       await deleteDoc(ref);
     }
