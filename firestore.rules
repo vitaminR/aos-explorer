@@ -28,26 +28,49 @@ service cloud.firestore {
       allow create: if request.auth != null
         && request.resource.data.userId == request.auth.uid
         && request.resource.data.status == 'pending';
-      allow update: if (request.auth != null && request.auth.uid == resource.data.userId)
-        || isAdmin();
+      // SECURITY (task-0309 F2): owners may edit their review only while it is
+      // still pending, and may never change status - approval is admin-only.
+      allow update: if isAdmin()
+        || (request.auth != null && request.auth.uid == resource.data.userId
+            && resource.data.status == 'pending'
+            && request.resource.data.status == resource.data.status
+            && request.resource.data.userId == resource.data.userId);
       allow delete: if isAdmin();
     }
 
     // ─── User profiles ───────────────────────────────────────────────────────
-    // Users own their own profile doc; admins can read all; no deletion allowed
+    // Users own their own profile doc; admins can read all; no deletion allowed.
+    // SECURITY (task-0309 F1): the role field is NEVER client-writable. A client
+    // that could set role='admin' owns every isAdmin() gate in this file. Admin
+    // role is granted only out-of-band via the Admin SDK (bypasses rules).
     match /user_profiles/{userId} {
       allow read: if request.auth != null
         && (request.auth.uid == userId || isAdmin());
-      allow create: if request.auth != null && request.auth.uid == userId;
-      allow update: if request.auth != null && request.auth.uid == userId;
+      allow create: if request.auth != null && request.auth.uid == userId
+        && !('role' in request.resource.data);
+      allow update: if request.auth != null && request.auth.uid == userId
+        && !('role' in request.resource.data.diff(resource.data).affectedKeys());
       allow delete: if false;
     }
 
     // ─── Vote aggregates ─────────────────────────────────────────────────────
-    // Public read; auth required to update the count field
+    // Public read; auth required to update the count field.
+    // SECURITY (task-0309 F3): schema-bound and delta-bound - a client can only
+    // step the count by exactly 1. Not fully spoof-proof (burst stepping is
+    // still possible); the durable fix is a server-side aggregate recomputed
+    // from user_votes. QA holds a MUST-DENY case for arbitrary count writes.
     match /votes/{productId} {
       allow read: if true;
-      allow create, update: if request.auth != null;
+      allow create: if request.auth != null
+        && request.resource.data.keys().hasOnly(['count'])
+        && request.resource.data.count is int
+        && request.resource.data.count >= 0
+        && request.resource.data.count <= 1;
+      allow update: if request.auth != null
+        && request.resource.data.keys().hasOnly(['count'])
+        && request.resource.data.count is int
+        && (request.resource.data.count - resource.data.count == 1
+            || request.resource.data.count - resource.data.count == -1);
       allow delete: if false;
     }
 
@@ -69,6 +92,28 @@ service cloud.firestore {
         && request.resource.data.email is string
         && request.resource.data.email.size() > 5;
       allow read, update, delete: if isAdmin();
+    }
+
+    // ─── Watchlists / saved items (task-0310, fixes task-0309 F4) ────────────
+    // Doc ID is bound to "{uid}_{itemId}" so one user cannot occupy another
+    // user's namespace. Owner-only, no updates - save/unsave is create/delete.
+    match /watchlists/{docId} {
+      allow read: if request.auth != null && resource.data.uid == request.auth.uid;
+      allow create: if request.auth != null
+        && request.resource.data.uid == request.auth.uid
+        && docId == request.auth.uid + '_' + request.resource.data.itemId
+        && request.resource.data.keys().hasAll(['uid', 'itemId', 'itemType', 'savedAt'])
+        && request.resource.data.itemType in ['tool', 'stratum', 'view'];
+      allow delete: if request.auth != null && resource.data.uid == request.auth.uid;
+      allow update: if false;
+    }
+
+    // ─── Activity feed (task-0312) ───────────────────────────────────────────
+    // Public read; written only by moderation approval (admin) - the feed can
+    // never contain unvetted content because only admins can write it.
+    match /activity/{eventId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
     }
 
     // ─── Catch-all: deny everything else ─────────────────────────────────────
