@@ -449,6 +449,70 @@ window._firestoreToggleWatch = async (stratumId, isWatching) => {
   }
 };
 
+
+// ─── Return Hooks: Recent Activity Feed (task-0312) ──────────────────────────
+window.loadRecentActivityFeed = async (limitCount = 10) => {
+  if (!db) return [];
+  try {
+    const snap = await getDocs(query(collection(db, "activity")));
+    const items = [];
+    snap.forEach(d => {
+      const data = d.data();
+      items.push({ id: d.id, ...data });
+    });
+    items.sort((a, b) => {
+      const tA = a.createdAt?.toMillis ? a.createdAt.toMillis() : (a.timestamp || 0);
+      const tB = b.createdAt?.toMillis ? b.createdAt.toMillis() : (b.timestamp || 0);
+      return tB - tA;
+    });
+    return items.slice(0, limitCount);
+  } catch (err) {
+    console.warn("[{a}OS Community] Activity feed load error:", err.message);
+    return [];
+  }
+};
+
+// SECURITY (task-0312 F-0312-C Setzer): never interpolate untrusted activity fields into
+// innerHTML. Admin-written activity is still attacker-shaped if an admin account is
+// compromised or a future rule slip lets non-admin write. Use textContent + DOM nodes.
+window.renderRecentActivity = async (containerId = "communityActivityFeed") => {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  const items = await window.loadRecentActivityFeed(10);
+  container.replaceChildren();
+  if (!items || items.length === 0) {
+    const empty = document.createElement("div");
+    empty.className = "activity-empty-state";
+    const p = document.createElement("p");
+    p.textContent = "No recent community activity yet. Approved contributions and catalog updates will appear here.";
+    empty.appendChild(p);
+    container.appendChild(empty);
+    return;
+  }
+  const frag = document.createDocumentFragment();
+  for (const item of items) {
+    const row = document.createElement("div");
+    row.className = "activity-item";
+    row.dataset.id = String(item.id ?? "");
+
+    const typeEl = document.createElement("span");
+    typeEl.className = "activity-type-badge";
+    typeEl.textContent = item.type || "Update";
+
+    const titleEl = document.createElement("span");
+    titleEl.className = "activity-title";
+    titleEl.textContent = item.title || item.name || "Catalog Item";
+
+    const descEl = document.createElement("span");
+    descEl.className = "activity-desc";
+    descEl.textContent = item.description || "";
+
+    row.append(typeEl, titleEl, descEl);
+    frag.appendChild(row);
+  }
+  container.appendChild(frag);
+};
+
 // ─── DOM ready ────────────────────────────────────────────────────────────────
 // type="module" scripts are deferred — DOM may already be ready when this runs
 function init() {
