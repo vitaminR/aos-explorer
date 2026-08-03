@@ -247,13 +247,20 @@ function injectVoteButtons() {
     btn.className = "vote-btn" + (localVotes[productId] ? " voted" : "");
     btn.dataset.productId = productId;
     btn.title = localVotes[productId] ? "Remove your vote" : "Upvote this tool";
-    btn.innerHTML = `<span class="vote-arrow">▲</span><span class="vote-count">0</span>`;
+    // Empty-vs-zero (Terra QA): never stamp a bare numeral before a count is known.
+    btn.innerHTML = `<span class="vote-arrow">▲</span><span class="vote-count" data-loaded="0">–</span>`;
     btn.addEventListener("click", (e) => {
       e.stopPropagation();
       toggleVote(productId, btn);
     });
     card.appendChild(btn);
   });
+}
+
+function setVoteCountDisplay(el, count) {
+  if (!el || typeof count !== "number" || !Number.isFinite(count)) return;
+  el.textContent = String(count);
+  el.dataset.loaded = "1";
 }
 
 async function loadAllVoteCounts() {
@@ -264,7 +271,9 @@ async function loadAllVoteCounts() {
       const btn = document.querySelector(`.vote-btn[data-product-id="${d.id}"]`);
       if (btn) {
         const el = btn.querySelector(".vote-count");
-        if (el) el.textContent = d.data().count ?? 0;
+        const c = d.data().count;
+        // Only write a numeral when the value is a real number (empty ≠ zero).
+        if (el && typeof c === "number") setVoteCountDisplay(el, c);
       }
     });
   } catch (err) {
@@ -275,19 +284,21 @@ async function loadAllVoteCounts() {
 async function toggleVote(productId, btn) {
   const wasVoted = !!localVotes[productId];
   const countEl = btn.querySelector(".vote-count");
-  const currentCount = parseInt(countEl?.textContent || "0", 10);
+  const loaded = countEl?.dataset.loaded === "1";
+  const parsed = parseInt(countEl?.textContent || "", 10);
+  const currentCount = loaded && Number.isFinite(parsed) ? parsed : 0;
 
   // Optimistic update
   if (wasVoted) {
     delete localVotes[productId];
     btn.classList.remove("voted");
     btn.title = "Upvote this tool";
-    if (countEl) countEl.textContent = Math.max(0, currentCount - 1);
+    if (countEl) setVoteCountDisplay(countEl, Math.max(0, currentCount - 1));
   } else {
     localVotes[productId] = Date.now();
     btn.classList.add("voted");
     btn.title = "Remove your vote";
-    if (countEl) countEl.textContent = currentCount + 1;
+    if (countEl) setVoteCountDisplay(countEl, currentCount + 1);
   }
   localStorage.setItem("aos7_votes", JSON.stringify(localVotes));
   syncPanelVoteBtn(productId);
@@ -383,7 +394,14 @@ window._communityProductSelected = async (productId) => {
   try {
     const snap = await getDoc(doc(db, "votes", productId));
     if (panelCount) {
-      panelCount.textContent = snap.exists() ? (snap.data().count ?? 0) : 0;
+      if (snap.exists()) {
+        const c = snap.data().count;
+        // Real number only; missing count keeps the honest placeholder (empty ≠ zero).
+        if (typeof c === "number") setVoteCountDisplay(panelCount, c);
+      } else {
+        // Loaded, no vote doc → genuine zero.
+        setVoteCountDisplay(panelCount, 0);
+      }
     }
   } catch {
     if (panelCount) panelCount.textContent = "—";
@@ -509,10 +527,17 @@ const ALLY_ORIGIN_CODES = new Set([
 
 function isAllyOrigin(originCountry) {
   if (!originCountry || typeof originCountry !== "string") return false;
-  const normalized = originCountry.trim().toUpperCase().replace(/[._-]+/g, " ").replace(/\s+/g, " ");
+  // Terra QA: trim AFTER punctuation→space so trailing '.' / '-' cannot leave a sticky space.
+  // Collapse spaces, then also try code-form (no spaces) so "U.S." / "U.K." / "U.S.A." match US/UK/USA.
+  const normalized = originCountry
+    .toUpperCase()
+    .replace(/[.,;:_-]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
   if (normalized.length < 2 || normalized.length > 64) return false;
   if (ALLY_ORIGIN_CODES.has(normalized)) return true;
-  // Soft prefix for verbose US forms already covered; keep fail-closed otherwise.
+  const codeForm = normalized.replace(/\s+/g, "");
+  if (codeForm.length >= 2 && codeForm.length <= 64 && ALLY_ORIGIN_CODES.has(codeForm)) return true;
   return false;
 }
 
