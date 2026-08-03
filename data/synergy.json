@@ -56,5 +56,500 @@
     { "from": "pipecat", "to": "llama-cpp", "wire": "Python API", "what": "Voice pipelines call local models for the offline lane, keeping the assistive voice loop alive with zero network", "source": "https://docs.pipecat.ai/server/services/supported-services" },
     { "from": "healthchecks", "to": "dagu", "wire": "HTTP", "what": "Scheduled jobs ping their check on completion; silence becomes an external page instead of an unnoticed death", "source": "https://healthchecks.io/docs/monitoring_cron_jobs/" },
     { "from": "falkordb", "to": "mem0", "wire": "Python API", "what": "Graph memory backends connect the runtime knowledge graph to agent memory for relationship aware recall", "source": "https://docs.mem0.ai/open-source/graph_memory/overview" }
-  ]
+  ],
+  "compliance_pillars": {
+    "schema_version": "1.0",
+    "claim_boundary": {
+      "status": "design-support-only",
+      "statement": "These mappings identify architecture support and known gaps. They do not assert control implementation, operating effectiveness, authorization, certification, or compliance; an assessor decides whether a control is satisfied.",
+      "sources": [
+        "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:131",
+        "6.aOS/03.Research/gov/task-0302-mitre-atlas-threat-model.md:35-36"
+      ]
+    },
+    "source_artifacts": [
+      {
+        "id": "nist-crosswalk",
+        "repository": "vitaminR/aOS",
+        "commit": "29c9f5c4f05db6cd977f2e7ed6a10d3485c8b008",
+        "path": "03.Research/gov/task-0300-nist-crosswalk.md",
+        "scope": "NIST AI RMF, NIST AI 600-1, SP 800-53 rev 5 mappings and honest gaps"
+      },
+      {
+        "id": "mitre-atlas-threat-model",
+        "repository": "vitaminR/aOS",
+        "commit": "29c9f5c4f05db6cd977f2e7ed6a10d3485c8b008",
+        "path": "03.Research/gov/task-0302-mitre-atlas-threat-model.md",
+        "scope": "MITRE ATLAS 2026.07 techniques, selected control anchors, and residual risks"
+      }
+    ],
+    "pillars": [
+      {
+        "id": "provider-boundary-and-resilience",
+        "name": "Approved provider boundary and fallback resilience",
+        "strata": [
+          "L1"
+        ],
+        "status": "design-support-only",
+        "sources": [
+          "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:14-16",
+          "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:77-80",
+          "6.aOS/03.Research/gov/task-0302-mitre-atlas-threat-model.md:50-60"
+        ],
+        "mappings": [
+          {
+            "node_ids": [
+              "litellm"
+            ],
+            "relationship": "supports",
+            "claim": "A single model gateway and approved-provider list support policy enforcement over external model routes and organizational risk limits.",
+            "sources": [
+              "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:14-15",
+              "NIST AI 100-1 GOVERN 6.1 and MANAGE 3.1",
+              "NIST AI 600-1 GV-6.1-007 and MG-3.1-001",
+              "SP 800-53 rev 5 SC-7, CM-7, SA-9, SR-3"
+            ]
+          },
+          {
+            "node_ids": [
+              "llama-cpp"
+            ],
+            "relationship": "supports",
+            "claim": "A self-managed local-model lane supports tested rollover and fallback planning; it does not prove model integrity or site resilience.",
+            "sources": [
+              "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:16",
+              "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:137-139,160-162",
+              "NIST AI 100-1 GOVERN 6.2",
+              "NIST AI 600-1 GV-6.2-006"
+            ]
+          }
+        ],
+        "threat_context": {
+          "atlas_ids": [
+            "AML.T0010.003",
+            "AML.T0024",
+            "AML.T0018.000"
+          ],
+          "residual_risk": "An allowlisted provider or model can still be compromised; no signature, digest, model-card, or lineage gate is evidenced.",
+          "sources": [
+            "6.aOS/03.Research/gov/task-0302-mitre-atlas-threat-model.md:57-60"
+          ]
+        }
+      },
+      {
+        "id": "information-flow-and-grounded-memory",
+        "name": "Information flow, grounded retrieval, and governed memory",
+        "strata": [
+          "L2"
+        ],
+        "status": "design-support-only",
+        "sources": [
+          "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:22-24",
+          "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:86-88",
+          "6.aOS/03.Research/gov/task-0302-mitre-atlas-threat-model.md:62-72"
+        ],
+        "mappings": [
+          {
+            "node_ids": [
+              "qdrant",
+              "mem0",
+              "sqlite"
+            ],
+            "relationship": "supports",
+            "claim": "Boundary-contained vector, memory, and state stores support documented information-flow and privacy controls; encryption, retention policy, and restore testing remain open.",
+            "sources": [
+              "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:22,86",
+              "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:141-142,163-165",
+              "NIST AI 100-1 MEASURE 2.10",
+              "SP 800-53 rev 5 AC-4"
+            ]
+          },
+          {
+            "node_ids": [
+              "mem0",
+              "sqlite"
+            ],
+            "relationship": "supports",
+            "claim": "Queryable memory and state records support provenance-aware inventory and retention practices without asserting that a complete retention schedule is implemented.",
+            "sources": [
+              "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:24,88",
+              "NIST AI 100-1 GOVERN 1.6",
+              "NIST AI 600-1 GV-1.6-003",
+              "SP 800-53 rev 5 SI-12"
+            ]
+          },
+          {
+            "node_ids": [
+              "llamaindex",
+              "docling"
+            ],
+            "relationship": "supports",
+            "claim": "Parsing before retrieval and grounding retrieval in source documents support input validation and grounded-RAG evaluation, but do not establish corpus provenance or poisoning detection.",
+            "sources": [
+              "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:23,87",
+              "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:140,164",
+              "NIST AI 100-1 MEASURE 2.5",
+              "NIST AI 600-1 MS-2.5-005",
+              "SP 800-53 rev 5 SI-10"
+            ]
+          }
+        ],
+        "threat_context": {
+          "atlas_ids": [
+            "AML.T0070",
+            "AML.T0010.002",
+            "AML.T0082",
+            "AML.T0057",
+            "AML.T0059"
+          ],
+          "residual_risk": "RAG poisoning, compromised feeds, historical credentials, cross-user leakage, and low-rate integrity erosion remain high or critical risks.",
+          "sources": [
+            "6.aOS/03.Research/gov/task-0302-mitre-atlas-threat-model.md:68-72"
+          ]
+        }
+      },
+      {
+        "id": "contained-declared-tool-execution",
+        "name": "Contained, declared, and reviewed tool execution",
+        "strata": [
+          "L3"
+        ],
+        "status": "design-support-only",
+        "sources": [
+          "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:30-32",
+          "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:94-96",
+          "6.aOS/03.Research/gov/task-0302-mitre-atlas-threat-model.md:74-84"
+        ],
+        "mappings": [
+          {
+            "node_ids": [
+              "gvisor"
+            ],
+            "relationship": "supports",
+            "claim": "A userspace sandbox boundary supports process isolation and reduces host blast radius; sandbox escape and covert egress are not evidenced as tested.",
+            "sources": [
+              "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:30,94,145,168",
+              "NIST AI 100-1 MEASURE 2.7",
+              "NIST AI 600-1 MS-2.7-001",
+              "SP 800-53 rev 5 SC-39"
+            ]
+          },
+          {
+            "node_ids": [
+              "fastmcp"
+            ],
+            "relationship": "supports",
+            "claim": "Finite typed tool schemas support documented purpose and least functionality, but do not prove least-privilege scopes or tool identity.",
+            "sources": [
+              "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:31,95,144,167",
+              "NIST AI 100-1 MAP 1.1",
+              "SP 800-53 rev 5 CM-7"
+            ]
+          },
+          {
+            "node_ids": [
+              "composio"
+            ],
+            "relationship": "supports",
+            "claim": "A brokered integration surface supports third-party service due diligence and monitoring boundaries without asserting supplier or artifact trust.",
+            "sources": [
+              "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:32,96",
+              "NIST AI 600-1 GV-6.1-009",
+              "SP 800-53 rev 5 SA-9"
+            ]
+          },
+          {
+            "node_ids": [
+              "playwright-mcp"
+            ],
+            "relationship": "documented-gap",
+            "claim": "Browser automation consumes untrusted content, and no measured indirect-prompt-injection result exists for the browse-then-act loop; no positive control claim is made.",
+            "sources": [
+              "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:143,166",
+              "6.aOS/03.Research/gov/task-0302-mitre-atlas-threat-model.md:80-84",
+              "NIST AI 600-1 MS-2.7-007",
+              "MITRE ATLAS AML.T0051.002, AML.T0086"
+            ]
+          }
+        ],
+        "threat_context": {
+          "atlas_ids": [
+            "AML.T0051.002",
+            "AML.T0010.005",
+            "AML.T0098",
+            "AML.T0086",
+            "AML.T0110"
+          ],
+          "residual_risk": "Containment does not validate tool descriptions or stop abuse of permitted network destinations and opaque payloads.",
+          "sources": [
+            "6.aOS/03.Research/gov/task-0302-mitre-atlas-threat-model.md:80-84"
+          ]
+        }
+      },
+      {
+        "id": "validated-recoverable-orchestration",
+        "name": "Validated, recoverable, and accountable orchestration",
+        "strata": [
+          "L4"
+        ],
+        "status": "design-support-only",
+        "sources": [
+          "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:38-40",
+          "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:102-104",
+          "6.aOS/03.Research/gov/task-0302-mitre-atlas-threat-model.md:86-96"
+        ],
+        "mappings": [
+          {
+            "node_ids": [
+              "pydantic-ai"
+            ],
+            "relationship": "supports",
+            "claim": "Typed validation at orchestration boundaries supports structural validity and information-input validation.",
+            "sources": [
+              "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:40,102",
+              "NIST AI 100-1 MEASURE 2.5",
+              "SP 800-53 rev 5 SI-10"
+            ]
+          },
+          {
+            "node_ids": [
+              "hatchet",
+              "dagu"
+            ],
+            "relationship": "supports",
+            "claim": "Durable workflows, retries, and scheduling support recovery and reconstitution; shared identity and dependency-integrity gaps remain.",
+            "sources": [
+              "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:39,103,170",
+              "NIST AI 100-1 MEASURE 2.6",
+              "NIST AI 600-1 MS-2.6-005",
+              "SP 800-53 rev 5 CP-10"
+            ]
+          },
+          {
+            "node_ids": [
+              "claude-code"
+            ],
+            "relationship": "documented-gap",
+            "claim": "No source artifact establishes Claude Code itself as a control implementation; orchestration context poisoning, spoofable coordination identity, and record-integrity gaps are carried explicitly instead.",
+            "sources": [
+              "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:146-148,169-171",
+              "6.aOS/03.Research/gov/task-0302-mitre-atlas-threat-model.md:92-96",
+              "MITRE ATLAS AML.T0080, AML.T0081, AML.T0092"
+            ]
+          }
+        ],
+        "threat_context": {
+          "atlas_ids": [
+            "AML.T0080",
+            "AML.T0109",
+            "AML.T0081",
+            "AML.T0086",
+            "AML.T0092"
+          ],
+          "residual_risk": "Poisoned context can shape both automated and human decisions; dependency signing, immutable audit evidence, and per-agent workload identity are not established.",
+          "sources": [
+            "6.aOS/03.Research/gov/task-0302-mitre-atlas-threat-model.md:92-96"
+          ]
+        }
+      },
+      {
+        "id": "auditable-continuous-evaluation",
+        "name": "Auditable events and continuous evaluation",
+        "strata": [
+          "L5"
+        ],
+        "status": "design-support-only",
+        "sources": [
+          "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:46-49",
+          "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:110-112",
+          "6.aOS/03.Research/gov/task-0302-mitre-atlas-threat-model.md:98-108"
+        ],
+        "mappings": [
+          {
+            "node_ids": [
+              "deepeval"
+            ],
+            "relationship": "supports",
+            "claim": "Repeatable evaluation metrics and go/no-go thresholds support risk measurement and continuous assessment; they do not authenticate model or dependency provenance.",
+            "sources": [
+              "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:46-47,112",
+              "NIST AI 100-1 MEASURE 1.1",
+              "NIST AI 600-1 GV-1.3-002",
+              "SP 800-53 rev 5 CA-7"
+            ]
+          },
+          {
+            "node_ids": [
+              "langfuse",
+              "healthchecks"
+            ],
+            "relationship": "supports",
+            "claim": "Trace records and dead-man monitoring support post-deployment monitoring and audit-record content; telemetry protection and incident response remain open.",
+            "sources": [
+              "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:48-49,110-112,151,172-174",
+              "NIST AI 100-1 MANAGE 4.1 and MEASURE 2.8",
+              "NIST AI 600-1 MG-4.1-002 and MS-2.8-003",
+              "SP 800-53 rev 5 AU-2, AU-3, CA-7"
+            ]
+          }
+        ],
+        "threat_context": {
+          "atlas_ids": [
+            "AML.T0068",
+            "AML.T0111",
+            "AML.T0074",
+            "AML.T0057",
+            "AML.T0031"
+          ],
+          "residual_risk": "Incomplete or attacker-controlled telemetry can create false attribution, leak sensitive data, or miss trigger-specific degradation.",
+          "sources": [
+            "6.aOS/03.Research/gov/task-0302-mitre-atlas-threat-model.md:104-108"
+          ]
+        }
+      },
+      {
+        "id": "policy-secrets-and-input-defense",
+        "name": "Policy enforcement, secret management, and input defense",
+        "strata": [
+          "L6"
+        ],
+        "status": "design-support-only",
+        "sources": [
+          "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:55-58",
+          "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:118-121",
+          "6.aOS/03.Research/gov/task-0302-mitre-atlas-threat-model.md:110-120"
+        ],
+        "mappings": [
+          {
+            "node_ids": [
+              "opa",
+              "litellm"
+            ],
+            "relationship": "supports",
+            "claim": "Pre-action policy decisions and hard budget caps support access enforcement, deactivation criteria, and resource availability only when bypass paths are closed.",
+            "sources": [
+              "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:56,118,121,153,155,175",
+              "NIST AI 100-1 MANAGE 2.4",
+              "NIST AI 600-1 MG-2.4-004",
+              "SP 800-53 rev 5 AC-3, SC-6"
+            ]
+          },
+          {
+            "node_ids": [
+              "infisical"
+            ],
+            "relationship": "supports",
+            "claim": "Centralized issue, storage, and rotation of machine secrets support authenticator management without proving short-lived, audience-bound workload identity.",
+            "sources": [
+              "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:57,119",
+              "6.aOS/03.Research/gov/task-0302-mitre-atlas-threat-model.md:118",
+              "SP 800-53 rev 5 IA-5"
+            ]
+          },
+          {
+            "node_ids": [
+              "llm-guard"
+            ],
+            "relationship": "supports",
+            "claim": "Prompt and output screening supports input validation and adversarial-prompt testing, but no bypass-rate measurement or scheduled red-team cadence is evidenced.",
+            "sources": [
+              "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:57,120,152,177",
+              "NIST AI 100-1 MEASURE 2.7",
+              "NIST AI 600-1 MS-2.7-007",
+              "SP 800-53 rev 5 SI-10, CA-8"
+            ]
+          }
+        ],
+        "threat_context": {
+          "atlas_ids": [
+            "AML.T0051",
+            "AML.T0115.002",
+            "AML.T0083",
+            "AML.T0086",
+            "AML.T0020"
+          ],
+          "residual_risk": "Controls can be bypassed by raw provider/tool paths; tool provenance, DLP, signed approvals, and short-lived agent identity are not established.",
+          "sources": [
+            "6.aOS/03.Research/gov/task-0302-mitre-atlas-threat-model.md:116-120"
+          ]
+        }
+      },
+      {
+        "id": "human-oversight-and-safe-interfaces",
+        "name": "Human oversight, disclosure, and safe interfaces",
+        "strata": [
+          "L7"
+        ],
+        "status": "design-support-only",
+        "sources": [
+          "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:64-67",
+          "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:127-129",
+          "6.aOS/03.Research/gov/task-0302-mitre-atlas-threat-model.md:122-132"
+        ],
+        "mappings": [
+          {
+            "node_ids": [
+              "assistant-ui"
+            ],
+            "relationship": "supports",
+            "claim": "A declared chat and approval surface supports documented human oversight and acceptable-use boundaries; approver identity and resistance to automation bias are not established.",
+            "sources": [
+              "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:64-65,127-128,156-158,179",
+              "NIST AI 100-1 MAP 3.5 and GOVERN 3.2",
+              "NIST AI 600-1 GV-3.2-003",
+              "SP 800-53 rev 5 AC-3, AU-3"
+            ]
+          },
+          {
+            "node_ids": [
+              "pipecat"
+            ],
+            "relationship": "supports",
+            "claim": "Pre-interaction AI disclosure and explicit microphone permissions support interface transparency and collaborative-device restrictions; speaker verification remains open.",
+            "sources": [
+              "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:66,129,159,180",
+              "NIST AI 600-1 GV-5.1-002",
+              "SP 800-53 rev 5 SC-15"
+            ]
+          },
+          {
+            "node_ids": [
+              "copilotkit"
+            ],
+            "relationship": "documented-gap",
+            "claim": "The sources map the AG-UI approval wire, not CopilotKit itself, to oversight controls; no positive compliance mapping is asserted for this node.",
+            "sources": [
+              "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:64,127-128",
+              "6.aOS/03.Research/gov/task-0302-mitre-atlas-threat-model.md:47,129-131",
+              "MITRE ATLAS AML.T0010.001, AML.T0073, AML.T0077"
+            ]
+          }
+        ],
+        "threat_context": {
+          "atlas_ids": [
+            "AML.T0051.000",
+            "AML.T0010.001",
+            "AML.T0073",
+            "AML.T0077",
+            "AML.T0115.001"
+          ],
+          "residual_risk": "A compromised presentation dependency or deceptive evidence can falsify the last human-visible boundary; response rendering can exfiltrate before a click.",
+          "sources": [
+            "6.aOS/03.Research/gov/task-0302-mitre-atlas-threat-model.md:128-132"
+          ]
+        }
+      }
+    ],
+    "unmapped_nodes": [
+      {
+        "node_id": "falkordb",
+        "reason": "No task-0300 or task-0302 artifact line ties FalkorDB to a named control or selected mitigation. The node remains in the graph, but its positive compliance mapping is intentionally omitted.",
+        "sources_reviewed": [
+          "6.aOS/03.Research/gov/task-0300-nist-crosswalk.md:18-24,82-88",
+          "6.aOS/03.Research/gov/task-0302-mitre-atlas-threat-model.md:62-72"
+        ]
+      }
+    ],
+    "dropped_pillars": []
+  }
 }
