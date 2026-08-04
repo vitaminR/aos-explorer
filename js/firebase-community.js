@@ -1,3 +1,20 @@
+
+window.showToast = (message, type = "info") => {
+  document.getElementById("aosCommunityToast")?.remove();
+  const toast = document.createElement("div");
+  toast.id = "aosCommunityToast";
+  toast.className = `community-toast community-toast-${type}`;
+  const icon = type === "success" ? "✓" : type === "error" ? "✕" : "ℹ";
+  toast.innerHTML = `<span class="toast-icon">${icon}</span> <span class="toast-msg"></span>`;
+  toast.querySelector(".toast-msg").textContent = message;
+  document.body.appendChild(toast);
+  setTimeout(() => toast.classList.add("show"), 10);
+  setTimeout(() => {
+    toast.classList.remove("show");
+    setTimeout(() => toast.remove(), 250);
+  }, 3500);
+};
+
 // {a}OS Explorer — Community Layer
 // ==================================
 // Auth UI, voting, and waitlist. All onclick-reachable functions exposed on window.
@@ -472,8 +489,10 @@ window._firestoreToggleWatch = async (stratumId, isWatching) => {
         itemType: "stratum",
         savedAt: serverTimestamp(),
       });
+      window.showToast("Saved to your account watchlist", "success");
     } else {
       await deleteDoc(ref);
+      window.showToast("Removed from watchlist", "info");
     }
   } catch (err) {
     console.warn("[{a}OS Community] Watchlist toggle error:", err.message);
@@ -641,6 +660,7 @@ window.submitToolContribution = async (toolData) => {
     status: "pending",
     createdAt: serverTimestamp(),
   });
+  window.showToast("Tool submitted for moderation queue", "success");
   return { id: ref.id, status: "pending" };
 };
 
@@ -661,6 +681,7 @@ window.submitReviewContribution = async (reviewData) => {
     status: "pending",
     createdAt: serverTimestamp(),
   });
+  window.showToast("Tool submitted for moderation queue", "success");
   return { id: ref.id, status: "pending" };
 };
 
@@ -703,6 +724,7 @@ window.approveSubmission = async (collectionName, docId) => {
     approvedAt: serverTimestamp(),
     approvedBy: currentUser.uid,
   });
+  window.showToast("Submission approved & published", "success");
 };
 
 window.rejectSubmission = async (collectionName, docId) => {
@@ -714,6 +736,7 @@ window.rejectSubmission = async (collectionName, docId) => {
     rejectedAt: serverTimestamp(),
     rejectedBy: currentUser.uid,
   });
+  window.showToast("Submission rejected", "info");
 };
 
 // ─── DOM ready ────────────────────────────────────────────────────────────────
