@@ -1,0 +1,71 @@
+{
+  "_note": "GOV evidence receipt for the aOS7 government-proposal operation. This file is a POINTER INDEX, not an assertion of compliance. Every claim of substance lives in the linked deliverable, pinned to the commit it was reviewed at.",
+  "_posture": "Proposal evidence seed. NOT a legal opinion, certification, accreditation, representation, or claim of federal compliance. Wording taken from the deliverables themselves.",
+  "generated_for": "task-0313 ghost-tour journey R-GOV",
+  "source_repo": "https://github.com/vitaminR/aOS",
+  "pinned_commit": "e5dbd36dc3ef6f3478ae140f4cc5793b54fd3b17",
+  "pinned_commit_date": "2026-08-01",
+  "compliance_pillars": [
+    {
+      "id": "nist-crosswalk",
+      "name": "NIST AI RMF 1.0 + Generative AI Profile, and SP 800-53 rev 5",
+      "covers": "Per-stratum crosswalk across L1-L7",
+      "ticket": "task-0300",
+      "artifact": "03.Research/gov/task-0300-nist-crosswalk.md",
+      "url": "https://raw.githubusercontent.com/vitaminR/aOS/e5dbd36dc3ef6f3478ae140f4cc5793b54fd3b17/03.Research/gov/task-0300-nist-crosswalk.md",
+      "status": "delivered",
+      "claim_type": "crosswalk mapping, analyst-authored",
+      "not_a_claim_of": "certification or accreditation against NIST controls"
+    },
+    {
+      "id": "supply-chain-sbom",
+      "name": "Federal supply-chain posture and SBOM seed, incl. Section 889 mapping",
+      "covers": "76-row component inventory with origin and license per row",
+      "ticket": "task-0301",
+      "artifact": "03.Research/gov/task-0301-supply-chain-sbom.md",
+      "url": "https://raw.githubusercontent.com/vitaminR/aOS/e5dbd36dc3ef6f3478ae140f4cc5793b54fd3b17/03.Research/gov/task-0301-supply-chain-sbom.md",
+      "status": "delivered",
+      "claim_type": "evidence seed, analyst-authored",
+      "not_a_claim_of": "Section 889 compliance determination",
+      "acquisition_rail": "no direct Department of Defense funding sought; protege model only"
+    },
+    {
+      "id": "atlas-threat-model",
+      "name": "MITRE ATLAS agentic threat model",
+      "covers": "ATLAS technique mapping across all seven strata with residual-risk column",
+      "ticket": "task-0302",
+      "artifact": "03.Research/gov/task-0302-mitre-atlas-threat-model.md",
+      "url": "https://raw.githubusercontent.com/vitaminR/aOS/e5dbd36dc3ef6f3478ae140f4cc5793b54fd3b17/03.Research/gov/task-0302-mitre-atlas-threat-model.md",
+      "status": "delivered",
+      "claim_type": "threat model; each residual-risk statement is an analyst judgment derived from the cited technique and stated control boundary",
+      "not_a_claim_of": "independent security assessment or penetration test result"
+    },
+    {
+      "id": "sovereignty-profile",
+      "name": "S0 sovereignty profile — ally-origin, self-hostable substitutions",
+      "covers": "One row per stratum, origin and license stated inline",
+      "ticket": "task-0303",
+      "artifact": "03.Research/gov/task-0303-s0-sovereignty-profile.md",
+      "url": "https://raw.githubusercontent.com/vitaminR/aOS/e5dbd36dc3ef6f3478ae140f4cc5793b54fd3b17/03.Research/gov/task-0303-s0-sovereignty-profile.md",
+      "status": "proposed — awaiting founder review",
+      "claim_type": "architecture profile proposal",
+      "not_a_claim_of": "an adopted or implemented configuration"
+    },
+    {
+      "id": "pilot-plan",
+      "name": "90-day government pilot plan",
+      "covers": "Three phases, six axis metrics, install through measured autonomy",
+      "ticket": "task-0306",
+      "artifact": "03.Research/gov/task-0306-pilot-plan.md",
+      "url": "https://raw.githubusercontent.com/vitaminR/aOS/e5dbd36dc3ef6f3478ae140f4cc5793b54fd3b17/03.Research/gov/task-0306-pilot-plan.md",
+      "status": "delivered",
+      "claim_type": "offer and methodology",
+      "not_a_claim_of": "an executed or awarded pilot"
+    }
+  ],
+  "verification": {
+    "how": "Each pillar url is a raw read pinned to the commit above. A moving main branch cannot fake or break these reads.",
+    "falsifiability": "A fabricated artifact path MUST fail the gate. See .agentic-orchestrator/ghost-tours/aos7-platform.negative-control.yaml; the control run returns FAIL exit 1.",
+    "fail_closed": "A missing artifact or unreachable receipt is a FAIL, never a skip."
+  }
+}
