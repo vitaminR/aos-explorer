@@ -10,6 +10,7 @@
       "**/node_modules/**",
       "**/.git/**",
       ".codacy/**",
+      ".github/**",
       "**/*.exe",
       "*.sh",
       "*.bat",
