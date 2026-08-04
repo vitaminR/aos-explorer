@@ -8,7 +8,7 @@ import {
   onAuthStateChanged,
 } from "./firebase-auth.js";
 import {
-  doc, getDoc, setDoc, deleteDoc,
+  doc, getDoc, setDoc, updateDoc, deleteDoc,
   collection, query, where, getDocs, addDoc,
   serverTimestamp, increment, getCountFromServer, Timestamp,
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
@@ -205,12 +205,13 @@ async function bootstrapUserProfile(user) {
   try {
     const snap = await getDoc(profileRef);
     if (!snap.exists()) {
+      // SECURITY (F-0310-D Setzer): never write role from client.
+      // firestore.rules bans role on create; default non-admin = no role field.
       await setDoc(profileRef, {
         username: user.displayName || user.email?.split("@")[0] || "Anonymous",
         avatarUrl: user.photoURL || "",
         xp: 0, level: 1, streakDays: 0,
         badges: ["early_adopter"],
-        role: "contributor",
         referredBy: storedRef || null,
         lastActive: serverTimestamp(),
         createdAt: serverTimestamp(),
@@ -246,13 +247,20 @@ function injectVoteButtons() {
     btn.className = "vote-btn" + (localVotes[productId] ? " voted" : "");
     btn.dataset.productId = productId;
     btn.title = localVotes[productId] ? "Remove your vote" : "Upvote this tool";
-    btn.innerHTML = `<span class="vote-arrow">▲</span><span class="vote-count">0</span>`;
+    // Empty-vs-zero (Terra QA): never stamp a bare numeral before a count is known.
+    btn.innerHTML = `<span class="vote-arrow">▲</span><span class="vote-count" data-loaded="0">–</span>`;
     btn.addEventListener("click", (e) => {
       e.stopPropagation();
       toggleVote(productId, btn);
     });
     card.appendChild(btn);
   });
+}
+
+function setVoteCountDisplay(el, count) {
+  if (!el || typeof count !== "number" || !Number.isFinite(count)) return;
+  el.textContent = String(count);
+  el.dataset.loaded = "1";
 }
 
 async function loadAllVoteCounts() {
@@ -263,7 +271,9 @@ async function loadAllVoteCounts() {
       const btn = document.querySelector(`.vote-btn[data-product-id="${d.id}"]`);
       if (btn) {
         const el = btn.querySelector(".vote-count");
-        if (el) el.textContent = d.data().count ?? 0;
+        const c = d.data().count;
+        // Only write a numeral when the value is a real number (empty ≠ zero).
+        if (el && typeof c === "number") setVoteCountDisplay(el, c);
       }
     });
   } catch (err) {
@@ -274,19 +284,21 @@ async function loadAllVoteCounts() {
 async function toggleVote(productId, btn) {
   const wasVoted = !!localVotes[productId];
   const countEl = btn.querySelector(".vote-count");
-  const currentCount = parseInt(countEl?.textContent || "0", 10);
+  const loaded = countEl?.dataset.loaded === "1";
+  const parsed = parseInt(countEl?.textContent || "", 10);
+  const currentCount = loaded && Number.isFinite(parsed) ? parsed : 0;
 
   // Optimistic update
   if (wasVoted) {
     delete localVotes[productId];
     btn.classList.remove("voted");
     btn.title = "Upvote this tool";
-    if (countEl) countEl.textContent = Math.max(0, currentCount - 1);
+    if (countEl) setVoteCountDisplay(countEl, Math.max(0, currentCount - 1));
   } else {
     localVotes[productId] = Date.now();
     btn.classList.add("voted");
     btn.title = "Remove your vote";
-    if (countEl) countEl.textContent = currentCount + 1;
+    if (countEl) setVoteCountDisplay(countEl, currentCount + 1);
   }
   localStorage.setItem("aos7_votes", JSON.stringify(localVotes));
   syncPanelVoteBtn(productId);
@@ -382,7 +394,14 @@ window._communityProductSelected = async (productId) => {
   try {
     const snap = await getDoc(doc(db, "votes", productId));
     if (panelCount) {
-      panelCount.textContent = snap.exists() ? (snap.data().count ?? 0) : 0;
+      if (snap.exists()) {
+        const c = snap.data().count;
+        // Real number only; missing count keeps the honest placeholder (empty ≠ zero).
+        if (typeof c === "number") setVoteCountDisplay(panelCount, c);
+      } else {
+        // Loaded, no vote doc → genuine zero.
+        setVoteCountDisplay(panelCount, 0);
+      }
     }
   } catch {
     if (panelCount) panelCount.textContent = "—";
@@ -523,6 +542,178 @@ window.renderRecentActivity = async (containerId = "communityActivityFeed") => {
     frag.appendChild(row);
   }
   container.appendChild(frag);
+};
+// ─── Ally-Only AI Policy Gate (task-0311 / F-0311-D) ─────────────────────────
+// ALLOWLIST (fail-closed). Must stay aligned with firestore.rules isAllyOriginCountry.
+// Terra QA 2026-08-03: denylist was wrong control shape + broken \b escapes.
+const ALLY_ORIGIN_CODES = new Set([
+  "US", "USA", "UNITED STATES", "UNITED STATES OF AMERICA", "AMERICA",
+  "CA", "CAN", "CANADA",
+  "GB", "UK", "UNITED KINGDOM", "GREAT BRITAIN", "ENGLAND", "SCOTLAND", "WALES",
+  "AU", "AUS", "AUSTRALIA",
+  "NZ", "NEW ZEALAND",
+  "JP", "JPN", "JAPAN",
+  "KR", "KOR", "KOREA", "SOUTH KOREA", "REPUBLIC OF KOREA",
+  "DE", "DEU", "GERMANY",
+  "FR", "FRA", "FRANCE",
+  "IT", "ITA", "ITALY",
+  "ES", "ESP", "SPAIN",
+  "NL", "NLD", "NETHERLANDS",
+  "BE", "BEL", "BELGIUM",
+  "PL", "POL", "POLAND",
+  "NO", "NOR", "NORWAY",
+  "SE", "SWE", "SWEDEN",
+  "DK", "DNK", "DENMARK",
+  "FI", "FIN", "FINLAND",
+  "IE", "IRL", "IRELAND",
+  "PT", "PRT", "PORTUGAL",
+  "CZ", "CZE", "CZECH", "CZECH REPUBLIC",
+  "AT", "AUT", "AUSTRIA",
+  "CH", "CHE", "SWITZERLAND",
+  "IL", "ISR", "ISRAEL",
+  "TW", "TWN", "TAIWAN",
+  "SG", "SGP", "SINGAPORE",
+  "IN", "IND", "INDIA",
+  "MX", "MEX", "MEXICO",
+  "BR", "BRA", "BRAZIL",
+  "PH", "PHL", "PHILIPPINES",
+  "TH", "THA", "THAILAND",
+  "MY", "MYS", "MALAYSIA",
+  "ID", "IDN", "INDONESIA",
+  "UA", "UKR", "UKRAINE",
+  "RO", "ROU", "ROMANIA",
+  "HU", "HUN", "HUNGARY",
+  "GR", "GRC", "GREECE",
+  "TR", "TUR", "TURKEY", "TURKIYE",
+  "ZA", "ZAF", "SOUTH AFRICA",
+  "LT", "LTU", "LITHUANIA",
+  "LV", "LVA", "LATVIA",
+  "EE", "EST", "ESTONIA",
+  "SK", "SVK", "SLOVAKIA",
+  "SI", "SVN", "SLOVENIA",
+  "HR", "HRV", "CROATIA",
+  "BG", "BGR", "BULGARIA",
+  "LU", "LUX", "LUXEMBOURG",
+  "IS", "ISL", "ICELAND",
+  "MT", "MLT", "MALTA",
+  "CY", "CYP", "CYPRUS",
+]);
+
+function isAllyOrigin(originCountry) {
+  if (!originCountry || typeof originCountry !== "string") return false;
+  // Terra QA: trim AFTER punctuation→space so trailing '.' / '-' cannot leave a sticky space.
+  // Collapse spaces, then also try code-form (no spaces) so "U.S." / "U.K." / "U.S.A." match US/UK/USA.
+  const normalized = originCountry
+    .toUpperCase()
+    .replace(/[.,;:_-]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  if (normalized.length < 2 || normalized.length > 64) return false;
+  if (ALLY_ORIGIN_CODES.has(normalized)) return true;
+  const codeForm = normalized.replace(/\s+/g, "");
+  if (codeForm.length >= 2 && codeForm.length <= 64 && ALLY_ORIGIN_CODES.has(codeForm)) return true;
+  return false;
+}
+
+// ─── Contribution Flow & Moderation Queue (task-0311) ─────────────────────────
+window.isAllyOrigin = isAllyOrigin;
+
+window.submitToolContribution = async (toolData) => {
+  if (!db || !currentUser) {
+    throw new Error("Sign-in required to submit a tool contribution.");
+  }
+  const { name, category, stratum, originCountry, description, link } = toolData || {};
+  if (!name || !stratum || !originCountry) {
+    throw new Error("Missing required fields: name, stratum, and originCountry are required.");
+  }
+  if (!isAllyOrigin(originCountry)) {
+    throw new Error("Ally-Only AI Policy violation: non-ally origin products are strictly excluded from {a}OS.");
+  }
+
+  const ref = await addDoc(collection(db, "tools"), {
+    name,
+    category: category || "general",
+    stratum,
+    originCountry,
+    description: description || "",
+    link: link || "",
+    submittedBy: currentUser.uid,
+    status: "pending",
+    createdAt: serverTimestamp(),
+  });
+  return { id: ref.id, status: "pending" };
+};
+
+window.submitReviewContribution = async (reviewData) => {
+  if (!db || !currentUser) {
+    throw new Error("Sign-in required to submit a review.");
+  }
+  const { productId, rating, comment } = reviewData || {};
+  if (!productId || !comment) {
+    throw new Error("Missing required fields: productId and comment are required.");
+  }
+
+  const ref = await addDoc(collection(db, "reviews"), {
+    productId,
+    rating: Number(rating) || 5,
+    comment,
+    userId: currentUser.uid,
+    status: "pending",
+    createdAt: serverTimestamp(),
+  });
+  return { id: ref.id, status: "pending" };
+};
+
+window.checkIsAdmin = async (uid) => {
+  if (!db || !uid) return false;
+  try {
+    const snap = await getDoc(doc(db, "user_profiles", uid));
+    return snap.exists() && snap.data().role === "admin";
+  } catch {
+    return false;
+  }
+};
+
+window.loadAdminModerationQueue = async () => {
+  if (!db || !currentUser) return { tools: [], reviews: [] };
+  const isAdmin = await window.checkIsAdmin(currentUser.uid);
+  if (!isAdmin) {
+    throw new Error("Admin access required to view moderation queue.");
+  }
+  try {
+    const toolsSnap = await getDocs(query(collection(db, "tools"), where("status", "==", "pending")));
+    const reviewsSnap = await getDocs(query(collection(db, "reviews"), where("status", "==", "pending")));
+    const tools = [];
+    const reviews = [];
+    toolsSnap.forEach(d => tools.push({ id: d.id, ...d.data() }));
+    reviewsSnap.forEach(d => reviews.push({ id: d.id, ...d.data() }));
+    return { tools, reviews };
+  } catch (err) {
+    console.warn("[{a}OS Community] Moderation queue load error:", err.message);
+    return { tools: [], reviews: [] };
+  }
+};
+
+window.approveSubmission = async (collectionName, docId) => {
+  if (!db || !currentUser) return;
+  const isAdmin = await window.checkIsAdmin(currentUser.uid);
+  if (!isAdmin) throw new Error("Admin access required to approve submissions.");
+  await updateDoc(doc(db, collectionName, docId), {
+    status: "approved",
+    approvedAt: serverTimestamp(),
+    approvedBy: currentUser.uid,
+  });
+};
+
+window.rejectSubmission = async (collectionName, docId) => {
+  if (!db || !currentUser) return;
+  const isAdmin = await window.checkIsAdmin(currentUser.uid);
+  if (!isAdmin) throw new Error("Admin access required to reject submissions.");
+  await updateDoc(doc(db, collectionName, docId), {
+    status: "rejected",
+    rejectedAt: serverTimestamp(),
+    rejectedBy: currentUser.uid,
+  });
 };
 
 // ─── DOM ready ────────────────────────────────────────────────────────────────
