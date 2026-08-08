@@ -1280,6 +1280,42 @@
       "changeRisk": "low",
       "sourceQuality": "medium",
       "status": "active"
+    },
+    {
+      "id": "watchfire",
+      "name": "Watchfire",
+      "type": "standard",
+      "vendor": "Internal",
+      "deployment": "Local",
+      "license": "Proprietary",
+      "primary": "L4 Orchestration & Decisioning",
+      "secondary": "L1, L5",
+      "axisRoles": "Governance: Strong · Observability: Strong",
+      "confidence": 0.9,
+      "rationale": "The aOS7 standard for always-on agents without token burn: deterministic tripwires gate one-shot model cycles that run from 2KB state files, so a quiet night costs zero tokens. Provider-agnostic across Claude, Codex, Gemini, and Grok. Born from the 2026-08-08 founder cost review.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "loop-core",
+          "role": "primary",
+          "rank": 1,
+          "why": "Replaces long-lived loop sessions with tripwire-gated stateless one-shot cycles."
+        },
+        {
+          "conceptSlug": "harness",
+          "role": "secondary",
+          "rank": 2,
+          "why": "State-file and cycle contracts bound every run; escalation is explicit and single-hop."
+        }
+      ],
+      "evidenceIds": [],
+      "freshnessTier": "A",
+      "lastReviewed": "2026-08-08",
+      "lastVerified": "2026-08-08",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "low",
+      "sourceQuality": "high",
+      "status": "active"
     }
   ]
 }
