@@ -7722,7 +7722,7 @@
         const stratumInfo = STRATA_HIERARCHY[filterState.stratum];
         if (stratumTrigger) {
           stratumTrigger.querySelector(".count").textContent =
-            filterState.stratum.toUpperCase().replace("L", "L") +
+            filterState.stratum.toUpperCase().replace("L", "S") +
             " " +
             (stratumInfo ? stratumInfo.name.split(" ")[0] : "");
           stratumTrigger.classList.add("filter-active");
@@ -19599,7 +19599,7 @@
         STRATA_ORDER.forEach((id) => {
           const info = STRATA_HIERARCHY[id];
           if (!info) return;
-          const label = id.toUpperCase().replace("L", "L") + " " + info.name;
+          const label = id.toUpperCase().replace("L", "S") + " " + info.name;
           const selected = selVal === id;
           const subCount = info.substrates.length;
           html += `<div class="fd-option${selected ? " selected" : ""}" onclick="selectStratumFilter('${id}', event)">
@@ -19672,7 +19672,7 @@
         } else {
           const info = STRATA_HIERARCHY[value];
           trigger.querySelector(".count").textContent =
-            value.toUpperCase().replace("L", "L") +
+            value.toUpperCase().replace("L", "S") +
             " " +
             (info ? info.name.split(" ")[0] : "");
         }
@@ -21419,7 +21419,7 @@
         recent.forEach((id) => {
           const d = PRODUCT_DETAILS[id];
           if (!d) return;
-          const pMatch = d.primary.match(/L(\d)/);
+          const pMatch = d.primary.match(/[SL](\d)/);
           const pId = pMatch ? "l" + pMatch[1] : "l4";
           const item = document.createElement("div");
           item.className = "recent-item";

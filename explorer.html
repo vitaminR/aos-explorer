@@ -13447,7 +13447,7 @@
         const stratumInfo = STRATA_HIERARCHY[filterState.stratum];
         if (stratumTrigger) {
           stratumTrigger.querySelector(".count").textContent =
-            filterState.stratum.toUpperCase().replace("L", "L") +
+            filterState.stratum.toUpperCase().replace("L", "S") +
             " " +
             (stratumInfo ? stratumInfo.name.split(" ")[0] : "");
           stratumTrigger.classList.add("filter-active");
@@ -29708,7 +29708,7 @@
         STRATA_ORDER.forEach((id) => {
           const info = STRATA_HIERARCHY[id];
           if (!info) return;
-          const label = id.toUpperCase().replace("L", "L") + " " + info.name;
+          const label = id.toUpperCase().replace("L", "S") + " " + info.name;
           const selected = selVal === id;
           const subCount = info.substrates.length;
           html += `<div class="fd-option${selected ? " selected" : ""}" onclick="selectStratumFilter('${id}', event)">
@@ -29781,7 +29781,7 @@
         } else {
           const info = STRATA_HIERARCHY[value];
           trigger.querySelector(".count").textContent =
-            value.toUpperCase().replace("L", "L") +
+            value.toUpperCase().replace("L", "S") +
             " " +
             (info ? info.name.split(" ")[0] : "");
         }
@@ -32661,7 +32661,7 @@
         syncSelectedProductCard(productKey);
         const touchedStrata = PRODUCT_STRATA_MAP[productKey] || [];
         const d = PRODUCT_DETAILS[productKey];
-        const pm = d && d.primary ? d.primary.match(/^L(\d)/i) : null;
+        const pm = d && d.primary ? d.primary.match(/^[SL](\d)/i) : null;
         const primaryId = pm ? "l" + pm[1] : null;
         const allStrata = ["l7", "l6", "l5", "l4", "l3", "l2", "l1"];
         allStrata.forEach((sid) => {
@@ -32934,7 +32934,7 @@
       };
 
       function getPrimaryFocusLabel(primary = "") {
-        return primary.replace(/^L\d+\s+/, "").trim();
+        return primary.replace(/^[SL]\d+\s+/, "").trim();
       }
 
       function getSecondaryLabel(secondary = "") {
@@ -32992,7 +32992,7 @@
       };
 
       function parseStrataIdsFromPlacement(placement = "") {
-        const matches = String(placement || "").match(/L([1-7])/gi) || [];
+        const matches = String(placement || "").match(/[SL]([1-7])/gi) || [];
         return matches.map((token) => `l${token.slice(1)}`.toLowerCase());
       }
 
@@ -33495,7 +33495,7 @@
 
       function getStrataDotStratumId(dot) {
         const style = (dot.getAttribute("style") || "").toLowerCase();
-        const match = style.match(/--l([1-7])/);
+        const match = style.match(/--s([1-7])/);
         return match ? `l${match[1]}` : null;
       }
 
@@ -34717,10 +34717,10 @@
         productsEl.innerHTML = arch.products.map(pid => {
           const p = PRODUCT_DETAILS[pid];
           if (!p) return "";
-          const stratum = (p.primary || "").match(/^(L[1-7])/)?.[1] || "?";
+          const stratum = (p.primary || "").match(/^([SL][1-7])/)?.[1] || "?";
           return `<div class="wizard-product-row" onclick="closeWizard();selectProduct('${pid}')">
             <span class="wizard-product-name">${p.name}</span>
-            <span class="wizard-product-stratum">${stratum}: ${(p.primary||"").replace(/^L[1-7]\s*/,"")}</span>
+            <span class="wizard-product-stratum">${stratum}: ${(p.primary||"").replace(/^[SL][1-7]\s*/, "")}</span>
           </div>`;
         }).join("");
 
@@ -34740,7 +34740,7 @@
           ids.forEach(pid => {
             const p = PRODUCT_DETAILS[pid];
             if (p && typeof addToStackStratum === "function") {
-              const level = (p.primary || "").match(/^L([1-7])/)?.[1];
+              const level = (p.primary || "").match(/^[SL]([1-7])/)?.[1];
               if (level) addToStackStratum(pid, "l" + level, p.name);
             }
           });
@@ -34782,12 +34782,12 @@
 
         const ids = Object.keys(PRODUCT_DETAILS).filter(id => {
           const p = PRODUCT_DETAILS[id];
-          return p && p.primary && /^L[1-7]/.test(p.primary);
+          return p && p.primary && /^[SL][1-7]/.test(p.primary);
         });
 
         const productId = ids[Math.floor(rng() * ids.length)];
         const product = PRODUCT_DETAILS[productId];
-        const correctLevel = (product.primary.match(/^(L[1-7])/) || [])[1] || "S1";
+        const correctLevel = (product.primary.match(/^([SL][1-7])/) || [])[1] || "S1";
 
         const allLevels = ["S1","S2","S3","S4","S5","S6","S7"];
         const wrongLevels = allLevels.filter(l => l !== correctLevel);
@@ -35135,7 +35135,7 @@
         recent.forEach((id) => {
           const d = PRODUCT_DETAILS[id];
           if (!d) return;
-          const pMatch = d.primary.match(/L(\d)/);
+          const pMatch = d.primary.match(/[SL](\d)/);
           const pId = pMatch ? "l" + pMatch[1] : "l4";
           const item = document.createElement("div");
           item.className = "recent-item";
@@ -35363,7 +35363,7 @@
         if (typeof PRODUCT_DETAILS === "undefined") return [];
         return Object.entries(PRODUCT_DETAILS).map(([id, d]) => {
           const primary = (d.primary || "").toLowerCase();
-          const stratumMatch = primary.match(/l([1-7])/);
+          const stratumMatch = primary.match(/[sl]([1-7])/);
           const stratum = stratumMatch ? "l" + stratumMatch[1] : null;
           return { id, name: d.name || id, stratum };
         });
@@ -35453,7 +35453,7 @@
             ? PRODUCT_HERO_COPY[pid] || {}
             : {};
         const primary = d.primary || "";
-        const primaryMatch = primary.match(/L([1-7])/i);
+        const primaryMatch = primary.match(/[SL]([1-7])/i);
         const fitLid = primaryMatch ? "l" + primaryMatch[1] : null;
         const fitColor = fitLid ? STRATUM_COLORS_SB[fitLid] : "#818cf8";
         const axis = d.axisRoles || "";
@@ -35554,7 +35554,7 @@
             " " +
             (pd.secondary || "")
           ).toUpperCase();
-          const fits = allStrata.includes("L" + stratumNum);
+          const fits = allStrata.includes("l" + stratumNum);
           zone.classList.add(fits ? "drag-valid" : "drag-invalid");
         }
       }
@@ -35757,7 +35757,7 @@
             .trim()
             .replace(/"/g, "&quot;");
           return `<div class="sb-gap-row">
-            <span class="sb-gap-label" style="color:${STRATUM_COLORS_SB[lid]}">${STRATUM_NAMES_SB[lid].replace(/^L[1-7] /, "")}<span class="help-dot" title="${tip}">?</span></span>
+            <span class="sb-gap-label" style="color:${STRATUM_COLORS_SB[lid]}">${STRATUM_NAMES_SB[lid].replace(/^[SL][1-7] /, "")}<span class="help-dot" title="${tip}">?</span></span>
             <span class="sb-gap-pill ${pillClass}">${info.label}</span>
           </div>`;
         }).join("");
@@ -35798,7 +35798,7 @@
           if (!pid) return;
           const d = PRODUCT_DETAILS[pid];
           const primary = (d.primary || "").toLowerCase();
-          const stratumMatch = primary.match(/l([1-7])/);
+          const stratumMatch = primary.match(/[sl]([1-7])/);
           const lid = stratumMatch ? "l" + stratumMatch[1] : "l4";
           if (!_stack[lid]) _stack[lid] = [];
           if (!_stack[lid].includes(pid)) {
@@ -36745,7 +36745,7 @@
         addBtn.innerHTML = "&#x2795;";
         addBtn.addEventListener("click", () => {
           if (d && d.primary) {
-            const priMatch = d.primary.toLowerCase().match(/l([1-7])/);
+            const priMatch = d.primary.toLowerCase().match(/[sl]([1-7])/);
             const stratumId = priMatch ? "l" + priMatch[1] : "l4";
             addToStackStratum(productId, stratumId);
           } else {
@@ -36791,7 +36791,7 @@
             : null;
         if (!d) return null;
         const primary = (d.primary || "").toLowerCase();
-        const priMatch = primary.match(/l([1-7])/);
+        const priMatch = primary.match(/[sl]([1-7])/);
         const priStratum = priMatch ? "l" + priMatch[1] : null;
         const secStrata = [];
         if (d.secondary) {
