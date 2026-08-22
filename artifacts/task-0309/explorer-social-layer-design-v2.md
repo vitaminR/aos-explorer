@@ -101,9 +101,110 @@ profile stays uid + display handle; email only via the existing waitlist opt-in
   is the PRD's own §3 decision.
 - No prod deploy: preview channels only, prod is founder-gated (night-op rail).
 
-## 7. Review gates before implementation
+## 7. Accessibility (WCAG AA) — all five signed-in surfaces
+
+This section satisfies AC3's a11y requirement. All new UI introduced by tasks 0310–0312 must
+meet WCAG 2.1 AA. Specific requirements per surface:
+
+### 7.1 Sign-in surface (task-0310)
+
+- **Button copy/voice:** "Sign in with Google" / "Sign in with GitHub" — named by provider for
+  screenreader clarity; no "Click here" or icon-only buttons.
+- **Focus management:** on auth modal open, focus moves to the first interactive element
+  (sign-in heading or first button); on close/dismiss, focus returns to the trigger element.
+- **Error state:** auth failure rendered as an ARIA `role="alert"` region — never a silent
+  visual-only flash. Error copy names the failure: "Sign-in failed. Try again or use a
+  different account."
+- **Contrast:** all text and interactive affordances ≥ 4.5:1 against background (body);
+  large text/icons ≥ 3:1. Verify with axe-508 (zero new criticals, per task-0305 baseline).
+- **Empty-vs-zero state:** sign-in surface has no numeric state. N/A.
+
+### 7.2 Saved / bookmarks list surface (task-0310)
+
+- **Empty state (zero items saved):** render an explicit empty state — never a blank panel or
+  `$0`-equivalent silence. Copy: "Nothing saved yet — star any tool or stratum to see it here."
+  This copy is screenreader-readable and is not a loading spinner left in place.
+- **Zero-vs-loading distinction:** while the watchlist fetch is in-flight, render a skeleton
+  or "Loading saved items…" status, not the empty-state copy. Once resolved with zero results,
+  swap to the empty-state message. These are two distinct states and must not be merged.
+- **List semantics:** saved items rendered as `<ul>/<li>` (or equivalent ARIA `role="list"`)
+  with each item having a visible label and a named remove affordance ("Remove from saved",
+  not an unlabeled `×`).
+- **Contrast / interactive affordances:** same AA floor as §7.1.
+
+### 7.3 Contribution form surface (task-0311)
+
+- **Form labels:** every input has an explicit `<label for="…">` (or `aria-label` for icon-only
+  controls). No placeholder-only labeling — placeholder disappears on focus and fails
+  screenreaders.
+- **Required fields:** marked with both a visual indicator (`*`) and `aria-required="true"`.
+  The legend or a page-level note explains that `*` means required.
+- **Inline validation:** errors rendered adjacent to the field they describe, linked via
+  `aria-describedby`, and surfaced in an ARIA live region so screenreader users hear the error
+  without manually scanning the form. Error copy is actionable: "Tool name is required."
+  not "Invalid input."
+- **Submit-success state:** on successful submission, render a confirmation message in an
+  `aria-live="polite"` region. Copy: "Your suggestion was submitted and is pending review."
+  Do not silently redirect or clear the form.
+- **Empty-vs-zero:** the ally-only origin/vendor field must never auto-fill or auto-populate —
+  it must be explicitly entered. An empty submission is blocked at the rules layer and at the
+  form layer (disabled Submit when required fields are unfilled).
+
+### 7.4 Moderation view surface (task-0311)
+
+- **Scope:** admin-only surface (`isAdmin()` rule). A11y requirements apply equally — admins
+  may use assistive technology.
+- **Table / list semantics:** pending submissions rendered as a proper `<table>` (with `<th>`
+  headers and `scope` attributes) or an accessible `role="list"` pattern — not a grid of `<div>`s
+  with no semantic structure.
+- **Action buttons:** approve / reject actions labeled by submission, not just "Approve" in a
+  column. Pattern: `aria-label="Approve: <tool name>"`. Prevents ambiguous repetitive labels.
+- **Status feedback:** approve/reject action result announced via `aria-live="polite"`. Copy:
+  "Tool '<name>' approved." / "Tool '<name>' rejected." — never silent.
+- **Empty state (no pending submissions):** explicit copy: "No submissions pending review."
+  Never a blank table or zero-row rendered silently.
+
+### 7.5 Activity feed surface (task-0312)
+
+- **Empty state (no approved activity yet):** render an honest empty state — not a hidden
+  section, not a zero-count badge. Copy: "No recent activity yet — approved contributions
+  appear here." This avoids the empty-vs-zero failure where a blank feed reads as
+  "nothing happened" versus "not loaded" versus "nothing exists yet."
+- **Feed semantics:** activity events rendered as `<ul>/<li>` with each event containing a
+  visible timestamp and human-readable description. Timestamps in `<time datetime="…">` for
+  machine-readability.
+- **No fabricated activity:** the feed shows ONLY admin-approved events (§5, task-0312).
+  An honest zero state is preferable to synthetic filler. This is both a privacy-minimal
+  requirement and an a11y voice requirement — screenreader users should not encounter
+  fabricated or test data in production.
+- **Contrast / interactive affordances:** same AA floor as §7.1.
+
+### 7.6 Cross-cutting requirements (all five surfaces)
+
+| Requirement | Standard | How verified |
+|---|---|---|
+| Text contrast ≥ 4.5:1 (body) / ≥ 3:1 (large/icons) | WCAG 2.1 AA 1.4.3 / 1.4.11 | axe-508 zero new criticals + Argus-measured AA per task-0305 baseline |
+| Keyboard navigable, no keyboard trap | WCAG 2.1 AA 2.1.1 / 2.1.2 | Manual tab-walk on preview channel |
+| Focus visible on all interactive elements | WCAG 2.1 AA 2.4.7 | axe-508 + visual QA |
+| All images / icons have text alternatives | WCAG 2.1 AA 1.1.1 | axe-508 |
+| No content flashes > 3× per second | WCAG 2.1 AA 2.3.1 | Design-time rule (no animation beyond static JS patterns) |
+| Error identification in text | WCAG 2.1 AA 3.3.1 | axe-508 + QA charter |
+| Labels / instructions for inputs | WCAG 2.1 AA 3.3.2 | axe-508 |
+
+**Ally-only gate (cross-cutting):** the contribution form origin/vendor field (task-0311) is
+the ally-only enforcement point. A11y does not relax this gate — an accessible form that accepts
+non-ally submissions is still a rules violation. The Firestore rule is the authoritative check;
+the form label and help text make the requirement legible to the contributor.
+
+**Privacy-minimal (cross-cutting):** no new PII surfaces are introduced in these five UIs.
+Display names are uid-derived handles; email is waitlist-only opt-in. Any expansion beyond
+that is a FOUNDER DECISION per ticket rails (flagged, not decided here).
+
+## 8. Review gates before implementation
 
 1. Setzer (Security-LT): adversarial pass on §4 rules delta (prove default-deny survives;
    attack the moderation path; PII minimization check). Trigger: this doc posted.
 2. Shinra (Quality-LT): QA charter alignment (already ordered).
-3. Commander acceptance recorded on the ticket, THEN 0310 implementation may start.
+3. A11y section (§7) is design-time; implementation verification is axe-508 zero new criticals
+   + Argus AA on preview channel per task-0310/0311/0312 ACs.
+4. Commander acceptance recorded on the ticket, THEN 0310 implementation may start.
