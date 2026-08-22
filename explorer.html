@@ -31766,6 +31766,7 @@
       }
 
       let axisRefreshQueued = false;
+      let axisTransitionRefreshTimer = null;
 
       function refreshAxisBands() {
         if (axisRefreshQueued) return;
@@ -31778,7 +31779,13 @@
 
       function refreshAxisBandsAfterTransition() {
         refreshAxisBands();
-        setTimeout(refreshAxisBands, 460);
+        if (axisTransitionRefreshTimer !== null) {
+          clearTimeout(axisTransitionRefreshTimer);
+        }
+        axisTransitionRefreshTimer = window.setTimeout(() => {
+          axisTransitionRefreshTimer = null;
+          refreshAxisBands();
+        }, 460);
       }
 
       function positionAxisBand(cfg) {
@@ -31794,7 +31801,7 @@
           .filter((el) => isElementVisible(el));
 
         if (!visibleStrata.length) {
-          band.style.height = "0px";
+          if (band.style.height !== "0px") band.style.height = "0px";
           return;
         }
 
@@ -31824,15 +31831,17 @@
         const top = Math.round(topBoundary);
         const bottom = Math.round(bottomBoundary);
 
-        band.style.top = top + "px";
-        band.style.height = Math.max(0, bottom - top) + "px";
+        const nextTop = top + "px";
+        const nextHeight = Math.max(0, bottom - top) + "px";
+        if (band.style.top !== nextTop) band.style.top = nextTop;
+        if (band.style.height !== nextHeight) band.style.height = nextHeight;
 
         // Position the axis label in the intercostal gap above the first stratum
         const label = band.querySelector(".axis-label");
         if (label) {
           // Band top is already pinned to the upper intercostal center.
           // Keep label centered on that anchor line.
-          label.style.top = "0px";
+          if (label.style.top !== "0px") label.style.top = "0px";
         }
       }
 
@@ -31902,9 +31911,18 @@
         }
 
         if (typeof MutationObserver !== "undefined") {
-          const mo = new MutationObserver(() =>
-            refreshAxisBandsAfterTransition(),
-          );
+          const mo = new MutationObserver((mutations) => {
+            // Axis positioning writes inline styles inside stackContainer.
+            // Ignore those self-authored mutations so reflow cannot retrigger
+            // itself indefinitely.
+            const hasExternalMutation = mutations.some((mutation) => {
+              const target = mutation.target;
+              return !(
+                target instanceof Element && target.closest(".axis-band")
+              );
+            });
+            if (hasExternalMutation) refreshAxisBandsAfterTransition();
+          });
           mo.observe(stackContainer, {
             subtree: true,
             childList: true,
