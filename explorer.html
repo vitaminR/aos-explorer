@@ -32050,8 +32050,10 @@
         for (const dot of dots) {
           const bg =
             (dot.getAttribute("style") || "") + (dot.style.cssText || "");
-          if (bg.includes("--" + stratumId)) return true;
-          if (bg.includes("var(--" + stratumId + ")")) return true;
+          // internal ids are "l1".."l7"; the CSS variables are --s1..--s7 (stratum colors)
+          const num = String(stratumId).replace(/^[ls]/, "");
+          if (bg.includes("--s" + num) || bg.includes("--" + stratumId)) return true;
+          if (bg.includes("var(--s" + num + ")") || bg.includes("var(--" + stratumId + ")")) return true;
         }
         // fall back to data attribute if a product sets one explicitly
         const attr = (card.getAttribute("data-strata") || "").toLowerCase();
