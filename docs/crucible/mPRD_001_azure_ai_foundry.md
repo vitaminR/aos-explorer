@@ -21,29 +21,29 @@
 
 ## Substrate Mappings
 
-| Layer | Substrate | Relevance | Constructs Touched | Evidence |
+| Stratum | Substrate | Relevance | Constructs Touched | Evidence |
 |-------|-----------|-----------|-------------------|----------|
-| L7 | Intent Parsers & UX | 0.70 | `intent_object`, `session_context` | AI Foundry portal + Playground chat UI; Agent Service threads expose session context |
-| L6 | Safety & Content Filters | 0.90 | `filter_id`, `taxonomy_version`, `action_on_match`, `confidence_threshold` | Azure AI Content Safety — real-time text/image moderation with configurable severity thresholds |
-| L6 | Identity & Access | 0.60 | — | Azure RBAC + Managed Identity for model endpoints; not a standalone IAM product |
-| L5 | Tracing & Logging | 0.75 | `span_id`, `parent_span_id`, `operation_name`, `duration_ms` | Prompt flow tracing, Azure Monitor integration, OpenTelemetry-compatible spans |
-| L5 | Eval Frameworks | 0.80 | — | Built-in evaluation runs with judge models (groundedness, relevance, coherence metrics) |
-| L4 | Workflow Engines | 0.85 | `execution_plan`, `step_graph`, `state_checkpoint` | Prompt flow DAG orchestration — multi-step flows with branching, parallel nodes, state |
-| L4 | Agent Frameworks | 0.70 | `agent_roster`, `task_assignment` | Azure AI Agent Service — multi-agent with tool use, threads, and file-search |
-| L4 | Routing & Planning | 0.55 | — | Model catalog with endpoint routing; no native cost-aware router yet |
-| L3 | Tool Registries & MCP | 0.60 | `tool_manifest` | Agent Service function/tool definitions; Bing grounding as built-in tool |
-| L3 | External APIs | 0.50 | — | REST endpoints for chat completions, embeddings, batch inference |
-| L2 | RAG Pipelines & Search | 0.85 | — | Azure AI Search integration (hybrid retrieval, semantic ranking, vector search) |
-| L2 | Embedding Stores | 0.70 | — | Azure OpenAI text-embedding models + AI Search vector indexes |
-| L1 | Foundation Models | 0.95 | — | Model catalog: OpenAI GPT-4o/o3, Llama, Mistral, Phi, Cohere — primary value prop |
-| L1 | Compute & Serving | 0.90 | — | Managed compute endpoints, provisioned throughput, serverless deployments |
-| L1 | Training & Fine-tuning | 0.75 | — | Fine-tuning for GPT-4o, Phi, Llama; distillation workflows |
+| S7 | Intent Parsers & UX | 0.70 | `intent_object`, `session_context` | AI Foundry portal + Playground chat UI; Agent Service threads expose session context |
+| S6 | Safety & Content Filters | 0.90 | `filter_id`, `taxonomy_version`, `action_on_match`, `confidence_threshold` | Azure AI Content Safety — real-time text/image moderation with configurable severity thresholds |
+| S6 | Identity & Access | 0.60 | — | Azure RBAC + Managed Identity for model endpoints; not a standalone IAM product |
+| S5 | Tracing & Logging | 0.75 | `span_id`, `parent_span_id`, `operation_name`, `duration_ms` | Prompt flow tracing, Azure Monitor integration, OpenTelemetry-compatible spans |
+| S5 | Eval Frameworks | 0.80 | — | Built-in evaluation runs with judge models (groundedness, relevance, coherence metrics) |
+| S4 | Workflow Engines | 0.85 | `execution_plan`, `step_graph`, `state_checkpoint` | Prompt flow DAG orchestration — multi-step flows with branching, parallel nodes, state |
+| S4 | Agent Frameworks | 0.70 | `agent_roster`, `task_assignment` | Azure AI Agent Service — multi-agent with tool use, threads, and file-search |
+| S4 | Routing & Planning | 0.55 | — | Model catalog with endpoint routing; no native cost-aware router yet |
+| S3 | Tool Registries & MCP | 0.60 | `tool_manifest` | Agent Service function/tool definitions; Bing grounding as built-in tool |
+| S3 | External APIs | 0.50 | — | REST endpoints for chat completions, embeddings, batch inference |
+| S2 | RAG Pipelines & Search | 0.85 | — | Azure AI Search integration (hybrid retrieval, semantic ranking, vector search) |
+| S2 | Embedding Stores | 0.70 | — | Azure OpenAI text-embedding models + AI Search vector indexes |
+| S1 | Foundation Models | 0.95 | — | Model catalog: OpenAI GPT-4o/o3, Llama, Mistral, Phi, Cohere — primary value prop |
+| S1 | Compute & Serving | 0.90 | — | Managed compute endpoints, provisioned throughput, serverless deployments |
+| S1 | Training & Fine-tuning | 0.75 | — | Fine-tuning for GPT-4o, Phi, Llama; distillation workflows |
 
 ---
 
 ## Primitive-Level Guides
 
-### Workflow Engines (L4)
+### Workflow Engines (S4)
 
 | Primitive | Product Feature | Implementation Guide | Confidence |
 |-----------|----------------|---------------------|------------|
@@ -53,7 +53,7 @@
 | `execution_plan` | Prompt flow runtime | The runtime resolves the DAG, handles parallelism, and manages state across nodes. Batch mode for evaluation. | 0.85 |
 | `state_checkpoint` | Prompt flow variants | Variants snapshot prompt/model config at a point for A/B testing. Not a full checkpoint system. | 0.60 |
 
-### Agent Frameworks (L4)
+### Agent Frameworks (S4)
 
 | Primitive | Product Feature | Implementation Guide | Confidence |
 |-----------|----------------|---------------------|------------|
@@ -63,7 +63,7 @@
 | `agent_roster` | Multi-agent | Create multiple agents with different models/instructions. Route tasks by capability. No native crew pattern yet. | 0.65 |
 | `task_assignment` | Thread runs | Create a run on a thread with a specific agent. The agent processes the thread's messages. | 0.85 |
 
-### Safety & Content Filters (L6)
+### Safety & Content Filters (S6)
 
 | Primitive | Product Feature | Implementation Guide | Confidence |
 |-----------|----------------|---------------------|------------|
@@ -72,7 +72,7 @@
 | `action_on_match` | Severity thresholds | Configure per-category severity thresholds (0–7). Action: allow, warn, or block based on threshold. | 0.90 |
 | `confidence_threshold` | Detection confidence | Each flagged item returns a severity score. Set threshold for automated blocking vs. human review. | 0.88 |
 
-### Tracing & Logging (L5)
+### Tracing & Logging (S5)
 
 | Primitive | Product Feature | Implementation Guide | Confidence |
 |-----------|----------------|---------------------|------------|
@@ -86,7 +86,7 @@
 ## Product-Origin Constructs
 
 Azure AI Foundry doesn't originate novel constructs in the {a}OS ontology — it implements standard
-patterns. Its primary contribution is the breadth of coverage across 5+ layers from a single platform.
+patterns. Its primary contribution is the breadth of coverage across 5+ strata from a single platform.
 
 | Construct Name | Core Substrate Home | Primitives | Notes |
 |---------------|--------------------|-----------|----|
@@ -99,8 +99,8 @@ patterns. Its primary contribution is the breadth of coverage across 5+ layers f
 | Signal | Value | Notes |
 |--------|-------|-------|
 | **Overall confidence** | 0.92 | High — well-documented enterprise platform |
-| **Primary layer** | L1 Models & Infrastructure | Model hosting/inference is the core value prop |
-| **Layer coverage** | 5/7 (L1, L2, L4, L5, L6) + touches L3, L7 | Broadest coverage of any single product in the catalog |
+| **Primary stratum** | S1 Models & Infrastructure | Model hosting/inference is the core value prop |
+| **Stratum coverage** | 5/7 (S1, S2, S4, S5, S6) + touches S3, S7 | Broadest coverage of any single product in the catalog |
 | **Community traction** | High | Enterprise adoption (Azure customer base), growing open-source Prompt flow SDK |
 | **Unique capability** | Unified model catalog + orchestration + safety in one portal | Only platform combining model serving, prompt flow orchestration, content safety, and evaluation in a single management surface |
 

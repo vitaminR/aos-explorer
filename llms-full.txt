@@ -4,10 +4,10 @@
 # Source: https://aos7.tech
 
 ============================================================
-STRATA (7 canonical layers)
+STRATA (7 canonical strata)
 ============================================================
 
-## L7 — Experience & Intent
+## S7 — Experience & Intent
 Definition: The human boundary where requests enter, responses render, and approvals happen.
 Boundary question: What is the user asking, seeing, approving, or rejecting?
 Substrates: chat UI, portal, CLI, dashboard, approval surface, API gateway
@@ -16,7 +16,7 @@ Primitives: user_id, session_id, message_text, file_handle, role_string, approva
 Typical failures: wrong intent captured, ambiguous user instruction, poor UX causes misuse, approval action not recorded, response rendered without context
 Core metrics: task completion rate, time to first response, approval completion rate, user drop-off rate, correction rate
 
-## L6 — Governance & Trust
+## S6 — Governance & Trust
 Definition: The policy boundary where access, safety, approval, budget, and compliance are enforced.
 Boundary question: Who is allowed to do this, under what policy, with what risk and budget?
 Substrates: IAM / RBAC, policy engine, content safety, secrets manager, key manager, budget guardrails, approval workflows
@@ -25,7 +25,7 @@ Primitives: scope, allow_deny_flag, policy_rule, secret_ref, risk_score, budget_
 Typical failures: unauthorized tool access, over-permissive policy, missing audit evidence, secret exposure, budget runaway, unsafe content not blocked
 Core metrics: policy violation rate, unauthorized attempt count, audit completeness, budget variance, approval latency, safety block accuracy
 
-## L5 — Observability & Evaluation
+## S5 — Observability & Evaluation
 Definition: The proof boundary where execution becomes visible, measurable, and judged.
 Boundary question: What actually happened, how well did it perform, and where did it fail?
 Substrates: distributed tracing, logging pipeline, metrics store, eval harness, dashboard, alerting system, drift monitor
@@ -34,7 +34,7 @@ Primitives: timestamp, trace_id, span_id, metric_point, severity, token_count, s
 Typical failures: silent failure with no trace, eval blind spot, cost spike unseen, bad alert thresholds, drift not detected, success measured incorrectly
 Core metrics: trace coverage, p95 / p99 latency, eval pass rate, false positive alert rate, drift detection lag, cost per successful task
 
-## L4 — Orchestration & Decisioning
+## S4 — Orchestration & Decisioning
 Definition: The control boundary where work is routed, sequenced, delegated, retried, and stopped.
 Boundary question: What happens next, in what order, with which agent, under which stop conditions?
 Substrates: workflow engine, router, state machine, planner, handoff manager, queue, retry logic, circuit breaker
@@ -43,7 +43,7 @@ Primitives: node_id, edge, task_id, state_key, retry_count, timeout_value, branc
 Typical failures: infinite loop, wrong specialist selected, retry storm, broken stop condition, dead branch, state corruption
 Core metrics: task success rate, average steps per task, loop rate, retry rate, handoff success rate, orchestration latency
 
-## L3 — Execution & Interfaces
+## S3 — Execution & Interfaces
 Definition: The action boundary where external tools, APIs, scripts, and sandboxes are invoked.
 Boundary question: What external action was invoked, against which interface, and what happened?
 Substrates: tool gateway, function-calling adapter, MCP server, API connector, sandbox, job runner, script executor, microVM / container task
@@ -52,7 +52,7 @@ Primitives: endpoint_url, method, function_name, arg_field, exit_code, file_path
 Typical failures: malformed payload, auth mismatch, wrong tool executed, destructive script run, sandbox escape risk, connector timeout
 Core metrics: tool success rate, interface latency, side-effect accuracy, sandbox failure rate, connector coverage, execution rollback rate
 
-## L2 — Knowledge & Memory
+## S2 — Knowledge & Memory
 Definition: The context boundary where facts, documents, semantic relationships, and memory are stored and retrieved.
 Boundary question: What context did the system know, retrieve, remember, or forget?
 Substrates: vector store, graph store, document index, memory store, transcript store, RAG pipeline
@@ -61,7 +61,7 @@ Primitives: float_value, document_id, chunk_id, entity_id, memory_key, embedding
 Typical failures: wrong retrieval, stale context, forgotten session detail, duplicate memory, low-quality chunking, bad entity resolution
 Core metrics: retrieval precision, retrieval recall, citation coverage, memory hit rate, stale context rate, rerank lift
 
-## L1 — Models & Infrastructure
+## S1 — Models & Infrastructure
 Definition: The foundation boundary where models, runtimes, compute, storage, and network resources actually operate.
 Boundary question: Is the model/runtime/compute/network foundation available and behaving correctly?
 Substrates: model endpoint, inference runtime, container runtime, GPU / CPU, scheduler, storage, network fabric, service mesh
@@ -76,16 +76,16 @@ CONCEPTS (21 entries)
 
 ## Execution Harness (/harness)
 Definition: A governing scaffold that constrains sequencing, context budgets, checkpoints, and stop conditions.
-Explainer: A harness sits at L0/L4 (Meta/Orchestration) and is the assembled agent bundle: model + tools + memory + orchestration + policy. It defines how work is done, not just what to do. It wraps an agent or pipeline with lifecycle controls — sequencing steps, enforcing context budgets, persisting checkpoints, and triggering stop conditions. Examples include execution harnesses (GSD, BMAD), test harnesses (Superpowers), and CI/CD harnesses (Harness.io). Not to be confused with the agent or the tools it calls — the harness is the governing scaffold around them.
-Strata: L0, L4
-Aliases: harness, harnes, orchestration harness, execution harness, delivery harness, layer 0, stratum 0
+Explainer: A harness sits at S0/S4 (Meta/Orchestration) and is the assembled agent bundle: model + tools + memory + orchestration + policy. It defines how work is done, not just what to do. It wraps an agent or pipeline with lifecycle controls — sequencing steps, enforcing context budgets, persisting checkpoints, and triggering stop conditions. Examples include execution harnesses (GSD, BMAD), test harnesses (Superpowers), and CI/CD harnesses (Harness.io). Not to be confused with the agent or the tools it calls — the harness is the governing scaffold around them.
+Strata: S0, S4
+Aliases: harness, harnes, orchestration harness, execution harness, delivery harness, stratum 0, stratum 0
 Anti-patterns: Bolting agent execution onto generic container orchestrators without native lifecycle support leads to fragile systems that crash mid-task.
 Mitigations: Utilize a dedicated agent runtime harness that natively provides durable execution, state isolation, and lifecycle management from day one.
 
 ## loop-core (/loop-core)
 Definition: Iterative cycle of plan → act → evaluate → adjust until stop conditions are met.
 Explainer: The canonical agentic control cycle. An agent enters a loop where it plans the next action, executes it via tools or generation, evaluates the result against success criteria, and adjusts strategy. The loop repeats until stop conditions are satisfied or a budget is exhausted. Variants include research loops, evaluation loops, implementation loops, and recovery loops.
-Strata: L3, L4
+Strata: S3, S4
 Aliases: loop, loops, loop-core, agentic loop, feedback loop
 Anti-patterns: Relying on a single, open-ended prompt-response generation causes the agent to hallucinate actions instead of dynamically adapting to environment feedback.
 Mitigations: Implement an iterative control loop where the agent explicitly generates a thought trace to reason about observations before executing its next action.
@@ -93,7 +93,7 @@ Mitigations: Implement an iterative control loop where the agent explicitly gene
 ## MCP Tooling (/mcp)
 Definition: Standardized interface for exposing tools, resources, and prompts to agents — strong for tool access, but not a replacement for hook-driven lifecycle automation.
 Explainer: The Model Context Protocol (MCP) establishes a universal interface allowing agents to connect to any compliant tool or dataset. Instead of writing bespoke integrations for every data source, teams adopt MCP to provide plug-and-play tool surfaces. MCP servers expose file systems, APIs, databases, and browser actions through a consistent schema. But MCP is ultimately a tool surface, not a memory operating system. If you need automatic lifecycle behavior — such as pre-fetching context before reasoning, post-turn capture after execution, or pre-compressing long sessions before truncation — native hooks or plugins are often the better mechanism. Use MCP for standardized access; use hooks when the lifecycle itself must run automatically.
-Strata: L2, L3
+Strata: S2, S3
 Aliases: mcp, model context protocol, tool registry
 Anti-patterns: Treating MCP alone as a shared brain forces the model to remember to call memory tools manually, making lifecycle-critical behavior like pre-fetch, post-turn capture, and pre-compress fragile.
 Mitigations: Use MCP as the standard tool interface for external capabilities, but pair it with native hooks or plugins when you need automatic lifecycle events such as context pre-fetch, post-turn capture, or pre-compress.
@@ -101,15 +101,15 @@ Mitigations: Use MCP as the standard tool interface for external capabilities, b
 ## Lifecycle Hooks (/hooks)
 Definition: Native lifecycle callbacks that run automatically before or after agent actions, enabling memory automation that tools alone cannot guarantee.
 Explainer: Hooks are deterministic extension points in an agent runtime: code that runs before or after a lifecycle event such as a turn, tool call, file edit, or context compaction boundary. Unlike MCP, which exposes capabilities the model may choose to call, hooks run automatically at the exact lifecycle boundary you define. That makes them ideal for shared-brain systems: pre-fetch relevant memory before reasoning begins, capture decisions and file changes after the turn completes, and pre-compress state before the context window overflows. Hooks are not universally better than MCP — they solve a different problem. MCP is for tool access. Hooks are for lifecycle control.
-Strata: L3, L4
+Strata: S3, S4
 Aliases: hooks, hook, lifecycle hooks, agent hooks, hook callbacks, pretooluse, posttooluse, plugin hooks
 Anti-patterns: Relying on the model to remember to call a memory tool every turn turns shared-brain behavior into a best-effort suggestion rather than a guaranteed system behavior.
 Mitigations: Attach memory operations to deterministic lifecycle hooks: pre-fetch context before reasoning, capture outcomes after the turn, and compress state before context loss.
 
 ## Lifecycle Management (/lifecycle-management)
 Definition: Automatic orchestration of memory and context across the full agent turn: before reasoning, after execution, and before compaction or truncation.
-Explainer: Lifecycle Management is the discipline of treating memory as an active operating loop rather than a passive database. A robust shared brain does not wait for the model to decide when to search or write memory. Instead, it defines lifecycle stages around every task: pre-fetch relevant history before reasoning starts, post-turn capture decisions and file modifications after the agent acts, and pre-compress the session before the context window truncates away useful state. This sits at the junction of L2 (Knowledge & Memory) and L4 (Orchestration) because it coordinates both retrieval and control flow.
-Strata: L2, L4
+Explainer: Lifecycle Management is the discipline of treating memory as an active operating loop rather than a passive database. A robust shared brain does not wait for the model to decide when to search or write memory. Instead, it defines lifecycle stages around every task: pre-fetch relevant history before reasoning starts, post-turn capture decisions and file modifications after the agent acts, and pre-compress the session before the context window truncates away useful state. This sits at the junction of S2 (Knowledge & Memory) and S4 (Orchestration) because it coordinates both retrieval and control flow.
+Strata: S2, S4
 Aliases: lifecycle management, agent lifecycle, session lifecycle, memory lifecycle, turn lifecycle, lifecycle orchestration, context lifecycle
 Anti-patterns: Treating memory as a passive lookup tool instead of an orchestrated lifecycle causes cold starts, lost decisions, and context-window amnesia.
 Mitigations: Design explicit lifecycle stages for memory: pre-fetch before reasoning, post-turn capture after action, and pre-compress before truncation or handoff.
@@ -117,7 +117,7 @@ Mitigations: Design explicit lifecycle stages for memory: pre-fetch before reaso
 ## Pre-Fetch (/pre-fetch)
 Definition: Automatic retrieval and prompt injection of relevant history before the model begins reasoning.
 Explainer: Pre-Fetch is the lifecycle stage that runs before the model starts reasoning. Its job is to search the shared memory vault, rank the most relevant historical context, and inject that material into the prompt or working state automatically. Without pre-fetch, the model starts cold and must first remember that memory exists, then decide to query it, then reason about the result — a fragile chain. Good pre-fetch systems use retrieval, reranking, and graph traversal so only the highest-value context lands in the active window.
-Strata: L2, L4
+Strata: S2, S4
 Aliases: pre-fetch, prefetch, context prefetch, pre-fetch context, pre reasoning retrieval, context injection
 Anti-patterns: Starting every task from a blank prompt and hoping the model will remember to query memory produces repeated rediscovery and missed historical context.
 Mitigations: Run retrieval automatically before reasoning begins. Rank and inject only the most relevant history so the model starts with the right context already loaded.
@@ -125,7 +125,7 @@ Mitigations: Run retrieval automatically before reasoning begins. Rank and injec
 ## Post-Turn Capture (/post-turn-capture)
 Definition: Automatic extraction and storage of decisions, file modifications, and summaries after the agent finishes a turn or task.
 Explainer: Post-Turn Capture runs after the agent has acted. It inspects what happened — which files changed, which decisions were made, which tools failed, what the user prefers — and writes the durable pieces back into memory. This is the stage that converts ephemeral task activity into long-term learning. If capture is manual, it gets skipped. If it depends on the model remembering to call a tool, it becomes unreliable. Hook-driven post-turn capture turns memory into a compounding asset instead of a sparse scrapbook.
-Strata: L2, L4
+Strata: S2, S4
 Aliases: post-turn capture, post turn capture, after turn capture, post-task capture, memory writeback, postturn capture
 Anti-patterns: Letting memory writes depend on manual summarization or explicit tool calls causes important decisions and task outcomes to evaporate at the end of the turn.
 Mitigations: Attach post-turn capture to a deterministic hook that extracts decisions, file modifications, summaries, and user preferences immediately after execution completes.
@@ -133,7 +133,7 @@ Mitigations: Attach post-turn capture to a deterministic hook that extracts deci
 ## Pre-Compress (/pre-compress)
 Definition: Automatic checkpointing and compaction of working state before the context window truncates or a long session is compacted.
 Explainer: Pre-Compress is the lifecycle stage that runs before the active context window overflows, a conversation is compacted, or a handoff occurs. Its purpose is to distill the current session into a smaller durable representation: checkpoint critical state, summarize recent decisions, and write the compressed result somewhere the next turn can recover it. Without pre-compress, the agent loses hard-won context at exactly the moment the session becomes most complex. It is the memory equivalent of saving your work before the power flickers.
-Strata: L2, L4
+Strata: S2, S4
 Aliases: pre-compress, pre compress, context compaction, pre-compaction, session compaction, pre-truncation compression
 Anti-patterns: Waiting until the context window is already full and then truncating blindly destroys state that should have been checkpointed or compressed first.
 Mitigations: Trigger compaction before truncation boundaries. Summarize the recent session, checkpoint critical state, and persist the compressed representation for the next turn or thread.
@@ -141,47 +141,47 @@ Mitigations: Trigger compaction before truncation boundaries. Summarize the rece
 ## Memory Systems (/memory)
 Definition: Stores and recalls contextual state across turns, sessions, and tasks.
 Explainer: Memory systems give agents the ability to persist and retrieve state beyond a single context window. A multi-tiered architecture typically includes working memory for active tasks, episodic memory for session history, and semantic memory for long-term knowledge. Without memory, agents suffer from amnesia — forcing users to repeatedly explain context and endure the same mistakes. Strong modern memory systems add lifecycle automation around each turn: pre-fetch relevant context before reasoning, post-turn capture durable decisions after action, and pre-compress state before context truncation.
-Strata: L2
+Strata: S2
 Aliases: memory, episodic memory, working memory, context memory
 Anti-patterns: Deploying stateless agents that suffer from amnesia forces users to repeatedly explain their context and endure the same mistakes in every new session.
 Mitigations: Establish a multi-tiered memory architecture consisting of working memory for active tasks, episodic memory for session history, and semantic memory for long-term knowledge — then automate pre-fetch, post-turn capture, and pre-compress as lifecycle stages around each task.
 
 ## Guardrails & Safety (/guardrails)
 Definition: Validates inputs and outputs to ensure safety, policy compliance, and defense against prompt injection.
-Explainer: Guardrails are deterministic validation layers embedded directly into the orchestration pipeline. They inspect every input, output, and tool invocation against policy-as-code rules before execution proceeds. Without them, agents are vulnerable to prompt injection, unauthorized privilege escalation, and compliance violations. Guardrails should be baked in from day one, not bolted on after deployment.
-Strata: L6
+Explainer: Guardrails are deterministic validation strata embedded directly into the orchestration pipeline. They inspect every input, output, and tool invocation against policy-as-code rules before execution proceeds. Without them, agents are vulnerable to prompt injection, unauthorized privilege escalation, and compliance violations. Guardrails should be baked in from day one, not bolted on after deployment.
+Strata: S6
 Aliases: guardrails, safety, output validation, content safety, prompt injection defense, input validation
 Anti-patterns: Bolting security guardrails onto an application after deployment results in fragmented policies that agents can easily bypass through prompt manipulation.
-Mitigations: Embed deterministic, policy-as-code guardrails directly into the orchestration layer from day one to validate all inputs, outputs, and tool invocations.
+Mitigations: Embed deterministic, policy-as-code guardrails directly into the orchestration stratum from day one to validate all inputs, outputs, and tool invocations.
 
 ## Checkpoints & State Persistence (/checkpoint)
 Definition: Durable snapshots of agent state that enable resume, rollback, and crash recovery.
 Explainer: Checkpoints capture a serializable snapshot of agent state — including context, progress, and intermediate results — at defined intervals. If the agent crashes, times out, or is preempted, execution resumes from the last checkpoint rather than restarting from scratch. Essential for long-running tasks and multi-step pipelines.
-Strata: L4
+Strata: S4
 Aliases: checkpoint, checkpointing, state snapshot
 
 ## Tool Calling (/tool_calling)
 Definition: The mechanism by which an agent invokes external tools, APIs, or functions to act on the world.
 Explainer: Tool calling is the bridge between an agent's reasoning and real-world side effects. The agent generates a structured tool invocation (name + arguments), the runtime validates and dispatches it, and the result is fed back into the agent's context. Standardized via protocols like MCP and OpenAI function calling.
-Strata: L2, L3
+Strata: S2, S3
 Aliases: tool calling, tool use, function calling
 
 ## Retrieval-Augmented Generation (/rag)
 Definition: Augments LLM generation with retrieved external knowledge to reduce hallucination and improve accuracy.
 Explainer: RAG pipelines retrieve relevant documents from a knowledge base before generating a response, grounding the agent's output in real data rather than parametric memory alone. Implementations range from simple vector-search retrieval to multi-hop re-ranking pipelines with hybrid search.
-Strata: L2
+Strata: S2
 Aliases: rag, retrieval augmented generation, RAG
 
 ## Governance & Compliance (/governance)
 Definition: Organizational policies, audit trails, and compliance controls that govern agent behavior at scale.
 Explainer: Governance encompasses the policies, audit mechanisms, and compliance controls that ensure agents operate within organizational boundaries. This includes access control, usage quotas, logging, approval workflows, and regulatory compliance. Distinct from runtime guardrails — governance operates at the organizational and fleet level.
-Strata: L6, L7
+Strata: S6, S7
 Aliases: governance, compliance, policy enforcement
 
 ## Agentic Stack (/stack)
-Definition: Complete 7-layer configuration for a domain: model + memory + tools + orchestration + UX + governance.
+Definition: Complete 7-stratum configuration for a domain: model + memory + tools + orchestration + UX + governance.
 Explainer: A stack is the full end-to-end instantiation of all 7 strata optimized for a specific domain or use case. It's not just the technologies, but their wiring: which model, which memory backend, which tool set, which orchestration pattern, which UI paradigm, and which governance policies. Stacks are repeatable blueprints — once assembled and battle-tested, they can be cloned for similar use cases. Examples: research loop stack, customer service stack, code generation stack.
-Strata: L0
+Strata: S0
 Aliases: stack, agent stack, full stack
 Anti-patterns: Hand-assembling agents from loose components without a reproducible stack template leads to drift, inconsistency, and high maintenance cost across multiple similar applications.
 Mitigations: Define canonical stacks as blueprints: reusable 7L configurations that can be versioned, tested, and cloned for new instances.
@@ -189,7 +189,7 @@ Mitigations: Define canonical stacks as blueprints: reusable 7L configurations t
 ## Agent Persona (/persona)
 Definition: The identity, voice, role, and behavioral directives that define an agent's character and operating principles.
 Explainer: A persona is the coherent identity and behavioral contract of an agent. It encompasses role (what the agent is), voice (how it communicates), core values (what it prioritizes), constraints (what it won't do), and operating principles (how it makes decisions). A well-defined persona ensures consistency across all interactions and makes agent behavior predictable and auditable. Personas can be hard-coded in system prompts, learned from examples, or emergent from reward models.
-Strata: L0
+Strata: S0
 Aliases: persona, identity, role, instructions, agent persona
 Anti-patterns: Deploying agents without a clear, documented persona results in unpredictable behavior and difficulty in debugging misalignment.
 Mitigations: Define a canonical persona for each agent: explicit role, voice guidelines, core values, and decision-making principles.
@@ -197,7 +197,7 @@ Mitigations: Define a canonical persona for each agent: explicit role, voice gui
 ## Agentic Pattern (/pattern)
 Definition: Repeatable architectural patterns for orchestrating agent reasoning, action, and feedback loops.
 Explainer: Agentic patterns are proven choreographies of reasoning → planning → execution → evaluation. Examples include ReAct (Reasoning + Acting), Chain-of-Thought (CoT), Self-Ask, Tree-of-Thought, and multi-agent debate. A pattern defines the structure of the control loop and the format of prompts, but is agnostic to the underlying model or tools. Patterns are composable — they can be nested or sequenced to build complex multi-stage pipelines.
-Strata: L0
+Strata: S0
 Aliases: pattern, orchestration pattern, control pattern, ReAct, chain of thought
 Anti-patterns: Designing orchestration logic ad-hoc for each new task duplicates effort, introduces subtle bugs, and makes it impossible to compare or optimize approaches.
 Mitigations: Identify and document repeatable patterns (ReAct, CoT, debate, retrieval loops) and encode them as reusable, testable orchestration templates.
@@ -205,7 +205,7 @@ Mitigations: Identify and document repeatable patterns (ReAct, CoT, debate, retr
 ## Agent Configuration (/config)
 Definition: Runtime parameters that instantiate a harness for a specific task or domain: model, temperature, tools, context budget, etc.
 Explainer: Configuration is the set of declarative, runtime-modifiable knobs that turn a generic harness into a domain-specific agent. Examples: which LLM, temperature, top-k, tool set, max context window, timeout, max retries, memory backend, guardrail policies. Good configs are externalized and version-controlled, making it easy to A/B test, audit, and roll back changes without code changes.
-Strata: L0
+Strata: S0
 Aliases: config, configuration, instantiation, parameters, agent config
 Anti-patterns: Hardcoding agent parameters (model, temperature, tool list) into application code makes it impossible to tune without redeploy and prevents safe A/B testing.
 Mitigations: Externalize all agent configuration into declarative files or services that can be modified, versioned, and rolled back independently of application code.
@@ -213,23 +213,23 @@ Mitigations: Externalize all agent configuration into declarative files or servi
 ## Agent Covenant (/covenant)
 Definition: A formal pledge of agent capabilities, performance, and safety guarantees: latency, accuracy, uptime, and compliance.
 Explainer: A covenant is the behavioral contract between an agent and its users/operators. It specifies: what the agent commits to do (capability boundary), how fast (latency SLA), with what accuracy (quality threshold), under what conditions (fault resilience), and in compliance with what policies (safety constraints). Covenants are machine-testable — they become the basis for automated eval frameworks and production monitoring.
-Strata: L0
+Strata: S0
 Aliases: covenant, SLA, guarantee, pledge, behavioral contract
 Anti-patterns: Deploying agents without explicit performance guarantees or safety pledges leads to misaligned expectations and production surprises.
 Mitigations: Define a machine-testable covenant for each agent: capability boundary, latency SLA, quality threshold, fault resilience, and compliance policies. Instrument monitoring and evals against this covenant.
 
 ## Decoupled Architecture (/decoupled-architecture)
 Definition: System design where agent components communicate via typed contracts rather than direct calls, enabling independent deployment and evolution.
-Explainer: Decoupled Architecture is the practice of separating agent components — planners, executors, memory, tools, evaluators — so that each communicates only through well-defined interface contracts rather than direct function calls or shared mutable state. At L3 (Execution), this means tools and sub-agents expose typed input/output schemas (see Pydantic Contracts). At L4 (Orchestration), this means the orchestrator treats each sub-agent as a black box it can swap without rewiring the pipeline. The key benefit: any component can be upgraded, scaled, or replaced without cascading changes. Common patterns include event buses, message queues, and typed RPC schemas. Anti-pattern: tightly-coupled pipelines where a planner directly imports executor internals, making the system impossible to test or evolve in isolation.
-Strata: L3, L4
+Explainer: Decoupled Architecture is the practice of separating agent components — planners, executors, memory, tools, evaluators — so that each communicates only through well-defined interface contracts rather than direct function calls or shared mutable state. At S3 (Execution), this means tools and sub-agents expose typed input/output schemas (see Pydantic Contracts). At S4 (Orchestration), this means the orchestrator treats each sub-agent as a black box it can swap without rewiring the pipeline. The key benefit: any component can be upgraded, scaled, or replaced without cascading changes. Common patterns include event buses, message queues, and typed RPC schemas. Anti-pattern: tightly-coupled pipelines where a planner directly imports executor internals, making the system impossible to test or evolve in isolation.
+Strata: S3, S4
 Aliases: decoupled architecture, decoupled archetecture, decoupled-archetecture, decoupled-architecture, event-driven architecture, loose coupling, contract-driven design, interface segregation
 Anti-patterns: Tightly-coupled pipelines where the orchestrator directly imports executor internals make individual components impossible to test, replace, or scale independently.
 Mitigations: Define typed interface contracts at every component boundary. Use event buses or message queues between planners, executors, and evaluators. Validate contracts automatically with Pydantic or JSON Schema.
 
 ## Pydantic Contracts (/pydantic-contracts)
 Definition: Typed data contracts enforced at agent boundaries using Pydantic models to validate inputs, outputs, and tool call arguments.
-Explainer: Pydantic Contracts are the practice of using Pydantic BaseModel classes as the canonical type layer between agent components. At L3 (Execution), every tool call input and LLM output is validated against a Pydantic schema before being accepted. This catches hallucinated fields, missing required arguments, and type mismatches at the boundary rather than deep inside pipeline logic. Pydantic Contracts are the runtime enforcement of Decoupled Architecture: they make the contracts machine-testable, not just documented. Structured output APIs (OpenAI, Anthropic) can be driven directly from Pydantic model definitions, ensuring the LLM response parses cleanly. Key benefit: eliminates an entire class of silent failures where a malformed tool call propagates for many steps before producing an error.
-Strata: L3
+Explainer: Pydantic Contracts are the practice of using Pydantic BaseModel classes as the canonical type stratum between agent components. At S3 (Execution), every tool call input and LLM output is validated against a Pydantic schema before being accepted. This catches hallucinated fields, missing required arguments, and type mismatches at the boundary rather than deep inside pipeline logic. Pydantic Contracts are the runtime enforcement of Decoupled Architecture: they make the contracts machine-testable, not just documented. Structured output APIs (OpenAI, Anthropic) can be driven directly from Pydantic model definitions, ensuring the LLM response parses cleanly. Key benefit: eliminates an entire class of silent failures where a malformed tool call propagates for many steps before producing an error.
+Strata: S3
 Aliases: pydantic contracts, pydantic-contracts, pydantic, typed schemas, typed contracts, schema validation, structured outputs, output schema
 Anti-patterns: Accepting raw LLM-generated dicts and passing them directly to tool functions without schema validation causes silent type errors and hallucinated fields that corrupt pipeline state.
 Mitigations: Declare a Pydantic model for every tool's input and output. Validate at the boundary before any downstream processing. Use structured output APIs to force LLM responses to conform to the schema.
@@ -240,8 +240,8 @@ PRODUCTS (32 entries)
 
 ## BMAD (Community)
 Type: framework
-Primary stratum: L4 Orchestration & Decisioning
-Secondary strata: L3
+Primary stratum: S4 Orchestration & Decisioning
+Secondary strata: S3
 Deployment: Local
 License: Open Source
 Rationale: Spec-first agent harness for turning vague goals into disciplined execution. Enforces planning, checkpointing, and quality gates before implementation begins.
@@ -249,8 +249,8 @@ Confidence: 91%
 
 ## GSD (Community)
 Type: framework
-Primary stratum: L4 Orchestration & Decisioning
-Secondary strata: L3
+Primary stratum: S4 Orchestration & Decisioning
+Secondary strata: S3
 Deployment: Local
 License: Open Source
 Rationale: Context-lifecycle harness with explicit checkpoints, budget control, and resume semantics. Best for durable multi-step agent execution.
@@ -258,8 +258,8 @@ Confidence: 89%
 
 ## LangGraph (LangChain)
 Type: framework
-Primary stratum: L4 Orchestration & Decisioning
-Secondary strata: L3
+Primary stratum: S4 Orchestration & Decisioning
+Secondary strata: S3
 Deployment: Hybrid
 License: Open Source
 Rationale: Graph-based agent orchestration framework. Defines agent workflows as cyclic graphs with state management and tool execution.
@@ -267,8 +267,8 @@ Confidence: 88%
 
 ## ClawMem (Community)
 Type: tool
-Primary stratum: L2 Knowledge & Memory
-Secondary strata: L4, L3
+Primary stratum: S2 Knowledge & Memory
+Secondary strata: S4, S3
 Deployment: Local
 License: Open Source
 Rationale: Local shared-brain memory engine for AI coding agents. Uses a shared SQLite/WAL vault, hybrid retrieval, and native hooks/plugins to pre-fetch context, capture post-turn decisions, and pre-compress long sessions before context loss. Exposes MCP for compatibility, but lifecycle automation is the main differentiator.
@@ -276,8 +276,8 @@ Confidence: 84%
 
 ## Claude Code (Anthropic)
 Type: platform
-Primary stratum: L7 Experience & Intent
-Secondary strata: L4, L3
+Primary stratum: S7 Experience & Intent
+Secondary strata: S4, S3
 Deployment: Hybrid
 License: Proprietary
 Rationale: Agentic coding assistant with CLI, desktop, and IDE interfaces. Orchestrates multi-step coding tasks with tool use, file editing, and terminal execution within a governed session.
@@ -285,17 +285,17 @@ Confidence: 90%
 
 ## Claude Desktop (Anthropic)
 Type: platform
-Primary stratum: L7 Experience & Intent
-Secondary strata: L3
+Primary stratum: S7 Experience & Intent
+Secondary strata: S3
 Deployment: Hybrid
 License: Proprietary
-Rationale: Desktop chat interface for Claude with MCP server support, file/image upload, and project-scoped conversations. Consumer-facing experience layer for Anthropic models.
+Rationale: Desktop chat interface for Claude with MCP server support, file/image upload, and project-scoped conversations. Consumer-facing experience stratum for Anthropic models.
 Confidence: 85%
 
 ## Claude API (Anthropic)
 Type: model-api
-Primary stratum: L1 Models & Infrastructure
-Secondary strata: L3
+Primary stratum: S1 Models & Infrastructure
+Secondary strata: S3
 Deployment: Cloud
 License: Proprietary
 Rationale: Foundation model API providing inference for Claude model family. Supports tool use, vision, extended thinking, and streaming. The compute substrate that other Anthropic products build on.
@@ -303,8 +303,8 @@ Confidence: 92%
 
 ## OpenAI API (OpenAI)
 Type: model-api
-Primary stratum: L1 Models & Infrastructure
-Secondary strata: L3
+Primary stratum: S1 Models & Infrastructure
+Secondary strata: S3
 Deployment: Cloud
 License: Proprietary
 Rationale: Foundation model API for GPT and o-series models. Supports function calling, vision, embeddings, and assistants. The dominant commercial inference platform.
@@ -312,26 +312,26 @@ Confidence: 92%
 
 ## OpenAI Assistants API (OpenAI)
 Type: platform
-Primary stratum: L4 Orchestration & Decisioning
-Secondary strata: L2, L3
+Primary stratum: S4 Orchestration & Decisioning
+Secondary strata: S2, S3
 Deployment: Cloud
 License: Proprietary
-Rationale: Managed agent runtime with built-in threads, file search (RAG), code interpreter, and tool execution. Opinionated orchestration layer that handles state, memory, and tool dispatch.
+Rationale: Managed agent runtime with built-in threads, file search (RAG), code interpreter, and tool execution. Opinionated orchestration stratum that handles state, memory, and tool dispatch.
 Confidence: 82%
 
 ## ChatGPT (OpenAI)
 Type: platform
-Primary stratum: L7 Experience & Intent
-Secondary strata: L4, L2
+Primary stratum: S7 Experience & Intent
+Secondary strata: S4, S2
 Deployment: Cloud
 License: Proprietary
-Rationale: Consumer and enterprise chat interface with GPTs (custom agents), plugins, code interpreter, and web browsing. The dominant L7 experience surface for AI interactions.
+Rationale: Consumer and enterprise chat interface with GPTs (custom agents), plugins, code interpreter, and web browsing. The dominant S7 experience surface for AI interactions.
 Confidence: 85%
 
 ## Vertex AI (Google)
 Type: platform
-Primary stratum: L1 Models & Infrastructure
-Secondary strata: L4, L5
+Primary stratum: S1 Models & Infrastructure
+Secondary strata: S4, S5
 Deployment: Cloud
 License: Proprietary
 Rationale: Google's unified ML platform spanning model hosting, fine-tuning, evaluation, and agent building. Provides Gemini model endpoints, Model Garden, and Agent Builder for full-stack AI development.
@@ -339,8 +339,8 @@ Confidence: 87%
 
 ## Gemini API (Google)
 Type: model-api
-Primary stratum: L1 Models & Infrastructure
-Secondary strata: L3
+Primary stratum: S1 Models & Infrastructure
+Secondary strata: S3
 Deployment: Cloud
 License: Proprietary
 Rationale: Google's foundation model API for Gemini models. Supports multimodal input, function calling, code execution, and grounded generation. Available via AI Studio and Vertex AI.
@@ -348,8 +348,8 @@ Confidence: 90%
 
 ## IBM watsonx.ai (IBM)
 Type: platform
-Primary stratum: L1 Models & Infrastructure
-Secondary strata: L6, L5
+Primary stratum: S1 Models & Infrastructure
+Secondary strata: S6, S5
 Deployment: Hybrid
 License: Proprietary
 Rationale: Enterprise AI platform with Granite model family, prompt engineering studio, fine-tuning, and watsonx.governance for AI lifecycle management. Strong focus on regulated industries.
@@ -357,8 +357,8 @@ Confidence: 83%
 
 ## Azure OpenAI Service (Microsoft)
 Type: platform
-Primary stratum: L1 Models & Infrastructure
-Secondary strata: L6
+Primary stratum: S1 Models & Infrastructure
+Secondary strata: S6
 Deployment: Cloud
 License: Proprietary
 Rationale: Enterprise-grade OpenAI model hosting on Azure with content filtering, private networking, managed identity, and compliance certifications. Adds enterprise governance to OpenAI models.
@@ -366,8 +366,8 @@ Confidence: 90%
 
 ## Amazon Bedrock (AWS)
 Type: platform
-Primary stratum: L1 Models & Infrastructure
-Secondary strata: L4, L6
+Primary stratum: S1 Models & Infrastructure
+Secondary strata: S4, S6
 Deployment: Cloud
 License: Proprietary
 Rationale: Managed multi-model platform with Agents, Knowledge Bases (RAG), Guardrails, and model evaluation. Provides serverless access to Claude, Llama, Titan, and other foundation models on AWS.
@@ -375,8 +375,8 @@ Confidence: 86%
 
 ## CrewAI (CrewAI)
 Type: framework
-Primary stratum: L4 Orchestration & Decisioning
-Secondary strata: L3
+Primary stratum: S4 Orchestration & Decisioning
+Secondary strata: S3
 Deployment: Hybrid
 License: Open Source
 Rationale: Multi-agent orchestration framework using role-based agents with hierarchical or sequential process flows. Emphasizes agent personas and delegation patterns.
@@ -384,8 +384,8 @@ Confidence: 84%
 
 ## AutoGen (Microsoft)
 Type: framework
-Primary stratum: L4 Orchestration & Decisioning
-Secondary strata: L3
+Primary stratum: S4 Orchestration & Decisioning
+Secondary strata: S3
 Deployment: Local
 License: Open Source
 Rationale: Multi-agent conversation framework with customizable agent types, group chat patterns, and code execution. Supports human-in-the-loop and nested agent conversations.
@@ -393,8 +393,8 @@ Confidence: 85%
 
 ## Semantic Kernel (Microsoft)
 Type: framework
-Primary stratum: L4 Orchestration & Decisioning
-Secondary strata: L2, L3
+Primary stratum: S4 Orchestration & Decisioning
+Secondary strata: S2, S3
 Deployment: Local
 License: Open Source
 Rationale: Enterprise AI orchestration SDK for .NET, Python, and Java. Provides planner, plugin system, memory connectors, and process framework for building AI agents in enterprise codebases.
@@ -402,17 +402,17 @@ Confidence: 84%
 
 ## LangChain (LangChain)
 Type: framework
-Primary stratum: L3 Execution & Interfaces
-Secondary strata: L2, L4
+Primary stratum: S3 Execution & Interfaces
+Secondary strata: S2, S4
 Deployment: Local
 License: Open Source
-Rationale: Composable framework for building LLM applications. Provides chains, agents, tool integrations, document loaders, and output parsers. The most widely adopted LLM integration layer.
+Rationale: Composable framework for building LLM applications. Provides chains, agents, tool integrations, document loaders, and output parsers. The most widely adopted LLM integration stratum.
 Confidence: 86%
 
 ## LangSmith (LangChain)
 Type: platform
-Primary stratum: L5 Observability & Evaluation
-Secondary strata: L4
+Primary stratum: S5 Observability & Evaluation
+Secondary strata: S4
 Deployment: Cloud
 License: Proprietary
 Rationale: LLM observability and evaluation platform. Provides tracing, prompt playground, dataset management, automated evaluation, and annotation queues for monitoring agent quality.
@@ -420,7 +420,7 @@ Confidence: 87%
 
 ## Pinecone (Pinecone)
 Type: infrastructure
-Primary stratum: L2 Knowledge & Memory
+Primary stratum: S2 Knowledge & Memory
 Deployment: Cloud
 License: Proprietary
 Rationale: Managed vector database optimized for similarity search at scale. Provides serverless and pod-based indexes, metadata filtering, and sparse-dense hybrid search for RAG pipelines.
@@ -428,7 +428,7 @@ Confidence: 90%
 
 ## ChromaDB (Chroma)
 Type: infrastructure
-Primary stratum: L2 Knowledge & Memory
+Primary stratum: S2 Knowledge & Memory
 Deployment: Hybrid
 License: Open Source
 Rationale: Open-source embedding database for AI applications. Runs embedded or as a server with collections, metadata filtering, and multi-modal embeddings. Popular for local RAG development.
@@ -436,8 +436,8 @@ Confidence: 86%
 
 ## LlamaIndex (LlamaIndex)
 Type: framework
-Primary stratum: L2 Knowledge & Memory
-Secondary strata: L3
+Primary stratum: S2 Knowledge & Memory
+Secondary strata: S3
 Deployment: Local
 License: Open Source
 Rationale: Data framework for building RAG and knowledge-augmented LLM applications. Provides data connectors, indexing strategies, query engines, and agentic RAG patterns.
@@ -445,8 +445,8 @@ Confidence: 86%
 
 ## Guardrails AI (Guardrails AI)
 Type: framework
-Primary stratum: L6 Governance & Trust
-Secondary strata: L5
+Primary stratum: S6 Governance & Trust
+Secondary strata: S5
 Deployment: Hybrid
 License: Open Source
 Rationale: Input/output validation framework for LLM applications. Provides validators for hallucination, toxicity, PII, bias, and custom rules via the Guardrails Hub.
@@ -454,8 +454,8 @@ Confidence: 85%
 
 ## NeMo Guardrails (NVIDIA)
 Type: framework
-Primary stratum: L6 Governance & Trust
-Secondary strata: L4
+Primary stratum: S6 Governance & Trust
+Secondary strata: S4
 Deployment: Local
 License: Open Source
 Rationale: Programmable guardrails toolkit using Colang DSL. Defines conversational rails for topical control, safety, fact-checking, and jailbreak prevention in LLM applications.
@@ -463,7 +463,7 @@ Confidence: 84%
 
 ## Prometheus (CNCF)
 Type: infrastructure
-Primary stratum: L5 Observability & Evaluation
+Primary stratum: S5 Observability & Evaluation
 Deployment: Self-hosted
 License: Open Source
 Rationale: Time-series metrics collection and alerting system. Pull-based scraping, PromQL query language, and AlertManager. Industry standard for infrastructure and application monitoring.
@@ -471,8 +471,8 @@ Confidence: 88%
 
 ## Grafana (Grafana Labs)
 Type: infrastructure
-Primary stratum: L5 Observability & Evaluation
-Secondary strata: L7
+Primary stratum: S5 Observability & Evaluation
+Secondary strata: S7
 Deployment: Hybrid
 License: Open Source
 Rationale: Observability dashboard and visualization platform. Connects to Prometheus, Loki, Tempo, and other data sources. Provides alerting, annotations, and team dashboards for monitoring agent systems.
@@ -480,7 +480,7 @@ Confidence: 86%
 
 ## OpenTelemetry (CNCF)
 Type: framework
-Primary stratum: L5 Observability & Evaluation
+Primary stratum: S5 Observability & Evaluation
 Deployment: Self-hosted
 License: Open Source
 Rationale: Vendor-neutral observability framework for traces, metrics, and logs. Provides SDKs, collectors, and semantic conventions. The emerging standard for instrumenting AI/agent systems.
@@ -488,16 +488,16 @@ Confidence: 90%
 
 ## HashiCorp Vault (HashiCorp)
 Type: infrastructure
-Primary stratum: L6 Governance & Trust
+Primary stratum: S6 Governance & Trust
 Deployment: Hybrid
 License: Open Source
-Rationale: Secrets management and encryption platform. Dynamic secrets, PKI, transit encryption, and identity-based access. Critical L6 substrate for securing agent credentials and API keys.
+Rationale: Secrets management and encryption platform. Dynamic secrets, PKI, transit encryption, and identity-based access. Critical S6 substrate for securing agent credentials and API keys.
 Confidence: 88%
 
 ## DSPy (Stanford NLP)
 Type: framework
-Primary stratum: L4 Orchestration & Decisioning
-Secondary strata: L5
+Primary stratum: S4 Orchestration & Decisioning
+Secondary strata: S5
 Deployment: Local
 License: Open Source
 Rationale: Programming framework for optimizing LLM prompts and pipelines. Replaces hand-tuned prompts with compiled, optimized modules using teleprompters and metrics-driven prompt tuning.
@@ -505,8 +505,8 @@ Confidence: 83%
 
 ## Cursor (Anysphere)
 Type: platform
-Primary stratum: L7 Experience & Intent
-Secondary strata: L4, L3
+Primary stratum: S7 Experience & Intent
+Secondary strata: S4, S3
 Deployment: Local
 License: Proprietary
 Rationale: AI-native code editor forked from VS Code. Provides inline chat, multi-file editing, codebase-aware completions, and agent mode for autonomous coding tasks.
@@ -514,8 +514,8 @@ Confidence: 84%
 
 ## GitHub Copilot (GitHub / Microsoft)
 Type: platform
-Primary stratum: L7 Experience & Intent
-Secondary strata: L3
+Primary stratum: S7 Experience & Intent
+Secondary strata: S3
 Deployment: Cloud
 License: Proprietary
 Rationale: AI pair programmer with inline suggestions, chat, and agent mode. Integrates into VS Code, JetBrains, and CLI. Coding agent can create PRs from issue descriptions.

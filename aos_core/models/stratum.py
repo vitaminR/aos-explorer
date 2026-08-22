@@ -7,7 +7,7 @@ from pydantic import BaseModel, model_validator
 
 
 StratumId = Literal["l0", "l1", "l2", "l3", "l4", "l5", "l6", "l7"]
-StratumLabel = Literal["L0", "L1", "L2", "L3", "L4", "L5", "L6", "L7"]
+StratumLabel = Literal["S0", "S1", "S2", "S3", "S4", "S5", "S6", "S7"]
 
 
 class Stratum(BaseModel):
@@ -43,5 +43,5 @@ class StratumRegistry(BaseModel):
         return next((s for s in self.strata if s.label == label), None)
 
     def ordered(self) -> list[Stratum]:
-        """Return strata sorted L1 (foundation) → L7 (experience)."""
+        """Return strata sorted S1 (foundation) → S7 (experience)."""
         return sorted(self.strata, key=lambda s: s.label)

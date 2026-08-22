@@ -76,16 +76,16 @@ Do not rotate these into product panels without checking recency first. Primary 
 
 | # | Name | URL | Coverage | Reliability | Last Checked |
 |---|---|---|---|---|---|
-| C1 | OpenHands GitHub (AllHands-AI) | https://github.com/All-Hands-AI/OpenHands | L3 coding agents | 5 | — |
-| C2 | SWE-Bench Leaderboard | https://www.swebench.com | L3 benchmark | 5 | — |
-| C3 | LMSYS Chatbot Arena | https://chat.lmsys.org | L1 model eval | 5 | — |
-| C4 | OpenLLM Leaderboard (HuggingFace) | https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard | L1 model bench | 5 | — |
-| C5 | AgentBench Leaderboard | https://llmbench.ai/agentbench | L3/L4 agent eval | 4 | — |
-| C6 | LlamaIndex Blog | https://www.llamaindex.ai/blog | L2 knowledge | 4 | — |
-| C7 | Weaviate Blog | https://weaviate.io/blog | L2 vector DB | 4 | — |
-| C8 | Pinecone Blog | https://www.pinecone.io/blog | L2 vector DB | 4 | — |
-| C9 | LangChain Blog | https://blog.langchain.dev | L4 orchestration | 4 | — |
-| C10 | CrewAI Blog | https://blog.crewai.com | L4 orchestration | 4 | — |
+| C1 | OpenHands GitHub (AllHands-AI) | https://github.com/All-Hands-AI/OpenHands | S3 coding agents | 5 | — |
+| C2 | SWE-Bench Leaderboard | https://www.swebench.com | S3 benchmark | 5 | — |
+| C3 | LMSYS Chatbot Arena | https://chat.lmsys.org | S1 model eval | 5 | — |
+| C4 | OpenLLM Leaderboard (HuggingFace) | https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard | S1 model bench | 5 | — |
+| C5 | AgentBench Leaderboard | https://llmbench.ai/agentbench | S3/S4 agent eval | 4 | — |
+| C6 | LlamaIndex Blog | https://www.llamaindex.ai/blog | S2 knowledge | 4 | — |
+| C7 | Weaviate Blog | https://weaviate.io/blog | S2 vector DB | 4 | — |
+| C8 | Pinecone Blog | https://www.pinecone.io/blog | S2 vector DB | 4 | — |
+| C9 | LangChain Blog | https://blog.langchain.dev | S4 orchestration | 4 | — |
+| C10 | CrewAI Blog | https://blog.crewai.com | S4 orchestration | 4 | — |
 
 ---
 

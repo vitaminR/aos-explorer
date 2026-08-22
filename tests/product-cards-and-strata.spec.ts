@@ -2,8 +2,8 @@
  * User Stories: Product Cards — Strata Stack & Copy Buttons
  *
  * US-1  When I select a product, the "Why it lives here" card shows a vertical
- *        strata stack with colored swatches, layer labels, and primary/secondary
- *        role tags so I can understand which {a}OS layers the product touches.
+ *        strata stack with colored swatches, stratum labels, and primary/secondary
+ *        role tags so I can understand which {a}OS strata the product touches.
  *
  * US-2  When I hover over a product card, a subtle copy button appears so I can
  *        share the card's details without disrupting the browsing flow.
@@ -74,7 +74,7 @@ test.describe("US-1 — Strata stack in selection detail panel", () => {
     await expect(stack).toBeVisible({ timeout: 5_000 });
 
     const rows = stack.locator(".hero-strata-stack-row");
-    await expect(rows).toHaveCount(2); // primary L4 + secondary L3
+    await expect(rows).toHaveCount(2); // primary S4 + secondary S3
   });
 
   test("primary strata row has the .primary class and 'Primary' role label", async ({
@@ -122,7 +122,7 @@ test.describe("US-1 — Strata stack in selection detail panel", () => {
     }
   });
 
-  test("strata row labels include the layer number and name", async ({
+  test("strata row labels include the stratum number and name", async ({
     page,
   }) => {
     test.setTimeout(30_000);
@@ -132,13 +132,13 @@ test.describe("US-1 — Strata stack in selection detail panel", () => {
     const primaryRow = page.locator(
       "#heroContextDetail .hero-strata-stack-row.primary",
     );
-    await expect(primaryRow.locator(".hero-strata-label")).toContainText("L4");
+    await expect(primaryRow.locator(".hero-strata-label")).toContainText("S4");
     await expect(primaryRow.locator(".hero-strata-label")).toContainText(
       "Orchestration",
     );
   });
 
-  test("selecting a different product (Paperclip, L7 primary) shows L7 as primary strata", async ({
+  test("selecting a different product (Paperclip, S7 primary) shows S7 as primary strata", async ({
     page,
   }) => {
     test.setTimeout(30_000);
@@ -148,7 +148,7 @@ test.describe("US-1 — Strata stack in selection detail panel", () => {
     const primaryRow = page.locator(
       "#heroContextDetail .hero-strata-stack-row.primary",
     );
-    await expect(primaryRow.locator(".hero-strata-label")).toContainText("L7");
+    await expect(primaryRow.locator(".hero-strata-label")).toContainText("S7");
     await expect(primaryRow.locator(".hero-strata-label")).toContainText(
       "Experience",
     );
@@ -421,8 +421,8 @@ test.describe("US-3 — Copy buttons on hero context detail cards", () => {
     );
     expect(copied).toContain("CrewAI");
     expect(copied).toContain("CrewAI Inc");
-    expect(copied).toContain("L4");
-    expect(copied).toContain("L3");
+    expect(copied).toContain("S4");
+    expect(copied).toContain("S3");
   });
 });
 

@@ -28,13 +28,13 @@ Phase 2a ("Taxonomy visible end-to-end") shipped:
 
 ## 1. Problem Statement
 
-The Phase 1 prototype ships with 8 products. Three strata have **zero** primary-mapped products (L5, L3), and L1/L7 each have only one vendor. This makes the explorer feel like a demo rather than a reference catalog. The product list also mixes platforms, frameworks, components, and internal tools without classification — making it harder for users to compare like-for-like.
+The Phase 1 prototype ships with 8 products. Three strata have **zero** primary-mapped products (S5, S3), and S1/S7 each have only one vendor. This makes the explorer feel like a demo rather than a reference catalog. The product list also mixes platforms, frameworks, components, and internal tools without classification — making it harder for users to compare like-for-like.
 
 ## 2. Goals
 
 | # | Goal | Metric |
 |---|---|---|
-| G1 | Fill every stratum with ≥2 primary products | 0→2+ for L5, L3; 1→2+ for L1, L7 |
+| G1 | Fill every stratum with ≥2 primary products | 0→2+ for S5, S3; 1→2+ for S1, S7 |
 | G2 | Introduce product-type taxonomy | Every product tagged with exactly 1 type |
 | G3 | Add ≥12 new products (total ≥20) | Right rail product count |
 | G4 | Maintain confidence scoring rigor | Every new product has full CONFIDENCE_META |
@@ -55,7 +55,7 @@ Every product gets exactly one `type`:
 
 ## 4. Coverage Plan — Target Products by Stratum
 
-### L7 Experience & Intent (🔴 Gap: no external products)
+### S7 Experience & Intent (🔴 Gap: no external products)
 
 | Candidate | Type | Rationale |
 |---|---|---|
@@ -64,16 +64,16 @@ Every product gets exactly one `type`:
 | **Gradio** | Framework | Rapid ML demo UIs, widely used for agent frontends |
 | **CopilotKit** | Framework | React-based copilot UI framework for agent apps |
 
-### L6 Governance & Trust (🟡 Gap: only OPA)
+### S6 Governance & Trust (🟡 Gap: only OPA)
 
 | Candidate | Type | Rationale |
 |---|---|---|
 | **Guardrails AI** | Component | LLM output validation, structural guarantees |
-| **NeMo Guardrails** | Component | NVIDIA's programmable guardrail layer |
+| **NeMo Guardrails** | Component | NVIDIA's programmable guardrail stratum |
 | **LlamaGuard** | Component | Meta's safety classifier for LLM I/O |
 | **Pangea** | Platform | Security APIs (AuthZ, audit, redaction) for AI apps |
 
-### L5 Observability & Evaluation (🔴🔴 Gap: zero primary products)
+### S5 Observability & Evaluation (🔴🔴 Gap: zero primary products)
 
 | Candidate | Type | Rationale |
 |---|---|---|
@@ -84,7 +84,7 @@ Every product gets exactly one `type`:
 | **Langfuse** | Platform | Open-source tracing, analytics, eval for LLM apps |
 | **RAGAS** | Harness | RAG evaluation framework (faithfulness, relevance) |
 
-### L4 Orchestration & Decisioning (🟢 Add 2-3)
+### S4 Orchestration & Decisioning (🟢 Add 2-3)
 
 | Candidate | Type | Rationale |
 |---|---|---|
@@ -94,7 +94,7 @@ Every product gets exactly one `type`:
 | **Haystack** | Framework | deepset's end-to-end NLP/RAG pipeline builder |
 | **Temporal** | Platform | Durable workflow execution for agent pipelines |
 
-### L3 Execution & Interfaces (🔴🔴 Gap: zero primary products)
+### S3 Execution & Interfaces (🔴🔴 Gap: zero primary products)
 
 | Candidate | Type | Rationale |
 |---|---|---|
@@ -104,16 +104,16 @@ Every product gets exactly one `type`:
 | **Browserbase** | Platform | Headless browser infrastructure for AI agents |
 | **Toolhouse** | Platform | Tool execution and orchestration for LLMs |
 
-### L2 Knowledge & Memory (🟡 Add 1-2)
+### S2 Knowledge & Memory (🟡 Add 1-2)
 
 | Candidate | Type | Rationale |
 |---|---|---|
 | **Pinecone** | Platform | Managed vector database, widely used for RAG |
 | **Weaviate** | Platform | Open-source vector DB with hybrid search |
-| **Zep** | Component | Memory layer for AI assistants (long-term recall) |
+| **Zep** | Component | Memory stratum for AI assistants (long-term recall) |
 | **LlamaIndex** | Framework | Data framework for LLM knowledge pipelines |
 
-### L1 Models & Infrastructure (🔴 Gap: only Azure)
+### S1 Models & Infrastructure (🔴 Gap: only Azure)
 
 | Candidate | Type | Rationale |
 |---|---|---|
@@ -128,22 +128,22 @@ Every product gets exactly one `type`:
 
 ### Phase 2a — Taxonomy + 12 High-Priority Adds
 
-Priority: fill empty strata first (L5, L3), then L1, L7, L6.
+Priority: fill empty strata first (S5, S3), then S1, S7, S6.
 
 **12-product shortlist (one research batch):**
 
-1. LangSmith (L5)
-2. Langfuse (L5)
-3. Promptfoo (L5)
-4. MCP (L3)
-5. Composio (L3)
-6. E2B (L3)
-7. OpenAI Platform (L1)
-8. Ollama (L1)
-9. BMAD Method (L4)
-10. Guardrails AI (L6)
-11. Chainlit (L7)
-12. Pinecone (L2)
+1. LangSmith (S5)
+2. Langfuse (S5)
+3. Promptfoo (S5)
+4. MCP (S3)
+5. Composio (S3)
+6. E2B (S3)
+7. OpenAI Platform (S1)
+8. Ollama (S1)
+9. BMAD Method (S4)
+10. Guardrails AI (S6)
+11. Chainlit (S7)
+12. Pinecone (S2)
 
 **Code changes:**
 

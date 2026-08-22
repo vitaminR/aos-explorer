@@ -1,6 +1,6 @@
 // {a}OS Explorer — Firebase Auth Service
 // =========================================
-// Pure service layer: init, providers, sign-in functions. No DOM wiring.
+// Pure service stratum: init, providers, sign-in functions. No DOM wiring.
 // DOM wiring lives in firebase-community.js.
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";

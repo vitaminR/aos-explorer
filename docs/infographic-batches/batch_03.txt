@@ -8,13 +8,13 @@ You are a visual design assistant creating ADHD-friendly technical infographics 
 
 DESIGN RULES:
 - Dark background (#0a0a0f) with high-contrast text
-- Use the layer accent color as the primary highlight
+- Use the stratum accent color as the primary highlight
 - Clean, minimal layout - no clutter
 - Large readable typography (minimum 14pt equivalent)
 - Each primitive shown as a distinct card/node with its name + 1-line description
 - Show relationships between primitives with arrows or connectors if applicable
 - Include a small icon or visual metaphor for each primitive
-- Include the layer badge (e.g. "L4 · Orchestration") in the top-left corner
+- Include the stratum badge (e.g. "S4 · Orchestration") in the top-left corner
 - Parent construct name is the large title
 - Aspect ratio: 16:9 (landscape)
 - Style: flat design, subtle gradients, no 3D, modern SaaS dashboard aesthetic
@@ -25,13 +25,13 @@ FORMAT: Create a single infographic image. Do NOT return markdown or text descri
 ─────────────────────────────────────────────────────────
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 1/5  —  #11  L4 | Message Channel
+│  PROMPT 1/5  —  #11  S4 | Message Channel
 │  Save as: message-channel.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Message Channel" construct from the {a}OS reference model.
 
-LAYER: L4 — Orchestration
+STRATUM: S4 — Orchestration
 ACCENT COLOR: #34d399
 CONSTRUCT: Message Channel
 PRIMITIVE COUNT: 4
@@ -44,7 +44,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Message Channel" in large text, colored #34d399
-- Layer badge: "L4 · Orchestration" top-left
+- Stratum badge: "S4 · Orchestration" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #34d399 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -54,13 +54,13 @@ VISUAL GUIDANCE:
 ═══  NEXT PROMPT  (paste after saving the image above)  ═══
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 2/5  —  #12  L4 | Delegation Policy
+│  PROMPT 2/5  —  #12  S4 | Delegation Policy
 │  Save as: delegation-policy.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Delegation Policy" construct from the {a}OS reference model.
 
-LAYER: L4 — Orchestration
+STRATUM: S4 — Orchestration
 ACCENT COLOR: #34d399
 CONSTRUCT: Delegation Policy
 PRIMITIVE COUNT: 4
@@ -73,7 +73,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Delegation Policy" in large text, colored #34d399
-- Layer badge: "L4 · Orchestration" top-left
+- Stratum badge: "S4 · Orchestration" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #34d399 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -83,13 +83,13 @@ VISUAL GUIDANCE:
 ═══  NEXT PROMPT  (paste after saving the image above)  ═══
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 3/5  —  #13  L3 | Tool Manifest
+│  PROMPT 3/5  —  #13  S3 | Tool Manifest
 │  Save as: tool-manifest.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Tool Manifest" construct from the {a}OS reference model.
 
-LAYER: L3 — Capabilities
+STRATUM: S3 — Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: Tool Manifest
 PRIMITIVE COUNT: 4
@@ -102,7 +102,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Tool Manifest" in large text, colored #38bdf8
-- Layer badge: "L3 · Capabilities" top-left
+- Stratum badge: "S3 · Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -112,13 +112,13 @@ VISUAL GUIDANCE:
 ═══  NEXT PROMPT  (paste after saving the image above)  ═══
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 4/5  —  #14  L3 | API Binding
+│  PROMPT 4/5  —  #14  S3 | API Binding
 │  Save as: api-binding.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "API Binding" construct from the {a}OS reference model.
 
-LAYER: L3 — Capabilities
+STRATUM: S3 — Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: API Binding
 PRIMITIVE COUNT: 4
@@ -131,7 +131,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "API Binding" in large text, colored #38bdf8
-- Layer badge: "L3 · Capabilities" top-left
+- Stratum badge: "S3 · Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -141,13 +141,13 @@ VISUAL GUIDANCE:
 ═══  NEXT PROMPT  (paste after saving the image above)  ═══
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 5/5  —  #15  L3 | Capability Schema
+│  PROMPT 5/5  —  #15  S3 | Capability Schema
 │  Save as: capability-schema.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Capability Schema" construct from the {a}OS reference model.
 
-LAYER: L3 — Capabilities
+STRATUM: S3 — Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: Capability Schema
 PRIMITIVE COUNT: 4
@@ -160,7 +160,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Capability Schema" in large text, colored #38bdf8
-- Layer badge: "L3 · Capabilities" top-left
+- Stratum badge: "S3 · Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)

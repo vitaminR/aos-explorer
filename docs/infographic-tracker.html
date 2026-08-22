@@ -107,7 +107,7 @@
         font-size: 11px;
         color: #64748b;
       }
-      .layer-badge {
+      .stratum-badge {
         display: inline-block;
         padding: 2px 8px;
         border-radius: 6px;
@@ -285,12 +285,12 @@
         You are a visual design assistant creating ADHD-friendly technical
         infographics for the {a}OS Agentic Operating System reference model.
         DESIGN RULES: - Dark background (#0a0a0f) with high-contrast text - Use
-        the layer accent color as the primary highlight - Clean, minimal layout
+        the stratum accent color as the primary highlight - Clean, minimal layout
         - no clutter - Large readable typography (minimum 14pt equivalent) -
         Each primitive shown as a distinct card/node with its name + 1-line
         description - Show relationships between primitives with arrows or
         connectors if applicable - Include a small icon or visual metaphor for
-        each primitive - Include the layer badge (e.g. "L4 · Orchestration") in
+        each primitive - Include the stratum badge (e.g. "S4 · Orchestration") in
         the top-left corner - Parent construct name is the large title - Aspect
         ratio: 16:9 (landscape) - Style: flat design, subtle gradients, no 3D,
         modern SaaS dashboard aesthetic - Footer: "{a}OS Reference Model ·
@@ -307,69 +307,69 @@
     </div>
     <script>
       const PROMPTS = [
-        'Create an infographic for the "Intent Object" construct from the {a}OS reference model.\n\nLAYER: L7 \u2014 Human Interface\nACCENT COLOR: #818cf8\nCONSTRUCT: Intent Object\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Goal Statement: Natural language or structured declaration of what the user wants to achieve. Parsed by the intent engine to extract actionable objectives.\n  - Constraint Set: Boundaries the agent must respect: budget, time, scope, permissions, safety rails. Constraints narrow the solution space.\n  - Preference Weight: Numeric weights expressing how strongly the user prefers one outcome over another. Used for multi-objective optimization.\n  - Intent Confidence: Score (0\u20131) indicating how certain the system is about its interpretation of user intent. Low scores trigger clarification.\n\nVISUAL GUIDANCE:\n- Title: "Intent Object" in large text, colored #818cf8\n- Layer badge: "L7 \u00b7 Human Interface" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #818cf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Session Context" construct from the {a}OS reference model.\n\nLAYER: L7 \u2014 Human Interface\nACCENT COLOR: #818cf8\nCONSTRUCT: Session Context\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Conversation History: Ordered log of messages between user and agent within a session. Enables context-aware responses and reference resolution.\n  - User Profile: Persistent user attributes (role, expertise, preferences) that personalize agent behavior across sessions.\n  - Decision Log: Audit trail of choices made during the session \u2014 what was selected, rejected, and why. Supports undo and review.\n  - Context Window: The sliding window of tokens currently visible to the model. Managing its size is critical for coherent long interactions.\n\nVISUAL GUIDANCE:\n- Title: "Session Context" in large text, colored #818cf8\n- Layer badge: "L7 \u00b7 Human Interface" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #818cf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Satisfaction Signal" construct from the {a}OS reference model.\n\nLAYER: L7 \u2014 Human Interface\nACCENT COLOR: #818cf8\nCONSTRUCT: Satisfaction Signal\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Thumbs Signal: Explicit binary feedback (\ud83d\udc4d/\ud83d\udc4e) from the user on agent output quality. Simplest form of RLHF signal.\n  - Completion Rate: Percentage of tasks the agent completes without human intervention. High rates indicate effective autonomy.\n  - Retry Count: Number of times the user re-prompts or re-runs a task. High retry counts signal intent misalignment.\n  - Dwell Time: Time the user spends reviewing agent output before accepting or rejecting. Long dwell may indicate confusion.\n\nVISUAL GUIDANCE:\n- Title: "Satisfaction Signal" in large text, colored #818cf8\n- Layer badge: "L7 \u00b7 Human Interface" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #818cf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Feedback Loop" construct from the {a}OS reference model.\n\nLAYER: L7 \u2014 Human Interface\nACCENT COLOR: #818cf8\nCONSTRUCT: Feedback Loop\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Signal Aggregator: Collects and normalizes multiple satisfaction signals into a unified quality score for the feedback loop.\n  - Behavior Adjuster: Component that modifies agent parameters (temperature, tool selection, verbosity) based on aggregated feedback.\n  - Reward Shaper: Transforms raw satisfaction signals into reward values suitable for reinforcement learning or fine-tuning.\n  - Loop Frequency: How often the feedback loop runs \u2014 per-turn, per-session, or per-batch. Determines adaptation speed.\n\nVISUAL GUIDANCE:\n- Title: "Feedback Loop" in large text, colored #818cf8\n- Layer badge: "L7 \u00b7 Human Interface" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #818cf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Execution Plan" construct from the {a}OS reference model.\n\nLAYER: L4 \u2014 Orchestration\nACCENT COLOR: #34d399\nCONSTRUCT: Execution Plan\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Step Graph: DAG of individual steps with edges encoding dependencies. The orchestrator traverses this to execute tasks in order.\n  - Branch Condition: Boolean or score-based condition determining which branch of the plan to follow. Enables dynamic workflows.\n  - Retry Policy: Rules for when and how to retry failed steps: max attempts, backoff strategy, and error classification.\n  - Plan Hash: Content-addressable hash of the execution plan. Used for caching, deduplication, and plan versioning.\n\nVISUAL GUIDANCE:\n- Title: "Execution Plan" in large text, colored #34d399\n- Layer badge: "L4 \u00b7 Orchestration" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #34d399 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "State Checkpoint" construct from the {a}OS reference model.\n\nLAYER: L4 \u2014 Orchestration\nACCENT COLOR: #34d399\nCONSTRUCT: State Checkpoint\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - State Blob: Serialized snapshot of all orchestration state at a point in time. Enables resume-from-checkpoint after failures.\n  - Checkpoint ID: Unique identifier for a saved checkpoint. Used to select which state to resume from.\n  - Restore Function: Callable that deserializes a state blob and reinitializes the orchestrator to continue from that point.\n  - TTL Seconds: Time-to-live for a checkpoint before automatic garbage collection. Balances storage cost vs recoverability.\n\nVISUAL GUIDANCE:\n- Title: "State Checkpoint" in large text, colored #34d399\n- Layer badge: "L4 \u00b7 Orchestration" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #34d399 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Dependency Graph" construct from the {a}OS reference model.\n\nLAYER: L4 \u2014 Orchestration\nACCENT COLOR: #34d399\nCONSTRUCT: Dependency Graph\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Node List: Array of all tasks in the graph. Each node holds its ID, status, and input/output contract.\n  - Edge List: Array of directed edges encoding \'A must complete before B\' relationships between tasks.\n  - Critical Path: Longest chain of dependent tasks determining minimum total execution time. Optimization target for parallelism.\n  - Cycle Detector: Algorithm that verifies the graph is acyclic (DAG). Cycles indicate deadlocks in the execution plan.\n\nVISUAL GUIDANCE:\n- Title: "Dependency Graph" in large text, colored #34d399\n- Layer badge: "L4 \u00b7 Orchestration" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #34d399 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Timeout Policy" construct from the {a}OS reference model.\n\nLAYER: L4 \u2014 Orchestration\nACCENT COLOR: #34d399\nCONSTRUCT: Timeout Policy\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Max Wait (ms): Maximum milliseconds to wait for a step or tool call before triggering timeout handling.\n  - Escalation Target: The agent, human, or fallback system to notify when a timeout occurs. Part of graceful degradation.\n  - Fallback Action: Default action taken on timeout: skip, retry with simpler model, return partial result, or escalate.\n  - Jitter Range: Random delay added to retries to prevent thundering herd. Expressed as a min/max millisecond range.\n\nVISUAL GUIDANCE:\n- Title: "Timeout Policy" in large text, colored #34d399\n- Layer badge: "L4 \u00b7 Orchestration" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #34d399 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        "Create an infographic for the \"Agent Roster\" construct from the {a}OS reference model.\n\nLAYER: L4 \u2014 Orchestration\nACCENT COLOR: #34d399\nCONSTRUCT: Agent Roster\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Agent ID: Unique identifier for each agent in the multi-agent system. Used for routing, logging, and access control.\n  - Capability Tags: Labels describing what an agent can do (e.g., 'code_edit', 'web_search', 'image_gen'). Used for task matching.\n  - Status Enum: Current state of the agent: idle, busy, error, offline. The scheduler checks this before assigning tasks.\n  - Resource Quota: Budget limits for compute, API calls, or tokens allocated to this agent. Prevents runaway costs.\n\nVISUAL GUIDANCE:\n- Title: \"Agent Roster\" in large text, colored #34d399\n- Layer badge: \"L4 \u00b7 Orchestration\" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #34d399 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text",
-        'Create an infographic for the "Task Assignment" construct from the {a}OS reference model.\n\nLAYER: L4 \u2014 Orchestration\nACCENT COLOR: #34d399\nCONSTRUCT: Task Assignment\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Match Score: Numeric score indicating how well an agent\'s capabilities align with a task\'s requirements.\n  - Priority Level: Task urgency ranking (critical/high/medium/low) that influences scheduling order.\n  - Load Factor: Current utilization of an agent relative to its capacity. High load triggers rebalancing or queueing.\n  - Assignment Log: Audit trail of which agent received which task, when, and why. Essential for debugging multi-agent issues.\n\nVISUAL GUIDANCE:\n- Title: "Task Assignment" in large text, colored #34d399\n- Layer badge: "L4 \u00b7 Orchestration" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #34d399 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Message Channel" construct from the {a}OS reference model.\n\nLAYER: L4 \u2014 Orchestration\nACCENT COLOR: #34d399\nCONSTRUCT: Message Channel\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Channel ID: Unique identifier for a communication channel between agents. Supports point-to-point and pub/sub patterns.\n  - Message Envelope: Wrapper around message payload containing metadata: sender, timestamp, correlation ID, content type.\n  - Delivery Guarantee: Reliability level: at-most-once, at-least-once, or exactly-once. Trade-off between performance and correctness.\n  - Subscriber List: List of agents subscribed to a channel. Used for fan-out delivery in pub/sub messaging patterns.\n\nVISUAL GUIDANCE:\n- Title: "Message Channel" in large text, colored #34d399\n- Layer badge: "L4 \u00b7 Orchestration" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #34d399 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Delegation Policy" construct from the {a}OS reference model.\n\nLAYER: L4 \u2014 Orchestration\nACCENT COLOR: #34d399\nCONSTRUCT: Delegation Policy\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Delegation Trigger: Condition that causes an agent to delegate a subtask: complexity threshold, capability gap, or explicit rule.\n  - Approval Gate: Optional human-in-the-loop checkpoint before delegation executes. Prevents uncontrolled task chains.\n  - Max Depth: Maximum delegation nesting level. Prevents infinite delegation chains (agent A \u2192 B \u2192 C \u2192 ...).\n  - Escalation Path: Ordered list of fallback agents or humans to try when delegation fails or times out.\n\nVISUAL GUIDANCE:\n- Title: "Delegation Policy" in large text, colored #34d399\n- Layer badge: "L4 \u00b7 Orchestration" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #34d399 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Tool Manifest" construct from the {a}OS reference model.\n\nLAYER: L3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Tool Manifest\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Tool ID: Unique identifier for a registered tool. The model references this when choosing which tool to call.\n  - JSON Schema: Formal schema defining the tool\'s input parameters and their types. The model uses this for argument generation.\n  - Auth Type: Authentication method required to call the tool: API key, OAuth, bearer token, or none.\n  - Rate Limit: Maximum calls per time window to prevent abuse and manage costs. Enforced by the tool runtime.\n\nVISUAL GUIDANCE:\n- Title: "Tool Manifest" in large text, colored #38bdf8\n- Layer badge: "L3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "API Binding" construct from the {a}OS reference model.\n\nLAYER: L3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: API Binding\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Endpoint URL: The concrete HTTP endpoint the tool call is routed to at runtime. May vary by environment.\n  - Request Template: Template for constructing the HTTP request: method, headers, body format. Populated with tool call arguments.\n  - Response Parser: Logic that extracts structured data from the API response and transforms it into agent-readable format.\n  - Error Handler: Strategy for handling API errors: retry, fallback, or surface to user. Includes status code mapping.\n\nVISUAL GUIDANCE:\n- Title: "API Binding" in large text, colored #38bdf8\n- Layer badge: "L3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Capability Schema" construct from the {a}OS reference model.\n\nLAYER: L3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Capability Schema\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Capability ID: Unique identifier for a capability the tool provides. Used by the planner to match tasks to tools.\n  - Input Schema: JSON Schema defining what the tool expects as input. The model validates arguments against this.\n  - Output Schema: JSON Schema defining what the tool returns. Enables type-safe chaining of tool outputs to next steps.\n  - Side Effects: Declaration of external state changes the tool causes (file write, API mutation, DB update). Critical for safety.\n\nVISUAL GUIDANCE:\n- Title: "Capability Schema" in large text, colored #38bdf8\n- Layer badge: "L3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Search Index" construct from the {a}OS reference model.\n\nLAYER: L2 \u2014 Knowledge & Retrieval\nACCENT COLOR: #a78bfa\nCONSTRUCT: Search Index\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Index Type: The index algorithm: vector (HNSW, IVF), keyword (BM25), or hybrid. Determines retrieval characteristics.\n  - Embedding Dim: Dimensionality of the embedding vectors stored in the index. Must match the embedding model\'s output size.\n  - Doc Count: Total number of documents (or chunks) indexed. Affects search latency and memory requirements.\n  - Refresh Interval: How often the index rebuilds or syncs with source documents. Trade-off between freshness and compute cost.\n\nVISUAL GUIDANCE:\n- Title: "Search Index" in large text, colored #a78bfa\n- Layer badge: "L2 \u00b7 Knowledge & Retrieval" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #a78bfa accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Chunk Collection" construct from the {a}OS reference model.\n\nLAYER: L2 \u2014 Knowledge & Retrieval\nACCENT COLOR: #a78bfa\nCONSTRUCT: Chunk Collection\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Chunk ID: Unique identifier for a document chunk. Used for retrieval, citation, and deduplication.\n  - Source Doc: Reference to the original document this chunk was extracted from. Preserves provenance chain.\n  - Token Count: Number of tokens in the chunk. Used for context window budgeting when assembling retrieval results.\n  - Embedding Vector: Dense vector representation of the chunk\'s semantic content. Used for similarity search in the index.\n\nVISUAL GUIDANCE:\n- Title: "Chunk Collection" in large text, colored #a78bfa\n- Layer badge: "L2 \u00b7 Knowledge & Retrieval" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #a78bfa accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Relevance Score" construct from the {a}OS reference model.\n\nLAYER: L2 \u2014 Knowledge & Retrieval\nACCENT COLOR: #a78bfa\nCONSTRUCT: Relevance Score\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Cosine Similarity: Similarity metric between query and document embeddings. Core signal for semantic search ranking.\n  - BM25 Score: Classic term-frequency keyword relevance score. Complements vector search for exact-match queries.\n  - Recency Boost: Score multiplier favoring recently updated documents. Prevents stale content from dominating results.\n  - Combined Rank: Final ranking after fusing vector, keyword, and recency scores. Typically via reciprocal rank fusion.\n\nVISUAL GUIDANCE:\n- Title: "Relevance Score" in large text, colored #a78bfa\n- Layer badge: "L2 \u00b7 Knowledge & Retrieval" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #a78bfa accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Rerank Pipeline" construct from the {a}OS reference model.\n\nLAYER: L2 \u2014 Knowledge & Retrieval\nACCENT COLOR: #a78bfa\nCONSTRUCT: Rerank Pipeline\nPRIMITIVE COUNT: 8\n\nPRIMITIVES (show each as a card/node):\n  - Reranker Model: Cross-encoder model that scores query-document pairs more accurately than bi-encoder retrieval.\n  - Top K: Number of top results to keep after reranking. Balances quality against context window budget.\n  - Score Threshold: Minimum relevance score to include a result. Filters out low-quality matches before injection.\n  - Latency Budget (ms): Maximum milliseconds allowed for the reranking step. Enforces latency SLA trade-offs.\n  - Rule ID: Unique identifier for a policy rule. Used for version tracking, audit references, and override targeting.\n  - Rule Expression: The actual policy logic \u2014 a boolean expression in Rego, CEL, or JSON that evaluates to allow/deny.\n  - Enforcement Mode: Whether the rule blocks (enforce), warns (audit), or just logs (monitor). Allows gradual rollout of new policies.\n  - Scope Selector: Pattern or filter that limits which agents, resources, or environments a policy applies to.\n\nVISUAL GUIDANCE:\n- Title: "Rerank Pipeline" in large text, colored #a78bfa\n- Layer badge: "L2 \u00b7 Knowledge & Retrieval" top-left\n- Show all 8 primitives as connected cards on dark (#0a0a0f) background\n- Use #a78bfa accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Policy Evaluation" construct from the {a}OS reference model.\n\nLAYER: L6 \u2014 Governance\nACCENT COLOR: #fb7185\nCONSTRUCT: Policy Evaluation\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Eval Request: The input bundle sent to the policy engine: agent identity, intended action, resource target, and context.\n  - Decision Result: The allow/deny verdict from the policy engine, with optional explanations and matched rule references.\n  - Eval Latency: Time taken for a single policy evaluation. Must stay within budget to avoid blocking agent actions.\n  - Violation Detail: Structured record of exactly which rule was violated, what the expected vs actual values were, and remediation steps.\n\nVISUAL GUIDANCE:\n- Title: "Policy Evaluation" in large text, colored #fb7185\n- Layer badge: "L6 \u00b7 Governance" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fb7185 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Guardrail Config" construct from the {a}OS reference model.\n\nLAYER: L6 \u2014 Governance\nACCENT COLOR: #fb7185\nCONSTRUCT: Guardrail Config\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Guardrail ID: Named identifier for a guardrail set (e.g., \'financial-safety-v2\'). Versioned and environment-scoped.\n  - Policy Bundle: Collection of policy rules grouped into a deployable unit. Bundling enables atomic policy updates.\n  - Fallback Action: Default behavior when a guardrail can\'t evaluate (engine timeout, missing data): block, allow-with-log, or degrade.\n  - Activation Trigger: Condition that activates or deactivates a guardrail: time-based, feature-flag, or event-driven.\n\nVISUAL GUIDANCE:\n- Title: "Guardrail Config" in large text, colored #fb7185\n- Layer badge: "L6 \u00b7 Governance" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fb7185 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Auth Token" construct from the {a}OS reference model.\n\nLAYER: L6 \u2014 Governance\nACCENT COLOR: #fb7185\nCONSTRUCT: Auth Token\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Token Value: The actual secret string (JWT, API key, bearer token). Must never be logged, stored in plaintext, or transmitted without TLS.\n  - Token Issuer: The identity provider or authority that minted the token. Verified by consumers to establish trust.\n  - Token Scope: The permissions encoded in the token: which APIs, actions, and resources it grants access to.\n  - Expiry Epoch: Unix timestamp when the token becomes invalid. The fundamental time-limit on credential validity.\n\nVISUAL GUIDANCE:\n- Title: "Auth Token" in large text, colored #fb7185\n- Layer badge: "L6 \u00b7 Governance" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fb7185 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        "Create an infographic for the \"Role Binding\" construct from the {a}OS reference model.\n\nLAYER: L6 \u2014 Governance\nACCENT COLOR: #fb7185\nCONSTRUCT: Role Binding\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Principal ID: Unique identifier of the entity (user, agent, service account) being granted a role.\n  - Role Name: Human-readable label for the role (e.g., 'code-reviewer', 'data-reader', 'admin'). Maps to a permission set.\n  - Resource Scope: The set of resources (APIs, data stores, tools) a role binding grants access to.\n  - Inherited From: Reference to the parent binding this role was inherited from (e.g., org-level admin cascading to projects).\n\nVISUAL GUIDANCE:\n- Title: \"Role Binding\" in large text, colored #fb7185\n- Layer badge: \"L6 \u00b7 Governance\" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fb7185 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text",
-        'Create an infographic for the "Credential Vault" construct from the {a}OS reference model.\n\nLAYER: L6 \u2014 Governance\nACCENT COLOR: #fb7185\nCONSTRUCT: Credential Vault\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Secret ID: Logical name for a secret stored in the vault (e.g., \'openai-api-key-prod\'). Agents reference this, never raw values.\n  - Encryption Algorithm: The algorithm used to encrypt secrets at rest (AES-256-GCM, ChaCha20). Must meet compliance requirements.\n  - Rotation Interval: How often a secret is automatically rotated (e.g., every 90 days). Limits blast radius of leaked credentials.\n  - Access Log Ref: Pointer to the audit log recording who accessed which secret and when. Critical for breach investigation.\n\nVISUAL GUIDANCE:\n- Title: "Credential Vault" in large text, colored #fb7185\n- Layer badge: "L6 \u00b7 Governance" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fb7185 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Permission Scope" construct from the {a}OS reference model.\n\nLAYER: L6 \u2014 Governance\nACCENT COLOR: #fb7185\nCONSTRUCT: Permission Scope\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Scope Pattern: Glob, regex, or path expression defining which resources fall within this permission scope.\n  - Allowed Actions: Explicit list of actions (read, write, delete, execute) permitted within this scope.\n  - Denied Actions: Explicit list of actions blocked even if other rules allow them. Deny always wins over allow.\n  - Condition Expression: Runtime condition (time of day, IP range, MFA status) that must be true for the permission to apply.\n\nVISUAL GUIDANCE:\n- Title: "Permission Scope" in large text, colored #fb7185\n- Layer badge: "L6 \u00b7 Governance" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fb7185 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        "Create an infographic for the \"Audit Entry\" construct from the {a}OS reference model.\n\nLAYER: L6 \u2014 Governance\nACCENT COLOR: #fb7185\nCONSTRUCT: Audit Entry\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Entry ID: Globally unique, immutable identifier for an audit log record. Must be tamper-evident.\n  - Actor ID: The principal (user, agent, service) that performed the audited action. Links to identity systems.\n  - Action Type: The verb describing what happened: 'create', 'read', 'update', 'delete', 'execute', 'approve'.\n  - Resource URN: Uniform resource name identifying the target of the action. Enables resource-centric audit queries.\n\nVISUAL GUIDANCE:\n- Title: \"Audit Entry\" in large text, colored #fb7185\n- Layer badge: \"L6 \u00b7 Governance\" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fb7185 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text",
-        "Create an infographic for the \"Compliance Check\" construct from the {a}OS reference model.\n\nLAYER: L6 \u2014 Governance\nACCENT COLOR: #fb7185\nCONSTRUCT: Compliance Check\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Check ID: Identifier linking to a specific compliance requirement (e.g., 'SOC2-CC6.1', 'GDPR-Art17').\n  - Regulation Reference: Formal citation to the regulatory requirement being checked (e.g., 'GDPR Article 17: Right to Erasure').\n  - Pass/Fail: Binary result of the check: 'pass' (compliant) or 'fail' (non-compliant). May include 'not-applicable'.\n  - Remediation Hint: Actionable instructions for fixing a failed compliance check. Ideally includes code/config snippets.\n\nVISUAL GUIDANCE:\n- Title: \"Compliance Check\" in large text, colored #fb7185\n- Layer badge: \"L6 \u00b7 Governance\" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fb7185 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text",
-        'Create an infographic for the "Retention Policy" construct from the {a}OS reference model.\n\nLAYER: L6 \u2014 Governance\nACCENT COLOR: #fb7185\nCONSTRUCT: Retention Policy\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Data Class: Classification of data (PII, financial, operational, public) that determines retention requirements.\n  - Retention Days: Number of days data must be retained before eligible for deletion. Varies by data class and regulation.\n  - Archive Target: Destination for data that\'s past active retention but must be preserved (cold storage, glacier, tape).\n  - Deletion Method: How data is destroyed: soft delete, hard delete, crypto-shred, or physical destruction.\n\nVISUAL GUIDANCE:\n- Title: "Retention Policy" in large text, colored #fb7185\n- Layer badge: "L6 \u00b7 Governance" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fb7185 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Evidence Chain" construct from the {a}OS reference model.\n\nLAYER: L6 \u2014 Governance\nACCENT COLOR: #fb7185\nCONSTRUCT: Evidence Chain\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Chain ID: Identifier for a linked sequence of audit entries proving a complete decision trail.\n  - Linked Entries: Array of audit entry_ids composing this evidence chain, in chronological order.\n  - Hash Digest: Cryptographic hash of the chain contents. Changing any entry changes the hash, proving tamper evidence.\n  - Verifier Signature: Digital signature from an authorized verifier attesting that the evidence chain is complete and unmodified.\n\nVISUAL GUIDANCE:\n- Title: "Evidence Chain" in large text, colored #fb7185\n- Layer badge: "L6 \u00b7 Governance" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fb7185 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Content Filter" construct from the {a}OS reference model.\n\nLAYER: L6 \u2014 Governance\nACCENT COLOR: #fb7185\nCONSTRUCT: Content Filter\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Filter ID: Identifier for a content filter configuration. Multiple filters may apply in sequence.\n  - Taxonomy Version: Version of the content safety taxonomy being used (harm categories, severity levels, definitions).\n  - Action on Match: What happens when content matches a filter: block, flag-for-review, redact, or log-only.\n  - Confidence Threshold: Minimum classifier confidence score (0.0\u20131.0) to trigger the filter action. Balances precision vs recall.\n\nVISUAL GUIDANCE:\n- Title: "Content Filter" in large text, colored #fb7185\n- Layer badge: "L6 \u00b7 Governance" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fb7185 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Toxicity Scorer" construct from the {a}OS reference model.\n\nLAYER: L6 \u2014 Governance\nACCENT COLOR: #fb7185\nCONSTRUCT: Toxicity Scorer\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Scorer Model: The ML model used for toxicity classification (e.g., Perspective API, LlamaGuard, custom fine-tuned).\n  - Dimension Scores: Per-dimension toxicity scores (hate, threat, sexual, self-harm, violence). Enables nuanced response.\n  - Aggregate Score: Combined toxicity score summarizing all dimensions into a single value for quick filtering.\n  - Threshold Config: Per-dimension and aggregate threshold settings that determine when to trigger safety actions.\n\nVISUAL GUIDANCE:\n- Title: "Toxicity Scorer" in large text, colored #fb7185\n- Layer badge: "L6 \u00b7 Governance" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fb7185 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "PII Redactor" construct from the {a}OS reference model.\n\nLAYER: L6 \u2014 Governance\nACCENT COLOR: #fb7185\nCONSTRUCT: PII Redactor\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Entity Types: The PII categories the redactor detects: names, emails, SSNs, phone numbers, addresses, etc.\n  - Redaction Method: How detected PII is masked: replace with placeholder, hash, encrypt, or remove entirely.\n  - Confidence Floor: Minimum NER confidence to redact a detected entity. Below this, flag for human review instead of auto-redacting.\n  - Allowlist: List of known safe values that should NOT be redacted even if they match PII patterns (company names, public figures).\n\nVISUAL GUIDANCE:\n- Title: "PII Redactor" in large text, colored #fb7185\n- Layer badge: "L6 \u00b7 Governance" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fb7185 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        "Create an infographic for the \"Safety Boundary\" construct from the {a}OS reference model.\n\nLAYER: L6 \u2014 Governance\nACCENT COLOR: #fb7185\nCONSTRUCT: Safety Boundary\nPRIMITIVE COUNT: 8\n\nPRIMITIVES (show each as a card/node):\n  - Boundary Type: Category of safety limit: financial (max spend), destructive (no-delete zones), PII (exposure cap), or operational (rate).\n  - Risk Category: Severity classification of the risk being bounded: critical, high, medium, low. Determines response urgency.\n  - Block Action: The enforcement action when a boundary is crossed: reject request, kill process, freeze account, or degrade gracefully.\n  - Escalation Target: The person, team, or automated system notified when a safety boundary is breached.\n  - Span ID: Unique identifier for a single operation span within a distributed trace. Enables parent\u2192child span correlation.\n  - Parent Span ID: Reference to the parent span that spawned this operation. Null for root spans.\n  - Operation Name: Human-readable label for the operation: 'llm.chat.completion', 'tool.web_search', 'agent.delegation'.\n  - Duration (ms): Wall-clock time for the operation in milliseconds. The primary signal for latency analysis and SLO tracking.\n\nVISUAL GUIDANCE:\n- Title: \"Safety Boundary\" in large text, colored #fb7185\n- Layer badge: \"L6 \u00b7 Governance\" top-left\n- Show all 8 primitives as connected cards on dark (#0a0a0f) background\n- Use #fb7185 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text",
-        'Create an infographic for the "Log Entry" construct from the {a}OS reference model.\n\nLAYER: L5 \u2014 Observability\nACCENT COLOR: #fbbf24\nCONSTRUCT: Log Entry\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Log Level: Severity classification: DEBUG, INFO, WARN, ERROR, FATAL. Controls log volume and alerting rules.\n  - Message Template: Parameterized log message format with placeholders for structured data (e.g., \'Agent {agent_id} completed {tool} in {ms}ms\').\n  - Context Tags: Key-value metadata attached to a log entry: session_id, agent_id, user_id, environment, etc.\n  - Correlation ID: Shared identifier linking all log entries from a single user request or agent workflow across services.\n\nVISUAL GUIDANCE:\n- Title: "Log Entry" in large text, colored #fbbf24\n- Layer badge: "L5 \u00b7 Observability" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fbbf24 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Token Ledger" construct from the {a}OS reference model.\n\nLAYER: L5 \u2014 Observability\nACCENT COLOR: #fbbf24\nCONSTRUCT: Token Ledger\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Model ID: Identifier of the model that consumed the tokens (e.g., \'gpt-4o\', \'claude-sonnet-4-20250514\'). Key for cost attribution.\n  - Prompt Tokens: Count of tokens in the input (system prompt + user message + context). Typically 80%+ of token spend.\n  - Completion Tokens: Count of tokens in the model\'s response. Usually smaller than prompt tokens but more expensive per-token.\n  - Cost (USD): Dollar cost of this token transaction: (prompt_tokens \u00d7 input_rate + completion_tokens \u00d7 output_rate).\n\nVISUAL GUIDANCE:\n- Title: "Token Ledger" in large text, colored #fbbf24\n- Layer badge: "L5 \u00b7 Observability" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fbbf24 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Latency Histogram" construct from the {a}OS reference model.\n\nLAYER: L5 \u2014 Observability\nACCENT COLOR: #fbbf24\nCONSTRUCT: Latency Histogram\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Bucket Bounds (ms): Array of millisecond boundaries defining histogram buckets (e.g., [10, 50, 100, 500, 1000, 5000]).\n  - Sample Count: Total number of observations in the histogram window. Needed for percentile calculation accuracy.\n  - P99 Latency (ms): The 99th percentile latency \u2014 99% of requests complete within this time. The gold standard SLO metric.\n  - SLO Target (ms): The latency commitment: \'p99 < 5000ms for 99.9% of 28-day windows\'. The contract with your users.\n\nVISUAL GUIDANCE:\n- Title: "Latency Histogram" in large text, colored #fbbf24\n- Layer badge: "L5 \u00b7 Observability" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fbbf24 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Eval Suite" construct from the {a}OS reference model.\n\nLAYER: L5 \u2014 Observability\nACCENT COLOR: #fbbf24\nCONSTRUCT: Eval Suite\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Suite ID: Identifier for an evaluation suite (e.g., \'qa-accuracy-v3\', \'safety-check-prod\'). Enables tracking over time.\n  - Test Count: Number of test cases in the suite. Affects statistical significance and runtime.\n  - Pass Rate: Percentage of test cases that pass their scoring criteria. The headline metric for eval quality.\n  - Last Run Timestamp: When the suite was last executed. Stale evals are dangerous \u2014 models and data change.\n\nVISUAL GUIDANCE:\n- Title: "Eval Suite" in large text, colored #fbbf24\n- Layer badge: "L5 \u00b7 Observability" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fbbf24 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Test Case" construct from the {a}OS reference model.\n\nLAYER: L5 \u2014 Observability\nACCENT COLOR: #fbbf24\nCONSTRUCT: Test Case\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Case ID: Unique identifier for a test case within a suite. Enables per-case result tracking and regression detection.\n  - Input Prompt: The exact prompt or conversation sent to the model for this test case. The \'question\' of the eval.\n  - Expected Output: The reference answer or pattern the model output must match or approximate. Ground truth for scoring.\n  - Scoring Function: The function that evaluates model output against expected output and returns a score (0\u20131 or pass/fail).\n\nVISUAL GUIDANCE:\n- Title: "Test Case" in large text, colored #fbbf24\n- Layer badge: "L5 \u00b7 Observability" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fbbf24 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Judge Prompt" construct from the {a}OS reference model.\n\nLAYER: L5 \u2014 Observability\nACCENT COLOR: #fbbf24\nCONSTRUCT: Judge Prompt\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Judge Model: The LLM used as an evaluator to score other model outputs. Should be at least as capable as the model being tested.\n  - Rubric Dimensions: The criteria the judge evaluates: accuracy, helpfulness, safety, format compliance, reasoning quality.\n  - Score Scale: The numerical scale for judge scores: binary (0/1), Likert (1\u20135), or continuous (0.0\u20131.0).\n  - Calibration Examples: Few-shot examples in the judge prompt showing input/output/score to calibrate judge behavior.\n\nVISUAL GUIDANCE:\n- Title: "Judge Prompt" in large text, colored #fbbf24\n- Layer badge: "L5 \u00b7 Observability" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fbbf24 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Score Aggregator" construct from the {a}OS reference model.\n\nLAYER: L5 \u2014 Observability\nACCENT COLOR: #fbbf24\nCONSTRUCT: Score Aggregator\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Aggregation Function: Method for combining per-case scores into suite-level metric: mean, weighted-mean, min-of, or percentile.\n  - Dimension Weights: Relative importance of each rubric dimension in the final score. Safety might weight 3x more than verbosity.\n  - Final Score: The single composite quality score for an eval run. The number that gates deployments.\n  - Confidence Interval: Statistical range around the final score (e.g., 0.85 \u00b1 0.03 at 95% CI). Accounts for eval noise.\n\nVISUAL GUIDANCE:\n- Title: "Score Aggregator" in large text, colored #fbbf24\n- Layer badge: "L5 \u00b7 Observability" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fbbf24 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Drift Detector" construct from the {a}OS reference model.\n\nLAYER: L5 \u2014 Observability\nACCENT COLOR: #fbbf24\nCONSTRUCT: Drift Detector\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Baseline Snapshot: Statistical profile of \'normal\' model behavior (output distributions, token patterns, latency profiles) captured at a known-good state.\n  - Current Window: Rolling time window of recent model behavior being compared against the baseline (e.g., last 24h of outputs).\n  - Drift Metric: Statistical measure of distribution divergence: KL divergence, JS divergence, PSI, or cosine distance.\n  - Alert Threshold: The drift metric value above which an alert fires. Separates normal variance from genuine distribution shift.\n\nVISUAL GUIDANCE:\n- Title: "Drift Detector" in large text, colored #fbbf24\n- Layer badge: "L5 \u00b7 Observability" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fbbf24 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        "Create an infographic for the \"Anomaly Alert\" construct from the {a}OS reference model.\n\nLAYER: L5 \u2014 Observability\nACCENT COLOR: #fbbf24\nCONSTRUCT: Anomaly Alert\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Alert ID: Unique identifier for a fired alert. Links to the investigation, response actions, and resolution.\n  - Metric Name: The specific metric that triggered the alert (e.g., 'latency_p99', 'error_rate', 'drift_psi').\n  - Observed Value: The actual metric value that crossed the threshold and triggered the alert.\n  - Routing Channel: Where the alert is sent: PagerDuty, Slack channel, email group, or automated remediation pipeline.\n\nVISUAL GUIDANCE:\n- Title: \"Anomaly Alert\" in large text, colored #fbbf24\n- Layer badge: \"L5 \u00b7 Observability\" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fbbf24 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text",
-        'Create an infographic for the "SLO Monitor" construct from the {a}OS reference model.\n\nLAYER: L5 \u2014 Observability\nACCENT COLOR: #fbbf24\nCONSTRUCT: SLO Monitor\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - SLO Name: Human-readable identifier for the Service Level Objective (e.g., \'agent-response-latency-p99\').\n  - Target Percentage: The availability/quality target: 99.9% of requests must complete within latency budget. The \'nines\'.\n  - Current Percentage: Real-time compliance percentage over the rolling window. The live score compared against target.\n  - Error Budget Remaining: How much of the allowed failure budget is left in the current window. When it hits 0, freeze deployments.\n\nVISUAL GUIDANCE:\n- Title: "SLO Monitor" in large text, colored #fbbf24\n- Layer badge: "L5 \u00b7 Observability" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fbbf24 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Cost Tracker" construct from the {a}OS reference model.\n\nLAYER: L5 \u2014 Observability\nACCENT COLOR: #fbbf24\nCONSTRUCT: Cost Tracker\nPRIMITIVE COUNT: 8\n\nPRIMITIVES (show each as a card/node):\n  - Session Cost (USD): Total dollar cost of a single agent session: sum of all LLM calls, tool invocations, and compute time.\n  - Daily Budget (USD): Maximum allowed spend per day across all agent activity. Hard cap to prevent runaway costs.\n  - Burn Rate: Current spend velocity ($/hour). If burn rate \u00d7 remaining hours > budget, action needed.\n  - Cost Alert Threshold: Percentage of budget that triggers alerts (e.g., 80% = warning, 100% = block). Multi-tier for graduated response.\n  - Runtime Type: The sandbox execution engine: Docker container, Firecracker microVM, gVisor, or WASM isolate.\n  - Isolation Level: Degree of separation: process-level, container-level, VM-level. Determines what the code can access.\n  - Timeout (sec): Maximum wall-clock time before the sandbox is forcibly terminated. Prevents infinite loops and resource abuse.\n  - Resource Quota: CPU, memory, disk, and network limits enforced on the sandbox. Prevents resource exhaustion attacks.\n\nVISUAL GUIDANCE:\n- Title: "Cost Tracker" in large text, colored #fbbf24\n- Layer badge: "L5 \u00b7 Observability" top-left\n- Show all 8 primitives as connected cards on dark (#0a0a0f) background\n- Use #fbbf24 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        "Create an infographic for the \"Interpreter Session\" construct from the {a}OS reference model.\n\nLAYER: L3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Interpreter Session\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Session ID: Unique identifier for a REPL/interpreter session. Enables state persistence across multiple code executions.\n  - Language Runtime: The programming language and version: 'python:3.12', 'node:20', 'bash:5'. Determines available libraries.\n  - Variable State: The in-memory variable namespace: all variables, functions, and imports persisted across executions in this session.\n  - History Length: Number of previous execution cells/commands retained in session history. Enables replay and context.\n\nVISUAL GUIDANCE:\n- Title: \"Interpreter Session\" in large text, colored #38bdf8\n- Layer badge: \"L3 \u00b7 Capabilities\" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text",
-        'Create an infographic for the "Execution Result" construct from the {a}OS reference model.\n\nLAYER: L3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Execution Result\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Exit Code: Process return code: 0 = success, non-zero = error. The universal signal for execution outcome.\n  - Stdout Content: Standard output captured from the execution. The primary output channel for results and data.\n  - Stderr Content: Standard error captured from the execution. Contains error messages, warnings, and diagnostic output.\n  - Artifact References: Paths or URIs to files generated during execution: plots, CSVs, model checkpoints, reports.\n\nVISUAL GUIDANCE:\n- Title: "Execution Result" in large text, colored #38bdf8\n- Layer badge: "L3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Resource Limit" construct from the {a}OS reference model.\n\nLAYER: L3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Resource Limit\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - CPU Limit: Maximum CPU allocation in cores or millicores. Prevents compute-hungry code from starving other workloads.\n  - Memory Limit (MB): Maximum RAM in megabytes. Exceeding triggers OOM killer (exit code 137).\n  - Disk Limit (MB): Maximum disk space the sandboxed process can use. Prevents write bombs and disk exhaustion.\n  - Network Allowed: Boolean or allowlist controlling network access from sandbox. Default deny prevents data exfiltration.\n\nVISUAL GUIDANCE:\n- Title: "Resource Limit" in large text, colored #38bdf8\n- Layer badge: "L3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "API Connector" construct from the {a}OS reference model.\n\nLAYER: L3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: API Connector\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Base URL: Root endpoint for the external API (e.g., \'https://api.example.com/v2\'). All paths are relative to this.\n  - Auth Method: Authentication type: API key, OAuth2, Bearer token, mTLS. Determines how credentials are sent.\n  - Default Headers: HTTP headers automatically added to every request: Content-Type, Authorization, User-Agent, correlation IDs.\n  - Retry Config: Retry policy for failed requests: max attempts, backoff strategy (exponential with jitter), retryable status codes.\n\nVISUAL GUIDANCE:\n- Title: "API Connector" in large text, colored #38bdf8\n- Layer badge: "L3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        "Create an infographic for the \"Webhook Emitter\" construct from the {a}OS reference model.\n\nLAYER: L3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Webhook Emitter\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Webhook URL: The destination endpoint that receives event notifications via HTTP POST.\n  - Event Type: Classification of the event: 'agent.completed', 'tool.failed', 'session.created'. Enables filtering.\n  - Payload Template: JSON template defining the webhook body structure with variable placeholders for event data.\n  - Delivery Status: Current state of the webhook delivery: pending, delivered (2xx), failed, retrying, dead-lettered.\n\nVISUAL GUIDANCE:\n- Title: \"Webhook Emitter\" in large text, colored #38bdf8\n- Layer badge: \"L3 \u00b7 Capabilities\" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text",
-        'Create an infographic for the "Rate Limiter" construct from the {a}OS reference model.\n\nLAYER: L3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Rate Limiter\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Limit Window: Time window for rate counting: 1 second, 1 minute, 1 hour. Determines burst vs sustained rate limits.\n  - Max Requests: Maximum number of requests allowed within the limit window. The \'quota\' per time period.\n  - Current Usage: Number of requests consumed in the current window. Returned in response headers for client awareness.\n  - Backoff Strategy: Client behavior when rate limited (HTTP 429): exponential backoff with jitter, respecting Retry-After header.\n\nVISUAL GUIDANCE:\n- Title: "Rate Limiter" in large text, colored #38bdf8\n- Layer badge: "L3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Response Cache" construct from the {a}OS reference model.\n\nLAYER: L3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Response Cache\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Cache Key Pattern: Template for generating cache keys from request parameters: \'{method}:{path}:{hash(body)}\'.\n  - TTL (seconds): Time-to-live before a cached response expires and must be re-fetched. Balances freshness vs performance.\n  - Hit Rate (%): Percentage of requests served from cache vs origin. The key performance indicator for caching effectiveness.\n  - Eviction Policy: Algorithm for removing cached entries when cache is full: LRU, LFU, random, or size-based.\n\nVISUAL GUIDANCE:\n- Title: "Response Cache" in large text, colored #38bdf8\n- Layer badge: "L3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Browser Session" construct from the {a}OS reference model.\n\nLAYER: L3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Browser Session\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Browser Type: The browser engine used: Chromium, Firefox, or WebKit. Affects rendering and JavaScript behavior.\n  - Viewport Size: Browser window dimensions (width \u00d7 height in pixels). Affects layout, responsive behavior, and screenshots.\n  - Cookie Jar: The session\'s cookie storage: authentication cookies, consent states, preferences. Persists across page navigations.\n  - Proxy Config: HTTP proxy settings for routing browser traffic through an intermediary (for testing, monitoring, or geo-spoofing).\n\nVISUAL GUIDANCE:\n- Title: "Browser Session" in large text, colored #38bdf8\n- Layer badge: "L3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Page Action" construct from the {a}OS reference model.\n\nLAYER: L3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Page Action\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Action Type: The browser action to perform: click, fill, select, scroll, navigate, wait, hover, drag.\n  - Target Selector: CSS or XPath selector, or accessibility role/label identifying the target element for the action.\n  - Input Value: The data to enter for fill/type actions: text, numbers, file paths. Can include special keys (Enter, Tab).\n  - Wait Condition: What to wait for before proceeding: element visible, network idle, navigation complete, or custom predicate.\n\nVISUAL GUIDANCE:\n- Title: "Page Action" in large text, colored #38bdf8\n- Layer badge: "L3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        "Create an infographic for the \"Element Selector\" construct from the {a}OS reference model.\n\nLAYER: L3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Element Selector\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Selector Type: The strategy for locating elements: CSS, XPath, role, text, test-id, or accessibility label.\n  - Selector Value: The actual selector string: 'data-testid=submit-btn', 'role=button[name=Submit]', '#main > .form button'.\n  - Fallback Selector: Alternative selector to try if the primary fails. Provides resilience against minor DOM changes.\n  - Visibility Check: Whether the element must be visible (not just present in DOM) before interaction. Prevents clicking hidden elements.\n\nVISUAL GUIDANCE:\n- Title: \"Element Selector\" in large text, colored #38bdf8\n- Layer badge: \"L3 \u00b7 Capabilities\" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text",
-        'Create an infographic for the "Screenshot Capture" construct from the {a}OS reference model.\n\nLAYER: L3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Screenshot Capture\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Capture Format: Image format for screenshots: PNG (lossless), JPEG (smaller), or WebP (best compression).\n  - Viewport Clip: Rectangular area to capture: {x, y, width, height}. Enables focused screenshots of specific page regions.\n  - Full Page Flag: Whether to capture the entire scrollable page or just the visible viewport. True captures below the fold.\n  - Storage Path: File system path or URL where the screenshot is saved for later comparison or review.\n\nVISUAL GUIDANCE:\n- Title: "Screenshot Capture" in large text, colored #38bdf8\n- Layer badge: "L3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "File Handle" construct from the {a}OS reference model.\n\nLAYER: L3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: File Handle\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - File Path: Absolute or relative path to the file being accessed. The address of the file in the filesystem.\n  - Open Mode: File access mode: read (r), write (w), append (a), read-write (r+). Determines permissions and behavior.\n  - Encoding Type: Character encoding for text files: UTF-8 (default), ASCII, Latin-1, or binary mode.\n  - Current Position: Byte offset of the read/write cursor in the file. Enables seeking, resuming, and partial reads.\n\nVISUAL GUIDANCE:\n- Title: "File Handle" in large text, colored #38bdf8\n- Layer badge: "L3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Shell Command" construct from the {a}OS reference model.\n\nLAYER: L3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Shell Command\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Command String: The shell command to execute. Must be sanitized to prevent command injection attacks.\n  - Working Directory: The directory context (cwd) for command execution. Affects relative path resolution and file access.\n  - Environment Variables: Key-value pairs passed to the subprocess environment. Used for configuration, secrets, and feature flags.\n  - Timeout (sec): Maximum execution time before the subprocess is killed. Prevents hanging commands from blocking the pipeline.\n\nVISUAL GUIDANCE:\n- Title: "Shell Command" in large text, colored #38bdf8\n- Layer badge: "L3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Directory Walker" construct from the {a}OS reference model.\n\nLAYER: L3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Directory Walker\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Root Path: The starting directory for the file tree traversal. All paths are discovered relative to this root.\n  - Glob Pattern: File matching pattern using wildcards: \'**/*.py\' (all Python files), \'*.md\' (Markdown in current dir).\n  - Max Depth: Maximum directory nesting depth to traverse. Prevents explosion in deeply nested or infinite trees.\n  - Ignore Rules: Patterns to exclude from traversal: .gitignore rules, node_modules, __pycache__, .git directories.\n\nVISUAL GUIDANCE:\n- Title: "Directory Walker" in large text, colored #38bdf8\n- Layer badge: "L3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Permission Check" construct from the {a}OS reference model.\n\nLAYER: L3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Permission Check\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Target Path: The filesystem path being checked for permissions. Can be a file or directory.\n  - Required Permissions: The access level needed: read (r), write (w), execute (x), or combinations. Set per-operation.\n  - Effective Permissions: The actual permissions the current process has on the target, after evaluating user, group, and ACL rules.\n  - Owner UID: The user ID of the file/directory owner. Determines who has owner-level permissions.\n\nVISUAL GUIDANCE:\n- Title: "Permission Check" in large text, colored #38bdf8\n- Layer badge: "L3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        "Create an infographic for the \"Message Topic\" construct from the {a}OS reference model.\n\nLAYER: L3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Message Topic\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Topic Name: The named channel for publishing/subscribing messages: 'agent.events', 'tool.results', 'session.logs'.\n  - Partition Count: Number of parallel partitions for the topic. Determines maximum consumer parallelism and ordering guarantees.\n  - Retention (hours): How long messages are kept on the topic before deletion. Enables replay and late consumer catching up.\n  - Schema Reference: Reference to the message schema (JSON Schema, Avro, Protobuf) that validates payloads on this topic.\n\nVISUAL GUIDANCE:\n- Title: \"Message Topic\" in large text, colored #38bdf8\n- Layer badge: \"L3 \u00b7 Capabilities\" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text",
-        'Create an infographic for the "Event Subscriber" construct from the {a}OS reference model.\n\nLAYER: L3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Event Subscriber\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Subscriber ID: Unique identifier for a message consumer. Enables offset tracking, delivery guarantees, and load balancing.\n  - Topic Reference: The topic(s) this subscriber is consuming from. One subscriber can listen to multiple topics.\n  - Filter Expression: Server-side filter that selects which messages to deliver based on attributes (e.g., \'severity >= ERROR\').\n  - Handler Function: The callback function invoked for each received message. Must be idempotent for at-least-once delivery.\n\nVISUAL GUIDANCE:\n- Title: "Event Subscriber" in large text, colored #38bdf8\n- Layer badge: "L3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Dead Letter Queue" construct from the {a}OS reference model.\n\nLAYER: L3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Dead Letter Queue\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - DLQ Name: Name of the dead letter queue that receives messages that failed processing after max retries.\n  - Max Retries: Maximum processing attempts before a message is moved to the dead letter queue.\n  - Failed Message Count: Number of messages currently in the DLQ awaiting manual review or automated reprocessing.\n  - Replay Policy: Strategy for reprocessing DLQ messages: manual review, automated replay, or discard after investigation.\n\nVISUAL GUIDANCE:\n- Title: "Dead Letter Queue" in large text, colored #38bdf8\n- Layer badge: "L3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
-        'Create an infographic for the "Delivery Guarantee" construct from the {a}OS reference model.\n\nLAYER: L3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Delivery Guarantee\nPRIMITIVE COUNT: 52\n\nPRIMITIVES (show each as a card/node):\n  - Guarantee Level: The delivery semantics: at-most-once, at-least-once, or exactly-once. Each has different trade-offs.\n  - ACK Mode: When the consumer acknowledges message receipt: auto-ACK (before processing) or manual ACK (after processing).\n  - Dedup Window: Time period during which duplicate message IDs are detected and filtered. Enables exactly-once semantics.\n  - Idempotency Key: Unique key per message enabling deduplication: if same key is processed twice, the second is a no-op.\n  - Card ID: Immutable identifier (Namespace/Family/Params/Quant/Hash) that uniquely identifies a model version and prevents behavioral drift.\n  - Model Family: Architectural lineage (GPT, Llama, Mistral, Gemma\u2026) determining Jinja2 chat templates and prompting strategy.\n  - Capability Tags: Boolean/categorical tags (vision, tool_calling, code, math) used by orchestrators for agent routing.\n  - License Type: Enforces commercial and training compliance (Apache 2.0, MIT, Llama Community, etc.).\n  - Endpoint URL: Abstract URI managed by service mesh for routing inference requests. RTT latency target: &lt;20ms.\n  - Model Version: Tracks weight + engine + prompt template combinations. Deployed via canary rollouts.\n  - Throughput TPS: Primary velocity metric: tokens per second. Single user: 15\u2013150 TPS; max batch: 400\u20135,000 TPS. TPOT target: &lt;50ms.\n  - Fallback Endpoint: Redundancy routing when primary endpoint fails. Failover latency target: &lt;100ms with &gt;99% success rate.\n  - Max Tokens: Hard hardware/software limit on total input+output tokens. Standard: 128K; long-context: 1M\u201310M. KV cache: 0.5\u20132GB VRAM/1K tokens.\n  - Effective Tokens: Actual sequence length before \'Context Rot\' \u2014 where recall accuracy degrades below useful thresholds. Target recall: &gt;95%.\n  - Window Strategy: Memory management approach. PagedAttention with O(N) logical memory is the gold standard for multi-agent prefix sharing.\n  - Overflow Policy: Rules for exceeding the context window limit: Truncate, Error, or Summarize. Requires system-prompt pinning to avoid agent memory loss.\n  - Vocab Size: Total unique tokens in the vocabulary. Modern models: 100K\u2013150K tokens. Compression ratio target: 0.7\u20130.8 tokens/word.\n  - Encoding Scheme: Tokenization algorithm \u2014 usually Byte-level BPE to prevent Out of Vocabulary (OOV) errors.\n  - Special Tokens: Control signals (&lt;tool_call&gt;, &lt;|im_start|&gt;, &lt;eos&gt;) that trigger specific model behaviors.\n  - Token Budget: Runtime caps to prevent runaway loops. Recommended: 10,000 tokens per tool loop; 100,000 per session.\n  - Server Framework: Serving engine \u2014 vLLM for high throughput (256+ sequences) or SGLang for agentic prefix-sharing (512+ sequences).\n  - Quantization Level: Precision reduction \u2014 FP8 saves 50% VRAM (&lt;0.01% perplexity impact); INT4 saves 75% (&lt;1% impact).\n  - KV Cache Size: Memory for key-value attention cache. Target utilization: 80\u201395% of allocated blocks (1,000\u201310,000 blocks).\n  - Concurrent Slots: Max simultaneous requests. Target: 64\u2013256 slots with 70\u201390% occupancy.\n  - GPU Type: Hardware SKU \u2014 H100 (80GB VRAM, 3.35 TB/s) for frontier; L40S (48GB, 0.86 TB/s) for smaller tasks. Memory bandwidth is the bottleneck.\n  - Pool Size: Number of GPU instances. Availability target: 99.99%. Requires N+1 redundancy across \u22652 availability zones.\n  - Utilization Percent: GPU resource usage \u2014 Core target: 75%; Memory target: 90%; Power target: 80%. \u26a0\ufe0f Never scale based on VRAM% (pre-allocated at boot).\n  - Scheduling Algorithm: Request routing strategy. Prefix-Aware (Radix) scheduling reduces Time to First Token by 40\u201360% via KV cache hits.\n  - Batch Size: Dynamic batching range: 1\u2013256. Each additional request adds ~5ms TPOT latency penalty.\n  - Queue Depth: Leading indicator of latency. Target wait: &lt;50ms. Autoscaling threshold: 3\u201310 requests waiting.\n  - Drain Timeout: Wait time before node shutdown. Recommended: 300 seconds for &gt;99.9% clean exit rate.\n  - Priority Lanes: QoS segmentation \u2014 Platinum: 90% capacity, Gold: 10%, Background: slack only during peak.\n  - Scale Metric: Primary trigger: Queue Size (&gt;5 req/GPU). Secondary: P95 TTFT (&gt;500ms). \u26a0\ufe0f Never use VRAM utilization.\n  - Cooldown Seconds: Asymmetric: scale-up 0s (immediate), scale-down 600s (prevent model-load thrashing). Model load takes 30s\u20135min.\n  - Min Replicas: Production floor: 2\u20134 replicas. Dev floor: 0 (scale-to-zero). Warm replicas avoid 30s\u20135min cold starts.\n  - Max Replicas: Hard financial ceiling mapped to cloud quotas. Range: 32\u2013128 GPUs. \u26a0\ufe0f Never deploy without this circuit breaker.\n  - Run ID: Unique experiment identifier for 100% traceability to Git commits. Format: timestamp-gitsha-name-suffix.\n  - Base Model: Foundation model being fine-tuned. Target Model Flops Utilization (MFU): 40\u201355%.\n  - Hyperparams: Training config \u2014 LR: 5\u00d710\u207b\u2075, batch: 32\u2013128, epochs: 1\u20133. Use cosine decay with warm-up.\n  - Checkpoint Interval: Save frequency \u2014 pausing 60s\u2013600s per snapshot (15\u2013300GB). Recommended: every 500\u20132,000 steps.\n  - Dataset URI: Training data location. Load bandwidth &gt;1 GB/s using binary formats (Parquet/Arrow).\n  - Split Ratio: Standard: 90% Train / 5% Validation / 5% Test. Test set MUST be fully decontaminated.\n  - Preprocessing Pipeline: Dedup (1M rows/hr) \u2192 PII scrub (500K rows/hr) \u2192 quality filter \u2192 pre-tokenize (10M tokens/sec).\n  - Quality Score: AI judge discards examples scoring &lt;4.0/5. Target perplexity on clean data: &lt;15.\n  - Adapter Rank: LoRA rank \u2014 r=8\u201316 for style (~10M params, &lt;100MB); r=64\u2013128 for knowledge (~80M params, ~500MB VRAM).\n  - Target Modules: Which layers get LoRA adapters. \'All Linear Layers\' retains 95% of full fine-tune performance.\n  - Merge Strategy: Combining adapter weights \u2014 Merge/Unload (permanent, fastest) or TIES-Merging (multi-adapter, sign-aware).\n  - Adapter Registry: Centralized catalog of 1,000+ adapters with hot-swap latency &lt;200ms.\n  - Reward Model: Neural network scoring outputs. Target accuracy: 70\u201380%. Calibration error &lt;0.05.\n  - Preference Dataset: A/B comparison pairs: 20,000\u2013100,000 with rater agreement &gt;0.85.\n  - PPO Config: Proximal Policy Optimization \u2014 KL Coefficient 0.1, LR 1\u00d710\u207b\u2076, Rollout size 1024.\n  - Alignment Score: Overall quality \u2014 Target Elo: 1,250+, refusal rate &lt;2%, jailbreak rate &lt;0.1%.\n\nVISUAL GUIDANCE:\n- Title: "Delivery Guarantee" in large text, colored #38bdf8\n- Layer badge: "L3 \u00b7 Capabilities" top-left\n- Show all 52 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Intent Object" construct from the {a}OS reference model.\n\nSTRATUM: S7 \u2014 Human Interface\nACCENT COLOR: #818cf8\nCONSTRUCT: Intent Object\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Goal Statement: Natural language or structured declaration of what the user wants to achieve. Parsed by the intent engine to extract actionable objectives.\n  - Constraint Set: Boundaries the agent must respect: budget, time, scope, permissions, safety rails. Constraints narrow the solution space.\n  - Preference Weight: Numeric weights expressing how strongly the user prefers one outcome over another. Used for multi-objective optimization.\n  - Intent Confidence: Score (0\u20131) indicating how certain the system is about its interpretation of user intent. Low scores trigger clarification.\n\nVISUAL GUIDANCE:\n- Title: "Intent Object" in large text, colored #818cf8\n- Stratum badge: "S7 \u00b7 Human Interface" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #818cf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Session Context" construct from the {a}OS reference model.\n\nSTRATUM: S7 \u2014 Human Interface\nACCENT COLOR: #818cf8\nCONSTRUCT: Session Context\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Conversation History: Ordered log of messages between user and agent within a session. Enables context-aware responses and reference resolution.\n  - User Profile: Persistent user attributes (role, expertise, preferences) that personalize agent behavior across sessions.\n  - Decision Log: Audit trail of choices made during the session \u2014 what was selected, rejected, and why. Supports undo and review.\n  - Context Window: The sliding window of tokens currently visible to the model. Managing its size is critical for coherent long interactions.\n\nVISUAL GUIDANCE:\n- Title: "Session Context" in large text, colored #818cf8\n- Stratum badge: "S7 \u00b7 Human Interface" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #818cf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Satisfaction Signal" construct from the {a}OS reference model.\n\nSTRATUM: S7 \u2014 Human Interface\nACCENT COLOR: #818cf8\nCONSTRUCT: Satisfaction Signal\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Thumbs Signal: Explicit binary feedback (\ud83d\udc4d/\ud83d\udc4e) from the user on agent output quality. Simplest form of RLHF signal.\n  - Completion Rate: Percentage of tasks the agent completes without human intervention. High rates indicate effective autonomy.\n  - Retry Count: Number of times the user re-prompts or re-runs a task. High retry counts signal intent misalignment.\n  - Dwell Time: Time the user spends reviewing agent output before accepting or rejecting. Long dwell may indicate confusion.\n\nVISUAL GUIDANCE:\n- Title: "Satisfaction Signal" in large text, colored #818cf8\n- Stratum badge: "S7 \u00b7 Human Interface" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #818cf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Feedback Loop" construct from the {a}OS reference model.\n\nSTRATUM: S7 \u2014 Human Interface\nACCENT COLOR: #818cf8\nCONSTRUCT: Feedback Loop\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Signal Aggregator: Collects and normalizes multiple satisfaction signals into a unified quality score for the feedback loop.\n  - Behavior Adjuster: Component that modifies agent parameters (temperature, tool selection, verbosity) based on aggregated feedback.\n  - Reward Shaper: Transforms raw satisfaction signals into reward values suitable for reinforcement learning or fine-tuning.\n  - Loop Frequency: How often the feedback loop runs \u2014 per-turn, per-session, or per-batch. Determines adaptation speed.\n\nVISUAL GUIDANCE:\n- Title: "Feedback Loop" in large text, colored #818cf8\n- Stratum badge: "S7 \u00b7 Human Interface" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #818cf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Execution Plan" construct from the {a}OS reference model.\n\nSTRATUM: S4 \u2014 Orchestration\nACCENT COLOR: #34d399\nCONSTRUCT: Execution Plan\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Step Graph: DAG of individual steps with edges encoding dependencies. The orchestrator traverses this to execute tasks in order.\n  - Branch Condition: Boolean or score-based condition determining which branch of the plan to follow. Enables dynamic workflows.\n  - Retry Policy: Rules for when and how to retry failed steps: max attempts, backoff strategy, and error classification.\n  - Plan Hash: Content-addressable hash of the execution plan. Used for caching, deduplication, and plan versioning.\n\nVISUAL GUIDANCE:\n- Title: "Execution Plan" in large text, colored #34d399\n- Stratum badge: "S4 \u00b7 Orchestration" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #34d399 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "State Checkpoint" construct from the {a}OS reference model.\n\nSTRATUM: S4 \u2014 Orchestration\nACCENT COLOR: #34d399\nCONSTRUCT: State Checkpoint\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - State Blob: Serialized snapshot of all orchestration state at a point in time. Enables resume-from-checkpoint after failures.\n  - Checkpoint ID: Unique identifier for a saved checkpoint. Used to select which state to resume from.\n  - Restore Function: Callable that deserializes a state blob and reinitializes the orchestrator to continue from that point.\n  - TTL Seconds: Time-to-live for a checkpoint before automatic garbage collection. Balances storage cost vs recoverability.\n\nVISUAL GUIDANCE:\n- Title: "State Checkpoint" in large text, colored #34d399\n- Stratum badge: "S4 \u00b7 Orchestration" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #34d399 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Dependency Graph" construct from the {a}OS reference model.\n\nSTRATUM: S4 \u2014 Orchestration\nACCENT COLOR: #34d399\nCONSTRUCT: Dependency Graph\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Node List: Array of all tasks in the graph. Each node holds its ID, status, and input/output contract.\n  - Edge List: Array of directed edges encoding \'A must complete before B\' relationships between tasks.\n  - Critical Path: Longest chain of dependent tasks determining minimum total execution time. Optimization target for parallelism.\n  - Cycle Detector: Algorithm that verifies the graph is acyclic (DAG). Cycles indicate deadlocks in the execution plan.\n\nVISUAL GUIDANCE:\n- Title: "Dependency Graph" in large text, colored #34d399\n- Stratum badge: "S4 \u00b7 Orchestration" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #34d399 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Timeout Policy" construct from the {a}OS reference model.\n\nSTRATUM: S4 \u2014 Orchestration\nACCENT COLOR: #34d399\nCONSTRUCT: Timeout Policy\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Max Wait (ms): Maximum milliseconds to wait for a step or tool call before triggering timeout handling.\n  - Escalation Target: The agent, human, or fallback system to notify when a timeout occurs. Part of graceful degradation.\n  - Fallback Action: Default action taken on timeout: skip, retry with simpler model, return partial result, or escalate.\n  - Jitter Range: Random delay added to retries to prevent thundering herd. Expressed as a min/max millisecond range.\n\nVISUAL GUIDANCE:\n- Title: "Timeout Policy" in large text, colored #34d399\n- Stratum badge: "S4 \u00b7 Orchestration" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #34d399 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        "Create an infographic for the \"Agent Roster\" construct from the {a}OS reference model.\n\nSTRATUM: S4 \u2014 Orchestration\nACCENT COLOR: #34d399\nCONSTRUCT: Agent Roster\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Agent ID: Unique identifier for each agent in the multi-agent system. Used for routing, logging, and access control.\n  - Capability Tags: Labels describing what an agent can do (e.g., 'code_edit', 'web_search', 'image_gen'). Used for task matching.\n  - Status Enum: Current state of the agent: idle, busy, error, offline. The scheduler checks this before assigning tasks.\n  - Resource Quota: Budget limits for compute, API calls, or tokens allocated to this agent. Prevents runaway costs.\n\nVISUAL GUIDANCE:\n- Title: \"Agent Roster\" in large text, colored #34d399\n- Stratum badge: \"S4 \u00b7 Orchestration\" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #34d399 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text",
+        'Create an infographic for the "Task Assignment" construct from the {a}OS reference model.\n\nSTRATUM: S4 \u2014 Orchestration\nACCENT COLOR: #34d399\nCONSTRUCT: Task Assignment\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Match Score: Numeric score indicating how well an agent\'s capabilities align with a task\'s requirements.\n  - Priority Level: Task urgency ranking (critical/high/medium/low) that influences scheduling order.\n  - Load Factor: Current utilization of an agent relative to its capacity. High load triggers rebalancing or queueing.\n  - Assignment Log: Audit trail of which agent received which task, when, and why. Essential for debugging multi-agent issues.\n\nVISUAL GUIDANCE:\n- Title: "Task Assignment" in large text, colored #34d399\n- Stratum badge: "S4 \u00b7 Orchestration" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #34d399 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Message Channel" construct from the {a}OS reference model.\n\nSTRATUM: S4 \u2014 Orchestration\nACCENT COLOR: #34d399\nCONSTRUCT: Message Channel\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Channel ID: Unique identifier for a communication channel between agents. Supports point-to-point and pub/sub patterns.\n  - Message Envelope: Wrapper around message payload containing metadata: sender, timestamp, correlation ID, content type.\n  - Delivery Guarantee: Reliability level: at-most-once, at-least-once, or exactly-once. Trade-off between performance and correctness.\n  - Subscriber List: List of agents subscribed to a channel. Used for fan-out delivery in pub/sub messaging patterns.\n\nVISUAL GUIDANCE:\n- Title: "Message Channel" in large text, colored #34d399\n- Stratum badge: "S4 \u00b7 Orchestration" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #34d399 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Delegation Policy" construct from the {a}OS reference model.\n\nSTRATUM: S4 \u2014 Orchestration\nACCENT COLOR: #34d399\nCONSTRUCT: Delegation Policy\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Delegation Trigger: Condition that causes an agent to delegate a subtask: complexity threshold, capability gap, or explicit rule.\n  - Approval Gate: Optional human-in-the-loop checkpoint before delegation executes. Prevents uncontrolled task chains.\n  - Max Depth: Maximum delegation nesting level. Prevents infinite delegation chains (agent A \u2192 B \u2192 C \u2192 ...).\n  - Escalation Path: Ordered list of fallback agents or humans to try when delegation fails or times out.\n\nVISUAL GUIDANCE:\n- Title: "Delegation Policy" in large text, colored #34d399\n- Stratum badge: "S4 \u00b7 Orchestration" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #34d399 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Tool Manifest" construct from the {a}OS reference model.\n\nSTRATUM: S3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Tool Manifest\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Tool ID: Unique identifier for a registered tool. The model references this when choosing which tool to call.\n  - JSON Schema: Formal schema defining the tool\'s input parameters and their types. The model uses this for argument generation.\n  - Auth Type: Authentication method required to call the tool: API key, OAuth, bearer token, or none.\n  - Rate Limit: Maximum calls per time window to prevent abuse and manage costs. Enforced by the tool runtime.\n\nVISUAL GUIDANCE:\n- Title: "Tool Manifest" in large text, colored #38bdf8\n- Stratum badge: "S3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "API Binding" construct from the {a}OS reference model.\n\nSTRATUM: S3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: API Binding\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Endpoint URL: The concrete HTTP endpoint the tool call is routed to at runtime. May vary by environment.\n  - Request Template: Template for constructing the HTTP request: method, headers, body format. Populated with tool call arguments.\n  - Response Parser: Logic that extracts structured data from the API response and transforms it into agent-readable format.\n  - Error Handler: Strategy for handling API errors: retry, fallback, or surface to user. Includes status code mapping.\n\nVISUAL GUIDANCE:\n- Title: "API Binding" in large text, colored #38bdf8\n- Stratum badge: "S3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Capability Schema" construct from the {a}OS reference model.\n\nSTRATUM: S3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Capability Schema\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Capability ID: Unique identifier for a capability the tool provides. Used by the planner to match tasks to tools.\n  - Input Schema: JSON Schema defining what the tool expects as input. The model validates arguments against this.\n  - Output Schema: JSON Schema defining what the tool returns. Enables type-safe chaining of tool outputs to next steps.\n  - Side Effects: Declaration of external state changes the tool causes (file write, API mutation, DB update). Critical for safety.\n\nVISUAL GUIDANCE:\n- Title: "Capability Schema" in large text, colored #38bdf8\n- Stratum badge: "S3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Search Index" construct from the {a}OS reference model.\n\nSTRATUM: S2 \u2014 Knowledge & Retrieval\nACCENT COLOR: #a78bfa\nCONSTRUCT: Search Index\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Index Type: The index algorithm: vector (HNSW, IVF), keyword (BM25), or hybrid. Determines retrieval characteristics.\n  - Embedding Dim: Dimensionality of the embedding vectors stored in the index. Must match the embedding model\'s output size.\n  - Doc Count: Total number of documents (or chunks) indexed. Affects search latency and memory requirements.\n  - Refresh Interval: How often the index rebuilds or syncs with source documents. Trade-off between freshness and compute cost.\n\nVISUAL GUIDANCE:\n- Title: "Search Index" in large text, colored #a78bfa\n- Stratum badge: "S2 \u00b7 Knowledge & Retrieval" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #a78bfa accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Chunk Collection" construct from the {a}OS reference model.\n\nSTRATUM: S2 \u2014 Knowledge & Retrieval\nACCENT COLOR: #a78bfa\nCONSTRUCT: Chunk Collection\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Chunk ID: Unique identifier for a document chunk. Used for retrieval, citation, and deduplication.\n  - Source Doc: Reference to the original document this chunk was extracted from. Preserves provenance chain.\n  - Token Count: Number of tokens in the chunk. Used for context window budgeting when assembling retrieval results.\n  - Embedding Vector: Dense vector representation of the chunk\'s semantic content. Used for similarity search in the index.\n\nVISUAL GUIDANCE:\n- Title: "Chunk Collection" in large text, colored #a78bfa\n- Stratum badge: "S2 \u00b7 Knowledge & Retrieval" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #a78bfa accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Relevance Score" construct from the {a}OS reference model.\n\nSTRATUM: S2 \u2014 Knowledge & Retrieval\nACCENT COLOR: #a78bfa\nCONSTRUCT: Relevance Score\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Cosine Similarity: Similarity metric between query and document embeddings. Core signal for semantic search ranking.\n  - BM25 Score: Classic term-frequency keyword relevance score. Complements vector search for exact-match queries.\n  - Recency Boost: Score multiplier favoring recently updated documents. Prevents stale content from dominating results.\n  - Combined Rank: Final ranking after fusing vector, keyword, and recency scores. Typically via reciprocal rank fusion.\n\nVISUAL GUIDANCE:\n- Title: "Relevance Score" in large text, colored #a78bfa\n- Stratum badge: "S2 \u00b7 Knowledge & Retrieval" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #a78bfa accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Rerank Pipeline" construct from the {a}OS reference model.\n\nSTRATUM: S2 \u2014 Knowledge & Retrieval\nACCENT COLOR: #a78bfa\nCONSTRUCT: Rerank Pipeline\nPRIMITIVE COUNT: 8\n\nPRIMITIVES (show each as a card/node):\n  - Reranker Model: Cross-encoder model that scores query-document pairs more accurately than bi-encoder retrieval.\n  - Top K: Number of top results to keep after reranking. Balances quality against context window budget.\n  - Score Threshold: Minimum relevance score to include a result. Filters out low-quality matches before injection.\n  - Latency Budget (ms): Maximum milliseconds allowed for the reranking step. Enforces latency SLA trade-offs.\n  - Rule ID: Unique identifier for a policy rule. Used for version tracking, audit references, and override targeting.\n  - Rule Expression: The actual policy logic \u2014 a boolean expression in Rego, CEL, or JSON that evaluates to allow/deny.\n  - Enforcement Mode: Whether the rule blocks (enforce), warns (audit), or just logs (monitor). Allows gradual rollout of new policies.\n  - Scope Selector: Pattern or filter that limits which agents, resources, or environments a policy applies to.\n\nVISUAL GUIDANCE:\n- Title: "Rerank Pipeline" in large text, colored #a78bfa\n- Stratum badge: "S2 \u00b7 Knowledge & Retrieval" top-left\n- Show all 8 primitives as connected cards on dark (#0a0a0f) background\n- Use #a78bfa accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Policy Evaluation" construct from the {a}OS reference model.\n\nSTRATUM: S6 \u2014 Governance\nACCENT COLOR: #fb7185\nCONSTRUCT: Policy Evaluation\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Eval Request: The input bundle sent to the policy engine: agent identity, intended action, resource target, and context.\n  - Decision Result: The allow/deny verdict from the policy engine, with optional explanations and matched rule references.\n  - Eval Latency: Time taken for a single policy evaluation. Must stay within budget to avoid blocking agent actions.\n  - Violation Detail: Structured record of exactly which rule was violated, what the expected vs actual values were, and remediation steps.\n\nVISUAL GUIDANCE:\n- Title: "Policy Evaluation" in large text, colored #fb7185\n- Stratum badge: "S6 \u00b7 Governance" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fb7185 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Guardrail Config" construct from the {a}OS reference model.\n\nSTRATUM: S6 \u2014 Governance\nACCENT COLOR: #fb7185\nCONSTRUCT: Guardrail Config\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Guardrail ID: Named identifier for a guardrail set (e.g., \'financial-safety-v2\'). Versioned and environment-scoped.\n  - Policy Bundle: Collection of policy rules grouped into a deployable unit. Bundling enables atomic policy updates.\n  - Fallback Action: Default behavior when a guardrail can\'t evaluate (engine timeout, missing data): block, allow-with-log, or degrade.\n  - Activation Trigger: Condition that activates or deactivates a guardrail: time-based, feature-flag, or event-driven.\n\nVISUAL GUIDANCE:\n- Title: "Guardrail Config" in large text, colored #fb7185\n- Stratum badge: "S6 \u00b7 Governance" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fb7185 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Auth Token" construct from the {a}OS reference model.\n\nSTRATUM: S6 \u2014 Governance\nACCENT COLOR: #fb7185\nCONSTRUCT: Auth Token\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Token Value: The actual secret string (JWT, API key, bearer token). Must never be logged, stored in plaintext, or transmitted without TLS.\n  - Token Issuer: The identity provider or authority that minted the token. Verified by consumers to establish trust.\n  - Token Scope: The permissions encoded in the token: which APIs, actions, and resources it grants access to.\n  - Expiry Epoch: Unix timestamp when the token becomes invalid. The fundamental time-limit on credential validity.\n\nVISUAL GUIDANCE:\n- Title: "Auth Token" in large text, colored #fb7185\n- Stratum badge: "S6 \u00b7 Governance" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fb7185 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        "Create an infographic for the \"Role Binding\" construct from the {a}OS reference model.\n\nSTRATUM: S6 \u2014 Governance\nACCENT COLOR: #fb7185\nCONSTRUCT: Role Binding\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Principal ID: Unique identifier of the entity (user, agent, service account) being granted a role.\n  - Role Name: Human-readable label for the role (e.g., 'code-reviewer', 'data-reader', 'admin'). Maps to a permission set.\n  - Resource Scope: The set of resources (APIs, data stores, tools) a role binding grants access to.\n  - Inherited From: Reference to the parent binding this role was inherited from (e.g., org-level admin cascading to projects).\n\nVISUAL GUIDANCE:\n- Title: \"Role Binding\" in large text, colored #fb7185\n- Stratum badge: \"S6 \u00b7 Governance\" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fb7185 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text",
+        'Create an infographic for the "Credential Vault" construct from the {a}OS reference model.\n\nSTRATUM: S6 \u2014 Governance\nACCENT COLOR: #fb7185\nCONSTRUCT: Credential Vault\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Secret ID: Logical name for a secret stored in the vault (e.g., \'openai-api-key-prod\'). Agents reference this, never raw values.\n  - Encryption Algorithm: The algorithm used to encrypt secrets at rest (AES-256-GCM, ChaCha20). Must meet compliance requirements.\n  - Rotation Interval: How often a secret is automatically rotated (e.g., every 90 days). Limits blast radius of leaked credentials.\n  - Access Log Ref: Pointer to the audit log recording who accessed which secret and when. Critical for breach investigation.\n\nVISUAL GUIDANCE:\n- Title: "Credential Vault" in large text, colored #fb7185\n- Stratum badge: "S6 \u00b7 Governance" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fb7185 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Permission Scope" construct from the {a}OS reference model.\n\nSTRATUM: S6 \u2014 Governance\nACCENT COLOR: #fb7185\nCONSTRUCT: Permission Scope\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Scope Pattern: Glob, regex, or path expression defining which resources fall within this permission scope.\n  - Allowed Actions: Explicit list of actions (read, write, delete, execute) permitted within this scope.\n  - Denied Actions: Explicit list of actions blocked even if other rules allow them. Deny always wins over allow.\n  - Condition Expression: Runtime condition (time of day, IP range, MFA status) that must be true for the permission to apply.\n\nVISUAL GUIDANCE:\n- Title: "Permission Scope" in large text, colored #fb7185\n- Stratum badge: "S6 \u00b7 Governance" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fb7185 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        "Create an infographic for the \"Audit Entry\" construct from the {a}OS reference model.\n\nSTRATUM: S6 \u2014 Governance\nACCENT COLOR: #fb7185\nCONSTRUCT: Audit Entry\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Entry ID: Globally unique, immutable identifier for an audit log record. Must be tamper-evident.\n  - Actor ID: The principal (user, agent, service) that performed the audited action. Links to identity systems.\n  - Action Type: The verb describing what happened: 'create', 'read', 'update', 'delete', 'execute', 'approve'.\n  - Resource URN: Uniform resource name identifying the target of the action. Enables resource-centric audit queries.\n\nVISUAL GUIDANCE:\n- Title: \"Audit Entry\" in large text, colored #fb7185\n- Stratum badge: \"S6 \u00b7 Governance\" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fb7185 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text",
+        "Create an infographic for the \"Compliance Check\" construct from the {a}OS reference model.\n\nSTRATUM: S6 \u2014 Governance\nACCENT COLOR: #fb7185\nCONSTRUCT: Compliance Check\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Check ID: Identifier linking to a specific compliance requirement (e.g., 'SOC2-CC6.1', 'GDPR-Art17').\n  - Regulation Reference: Formal citation to the regulatory requirement being checked (e.g., 'GDPR Article 17: Right to Erasure').\n  - Pass/Fail: Binary result of the check: 'pass' (compliant) or 'fail' (non-compliant). May include 'not-applicable'.\n  - Remediation Hint: Actionable instructions for fixing a failed compliance check. Ideally includes code/config snippets.\n\nVISUAL GUIDANCE:\n- Title: \"Compliance Check\" in large text, colored #fb7185\n- Stratum badge: \"S6 \u00b7 Governance\" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fb7185 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text",
+        'Create an infographic for the "Retention Policy" construct from the {a}OS reference model.\n\nSTRATUM: S6 \u2014 Governance\nACCENT COLOR: #fb7185\nCONSTRUCT: Retention Policy\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Data Class: Classification of data (PII, financial, operational, public) that determines retention requirements.\n  - Retention Days: Number of days data must be retained before eligible for deletion. Varies by data class and regulation.\n  - Archive Target: Destination for data that\'s past active retention but must be preserved (cold storage, glacier, tape).\n  - Deletion Method: How data is destroyed: soft delete, hard delete, crypto-shred, or physical destruction.\n\nVISUAL GUIDANCE:\n- Title: "Retention Policy" in large text, colored #fb7185\n- Stratum badge: "S6 \u00b7 Governance" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fb7185 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Evidence Chain" construct from the {a}OS reference model.\n\nSTRATUM: S6 \u2014 Governance\nACCENT COLOR: #fb7185\nCONSTRUCT: Evidence Chain\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Chain ID: Identifier for a linked sequence of audit entries proving a complete decision trail.\n  - Linked Entries: Array of audit entry_ids composing this evidence chain, in chronological order.\n  - Hash Digest: Cryptographic hash of the chain contents. Changing any entry changes the hash, proving tamper evidence.\n  - Verifier Signature: Digital signature from an authorized verifier attesting that the evidence chain is complete and unmodified.\n\nVISUAL GUIDANCE:\n- Title: "Evidence Chain" in large text, colored #fb7185\n- Stratum badge: "S6 \u00b7 Governance" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fb7185 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Content Filter" construct from the {a}OS reference model.\n\nSTRATUM: S6 \u2014 Governance\nACCENT COLOR: #fb7185\nCONSTRUCT: Content Filter\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Filter ID: Identifier for a content filter configuration. Multiple filters may apply in sequence.\n  - Taxonomy Version: Version of the content safety taxonomy being used (harm categories, severity levels, definitions).\n  - Action on Match: What happens when content matches a filter: block, flag-for-review, redact, or log-only.\n  - Confidence Threshold: Minimum classifier confidence score (0.0\u20131.0) to trigger the filter action. Balances precision vs recall.\n\nVISUAL GUIDANCE:\n- Title: "Content Filter" in large text, colored #fb7185\n- Stratum badge: "S6 \u00b7 Governance" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fb7185 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Toxicity Scorer" construct from the {a}OS reference model.\n\nSTRATUM: S6 \u2014 Governance\nACCENT COLOR: #fb7185\nCONSTRUCT: Toxicity Scorer\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Scorer Model: The ML model used for toxicity classification (e.g., Perspective API, LlamaGuard, custom fine-tuned).\n  - Dimension Scores: Per-dimension toxicity scores (hate, threat, sexual, self-harm, violence). Enables nuanced response.\n  - Aggregate Score: Combined toxicity score summarizing all dimensions into a single value for quick filtering.\n  - Threshold Config: Per-dimension and aggregate threshold settings that determine when to trigger safety actions.\n\nVISUAL GUIDANCE:\n- Title: "Toxicity Scorer" in large text, colored #fb7185\n- Stratum badge: "S6 \u00b7 Governance" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fb7185 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "PII Redactor" construct from the {a}OS reference model.\n\nSTRATUM: S6 \u2014 Governance\nACCENT COLOR: #fb7185\nCONSTRUCT: PII Redactor\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Entity Types: The PII categories the redactor detects: names, emails, SSNs, phone numbers, addresses, etc.\n  - Redaction Method: How detected PII is masked: replace with placeholder, hash, encrypt, or remove entirely.\n  - Confidence Floor: Minimum NER confidence to redact a detected entity. Below this, flag for human review instead of auto-redacting.\n  - Allowlist: List of known safe values that should NOT be redacted even if they match PII patterns (company names, public figures).\n\nVISUAL GUIDANCE:\n- Title: "PII Redactor" in large text, colored #fb7185\n- Stratum badge: "S6 \u00b7 Governance" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fb7185 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        "Create an infographic for the \"Safety Boundary\" construct from the {a}OS reference model.\n\nSTRATUM: S6 \u2014 Governance\nACCENT COLOR: #fb7185\nCONSTRUCT: Safety Boundary\nPRIMITIVE COUNT: 8\n\nPRIMITIVES (show each as a card/node):\n  - Boundary Type: Category of safety limit: financial (max spend), destructive (no-delete zones), PII (exposure cap), or operational (rate).\n  - Risk Category: Severity classification of the risk being bounded: critical, high, medium, low. Determines response urgency.\n  - Block Action: The enforcement action when a boundary is crossed: reject request, kill process, freeze account, or degrade gracefully.\n  - Escalation Target: The person, team, or automated system notified when a safety boundary is breached.\n  - Span ID: Unique identifier for a single operation span within a distributed trace. Enables parent\u2192child span correlation.\n  - Parent Span ID: Reference to the parent span that spawned this operation. Null for root spans.\n  - Operation Name: Human-readable label for the operation: 'llm.chat.completion', 'tool.web_search', 'agent.delegation'.\n  - Duration (ms): Wall-clock time for the operation in milliseconds. The primary signal for latency analysis and SLO tracking.\n\nVISUAL GUIDANCE:\n- Title: \"Safety Boundary\" in large text, colored #fb7185\n- Stratum badge: \"S6 \u00b7 Governance\" top-left\n- Show all 8 primitives as connected cards on dark (#0a0a0f) background\n- Use #fb7185 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text",
+        'Create an infographic for the "Log Entry" construct from the {a}OS reference model.\n\nSTRATUM: S5 \u2014 Observability\nACCENT COLOR: #fbbf24\nCONSTRUCT: Log Entry\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Log Level: Severity classification: DEBUG, INFO, WARN, ERROR, FATAL. Controls log volume and alerting rules.\n  - Message Template: Parameterized log message format with placeholders for structured data (e.g., \'Agent {agent_id} completed {tool} in {ms}ms\').\n  - Context Tags: Key-value metadata attached to a log entry: session_id, agent_id, user_id, environment, etc.\n  - Correlation ID: Shared identifier linking all log entries from a single user request or agent workflow across services.\n\nVISUAL GUIDANCE:\n- Title: "Log Entry" in large text, colored #fbbf24\n- Stratum badge: "S5 \u00b7 Observability" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fbbf24 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Token Ledger" construct from the {a}OS reference model.\n\nSTRATUM: S5 \u2014 Observability\nACCENT COLOR: #fbbf24\nCONSTRUCT: Token Ledger\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Model ID: Identifier of the model that consumed the tokens (e.g., \'gpt-4o\', \'claude-sonnet-4-20250514\'). Key for cost attribution.\n  - Prompt Tokens: Count of tokens in the input (system prompt + user message + context). Typically 80%+ of token spend.\n  - Completion Tokens: Count of tokens in the model\'s response. Usually smaller than prompt tokens but more expensive per-token.\n  - Cost (USD): Dollar cost of this token transaction: (prompt_tokens \u00d7 input_rate + completion_tokens \u00d7 output_rate).\n\nVISUAL GUIDANCE:\n- Title: "Token Ledger" in large text, colored #fbbf24\n- Stratum badge: "S5 \u00b7 Observability" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fbbf24 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Latency Histogram" construct from the {a}OS reference model.\n\nSTRATUM: S5 \u2014 Observability\nACCENT COLOR: #fbbf24\nCONSTRUCT: Latency Histogram\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Bucket Bounds (ms): Array of millisecond boundaries defining histogram buckets (e.g., [10, 50, 100, 500, 1000, 5000]).\n  - Sample Count: Total number of observations in the histogram window. Needed for percentile calculation accuracy.\n  - P99 Latency (ms): The 99th percentile latency \u2014 99% of requests complete within this time. The gold standard SLO metric.\n  - SLO Target (ms): The latency commitment: \'p99 < 5000ms for 99.9% of 28-day windows\'. The contract with your users.\n\nVISUAL GUIDANCE:\n- Title: "Latency Histogram" in large text, colored #fbbf24\n- Stratum badge: "S5 \u00b7 Observability" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fbbf24 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Eval Suite" construct from the {a}OS reference model.\n\nSTRATUM: S5 \u2014 Observability\nACCENT COLOR: #fbbf24\nCONSTRUCT: Eval Suite\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Suite ID: Identifier for an evaluation suite (e.g., \'qa-accuracy-v3\', \'safety-check-prod\'). Enables tracking over time.\n  - Test Count: Number of test cases in the suite. Affects statistical significance and runtime.\n  - Pass Rate: Percentage of test cases that pass their scoring criteria. The headline metric for eval quality.\n  - Last Run Timestamp: When the suite was last executed. Stale evals are dangerous \u2014 models and data change.\n\nVISUAL GUIDANCE:\n- Title: "Eval Suite" in large text, colored #fbbf24\n- Stratum badge: "S5 \u00b7 Observability" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fbbf24 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Test Case" construct from the {a}OS reference model.\n\nSTRATUM: S5 \u2014 Observability\nACCENT COLOR: #fbbf24\nCONSTRUCT: Test Case\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Case ID: Unique identifier for a test case within a suite. Enables per-case result tracking and regression detection.\n  - Input Prompt: The exact prompt or conversation sent to the model for this test case. The \'question\' of the eval.\n  - Expected Output: The reference answer or pattern the model output must match or approximate. Ground truth for scoring.\n  - Scoring Function: The function that evaluates model output against expected output and returns a score (0\u20131 or pass/fail).\n\nVISUAL GUIDANCE:\n- Title: "Test Case" in large text, colored #fbbf24\n- Stratum badge: "S5 \u00b7 Observability" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fbbf24 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Judge Prompt" construct from the {a}OS reference model.\n\nSTRATUM: S5 \u2014 Observability\nACCENT COLOR: #fbbf24\nCONSTRUCT: Judge Prompt\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Judge Model: The LLM used as an evaluator to score other model outputs. Should be at least as capable as the model being tested.\n  - Rubric Dimensions: The criteria the judge evaluates: accuracy, helpfulness, safety, format compliance, reasoning quality.\n  - Score Scale: The numerical scale for judge scores: binary (0/1), Likert (1\u20135), or continuous (0.0\u20131.0).\n  - Calibration Examples: Few-shot examples in the judge prompt showing input/output/score to calibrate judge behavior.\n\nVISUAL GUIDANCE:\n- Title: "Judge Prompt" in large text, colored #fbbf24\n- Stratum badge: "S5 \u00b7 Observability" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fbbf24 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Score Aggregator" construct from the {a}OS reference model.\n\nSTRATUM: S5 \u2014 Observability\nACCENT COLOR: #fbbf24\nCONSTRUCT: Score Aggregator\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Aggregation Function: Method for combining per-case scores into suite-level metric: mean, weighted-mean, min-of, or percentile.\n  - Dimension Weights: Relative importance of each rubric dimension in the final score. Safety might weight 3x more than verbosity.\n  - Final Score: The single composite quality score for an eval run. The number that gates deployments.\n  - Confidence Interval: Statistical range around the final score (e.g., 0.85 \u00b1 0.03 at 95% CI). Accounts for eval noise.\n\nVISUAL GUIDANCE:\n- Title: "Score Aggregator" in large text, colored #fbbf24\n- Stratum badge: "S5 \u00b7 Observability" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fbbf24 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Drift Detector" construct from the {a}OS reference model.\n\nSTRATUM: S5 \u2014 Observability\nACCENT COLOR: #fbbf24\nCONSTRUCT: Drift Detector\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Baseline Snapshot: Statistical profile of \'normal\' model behavior (output distributions, token patterns, latency profiles) captured at a known-good state.\n  - Current Window: Rolling time window of recent model behavior being compared against the baseline (e.g., last 24h of outputs).\n  - Drift Metric: Statistical measure of distribution divergence: KL divergence, JS divergence, PSI, or cosine distance.\n  - Alert Threshold: The drift metric value above which an alert fires. Separates normal variance from genuine distribution shift.\n\nVISUAL GUIDANCE:\n- Title: "Drift Detector" in large text, colored #fbbf24\n- Stratum badge: "S5 \u00b7 Observability" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fbbf24 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        "Create an infographic for the \"Anomaly Alert\" construct from the {a}OS reference model.\n\nSTRATUM: S5 \u2014 Observability\nACCENT COLOR: #fbbf24\nCONSTRUCT: Anomaly Alert\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Alert ID: Unique identifier for a fired alert. Links to the investigation, response actions, and resolution.\n  - Metric Name: The specific metric that triggered the alert (e.g., 'latency_p99', 'error_rate', 'drift_psi').\n  - Observed Value: The actual metric value that crossed the threshold and triggered the alert.\n  - Routing Channel: Where the alert is sent: PagerDuty, Slack channel, email group, or automated remediation pipeline.\n\nVISUAL GUIDANCE:\n- Title: \"Anomaly Alert\" in large text, colored #fbbf24\n- Stratum badge: \"S5 \u00b7 Observability\" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fbbf24 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text",
+        'Create an infographic for the "SLO Monitor" construct from the {a}OS reference model.\n\nSTRATUM: S5 \u2014 Observability\nACCENT COLOR: #fbbf24\nCONSTRUCT: SLO Monitor\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - SLO Name: Human-readable identifier for the Service Level Objective (e.g., \'agent-response-latency-p99\').\n  - Target Percentage: The availability/quality target: 99.9% of requests must complete within latency budget. The \'nines\'.\n  - Current Percentage: Real-time compliance percentage over the rolling window. The live score compared against target.\n  - Error Budget Remaining: How much of the allowed failure budget is left in the current window. When it hits 0, freeze deployments.\n\nVISUAL GUIDANCE:\n- Title: "SLO Monitor" in large text, colored #fbbf24\n- Stratum badge: "S5 \u00b7 Observability" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #fbbf24 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Cost Tracker" construct from the {a}OS reference model.\n\nSTRATUM: S5 \u2014 Observability\nACCENT COLOR: #fbbf24\nCONSTRUCT: Cost Tracker\nPRIMITIVE COUNT: 8\n\nPRIMITIVES (show each as a card/node):\n  - Session Cost (USD): Total dollar cost of a single agent session: sum of all LLM calls, tool invocations, and compute time.\n  - Daily Budget (USD): Maximum allowed spend per day across all agent activity. Hard cap to prevent runaway costs.\n  - Burn Rate: Current spend velocity ($/hour). If burn rate \u00d7 remaining hours > budget, action needed.\n  - Cost Alert Threshold: Percentage of budget that triggers alerts (e.g., 80% = warning, 100% = block). Multi-tier for graduated response.\n  - Runtime Type: The sandbox execution engine: Docker container, Firecracker microVM, gVisor, or WASM isolate.\n  - Isolation Level: Degree of separation: process-level, container-level, VM-level. Determines what the code can access.\n  - Timeout (sec): Maximum wall-clock time before the sandbox is forcibly terminated. Prevents infinite loops and resource abuse.\n  - Resource Quota: CPU, memory, disk, and network limits enforced on the sandbox. Prevents resource exhaustion attacks.\n\nVISUAL GUIDANCE:\n- Title: "Cost Tracker" in large text, colored #fbbf24\n- Stratum badge: "S5 \u00b7 Observability" top-left\n- Show all 8 primitives as connected cards on dark (#0a0a0f) background\n- Use #fbbf24 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        "Create an infographic for the \"Interpreter Session\" construct from the {a}OS reference model.\n\nSTRATUM: S3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Interpreter Session\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Session ID: Unique identifier for a REPL/interpreter session. Enables state persistence across multiple code executions.\n  - Language Runtime: The programming language and version: 'python:3.12', 'node:20', 'bash:5'. Determines available libraries.\n  - Variable State: The in-memory variable namespace: all variables, functions, and imports persisted across executions in this session.\n  - History Length: Number of previous execution cells/commands retained in session history. Enables replay and context.\n\nVISUAL GUIDANCE:\n- Title: \"Interpreter Session\" in large text, colored #38bdf8\n- Stratum badge: \"S3 \u00b7 Capabilities\" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text",
+        'Create an infographic for the "Execution Result" construct from the {a}OS reference model.\n\nSTRATUM: S3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Execution Result\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Exit Code: Process return code: 0 = success, non-zero = error. The universal signal for execution outcome.\n  - Stdout Content: Standard output captured from the execution. The primary output channel for results and data.\n  - Stderr Content: Standard error captured from the execution. Contains error messages, warnings, and diagnostic output.\n  - Artifact References: Paths or URIs to files generated during execution: plots, CSVs, model checkpoints, reports.\n\nVISUAL GUIDANCE:\n- Title: "Execution Result" in large text, colored #38bdf8\n- Stratum badge: "S3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Resource Limit" construct from the {a}OS reference model.\n\nSTRATUM: S3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Resource Limit\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - CPU Limit: Maximum CPU allocation in cores or millicores. Prevents compute-hungry code from starving other workloads.\n  - Memory Limit (MB): Maximum RAM in megabytes. Exceeding triggers OOM killer (exit code 137).\n  - Disk Limit (MB): Maximum disk space the sandboxed process can use. Prevents write bombs and disk exhaustion.\n  - Network Allowed: Boolean or allowlist controlling network access from sandbox. Default deny prevents data exfiltration.\n\nVISUAL GUIDANCE:\n- Title: "Resource Limit" in large text, colored #38bdf8\n- Stratum badge: "S3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "API Connector" construct from the {a}OS reference model.\n\nSTRATUM: S3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: API Connector\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Base URL: Root endpoint for the external API (e.g., \'https://api.example.com/v2\'). All paths are relative to this.\n  - Auth Method: Authentication type: API key, OAuth2, Bearer token, mTLS. Determines how credentials are sent.\n  - Default Headers: HTTP headers automatically added to every request: Content-Type, Authorization, User-Agent, correlation IDs.\n  - Retry Config: Retry policy for failed requests: max attempts, backoff strategy (exponential with jitter), retryable status codes.\n\nVISUAL GUIDANCE:\n- Title: "API Connector" in large text, colored #38bdf8\n- Stratum badge: "S3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        "Create an infographic for the \"Webhook Emitter\" construct from the {a}OS reference model.\n\nSTRATUM: S3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Webhook Emitter\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Webhook URL: The destination endpoint that receives event notifications via HTTP POST.\n  - Event Type: Classification of the event: 'agent.completed', 'tool.failed', 'session.created'. Enables filtering.\n  - Payload Template: JSON template defining the webhook body structure with variable placeholders for event data.\n  - Delivery Status: Current state of the webhook delivery: pending, delivered (2xx), failed, retrying, dead-lettered.\n\nVISUAL GUIDANCE:\n- Title: \"Webhook Emitter\" in large text, colored #38bdf8\n- Stratum badge: \"S3 \u00b7 Capabilities\" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text",
+        'Create an infographic for the "Rate Limiter" construct from the {a}OS reference model.\n\nSTRATUM: S3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Rate Limiter\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Limit Window: Time window for rate counting: 1 second, 1 minute, 1 hour. Determines burst vs sustained rate limits.\n  - Max Requests: Maximum number of requests allowed within the limit window. The \'quota\' per time period.\n  - Current Usage: Number of requests consumed in the current window. Returned in response headers for client awareness.\n  - Backoff Strategy: Client behavior when rate limited (HTTP 429): exponential backoff with jitter, respecting Retry-After header.\n\nVISUAL GUIDANCE:\n- Title: "Rate Limiter" in large text, colored #38bdf8\n- Stratum badge: "S3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Response Cache" construct from the {a}OS reference model.\n\nSTRATUM: S3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Response Cache\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Cache Key Pattern: Template for generating cache keys from request parameters: \'{method}:{path}:{hash(body)}\'.\n  - TTL (seconds): Time-to-live before a cached response expires and must be re-fetched. Balances freshness vs performance.\n  - Hit Rate (%): Percentage of requests served from cache vs origin. The key performance indicator for caching effectiveness.\n  - Eviction Policy: Algorithm for removing cached entries when cache is full: LRU, LFU, random, or size-based.\n\nVISUAL GUIDANCE:\n- Title: "Response Cache" in large text, colored #38bdf8\n- Stratum badge: "S3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Browser Session" construct from the {a}OS reference model.\n\nSTRATUM: S3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Browser Session\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Browser Type: The browser engine used: Chromium, Firefox, or WebKit. Affects rendering and JavaScript behavior.\n  - Viewport Size: Browser window dimensions (width \u00d7 height in pixels). Affects layout, responsive behavior, and screenshots.\n  - Cookie Jar: The session\'s cookie storage: authentication cookies, consent states, preferences. Persists across page navigations.\n  - Proxy Config: HTTP proxy settings for routing browser traffic through an intermediary (for testing, monitoring, or geo-spoofing).\n\nVISUAL GUIDANCE:\n- Title: "Browser Session" in large text, colored #38bdf8\n- Stratum badge: "S3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Page Action" construct from the {a}OS reference model.\n\nSTRATUM: S3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Page Action\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Action Type: The browser action to perform: click, fill, select, scroll, navigate, wait, hover, drag.\n  - Target Selector: CSS or XPath selector, or accessibility role/label identifying the target element for the action.\n  - Input Value: The data to enter for fill/type actions: text, numbers, file paths. Can include special keys (Enter, Tab).\n  - Wait Condition: What to wait for before proceeding: element visible, network idle, navigation complete, or custom predicate.\n\nVISUAL GUIDANCE:\n- Title: "Page Action" in large text, colored #38bdf8\n- Stratum badge: "S3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        "Create an infographic for the \"Element Selector\" construct from the {a}OS reference model.\n\nSTRATUM: S3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Element Selector\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Selector Type: The strategy for locating elements: CSS, XPath, role, text, test-id, or accessibility label.\n  - Selector Value: The actual selector string: 'data-testid=submit-btn', 'role=button[name=Submit]', '#main > .form button'.\n  - Fallback Selector: Alternative selector to try if the primary fails. Provides resilience against minor DOM changes.\n  - Visibility Check: Whether the element must be visible (not just present in DOM) before interaction. Prevents clicking hidden elements.\n\nVISUAL GUIDANCE:\n- Title: \"Element Selector\" in large text, colored #38bdf8\n- Stratum badge: \"S3 \u00b7 Capabilities\" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text",
+        'Create an infographic for the "Screenshot Capture" construct from the {a}OS reference model.\n\nSTRATUM: S3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Screenshot Capture\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Capture Format: Image format for screenshots: PNG (lossless), JPEG (smaller), or WebP (best compression).\n  - Viewport Clip: Rectangular area to capture: {x, y, width, height}. Enables focused screenshots of specific page regions.\n  - Full Page Flag: Whether to capture the entire scrollable page or just the visible viewport. True captures below the fold.\n  - Storage Path: File system path or URL where the screenshot is saved for later comparison or review.\n\nVISUAL GUIDANCE:\n- Title: "Screenshot Capture" in large text, colored #38bdf8\n- Stratum badge: "S3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "File Handle" construct from the {a}OS reference model.\n\nSTRATUM: S3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: File Handle\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - File Path: Absolute or relative path to the file being accessed. The address of the file in the filesystem.\n  - Open Mode: File access mode: read (r), write (w), append (a), read-write (r+). Determines permissions and behavior.\n  - Encoding Type: Character encoding for text files: UTF-8 (default), ASCII, Latin-1, or binary mode.\n  - Current Position: Byte offset of the read/write cursor in the file. Enables seeking, resuming, and partial reads.\n\nVISUAL GUIDANCE:\n- Title: "File Handle" in large text, colored #38bdf8\n- Stratum badge: "S3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Shell Command" construct from the {a}OS reference model.\n\nSTRATUM: S3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Shell Command\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Command String: The shell command to execute. Must be sanitized to prevent command injection attacks.\n  - Working Directory: The directory context (cwd) for command execution. Affects relative path resolution and file access.\n  - Environment Variables: Key-value pairs passed to the subprocess environment. Used for configuration, secrets, and feature flags.\n  - Timeout (sec): Maximum execution time before the subprocess is killed. Prevents hanging commands from blocking the pipeline.\n\nVISUAL GUIDANCE:\n- Title: "Shell Command" in large text, colored #38bdf8\n- Stratum badge: "S3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Directory Walker" construct from the {a}OS reference model.\n\nSTRATUM: S3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Directory Walker\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Root Path: The starting directory for the file tree traversal. All paths are discovered relative to this root.\n  - Glob Pattern: File matching pattern using wildcards: \'**/*.py\' (all Python files), \'*.md\' (Markdown in current dir).\n  - Max Depth: Maximum directory nesting depth to traverse. Prevents explosion in deeply nested or infinite trees.\n  - Ignore Rules: Patterns to exclude from traversal: .gitignore rules, node_modules, __pycache__, .git directories.\n\nVISUAL GUIDANCE:\n- Title: "Directory Walker" in large text, colored #38bdf8\n- Stratum badge: "S3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Permission Check" construct from the {a}OS reference model.\n\nSTRATUM: S3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Permission Check\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Target Path: The filesystem path being checked for permissions. Can be a file or directory.\n  - Required Permissions: The access level needed: read (r), write (w), execute (x), or combinations. Set per-operation.\n  - Effective Permissions: The actual permissions the current process has on the target, after evaluating user, group, and ACL rules.\n  - Owner UID: The user ID of the file/directory owner. Determines who has owner-level permissions.\n\nVISUAL GUIDANCE:\n- Title: "Permission Check" in large text, colored #38bdf8\n- Stratum badge: "S3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        "Create an infographic for the \"Message Topic\" construct from the {a}OS reference model.\n\nSTRATUM: S3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Message Topic\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Topic Name: The named channel for publishing/subscribing messages: 'agent.events', 'tool.results', 'session.logs'.\n  - Partition Count: Number of parallel partitions for the topic. Determines maximum consumer parallelism and ordering guarantees.\n  - Retention (hours): How long messages are kept on the topic before deletion. Enables replay and late consumer catching up.\n  - Schema Reference: Reference to the message schema (JSON Schema, Avro, Protobuf) that validates payloads on this topic.\n\nVISUAL GUIDANCE:\n- Title: \"Message Topic\" in large text, colored #38bdf8\n- Stratum badge: \"S3 \u00b7 Capabilities\" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text",
+        'Create an infographic for the "Event Subscriber" construct from the {a}OS reference model.\n\nSTRATUM: S3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Event Subscriber\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - Subscriber ID: Unique identifier for a message consumer. Enables offset tracking, delivery guarantees, and load balancing.\n  - Topic Reference: The topic(s) this subscriber is consuming from. One subscriber can listen to multiple topics.\n  - Filter Expression: Server-side filter that selects which messages to deliver based on attributes (e.g., \'severity >= ERROR\').\n  - Handler Function: The callback function invoked for each received message. Must be idempotent for at-least-once delivery.\n\nVISUAL GUIDANCE:\n- Title: "Event Subscriber" in large text, colored #38bdf8\n- Stratum badge: "S3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Dead Letter Queue" construct from the {a}OS reference model.\n\nSTRATUM: S3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Dead Letter Queue\nPRIMITIVE COUNT: 4\n\nPRIMITIVES (show each as a card/node):\n  - DLQ Name: Name of the dead letter queue that receives messages that failed processing after max retries.\n  - Max Retries: Maximum processing attempts before a message is moved to the dead letter queue.\n  - Failed Message Count: Number of messages currently in the DLQ awaiting manual review or automated reprocessing.\n  - Replay Policy: Strategy for reprocessing DLQ messages: manual review, automated replay, or discard after investigation.\n\nVISUAL GUIDANCE:\n- Title: "Dead Letter Queue" in large text, colored #38bdf8\n- Stratum badge: "S3 \u00b7 Capabilities" top-left\n- Show all 4 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
+        'Create an infographic for the "Delivery Guarantee" construct from the {a}OS reference model.\n\nSTRATUM: S3 \u2014 Capabilities\nACCENT COLOR: #38bdf8\nCONSTRUCT: Delivery Guarantee\nPRIMITIVE COUNT: 52\n\nPRIMITIVES (show each as a card/node):\n  - Guarantee Level: The delivery semantics: at-most-once, at-least-once, or exactly-once. Each has different trade-offs.\n  - ACK Mode: When the consumer acknowledges message receipt: auto-ACK (before processing) or manual ACK (after processing).\n  - Dedup Window: Time period during which duplicate message IDs are detected and filtered. Enables exactly-once semantics.\n  - Idempotency Key: Unique key per message enabling deduplication: if same key is processed twice, the second is a no-op.\n  - Card ID: Immutable identifier (Namespace/Family/Params/Quant/Hash) that uniquely identifies a model version and prevents behavioral drift.\n  - Model Family: Architectural lineage (GPT, Llama, Mistral, Gemma\u2026) determining Jinja2 chat templates and prompting strategy.\n  - Capability Tags: Boolean/categorical tags (vision, tool_calling, code, math) used by orchestrators for agent routing.\n  - License Type: Enforces commercial and training compliance (Apache 2.0, MIT, Llama Community, etc.).\n  - Endpoint URL: Abstract URI managed by service mesh for routing inference requests. RTT latency target: &lt;20ms.\n  - Model Version: Tracks weight + engine + prompt template combinations. Deployed via canary rollouts.\n  - Throughput TPS: Primary velocity metric: tokens per second. Single user: 15\u2013150 TPS; max batch: 400\u20135,000 TPS. TPOT target: &lt;50ms.\n  - Fallback Endpoint: Redundancy routing when primary endpoint fails. Failover latency target: &lt;100ms with &gt;99% success rate.\n  - Max Tokens: Hard hardware/software limit on total input+output tokens. Standard: 128K; long-context: 1M\u201310M. KV cache: 0.5\u20132GB VRAM/1K tokens.\n  - Effective Tokens: Actual sequence length before \'Context Rot\' \u2014 where recall accuracy degrades below useful thresholds. Target recall: &gt;95%.\n  - Window Strategy: Memory management approach. PagedAttention with O(N) logical memory is the gold standard for multi-agent prefix sharing.\n  - Overflow Policy: Rules for exceeding the context window limit: Truncate, Error, or Summarize. Requires system-prompt pinning to avoid agent memory loss.\n  - Vocab Size: Total unique tokens in the vocabulary. Modern models: 100K\u2013150K tokens. Compression ratio target: 0.7\u20130.8 tokens/word.\n  - Encoding Scheme: Tokenization algorithm \u2014 usually Byte-level BPE to prevent Out of Vocabulary (OOV) errors.\n  - Special Tokens: Control signals (&lt;tool_call&gt;, &lt;|im_start|&gt;, &lt;eos&gt;) that trigger specific model behaviors.\n  - Token Budget: Runtime caps to prevent runaway loops. Recommended: 10,000 tokens per tool loop; 100,000 per session.\n  - Server Framework: Serving engine \u2014 vLLM for high throughput (256+ sequences) or SGLang for agentic prefix-sharing (512+ sequences).\n  - Quantization Level: Precision reduction \u2014 FP8 saves 50% VRAM (&lt;0.01% perplexity impact); INT4 saves 75% (&lt;1% impact).\n  - KV Cache Size: Memory for key-value attention cache. Target utilization: 80\u201395% of allocated blocks (1,000\u201310,000 blocks).\n  - Concurrent Slots: Max simultaneous requests. Target: 64\u2013256 slots with 70\u201390% occupancy.\n  - GPU Type: Hardware SKU \u2014 H100 (80GB VRAM, 3.35 TB/s) for frontier; L40S (48GB, 0.86 TB/s) for smaller tasks. Memory bandwidth is the bottleneck.\n  - Pool Size: Number of GPU instances. Availability target: 99.99%. Requires N+1 redundancy across \u22652 availability zones.\n  - Utilization Percent: GPU resource usage \u2014 Core target: 75%; Memory target: 90%; Power target: 80%. \u26a0\ufe0f Never scale based on VRAM% (pre-allocated at boot).\n  - Scheduling Algorithm: Request routing strategy. Prefix-Aware (Radix) scheduling reduces Time to First Token by 40\u201360% via KV cache hits.\n  - Batch Size: Dynamic batching range: 1\u2013256. Each additional request adds ~5ms TPOT latency penalty.\n  - Queue Depth: Leading indicator of latency. Target wait: &lt;50ms. Autoscaling threshold: 3\u201310 requests waiting.\n  - Drain Timeout: Wait time before node shutdown. Recommended: 300 seconds for &gt;99.9% clean exit rate.\n  - Priority Lanes: QoS segmentation \u2014 Platinum: 90% capacity, Gold: 10%, Background: slack only during peak.\n  - Scale Metric: Primary trigger: Queue Size (&gt;5 req/GPU). Secondary: P95 TTFT (&gt;500ms). \u26a0\ufe0f Never use VRAM utilization.\n  - Cooldown Seconds: Asymmetric: scale-up 0s (immediate), scale-down 600s (prevent model-load thrashing). Model load takes 30s\u20135min.\n  - Min Replicas: Production floor: 2\u20134 replicas. Dev floor: 0 (scale-to-zero). Warm replicas avoid 30s\u20135min cold starts.\n  - Max Replicas: Hard financial ceiling mapped to cloud quotas. Range: 32\u2013128 GPUs. \u26a0\ufe0f Never deploy without this circuit breaker.\n  - Run ID: Unique experiment identifier for 100% traceability to Git commits. Format: timestamp-gitsha-name-suffix.\n  - Base Model: Foundation model being fine-tuned. Target Model Flops Utilization (MFU): 40\u201355%.\n  - Hyperparams: Training config \u2014 LR: 5\u00d710\u207b\u2075, batch: 32\u2013128, epochs: 1\u20133. Use cosine decay with warm-up.\n  - Checkpoint Interval: Save frequency \u2014 pausing 60s\u2013600s per snapshot (15\u2013300GB). Recommended: every 500\u20132,000 steps.\n  - Dataset URI: Training data location. Load bandwidth &gt;1 GB/s using binary formats (Parquet/Arrow).\n  - Split Ratio: Standard: 90% Train / 5% Validation / 5% Test. Test set MUST be fully decontaminated.\n  - Preprocessing Pipeline: Dedup (1M rows/hr) \u2192 PII scrub (500K rows/hr) \u2192 quality filter \u2192 pre-tokenize (10M tokens/sec).\n  - Quality Score: AI judge discards examples scoring &lt;4.0/5. Target perplexity on clean data: &lt;15.\n  - Adapter Rank: LoRA rank \u2014 r=8\u201316 for style (~10M params, &lt;100MB); r=64\u2013128 for knowledge (~80M params, ~500MB VRAM).\n  - Target Modules: Which strata get LoRA adapters. \'All Linear Strata\' retains 95% of full fine-tune performance.\n  - Merge Strategy: Combining adapter weights \u2014 Merge/Unload (permanent, fastest) or TIES-Merging (multi-adapter, sign-aware).\n  - Adapter Registry: Centralized catalog of 1,000+ adapters with hot-swap latency &lt;200ms.\n  - Reward Model: Neural network scoring outputs. Target accuracy: 70\u201380%. Calibration error &lt;0.05.\n  - Preference Dataset: A/B comparison pairs: 20,000\u2013100,000 with rater agreement &gt;0.85.\n  - PPO Config: Proximal Policy Optimization \u2014 KL Coefficient 0.1, LR 1\u00d710\u207b\u2076, Rollout size 1024.\n  - Alignment Score: Overall quality \u2014 Target Elo: 1,250+, refusal rate &lt;2%, jailbreak rate &lt;0.1%.\n\nVISUAL GUIDANCE:\n- Title: "Delivery Guarantee" in large text, colored #38bdf8\n- Stratum badge: "S3 \u00b7 Capabilities" top-left\n- Show all 52 primitives as connected cards on dark (#0a0a0f) background\n- Use #38bdf8 accent for borders, connectors, and highlights\n- Each card: primitive name (bold) + 1-line description (smaller)\n- If primitives have a natural flow or hierarchy, show it with arrows\n- Keep it clean, scannable, ADHD-friendly \u2014 no walls of text',
       ];
     </script>
     <div class="batch" id="batch1">
@@ -386,13 +386,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #818cf822;
                   color: #818cf8;
                   border: 1px solid #818cf844;
                 "
-                >L7</span
+                >S7</span
               >
               Intent Object
             </div>
@@ -415,13 +415,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #818cf822;
                   color: #818cf8;
                   border: 1px solid #818cf844;
                 "
-                >L7</span
+                >S7</span
               >
               Session Context
             </div>
@@ -444,13 +444,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #818cf822;
                   color: #818cf8;
                   border: 1px solid #818cf844;
                 "
-                >L7</span
+                >S7</span
               >
               Satisfaction Signal
             </div>
@@ -473,13 +473,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #818cf822;
                   color: #818cf8;
                   border: 1px solid #818cf844;
                 "
-                >L7</span
+                >S7</span
               >
               Feedback Loop
             </div>
@@ -502,13 +502,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #34d39922;
                   color: #34d399;
                   border: 1px solid #34d39944;
                 "
-                >L4</span
+                >S4</span
               >
               Execution Plan
             </div>
@@ -542,13 +542,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #34d39922;
                   color: #34d399;
                   border: 1px solid #34d39944;
                 "
-                >L4</span
+                >S4</span
               >
               State Checkpoint
             </div>
@@ -571,13 +571,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #34d39922;
                   color: #34d399;
                   border: 1px solid #34d39944;
                 "
-                >L4</span
+                >S4</span
               >
               Dependency Graph
             </div>
@@ -600,13 +600,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #34d39922;
                   color: #34d399;
                   border: 1px solid #34d39944;
                 "
-                >L4</span
+                >S4</span
               >
               Timeout Policy
             </div>
@@ -629,13 +629,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #34d39922;
                   color: #34d399;
                   border: 1px solid #34d39944;
                 "
-                >L4</span
+                >S4</span
               >
               Agent Roster
             </div>
@@ -658,13 +658,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #34d39922;
                   color: #34d399;
                   border: 1px solid #34d39944;
                 "
-                >L4</span
+                >S4</span
               >
               Task Assignment
             </div>
@@ -698,13 +698,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #34d39922;
                   color: #34d399;
                   border: 1px solid #34d39944;
                 "
-                >L4</span
+                >S4</span
               >
               Message Channel
             </div>
@@ -727,13 +727,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #34d39922;
                   color: #34d399;
                   border: 1px solid #34d39944;
                 "
-                >L4</span
+                >S4</span
               >
               Delegation Policy
             </div>
@@ -756,13 +756,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #38bdf822;
                   color: #38bdf8;
                   border: 1px solid #38bdf844;
                 "
-                >L3</span
+                >S3</span
               >
               Tool Manifest
             </div>
@@ -785,13 +785,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #38bdf822;
                   color: #38bdf8;
                   border: 1px solid #38bdf844;
                 "
-                >L3</span
+                >S3</span
               >
               API Binding
             </div>
@@ -814,13 +814,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #38bdf822;
                   color: #38bdf8;
                   border: 1px solid #38bdf844;
                 "
-                >L3</span
+                >S3</span
               >
               Capability Schema
             </div>
@@ -854,13 +854,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #a78bfa22;
                   color: #a78bfa;
                   border: 1px solid #a78bfa44;
                 "
-                >L2</span
+                >S2</span
               >
               Search Index
             </div>
@@ -883,13 +883,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #a78bfa22;
                   color: #a78bfa;
                   border: 1px solid #a78bfa44;
                 "
-                >L2</span
+                >S2</span
               >
               Chunk Collection
             </div>
@@ -912,13 +912,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #a78bfa22;
                   color: #a78bfa;
                   border: 1px solid #a78bfa44;
                 "
-                >L2</span
+                >S2</span
               >
               Relevance Score
             </div>
@@ -941,13 +941,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #a78bfa22;
                   color: #a78bfa;
                   border: 1px solid #a78bfa44;
                 "
-                >L2</span
+                >S2</span
               >
               Rerank Pipeline
             </div>
@@ -970,13 +970,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #fb718522;
                   color: #fb7185;
                   border: 1px solid #fb718544;
                 "
-                >L6</span
+                >S6</span
               >
               Policy Evaluation
             </div>
@@ -1010,13 +1010,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #fb718522;
                   color: #fb7185;
                   border: 1px solid #fb718544;
                 "
-                >L6</span
+                >S6</span
               >
               Guardrail Config
             </div>
@@ -1039,13 +1039,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #fb718522;
                   color: #fb7185;
                   border: 1px solid #fb718544;
                 "
-                >L6</span
+                >S6</span
               >
               Auth Token
             </div>
@@ -1068,13 +1068,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #fb718522;
                   color: #fb7185;
                   border: 1px solid #fb718544;
                 "
-                >L6</span
+                >S6</span
               >
               Role Binding
             </div>
@@ -1097,13 +1097,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #fb718522;
                   color: #fb7185;
                   border: 1px solid #fb718544;
                 "
-                >L6</span
+                >S6</span
               >
               Credential Vault
             </div>
@@ -1126,13 +1126,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #fb718522;
                   color: #fb7185;
                   border: 1px solid #fb718544;
                 "
-                >L6</span
+                >S6</span
               >
               Permission Scope
             </div>
@@ -1166,13 +1166,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #fb718522;
                   color: #fb7185;
                   border: 1px solid #fb718544;
                 "
-                >L6</span
+                >S6</span
               >
               Audit Entry
             </div>
@@ -1195,13 +1195,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #fb718522;
                   color: #fb7185;
                   border: 1px solid #fb718544;
                 "
-                >L6</span
+                >S6</span
               >
               Compliance Check
             </div>
@@ -1224,13 +1224,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #fb718522;
                   color: #fb7185;
                   border: 1px solid #fb718544;
                 "
-                >L6</span
+                >S6</span
               >
               Retention Policy
             </div>
@@ -1253,13 +1253,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #fb718522;
                   color: #fb7185;
                   border: 1px solid #fb718544;
                 "
-                >L6</span
+                >S6</span
               >
               Evidence Chain
             </div>
@@ -1282,13 +1282,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #fb718522;
                   color: #fb7185;
                   border: 1px solid #fb718544;
                 "
-                >L6</span
+                >S6</span
               >
               Content Filter
             </div>
@@ -1322,13 +1322,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #fb718522;
                   color: #fb7185;
                   border: 1px solid #fb718544;
                 "
-                >L6</span
+                >S6</span
               >
               Toxicity Scorer
             </div>
@@ -1351,13 +1351,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #fb718522;
                   color: #fb7185;
                   border: 1px solid #fb718544;
                 "
-                >L6</span
+                >S6</span
               >
               PII Redactor
             </div>
@@ -1380,13 +1380,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #fb718522;
                   color: #fb7185;
                   border: 1px solid #fb718544;
                 "
-                >L6</span
+                >S6</span
               >
               Safety Boundary
             </div>
@@ -1409,13 +1409,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #fbbf2422;
                   color: #fbbf24;
                   border: 1px solid #fbbf2444;
                 "
-                >L5</span
+                >S5</span
               >
               Log Entry
             </div>
@@ -1438,13 +1438,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #fbbf2422;
                   color: #fbbf24;
                   border: 1px solid #fbbf2444;
                 "
-                >L5</span
+                >S5</span
               >
               Token Ledger
             </div>
@@ -1478,13 +1478,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #fbbf2422;
                   color: #fbbf24;
                   border: 1px solid #fbbf2444;
                 "
-                >L5</span
+                >S5</span
               >
               Latency Histogram
             </div>
@@ -1507,13 +1507,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #fbbf2422;
                   color: #fbbf24;
                   border: 1px solid #fbbf2444;
                 "
-                >L5</span
+                >S5</span
               >
               Eval Suite
             </div>
@@ -1536,13 +1536,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #fbbf2422;
                   color: #fbbf24;
                   border: 1px solid #fbbf2444;
                 "
-                >L5</span
+                >S5</span
               >
               Test Case
             </div>
@@ -1565,13 +1565,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #fbbf2422;
                   color: #fbbf24;
                   border: 1px solid #fbbf2444;
                 "
-                >L5</span
+                >S5</span
               >
               Judge Prompt
             </div>
@@ -1594,13 +1594,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #fbbf2422;
                   color: #fbbf24;
                   border: 1px solid #fbbf2444;
                 "
-                >L5</span
+                >S5</span
               >
               Score Aggregator
             </div>
@@ -1634,13 +1634,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #fbbf2422;
                   color: #fbbf24;
                   border: 1px solid #fbbf2444;
                 "
-                >L5</span
+                >S5</span
               >
               Drift Detector
             </div>
@@ -1663,13 +1663,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #fbbf2422;
                   color: #fbbf24;
                   border: 1px solid #fbbf2444;
                 "
-                >L5</span
+                >S5</span
               >
               Anomaly Alert
             </div>
@@ -1692,13 +1692,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #fbbf2422;
                   color: #fbbf24;
                   border: 1px solid #fbbf2444;
                 "
-                >L5</span
+                >S5</span
               >
               SLO Monitor
             </div>
@@ -1721,13 +1721,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #fbbf2422;
                   color: #fbbf24;
                   border: 1px solid #fbbf2444;
                 "
-                >L5</span
+                >S5</span
               >
               Cost Tracker
             </div>
@@ -1750,13 +1750,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #38bdf822;
                   color: #38bdf8;
                   border: 1px solid #38bdf844;
                 "
-                >L3</span
+                >S3</span
               >
               Interpreter Session
             </div>
@@ -1790,13 +1790,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #38bdf822;
                   color: #38bdf8;
                   border: 1px solid #38bdf844;
                 "
-                >L3</span
+                >S3</span
               >
               Execution Result
             </div>
@@ -1819,13 +1819,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #38bdf822;
                   color: #38bdf8;
                   border: 1px solid #38bdf844;
                 "
-                >L3</span
+                >S3</span
               >
               Resource Limit
             </div>
@@ -1848,13 +1848,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #38bdf822;
                   color: #38bdf8;
                   border: 1px solid #38bdf844;
                 "
-                >L3</span
+                >S3</span
               >
               API Connector
             </div>
@@ -1877,13 +1877,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #38bdf822;
                   color: #38bdf8;
                   border: 1px solid #38bdf844;
                 "
-                >L3</span
+                >S3</span
               >
               Webhook Emitter
             </div>
@@ -1906,13 +1906,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #38bdf822;
                   color: #38bdf8;
                   border: 1px solid #38bdf844;
                 "
-                >L3</span
+                >S3</span
               >
               Rate Limiter
             </div>
@@ -1946,13 +1946,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #38bdf822;
                   color: #38bdf8;
                   border: 1px solid #38bdf844;
                 "
-                >L3</span
+                >S3</span
               >
               Response Cache
             </div>
@@ -1975,13 +1975,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #38bdf822;
                   color: #38bdf8;
                   border: 1px solid #38bdf844;
                 "
-                >L3</span
+                >S3</span
               >
               Browser Session
             </div>
@@ -2004,13 +2004,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #38bdf822;
                   color: #38bdf8;
                   border: 1px solid #38bdf844;
                 "
-                >L3</span
+                >S3</span
               >
               Page Action
             </div>
@@ -2033,13 +2033,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #38bdf822;
                   color: #38bdf8;
                   border: 1px solid #38bdf844;
                 "
-                >L3</span
+                >S3</span
               >
               Element Selector
             </div>
@@ -2062,13 +2062,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #38bdf822;
                   color: #38bdf8;
                   border: 1px solid #38bdf844;
                 "
-                >L3</span
+                >S3</span
               >
               Screenshot Capture
             </div>
@@ -2102,13 +2102,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #38bdf822;
                   color: #38bdf8;
                   border: 1px solid #38bdf844;
                 "
-                >L3</span
+                >S3</span
               >
               File Handle
             </div>
@@ -2131,13 +2131,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #38bdf822;
                   color: #38bdf8;
                   border: 1px solid #38bdf844;
                 "
-                >L3</span
+                >S3</span
               >
               Shell Command
             </div>
@@ -2160,13 +2160,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #38bdf822;
                   color: #38bdf8;
                   border: 1px solid #38bdf844;
                 "
-                >L3</span
+                >S3</span
               >
               Directory Walker
             </div>
@@ -2189,13 +2189,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #38bdf822;
                   color: #38bdf8;
                   border: 1px solid #38bdf844;
                 "
-                >L3</span
+                >S3</span
               >
               Permission Check
             </div>
@@ -2218,13 +2218,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #38bdf822;
                   color: #38bdf8;
                   border: 1px solid #38bdf844;
                 "
-                >L3</span
+                >S3</span
               >
               Message Topic
             </div>
@@ -2258,13 +2258,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #38bdf822;
                   color: #38bdf8;
                   border: 1px solid #38bdf844;
                 "
-                >L3</span
+                >S3</span
               >
               Event Subscriber
             </div>
@@ -2287,13 +2287,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #38bdf822;
                   color: #38bdf8;
                   border: 1px solid #38bdf844;
                 "
-                >L3</span
+                >S3</span
               >
               Dead Letter Queue
             </div>
@@ -2316,13 +2316,13 @@
           <div class="item-info">
             <div class="item-name">
               <span
-                class="layer-badge"
+                class="stratum-badge"
                 style="
                   background: #38bdf822;
                   color: #38bdf8;
                   border: 1px solid #38bdf844;
                 "
-                >L3</span
+                >S3</span
               >
               Delivery Guarantee
             </div>

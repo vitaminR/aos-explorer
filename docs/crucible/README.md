@@ -25,16 +25,16 @@ alongside universal patterns (Workflow Engines, Agent Frameworks). This conflati
 
 1. **Breaks the canonical ontology** — the reference stack v1.0 defines substrates as generic tool
    categories, not branded products.
-2. **Won't scale** — at 400 products, each layer would need scrollbars for 50+ substrate entries.
+2. **Won't scale** — at 400 products, each stratum would need scrollbars for 50+ substrate entries.
 3. **Hides commonality** — GSD's "Context Pack" and BMAD's "Persona Handoff" both decompose into
    primitives that belong in core orchestration substrates.
-4. **Can't rank** — no mechanism to surface top-3 products per substrate/construct/layer.
+4. **Can't rank** — no mechanism to surface top-3 products per substrate/construct/stratum.
 
 ## Target Architecture
 
 ```
-STRATUM (Layer)
-  └── CORE SUBSTRATE (universal pattern, ≤8 per layer, stable)
+STRATUM (Stratum)
+  └── CORE SUBSTRATE (universal pattern, ≤8 per stratum, stable)
         └── CONSTRUCT (abstract building block)
               └── PRIMITIVE (atomic unit)
                     └── PRODUCT OVERLAY (which products implement this, ranked by confidence)

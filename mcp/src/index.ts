@@ -27,18 +27,18 @@ function matches(haystack: string | undefined, needle: string): boolean {
 // Utility: synonym expansion for classify_tool
 // ---------------------------------------------------------------------------
 const SYNONYMS: Record<string, string[]> = {
-  // L7
+  // S7
   chat: ["chat UI", "portal", "dashboard", "user session"],
   ui: ["chat UI", "portal", "dashboard", "approval surface"],
   frontend: ["chat UI", "portal", "dashboard"],
-  // L6
+  // S6
   security: ["IAM / RBAC", "policy engine", "content safety", "secrets manager"],
   policy: ["policy engine", "trust envelope", "audit trail"],
   compliance: ["policy engine", "audit trail", "classification_tag"],
   auth: ["IAM / RBAC", "access token", "scope"],
   secrets: ["secrets manager", "key manager", "secret_ref"],
   safety: ["content safety", "safety verdict"],
-  // L5
+  // S5
   monitoring: ["distributed tracing", "metrics store", "alerting system"],
   alerting: ["alerting system", "alert object"],
   tracing: ["distributed tracing", "trace graph"],
@@ -46,27 +46,27 @@ const SYNONYMS: Record<string, string[]> = {
   logging: ["logging pipeline"],
   observability: ["distributed tracing", "logging pipeline", "metrics store", "eval harness"],
   evaluation: ["eval harness", "eval scorecard", "regression report"],
-  // L4
+  // S4
   orchestration: ["workflow engine", "router", "state machine", "planner"],
   workflow: ["workflow engine", "execution graph", "plan"],
   routing: ["router", "routing table"],
   planning: ["planner", "plan"],
   scheduling: ["queue", "retry logic"],
-  // L3
+  // S3
   tool: ["tool gateway", "function-calling adapter", "tool call"],
   api: ["API connector", "connector response", "endpoint_url"],
   sandbox: ["sandbox", "microVM / container task"],
   execution: ["script executor", "job runner", "executed script"],
   mcp: ["MCP server"],
   function: ["function-calling adapter", "function_name"],
-  // L2
+  // S2
   vector: ["vector store", "embedding set"],
   knowledge: ["document index", "graph store", "entity graph"],
   memory: ["memory store", "memory object", "memory_key"],
   rag: ["RAG pipeline", "chunk set", "citation set"],
   embedding: ["vector store", "embedding set", "embedding_dimension"],
   search: ["document index", "vector store"],
-  // L1
+  // S1
   model: ["model endpoint", "inference runtime", "model response"],
   inference: ["inference runtime", "token stream"],
   compute: ["GPU / CPU", "scheduler", "container runtime"],
@@ -152,7 +152,7 @@ server.tool(
 // ---------------------------------------------------------------------------
 server.tool(
   "get_stratum",
-  "Get the full definition of an {a}OS stratum (layer), including substrates, constructs, primitives, typical failures, and core metrics.",
+  "Get the full definition of an {a}OS stratum (stratum), including substrates, constructs, primitives, typical failures, and core metrics.",
   {
     id: z.string().describe("Stratum ID: l1, l2, l3, l4, l5, l6, or l7"),
   },
@@ -553,7 +553,7 @@ server.tool(
   "list_concepts",
   "List all concepts in the {a}OS taxonomy, optionally filtered by stratum. Returns slugs, names, definitions, and status.",
   {
-    stratum: z.string().optional().describe("Filter by stratum (e.g. 'L4', 'L0')"),
+    stratum: z.string().optional().describe("Filter by stratum (e.g. 'S4', 'S0')"),
   },
   async ({ stratum }) => {
     let results = getConcepts();

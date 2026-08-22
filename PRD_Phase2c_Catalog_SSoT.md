@@ -167,9 +167,9 @@ Already shipped in 2b + 2026-05-23 cleanup (do not redo): `aosnaming.primary`, `
 
 Still red after 2b (carried into 2c.1):
 
-- `bmad.secondary`: PD `L7, L2` vs PJ `L3` — SME call.
-- `cursor.secondary`: PD `L3` vs PJ `L4, L3` — SME call.
-- `gsd.secondary`: PD `L2` vs PJ `L3` — SME call.
+- `bmad.secondary`: PD `S7, S2` vs PJ `S3` — SME call.
+- `cursor.secondary`: PD `S3` vs PJ `S4, S3` — SME call.
+- `gsd.secondary`: PD `S2` vs PJ `S3` — SME call.
 
 These three should be resolved as part of 2c.1 consolidation. They are the smallest remaining drift but block the guardrail from going green.
 

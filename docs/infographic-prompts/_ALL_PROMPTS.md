@@ -1,6 +1,6 @@
 # {a}OS Infographic Prompts - All 63 Constructs
 
-Generated from 312 primitives across 7 layers.
+Generated from 312 primitives across 7 strata.
 
 ## System Prompt (shared)
 
@@ -9,13 +9,13 @@ You are a visual design assistant creating ADHD-friendly technical infographics 
 
 DESIGN RULES:
 - Dark background (#0a0a0f) with high-contrast text
-- Use the layer accent color as the primary highlight
+- Use the stratum accent color as the primary highlight
 - Clean, minimal layout - no clutter
 - Large readable typography (minimum 14pt equivalent)
 - Each primitive shown as a distinct card/node with its name + 1-line description
 - Show relationships between primitives with arrows or connectors if applicable
 - Include a small icon or visual metaphor for each primitive
-- Include the layer badge (e.g. "L4 . Orchestration") in the top-left corner
+- Include the stratum badge (e.g. "S4 . Orchestration") in the top-left corner
 - Parent construct name is the large title
 - Aspect ratio: 16:9 (landscape)
 - Style: flat design, subtle gradients, no 3D, modern SaaS dashboard aesthetic
@@ -27,12 +27,12 @@ FORMAT: Create a single infographic image. Do NOT return markdown or text descri
 
 ---
 
-## 01. L7 | Intent Object (4 primitives)
+## 01. S7 | Intent Object (4 primitives)
 
 ```
 Create an infographic for the "Intent Object" construct from the {a}OS reference model.
 
-LAYER: L7 - Human Interface
+STRATUM: S7 - Human Interface
 ACCENT COLOR: #818cf8
 CONSTRUCT: Intent Object
 PRIMITIVE COUNT: 4
@@ -45,7 +45,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Intent Object" in large text, colored #818cf8
-- Layer badge: "L7 . Human Interface" top-left
+- Stratum badge: "S7 . Human Interface" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #818cf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -55,12 +55,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 02. L7 | Session Context (4 primitives)
+## 02. S7 | Session Context (4 primitives)
 
 ```
 Create an infographic for the "Session Context" construct from the {a}OS reference model.
 
-LAYER: L7 - Human Interface
+STRATUM: S7 - Human Interface
 ACCENT COLOR: #818cf8
 CONSTRUCT: Session Context
 PRIMITIVE COUNT: 4
@@ -73,7 +73,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Session Context" in large text, colored #818cf8
-- Layer badge: "L7 . Human Interface" top-left
+- Stratum badge: "S7 . Human Interface" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #818cf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -83,12 +83,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 03. L7 | Satisfaction Signal (4 primitives)
+## 03. S7 | Satisfaction Signal (4 primitives)
 
 ```
 Create an infographic for the "Satisfaction Signal" construct from the {a}OS reference model.
 
-LAYER: L7 - Human Interface
+STRATUM: S7 - Human Interface
 ACCENT COLOR: #818cf8
 CONSTRUCT: Satisfaction Signal
 PRIMITIVE COUNT: 4
@@ -101,7 +101,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Satisfaction Signal" in large text, colored #818cf8
-- Layer badge: "L7 . Human Interface" top-left
+- Stratum badge: "S7 . Human Interface" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #818cf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -111,12 +111,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 04. L7 | Feedback Loop (4 primitives)
+## 04. S7 | Feedback Loop (4 primitives)
 
 ```
 Create an infographic for the "Feedback Loop" construct from the {a}OS reference model.
 
-LAYER: L7 - Human Interface
+STRATUM: S7 - Human Interface
 ACCENT COLOR: #818cf8
 CONSTRUCT: Feedback Loop
 PRIMITIVE COUNT: 4
@@ -129,7 +129,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Feedback Loop" in large text, colored #818cf8
-- Layer badge: "L7 . Human Interface" top-left
+- Stratum badge: "S7 . Human Interface" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #818cf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -139,12 +139,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 05. L4 | Execution Plan (4 primitives)
+## 05. S4 | Execution Plan (4 primitives)
 
 ```
 Create an infographic for the "Execution Plan" construct from the {a}OS reference model.
 
-LAYER: L4 - Orchestration
+STRATUM: S4 - Orchestration
 ACCENT COLOR: #34d399
 CONSTRUCT: Execution Plan
 PRIMITIVE COUNT: 4
@@ -157,7 +157,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Execution Plan" in large text, colored #34d399
-- Layer badge: "L4 . Orchestration" top-left
+- Stratum badge: "S4 . Orchestration" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #34d399 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -167,12 +167,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 06. L4 | State Checkpoint (4 primitives)
+## 06. S4 | State Checkpoint (4 primitives)
 
 ```
 Create an infographic for the "State Checkpoint" construct from the {a}OS reference model.
 
-LAYER: L4 - Orchestration
+STRATUM: S4 - Orchestration
 ACCENT COLOR: #34d399
 CONSTRUCT: State Checkpoint
 PRIMITIVE COUNT: 4
@@ -185,7 +185,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "State Checkpoint" in large text, colored #34d399
-- Layer badge: "L4 . Orchestration" top-left
+- Stratum badge: "S4 . Orchestration" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #34d399 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -195,12 +195,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 07. L4 | Dependency Graph (4 primitives)
+## 07. S4 | Dependency Graph (4 primitives)
 
 ```
 Create an infographic for the "Dependency Graph" construct from the {a}OS reference model.
 
-LAYER: L4 - Orchestration
+STRATUM: S4 - Orchestration
 ACCENT COLOR: #34d399
 CONSTRUCT: Dependency Graph
 PRIMITIVE COUNT: 4
@@ -213,7 +213,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Dependency Graph" in large text, colored #34d399
-- Layer badge: "L4 . Orchestration" top-left
+- Stratum badge: "S4 . Orchestration" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #34d399 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -223,12 +223,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 08. L4 | Timeout Policy (4 primitives)
+## 08. S4 | Timeout Policy (4 primitives)
 
 ```
 Create an infographic for the "Timeout Policy" construct from the {a}OS reference model.
 
-LAYER: L4 - Orchestration
+STRATUM: S4 - Orchestration
 ACCENT COLOR: #34d399
 CONSTRUCT: Timeout Policy
 PRIMITIVE COUNT: 4
@@ -241,7 +241,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Timeout Policy" in large text, colored #34d399
-- Layer badge: "L4 . Orchestration" top-left
+- Stratum badge: "S4 . Orchestration" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #34d399 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -251,12 +251,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 09. L4 | Agent Roster (4 primitives)
+## 09. S4 | Agent Roster (4 primitives)
 
 ```
 Create an infographic for the "Agent Roster" construct from the {a}OS reference model.
 
-LAYER: L4 - Orchestration
+STRATUM: S4 - Orchestration
 ACCENT COLOR: #34d399
 CONSTRUCT: Agent Roster
 PRIMITIVE COUNT: 4
@@ -269,7 +269,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Agent Roster" in large text, colored #34d399
-- Layer badge: "L4 . Orchestration" top-left
+- Stratum badge: "S4 . Orchestration" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #34d399 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -279,12 +279,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 10. L4 | Task Assignment (4 primitives)
+## 10. S4 | Task Assignment (4 primitives)
 
 ```
 Create an infographic for the "Task Assignment" construct from the {a}OS reference model.
 
-LAYER: L4 - Orchestration
+STRATUM: S4 - Orchestration
 ACCENT COLOR: #34d399
 CONSTRUCT: Task Assignment
 PRIMITIVE COUNT: 4
@@ -297,7 +297,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Task Assignment" in large text, colored #34d399
-- Layer badge: "L4 . Orchestration" top-left
+- Stratum badge: "S4 . Orchestration" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #34d399 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -307,12 +307,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 11. L4 | Message Channel (4 primitives)
+## 11. S4 | Message Channel (4 primitives)
 
 ```
 Create an infographic for the "Message Channel" construct from the {a}OS reference model.
 
-LAYER: L4 - Orchestration
+STRATUM: S4 - Orchestration
 ACCENT COLOR: #34d399
 CONSTRUCT: Message Channel
 PRIMITIVE COUNT: 4
@@ -325,7 +325,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Message Channel" in large text, colored #34d399
-- Layer badge: "L4 . Orchestration" top-left
+- Stratum badge: "S4 . Orchestration" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #34d399 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -335,12 +335,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 12. L4 | Delegation Policy (4 primitives)
+## 12. S4 | Delegation Policy (4 primitives)
 
 ```
 Create an infographic for the "Delegation Policy" construct from the {a}OS reference model.
 
-LAYER: L4 - Orchestration
+STRATUM: S4 - Orchestration
 ACCENT COLOR: #34d399
 CONSTRUCT: Delegation Policy
 PRIMITIVE COUNT: 4
@@ -353,7 +353,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Delegation Policy" in large text, colored #34d399
-- Layer badge: "L4 . Orchestration" top-left
+- Stratum badge: "S4 . Orchestration" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #34d399 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -363,12 +363,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 13. L3 | Tool Manifest (4 primitives)
+## 13. S3 | Tool Manifest (4 primitives)
 
 ```
 Create an infographic for the "Tool Manifest" construct from the {a}OS reference model.
 
-LAYER: L3 - Capabilities
+STRATUM: S3 - Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: Tool Manifest
 PRIMITIVE COUNT: 4
@@ -381,7 +381,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Tool Manifest" in large text, colored #38bdf8
-- Layer badge: "L3 . Capabilities" top-left
+- Stratum badge: "S3 . Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -391,12 +391,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 14. L3 | API Binding (4 primitives)
+## 14. S3 | API Binding (4 primitives)
 
 ```
 Create an infographic for the "API Binding" construct from the {a}OS reference model.
 
-LAYER: L3 - Capabilities
+STRATUM: S3 - Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: API Binding
 PRIMITIVE COUNT: 4
@@ -409,7 +409,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "API Binding" in large text, colored #38bdf8
-- Layer badge: "L3 . Capabilities" top-left
+- Stratum badge: "S3 . Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -419,12 +419,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 15. L3 | Capability Schema (4 primitives)
+## 15. S3 | Capability Schema (4 primitives)
 
 ```
 Create an infographic for the "Capability Schema" construct from the {a}OS reference model.
 
-LAYER: L3 - Capabilities
+STRATUM: S3 - Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: Capability Schema
 PRIMITIVE COUNT: 4
@@ -437,7 +437,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Capability Schema" in large text, colored #38bdf8
-- Layer badge: "L3 . Capabilities" top-left
+- Stratum badge: "S3 . Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -447,12 +447,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 16. L2 | Search Index (4 primitives)
+## 16. S2 | Search Index (4 primitives)
 
 ```
 Create an infographic for the "Search Index" construct from the {a}OS reference model.
 
-LAYER: L2 - Knowledge & Retrieval
+STRATUM: S2 - Knowledge & Retrieval
 ACCENT COLOR: #a78bfa
 CONSTRUCT: Search Index
 PRIMITIVE COUNT: 4
@@ -465,7 +465,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Search Index" in large text, colored #a78bfa
-- Layer badge: "L2 . Knowledge & Retrieval" top-left
+- Stratum badge: "S2 . Knowledge & Retrieval" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #a78bfa accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -475,12 +475,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 17. L2 | Chunk Collection (4 primitives)
+## 17. S2 | Chunk Collection (4 primitives)
 
 ```
 Create an infographic for the "Chunk Collection" construct from the {a}OS reference model.
 
-LAYER: L2 - Knowledge & Retrieval
+STRATUM: S2 - Knowledge & Retrieval
 ACCENT COLOR: #a78bfa
 CONSTRUCT: Chunk Collection
 PRIMITIVE COUNT: 4
@@ -493,7 +493,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Chunk Collection" in large text, colored #a78bfa
-- Layer badge: "L2 . Knowledge & Retrieval" top-left
+- Stratum badge: "S2 . Knowledge & Retrieval" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #a78bfa accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -503,12 +503,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 18. L2 | Relevance Score (4 primitives)
+## 18. S2 | Relevance Score (4 primitives)
 
 ```
 Create an infographic for the "Relevance Score" construct from the {a}OS reference model.
 
-LAYER: L2 - Knowledge & Retrieval
+STRATUM: S2 - Knowledge & Retrieval
 ACCENT COLOR: #a78bfa
 CONSTRUCT: Relevance Score
 PRIMITIVE COUNT: 4
@@ -521,7 +521,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Relevance Score" in large text, colored #a78bfa
-- Layer badge: "L2 . Knowledge & Retrieval" top-left
+- Stratum badge: "S2 . Knowledge & Retrieval" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #a78bfa accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -531,12 +531,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 19. L2 | Rerank Pipeline (4 primitives)
+## 19. S2 | Rerank Pipeline (4 primitives)
 
 ```
 Create an infographic for the "Rerank Pipeline" construct from the {a}OS reference model.
 
-LAYER: L2 - Knowledge & Retrieval
+STRATUM: S2 - Knowledge & Retrieval
 ACCENT COLOR: #a78bfa
 CONSTRUCT: Rerank Pipeline
 PRIMITIVE COUNT: 4
@@ -549,7 +549,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Rerank Pipeline" in large text, colored #a78bfa
-- Layer badge: "L2 . Knowledge & Retrieval" top-left
+- Stratum badge: "S2 . Knowledge & Retrieval" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #a78bfa accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -559,12 +559,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 20. L6 | Policy Rule (10 primitives)
+## 20. S6 | Policy Rule (10 primitives)
 
 ```
 Create an infographic for the "Policy Rule" construct from the {a}OS reference model.
 
-LAYER: L6 - Governance
+STRATUM: S6 - Governance
 ACCENT COLOR: #fb7185
 CONSTRUCT: Policy Rule
 PRIMITIVE COUNT: 10
@@ -583,7 +583,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Policy Rule" in large text, colored #fb7185
-- Layer badge: "L6 . Governance" top-left
+- Stratum badge: "S6 . Governance" top-left
 - Show all 10 primitives as connected cards on dark (#0a0a0f) background
 - Use #fb7185 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -593,12 +593,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 21. L6 | Policy Evaluation (4 primitives)
+## 21. S6 | Policy Evaluation (4 primitives)
 
 ```
 Create an infographic for the "Policy Evaluation" construct from the {a}OS reference model.
 
-LAYER: L6 - Governance
+STRATUM: S6 - Governance
 ACCENT COLOR: #fb7185
 CONSTRUCT: Policy Evaluation
 PRIMITIVE COUNT: 4
@@ -611,7 +611,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Policy Evaluation" in large text, colored #fb7185
-- Layer badge: "L6 . Governance" top-left
+- Stratum badge: "S6 . Governance" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fb7185 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -621,12 +621,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 22. L6 | Guardrail Config (4 primitives)
+## 22. S6 | Guardrail Config (4 primitives)
 
 ```
 Create an infographic for the "Guardrail Config" construct from the {a}OS reference model.
 
-LAYER: L6 - Governance
+STRATUM: S6 - Governance
 ACCENT COLOR: #fb7185
 CONSTRUCT: Guardrail Config
 PRIMITIVE COUNT: 4
@@ -639,7 +639,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Guardrail Config" in large text, colored #fb7185
-- Layer badge: "L6 . Governance" top-left
+- Stratum badge: "S6 . Governance" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fb7185 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -649,12 +649,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 23. L6 | Auth Token (4 primitives)
+## 23. S6 | Auth Token (4 primitives)
 
 ```
 Create an infographic for the "Auth Token" construct from the {a}OS reference model.
 
-LAYER: L6 - Governance
+STRATUM: S6 - Governance
 ACCENT COLOR: #fb7185
 CONSTRUCT: Auth Token
 PRIMITIVE COUNT: 4
@@ -667,7 +667,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Auth Token" in large text, colored #fb7185
-- Layer badge: "L6 . Governance" top-left
+- Stratum badge: "S6 . Governance" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fb7185 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -677,12 +677,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 24. L6 | Role Binding (4 primitives)
+## 24. S6 | Role Binding (4 primitives)
 
 ```
 Create an infographic for the "Role Binding" construct from the {a}OS reference model.
 
-LAYER: L6 - Governance
+STRATUM: S6 - Governance
 ACCENT COLOR: #fb7185
 CONSTRUCT: Role Binding
 PRIMITIVE COUNT: 4
@@ -695,7 +695,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Role Binding" in large text, colored #fb7185
-- Layer badge: "L6 . Governance" top-left
+- Stratum badge: "S6 . Governance" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fb7185 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -705,12 +705,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 25. L6 | Credential Vault (4 primitives)
+## 25. S6 | Credential Vault (4 primitives)
 
 ```
 Create an infographic for the "Credential Vault" construct from the {a}OS reference model.
 
-LAYER: L6 - Governance
+STRATUM: S6 - Governance
 ACCENT COLOR: #fb7185
 CONSTRUCT: Credential Vault
 PRIMITIVE COUNT: 4
@@ -723,7 +723,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Credential Vault" in large text, colored #fb7185
-- Layer badge: "L6 . Governance" top-left
+- Stratum badge: "S6 . Governance" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fb7185 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -733,12 +733,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 26. L6 | Permission Scope (4 primitives)
+## 26. S6 | Permission Scope (4 primitives)
 
 ```
 Create an infographic for the "Permission Scope" construct from the {a}OS reference model.
 
-LAYER: L6 - Governance
+STRATUM: S6 - Governance
 ACCENT COLOR: #fb7185
 CONSTRUCT: Permission Scope
 PRIMITIVE COUNT: 4
@@ -751,7 +751,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Permission Scope" in large text, colored #fb7185
-- Layer badge: "L6 . Governance" top-left
+- Stratum badge: "S6 . Governance" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fb7185 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -761,12 +761,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 27. L6 | Audit Entry (4 primitives)
+## 27. S6 | Audit Entry (4 primitives)
 
 ```
 Create an infographic for the "Audit Entry" construct from the {a}OS reference model.
 
-LAYER: L6 - Governance
+STRATUM: S6 - Governance
 ACCENT COLOR: #fb7185
 CONSTRUCT: Audit Entry
 PRIMITIVE COUNT: 4
@@ -779,7 +779,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Audit Entry" in large text, colored #fb7185
-- Layer badge: "L6 . Governance" top-left
+- Stratum badge: "S6 . Governance" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fb7185 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -789,12 +789,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 28. L6 | Compliance Check (4 primitives)
+## 28. S6 | Compliance Check (4 primitives)
 
 ```
 Create an infographic for the "Compliance Check" construct from the {a}OS reference model.
 
-LAYER: L6 - Governance
+STRATUM: S6 - Governance
 ACCENT COLOR: #fb7185
 CONSTRUCT: Compliance Check
 PRIMITIVE COUNT: 4
@@ -807,7 +807,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Compliance Check" in large text, colored #fb7185
-- Layer badge: "L6 . Governance" top-left
+- Stratum badge: "S6 . Governance" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fb7185 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -817,12 +817,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 29. L6 | Retention Policy (4 primitives)
+## 29. S6 | Retention Policy (4 primitives)
 
 ```
 Create an infographic for the "Retention Policy" construct from the {a}OS reference model.
 
-LAYER: L6 - Governance
+STRATUM: S6 - Governance
 ACCENT COLOR: #fb7185
 CONSTRUCT: Retention Policy
 PRIMITIVE COUNT: 4
@@ -835,7 +835,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Retention Policy" in large text, colored #fb7185
-- Layer badge: "L6 . Governance" top-left
+- Stratum badge: "S6 . Governance" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fb7185 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -845,12 +845,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 30. L6 | Evidence Chain (4 primitives)
+## 30. S6 | Evidence Chain (4 primitives)
 
 ```
 Create an infographic for the "Evidence Chain" construct from the {a}OS reference model.
 
-LAYER: L6 - Governance
+STRATUM: S6 - Governance
 ACCENT COLOR: #fb7185
 CONSTRUCT: Evidence Chain
 PRIMITIVE COUNT: 4
@@ -863,7 +863,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Evidence Chain" in large text, colored #fb7185
-- Layer badge: "L6 . Governance" top-left
+- Stratum badge: "S6 . Governance" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fb7185 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -873,12 +873,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 31. L6 | Content Filter (4 primitives)
+## 31. S6 | Content Filter (4 primitives)
 
 ```
 Create an infographic for the "Content Filter" construct from the {a}OS reference model.
 
-LAYER: L6 - Governance
+STRATUM: S6 - Governance
 ACCENT COLOR: #fb7185
 CONSTRUCT: Content Filter
 PRIMITIVE COUNT: 4
@@ -891,7 +891,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Content Filter" in large text, colored #fb7185
-- Layer badge: "L6 . Governance" top-left
+- Stratum badge: "S6 . Governance" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fb7185 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -901,12 +901,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 32. L6 | Toxicity Scorer (4 primitives)
+## 32. S6 | Toxicity Scorer (4 primitives)
 
 ```
 Create an infographic for the "Toxicity Scorer" construct from the {a}OS reference model.
 
-LAYER: L6 - Governance
+STRATUM: S6 - Governance
 ACCENT COLOR: #fb7185
 CONSTRUCT: Toxicity Scorer
 PRIMITIVE COUNT: 4
@@ -919,7 +919,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Toxicity Scorer" in large text, colored #fb7185
-- Layer badge: "L6 . Governance" top-left
+- Stratum badge: "S6 . Governance" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fb7185 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -929,12 +929,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 33. L6 | PII Redactor (4 primitives)
+## 33. S6 | PII Redactor (4 primitives)
 
 ```
 Create an infographic for the "PII Redactor" construct from the {a}OS reference model.
 
-LAYER: L6 - Governance
+STRATUM: S6 - Governance
 ACCENT COLOR: #fb7185
 CONSTRUCT: PII Redactor
 PRIMITIVE COUNT: 4
@@ -947,7 +947,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "PII Redactor" in large text, colored #fb7185
-- Layer badge: "L6 . Governance" top-left
+- Stratum badge: "S6 . Governance" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fb7185 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -957,12 +957,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 34. L6 | Safety Boundary (4 primitives)
+## 34. S6 | Safety Boundary (4 primitives)
 
 ```
 Create an infographic for the "Safety Boundary" construct from the {a}OS reference model.
 
-LAYER: L6 - Governance
+STRATUM: S6 - Governance
 ACCENT COLOR: #fb7185
 CONSTRUCT: Safety Boundary
 PRIMITIVE COUNT: 4
@@ -975,7 +975,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Safety Boundary" in large text, colored #fb7185
-- Layer badge: "L6 . Governance" top-left
+- Stratum badge: "S6 . Governance" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fb7185 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -985,12 +985,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 35. L5 | Trace Span (4 primitives)
+## 35. S5 | Trace Span (4 primitives)
 
 ```
 Create an infographic for the "Trace Span" construct from the {a}OS reference model.
 
-LAYER: L5 - Observability
+STRATUM: S5 - Observability
 ACCENT COLOR: #fbbf24
 CONSTRUCT: Trace Span
 PRIMITIVE COUNT: 4
@@ -1003,7 +1003,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Trace Span" in large text, colored #fbbf24
-- Layer badge: "L5 . Observability" top-left
+- Stratum badge: "S5 . Observability" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fbbf24 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1013,12 +1013,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 36. L5 | Log Entry (4 primitives)
+## 36. S5 | Log Entry (4 primitives)
 
 ```
 Create an infographic for the "Log Entry" construct from the {a}OS reference model.
 
-LAYER: L5 - Observability
+STRATUM: S5 - Observability
 ACCENT COLOR: #fbbf24
 CONSTRUCT: Log Entry
 PRIMITIVE COUNT: 4
@@ -1031,7 +1031,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Log Entry" in large text, colored #fbbf24
-- Layer badge: "L5 . Observability" top-left
+- Stratum badge: "S5 . Observability" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fbbf24 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1041,12 +1041,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 37. L5 | Token Ledger (4 primitives)
+## 37. S5 | Token Ledger (4 primitives)
 
 ```
 Create an infographic for the "Token Ledger" construct from the {a}OS reference model.
 
-LAYER: L5 - Observability
+STRATUM: S5 - Observability
 ACCENT COLOR: #fbbf24
 CONSTRUCT: Token Ledger
 PRIMITIVE COUNT: 4
@@ -1059,7 +1059,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Token Ledger" in large text, colored #fbbf24
-- Layer badge: "L5 . Observability" top-left
+- Stratum badge: "S5 . Observability" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fbbf24 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1069,12 +1069,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 38. L5 | Latency Histogram (4 primitives)
+## 38. S5 | Latency Histogram (4 primitives)
 
 ```
 Create an infographic for the "Latency Histogram" construct from the {a}OS reference model.
 
-LAYER: L5 - Observability
+STRATUM: S5 - Observability
 ACCENT COLOR: #fbbf24
 CONSTRUCT: Latency Histogram
 PRIMITIVE COUNT: 4
@@ -1087,7 +1087,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Latency Histogram" in large text, colored #fbbf24
-- Layer badge: "L5 . Observability" top-left
+- Stratum badge: "S5 . Observability" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fbbf24 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1097,12 +1097,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 39. L5 | Eval Suite (4 primitives)
+## 39. S5 | Eval Suite (4 primitives)
 
 ```
 Create an infographic for the "Eval Suite" construct from the {a}OS reference model.
 
-LAYER: L5 - Observability
+STRATUM: S5 - Observability
 ACCENT COLOR: #fbbf24
 CONSTRUCT: Eval Suite
 PRIMITIVE COUNT: 4
@@ -1115,7 +1115,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Eval Suite" in large text, colored #fbbf24
-- Layer badge: "L5 . Observability" top-left
+- Stratum badge: "S5 . Observability" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fbbf24 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1125,12 +1125,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 40. L5 | Test Case (4 primitives)
+## 40. S5 | Test Case (4 primitives)
 
 ```
 Create an infographic for the "Test Case" construct from the {a}OS reference model.
 
-LAYER: L5 - Observability
+STRATUM: S5 - Observability
 ACCENT COLOR: #fbbf24
 CONSTRUCT: Test Case
 PRIMITIVE COUNT: 4
@@ -1143,7 +1143,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Test Case" in large text, colored #fbbf24
-- Layer badge: "L5 . Observability" top-left
+- Stratum badge: "S5 . Observability" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fbbf24 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1153,12 +1153,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 41. L5 | Judge Prompt (4 primitives)
+## 41. S5 | Judge Prompt (4 primitives)
 
 ```
 Create an infographic for the "Judge Prompt" construct from the {a}OS reference model.
 
-LAYER: L5 - Observability
+STRATUM: S5 - Observability
 ACCENT COLOR: #fbbf24
 CONSTRUCT: Judge Prompt
 PRIMITIVE COUNT: 4
@@ -1171,7 +1171,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Judge Prompt" in large text, colored #fbbf24
-- Layer badge: "L5 . Observability" top-left
+- Stratum badge: "S5 . Observability" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fbbf24 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1181,12 +1181,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 42. L5 | Score Aggregator (4 primitives)
+## 42. S5 | Score Aggregator (4 primitives)
 
 ```
 Create an infographic for the "Score Aggregator" construct from the {a}OS reference model.
 
-LAYER: L5 - Observability
+STRATUM: S5 - Observability
 ACCENT COLOR: #fbbf24
 CONSTRUCT: Score Aggregator
 PRIMITIVE COUNT: 4
@@ -1199,7 +1199,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Score Aggregator" in large text, colored #fbbf24
-- Layer badge: "L5 . Observability" top-left
+- Stratum badge: "S5 . Observability" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fbbf24 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1209,12 +1209,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 43. L5 | Drift Detector (4 primitives)
+## 43. S5 | Drift Detector (4 primitives)
 
 ```
 Create an infographic for the "Drift Detector" construct from the {a}OS reference model.
 
-LAYER: L5 - Observability
+STRATUM: S5 - Observability
 ACCENT COLOR: #fbbf24
 CONSTRUCT: Drift Detector
 PRIMITIVE COUNT: 4
@@ -1227,7 +1227,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Drift Detector" in large text, colored #fbbf24
-- Layer badge: "L5 . Observability" top-left
+- Stratum badge: "S5 . Observability" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fbbf24 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1237,12 +1237,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 44. L5 | Anomaly Alert (4 primitives)
+## 44. S5 | Anomaly Alert (4 primitives)
 
 ```
 Create an infographic for the "Anomaly Alert" construct from the {a}OS reference model.
 
-LAYER: L5 - Observability
+STRATUM: S5 - Observability
 ACCENT COLOR: #fbbf24
 CONSTRUCT: Anomaly Alert
 PRIMITIVE COUNT: 4
@@ -1255,7 +1255,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Anomaly Alert" in large text, colored #fbbf24
-- Layer badge: "L5 . Observability" top-left
+- Stratum badge: "S5 . Observability" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fbbf24 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1265,12 +1265,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 45. L5 | SLO Monitor (4 primitives)
+## 45. S5 | SLO Monitor (4 primitives)
 
 ```
 Create an infographic for the "SLO Monitor" construct from the {a}OS reference model.
 
-LAYER: L5 - Observability
+STRATUM: S5 - Observability
 ACCENT COLOR: #fbbf24
 CONSTRUCT: SLO Monitor
 PRIMITIVE COUNT: 4
@@ -1283,7 +1283,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "SLO Monitor" in large text, colored #fbbf24
-- Layer badge: "L5 . Observability" top-left
+- Stratum badge: "S5 . Observability" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fbbf24 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1293,12 +1293,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 46. L5 | Cost Tracker (4 primitives)
+## 46. S5 | Cost Tracker (4 primitives)
 
 ```
 Create an infographic for the "Cost Tracker" construct from the {a}OS reference model.
 
-LAYER: L5 - Observability
+STRATUM: S5 - Observability
 ACCENT COLOR: #fbbf24
 CONSTRUCT: Cost Tracker
 PRIMITIVE COUNT: 4
@@ -1311,7 +1311,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Cost Tracker" in large text, colored #fbbf24
-- Layer badge: "L5 . Observability" top-left
+- Stratum badge: "S5 . Observability" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fbbf24 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1321,12 +1321,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 47. L3 | Sandbox Runtime (10 primitives)
+## 47. S3 | Sandbox Runtime (10 primitives)
 
 ```
 Create an infographic for the "Sandbox Runtime" construct from the {a}OS reference model.
 
-LAYER: L3 - Capabilities
+STRATUM: S3 - Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: Sandbox Runtime
 PRIMITIVE COUNT: 10
@@ -1345,7 +1345,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Sandbox Runtime" in large text, colored #38bdf8
-- Layer badge: "L3 . Capabilities" top-left
+- Stratum badge: "S3 . Capabilities" top-left
 - Show all 10 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1355,12 +1355,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 48. L3 | Interpreter Session (4 primitives)
+## 48. S3 | Interpreter Session (4 primitives)
 
 ```
 Create an infographic for the "Interpreter Session" construct from the {a}OS reference model.
 
-LAYER: L3 - Capabilities
+STRATUM: S3 - Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: Interpreter Session
 PRIMITIVE COUNT: 4
@@ -1373,7 +1373,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Interpreter Session" in large text, colored #38bdf8
-- Layer badge: "L3 . Capabilities" top-left
+- Stratum badge: "S3 . Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1383,12 +1383,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 49. L3 | Execution Result (4 primitives)
+## 49. S3 | Execution Result (4 primitives)
 
 ```
 Create an infographic for the "Execution Result" construct from the {a}OS reference model.
 
-LAYER: L3 - Capabilities
+STRATUM: S3 - Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: Execution Result
 PRIMITIVE COUNT: 4
@@ -1401,7 +1401,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Execution Result" in large text, colored #38bdf8
-- Layer badge: "L3 . Capabilities" top-left
+- Stratum badge: "S3 . Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1411,12 +1411,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 50. L3 | Resource Limit (4 primitives)
+## 50. S3 | Resource Limit (4 primitives)
 
 ```
 Create an infographic for the "Resource Limit" construct from the {a}OS reference model.
 
-LAYER: L3 - Capabilities
+STRATUM: S3 - Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: Resource Limit
 PRIMITIVE COUNT: 4
@@ -1429,7 +1429,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Resource Limit" in large text, colored #38bdf8
-- Layer badge: "L3 . Capabilities" top-left
+- Stratum badge: "S3 . Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1439,12 +1439,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 51. L3 | API Connector (4 primitives)
+## 51. S3 | API Connector (4 primitives)
 
 ```
 Create an infographic for the "API Connector" construct from the {a}OS reference model.
 
-LAYER: L3 - Capabilities
+STRATUM: S3 - Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: API Connector
 PRIMITIVE COUNT: 4
@@ -1457,7 +1457,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "API Connector" in large text, colored #38bdf8
-- Layer badge: "L3 . Capabilities" top-left
+- Stratum badge: "S3 . Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1467,12 +1467,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 52. L3 | Webhook Emitter (4 primitives)
+## 52. S3 | Webhook Emitter (4 primitives)
 
 ```
 Create an infographic for the "Webhook Emitter" construct from the {a}OS reference model.
 
-LAYER: L3 - Capabilities
+STRATUM: S3 - Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: Webhook Emitter
 PRIMITIVE COUNT: 4
@@ -1485,7 +1485,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Webhook Emitter" in large text, colored #38bdf8
-- Layer badge: "L3 . Capabilities" top-left
+- Stratum badge: "S3 . Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1495,12 +1495,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 53. L3 | Rate Limiter (4 primitives)
+## 53. S3 | Rate Limiter (4 primitives)
 
 ```
 Create an infographic for the "Rate Limiter" construct from the {a}OS reference model.
 
-LAYER: L3 - Capabilities
+STRATUM: S3 - Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: Rate Limiter
 PRIMITIVE COUNT: 4
@@ -1513,7 +1513,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Rate Limiter" in large text, colored #38bdf8
-- Layer badge: "L3 . Capabilities" top-left
+- Stratum badge: "S3 . Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1523,12 +1523,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 54. L3 | Response Cache (4 primitives)
+## 54. S3 | Response Cache (4 primitives)
 
 ```
 Create an infographic for the "Response Cache" construct from the {a}OS reference model.
 
-LAYER: L3 - Capabilities
+STRATUM: S3 - Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: Response Cache
 PRIMITIVE COUNT: 4
@@ -1541,7 +1541,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Response Cache" in large text, colored #38bdf8
-- Layer badge: "L3 . Capabilities" top-left
+- Stratum badge: "S3 . Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1551,12 +1551,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 55. L3 | Browser Session (4 primitives)
+## 55. S3 | Browser Session (4 primitives)
 
 ```
 Create an infographic for the "Browser Session" construct from the {a}OS reference model.
 
-LAYER: L3 - Capabilities
+STRATUM: S3 - Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: Browser Session
 PRIMITIVE COUNT: 4
@@ -1569,7 +1569,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Browser Session" in large text, colored #38bdf8
-- Layer badge: "L3 . Capabilities" top-left
+- Stratum badge: "S3 . Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1579,12 +1579,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 56. L3 | Page Action (4 primitives)
+## 56. S3 | Page Action (4 primitives)
 
 ```
 Create an infographic for the "Page Action" construct from the {a}OS reference model.
 
-LAYER: L3 - Capabilities
+STRATUM: S3 - Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: Page Action
 PRIMITIVE COUNT: 4
@@ -1597,7 +1597,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Page Action" in large text, colored #38bdf8
-- Layer badge: "L3 . Capabilities" top-left
+- Stratum badge: "S3 . Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1607,12 +1607,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 57. L3 | Element Selector (4 primitives)
+## 57. S3 | Element Selector (4 primitives)
 
 ```
 Create an infographic for the "Element Selector" construct from the {a}OS reference model.
 
-LAYER: L3 - Capabilities
+STRATUM: S3 - Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: Element Selector
 PRIMITIVE COUNT: 4
@@ -1625,7 +1625,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Element Selector" in large text, colored #38bdf8
-- Layer badge: "L3 . Capabilities" top-left
+- Stratum badge: "S3 . Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1635,12 +1635,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 58. L3 | Screenshot Capture (4 primitives)
+## 58. S3 | Screenshot Capture (4 primitives)
 
 ```
 Create an infographic for the "Screenshot Capture" construct from the {a}OS reference model.
 
-LAYER: L3 - Capabilities
+STRATUM: S3 - Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: Screenshot Capture
 PRIMITIVE COUNT: 4
@@ -1653,7 +1653,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Screenshot Capture" in large text, colored #38bdf8
-- Layer badge: "L3 . Capabilities" top-left
+- Stratum badge: "S3 . Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1663,12 +1663,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 59. L3 | File Handle (4 primitives)
+## 59. S3 | File Handle (4 primitives)
 
 ```
 Create an infographic for the "File Handle" construct from the {a}OS reference model.
 
-LAYER: L3 - Capabilities
+STRATUM: S3 - Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: File Handle
 PRIMITIVE COUNT: 4
@@ -1681,7 +1681,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "File Handle" in large text, colored #38bdf8
-- Layer badge: "L3 . Capabilities" top-left
+- Stratum badge: "S3 . Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1691,12 +1691,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 60. L3 | Shell Command (4 primitives)
+## 60. S3 | Shell Command (4 primitives)
 
 ```
 Create an infographic for the "Shell Command" construct from the {a}OS reference model.
 
-LAYER: L3 - Capabilities
+STRATUM: S3 - Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: Shell Command
 PRIMITIVE COUNT: 4
@@ -1709,7 +1709,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Shell Command" in large text, colored #38bdf8
-- Layer badge: "L3 . Capabilities" top-left
+- Stratum badge: "S3 . Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1719,12 +1719,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 61. L3 | Directory Walker (4 primitives)
+## 61. S3 | Directory Walker (4 primitives)
 
 ```
 Create an infographic for the "Directory Walker" construct from the {a}OS reference model.
 
-LAYER: L3 - Capabilities
+STRATUM: S3 - Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: Directory Walker
 PRIMITIVE COUNT: 4
@@ -1737,7 +1737,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Directory Walker" in large text, colored #38bdf8
-- Layer badge: "L3 . Capabilities" top-left
+- Stratum badge: "S3 . Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1747,12 +1747,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 62. L3 | Permission Check (4 primitives)
+## 62. S3 | Permission Check (4 primitives)
 
 ```
 Create an infographic for the "Permission Check" construct from the {a}OS reference model.
 
-LAYER: L3 - Capabilities
+STRATUM: S3 - Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: Permission Check
 PRIMITIVE COUNT: 4
@@ -1765,7 +1765,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Permission Check" in large text, colored #38bdf8
-- Layer badge: "L3 . Capabilities" top-left
+- Stratum badge: "S3 . Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1775,12 +1775,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 63. L3 | Message Topic (4 primitives)
+## 63. S3 | Message Topic (4 primitives)
 
 ```
 Create an infographic for the "Message Topic" construct from the {a}OS reference model.
 
-LAYER: L3 - Capabilities
+STRATUM: S3 - Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: Message Topic
 PRIMITIVE COUNT: 4
@@ -1793,7 +1793,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Message Topic" in large text, colored #38bdf8
-- Layer badge: "L3 . Capabilities" top-left
+- Stratum badge: "S3 . Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1803,12 +1803,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 64. L3 | Event Subscriber (4 primitives)
+## 64. S3 | Event Subscriber (4 primitives)
 
 ```
 Create an infographic for the "Event Subscriber" construct from the {a}OS reference model.
 
-LAYER: L3 - Capabilities
+STRATUM: S3 - Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: Event Subscriber
 PRIMITIVE COUNT: 4
@@ -1821,7 +1821,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Event Subscriber" in large text, colored #38bdf8
-- Layer badge: "L3 . Capabilities" top-left
+- Stratum badge: "S3 . Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1831,12 +1831,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 65. L3 | Dead Letter Queue (4 primitives)
+## 65. S3 | Dead Letter Queue (4 primitives)
 
 ```
 Create an infographic for the "Dead Letter Queue" construct from the {a}OS reference model.
 
-LAYER: L3 - Capabilities
+STRATUM: S3 - Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: Dead Letter Queue
 PRIMITIVE COUNT: 4
@@ -1849,7 +1849,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Dead Letter Queue" in large text, colored #38bdf8
-- Layer badge: "L3 . Capabilities" top-left
+- Stratum badge: "S3 . Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1859,12 +1859,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 66. L3 | Delivery Guarantee (4 primitives)
+## 66. S3 | Delivery Guarantee (4 primitives)
 
 ```
 Create an infographic for the "Delivery Guarantee" construct from the {a}OS reference model.
 
-LAYER: L3 - Capabilities
+STRATUM: S3 - Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: Delivery Guarantee
 PRIMITIVE COUNT: 4
@@ -1877,7 +1877,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Delivery Guarantee" in large text, colored #38bdf8
-- Layer badge: "L3 . Capabilities" top-left
+- Stratum badge: "S3 . Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1887,12 +1887,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 67. L1 | Model Card (12 primitives)
+## 67. S1 | Model Card (12 primitives)
 
 ```
 Create an infographic for the "Model Card" construct from the {a}OS reference model.
 
-LAYER: L1 - Infrastructure
+STRATUM: S1 - Infrastructure
 ACCENT COLOR: #94a3b8
 CONSTRUCT: Model Card
 PRIMITIVE COUNT: 12
@@ -1913,7 +1913,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Model Card" in large text, colored #94a3b8
-- Layer badge: "L1 . Infrastructure" top-left
+- Stratum badge: "S1 . Infrastructure" top-left
 - Show all 12 primitives as connected cards on dark (#0a0a0f) background
 - Use #94a3b8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1923,12 +1923,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 68. L1 | Model Endpoint (12 primitives)
+## 68. S1 | Model Endpoint (12 primitives)
 
 ```
 Create an infographic for the "Model Endpoint" construct from the {a}OS reference model.
 
-LAYER: L1 - Infrastructure
+STRATUM: S1 - Infrastructure
 ACCENT COLOR: #94a3b8
 CONSTRUCT: Model Endpoint
 PRIMITIVE COUNT: 12
@@ -1949,7 +1949,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Model Endpoint" in large text, colored #94a3b8
-- Layer badge: "L1 . Infrastructure" top-left
+- Stratum badge: "S1 . Infrastructure" top-left
 - Show all 12 primitives as connected cards on dark (#0a0a0f) background
 - Use #94a3b8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1959,12 +1959,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 69. L1 | Context Window (10 primitives)
+## 69. S1 | Context Window (10 primitives)
 
 ```
 Create an infographic for the "Context Window" construct from the {a}OS reference model.
 
-LAYER: L1 - Infrastructure
+STRATUM: S1 - Infrastructure
 ACCENT COLOR: #94a3b8
 CONSTRUCT: Context Window
 PRIMITIVE COUNT: 10
@@ -1983,7 +1983,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Context Window" in large text, colored #94a3b8
-- Layer badge: "L1 . Infrastructure" top-left
+- Stratum badge: "S1 . Infrastructure" top-left
 - Show all 10 primitives as connected cards on dark (#0a0a0f) background
 - Use #94a3b8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -1993,12 +1993,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 70. L1 | Tokenizer Config (10 primitives)
+## 70. S1 | Tokenizer Config (10 primitives)
 
 ```
 Create an infographic for the "Tokenizer Config" construct from the {a}OS reference model.
 
-LAYER: L1 - Infrastructure
+STRATUM: S1 - Infrastructure
 ACCENT COLOR: #94a3b8
 CONSTRUCT: Tokenizer Config
 PRIMITIVE COUNT: 10
@@ -2017,7 +2017,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Tokenizer Config" in large text, colored #94a3b8
-- Layer badge: "L1 . Infrastructure" top-left
+- Stratum badge: "S1 . Infrastructure" top-left
 - Show all 10 primitives as connected cards on dark (#0a0a0f) background
 - Use #94a3b8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -2027,12 +2027,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 71. L1 | Inference Server (10 primitives)
+## 71. S1 | Inference Server (10 primitives)
 
 ```
 Create an infographic for the "Inference Server" construct from the {a}OS reference model.
 
-LAYER: L1 - Infrastructure
+STRATUM: S1 - Infrastructure
 ACCENT COLOR: #94a3b8
 CONSTRUCT: Inference Server
 PRIMITIVE COUNT: 10
@@ -2051,7 +2051,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Inference Server" in large text, colored #94a3b8
-- Layer badge: "L1 . Infrastructure" top-left
+- Stratum badge: "S1 . Infrastructure" top-left
 - Show all 10 primitives as connected cards on dark (#0a0a0f) background
 - Use #94a3b8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -2061,12 +2061,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 72. L1 | GPU Pool (10 primitives)
+## 72. S1 | GPU Pool (10 primitives)
 
 ```
 Create an infographic for the "GPU Pool" construct from the {a}OS reference model.
 
-LAYER: L1 - Infrastructure
+STRATUM: S1 - Infrastructure
 ACCENT COLOR: #94a3b8
 CONSTRUCT: GPU Pool
 PRIMITIVE COUNT: 10
@@ -2085,7 +2085,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "GPU Pool" in large text, colored #94a3b8
-- Layer badge: "L1 . Infrastructure" top-left
+- Stratum badge: "S1 . Infrastructure" top-left
 - Show all 10 primitives as connected cards on dark (#0a0a0f) background
 - Use #94a3b8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -2095,12 +2095,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 73. L1 | Batch Queue (10 primitives)
+## 73. S1 | Batch Queue (10 primitives)
 
 ```
 Create an infographic for the "Batch Queue" construct from the {a}OS reference model.
 
-LAYER: L1 - Infrastructure
+STRATUM: S1 - Infrastructure
 ACCENT COLOR: #94a3b8
 CONSTRUCT: Batch Queue
 PRIMITIVE COUNT: 10
@@ -2119,7 +2119,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Batch Queue" in large text, colored #94a3b8
-- Layer badge: "L1 . Infrastructure" top-left
+- Stratum badge: "S1 . Infrastructure" top-left
 - Show all 10 primitives as connected cards on dark (#0a0a0f) background
 - Use #94a3b8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -2129,12 +2129,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 74. L1 | Autoscaler Policy (10 primitives)
+## 74. S1 | Autoscaler Policy (10 primitives)
 
 ```
 Create an infographic for the "Autoscaler Policy" construct from the {a}OS reference model.
 
-LAYER: L1 - Infrastructure
+STRATUM: S1 - Infrastructure
 ACCENT COLOR: #94a3b8
 CONSTRUCT: Autoscaler Policy
 PRIMITIVE COUNT: 10
@@ -2153,7 +2153,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Autoscaler Policy" in large text, colored #94a3b8
-- Layer badge: "L1 . Infrastructure" top-left
+- Stratum badge: "S1 . Infrastructure" top-left
 - Show all 10 primitives as connected cards on dark (#0a0a0f) background
 - Use #94a3b8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -2163,12 +2163,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 75. L1 | Training Run (11 primitives)
+## 75. S1 | Training Run (11 primitives)
 
 ```
 Create an infographic for the "Training Run" construct from the {a}OS reference model.
 
-LAYER: L1 - Infrastructure
+STRATUM: S1 - Infrastructure
 ACCENT COLOR: #94a3b8
 CONSTRUCT: Training Run
 PRIMITIVE COUNT: 11
@@ -2188,7 +2188,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Training Run" in large text, colored #94a3b8
-- Layer badge: "L1 . Infrastructure" top-left
+- Stratum badge: "S1 . Infrastructure" top-left
 - Show all 11 primitives as connected cards on dark (#0a0a0f) background
 - Use #94a3b8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -2198,12 +2198,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 76. L1 | Dataset Config (10 primitives)
+## 76. S1 | Dataset Config (10 primitives)
 
 ```
 Create an infographic for the "Dataset Config" construct from the {a}OS reference model.
 
-LAYER: L1 - Infrastructure
+STRATUM: S1 - Infrastructure
 ACCENT COLOR: #94a3b8
 CONSTRUCT: Dataset Config
 PRIMITIVE COUNT: 10
@@ -2222,7 +2222,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Dataset Config" in large text, colored #94a3b8
-- Layer badge: "L1 . Infrastructure" top-left
+- Stratum badge: "S1 . Infrastructure" top-left
 - Show all 10 primitives as connected cards on dark (#0a0a0f) background
 - Use #94a3b8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -2232,31 +2232,31 @@ VISUAL GUIDANCE:
 
 ---
 
-## 77. L1 | LoRA Adapter (10 primitives)
+## 77. S1 | LoRA Adapter (10 primitives)
 
 ```
 Create an infographic for the "LoRA Adapter" construct from the {a}OS reference model.
 
-LAYER: L1 - Infrastructure
+STRATUM: S1 - Infrastructure
 ACCENT COLOR: #94a3b8
 CONSTRUCT: LoRA Adapter
 PRIMITIVE COUNT: 10
 
 PRIMITIVES (show each as a card/node):
   - **Adapter Rank**: LoRA rank — r=8–16 for style (~10M params, &lt;100MB); r=64–128 for knowledge (~80M params, ~500MB VRAM).
-  - **Target Modules**: Which layers get LoRA adapters. 'All Linear Layers' retains 95% of full fine-tune performance.
+  - **Target Modules**: Which strata get LoRA adapters. 'All Linear Strata' retains 95% of full fine-tune performance.
   - **Merge Strategy**: Combining adapter weights — Merge/Unload (permanent, fastest) or TIES-Merging (multi-adapter, sign-aware).
   - **Adapter Registry**: Centralized catalog of 1,000+ adapters with hot-swap latency &lt;200ms.
   - **Adapter Rank**: Rank of the low-rank matrices (typically 8–64).
   - **Adapter Alpha**: Scaling factor for LoRA updates (typically 16–32).
   - **Base Model ID**: ID of the base model this adapter fine-tunes.
-  - **Weight Decay**: L2 regularization coefficient for adapter weights.
-  - **Target Modules**: List of layer names to apply LoRA to (e.g., ['q_proj', 'v_proj']).
-  - **LoRA Dropout**: Dropout probability for LoRA layers.
+  - **Weight Decay**: S2 regularization coefficient for adapter weights.
+  - **Target Modules**: List of stratum names to apply LoRA to (e.g., ['q_proj', 'v_proj']).
+  - **LoRA Dropout**: Dropout probability for LoRA strata.
 
 VISUAL GUIDANCE:
 - Title: "LoRA Adapter" in large text, colored #94a3b8
-- Layer badge: "L1 . Infrastructure" top-left
+- Stratum badge: "S1 . Infrastructure" top-left
 - Show all 10 primitives as connected cards on dark (#0a0a0f) background
 - Use #94a3b8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -2266,12 +2266,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 78. L1 | RLHF Pipeline (9 primitives)
+## 78. S1 | RLHF Pipeline (9 primitives)
 
 ```
 Create an infographic for the "RLHF Pipeline" construct from the {a}OS reference model.
 
-LAYER: L1 - Infrastructure
+STRATUM: S1 - Infrastructure
 ACCENT COLOR: #94a3b8
 CONSTRUCT: RLHF Pipeline
 PRIMITIVE COUNT: 9
@@ -2289,7 +2289,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "RLHF Pipeline" in large text, colored #94a3b8
-- Layer badge: "L1 . Infrastructure" top-left
+- Stratum badge: "S1 . Infrastructure" top-left
 - Show all 9 primitives as connected cards on dark (#0a0a0f) background
 - Use #94a3b8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -2299,12 +2299,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 79. L4 | Test Gate (10 primitives)
+## 79. S4 | Test Gate (10 primitives)
 
 ```
 Create an infographic for the "Test Gate" construct from the {a}OS reference model.
 
-LAYER: L4 - Orchestration
+STRATUM: S4 - Orchestration
 ACCENT COLOR: #34d399
 CONSTRUCT: Test Gate
 PRIMITIVE COUNT: 10
@@ -2323,7 +2323,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Test Gate" in large text, colored #34d399
-- Layer badge: "L4 . Orchestration" top-left
+- Stratum badge: "S4 . Orchestration" top-left
 - Show all 10 primitives as connected cards on dark (#0a0a0f) background
 - Use #34d399 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -2333,12 +2333,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 80. L4 | TDD Workflow Path (10 primitives)
+## 80. S4 | TDD Workflow Path (10 primitives)
 
 ```
 Create an infographic for the "TDD Workflow Path" construct from the {a}OS reference model.
 
-LAYER: L4 - Orchestration
+STRATUM: S4 - Orchestration
 ACCENT COLOR: #34d399
 CONSTRUCT: TDD Workflow Path
 PRIMITIVE COUNT: 10
@@ -2357,7 +2357,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "TDD Workflow Path" in large text, colored #34d399
-- Layer badge: "L4 . Orchestration" top-left
+- Stratum badge: "S4 . Orchestration" top-left
 - Show all 10 primitives as connected cards on dark (#0a0a0f) background
 - Use #34d399 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -2367,12 +2367,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 81. L2 | Working Memory (5 primitives)
+## 81. S2 | Working Memory (5 primitives)
 
 ```
 Create an infographic for the "Working Memory" construct from the {a}OS reference model.
 
-LAYER: L2 - Knowledge & Retrieval
+STRATUM: S2 - Knowledge & Retrieval
 ACCENT COLOR: #a78bfa
 CONSTRUCT: Working Memory
 PRIMITIVE COUNT: 5
@@ -2386,7 +2386,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Working Memory" in large text, colored #a78bfa
-- Layer badge: "L2 . Knowledge & Retrieval" top-left
+- Stratum badge: "S2 . Knowledge & Retrieval" top-left
 - Show all 5 primitives as connected cards on dark (#0a0a0f) background
 - Use #a78bfa accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -2396,12 +2396,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 82. L2 | Episodic Store (6 primitives)
+## 82. S2 | Episodic Store (6 primitives)
 
 ```
 Create an infographic for the "Episodic Store" construct from the {a}OS reference model.
 
-LAYER: L2 - Knowledge & Retrieval
+STRATUM: S2 - Knowledge & Retrieval
 ACCENT COLOR: #a78bfa
 CONSTRUCT: Episodic Store
 PRIMITIVE COUNT: 6
@@ -2416,7 +2416,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Episodic Store" in large text, colored #a78bfa
-- Layer badge: "L2 . Knowledge & Retrieval" top-left
+- Stratum badge: "S2 . Knowledge & Retrieval" top-left
 - Show all 6 primitives as connected cards on dark (#0a0a0f) background
 - Use #a78bfa accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -2426,12 +2426,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 83. L2 | Memory Consolidator (5 primitives)
+## 83. S2 | Memory Consolidator (5 primitives)
 
 ```
 Create an infographic for the "Memory Consolidator" construct from the {a}OS reference model.
 
-LAYER: L2 - Knowledge & Retrieval
+STRATUM: S2 - Knowledge & Retrieval
 ACCENT COLOR: #a78bfa
 CONSTRUCT: Memory Consolidator
 PRIMITIVE COUNT: 5
@@ -2445,7 +2445,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Memory Consolidator" in large text, colored #a78bfa
-- Layer badge: "L2 . Knowledge & Retrieval" top-left
+- Stratum badge: "S2 . Knowledge & Retrieval" top-left
 - Show all 5 primitives as connected cards on dark (#0a0a0f) background
 - Use #a78bfa accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -2455,12 +2455,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 84. L2 | Forgetting Policy (5 primitives)
+## 84. S2 | Forgetting Policy (5 primitives)
 
 ```
 Create an infographic for the "Forgetting Policy" construct from the {a}OS reference model.
 
-LAYER: L2 - Knowledge & Retrieval
+STRATUM: S2 - Knowledge & Retrieval
 ACCENT COLOR: #a78bfa
 CONSTRUCT: Forgetting Policy
 PRIMITIVE COUNT: 5
@@ -2474,7 +2474,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Forgetting Policy" in large text, colored #a78bfa
-- Layer badge: "L2 . Knowledge & Retrieval" top-left
+- Stratum badge: "S2 . Knowledge & Retrieval" top-left
 - Show all 5 primitives as connected cards on dark (#0a0a0f) background
 - Use #a78bfa accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -2484,12 +2484,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 85. L2 | Entity Node (6 primitives)
+## 85. S2 | Entity Node (6 primitives)
 
 ```
 Create an infographic for the "Entity Node" construct from the {a}OS reference model.
 
-LAYER: L2 - Knowledge & Retrieval
+STRATUM: S2 - Knowledge & Retrieval
 ACCENT COLOR: #a78bfa
 CONSTRUCT: Entity Node
 PRIMITIVE COUNT: 6
@@ -2504,7 +2504,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Entity Node" in large text, colored #a78bfa
-- Layer badge: "L2 . Knowledge & Retrieval" top-left
+- Stratum badge: "S2 . Knowledge & Retrieval" top-left
 - Show all 6 primitives as connected cards on dark (#0a0a0f) background
 - Use #a78bfa accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -2514,12 +2514,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 86. L2 | Relationship Edge (6 primitives)
+## 86. S2 | Relationship Edge (6 primitives)
 
 ```
 Create an infographic for the "Relationship Edge" construct from the {a}OS reference model.
 
-LAYER: L2 - Knowledge & Retrieval
+STRATUM: S2 - Knowledge & Retrieval
 ACCENT COLOR: #a78bfa
 CONSTRUCT: Relationship Edge
 PRIMITIVE COUNT: 6
@@ -2534,7 +2534,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Relationship Edge" in large text, colored #a78bfa
-- Layer badge: "L2 . Knowledge & Retrieval" top-left
+- Stratum badge: "S2 . Knowledge & Retrieval" top-left
 - Show all 6 primitives as connected cards on dark (#0a0a0f) background
 - Use #a78bfa accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -2544,12 +2544,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 87. L2 | Ontology Schema (6 primitives)
+## 87. S2 | Ontology Schema (6 primitives)
 
 ```
 Create an infographic for the "Ontology Schema" construct from the {a}OS reference model.
 
-LAYER: L2 - Knowledge & Retrieval
+STRATUM: S2 - Knowledge & Retrieval
 ACCENT COLOR: #a78bfa
 CONSTRUCT: Ontology Schema
 PRIMITIVE COUNT: 6
@@ -2564,7 +2564,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Ontology Schema" in large text, colored #a78bfa
-- Layer badge: "L2 . Knowledge & Retrieval" top-left
+- Stratum badge: "S2 . Knowledge & Retrieval" top-left
 - Show all 6 primitives as connected cards on dark (#0a0a0f) background
 - Use #a78bfa accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -2574,12 +2574,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 88. L2 | Graph Query (6 primitives)
+## 88. S2 | Graph Query (6 primitives)
 
 ```
 Create an infographic for the "Graph Query" construct from the {a}OS reference model.
 
-LAYER: L2 - Knowledge & Retrieval
+STRATUM: S2 - Knowledge & Retrieval
 ACCENT COLOR: #a78bfa
 CONSTRUCT: Graph Query
 PRIMITIVE COUNT: 6
@@ -2594,7 +2594,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Graph Query" in large text, colored #a78bfa
-- Layer badge: "L2 . Knowledge & Retrieval" top-left
+- Stratum badge: "S2 . Knowledge & Retrieval" top-left
 - Show all 6 primitives as connected cards on dark (#0a0a0f) background
 - Use #a78bfa accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -2604,12 +2604,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 89. L2 | Vector Index (6 primitives)
+## 89. S2 | Vector Index (6 primitives)
 
 ```
 Create an infographic for the "Vector Index" construct from the {a}OS reference model.
 
-LAYER: L2 - Knowledge & Retrieval
+STRATUM: S2 - Knowledge & Retrieval
 ACCENT COLOR: #a78bfa
 CONSTRUCT: Vector Index
 PRIMITIVE COUNT: 6
@@ -2624,7 +2624,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Vector Index" in large text, colored #a78bfa
-- Layer badge: "L2 . Knowledge & Retrieval" top-left
+- Stratum badge: "S2 . Knowledge & Retrieval" top-left
 - Show all 6 primitives as connected cards on dark (#0a0a0f) background
 - Use #a78bfa accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -2634,12 +2634,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 90. L2 | Embedding Model (6 primitives)
+## 90. S2 | Embedding Model (6 primitives)
 
 ```
 Create an infographic for the "Embedding Model" construct from the {a}OS reference model.
 
-LAYER: L2 - Knowledge & Retrieval
+STRATUM: S2 - Knowledge & Retrieval
 ACCENT COLOR: #a78bfa
 CONSTRUCT: Embedding Model
 PRIMITIVE COUNT: 6
@@ -2649,12 +2649,12 @@ PRIMITIVES (show each as a card/node):
   - **Output Dimension**: Dimensionality of output embeddings.
   - **Distance Metric**: Recommended distance metric for this embedding model.
   - **Max Sequence Length**: Maximum input sequence length the model can handle.
-  - **Normalization Type**: Normalization applied to embeddings (L2, cosine, none).
+  - **Normalization Type**: Normalization applied to embeddings (S2, cosine, none).
   - **Model Format**: Format of the model files (PyTorch, ONNX, TensorFlow).
 
 VISUAL GUIDANCE:
 - Title: "Embedding Model" in large text, colored #a78bfa
-- Layer badge: "L2 . Knowledge & Retrieval" top-left
+- Stratum badge: "S2 . Knowledge & Retrieval" top-left
 - Show all 6 primitives as connected cards on dark (#0a0a0f) background
 - Use #a78bfa accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -2664,12 +2664,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 91. L2 | Chunk Strategy (6 primitives)
+## 91. S2 | Chunk Strategy (6 primitives)
 
 ```
 Create an infographic for the "Chunk Strategy" construct from the {a}OS reference model.
 
-LAYER: L2 - Knowledge & Retrieval
+STRATUM: S2 - Knowledge & Retrieval
 ACCENT COLOR: #a78bfa
 CONSTRUCT: Chunk Strategy
 PRIMITIVE COUNT: 6
@@ -2684,7 +2684,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Chunk Strategy" in large text, colored #a78bfa
-- Layer badge: "L2 . Knowledge & Retrieval" top-left
+- Stratum badge: "S2 . Knowledge & Retrieval" top-left
 - Show all 6 primitives as connected cards on dark (#0a0a0f) background
 - Use #a78bfa accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -2694,12 +2694,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 92. L2 | Index Refresh (6 primitives)
+## 92. S2 | Index Refresh (6 primitives)
 
 ```
 Create an infographic for the "Index Refresh" construct from the {a}OS reference model.
 
-LAYER: L2 - Knowledge & Retrieval
+STRATUM: S2 - Knowledge & Retrieval
 ACCENT COLOR: #a78bfa
 CONSTRUCT: Index Refresh
 PRIMITIVE COUNT: 6
@@ -2714,7 +2714,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Index Refresh" in large text, colored #a78bfa
-- Layer badge: "L2 . Knowledge & Retrieval" top-left
+- Stratum badge: "S2 . Knowledge & Retrieval" top-left
 - Show all 6 primitives as connected cards on dark (#0a0a0f) background
 - Use #a78bfa accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -2724,12 +2724,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 93. L4 | Pattern (6 primitives)
+## 93. S4 | Pattern (6 primitives)
 
 ```
 Create an infographic for the "Pattern" construct from the {a}OS reference model.
 
-LAYER: L4 - Orchestration
+STRATUM: S4 - Orchestration
 ACCENT COLOR: #34d399
 CONSTRUCT: Pattern
 PRIMITIVE COUNT: 6
@@ -2744,7 +2744,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Pattern" in large text, colored #34d399
-- Layer badge: "L4 . Orchestration" top-left
+- Stratum badge: "S4 . Orchestration" top-left
 - Show all 6 primitives as connected cards on dark (#0a0a0f) background
 - Use #34d399 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -2754,12 +2754,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 94. L6 | Test Harness (6 primitives)
+## 94. S6 | Test Harness (6 primitives)
 
 ```
 Create an infographic for the "Test Harness" construct from the {a}OS reference model.
 
-LAYER: L6 - Governance
+STRATUM: S6 - Governance
 ACCENT COLOR: #fb7185
 CONSTRUCT: Test Harness
 PRIMITIVE COUNT: 6
@@ -2774,7 +2774,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Test Harness" in large text, colored #fb7185
-- Layer badge: "L6 . Governance" top-left
+- Stratum badge: "S6 . Governance" top-left
 - Show all 6 primitives as connected cards on dark (#0a0a0f) background
 - Use #fb7185 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -2784,12 +2784,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 95. L6 | Persona (6 primitives)
+## 95. S6 | Persona (6 primitives)
 
 ```
 Create an infographic for the "Persona" construct from the {a}OS reference model.
 
-LAYER: L6 - Governance
+STRATUM: S6 - Governance
 ACCENT COLOR: #fb7185
 CONSTRUCT: Persona
 PRIMITIVE COUNT: 6
@@ -2804,7 +2804,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Persona" in large text, colored #fb7185
-- Layer badge: "L6 . Governance" top-left
+- Stratum badge: "S6 . Governance" top-left
 - Show all 6 primitives as connected cards on dark (#0a0a0f) background
 - Use #fb7185 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -2814,19 +2814,19 @@ VISUAL GUIDANCE:
 
 ---
 
-## 96. L6 | Stack (6 primitives)
+## 96. S6 | Stack (6 primitives)
 
 ```
 Create an infographic for the "Stack" construct from the {a}OS reference model.
 
-LAYER: L6 - Governance
+STRATUM: S6 - Governance
 ACCENT COLOR: #fb7185
 CONSTRUCT: Stack
 PRIMITIVE COUNT: 6
 
 PRIMITIVES (show each as a card/node):
   - **Stack ID**: Unique identifier for this stack configuration.
-  - **Layer Composition**: Specification of components from each of the 7 layers.
+  - **Stratum Composition**: Specification of components from each of the 7 strata.
   - **Version Constraints**: Version constraints for stack components.
   - **Dependency Graph**: Graph of dependencies between stack components.
   - **Deployment Target**: Target environment for deployment (dev, staging, prod).
@@ -2834,7 +2834,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Stack" in large text, colored #fb7185
-- Layer badge: "L6 . Governance" top-left
+- Stratum badge: "S6 . Governance" top-left
 - Show all 6 primitives as connected cards on dark (#0a0a0f) background
 - Use #fb7185 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -2844,12 +2844,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 97. L7 | Covenant (6 primitives)
+## 97. S7 | Covenant (6 primitives)
 
 ```
 Create an infographic for the "Covenant" construct from the {a}OS reference model.
 
-LAYER: L7 - Human Interface
+STRATUM: S7 - Human Interface
 ACCENT COLOR: #818cf8
 CONSTRUCT: Covenant
 PRIMITIVE COUNT: 6
@@ -2864,7 +2864,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Covenant" in large text, colored #818cf8
-- Layer badge: "L7 . Human Interface" top-left
+- Stratum badge: "S7 . Human Interface" top-left
 - Show all 6 primitives as connected cards on dark (#0a0a0f) background
 - Use #818cf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -2874,12 +2874,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 98. L6 | Override Protocol (6 primitives)
+## 98. S6 | Override Protocol (6 primitives)
 
 ```
 Create an infographic for the "Override Protocol" construct from the {a}OS reference model.
 
-LAYER: L6 - Governance
+STRATUM: S6 - Governance
 ACCENT COLOR: #fb7185
 CONSTRUCT: Override Protocol
 PRIMITIVE COUNT: 6
@@ -2894,7 +2894,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Override Protocol" in large text, colored #fb7185
-- Layer badge: "L6 . Governance" top-left
+- Stratum badge: "S6 . Governance" top-left
 - Show all 6 primitives as connected cards on dark (#0a0a0f) background
 - Use #fb7185 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -2904,12 +2904,12 @@ VISUAL GUIDANCE:
 
 ---
 
-## 99. L7 | Trace Span (7 primitives)
+## 99. S7 | Trace Span (7 primitives)
 
 ```
 Create an infographic for the "Trace Span" construct from the {a}OS reference model.
 
-LAYER: L7 - Human Interface
+STRATUM: S7 - Human Interface
 ACCENT COLOR: #818cf8
 CONSTRUCT: Trace Span
 PRIMITIVE COUNT: 7
@@ -2925,7 +2925,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Trace Span" in large text, colored #818cf8
-- Layer badge: "L7 . Human Interface" top-left
+- Stratum badge: "S7 . Human Interface" top-left
 - Show all 7 primitives as connected cards on dark (#0a0a0f) background
 - Use #818cf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)

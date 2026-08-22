@@ -34,19 +34,19 @@
 | `--accent-gradient` | `linear-gradient(135deg, #94a3b8, #e2e8f0)` | Logo text fill |
 | `--glow-indigo` | `rgba(129, 140, 248, 0.15)` | Focus rings, active pills |
 
-### Stratum Colours (L1–L7)
+### Stratum Colours (S1–S7)
 
-Each layer has a solid colour and a glow variant:
+Each stratum has a solid colour and a glow variant:
 
-| Layer | Colour | Glow |
+| Stratum | Colour | Glow |
 |-------|--------|------|
-| L7 Experience | `#c75a00` | `rgba(199, 90, 0, 0.12)` |
-| L6 Governance | `#e15759` | `rgba(225, 87, 89, 0.12)` |
-| L5 Observability | `#b07aa1` | `rgba(176, 122, 161, 0.12)` |
-| L4 Orchestration | `#59a14f` | `rgba(89, 161, 79, 0.12)` |
-| L3 Execution | `#edc948` | `rgba(237, 201, 72, 0.12)` |
-| L2 Knowledge | `#22d3ee` | `rgba(34, 211, 238, 0.12)` |
-| L1 Models | `#1e40af` | `rgba(30, 64, 175, 0.12)` |
+| S7 Experience | `#c75a00` | `rgba(199, 90, 0, 0.12)` |
+| S6 Governance | `#e15759` | `rgba(225, 87, 89, 0.12)` |
+| S5 Observability | `#b07aa1` | `rgba(176, 122, 161, 0.12)` |
+| S4 Orchestration | `#59a14f` | `rgba(89, 161, 79, 0.12)` |
+| S3 Execution | `#edc948` | `rgba(237, 201, 72, 0.12)` |
+| S2 Knowledge | `#22d3ee` | `rgba(34, 211, 238, 0.12)` |
+| S1 Models | `#1e40af` | `rgba(30, 64, 175, 0.12)` |
 
 ### Card Highlight Ring
 
@@ -118,7 +118,7 @@ Children (left → right):
 
 ### Adaptive Nav (3-stage responsive)
 
-The header nav collapses in three stages — driven by CSS media queries with a JS-based `syncHeaderResponsiveness()` as a supplementary detection layer.
+The header nav collapses in three stages — driven by CSS media queries with a JS-based `syncHeaderResponsiveness()` as a supplementary detection stratum.
 
 | Stage | Trigger | Effect |
 |-------|---------|--------|

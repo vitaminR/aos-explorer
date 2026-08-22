@@ -11,14 +11,14 @@
         "orchestration harness",
         "execution harness",
         "delivery harness",
-        "layer 0",
+        "stratum 0",
         "stratum 0",
       ],
       shortDefinition:
         "A governing scaffold that constrains sequencing, context budgets, checkpoints, and stop conditions.",
       explainer:
-        "A harness sits at L0/L4 (Meta/Orchestration) and is the assembled agent bundle: model + tools + memory + orchestration + policy. It defines how work is done, not just what to do. It wraps an agent or pipeline with lifecycle controls \u2014 sequencing steps, enforcing context budgets, persisting checkpoints, and triggering stop conditions. Examples include execution harnesses (GSD, BMAD), test harnesses (Superpowers), and CI/CD harnesses (Harness.io). Not to be confused with the agent or the tools it calls \u2014 the harness is the governing scaffold around them.",
-      strata: ["L0", "L4"],
+        "A harness sits at S0/S4 (Meta/Orchestration) and is the assembled agent bundle: model + tools + memory + orchestration + policy. It defines how work is done, not just what to do. It wraps an agent or pipeline with lifecycle controls \u2014 sequencing steps, enforcing context budgets, persisting checkpoints, and triggering stop conditions. Examples include execution harnesses (GSD, BMAD), test harnesses (Superpowers), and CI/CD harnesses (Harness.io). Not to be confused with the agent or the tools it calls \u2014 the harness is the governing scaffold around them.",
+      strata: ["S0", "S4"],
       axes: ["Orchestration"],
       relatedProductIds: ["bmad", "gsd", "superpowers"],
       relatedConceptSlugs: ["loop-core", "guardrails", "checkpoint"],
@@ -48,7 +48,7 @@
         "Iterative cycle of plan \u2192 act \u2192 evaluate \u2192 adjust until stop conditions are met.",
       explainer:
         "The canonical agentic control cycle. An agent enters a loop where it plans the next action, executes it via tools or generation, evaluates the result against success criteria, and adjusts strategy. The loop repeats until stop conditions are satisfied or a budget is exhausted. Variants include research loops, evaluation loops, implementation loops, and recovery loops.",
-      strata: ["L3", "L4"],
+      strata: ["S3", "S4"],
       axes: ["Execution", "Orchestration"],
       relatedProductIds: ["langgraph", "wfeval", "wfhuman"],
       relatedConceptSlugs: ["harness", "checkpoint", "memory"],
@@ -78,7 +78,7 @@
         "Standardized interface for exposing tools, resources, and prompts to agents \u2014 strong for tool access, but not a replacement for hook-driven lifecycle automation.",
       explainer:
         "The Model Context Protocol (MCP) establishes a universal interface allowing agents to connect to any compliant tool or dataset. Instead of writing bespoke integrations for every data source, teams adopt MCP to provide plug-and-play tool surfaces. MCP servers expose file systems, APIs, databases, and browser actions through a consistent schema. But MCP is ultimately a tool surface, not a memory operating system. If you need automatic lifecycle behavior \u2014 such as pre-fetching context before reasoning, post-turn capture after execution, or pre-compressing long sessions before truncation \u2014 native hooks or plugins are often the better mechanism. Use MCP for standardized access; use hooks when the lifecycle itself must run automatically.",
-      strata: ["L2", "L3"],
+      strata: ["S2", "S3"],
       axes: ["Knowledge", "Execution"],
       relatedProductIds: ["mcpgithub", "mcpplaywright", "mcpfs"],
       relatedConceptSlugs: [
@@ -122,7 +122,7 @@
         "Native lifecycle callbacks that run automatically before or after agent actions, enabling memory automation that tools alone cannot guarantee.",
       explainer:
         "Hooks are deterministic extension points in an agent runtime: code that runs before or after a lifecycle event such as a turn, tool call, file edit, or context compaction boundary. Unlike MCP, which exposes capabilities the model may choose to call, hooks run automatically at the exact lifecycle boundary you define. That makes them ideal for shared-brain systems: pre-fetch relevant memory before reasoning begins, capture decisions and file changes after the turn completes, and pre-compress state before the context window overflows. Hooks are not universally better than MCP \u2014 they solve a different problem. MCP is for tool access. Hooks are for lifecycle control.",
-      strata: ["L3", "L4"],
+      strata: ["S3", "S4"],
       axes: ["Execution", "Orchestration"],
       relatedProductIds: ["clawmem", "claude-code", "langgraph"],
       relatedConceptSlugs: [
@@ -161,8 +161,8 @@
       shortDefinition:
         "Automatic orchestration of memory and context across the full agent turn: before reasoning, after execution, and before compaction or truncation.",
       explainer:
-        "Lifecycle Management is the discipline of treating memory as an active operating loop rather than a passive database. A robust shared brain does not wait for the model to decide when to search or write memory. Instead, it defines lifecycle stages around every task: pre-fetch relevant history before reasoning starts, post-turn capture decisions and file modifications after the agent acts, and pre-compress the session before the context window truncates away useful state. This sits at the junction of L2 (Knowledge & Memory) and L4 (Orchestration) because it coordinates both retrieval and control flow.",
-      strata: ["L2", "L4"],
+        "Lifecycle Management is the discipline of treating memory as an active operating loop rather than a passive database. A robust shared brain does not wait for the model to decide when to search or write memory. Instead, it defines lifecycle stages around every task: pre-fetch relevant history before reasoning starts, post-turn capture decisions and file modifications after the agent acts, and pre-compress the session before the context window truncates away useful state. This sits at the junction of S2 (Knowledge & Memory) and S4 (Orchestration) because it coordinates both retrieval and control flow.",
+      strata: ["S2", "S4"],
       axes: ["Knowledge", "Orchestration"],
       relatedProductIds: ["clawmem", "langgraph", "gsd"],
       relatedConceptSlugs: [
@@ -202,7 +202,7 @@
         "Automatic retrieval and prompt injection of relevant history before the model begins reasoning.",
       explainer:
         "Pre-Fetch is the lifecycle stage that runs before the model starts reasoning. Its job is to search the shared memory vault, rank the most relevant historical context, and inject that material into the prompt or working state automatically. Without pre-fetch, the model starts cold and must first remember that memory exists, then decide to query it, then reason about the result \u2014 a fragile chain. Good pre-fetch systems use retrieval, reranking, and graph traversal so only the highest-value context lands in the active window.",
-      strata: ["L2", "L4"],
+      strata: ["S2", "S4"],
       axes: ["Knowledge", "Orchestration"],
       relatedProductIds: ["clawmem", "langgraph", "claude-code"],
       relatedConceptSlugs: ["hooks", "lifecycle-management", "memory", "rag"],
@@ -234,7 +234,7 @@
         "Automatic extraction and storage of decisions, file modifications, and summaries after the agent finishes a turn or task.",
       explainer:
         "Post-Turn Capture runs after the agent has acted. It inspects what happened \u2014 which files changed, which decisions were made, which tools failed, what the user prefers \u2014 and writes the durable pieces back into memory. This is the stage that converts ephemeral task activity into long-term learning. If capture is manual, it gets skipped. If it depends on the model remembering to call a tool, it becomes unreliable. Hook-driven post-turn capture turns memory into a compounding asset instead of a sparse scrapbook.",
-      strata: ["L2", "L4"],
+      strata: ["S2", "S4"],
       axes: ["Knowledge", "Observability"],
       relatedProductIds: ["clawmem", "claude-code", "langgraph"],
       relatedConceptSlugs: [
@@ -271,7 +271,7 @@
         "Automatic checkpointing and compaction of working state before the context window truncates or a long session is compacted.",
       explainer:
         "Pre-Compress is the lifecycle stage that runs before the active context window overflows, a conversation is compacted, or a handoff occurs. Its purpose is to distill the current session into a smaller durable representation: checkpoint critical state, summarize recent decisions, and write the compressed result somewhere the next turn can recover it. Without pre-compress, the agent loses hard-won context at exactly the moment the session becomes most complex. It is the memory equivalent of saving your work before the power flickers.",
-      strata: ["L2", "L4"],
+      strata: ["S2", "S4"],
       axes: ["Knowledge", "Orchestration"],
       relatedProductIds: ["clawmem", "gsd", "claude-code"],
       relatedConceptSlugs: [
@@ -306,7 +306,7 @@
         "Stores and recalls contextual state across turns, sessions, and tasks.",
       explainer:
         "Memory systems give agents the ability to persist and retrieve state beyond a single context window. A multi-tiered architecture typically includes working memory for active tasks, episodic memory for session history, and semantic memory for long-term knowledge. Without memory, agents suffer from amnesia \u2014 forcing users to repeatedly explain context and endure the same mistakes. Strong modern memory systems add lifecycle automation around each turn: pre-fetch relevant context before reasoning, post-turn capture durable decisions after action, and pre-compress state before context truncation.",
-      strata: ["L2"],
+      strata: ["S2"],
       axes: ["Knowledge"],
       relatedProductIds: ["clawmem", "mem0", "mcpmemory", "kotanaagent"],
       relatedConceptSlugs: [
@@ -348,8 +348,8 @@
       shortDefinition:
         "Validates inputs and outputs to ensure safety, policy compliance, and defense against prompt injection.",
       explainer:
-        "Guardrails are deterministic validation layers embedded directly into the orchestration pipeline. They inspect every input, output, and tool invocation against policy-as-code rules before execution proceeds. Without them, agents are vulnerable to prompt injection, unauthorized privilege escalation, and compliance violations. Guardrails should be baked in from day one, not bolted on after deployment.",
-      strata: ["L6"],
+        "Guardrails are deterministic validation strata embedded directly into the orchestration pipeline. They inspect every input, output, and tool invocation against policy-as-code rules before execution proceeds. Without them, agents are vulnerable to prompt injection, unauthorized privilege escalation, and compliance violations. Guardrails should be baked in from day one, not bolted on after deployment.",
+      strata: ["S6"],
       axes: ["Governance"],
       relatedProductIds: ["opa", "sksecurity", "wfhuman"],
       relatedConceptSlugs: ["harness", "governance"],
@@ -357,7 +357,7 @@
         "Bolting security guardrails onto an application after deployment results in fragmented policies that agents can easily bypass through prompt manipulation.",
       ],
       mitigations: [
-        "Embed deterministic, policy-as-code guardrails directly into the orchestration layer from day one to validate all inputs, outputs, and tool invocations.",
+        "Embed deterministic, policy-as-code guardrails directly into the orchestration stratum from day one to validate all inputs, outputs, and tool invocations.",
       ],
       sources: [
         {
@@ -379,7 +379,7 @@
         "Durable snapshots of agent state that enable resume, rollback, and crash recovery.",
       explainer:
         "Checkpoints capture a serializable snapshot of agent state \u2014 including context, progress, and intermediate results \u2014 at defined intervals. If the agent crashes, times out, or is preempted, execution resumes from the last checkpoint rather than restarting from scratch. Essential for long-running tasks and multi-step pipelines.",
-      strata: ["L4"],
+      strata: ["S4"],
       axes: ["Orchestration"],
       relatedProductIds: [],
       relatedConceptSlugs: ["harness", "loop-core", "memory"],
@@ -400,7 +400,7 @@
         "The mechanism by which an agent invokes external tools, APIs, or functions to act on the world.",
       explainer:
         "Tool calling is the bridge between an agent's reasoning and real-world side effects. The agent generates a structured tool invocation (name + arguments), the runtime validates and dispatches it, and the result is fed back into the agent's context. Standardized via protocols like MCP and OpenAI function calling.",
-      strata: ["L2", "L3"],
+      strata: ["S2", "S3"],
       axes: ["Execution"],
       relatedProductIds: [],
       relatedConceptSlugs: ["mcp", "harness"],
@@ -421,7 +421,7 @@
         "Augments LLM generation with retrieved external knowledge to reduce hallucination and improve accuracy.",
       explainer:
         "RAG pipelines retrieve relevant documents from a knowledge base before generating a response, grounding the agent's output in real data rather than parametric memory alone. Implementations range from simple vector-search retrieval to multi-hop re-ranking pipelines with hybrid search.",
-      strata: ["L2"],
+      strata: ["S2"],
       axes: ["Knowledge"],
       relatedProductIds: [],
       relatedConceptSlugs: ["memory"],
@@ -442,7 +442,7 @@
         "Organizational policies, audit trails, and compliance controls that govern agent behavior at scale.",
       explainer:
         "Governance encompasses the policies, audit mechanisms, and compliance controls that ensure agents operate within organizational boundaries. This includes access control, usage quotas, logging, approval workflows, and regulatory compliance. Distinct from runtime guardrails \u2014 governance operates at the organizational and fleet level.",
-      strata: ["L6", "L7"],
+      strata: ["S6", "S7"],
       axes: ["Governance"],
       relatedProductIds: [],
       relatedConceptSlugs: ["guardrails", "harness"],
@@ -460,10 +460,10 @@
       name: "Agentic Stack",
       aliases: ["stack", "agent stack", "full stack"],
       shortDefinition:
-        "Complete 7-layer configuration for a domain: model + memory + tools + orchestration + UX + governance.",
+        "Complete 7-stratum configuration for a domain: model + memory + tools + orchestration + UX + governance.",
       explainer:
         "A stack is the full end-to-end instantiation of all 7 strata optimized for a specific domain or use case. It's not just the technologies, but their wiring: which model, which memory backend, which tool set, which orchestration pattern, which UI paradigm, and which governance policies. Stacks are repeatable blueprints \u2014 once assembled and battle-tested, they can be cloned for similar use cases. Examples: research loop stack, customer service stack, code generation stack.",
-      strata: ["L0"],
+      strata: ["S0"],
       axes: ["Orchestration"],
       relatedProductIds: [],
       relatedConceptSlugs: ["harness", "persona", "pattern", "covenant"],
@@ -490,7 +490,7 @@
         "The identity, voice, role, and behavioral directives that define an agent's character and operating principles.",
       explainer:
         "A persona is the coherent identity and behavioral contract of an agent. It encompasses role (what the agent is), voice (how it communicates), core values (what it prioritizes), constraints (what it won't do), and operating principles (how it makes decisions). A well-defined persona ensures consistency across all interactions and makes agent behavior predictable and auditable. Personas can be hard-coded in system prompts, learned from examples, or emergent from reward models.",
-      strata: ["L0"],
+      strata: ["S0"],
       axes: ["Governance"],
       relatedProductIds: [],
       relatedConceptSlugs: ["harness", "covenant", "stack"],
@@ -523,7 +523,7 @@
         "Repeatable architectural patterns for orchestrating agent reasoning, action, and feedback loops.",
       explainer:
         "Agentic patterns are proven choreographies of reasoning \u2192 planning \u2192 execution \u2192 evaluation. Examples include ReAct (Reasoning + Acting), Chain-of-Thought (CoT), Self-Ask, Tree-of-Thought, and multi-agent debate. A pattern defines the structure of the control loop and the format of prompts, but is agnostic to the underlying model or tools. Patterns are composable \u2014 they can be nested or sequenced to build complex multi-stage pipelines.",
-      strata: ["L0"],
+      strata: ["S0"],
       axes: ["Orchestration"],
       relatedProductIds: [],
       relatedConceptSlugs: ["harness", "loop-core", "stack"],
@@ -556,7 +556,7 @@
         "Runtime parameters that instantiate a harness for a specific task or domain: model, temperature, tools, context budget, etc.",
       explainer:
         "Configuration is the set of declarative, runtime-modifiable knobs that turn a generic harness into a domain-specific agent. Examples: which LLM, temperature, top-k, tool set, max context window, timeout, max retries, memory backend, guardrail policies. Good configs are externalized and version-controlled, making it easy to A/B test, audit, and roll back changes without code changes.",
-      strata: ["L0"],
+      strata: ["S0"],
       axes: ["Orchestration", "Governance"],
       relatedProductIds: [],
       relatedConceptSlugs: ["harness", "covenant", "stack"],
@@ -589,7 +589,7 @@
         "A formal pledge of agent capabilities, performance, and safety guarantees: latency, accuracy, uptime, and compliance.",
       explainer:
         "A covenant is the behavioral contract between an agent and its users/operators. It specifies: what the agent commits to do (capability boundary), how fast (latency SLA), with what accuracy (quality threshold), under what conditions (fault resilience), and in compliance with what policies (safety constraints). Covenants are machine-testable \u2014 they become the basis for automated eval frameworks and production monitoring.",
-      strata: ["L0"],
+      strata: ["S0"],
       axes: ["Governance", "Observability"],
       relatedProductIds: [],
       relatedConceptSlugs: ["harness", "persona", "stack"],
@@ -624,8 +624,8 @@
       shortDefinition:
         "System design where agent components communicate via typed contracts rather than direct calls, enabling independent deployment and evolution.",
       explainer:
-        "Decoupled Architecture is the practice of separating agent components \u2014 planners, executors, memory, tools, evaluators \u2014 so that each communicates only through well-defined interface contracts rather than direct function calls or shared mutable state. At L3 (Execution), this means tools and sub-agents expose typed input/output schemas (see Pydantic Contracts). At L4 (Orchestration), this means the orchestrator treats each sub-agent as a black box it can swap without rewiring the pipeline. The key benefit: any component can be upgraded, scaled, or replaced without cascading changes. Common patterns include event buses, message queues, and typed RPC schemas. Anti-pattern: tightly-coupled pipelines where a planner directly imports executor internals, making the system impossible to test or evolve in isolation.",
-      strata: ["L3", "L4"],
+        "Decoupled Architecture is the practice of separating agent components \u2014 planners, executors, memory, tools, evaluators \u2014 so that each communicates only through well-defined interface contracts rather than direct function calls or shared mutable state. At S3 (Execution), this means tools and sub-agents expose typed input/output schemas (see Pydantic Contracts). At S4 (Orchestration), this means the orchestrator treats each sub-agent as a black box it can swap without rewiring the pipeline. The key benefit: any component can be upgraded, scaled, or replaced without cascading changes. Common patterns include event buses, message queues, and typed RPC schemas. Anti-pattern: tightly-coupled pipelines where a planner directly imports executor internals, making the system impossible to test or evolve in isolation.",
+      strata: ["S3", "S4"],
       axes: ["Orchestration", "Execution"],
       relatedProductIds: ["langgraph", "langchain", "claudecode"],
       relatedConceptSlugs: ["harness", "pydantic-contracts", "loop-core"],
@@ -658,8 +658,8 @@
       shortDefinition:
         "Typed data contracts enforced at agent boundaries using Pydantic models to validate inputs, outputs, and tool call arguments.",
       explainer:
-        "Pydantic Contracts are the practice of using Pydantic BaseModel classes as the canonical type layer between agent components. At L3 (Execution), every tool call input and LLM output is validated against a Pydantic schema before being accepted. This catches hallucinated fields, missing required arguments, and type mismatches at the boundary rather than deep inside pipeline logic. Pydantic Contracts are the runtime enforcement of Decoupled Architecture: they make the contracts machine-testable, not just documented. Structured output APIs (OpenAI, Anthropic) can be driven directly from Pydantic model definitions, ensuring the LLM response parses cleanly. Key benefit: eliminates an entire class of silent failures where a malformed tool call propagates for many steps before producing an error.",
-      strata: ["L3"],
+        "Pydantic Contracts are the practice of using Pydantic BaseModel classes as the canonical type stratum between agent components. At S3 (Execution), every tool call input and LLM output is validated against a Pydantic schema before being accepted. This catches hallucinated fields, missing required arguments, and type mismatches at the boundary rather than deep inside pipeline logic. Pydantic Contracts are the runtime enforcement of Decoupled Architecture: they make the contracts machine-testable, not just documented. Structured output APIs (OpenAI, Anthropic) can be driven directly from Pydantic model definitions, ensuring the LLM response parses cleanly. Key benefit: eliminates an entire class of silent failures where a malformed tool call propagates for many steps before producing an error.",
+      strata: ["S3"],
       axes: ["Execution", "Governance"],
       relatedProductIds: ["langchain", "claudecode", "sksecurity"],
       relatedConceptSlugs: [
@@ -687,7 +687,7 @@
     "orchestration harness": "harness",
     "execution harness": "harness",
     "delivery harness": "harness",
-    "layer 0": "harness",
+    "stratum 0": "harness",
     "stratum 0": "harness",
     loop: "loop-core",
     loops: "loop-core",

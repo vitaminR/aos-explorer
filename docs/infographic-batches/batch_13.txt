@@ -8,13 +8,13 @@ You are a visual design assistant creating ADHD-friendly technical infographics 
 
 DESIGN RULES:
 - Dark background (#0a0a0f) with high-contrast text
-- Use the layer accent color as the primary highlight
+- Use the stratum accent color as the primary highlight
 - Clean, minimal layout - no clutter
 - Large readable typography (minimum 14pt equivalent)
 - Each primitive shown as a distinct card/node with its name + 1-line description
 - Show relationships between primitives with arrows or connectors if applicable
 - Include a small icon or visual metaphor for each primitive
-- Include the layer badge (e.g. "L4 · Orchestration") in the top-left corner
+- Include the stratum badge (e.g. "S4 · Orchestration") in the top-left corner
 - Parent construct name is the large title
 - Aspect ratio: 16:9 (landscape)
 - Style: flat design, subtle gradients, no 3D, modern SaaS dashboard aesthetic
@@ -25,13 +25,13 @@ FORMAT: Create a single infographic image. Do NOT return markdown or text descri
 ─────────────────────────────────────────────────────────
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 1/3  —  #61  L3 | Event Subscriber
+│  PROMPT 1/3  —  #61  S3 | Event Subscriber
 │  Save as: event-subscriber.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Event Subscriber" construct from the {a}OS reference model.
 
-LAYER: L3 — Capabilities
+STRATUM: S3 — Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: Event Subscriber
 PRIMITIVE COUNT: 4
@@ -44,7 +44,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Event Subscriber" in large text, colored #38bdf8
-- Layer badge: "L3 · Capabilities" top-left
+- Stratum badge: "S3 · Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -54,13 +54,13 @@ VISUAL GUIDANCE:
 ═══  NEXT PROMPT  (paste after saving the image above)  ═══
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 2/3  —  #62  L3 | Dead Letter Queue
+│  PROMPT 2/3  —  #62  S3 | Dead Letter Queue
 │  Save as: dead-letter-queue.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Dead Letter Queue" construct from the {a}OS reference model.
 
-LAYER: L3 — Capabilities
+STRATUM: S3 — Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: Dead Letter Queue
 PRIMITIVE COUNT: 4
@@ -73,7 +73,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Dead Letter Queue" in large text, colored #38bdf8
-- Layer badge: "L3 · Capabilities" top-left
+- Stratum badge: "S3 · Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -83,13 +83,13 @@ VISUAL GUIDANCE:
 ═══  NEXT PROMPT  (paste after saving the image above)  ═══
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 3/3  —  #63  L3 | Delivery Guarantee
+│  PROMPT 3/3  —  #63  S3 | Delivery Guarantee
 │  Save as: delivery-guarantee.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Delivery Guarantee" construct from the {a}OS reference model.
 
-LAYER: L3 — Capabilities
+STRATUM: S3 — Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: Delivery Guarantee
 PRIMITIVE COUNT: 52
@@ -140,7 +140,7 @@ PRIMITIVES (show each as a card/node):
   - Preprocessing Pipeline: Dedup (1M rows/hr) → PII scrub (500K rows/hr) → quality filter → pre-tokenize (10M tokens/sec).
   - Quality Score: AI judge discards examples scoring &lt;4.0/5. Target perplexity on clean data: &lt;15.
   - Adapter Rank: LoRA rank — r=8–16 for style (~10M params, &lt;100MB); r=64–128 for knowledge (~80M params, ~500MB VRAM).
-  - Target Modules: Which layers get LoRA adapters. 'All Linear Layers' retains 95% of full fine-tune performance.
+  - Target Modules: Which strata get LoRA adapters. 'All Linear Strata' retains 95% of full fine-tune performance.
   - Merge Strategy: Combining adapter weights — Merge/Unload (permanent, fastest) or TIES-Merging (multi-adapter, sign-aware).
   - Adapter Registry: Centralized catalog of 1,000+ adapters with hot-swap latency &lt;200ms.
   - Reward Model: Neural network scoring outputs. Target accuracy: 70–80%. Calibration error &lt;0.05.
@@ -150,7 +150,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Delivery Guarantee" in large text, colored #38bdf8
-- Layer badge: "L3 · Capabilities" top-left
+- Stratum badge: "S3 · Capabilities" top-left
 - Show all 52 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)

@@ -83,15 +83,15 @@ Features are grouped into four tiers by strategic role:
 
 **Problem:** The real job-to-be-done isn't "find a tool" — it's "pick the 5 tools that together cover my system."
 
-**User story:** As a developer I click "Build Stack" in the nav, drag products into a 7-layer column, and export to draw.io / Mermaid / shareable URL (`aos7.tech/stack/<id>`) so I can drop it into my architecture doc.
+**User story:** As a developer I click "Build Stack" in the nav, drag products into a 7-stratum column, and export to draw.io / Mermaid / shareable URL (`aos7.tech/stack/<id>`) so I can drop it into my architecture doc.
 
 **Goals:**
 
-- G1: Drag/drop products into any of L1–L7
+- G1: Drag/drop products into any of S1–S7
 - G2: Compare basket → "Send to Stack Builder" preserves selection
 - G3: Stack → shareable public URL (read-only for anon; editable for owner)
 - G4: Export formats: PNG, SVG, Mermaid, draw.io XML, JSON
-- G5: Mini gap analysis in builder ("Your stack is strong in L1–L4, weak in L5–L6.") — lightweight T4 hook
+- G5: Mini gap analysis in builder ("Your stack is strong in S1–S4, weak in S5–S6.") — lightweight T4 hook
 
 **Non-goals:** Real-time multiplayer editing (phase 2); cost estimation; auto-recommend entire stacks (that's T2).
 
@@ -109,14 +109,14 @@ Features are grouped into four tiers by strategic role:
 
 **Problem:** Architects don't know where the ecosystem is mature vs thin. This info exists only in scattered blogs.
 
-**User story:** As a CTO I open the Insights page, see a heatmap where rows are use-cases (Code agent, Customer support agent, RAG assistant, SMB ops copilot, etc.) and columns are L1–L7. Color = ecosystem maturity. I see at a glance "governance is thin for code agents" and bookmark the page.
+**User story:** As a CTO I open the Insights page, see a heatmap where rows are use-cases (Code agent, Customer support agent, RAG assistant, SMB ops copilot, etc.) and columns are S1–S7. Color = ecosystem maturity. I see at a glance "governance is thin for code agents" and bookmark the page.
 
 **Goals:**
 
 - G1: 7 seed use-case rows × 7 strata columns = 49 cells, all hand-scored 0–3
 - G2: Each cell expands to show top 3 products at that intersection
 - G3: Public page (`/insights/gap-map`) — shareable, screenshot-friendly, no login required
-- G4: Mini version embedded in T3 Stack Builder advisor ("you're thin in L5/L6")
+- G4: Mini version embedded in T3 Stack Builder advisor ("you're thin in S5/S6")
 
 **Non-goals:** Real-time auto-scoring from catalog (phase 2); predictive scoring; global market sizing.
 
@@ -165,7 +165,7 @@ Features are grouped into four tiers by strategic role:
 **Goals:**
 
 - G1: One-click from Stack Builder; LLM call with a carefully-tuned system prompt
-- G2: Output is punchy (≤250 words), concrete (cites specific layers), and funny (uses "agent debt", "boundary leak", "tool sprawl" vocabulary)
+- G2: Output is punchy (≤250 words), concrete (cites specific strata), and funny (uses "agent debt", "boundary leak", "tool sprawl" vocabulary)
 - G3: Share card auto-generated (PNG) with stack + roast
 
 **Non-goals:** Insulting real vendors; abusive tone; profanity.
@@ -277,7 +277,7 @@ Features are grouped into four tiers by strategic role:
 
 **Problem:** To be cited as a standard, we must be machine-readable.
 
-**User story:** An agent developer writes `GET aos7.tech/api/v1/strata/l4` and gets JSON describing L4: name, definition, primitives, example products. They bake our taxonomy into their docs.
+**User story:** An agent developer writes `GET aos7.tech/api/v1/strata/l4` and gets JSON describing S4: name, definition, primitives, example products. They bake our taxonomy into their docs.
 
 **Goals:**
 
@@ -300,7 +300,7 @@ Features are grouped into four tiers by strategic role:
 
 **Problem:** AI agents (Claude Desktop, Cursor, etc.) should be able to query the catalog from *inside* their runtime.
 
-**User story:** In Claude Desktop I add the aos7.tech MCP server. I ask, "find me an L5 eval platform with an open-source license," and Claude queries our MCP tool, gets structured results, and answers with citations.
+**User story:** In Claude Desktop I add the aos7.tech MCP server. I ask, "find me an S5 eval platform with an open-source license," and Claude queries our MCP tool, gets structured results, and answers with citations.
 
 **Goals:**
 
@@ -345,7 +345,7 @@ Features are grouped into four tiers by strategic role:
 
 **Problem:** Treating the taxonomy as a living product (vs a frozen doc) is the entire legitimacy play.
 
-**User story:** I watch aos7.tech on GitHub. When v1.1 ships, I read the changelog: "added L5.3 Eval Harness", "deprecated L3.7 Agent Shim", "split L1 Models from L1 Infrastructure". Every academic paper can cite `{a}OS v1.1`.
+**User story:** I watch aos7.tech on GitHub. When v1.1 ships, I read the changelog: "added S5.3 Eval Harness", "deprecated S3.7 Agent Shim", "split S1 Models from S1 Infrastructure". Every academic paper can cite `{a}OS v1.1`.
 
 **Goals:**
 
@@ -463,7 +463,7 @@ Features are grouped into four tiers by strategic role:
 
 **Problem:** Directories that hide debate feel propagandistic. Surfacing disagreement builds trust.
 
-**User story:** Two reviewers classify Temporal differently (L4 primary vs L3 primary). The product detail page shows both classifications and the debate. I trust the site more.
+**User story:** Two reviewers classify Temporal differently (S4 primary vs S3 primary). The product detail page shows both classifications and the debate. I trust the site more.
 
 **Goals:**
 
@@ -518,14 +518,14 @@ Features are grouped into four tiers by strategic role:
 
 **Status:** Queued (medium, high value)
 
-**Problem:** The center canvas and the right rail are visually independent. A user drilling into L4 Orchestration wants to see *which products live at that layer* — but the right rail continues showing "Featured Products" regardless of what stratum is active. The connection between taxonomy and catalog is invisible.
+**Problem:** The center canvas and the right rail are visually independent. A user drilling into S4 Orchestration wants to see *which products live at that stratum* — but the right rail continues showing "Featured Products" regardless of what stratum is active. The connection between taxonomy and catalog is invisible.
 
-**User story:** As an architect evaluating orchestration tools, I click L4 and the right rail immediately shows only orchestration-mapped products, sorted by confidence score, with a count badge and a "Clear filter" link.
+**User story:** As an architect evaluating orchestration tools, I click S4 and the right rail immediately shows only orchestration-mapped products, sorted by confidence score, with a count badge and a "Clear filter" link.
 
 **Goals:**
 
 - G1: Right rail product list filters to products with a primary or secondary mapping to the active stratum when a stratum is expanded
-- G2: Right rail header updates to "L4 — 8 Products" (or similar) to confirm the filter is active
+- G2: Right rail header updates to "S4 — 8 Products" (or similar) to confirm the filter is active
 - G3: A single "Show all" reset link restores the full list
 - G4: No performance regression — filtering is client-side on already-loaded data
 
@@ -535,7 +535,7 @@ Features are grouped into four tiers by strategic role:
 
 **Success metric:** Users who expand a stratum are 2× more likely to click a product card (engagement funnel).
 
-**Dependencies:** Product cards must have `data-strata` attribute mapping them to strata — this is already partially present in the data layer.
+**Dependencies:** Product cards must have `data-strata` attribute mapping them to strata — this is already partially present in the data stratum.
 
 **Risks:** Stratum ↔ product mapping data quality; some products span multiple strata and may appear or disappear unexpectedly.
 
@@ -555,7 +555,7 @@ Features are grouped into four tiers by strategic role:
 - G2: The CTA is consistent with the existing visual language (no new components)
 - G3: It disappears naturally once the user has interacted (hover, click, or search)
 
-**Proposed solution:** Replace the static "Hover a section" kicker text with a directional prompt: `"↓ Start with L7 — what did the user actually want?"`. Add a subtle animated pulse (one cycle, CSS only) to draw the eye down to the first stratum card. Once any stratum is clicked or any search is typed, the pulse class is removed and the panel switches to its normal hover-driven state.
+**Proposed solution:** Replace the static "Hover a section" kicker text with a directional prompt: `"↓ Start with S7 — what did the user actually want?"`. Add a subtle animated pulse (one cycle, CSS only) to draw the eye down to the first stratum card. Once any stratum is clicked or any search is typed, the pulse class is removed and the panel switches to its normal hover-driven state.
 
 **Non-goals:** Tutorial walkthrough; persistent tooltip; changing the panel's hover-driven behavior.
 
@@ -563,7 +563,7 @@ Features are grouped into four tiers by strategic role:
 
 **Dependencies:** None.
 
-**Risks:** CTA text may go stale if L7 is renamed or restructured.
+**Risks:** CTA text may go stale if S7 is renamed or restructured.
 
 ---
 

@@ -23,13 +23,13 @@
       --accent-orange: #c75a00;
 
       /* Stratum colors */
-      --l7: #c75a00;
-      --l6: #e15759;
-      --l5: #b07aa1;
-      --l4: #59a14f;
-      --l3: #edc948;
-      --l2: #22d3ee;
-      --l1: #1e40af;
+      --s7: #c75a00;
+      --s6: #e15759;
+      --s5: #b07aa1;
+      --s4: #59a14f;
+      --s3: #edc948;
+      --s2: #22d3ee;
+      --s1: #1e40af;
     }
 
     html, body {
@@ -364,13 +364,13 @@
 
     <!-- LEGEND -->
     <div class="legend">
-      <div class="legend-item"><div class="legend-dot" style="background:#c75a00;"></div>L7 Experience &amp; Intent</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#e15759;"></div>L6 Governance &amp; Trust</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#b07aa1;"></div>L5 Observability &amp; Eval</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#59a14f;"></div>L4 Orchestration &amp; Decisioning</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#edc948;"></div>L3 Execution &amp; Interfaces</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#22d3ee;"></div>L2 Knowledge &amp; Memory</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#1e40af;"></div>L1 Models &amp; Infrastructure</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#c75a00;"></div>S7 Experience &amp; Intent</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#e15759;"></div>S6 Governance &amp; Trust</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#b07aa1;"></div>S5 Observability &amp; Eval</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#59a14f;"></div>S4 Orchestration &amp; Decisioning</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#edc948;"></div>S3 Execution &amp; Interfaces</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#22d3ee;"></div>S2 Knowledge &amp; Memory</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#1e40af;"></div>S1 Models &amp; Infrastructure</div>
     </div>
 
   </main>
@@ -381,53 +381,53 @@
   // Sourced from data/products.json — hardcoded here for offline use
   // ============================================================
   const PRODUCT_MAP = {
-    "bmad":               { name: "BMAD",                      stratum: "L4" },
-    "gsd":                { name: "GSD",                       stratum: "L4" },
-    "langgraph":          { name: "LangGraph",                 stratum: "L4" },
-    "clawmem":            { name: "ClawMem",                   stratum: "L2" },
-    "claude-code":        { name: "Claude Code",               stratum: "L7" },
-    "claude-desktop":     { name: "Claude Desktop",            stratum: "L7" },
-    "claude-api":         { name: "Claude API",                stratum: "L1" },
-    "openai-api":         { name: "OpenAI API",                stratum: "L1" },
-    "openai-assistants":  { name: "OpenAI Assistants API",     stratum: "L4" },
-    "chatgpt":            { name: "ChatGPT",                   stratum: "L7" },
-    "vertex-ai":          { name: "Vertex AI",                 stratum: "L1" },
-    "gemini-api":         { name: "Gemini API",                stratum: "L1" },
-    "ibm-watsonx":        { name: "IBM watsonx.ai",            stratum: "L1" },
-    "azure-openai":       { name: "Azure OpenAI Service",      stratum: "L1" },
-    "aws-bedrock":        { name: "Amazon Bedrock",            stratum: "L1" },
-    "crewai":             { name: "CrewAI",                    stratum: "L4" },
-    "autogen":            { name: "AutoGen",                   stratum: "L4" },
-    "semantic-kernel":    { name: "Semantic Kernel",           stratum: "L4" },
-    "langchain":          { name: "LangChain",                 stratum: "L3" },
-    "langsmith":          { name: "LangSmith",                 stratum: "L5" },
-    "pinecone":           { name: "Pinecone",                  stratum: "L2" },
-    "chromadb":           { name: "ChromaDB",                  stratum: "L2" },
-    "llamaindex":         { name: "LlamaIndex",                stratum: "L2" },
-    "guardrails-ai":      { name: "Guardrails AI",             stratum: "L6" },
-    "nemo-guardrails":    { name: "NeMo Guardrails",           stratum: "L6" },
-    "prometheus":         { name: "Prometheus",                stratum: "L5" },
-    "grafana":            { name: "Grafana",                   stratum: "L5" },
-    "opentelemetry":      { name: "OpenTelemetry",             stratum: "L5" },
-    "vault":              { name: "HashiCorp Vault",           stratum: "L6" },
-    "dspy":               { name: "DSPy",                      stratum: "L4" },
-    "cursor":             { name: "Cursor",                    stratum: "L7" },
-    "github-copilot":     { name: "GitHub Copilot",            stratum: "L7" },
-    "hermes-agent":       { name: "Hermes Agent",              stratum: "L4" },
-    "hermes-model":       { name: "Hermes (Model Series)",     stratum: "L1" },
-    "aosnaming":          { name: "{a}OS Naming Convention",   stratum: "L6" },
-    "fallow":             { name: "Fallow",                    stratum: "L5" },
+    "bmad":               { name: "BMAD",                      stratum: "S4" },
+    "gsd":                { name: "GSD",                       stratum: "S4" },
+    "langgraph":          { name: "LangGraph",                 stratum: "S4" },
+    "clawmem":            { name: "ClawMem",                   stratum: "S2" },
+    "claude-code":        { name: "Claude Code",               stratum: "S7" },
+    "claude-desktop":     { name: "Claude Desktop",            stratum: "S7" },
+    "claude-api":         { name: "Claude API",                stratum: "S1" },
+    "openai-api":         { name: "OpenAI API",                stratum: "S1" },
+    "openai-assistants":  { name: "OpenAI Assistants API",     stratum: "S4" },
+    "chatgpt":            { name: "ChatGPT",                   stratum: "S7" },
+    "vertex-ai":          { name: "Vertex AI",                 stratum: "S1" },
+    "gemini-api":         { name: "Gemini API",                stratum: "S1" },
+    "ibm-watsonx":        { name: "IBM watsonx.ai",            stratum: "S1" },
+    "azure-openai":       { name: "Azure OpenAI Service",      stratum: "S1" },
+    "aws-bedrock":        { name: "Amazon Bedrock",            stratum: "S1" },
+    "crewai":             { name: "CrewAI",                    stratum: "S4" },
+    "autogen":            { name: "AutoGen",                   stratum: "S4" },
+    "semantic-kernel":    { name: "Semantic Kernel",           stratum: "S4" },
+    "langchain":          { name: "LangChain",                 stratum: "S3" },
+    "langsmith":          { name: "LangSmith",                 stratum: "S5" },
+    "pinecone":           { name: "Pinecone",                  stratum: "S2" },
+    "chromadb":           { name: "ChromaDB",                  stratum: "S2" },
+    "llamaindex":         { name: "LlamaIndex",                stratum: "S2" },
+    "guardrails-ai":      { name: "Guardrails AI",             stratum: "S6" },
+    "nemo-guardrails":    { name: "NeMo Guardrails",           stratum: "S6" },
+    "prometheus":         { name: "Prometheus",                stratum: "S5" },
+    "grafana":            { name: "Grafana",                   stratum: "S5" },
+    "opentelemetry":      { name: "OpenTelemetry",             stratum: "S5" },
+    "vault":              { name: "HashiCorp Vault",           stratum: "S6" },
+    "dspy":               { name: "DSPy",                      stratum: "S4" },
+    "cursor":             { name: "Cursor",                    stratum: "S7" },
+    "github-copilot":     { name: "GitHub Copilot",            stratum: "S7" },
+    "hermes-agent":       { name: "Hermes Agent",              stratum: "S4" },
+    "hermes-model":       { name: "Hermes (Model Series)",     stratum: "S1" },
+    "aosnaming":          { name: "{a}OS Naming Convention",   stratum: "S6" },
+    "fallow":             { name: "Fallow",                    stratum: "S5" },
   };
 
   // Stratum display config
   const STRATA = [
-    { id: "L7", label: "L7 · Experience & Intent",     color: "#c75a00", bg: "rgba(199,90,0,0.12)"    },
-    { id: "L6", label: "L6 · Governance & Trust",      color: "#e15759", bg: "rgba(225,87,89,0.12)"   },
-    { id: "L5", label: "L5 · Observability & Eval",    color: "#b07aa1", bg: "rgba(176,122,161,0.12)" },
-    { id: "L4", label: "L4 · Orchestration",           color: "#59a14f", bg: "rgba(89,161,79,0.12)"   },
-    { id: "L3", label: "L3 · Execution & Interfaces",  color: "#edc948", bg: "rgba(237,201,72,0.12)"  },
-    { id: "L2", label: "L2 · Knowledge & Memory",      color: "#22d3ee", bg: "rgba(34,211,238,0.12)"  },
-    { id: "L1", label: "L1 · Models & Infrastructure", color: "#1e40af", bg: "rgba(30,64,175,0.12)"   },
+    { id: "S7", label: "S7 · Experience & Intent",     color: "#c75a00", bg: "rgba(199,90,0,0.12)"    },
+    { id: "S6", label: "S6 · Governance & Trust",      color: "#e15759", bg: "rgba(225,87,89,0.12)"   },
+    { id: "S5", label: "S5 · Observability & Eval",    color: "#b07aa1", bg: "rgba(176,122,161,0.12)" },
+    { id: "S4", label: "S4 · Orchestration",           color: "#59a14f", bg: "rgba(89,161,79,0.12)"   },
+    { id: "S3", label: "S3 · Execution & Interfaces",  color: "#edc948", bg: "rgba(237,201,72,0.12)"  },
+    { id: "S2", label: "S2 · Knowledge & Memory",      color: "#22d3ee", bg: "rgba(34,211,238,0.12)"  },
+    { id: "S1", label: "S1 · Models & Infrastructure", color: "#1e40af", bg: "rgba(30,64,175,0.12)"   },
   ];
 
   // ============================================================

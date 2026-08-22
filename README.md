@@ -3,7 +3,7 @@
 
 ### The OSI Model for AI
 
-> There are 500+ AI products. Most people can't name which layer their problem lives in.  
+> There are 500+ AI products. Most people can't name which stratum their problem lives in.  
 > **{a}OS fixes that.**
 
 <p align="center">
@@ -36,13 +36,13 @@ No approval gate. No cost kill switch. No audit trail your compliance team can h
 
 ## The Fix
 
-**{a}OS** (Agentic Operating System) is a 7-layer reference model that gives every AI product, framework, and agent a precise address in the stack.
+**{a}OS** (Agentic Operating System) is a 7-stratum reference model that gives every AI product, framework, and agent a precise address in the stack.
 
 Each level zooms deeper into the one above:
 
 | Level | Concept | Think of it as... |
 |:-----:|---------|------------------|
-| **Stratum** | A horizontal layer (L1–L7) | An OSI layer |
+| **Stratum** | A horizontal stratum (S1–S7) | An OSI stratum |
 | **Substrate** | A capability group inside a stratum | A protocol family |
 | **Construct** | A specific artifact or pattern | A protocol |
 | **Primitive** | An atomic building block | A packet field |
@@ -51,23 +51,23 @@ Each level zooms deeper into the one above:
 
 ```
 ┌─────────────────────────────────────────────────┐
-│  L7  Experience & Intent                        │  Chat UIs, IDE extensions, voice, intent routing
+│  S7  Experience & Intent                        │  Chat UIs, IDE extensions, voice, intent routing
 ├─────────────────────────────────────────────────┤
-│  L6  Governance & Trust                         │  Policy, compliance, audit trails, guardrails
+│  S6  Governance & Trust                         │  Policy, compliance, audit trails, guardrails
 ├─────────────────────────────────────────────────┤
-│  L5  Observability & Evaluation                 │  Tracing, evals, cost metering, drift detection
+│  S5  Observability & Evaluation                 │  Tracing, evals, cost metering, drift detection
 ├─────────────────────────────────────────────────┤
-│  L4  Orchestration & Decisioning                │  Agent loops, DAGs, routers, planning, HITL
+│  S4  Orchestration & Decisioning                │  Agent loops, DAGs, routers, planning, HITL
 ├─────────────────────────────────────────────────┤
-│  L3  Execution & Interfaces                     │  Tool calling, code interpreters, MCPs, APIs
+│  S3  Execution & Interfaces                     │  Tool calling, code interpreters, MCPs, APIs
 ├─────────────────────────────────────────────────┤
-│  L2  Knowledge & Memory                         │  RAG, vector stores, context, long-term memory
+│  S2  Knowledge & Memory                         │  RAG, vector stores, context, long-term memory
 ├─────────────────────────────────────────────────┤
-│  L1  Models & Infrastructure                    │  LLMs, embeddings, fine-tuning, serving, compute
+│  S1  Models & Infrastructure                    │  LLMs, embeddings, fine-tuning, serving, compute
 └─────────────────────────────────────────────────┘
 ```
 
-**Key insight:** Most AI platforms are strong at L1–L3 and structurally weak at L5–L7. What marketing calls "one gap" is actually three separate architectural problems with three different owners.
+**Key insight:** Most AI platforms are strong at S1–S3 and structurally weak at S5–S7. What marketing calls "one gap" is actually three separate architectural problems with three different owners.
 
 ## Features
 
@@ -120,7 +120,7 @@ xdg-open index.html # Linux
 | **AI Architect** | Map your stack. Find gaps. Choose tools with coordinates, not vibes. |
 | **Engineering Leader** | Evaluate vendors against a framework that isn't a vendor's framework. |
 | **DevRel / Product** | See exactly where your product sits — and what it's competing with. |
-| **Student / Career Changer** | Learn the full AI stack, not just the model layer everyone talks about. |
+| **Student / Career Changer** | Learn the full AI stack, not just the model stratum everyone talks about. |
 | **IT Professional** | Translate AI hype into architecture decisions you can defend. |
 
 ## Contributing

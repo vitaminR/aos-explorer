@@ -1,4 +1,4 @@
-// {a}OS Explorer — Community Layer
+// {a}OS Explorer — Community Stratum
 // ==================================
 // Auth UI, voting, and waitlist. All onclick-reachable functions exposed on window.
 

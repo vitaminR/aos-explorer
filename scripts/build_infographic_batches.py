@@ -12,26 +12,26 @@ with open("_primitives_inventory.json", "r", encoding="utf-8") as f:
 
 constructs = OrderedDict()
 for p in primitives:
-    key = f"{p['layer']} | {p['parent']}"
+    key = f"{p['stratum']} | {p['parent']}"
     constructs.setdefault(key, []).append(p)
 
-LAYER_NAMES = {
-    "L7": "Human Interface",
-    "L6": "Governance",
-    "L5": "Observability",
-    "L4": "Orchestration",
-    "L3": "Capabilities",
-    "L2": "Knowledge & Retrieval",
-    "L1": "Infrastructure",
+STRATUM_NAMES = {
+    "S7": "Human Interface",
+    "S6": "Governance",
+    "S5": "Observability",
+    "S4": "Orchestration",
+    "S3": "Capabilities",
+    "S2": "Knowledge & Retrieval",
+    "S1": "Infrastructure",
 }
-LAYER_COLORS = {
-    "L7": "#818cf8",
-    "L6": "#fb7185",
-    "L5": "#fbbf24",
-    "L4": "#34d399",
-    "L3": "#38bdf8",
-    "L2": "#a78bfa",
-    "L1": "#94a3b8",
+STRATUM_COLORS = {
+    "S7": "#818cf8",
+    "S6": "#fb7185",
+    "S5": "#fbbf24",
+    "S4": "#34d399",
+    "S3": "#38bdf8",
+    "S2": "#a78bfa",
+    "S1": "#94a3b8",
 }
 
 SYSTEM_PROMPT = (
@@ -39,13 +39,13 @@ SYSTEM_PROMPT = (
     "for the {a}OS Agentic Operating System reference model.\n\n"
     "DESIGN RULES:\n"
     "- Dark background (#0a0a0f) with high-contrast text\n"
-    "- Use the layer accent color as the primary highlight\n"
+    "- Use the stratum accent color as the primary highlight\n"
     "- Clean, minimal layout - no clutter\n"
     "- Large readable typography (minimum 14pt equivalent)\n"
     "- Each primitive shown as a distinct card/node with its name + 1-line description\n"
     "- Show relationships between primitives with arrows or connectors if applicable\n"
     "- Include a small icon or visual metaphor for each primitive\n"
-    '- Include the layer badge (e.g. "L4 · Orchestration") in the top-left corner\n'
+    '- Include the stratum badge (e.g. "S4 · Orchestration") in the top-left corner\n'
     "- Parent construct name is the large title\n"
     "- Aspect ratio: 16:9 (landscape)\n"
     "- Style: flat design, subtle gradients, no 3D, modern SaaS dashboard aesthetic\n"
@@ -56,19 +56,19 @@ SYSTEM_PROMPT = (
 # Build all prompts
 all_prompts = []
 for key, prims in constructs.items():
-    layer = prims[0]["layer"]
+    stratum = prims[0]["stratum"]
     parent = prims[0]["parent"]
-    layer_name = LAYER_NAMES.get(layer, "Unknown")
-    color = LAYER_COLORS.get(layer, "#888")
+    stratum_name = STRATUM_NAMES.get(stratum, "Unknown")
+    color = STRATUM_COLORS.get(stratum, "#888")
     prim_lines = [f"  - {p['name']}: {p.get('desc', 'No description.')}" for p in prims]
     slug = re.sub(r"[^a-z0-9]+", "-", parent.lower()).strip("-")
     prompt = (
         f'Create an infographic for the "{parent}" construct from the {{a}}OS reference model.\n\n'
-        f"LAYER: {layer} — {layer_name}\nACCENT COLOR: {color}\nCONSTRUCT: {parent}\n"
+        f"STRATUM: {stratum} — {stratum_name}\nACCENT COLOR: {color}\nCONSTRUCT: {parent}\n"
         f"PRIMITIVE COUNT: {len(prims)}\n\nPRIMITIVES (show each as a card/node):\n"
         + "\n".join(prim_lines)
         + f'\n\nVISUAL GUIDANCE:\n- Title: "{parent}" in large text, colored {color}\n'
-        f'- Layer badge: "{layer} · {layer_name}" top-left\n'
+        f'- Stratum badge: "{stratum} · {stratum_name}" top-left\n'
         f"- Show all {len(prims)} primitives as connected cards on dark (#0a0a0f) background\n"
         f"- Use {color} accent for borders, connectors, and highlights\n"
         f"- Each card: primitive name (bold) + 1-line description (smaller)\n"
@@ -79,9 +79,9 @@ for key, prims in constructs.items():
         {
             "index": len(all_prompts) + 1,
             "key": key,
-            "layer": layer,
+            "stratum": stratum,
             "parent": parent,
-            "layer_name": layer_name,
+            "stratum_name": stratum_name,
             "color": color,
             "prim_count": len(prims),
             "slug": slug,
@@ -158,7 +158,7 @@ with open(tracker_path, "w", encoding="utf-8") as f:
   .item-info { flex: 1; }
   .item-name { font-weight: 600; font-size: 14px; }
   .item-meta { font-size: 11px; color: #64748b; }
-  .layer-badge { display: inline-block; padding: 2px 8px; border-radius: 6px; font-size: 11px; font-weight: 600; }
+  .stratum-badge { display: inline-block; padding: 2px 8px; border-radius: 6px; font-size: 11px; font-weight: 600; }
   .copy-btn { background: #2a2a3e; color: #94a3b8; border: none; padding: 6px 12px; border-radius: 8px; cursor: pointer; font-size: 12px; white-space: nowrap; }
   .copy-btn:hover { background: #3a3a4e; color: #e2e8f0; }
   .copy-btn.copied { background: #166534; color: #34d399; }
@@ -175,7 +175,7 @@ with open(tracker_path, "w", encoding="utf-8") as f:
   .sys-prompt:hover { border-color: #38bdf8; }
 """)
 
-    # Color map for layer badges
+    # Color map for stratum badges
     f.write("</style>\n</head>\n<body>\n")
     f.write("<h1>{a}OS Infographic Batch Generator</h1>\n")
     f.write(
@@ -222,7 +222,7 @@ with open(tracker_path, "w", encoding="utf-8") as f:
         f.write(f'<div class="batch" id="batch{batch_num}">\n')
         f.write(f'<div class="batch-header" onclick="toggleBatch({batch_num})">\n')
         f.write(f'<span class="batch-title">Batch {batch_num} — ')
-        layers_in_batch = sorted(set(item["layer"] for item in batch))
+        strata_in_batch = sorted(set(item["stratum"] for item in batch))
         f.write(", ".join(f"{item['parent']}" for item in batch))
         f.write(f"</span>\n")
         f.write(
@@ -240,7 +240,7 @@ with open(tracker_path, "w", encoding="utf-8") as f:
             )
             f.write(f'<div class="item-info">\n')
             f.write(
-                f'<div class="item-name"><span class="layer-badge" style="background:{color}22;color:{color};border:1px solid {color}44">{item["layer"]}</span> {item["parent"]}</div>\n'
+                f'<div class="item-name"><span class="stratum-badge" style="background:{color}22;color:{color};border:1px solid {color}44">{item["stratum"]}</span> {item["parent"]}</div>\n'
             )
             f.write(
                 f'<div class="item-meta">{item["prim_count"]} primitives · save as <code class="filename" onclick="copyFilename(this)" title="Click to copy">{item["slug"]}.png</code></div>\n'

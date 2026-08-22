@@ -8,13 +8,13 @@ You are a visual design assistant creating ADHD-friendly technical infographics 
 
 DESIGN RULES:
 - Dark background (#0a0a0f) with high-contrast text
-- Use the layer accent color as the primary highlight
+- Use the stratum accent color as the primary highlight
 - Clean, minimal layout - no clutter
 - Large readable typography (minimum 14pt equivalent)
 - Each primitive shown as a distinct card/node with its name + 1-line description
 - Show relationships between primitives with arrows or connectors if applicable
 - Include a small icon or visual metaphor for each primitive
-- Include the layer badge (e.g. "L4 · Orchestration") in the top-left corner
+- Include the stratum badge (e.g. "S4 · Orchestration") in the top-left corner
 - Parent construct name is the large title
 - Aspect ratio: 16:9 (landscape)
 - Style: flat design, subtle gradients, no 3D, modern SaaS dashboard aesthetic
@@ -25,13 +25,13 @@ FORMAT: Create a single infographic image. Do NOT return markdown or text descri
 ─────────────────────────────────────────────────────────
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 1/5  —  #26  L6 | Audit Entry
+│  PROMPT 1/5  —  #26  S6 | Audit Entry
 │  Save as: audit-entry.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Audit Entry" construct from the {a}OS reference model.
 
-LAYER: L6 — Governance
+STRATUM: S6 — Governance
 ACCENT COLOR: #fb7185
 CONSTRUCT: Audit Entry
 PRIMITIVE COUNT: 4
@@ -44,7 +44,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Audit Entry" in large text, colored #fb7185
-- Layer badge: "L6 · Governance" top-left
+- Stratum badge: "S6 · Governance" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fb7185 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -54,13 +54,13 @@ VISUAL GUIDANCE:
 ═══  NEXT PROMPT  (paste after saving the image above)  ═══
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 2/5  —  #27  L6 | Compliance Check
+│  PROMPT 2/5  —  #27  S6 | Compliance Check
 │  Save as: compliance-check.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Compliance Check" construct from the {a}OS reference model.
 
-LAYER: L6 — Governance
+STRATUM: S6 — Governance
 ACCENT COLOR: #fb7185
 CONSTRUCT: Compliance Check
 PRIMITIVE COUNT: 4
@@ -73,7 +73,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Compliance Check" in large text, colored #fb7185
-- Layer badge: "L6 · Governance" top-left
+- Stratum badge: "S6 · Governance" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fb7185 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -83,13 +83,13 @@ VISUAL GUIDANCE:
 ═══  NEXT PROMPT  (paste after saving the image above)  ═══
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 3/5  —  #28  L6 | Retention Policy
+│  PROMPT 3/5  —  #28  S6 | Retention Policy
 │  Save as: retention-policy.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Retention Policy" construct from the {a}OS reference model.
 
-LAYER: L6 — Governance
+STRATUM: S6 — Governance
 ACCENT COLOR: #fb7185
 CONSTRUCT: Retention Policy
 PRIMITIVE COUNT: 4
@@ -102,7 +102,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Retention Policy" in large text, colored #fb7185
-- Layer badge: "L6 · Governance" top-left
+- Stratum badge: "S6 · Governance" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fb7185 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -112,13 +112,13 @@ VISUAL GUIDANCE:
 ═══  NEXT PROMPT  (paste after saving the image above)  ═══
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 4/5  —  #29  L6 | Evidence Chain
+│  PROMPT 4/5  —  #29  S6 | Evidence Chain
 │  Save as: evidence-chain.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Evidence Chain" construct from the {a}OS reference model.
 
-LAYER: L6 — Governance
+STRATUM: S6 — Governance
 ACCENT COLOR: #fb7185
 CONSTRUCT: Evidence Chain
 PRIMITIVE COUNT: 4
@@ -131,7 +131,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Evidence Chain" in large text, colored #fb7185
-- Layer badge: "L6 · Governance" top-left
+- Stratum badge: "S6 · Governance" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fb7185 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -141,13 +141,13 @@ VISUAL GUIDANCE:
 ═══  NEXT PROMPT  (paste after saving the image above)  ═══
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 5/5  —  #30  L6 | Content Filter
+│  PROMPT 5/5  —  #30  S6 | Content Filter
 │  Save as: content-filter.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Content Filter" construct from the {a}OS reference model.
 
-LAYER: L6 — Governance
+STRATUM: S6 — Governance
 ACCENT COLOR: #fb7185
 CONSTRUCT: Content Filter
 PRIMITIVE COUNT: 4
@@ -160,7 +160,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Content Filter" in large text, colored #fb7185
-- Layer badge: "L6 · Governance" top-left
+- Stratum badge: "S6 · Governance" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fb7185 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)

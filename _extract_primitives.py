@@ -48,7 +48,7 @@ def parse_primitive_entries(block_text: str):
 
     key_re = re.compile(r"^\s*([A-Za-z_][A-Za-z0-9_]*)\s*:\s*\{\s*$")
     name_re = re.compile(r'^\s*name:\s*"(.+?)",?\s*$')
-    layer_re = re.compile(r'^\s*layer:\s*"(L[1-7])",?\s*$')
+    stratum_re = re.compile(r'^\s*stratum:\s*"(L[1-7])",?\s*$')
     parent_re = re.compile(r'^\s*parent:\s*"(.+?)",?\s*$')
     desc_re = re.compile(r'^\s*desc:\s*"(.*)",?\s*$')
     end_re = re.compile(r"^\s*},\s*$")
@@ -67,9 +67,9 @@ def parse_primitive_entries(block_text: str):
             current["name"] = m_name.group(1)
             continue
 
-        m_layer = layer_re.match(line)
-        if m_layer:
-            current["layer"] = m_layer.group(1)
+        m_stratum = stratum_re.match(line)
+        if m_stratum:
+            current["stratum"] = m_stratum.group(1)
             continue
 
         m_parent = parent_re.match(line)
@@ -83,12 +83,12 @@ def parse_primitive_entries(block_text: str):
             continue
 
         if end_re.match(line):
-            required = {"name", "layer", "parent", "desc"}
+            required = {"name", "stratum", "parent", "desc"}
             if required.issubset(current.keys()):
                 entries.append(
                     {
                         "name": current["name"],
-                        "layer": current["layer"],
+                        "stratum": current["stratum"],
                         "parent": current["parent"],
                         "desc": current["desc"],
                     }
@@ -112,22 +112,22 @@ groups.extend(parse_primitive_entries(product_guides_block))
 seen = set()
 unique_groups = []
 for g in groups:
-    key = (g["name"], g["layer"], g["parent"], g.get("desc", ""))
+    key = (g["name"], g["stratum"], g["parent"], g.get("desc", ""))
     if key in seen:
         continue
     seen.add(key)
     unique_groups.append(g)
 
-layer_counts = Counter(g["layer"] for g in unique_groups)
-print("=== LAYER SUMMARY ===")
-for l in sorted(layer_counts.keys()):
-    print(f"  {l}: {layer_counts[l]} primitives")
+stratum_counts = Counter(g["stratum"] for g in unique_groups)
+print("=== STRATUM SUMMARY ===")
+for l in sorted(stratum_counts.keys()):
+    print(f"  {l}: {stratum_counts[l]} primitives")
 print(f"  TOTAL: {len(unique_groups)}")
 
 # Group by parent
 parents = {}
 for g in unique_groups:
-    key = f"{g['layer']} | {g['parent']}"
+    key = f"{g['stratum']} | {g['parent']}"
     parents.setdefault(key, []).append(g["name"])
 
 print(f"\n=== PARENT CONSTRUCTS: {len(parents)} ===")

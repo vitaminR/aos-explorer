@@ -119,10 +119,10 @@ test("T4-9: Stratum header labels are visible in correct order", async ({
   await openInsights(page);
   const headers = page.locator(".gap-map-header-cell");
   await expect(headers.first()).toBeVisible({ timeout: 5_000 });
-  // First cell is "Use Case" label, then L7..L1
+  // First cell is "Use Case" label, then S7..S1
   const texts = await headers.allTextContents();
-  expect(texts.join(" ")).toMatch(/L7/);
-  expect(texts.join(" ")).toMatch(/L1/);
+  expect(texts.join(" ")).toMatch(/S7/);
+  expect(texts.join(" ")).toMatch(/S1/);
 });
 
 test("T4-10: Use-case row labels are present (7 rows)", async ({ page }) => {

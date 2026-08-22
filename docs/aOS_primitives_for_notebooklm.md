@@ -1,26 +1,26 @@
 # {a}OS Agentic Operating System - Complete Primitive Reference
 
-This document contains all 312 primitives from the {a}OS 7-layer reference model, grouped by parent construct. Each primitive is a named, typed building block that agentic systems use at a specific layer of the stack.
+This document contains all 312 primitives from the {a}OS 7-stratum reference model, grouped by parent construct. Each primitive is a named, typed building block that agentic systems use at a specific stratum of the stack.
 
-## Layer Overview
+## Stratum Overview
 
-| Layer | Name | Description |
+| Stratum | Name | Description |
 |-------|------|-------------|
-| L7 | Human Interface | Human-facing interaction: intent parsing, session state, feedback |
-| L6 | Governance | Security, policy enforcement, guardrails, compliance, audit |
-| L5 | Observability | Logging, metrics, evaluation, cost tracking, drift detection |
-| L4 | Orchestration | Multi-agent coordination, task routing, state management |
-| L3 | Capabilities | Tool use, code execution, APIs, browser, file system, messaging |
-| L2 | Knowledge & Retrieval | Search, embeddings, chunking, reranking, retrieval |
-| L1 | Infrastructure | Model serving, tokenization, GPU infra, fine-tuning |
+| S7 | Human Interface | Human-facing interaction: intent parsing, session state, feedback |
+| S6 | Governance | Security, policy enforcement, guardrails, compliance, audit |
+| S5 | Observability | Logging, metrics, evaluation, cost tracking, drift detection |
+| S4 | Orchestration | Multi-agent coordination, task routing, state management |
+| S3 | Capabilities | Tool use, code execution, APIs, browser, file system, messaging |
+| S2 | Knowledge & Retrieval | Search, embeddings, chunking, reranking, retrieval |
+| S1 | Infrastructure | Model serving, tokenization, GPU infra, fine-tuning |
 
 ---
 
-## L7 - Human Interface
+## S7 - Human Interface
 
 ### Intent Object
 
-Parent construct in L7 (Human Interface). Contains 4 primitives.
+Parent construct in S7 (Human Interface). Contains 4 primitives.
 
 - **Goal Statement**: Natural language or structured declaration of what the user wants to achieve. Parsed by the intent engine to extract actionable objectives.
 - **Constraint Set**: Boundaries the agent must respect: budget, time, scope, permissions, safety rails. Constraints narrow the solution space.
@@ -29,7 +29,7 @@ Parent construct in L7 (Human Interface). Contains 4 primitives.
 
 ### Session Context
 
-Parent construct in L7 (Human Interface). Contains 4 primitives.
+Parent construct in S7 (Human Interface). Contains 4 primitives.
 
 - **Conversation History**: Ordered log of messages between user and agent within a session. Enables context-aware responses and reference resolution.
 - **User Profile**: Persistent user attributes (role, expertise, preferences) that personalize agent behavior across sessions.
@@ -38,7 +38,7 @@ Parent construct in L7 (Human Interface). Contains 4 primitives.
 
 ### Satisfaction Signal
 
-Parent construct in L7 (Human Interface). Contains 4 primitives.
+Parent construct in S7 (Human Interface). Contains 4 primitives.
 
 - **Thumbs Signal**: Explicit binary feedback (👍/👎) from the user on agent output quality. Simplest form of RLHF signal.
 - **Completion Rate**: Percentage of tasks the agent completes without human intervention. High rates indicate effective autonomy.
@@ -47,7 +47,7 @@ Parent construct in L7 (Human Interface). Contains 4 primitives.
 
 ### Feedback Loop
 
-Parent construct in L7 (Human Interface). Contains 4 primitives.
+Parent construct in S7 (Human Interface). Contains 4 primitives.
 
 - **Signal Aggregator**: Collects and normalizes multiple satisfaction signals into a unified quality score for the feedback loop.
 - **Behavior Adjuster**: Component that modifies agent parameters (temperature, tool selection, verbosity) based on aggregated feedback.
@@ -56,7 +56,7 @@ Parent construct in L7 (Human Interface). Contains 4 primitives.
 
 ### Covenant
 
-Parent construct in L7 (Human Interface). Contains 6 primitives.
+Parent construct in S7 (Human Interface). Contains 6 primitives.
 
 - **Covenant ID**: Unique identifier for the covenant.
 - **Obligation Set**: Set of obligations the agent must fulfill.
@@ -67,7 +67,7 @@ Parent construct in L7 (Human Interface). Contains 6 primitives.
 
 ### Trace Span
 
-Parent construct in L7 (Human Interface). Contains 7 primitives.
+Parent construct in S7 (Human Interface). Contains 7 primitives.
 
 - **Span ID**: Unique identifier for this trace span.
 - **Parent Span ID**: ID of the parent span in the trace tree.
@@ -79,11 +79,11 @@ Parent construct in L7 (Human Interface). Contains 7 primitives.
 
 ---
 
-## L6 - Governance
+## S6 - Governance
 
 ### Policy Rule
 
-Parent construct in L6 (Governance). Contains 10 primitives.
+Parent construct in S6 (Governance). Contains 10 primitives.
 
 - **Rule ID**: Unique identifier for a policy rule. Used for version tracking, audit references, and override targeting.
 - **Rule Expression**: The actual policy logic — a boolean expression in Rego, CEL, or JSON that evaluates to allow/deny.
@@ -98,7 +98,7 @@ Parent construct in L6 (Governance). Contains 10 primitives.
 
 ### Policy Evaluation
 
-Parent construct in L6 (Governance). Contains 4 primitives.
+Parent construct in S6 (Governance). Contains 4 primitives.
 
 - **Eval Request**: The input bundle sent to the policy engine: agent identity, intended action, resource target, and context.
 - **Decision Result**: The allow/deny verdict from the policy engine, with optional explanations and matched rule references.
@@ -107,7 +107,7 @@ Parent construct in L6 (Governance). Contains 4 primitives.
 
 ### Guardrail Config
 
-Parent construct in L6 (Governance). Contains 4 primitives.
+Parent construct in S6 (Governance). Contains 4 primitives.
 
 - **Guardrail ID**: Named identifier for a guardrail set (e.g., 'financial-safety-v2'). Versioned and environment-scoped.
 - **Policy Bundle**: Collection of policy rules grouped into a deployable unit. Bundling enables atomic policy updates.
@@ -116,7 +116,7 @@ Parent construct in L6 (Governance). Contains 4 primitives.
 
 ### Auth Token
 
-Parent construct in L6 (Governance). Contains 4 primitives.
+Parent construct in S6 (Governance). Contains 4 primitives.
 
 - **Token Value**: The actual secret string (JWT, API key, bearer token). Must never be logged, stored in plaintext, or transmitted without TLS.
 - **Token Issuer**: The identity provider or authority that minted the token. Verified by consumers to establish trust.
@@ -125,7 +125,7 @@ Parent construct in L6 (Governance). Contains 4 primitives.
 
 ### Role Binding
 
-Parent construct in L6 (Governance). Contains 4 primitives.
+Parent construct in S6 (Governance). Contains 4 primitives.
 
 - **Principal ID**: Unique identifier of the entity (user, agent, service account) being granted a role.
 - **Role Name**: Human-readable label for the role (e.g., 'code-reviewer', 'data-reader', 'admin'). Maps to a permission set.
@@ -134,7 +134,7 @@ Parent construct in L6 (Governance). Contains 4 primitives.
 
 ### Credential Vault
 
-Parent construct in L6 (Governance). Contains 4 primitives.
+Parent construct in S6 (Governance). Contains 4 primitives.
 
 - **Secret ID**: Logical name for a secret stored in the vault (e.g., 'openai-api-key-prod'). Agents reference this, never raw values.
 - **Encryption Algorithm**: The algorithm used to encrypt secrets at rest (AES-256-GCM, ChaCha20). Must meet compliance requirements.
@@ -143,7 +143,7 @@ Parent construct in L6 (Governance). Contains 4 primitives.
 
 ### Permission Scope
 
-Parent construct in L6 (Governance). Contains 4 primitives.
+Parent construct in S6 (Governance). Contains 4 primitives.
 
 - **Scope Pattern**: Glob, regex, or path expression defining which resources fall within this permission scope.
 - **Allowed Actions**: Explicit list of actions (read, write, delete, execute) permitted within this scope.
@@ -152,7 +152,7 @@ Parent construct in L6 (Governance). Contains 4 primitives.
 
 ### Audit Entry
 
-Parent construct in L6 (Governance). Contains 4 primitives.
+Parent construct in S6 (Governance). Contains 4 primitives.
 
 - **Entry ID**: Globally unique, immutable identifier for an audit log record. Must be tamper-evident.
 - **Actor ID**: The principal (user, agent, service) that performed the audited action. Links to identity systems.
@@ -161,7 +161,7 @@ Parent construct in L6 (Governance). Contains 4 primitives.
 
 ### Compliance Check
 
-Parent construct in L6 (Governance). Contains 4 primitives.
+Parent construct in S6 (Governance). Contains 4 primitives.
 
 - **Check ID**: Identifier linking to a specific compliance requirement (e.g., 'SOC2-CC6.1', 'GDPR-Art17').
 - **Regulation Reference**: Formal citation to the regulatory requirement being checked (e.g., 'GDPR Article 17: Right to Erasure').
@@ -170,7 +170,7 @@ Parent construct in L6 (Governance). Contains 4 primitives.
 
 ### Retention Policy
 
-Parent construct in L6 (Governance). Contains 4 primitives.
+Parent construct in S6 (Governance). Contains 4 primitives.
 
 - **Data Class**: Classification of data (PII, financial, operational, public) that determines retention requirements.
 - **Retention Days**: Number of days data must be retained before eligible for deletion. Varies by data class and regulation.
@@ -179,7 +179,7 @@ Parent construct in L6 (Governance). Contains 4 primitives.
 
 ### Evidence Chain
 
-Parent construct in L6 (Governance). Contains 4 primitives.
+Parent construct in S6 (Governance). Contains 4 primitives.
 
 - **Chain ID**: Identifier for a linked sequence of audit entries proving a complete decision trail.
 - **Linked Entries**: Array of audit entry_ids composing this evidence chain, in chronological order.
@@ -188,7 +188,7 @@ Parent construct in L6 (Governance). Contains 4 primitives.
 
 ### Content Filter
 
-Parent construct in L6 (Governance). Contains 4 primitives.
+Parent construct in S6 (Governance). Contains 4 primitives.
 
 - **Filter ID**: Identifier for a content filter configuration. Multiple filters may apply in sequence.
 - **Taxonomy Version**: Version of the content safety taxonomy being used (harm categories, severity levels, definitions).
@@ -197,7 +197,7 @@ Parent construct in L6 (Governance). Contains 4 primitives.
 
 ### Toxicity Scorer
 
-Parent construct in L6 (Governance). Contains 4 primitives.
+Parent construct in S6 (Governance). Contains 4 primitives.
 
 - **Scorer Model**: The ML model used for toxicity classification (e.g., Perspective API, LlamaGuard, custom fine-tuned).
 - **Dimension Scores**: Per-dimension toxicity scores (hate, threat, sexual, self-harm, violence). Enables nuanced response.
@@ -206,7 +206,7 @@ Parent construct in L6 (Governance). Contains 4 primitives.
 
 ### PII Redactor
 
-Parent construct in L6 (Governance). Contains 4 primitives.
+Parent construct in S6 (Governance). Contains 4 primitives.
 
 - **Entity Types**: The PII categories the redactor detects: names, emails, SSNs, phone numbers, addresses, etc.
 - **Redaction Method**: How detected PII is masked: replace with placeholder, hash, encrypt, or remove entirely.
@@ -215,7 +215,7 @@ Parent construct in L6 (Governance). Contains 4 primitives.
 
 ### Safety Boundary
 
-Parent construct in L6 (Governance). Contains 4 primitives.
+Parent construct in S6 (Governance). Contains 4 primitives.
 
 - **Boundary Type**: Category of safety limit: financial (max spend), destructive (no-delete zones), PII (exposure cap), or operational (rate).
 - **Risk Category**: Severity classification of the risk being bounded: critical, high, medium, low. Determines response urgency.
@@ -224,7 +224,7 @@ Parent construct in L6 (Governance). Contains 4 primitives.
 
 ### Test Harness
 
-Parent construct in L6 (Governance). Contains 6 primitives.
+Parent construct in S6 (Governance). Contains 6 primitives.
 
 - **Harness ID**: Unique identifier for the test harness.
 - **Test Suite ID**: Reference to the test suite(s) this harness runs.
@@ -235,7 +235,7 @@ Parent construct in L6 (Governance). Contains 6 primitives.
 
 ### Persona
 
-Parent construct in L6 (Governance). Contains 6 primitives.
+Parent construct in S6 (Governance). Contains 6 primitives.
 
 - **Persona ID**: Unique identifier for the agent persona.
 - **Role Name**: Human-readable name for the agent role.
@@ -246,10 +246,10 @@ Parent construct in L6 (Governance). Contains 6 primitives.
 
 ### Stack
 
-Parent construct in L6 (Governance). Contains 6 primitives.
+Parent construct in S6 (Governance). Contains 6 primitives.
 
 - **Stack ID**: Unique identifier for this stack configuration.
-- **Layer Composition**: Specification of components from each of the 7 layers.
+- **Stratum Composition**: Specification of components from each of the 7 strata.
 - **Version Constraints**: Version constraints for stack components.
 - **Dependency Graph**: Graph of dependencies between stack components.
 - **Deployment Target**: Target environment for deployment (dev, staging, prod).
@@ -257,7 +257,7 @@ Parent construct in L6 (Governance). Contains 6 primitives.
 
 ### Override Protocol
 
-Parent construct in L6 (Governance). Contains 6 primitives.
+Parent construct in S6 (Governance). Contains 6 primitives.
 
 - **Override ID**: Unique identifier for this override.
 - **Target Rule ID**: ID of the policy rule being overridden.
@@ -268,11 +268,11 @@ Parent construct in L6 (Governance). Contains 6 primitives.
 
 ---
 
-## L5 - Observability
+## S5 - Observability
 
 ### Trace Span
 
-Parent construct in L5 (Observability). Contains 4 primitives.
+Parent construct in S5 (Observability). Contains 4 primitives.
 
 - **Span ID**: Unique identifier for a single operation span within a distributed trace. Enables parent→child span correlation.
 - **Parent Span ID**: Reference to the parent span that spawned this operation. Null for root spans.
@@ -281,7 +281,7 @@ Parent construct in L5 (Observability). Contains 4 primitives.
 
 ### Log Entry
 
-Parent construct in L5 (Observability). Contains 4 primitives.
+Parent construct in S5 (Observability). Contains 4 primitives.
 
 - **Log Level**: Severity classification: DEBUG, INFO, WARN, ERROR, FATAL. Controls log volume and alerting rules.
 - **Message Template**: Parameterized log message format with placeholders for structured data (e.g., 'Agent {agent_id} completed {tool} in {ms}ms').
@@ -290,7 +290,7 @@ Parent construct in L5 (Observability). Contains 4 primitives.
 
 ### Token Ledger
 
-Parent construct in L5 (Observability). Contains 4 primitives.
+Parent construct in S5 (Observability). Contains 4 primitives.
 
 - **Model ID**: Identifier of the model that consumed the tokens (e.g., 'gpt-4o', 'claude-sonnet-4-20250514'). Key for cost attribution.
 - **Prompt Tokens**: Count of tokens in the input (system prompt + user message + context). Typically 80%+ of token spend.
@@ -299,7 +299,7 @@ Parent construct in L5 (Observability). Contains 4 primitives.
 
 ### Latency Histogram
 
-Parent construct in L5 (Observability). Contains 4 primitives.
+Parent construct in S5 (Observability). Contains 4 primitives.
 
 - **Bucket Bounds (ms)**: Array of millisecond boundaries defining histogram buckets (e.g., [10, 50, 100, 500, 1000, 5000]).
 - **Sample Count**: Total number of observations in the histogram window. Needed for percentile calculation accuracy.
@@ -308,7 +308,7 @@ Parent construct in L5 (Observability). Contains 4 primitives.
 
 ### Eval Suite
 
-Parent construct in L5 (Observability). Contains 4 primitives.
+Parent construct in S5 (Observability). Contains 4 primitives.
 
 - **Suite ID**: Identifier for an evaluation suite (e.g., 'qa-accuracy-v3', 'safety-check-prod'). Enables tracking over time.
 - **Test Count**: Number of test cases in the suite. Affects statistical significance and runtime.
@@ -317,7 +317,7 @@ Parent construct in L5 (Observability). Contains 4 primitives.
 
 ### Test Case
 
-Parent construct in L5 (Observability). Contains 4 primitives.
+Parent construct in S5 (Observability). Contains 4 primitives.
 
 - **Case ID**: Unique identifier for a test case within a suite. Enables per-case result tracking and regression detection.
 - **Input Prompt**: The exact prompt or conversation sent to the model for this test case. The 'question' of the eval.
@@ -326,7 +326,7 @@ Parent construct in L5 (Observability). Contains 4 primitives.
 
 ### Judge Prompt
 
-Parent construct in L5 (Observability). Contains 4 primitives.
+Parent construct in S5 (Observability). Contains 4 primitives.
 
 - **Judge Model**: The LLM used as an evaluator to score other model outputs. Should be at least as capable as the model being tested.
 - **Rubric Dimensions**: The criteria the judge evaluates: accuracy, helpfulness, safety, format compliance, reasoning quality.
@@ -335,7 +335,7 @@ Parent construct in L5 (Observability). Contains 4 primitives.
 
 ### Score Aggregator
 
-Parent construct in L5 (Observability). Contains 4 primitives.
+Parent construct in S5 (Observability). Contains 4 primitives.
 
 - **Aggregation Function**: Method for combining per-case scores into suite-level metric: mean, weighted-mean, min-of, or percentile.
 - **Dimension Weights**: Relative importance of each rubric dimension in the final score. Safety might weight 3x more than verbosity.
@@ -344,7 +344,7 @@ Parent construct in L5 (Observability). Contains 4 primitives.
 
 ### Drift Detector
 
-Parent construct in L5 (Observability). Contains 4 primitives.
+Parent construct in S5 (Observability). Contains 4 primitives.
 
 - **Baseline Snapshot**: Statistical profile of 'normal' model behavior (output distributions, token patterns, latency profiles) captured at a known-good state.
 - **Current Window**: Rolling time window of recent model behavior being compared against the baseline (e.g., last 24h of outputs).
@@ -353,7 +353,7 @@ Parent construct in L5 (Observability). Contains 4 primitives.
 
 ### Anomaly Alert
 
-Parent construct in L5 (Observability). Contains 4 primitives.
+Parent construct in S5 (Observability). Contains 4 primitives.
 
 - **Alert ID**: Unique identifier for a fired alert. Links to the investigation, response actions, and resolution.
 - **Metric Name**: The specific metric that triggered the alert (e.g., 'latency_p99', 'error_rate', 'drift_psi').
@@ -362,7 +362,7 @@ Parent construct in L5 (Observability). Contains 4 primitives.
 
 ### SLO Monitor
 
-Parent construct in L5 (Observability). Contains 4 primitives.
+Parent construct in S5 (Observability). Contains 4 primitives.
 
 - **SLO Name**: Human-readable identifier for the Service Level Objective (e.g., 'agent-response-latency-p99').
 - **Target Percentage**: The availability/quality target: 99.9% of requests must complete within latency budget. The 'nines'.
@@ -371,7 +371,7 @@ Parent construct in L5 (Observability). Contains 4 primitives.
 
 ### Cost Tracker
 
-Parent construct in L5 (Observability). Contains 4 primitives.
+Parent construct in S5 (Observability). Contains 4 primitives.
 
 - **Session Cost (USD)**: Total dollar cost of a single agent session: sum of all LLM calls, tool invocations, and compute time.
 - **Daily Budget (USD)**: Maximum allowed spend per day across all agent activity. Hard cap to prevent runaway costs.
@@ -380,11 +380,11 @@ Parent construct in L5 (Observability). Contains 4 primitives.
 
 ---
 
-## L4 - Orchestration
+## S4 - Orchestration
 
 ### Execution Plan
 
-Parent construct in L4 (Orchestration). Contains 4 primitives.
+Parent construct in S4 (Orchestration). Contains 4 primitives.
 
 - **Step Graph**: DAG of individual steps with edges encoding dependencies. The orchestrator traverses this to execute tasks in order.
 - **Branch Condition**: Boolean or score-based condition determining which branch of the plan to follow. Enables dynamic workflows.
@@ -393,7 +393,7 @@ Parent construct in L4 (Orchestration). Contains 4 primitives.
 
 ### State Checkpoint
 
-Parent construct in L4 (Orchestration). Contains 4 primitives.
+Parent construct in S4 (Orchestration). Contains 4 primitives.
 
 - **State Blob**: Serialized snapshot of all orchestration state at a point in time. Enables resume-from-checkpoint after failures.
 - **Checkpoint ID**: Unique identifier for a saved checkpoint. Used to select which state to resume from.
@@ -402,7 +402,7 @@ Parent construct in L4 (Orchestration). Contains 4 primitives.
 
 ### Dependency Graph
 
-Parent construct in L4 (Orchestration). Contains 4 primitives.
+Parent construct in S4 (Orchestration). Contains 4 primitives.
 
 - **Node List**: Array of all tasks in the graph. Each node holds its ID, status, and input/output contract.
 - **Edge List**: Array of directed edges encoding 'A must complete before B' relationships between tasks.
@@ -411,7 +411,7 @@ Parent construct in L4 (Orchestration). Contains 4 primitives.
 
 ### Timeout Policy
 
-Parent construct in L4 (Orchestration). Contains 4 primitives.
+Parent construct in S4 (Orchestration). Contains 4 primitives.
 
 - **Max Wait (ms)**: Maximum milliseconds to wait for a step or tool call before triggering timeout handling.
 - **Escalation Target**: The agent, human, or fallback system to notify when a timeout occurs. Part of graceful degradation.
@@ -420,7 +420,7 @@ Parent construct in L4 (Orchestration). Contains 4 primitives.
 
 ### Agent Roster
 
-Parent construct in L4 (Orchestration). Contains 4 primitives.
+Parent construct in S4 (Orchestration). Contains 4 primitives.
 
 - **Agent ID**: Unique identifier for each agent in the multi-agent system. Used for routing, logging, and access control.
 - **Capability Tags**: Labels describing what an agent can do (e.g., 'code_edit', 'web_search', 'image_gen'). Used for task matching.
@@ -429,7 +429,7 @@ Parent construct in L4 (Orchestration). Contains 4 primitives.
 
 ### Task Assignment
 
-Parent construct in L4 (Orchestration). Contains 4 primitives.
+Parent construct in S4 (Orchestration). Contains 4 primitives.
 
 - **Match Score**: Numeric score indicating how well an agent's capabilities align with a task's requirements.
 - **Priority Level**: Task urgency ranking (critical/high/medium/low) that influences scheduling order.
@@ -438,7 +438,7 @@ Parent construct in L4 (Orchestration). Contains 4 primitives.
 
 ### Message Channel
 
-Parent construct in L4 (Orchestration). Contains 4 primitives.
+Parent construct in S4 (Orchestration). Contains 4 primitives.
 
 - **Channel ID**: Unique identifier for a communication channel between agents. Supports point-to-point and pub/sub patterns.
 - **Message Envelope**: Wrapper around message payload containing metadata: sender, timestamp, correlation ID, content type.
@@ -447,7 +447,7 @@ Parent construct in L4 (Orchestration). Contains 4 primitives.
 
 ### Delegation Policy
 
-Parent construct in L4 (Orchestration). Contains 4 primitives.
+Parent construct in S4 (Orchestration). Contains 4 primitives.
 
 - **Delegation Trigger**: Condition that causes an agent to delegate a subtask: complexity threshold, capability gap, or explicit rule.
 - **Approval Gate**: Optional human-in-the-loop checkpoint before delegation executes. Prevents uncontrolled task chains.
@@ -456,7 +456,7 @@ Parent construct in L4 (Orchestration). Contains 4 primitives.
 
 ### Test Gate
 
-Parent construct in L4 (Orchestration). Contains 10 primitives.
+Parent construct in S4 (Orchestration). Contains 10 primitives.
 
 - **Test Case ID**: Unique identifier for the test case being evaluated at this gate. Links pass/fail status to a specific test definition.
 - **Test Name**: Human-readable label for the test case. Used in gate reports, CI dashboards, and failure notifications.
@@ -471,7 +471,7 @@ Parent construct in L4 (Orchestration). Contains 10 primitives.
 
 ### TDD Workflow Path
 
-Parent construct in L4 (Orchestration). Contains 10 primitives.
+Parent construct in S4 (Orchestration). Contains 10 primitives.
 
 - **Spec Seed**: Initial specification or user story that seeds test generation. The source of truth before any code is written.
 - **Test Generated Flag**: Boolean indicating whether test scaffolding has been generated from the spec seed. Red phase starts here.
@@ -486,7 +486,7 @@ Parent construct in L4 (Orchestration). Contains 10 primitives.
 
 ### Pattern
 
-Parent construct in L4 (Orchestration). Contains 6 primitives.
+Parent construct in S4 (Orchestration). Contains 6 primitives.
 
 - **Pattern ID**: Unique identifier for the pattern.
 - **Pattern Type**: Classification of pattern (trigger, filter, transform).
@@ -497,11 +497,11 @@ Parent construct in L4 (Orchestration). Contains 6 primitives.
 
 ---
 
-## L3 - Capabilities
+## S3 - Capabilities
 
 ### Tool Manifest
 
-Parent construct in L3 (Capabilities). Contains 4 primitives.
+Parent construct in S3 (Capabilities). Contains 4 primitives.
 
 - **Tool ID**: Unique identifier for a registered tool. The model references this when choosing which tool to call.
 - **JSON Schema**: Formal schema defining the tool's input parameters and their types. The model uses this for argument generation.
@@ -510,7 +510,7 @@ Parent construct in L3 (Capabilities). Contains 4 primitives.
 
 ### API Binding
 
-Parent construct in L3 (Capabilities). Contains 4 primitives.
+Parent construct in S3 (Capabilities). Contains 4 primitives.
 
 - **Endpoint URL**: The concrete HTTP endpoint the tool call is routed to at runtime. May vary by environment.
 - **Request Template**: Template for constructing the HTTP request: method, headers, body format. Populated with tool call arguments.
@@ -519,7 +519,7 @@ Parent construct in L3 (Capabilities). Contains 4 primitives.
 
 ### Capability Schema
 
-Parent construct in L3 (Capabilities). Contains 4 primitives.
+Parent construct in S3 (Capabilities). Contains 4 primitives.
 
 - **Capability ID**: Unique identifier for a capability the tool provides. Used by the planner to match tasks to tools.
 - **Input Schema**: JSON Schema defining what the tool expects as input. The model validates arguments against this.
@@ -528,7 +528,7 @@ Parent construct in L3 (Capabilities). Contains 4 primitives.
 
 ### Sandbox Runtime
 
-Parent construct in L3 (Capabilities). Contains 10 primitives.
+Parent construct in S3 (Capabilities). Contains 10 primitives.
 
 - **Runtime Type**: The sandbox execution engine: Docker container, Firecracker microVM, gVisor, or WASM isolate.
 - **Isolation Level**: Degree of separation: process-level, container-level, VM-level. Determines what the code can access.
@@ -543,7 +543,7 @@ Parent construct in L3 (Capabilities). Contains 10 primitives.
 
 ### Interpreter Session
 
-Parent construct in L3 (Capabilities). Contains 4 primitives.
+Parent construct in S3 (Capabilities). Contains 4 primitives.
 
 - **Session ID**: Unique identifier for a REPL/interpreter session. Enables state persistence across multiple code executions.
 - **Language Runtime**: The programming language and version: 'python:3.12', 'node:20', 'bash:5'. Determines available libraries.
@@ -552,7 +552,7 @@ Parent construct in L3 (Capabilities). Contains 4 primitives.
 
 ### Execution Result
 
-Parent construct in L3 (Capabilities). Contains 4 primitives.
+Parent construct in S3 (Capabilities). Contains 4 primitives.
 
 - **Exit Code**: Process return code: 0 = success, non-zero = error. The universal signal for execution outcome.
 - **Stdout Content**: Standard output captured from the execution. The primary output channel for results and data.
@@ -561,7 +561,7 @@ Parent construct in L3 (Capabilities). Contains 4 primitives.
 
 ### Resource Limit
 
-Parent construct in L3 (Capabilities). Contains 4 primitives.
+Parent construct in S3 (Capabilities). Contains 4 primitives.
 
 - **CPU Limit**: Maximum CPU allocation in cores or millicores. Prevents compute-hungry code from starving other workloads.
 - **Memory Limit (MB)**: Maximum RAM in megabytes. Exceeding triggers OOM killer (exit code 137).
@@ -570,7 +570,7 @@ Parent construct in L3 (Capabilities). Contains 4 primitives.
 
 ### API Connector
 
-Parent construct in L3 (Capabilities). Contains 4 primitives.
+Parent construct in S3 (Capabilities). Contains 4 primitives.
 
 - **Base URL**: Root endpoint for the external API (e.g., 'https://api.example.com/v2'). All paths are relative to this.
 - **Auth Method**: Authentication type: API key, OAuth2, Bearer token, mTLS. Determines how credentials are sent.
@@ -579,7 +579,7 @@ Parent construct in L3 (Capabilities). Contains 4 primitives.
 
 ### Webhook Emitter
 
-Parent construct in L3 (Capabilities). Contains 4 primitives.
+Parent construct in S3 (Capabilities). Contains 4 primitives.
 
 - **Webhook URL**: The destination endpoint that receives event notifications via HTTP POST.
 - **Event Type**: Classification of the event: 'agent.completed', 'tool.failed', 'session.created'. Enables filtering.
@@ -588,7 +588,7 @@ Parent construct in L3 (Capabilities). Contains 4 primitives.
 
 ### Rate Limiter
 
-Parent construct in L3 (Capabilities). Contains 4 primitives.
+Parent construct in S3 (Capabilities). Contains 4 primitives.
 
 - **Limit Window**: Time window for rate counting: 1 second, 1 minute, 1 hour. Determines burst vs sustained rate limits.
 - **Max Requests**: Maximum number of requests allowed within the limit window. The 'quota' per time period.
@@ -597,7 +597,7 @@ Parent construct in L3 (Capabilities). Contains 4 primitives.
 
 ### Response Cache
 
-Parent construct in L3 (Capabilities). Contains 4 primitives.
+Parent construct in S3 (Capabilities). Contains 4 primitives.
 
 - **Cache Key Pattern**: Template for generating cache keys from request parameters: '{method}:{path}:{hash(body)}'.
 - **TTL (seconds)**: Time-to-live before a cached response expires and must be re-fetched. Balances freshness vs performance.
@@ -606,7 +606,7 @@ Parent construct in L3 (Capabilities). Contains 4 primitives.
 
 ### Browser Session
 
-Parent construct in L3 (Capabilities). Contains 4 primitives.
+Parent construct in S3 (Capabilities). Contains 4 primitives.
 
 - **Browser Type**: The browser engine used: Chromium, Firefox, or WebKit. Affects rendering and JavaScript behavior.
 - **Viewport Size**: Browser window dimensions (width × height in pixels). Affects layout, responsive behavior, and screenshots.
@@ -615,7 +615,7 @@ Parent construct in L3 (Capabilities). Contains 4 primitives.
 
 ### Page Action
 
-Parent construct in L3 (Capabilities). Contains 4 primitives.
+Parent construct in S3 (Capabilities). Contains 4 primitives.
 
 - **Action Type**: The browser action to perform: click, fill, select, scroll, navigate, wait, hover, drag.
 - **Target Selector**: CSS or XPath selector, or accessibility role/label identifying the target element for the action.
@@ -624,7 +624,7 @@ Parent construct in L3 (Capabilities). Contains 4 primitives.
 
 ### Element Selector
 
-Parent construct in L3 (Capabilities). Contains 4 primitives.
+Parent construct in S3 (Capabilities). Contains 4 primitives.
 
 - **Selector Type**: The strategy for locating elements: CSS, XPath, role, text, test-id, or accessibility label.
 - **Selector Value**: The actual selector string: 'data-testid=submit-btn', 'role=button[name=Submit]', '#main > .form button'.
@@ -633,7 +633,7 @@ Parent construct in L3 (Capabilities). Contains 4 primitives.
 
 ### Screenshot Capture
 
-Parent construct in L3 (Capabilities). Contains 4 primitives.
+Parent construct in S3 (Capabilities). Contains 4 primitives.
 
 - **Capture Format**: Image format for screenshots: PNG (lossless), JPEG (smaller), or WebP (best compression).
 - **Viewport Clip**: Rectangular area to capture: {x, y, width, height}. Enables focused screenshots of specific page regions.
@@ -642,7 +642,7 @@ Parent construct in L3 (Capabilities). Contains 4 primitives.
 
 ### File Handle
 
-Parent construct in L3 (Capabilities). Contains 4 primitives.
+Parent construct in S3 (Capabilities). Contains 4 primitives.
 
 - **File Path**: Absolute or relative path to the file being accessed. The address of the file in the filesystem.
 - **Open Mode**: File access mode: read (r), write (w), append (a), read-write (r+). Determines permissions and behavior.
@@ -651,7 +651,7 @@ Parent construct in L3 (Capabilities). Contains 4 primitives.
 
 ### Shell Command
 
-Parent construct in L3 (Capabilities). Contains 4 primitives.
+Parent construct in S3 (Capabilities). Contains 4 primitives.
 
 - **Command String**: The shell command to execute. Must be sanitized to prevent command injection attacks.
 - **Working Directory**: The directory context (cwd) for command execution. Affects relative path resolution and file access.
@@ -660,7 +660,7 @@ Parent construct in L3 (Capabilities). Contains 4 primitives.
 
 ### Directory Walker
 
-Parent construct in L3 (Capabilities). Contains 4 primitives.
+Parent construct in S3 (Capabilities). Contains 4 primitives.
 
 - **Root Path**: The starting directory for the file tree traversal. All paths are discovered relative to this root.
 - **Glob Pattern**: File matching pattern using wildcards: '**/*.py' (all Python files), '*.md' (Markdown in current dir).
@@ -669,7 +669,7 @@ Parent construct in L3 (Capabilities). Contains 4 primitives.
 
 ### Permission Check
 
-Parent construct in L3 (Capabilities). Contains 4 primitives.
+Parent construct in S3 (Capabilities). Contains 4 primitives.
 
 - **Target Path**: The filesystem path being checked for permissions. Can be a file or directory.
 - **Required Permissions**: The access level needed: read (r), write (w), execute (x), or combinations. Set per-operation.
@@ -678,7 +678,7 @@ Parent construct in L3 (Capabilities). Contains 4 primitives.
 
 ### Message Topic
 
-Parent construct in L3 (Capabilities). Contains 4 primitives.
+Parent construct in S3 (Capabilities). Contains 4 primitives.
 
 - **Topic Name**: The named channel for publishing/subscribing messages: 'agent.events', 'tool.results', 'session.logs'.
 - **Partition Count**: Number of parallel partitions for the topic. Determines maximum consumer parallelism and ordering guarantees.
@@ -687,7 +687,7 @@ Parent construct in L3 (Capabilities). Contains 4 primitives.
 
 ### Event Subscriber
 
-Parent construct in L3 (Capabilities). Contains 4 primitives.
+Parent construct in S3 (Capabilities). Contains 4 primitives.
 
 - **Subscriber ID**: Unique identifier for a message consumer. Enables offset tracking, delivery guarantees, and load balancing.
 - **Topic Reference**: The topic(s) this subscriber is consuming from. One subscriber can listen to multiple topics.
@@ -696,7 +696,7 @@ Parent construct in L3 (Capabilities). Contains 4 primitives.
 
 ### Dead Letter Queue
 
-Parent construct in L3 (Capabilities). Contains 4 primitives.
+Parent construct in S3 (Capabilities). Contains 4 primitives.
 
 - **DLQ Name**: Name of the dead letter queue that receives messages that failed processing after max retries.
 - **Max Retries**: Maximum processing attempts before a message is moved to the dead letter queue.
@@ -705,7 +705,7 @@ Parent construct in L3 (Capabilities). Contains 4 primitives.
 
 ### Delivery Guarantee
 
-Parent construct in L3 (Capabilities). Contains 4 primitives.
+Parent construct in S3 (Capabilities). Contains 4 primitives.
 
 - **Guarantee Level**: The delivery semantics: at-most-once, at-least-once, or exactly-once. Each has different trade-offs.
 - **ACK Mode**: When the consumer acknowledges message receipt: auto-ACK (before processing) or manual ACK (after processing).
@@ -714,11 +714,11 @@ Parent construct in L3 (Capabilities). Contains 4 primitives.
 
 ---
 
-## L2 - Knowledge & Retrieval
+## S2 - Knowledge & Retrieval
 
 ### Search Index
 
-Parent construct in L2 (Knowledge & Retrieval). Contains 4 primitives.
+Parent construct in S2 (Knowledge & Retrieval). Contains 4 primitives.
 
 - **Index Type**: The index algorithm: vector (HNSW, IVF), keyword (BM25), or hybrid. Determines retrieval characteristics.
 - **Embedding Dim**: Dimensionality of the embedding vectors stored in the index. Must match the embedding model's output size.
@@ -727,7 +727,7 @@ Parent construct in L2 (Knowledge & Retrieval). Contains 4 primitives.
 
 ### Chunk Collection
 
-Parent construct in L2 (Knowledge & Retrieval). Contains 4 primitives.
+Parent construct in S2 (Knowledge & Retrieval). Contains 4 primitives.
 
 - **Chunk ID**: Unique identifier for a document chunk. Used for retrieval, citation, and deduplication.
 - **Source Doc**: Reference to the original document this chunk was extracted from. Preserves provenance chain.
@@ -736,7 +736,7 @@ Parent construct in L2 (Knowledge & Retrieval). Contains 4 primitives.
 
 ### Relevance Score
 
-Parent construct in L2 (Knowledge & Retrieval). Contains 4 primitives.
+Parent construct in S2 (Knowledge & Retrieval). Contains 4 primitives.
 
 - **Cosine Similarity**: Similarity metric between query and document embeddings. Core signal for semantic search ranking.
 - **BM25 Score**: Classic term-frequency keyword relevance score. Complements vector search for exact-match queries.
@@ -745,7 +745,7 @@ Parent construct in L2 (Knowledge & Retrieval). Contains 4 primitives.
 
 ### Rerank Pipeline
 
-Parent construct in L2 (Knowledge & Retrieval). Contains 4 primitives.
+Parent construct in S2 (Knowledge & Retrieval). Contains 4 primitives.
 
 - **Reranker Model**: Cross-encoder model that scores query-document pairs more accurately than bi-encoder retrieval.
 - **Top K**: Number of top results to keep after reranking. Balances quality against context window budget.
@@ -754,7 +754,7 @@ Parent construct in L2 (Knowledge & Retrieval). Contains 4 primitives.
 
 ### Working Memory
 
-Parent construct in L2 (Knowledge & Retrieval). Contains 5 primitives.
+Parent construct in S2 (Knowledge & Retrieval). Contains 5 primitives.
 
 - **Capacity (tokens)**: Maximum number of tokens stored in working memory.
 - **Retention Policy**: Policy determining how long items stay in working memory ('FIFO', 'LRU', 'importance-based').
@@ -764,7 +764,7 @@ Parent construct in L2 (Knowledge & Retrieval). Contains 5 primitives.
 
 ### Episodic Store
 
-Parent construct in L2 (Knowledge & Retrieval). Contains 6 primitives.
+Parent construct in S2 (Knowledge & Retrieval). Contains 6 primitives.
 
 - **Store ID**: Unique identifier for this episodic memory store.
 - **Retention (days)**: Number of days to retain entries before automatic deletion.
@@ -775,7 +775,7 @@ Parent construct in L2 (Knowledge & Retrieval). Contains 6 primitives.
 
 ### Memory Consolidator
 
-Parent construct in L2 (Knowledge & Retrieval). Contains 5 primitives.
+Parent construct in S2 (Knowledge & Retrieval). Contains 5 primitives.
 
 - **Consolidation Interval (hrs)**: Hours between consolidation cycles.
 - **Merge Strategy**: Strategy for merging similar memories ('simple-concat', 'semantic-merge', 'voting').
@@ -785,7 +785,7 @@ Parent construct in L2 (Knowledge & Retrieval). Contains 5 primitives.
 
 ### Forgetting Policy
 
-Parent construct in L2 (Knowledge & Retrieval). Contains 5 primitives.
+Parent construct in S2 (Knowledge & Retrieval). Contains 5 primitives.
 
 - **Decay Rate**: Rate at which memory strength decreases over time.
 - **Recency Weight**: Weight assigned to recent access in retention decisions (0.0–1.0).
@@ -795,7 +795,7 @@ Parent construct in L2 (Knowledge & Retrieval). Contains 5 primitives.
 
 ### Entity Node
 
-Parent construct in L2 (Knowledge & Retrieval). Contains 6 primitives.
+Parent construct in S2 (Knowledge & Retrieval). Contains 6 primitives.
 
 - **Entity ID**: Unique identifier for the entity.
 - **Entity Type**: Classification of the entity (person, organization, concept, etc.).
@@ -806,7 +806,7 @@ Parent construct in L2 (Knowledge & Retrieval). Contains 6 primitives.
 
 ### Relationship Edge
 
-Parent construct in L2 (Knowledge & Retrieval). Contains 6 primitives.
+Parent construct in S2 (Knowledge & Retrieval). Contains 6 primitives.
 
 - **Source Entity ID**: ID of the source entity in the relationship.
 - **Target Entity ID**: ID of the target entity in the relationship.
@@ -817,7 +817,7 @@ Parent construct in L2 (Knowledge & Retrieval). Contains 6 primitives.
 
 ### Ontology Schema
 
-Parent construct in L2 (Knowledge & Retrieval). Contains 6 primitives.
+Parent construct in S2 (Knowledge & Retrieval). Contains 6 primitives.
 
 - **Ontology ID**: Unique identifier for the ontology.
 - **Version**: Version number of the ontology.
@@ -828,7 +828,7 @@ Parent construct in L2 (Knowledge & Retrieval). Contains 6 primitives.
 
 ### Graph Query
 
-Parent construct in L2 (Knowledge & Retrieval). Contains 6 primitives.
+Parent construct in S2 (Knowledge & Retrieval). Contains 6 primitives.
 
 - **Query Type**: Type of graph traversal (shortest-path, k-hop, pattern-match).
 - **Traversal Depth**: Maximum number of hops in the graph traversal.
@@ -839,7 +839,7 @@ Parent construct in L2 (Knowledge & Retrieval). Contains 6 primitives.
 
 ### Vector Index
 
-Parent construct in L2 (Knowledge & Retrieval). Contains 6 primitives.
+Parent construct in S2 (Knowledge & Retrieval). Contains 6 primitives.
 
 - **Index Type**: Type of vector index (HNSW, IVF, LSH, flat).
 - **Embedding Dimension**: Dimensionality of the embeddings in the index.
@@ -850,18 +850,18 @@ Parent construct in L2 (Knowledge & Retrieval). Contains 6 primitives.
 
 ### Embedding Model
 
-Parent construct in L2 (Knowledge & Retrieval). Contains 6 primitives.
+Parent construct in S2 (Knowledge & Retrieval). Contains 6 primitives.
 
 - **Embedding ID**: Unique identifier for the embedding model.
 - **Output Dimension**: Dimensionality of output embeddings.
 - **Distance Metric**: Recommended distance metric for this embedding model.
 - **Max Sequence Length**: Maximum input sequence length the model can handle.
-- **Normalization Type**: Normalization applied to embeddings (L2, cosine, none).
+- **Normalization Type**: Normalization applied to embeddings (S2, cosine, none).
 - **Model Format**: Format of the model files (PyTorch, ONNX, TensorFlow).
 
 ### Chunk Strategy
 
-Parent construct in L2 (Knowledge & Retrieval). Contains 6 primitives.
+Parent construct in S2 (Knowledge & Retrieval). Contains 6 primitives.
 
 - **Chunk Size**: Size of each chunk in tokens.
 - **Overlap Tokens**: Number of tokens to overlap between adjacent chunks.
@@ -872,7 +872,7 @@ Parent construct in L2 (Knowledge & Retrieval). Contains 6 primitives.
 
 ### Index Refresh
 
-Parent construct in L2 (Knowledge & Retrieval). Contains 6 primitives.
+Parent construct in S2 (Knowledge & Retrieval). Contains 6 primitives.
 
 - **Refresh Interval (sec)**: Seconds between index refresh cycles.
 - **Batch Size**: Number of documents to process per batch during refresh.
@@ -883,11 +883,11 @@ Parent construct in L2 (Knowledge & Retrieval). Contains 6 primitives.
 
 ---
 
-## L1 - Infrastructure
+## S1 - Infrastructure
 
 ### Model Card
 
-Parent construct in L1 (Infrastructure). Contains 12 primitives.
+Parent construct in S1 (Infrastructure). Contains 12 primitives.
 
 - **Card ID**: Immutable identifier (Namespace/Family/Params/Quant/Hash) that uniquely identifies a model version and prevents behavioral drift.
 - **Model Family**: Architectural lineage (GPT, Llama, Mistral, Gemma…) determining Jinja2 chat templates and prompting strategy.
@@ -904,7 +904,7 @@ Parent construct in L1 (Infrastructure). Contains 12 primitives.
 
 ### Model Endpoint
 
-Parent construct in L1 (Infrastructure). Contains 12 primitives.
+Parent construct in S1 (Infrastructure). Contains 12 primitives.
 
 - **Endpoint URL**: Abstract URI managed by service mesh for routing inference requests. RTT latency target: &lt;20ms.
 - **Model Version**: Tracks weight + engine + prompt template combinations. Deployed via canary rollouts.
@@ -921,7 +921,7 @@ Parent construct in L1 (Infrastructure). Contains 12 primitives.
 
 ### Context Window
 
-Parent construct in L1 (Infrastructure). Contains 10 primitives.
+Parent construct in S1 (Infrastructure). Contains 10 primitives.
 
 - **Max Tokens**: Hard hardware/software limit on total input+output tokens. Standard: 128K; long-context: 1M–10M. KV cache: 0.5–2GB VRAM/1K tokens.
 - **Effective Tokens**: Actual sequence length before 'Context Rot' — where recall accuracy degrades below useful thresholds. Target recall: &gt;95%.
@@ -936,7 +936,7 @@ Parent construct in L1 (Infrastructure). Contains 10 primitives.
 
 ### Tokenizer Config
 
-Parent construct in L1 (Infrastructure). Contains 10 primitives.
+Parent construct in S1 (Infrastructure). Contains 10 primitives.
 
 - **Vocab Size**: Total unique tokens in the vocabulary. Modern models: 100K–150K tokens. Compression ratio target: 0.7–0.8 tokens/word.
 - **Encoding Scheme**: Tokenization algorithm — usually Byte-level BPE to prevent Out of Vocabulary (OOV) errors.
@@ -951,7 +951,7 @@ Parent construct in L1 (Infrastructure). Contains 10 primitives.
 
 ### Inference Server
 
-Parent construct in L1 (Infrastructure). Contains 10 primitives.
+Parent construct in S1 (Infrastructure). Contains 10 primitives.
 
 - **Server Framework**: Serving engine — vLLM for high throughput (256+ sequences) or SGLang for agentic prefix-sharing (512+ sequences).
 - **Quantization Level**: Precision reduction — FP8 saves 50% VRAM (&lt;0.01% perplexity impact); INT4 saves 75% (&lt;1% impact).
@@ -966,7 +966,7 @@ Parent construct in L1 (Infrastructure). Contains 10 primitives.
 
 ### GPU Pool
 
-Parent construct in L1 (Infrastructure). Contains 10 primitives.
+Parent construct in S1 (Infrastructure). Contains 10 primitives.
 
 - **GPU Type**: Hardware SKU — H100 (80GB VRAM, 3.35 TB/s) for frontier; L40S (48GB, 0.86 TB/s) for smaller tasks. Memory bandwidth is the bottleneck.
 - **Pool Size**: Number of GPU instances. Availability target: 99.99%. Requires N+1 redundancy across ≥2 availability zones.
@@ -981,7 +981,7 @@ Parent construct in L1 (Infrastructure). Contains 10 primitives.
 
 ### Batch Queue
 
-Parent construct in L1 (Infrastructure). Contains 10 primitives.
+Parent construct in S1 (Infrastructure). Contains 10 primitives.
 
 - **Batch Size**: Dynamic batching range: 1–256. Each additional request adds ~5ms TPOT latency penalty.
 - **Queue Depth**: Leading indicator of latency. Target wait: &lt;50ms. Autoscaling threshold: 3–10 requests waiting.
@@ -996,7 +996,7 @@ Parent construct in L1 (Infrastructure). Contains 10 primitives.
 
 ### Autoscaler Policy
 
-Parent construct in L1 (Infrastructure). Contains 10 primitives.
+Parent construct in S1 (Infrastructure). Contains 10 primitives.
 
 - **Scale Metric**: Primary trigger: Queue Size (&gt;5 req/GPU). Secondary: P95 TTFT (&gt;500ms). ⚠️ Never use VRAM utilization.
 - **Cooldown Seconds**: Asymmetric: scale-up 0s (immediate), scale-down 600s (prevent model-load thrashing). Model load takes 30s–5min.
@@ -1011,7 +1011,7 @@ Parent construct in L1 (Infrastructure). Contains 10 primitives.
 
 ### Training Run
 
-Parent construct in L1 (Infrastructure). Contains 11 primitives.
+Parent construct in S1 (Infrastructure). Contains 11 primitives.
 
 - **Run ID**: Unique experiment identifier for 100% traceability to Git commits. Format: timestamp-gitsha-name-suffix.
 - **Base Model**: Foundation model being fine-tuned. Target Model Flops Utilization (MFU): 40–55%.
@@ -1027,7 +1027,7 @@ Parent construct in L1 (Infrastructure). Contains 11 primitives.
 
 ### Dataset Config
 
-Parent construct in L1 (Infrastructure). Contains 10 primitives.
+Parent construct in S1 (Infrastructure). Contains 10 primitives.
 
 - **Dataset URI**: Training data location. Load bandwidth &gt;1 GB/s using binary formats (Parquet/Arrow).
 - **Split Ratio**: Standard: 90% Train / 5% Validation / 5% Test. Test set MUST be fully decontaminated.
@@ -1042,22 +1042,22 @@ Parent construct in L1 (Infrastructure). Contains 10 primitives.
 
 ### LoRA Adapter
 
-Parent construct in L1 (Infrastructure). Contains 10 primitives.
+Parent construct in S1 (Infrastructure). Contains 10 primitives.
 
 - **Adapter Rank**: LoRA rank — r=8–16 for style (~10M params, &lt;100MB); r=64–128 for knowledge (~80M params, ~500MB VRAM).
-- **Target Modules**: Which layers get LoRA adapters. 'All Linear Layers' retains 95% of full fine-tune performance.
+- **Target Modules**: Which strata get LoRA adapters. 'All Linear Strata' retains 95% of full fine-tune performance.
 - **Merge Strategy**: Combining adapter weights — Merge/Unload (permanent, fastest) or TIES-Merging (multi-adapter, sign-aware).
 - **Adapter Registry**: Centralized catalog of 1,000+ adapters with hot-swap latency &lt;200ms.
 - **Adapter Rank**: Rank of the low-rank matrices (typically 8–64).
 - **Adapter Alpha**: Scaling factor for LoRA updates (typically 16–32).
 - **Base Model ID**: ID of the base model this adapter fine-tunes.
-- **Weight Decay**: L2 regularization coefficient for adapter weights.
-- **Target Modules**: List of layer names to apply LoRA to (e.g., ['q_proj', 'v_proj']).
-- **LoRA Dropout**: Dropout probability for LoRA layers.
+- **Weight Decay**: S2 regularization coefficient for adapter weights.
+- **Target Modules**: List of stratum names to apply LoRA to (e.g., ['q_proj', 'v_proj']).
+- **LoRA Dropout**: Dropout probability for LoRA strata.
 
 ### RLHF Pipeline
 
-Parent construct in L1 (Infrastructure). Contains 9 primitives.
+Parent construct in S1 (Infrastructure). Contains 9 primitives.
 
 - **Reward Model**: Neural network scoring outputs. Target accuracy: 70–80%. Calibration error &lt;0.05.
 - **Preference Dataset**: A/B comparison pairs: 20,000–100,000 with rater agreement &gt;0.85.

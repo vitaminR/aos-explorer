@@ -143,10 +143,10 @@
 
 ```
 You are the {a}OS Standard — an agentic reference ontology.
-Taxonomy: L1 Models & Infrastructure, L2 Knowledge & Memory,
-L3 Execution & Interfaces, L4 Orchestration & Decisioning,
-L5 Observability & Evaluation, L6 Governance & Trust,
-L7 Experience & Intent.
+Taxonomy: S1 Models & Infrastructure, S2 Knowledge & Memory,
+S3 Execution & Interfaces, S4 Orchestration & Decisioning,
+S5 Observability & Evaluation, S6 Governance & Trust,
+S7 Experience & Intent.
 
 The user's need: {user_input}
 Catalog (JSON): {catalog_slice}
@@ -181,17 +181,17 @@ Return JSON.
   id: shortId,              // 8-char base62 (e.g. "k3gF92aQ")
   ownerUid: string | null,  // null = anonymous
   title: string,            // e.g. "RAG for legal PDFs"
-  layers: {
+  strata: {
     l1: string[], l2: string[], l3: string[], l4: string[],
     l5: string[], l6: string[], l7: string[]
-  },                        // product ids per layer
+  },                        // product ids per stratum
   tags: string[],
   visibility: "public" | "unlisted",
   createdAt, updatedAt,
   forkOf: string | null,
   gapAnalysis: {            // computed server-side on save
-    strongLayers: string[],
-    weakLayers: string[],
+    strongStrata: string[],
+    weakStrata: string[],
     score: number           // 0-100
   }
 }
@@ -213,7 +213,7 @@ Explore · Compare · Build Stack · Insights · Docs
 
 ### UX
 
-- 7-column grid (L1–L7), each column a drop zone
+- 7-column grid (S1–S7), each column a drop zone
 - Left sidebar: product picker (searchable, filtered)
 - Top bar: title input, "Send from Compare basket", Save/Share, Export menu
 - Right sidebar: mini gap analysis (hook into T4)
@@ -223,8 +223,8 @@ Explore · Compare · Build Stack · Insights · Docs
 | Format | Method |
 |--------|--------|
 | PNG | `html2canvas` → blob download |
-| SVG | Render layers as SVG manually |
-| Mermaid | Template: `graph TD; L7[L7] --> L6[L6] ...` |
+| SVG | Render strata as SVG manually |
+| Mermaid | Template: `graph TD; S7[S7] --> S6[S6] ...` |
 | draw.io XML | Template with stratum cells |
 | JSON | Serialize `stacks` doc |
 
@@ -242,10 +242,10 @@ Explore · Compare · Build Stack · Insights · Docs
 
 ### Tests
 
-- E2E: drag product from picker → L4 column → save → visit shared URL → same products present.
+- E2E: drag product from picker → S4 column → save → visit shared URL → same products present.
 - E2E: Compare basket → "Send to Stack Builder" → products prefilled.
 - E2E: export → PNG/Mermaid download produces non-empty file.
-- E2E: gap analysis shows "weak" label when entire layer empty.
+- E2E: gap analysis shows "weak" label when entire stratum empty.
 
 ---
 
@@ -300,7 +300,7 @@ Scoring rubric (0–3):
 - 7×7 grid, CSS grid
 - Cell color interpolated from rubric
 - Click → popover with top products + note
-- Mini version in Stack Builder ("you're weak in L5")
+- Mini version in Stack Builder ("you're weak in S5")
 
 ### API
 
@@ -309,8 +309,8 @@ Scoring rubric (0–3):
 ### Tests
 
 - E2E: grid renders 49 cells.
-- E2E: click code-agent × L4 → popover shows BMAD.
-- E2E: mini version in builder reflects empty layers correctly.
+- E2E: click code-agent × S4 → popover shows BMAD.
+- E2E: mini version in builder reflects empty strata correctly.
 
 ---
 
@@ -447,7 +447,7 @@ Keep it fair. No vendor bashing. Concrete, witty, engineering tone.
 |-----|--------|
 | `Cmd/Ctrl-K` | Command palette |
 | `/` | Focus search |
-| `1`–`7` | Jump to stratum L1–L7 |
+| `1`–`7` | Jump to stratum S1–S7 |
 | `J` / `K` | Next/prev product in current view |
 | `G` then `S` | Go to Stack Builder |
 | `G` then `I` | Go to Insights |
@@ -462,7 +462,7 @@ Keep it fair. No vendor bashing. Concrete, witty, engineering tone.
 ### Tests
 
 - E2E: press `?` → help modal visible.
-- E2E: press `3` → page scrolls with L3 in view.
+- E2E: press `3` → page scrolls with S3 in view.
 - E2E: `Cmd-K` → palette focused; type "crew" → CrewAI top result.
 
 ---
@@ -558,7 +558,7 @@ GET /api/v1/strata/l4
 
 ### Tests
 
-- Integration test: MCP client calls `search_products{query:"eval"}` → returns ≥3 L5 products.
+- Integration test: MCP client calls `search_products{query:"eval"}` → returns ≥3 S5 products.
 
 ---
 

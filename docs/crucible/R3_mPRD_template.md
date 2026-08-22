@@ -23,37 +23,37 @@
 For each core substrate this product touches, fill in one row.
 `relevance` is 0.0–1.0 (how central this substrate is to the product's value prop).
 
-| Layer | Substrate | Relevance | Constructs Touched | Evidence |
+| Stratum | Substrate | Relevance | Constructs Touched | Evidence |
 |-------|-----------|-----------|-------------------|----------|
-| L7 | Intent Parsers & UX | | | |
-| L7 | Generative UI | | | |
-| L7 | Human-in-the-Loop Controls | | | |
-| L6 | Policy Engines | | | |
-| L6 | Identity & Access | | | |
-| L6 | Audit & Compliance | | | |
-| L6 | Safety & Content Filters | | | |
-| L5 | Tracing & Logging | | | |
-| L5 | Eval Frameworks | | | |
-| L5 | Drift & Anomaly Detection | | | |
-| L4 | Workflow Engines | | | |
-| L4 | Agent Frameworks | | | |
-| L4 | Routing & Planning | | | |
-| L4 | Scheduling & Triggers | | | |
-| L4 | Retry & Recovery | | | |
-| L4 | Quality Gates & Verification | | | |
-| L3 | Tool Registries & MCP | | | |
-| L3 | Code Execution | | | |
-| L3 | External APIs | | | |
-| L3 | Browser & UI Automation | | | |
-| L3 | File & OS Interfaces | | | |
-| L3 | Message Queues & Events | | | |
-| L2 | RAG Pipelines & Search | | | |
-| L2 | Memory Systems | | | |
-| L2 | Knowledge Graphs | | | |
-| L2 | Embedding Stores | | | |
-| L1 | Foundation Models | | | |
-| L1 | Compute & Serving | | | |
-| L1 | Training & Fine-tuning | | | |
+| S7 | Intent Parsers & UX | | | |
+| S7 | Generative UI | | | |
+| S7 | Human-in-the-Loop Controls | | | |
+| S6 | Policy Engines | | | |
+| S6 | Identity & Access | | | |
+| S6 | Audit & Compliance | | | |
+| S6 | Safety & Content Filters | | | |
+| S5 | Tracing & Logging | | | |
+| S5 | Eval Frameworks | | | |
+| S5 | Drift & Anomaly Detection | | | |
+| S4 | Workflow Engines | | | |
+| S4 | Agent Frameworks | | | |
+| S4 | Routing & Planning | | | |
+| S4 | Scheduling & Triggers | | | |
+| S4 | Retry & Recovery | | | |
+| S4 | Quality Gates & Verification | | | |
+| S3 | Tool Registries & MCP | | | |
+| S3 | Code Execution | | | |
+| S3 | External APIs | | | |
+| S3 | Browser & UI Automation | | | |
+| S3 | File & OS Interfaces | | | |
+| S3 | Message Queues & Events | | | |
+| S2 | RAG Pipelines & Search | | | |
+| S2 | Memory Systems | | | |
+| S2 | Knowledge Graphs | | | |
+| S2 | Embedding Stores | | | |
+| S1 | Foundation Models | | | |
+| S1 | Compute & Serving | | | |
+| S1 | Training & Fine-tuning | | | |
 
 **Instructions:** Delete rows where relevance = 0 (product doesn't touch that substrate).
 Keep only substrates where the product has meaningful capability.
@@ -90,8 +90,8 @@ list them here. These will get `product_origin` tags in the UI.
 | Signal | Value | Notes |
 |--------|-------|-------|
 | **Overall confidence** | 0.0–1.0 | From PRODUCT_DETAILS |
-| **Primary layer** | L? | |
-| **Layer coverage** | ?/7 | How many layers touched meaningfully |
+| **Primary stratum** | L? | |
+| **Stratum coverage** | ?/7 | How many strata touched meaningfully |
 | **Community traction** | Low / Medium / High | GitHub stars, enterprise adoption |
 | **Unique capability** | | What does this product do that no other does? |
 

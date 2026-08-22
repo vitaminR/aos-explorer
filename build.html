@@ -30,20 +30,20 @@
         --text-secondary: rgba(255, 255, 255, 0.6);
         --text-tertiary: rgba(255, 255, 255, 0.38);
         --accent-indigo: #818cf8;
-        --l7: #c084fc;
-        --l7-glow: rgba(192, 132, 252, 0.25);
-        --l6: #f472b6;
-        --l6-glow: rgba(244, 114, 182, 0.25);
-        --l5: #fb923c;
-        --l5-glow: rgba(251, 146, 60, 0.25);
-        --l4: #818cf8;
-        --l4-glow: rgba(129, 140, 248, 0.25);
-        --l3: #34d399;
-        --l3-glow: rgba(52, 211, 153, 0.25);
-        --l2: #22d3ee;
-        --l2-glow: rgba(34, 211, 238, 0.25);
-        --l1: #fbbf24;
-        --l1-glow: rgba(251, 191, 36, 0.25);
+        --s7: #c084fc;
+        --s7-glow: rgba(192, 132, 252, 0.25);
+        --s6: #f472b6;
+        --s6-glow: rgba(244, 114, 182, 0.25);
+        --s5: #fb923c;
+        --s5-glow: rgba(251, 146, 60, 0.25);
+        --s4: #818cf8;
+        --s4-glow: rgba(129, 140, 248, 0.25);
+        --s3: #34d399;
+        --s3-glow: rgba(52, 211, 153, 0.25);
+        --s2: #22d3ee;
+        --s2-glow: rgba(34, 211, 238, 0.25);
+        --s1: #fbbf24;
+        --s1-glow: rgba(251, 191, 36, 0.25);
       }
 
       body {
@@ -591,27 +591,27 @@
         font-style: italic;
       }
 
-      /* L7-L1 colors */
-      .stratum-zone[data-stratum="L7"] {
-        --zone-color: var(--l7);
+      /* S7-S1 colors */
+      .stratum-zone[data-stratum="S7"] {
+        --zone-color: var(--s7);
       }
-      .stratum-zone[data-stratum="L6"] {
-        --zone-color: var(--l6);
+      .stratum-zone[data-stratum="S6"] {
+        --zone-color: var(--s6);
       }
-      .stratum-zone[data-stratum="L5"] {
-        --zone-color: var(--l5);
+      .stratum-zone[data-stratum="S5"] {
+        --zone-color: var(--s5);
       }
-      .stratum-zone[data-stratum="L4"] {
-        --zone-color: var(--l4);
+      .stratum-zone[data-stratum="S4"] {
+        --zone-color: var(--s4);
       }
-      .stratum-zone[data-stratum="L3"] {
-        --zone-color: var(--l3);
+      .stratum-zone[data-stratum="S3"] {
+        --zone-color: var(--s3);
       }
-      .stratum-zone[data-stratum="L2"] {
-        --zone-color: var(--l2);
+      .stratum-zone[data-stratum="S2"] {
+        --zone-color: var(--s2);
       }
-      .stratum-zone[data-stratum="L1"] {
-        --zone-color: var(--l1);
+      .stratum-zone[data-stratum="S1"] {
+        --zone-color: var(--s1);
       }
 
       /* ===== SAVE / LOAD BAR ===== */
@@ -911,291 +911,291 @@
           name: "Azure AI Foundry",
           vendor: "Microsoft",
           type: "product",
-          strata: ["L4", "L3", "L2", "L1"],
+          strata: ["S4", "S3", "S2", "S1"],
         },
         {
           name: "Kotana",
           vendor: "Internal",
           type: "product",
-          strata: ["L7", "L6", "L5", "L4"],
+          strata: ["S7", "S6", "S5", "S4"],
         },
         {
           name: "Paperclip",
           vendor: "Internal",
           type: "product",
-          strata: ["L7", "L4", "L3"],
+          strata: ["S7", "S4", "S3"],
         },
         {
           name: "CrewAI",
           vendor: "CrewAI Inc",
           type: "framework",
-          strata: ["L4", "L3"],
+          strata: ["S4", "S3"],
         },
-        { name: "Mem0", vendor: "Mem0 AI", type: "tool", strata: ["L2"] },
+        { name: "Mem0", vendor: "Mem0 AI", type: "tool", strata: ["S2"] },
         {
           name: "LangGraph",
           vendor: "LangChain",
           type: "framework",
-          strata: ["L4", "L3"],
+          strata: ["S4", "S3"],
         },
         {
           name: "Azure AI Search",
           vendor: "Microsoft",
           type: "tool",
-          strata: ["L2"],
+          strata: ["S2"],
         },
         {
           name: "Open Policy Agent",
           vendor: "CNCF",
           type: "framework",
-          strata: ["L6"],
+          strata: ["S6"],
         },
         {
           name: "GSD",
           vendor: "Community",
           type: "framework",
-          strata: ["L4", "L2"],
+          strata: ["S4", "S2"],
         },
         {
           name: "BMAD Method",
           vendor: "Community",
           type: "framework",
-          strata: ["L7", "L4", "L2"],
+          strata: ["S7", "S4", "S2"],
         },
         {
           name: "Superpowers",
           vendor: "Community",
           type: "framework",
-          strata: ["L5", "L4", "L3"],
+          strata: ["S5", "S4", "S3"],
         },
         {
           name: "gstack",
           vendor: "Community",
           type: "framework",
-          strata: ["L7", "L6", "L4"],
+          strata: ["S7", "S6", "S4"],
         },
         {
           name: "Kotana Agent",
           vendor: "Community",
           type: "product",
-          strata: ["L4", "L3", "L2", "L1"],
+          strata: ["S4", "S3", "S2", "S1"],
         },
         {
           name: "Shipyard",
           vendor: "Community",
           type: "framework",
-          strata: ["L6", "L5", "L4", "L3"],
+          strata: ["S6", "S5", "S4", "S3"],
         },
         {
           name: "Cursor IDE",
           vendor: "Anysphere",
           type: "product",
-          strata: ["L7", "L3"],
+          strata: ["S7", "S3"],
         },
         {
           name: "Git Ingest",
           vendor: "Community",
           type: "tool",
-          strata: ["L3", "L2"],
+          strata: ["S3", "S2"],
         },
         {
           name: "Lovable",
           vendor: "Lovable",
           type: "tool",
-          strata: ["L7", "L4"],
+          strata: ["S7", "S4"],
         },
-        { name: "v0", vendor: "Vercel", type: "tool", strata: ["L7", "L4"] },
-        { name: "Exa MCP", vendor: "Exa", type: "mcp", strata: ["L3", "L2"] },
+        { name: "v0", vendor: "Vercel", type: "tool", strata: ["S7", "S4"] },
+        { name: "Exa MCP", vendor: "Exa", type: "mcp", strata: ["S3", "S2"] },
         {
           name: "Agent Skills",
           vendor: "Addy Osmani",
           type: "framework",
-          strata: ["L6", "L5", "L4"],
+          strata: ["S6", "S5", "S4"],
         },
         {
           name: "Aider",
           vendor: "Community",
           type: "tool",
-          strata: ["L7", "L3"],
+          strata: ["S7", "S3"],
         },
         {
           name: "Claude Code",
           vendor: "Anthropic",
           type: "product",
-          strata: ["L7", "L4", "L3"],
+          strata: ["S7", "S4", "S3"],
         },
         {
           name: "Cline",
           vendor: "Community",
           type: "tool",
-          strata: ["L7", "L3"],
+          strata: ["S7", "S3"],
         },
         {
           name: "Devin",
           vendor: "Cognition",
           type: "product",
-          strata: ["L7", "L6", "L5", "L4", "L3", "L2"],
+          strata: ["S7", "S6", "S5", "S4", "S3", "S2"],
         },
         {
           name: "OpenHands",
           vendor: "Community",
           type: "framework",
-          strata: ["L7", "L4", "L3"],
+          strata: ["S7", "S4", "S3"],
         },
         {
           name: "SWE-agent",
           vendor: "Princeton",
           type: "framework",
-          strata: ["L4", "L3"],
+          strata: ["S4", "S3"],
         },
         {
           name: "Brave Search MCP",
           vendor: "Brave",
           type: "mcp",
-          strata: ["L3", "L2"],
+          strata: ["S3", "S2"],
         },
         {
           name: "Filesystem MCP",
           vendor: "Anthropic",
           type: "mcp",
-          strata: ["L3"],
+          strata: ["S3"],
         },
         {
           name: "GitHub MCP",
           vendor: "GitHub",
           type: "mcp",
-          strata: ["L3", "L2"],
+          strata: ["S3", "S2"],
         },
         {
           name: "Memory MCP",
           vendor: "Community",
           type: "mcp",
-          strata: ["L2"],
+          strata: ["S2"],
         },
         {
           name: "Playwright MCP",
           vendor: "Microsoft",
           type: "mcp",
-          strata: ["L3"],
+          strata: ["S3"],
         },
         {
           name: "PostgreSQL MCP",
           vendor: "Community",
           type: "mcp",
-          strata: ["L2", "L1"],
+          strata: ["S2", "S1"],
         },
         {
           name: "RAG Pipeline",
           vendor: "Pattern",
           type: "practice",
-          strata: ["L2", "L1"],
+          strata: ["S2", "S1"],
         },
         {
           name: "Human-in-the-Loop",
           vendor: "Pattern",
           type: "practice",
-          strata: ["L6", "L5"],
+          strata: ["S6", "S5"],
         },
         {
           name: "Eval & Improve Loop",
           vendor: "Pattern",
           type: "practice",
-          strata: ["L5"],
+          strata: ["S5"],
         },
         {
           name: "Agent CI/CD",
           vendor: "Pattern",
           type: "practice",
-          strata: ["L6", "L5", "L3"],
+          strata: ["S6", "S5", "S3"],
         },
         {
           name: "Code Review",
           vendor: "Pattern",
           type: "practice",
-          strata: ["L6", "L5", "L3"],
+          strata: ["S6", "S5", "S3"],
         },
         {
           name: "Testing Strategy",
           vendor: "Pattern",
           type: "practice",
-          strata: ["L5", "L3"],
+          strata: ["S5", "S3"],
         },
         {
           name: "Security Audit",
           vendor: "Pattern",
           type: "practice",
-          strata: ["L6", "L5"],
+          strata: ["S6", "S5"],
         },
         {
           name: "API Design",
           vendor: "Pattern",
           type: "practice",
-          strata: ["L3"],
+          strata: ["S3"],
         },
         {
           name: "DB Optimization",
           vendor: "Pattern",
           type: "practice",
-          strata: ["L2", "L1"],
+          strata: ["S2", "S1"],
         },
         {
           name: "Perf Profiling",
           vendor: "Pattern",
           type: "practice",
-          strata: ["L5", "L3"],
+          strata: ["S5", "S3"],
         },
       ];
 
       // ===== STRATA DEFINITIONS =====
       const STRATA = [
         {
-          id: "L7",
+          id: "S7",
           name: "Experience & Intent",
-          color: "var(--l7)",
-          bg: "var(--l7-glow)",
+          color: "var(--s7)",
+          bg: "var(--s7-glow)",
         },
         {
-          id: "L6",
+          id: "S6",
           name: "Governance & Trust",
-          color: "var(--l6)",
-          bg: "var(--l6-glow)",
+          color: "var(--s6)",
+          bg: "var(--s6-glow)",
         },
         {
-          id: "L5",
+          id: "S5",
           name: "Observability & Eval",
-          color: "var(--l5)",
-          bg: "var(--l5-glow)",
+          color: "var(--s5)",
+          bg: "var(--s5-glow)",
         },
         {
-          id: "L4",
+          id: "S4",
           name: "Orchestration & Decisioning",
-          color: "var(--l4)",
-          bg: "var(--l4-glow)",
+          color: "var(--s4)",
+          bg: "var(--s4-glow)",
         },
         {
-          id: "L3",
+          id: "S3",
           name: "Execution & Interfaces",
-          color: "var(--l3)",
-          bg: "var(--l3-glow)",
+          color: "var(--s3)",
+          bg: "var(--s3-glow)",
         },
         {
-          id: "L2",
+          id: "S2",
           name: "Knowledge & Memory",
-          color: "var(--l2)",
-          bg: "var(--l2-glow)",
+          color: "var(--s2)",
+          bg: "var(--s2-glow)",
         },
         {
-          id: "L1",
+          id: "S1",
           name: "Models & Infrastructure",
-          color: "var(--l1)",
-          bg: "var(--l1-glow)",
+          color: "var(--s1)",
+          bg: "var(--s1-glow)",
         },
       ];
 
       // ===== STATE =====
       const STORAGE_KEY = "aos_stacks";
       let currentStackId = null; // active stack localStorage id
-      let placements = {}; // { L7: ["Product A", ...], L6: [...], ... }
+      let placements = {}; // { S7: ["Product A", ...], S6: [...], ... }
 
       // Init placements
       STRATA.forEach((s) => (placements[s.id] = []));
@@ -1206,13 +1206,13 @@
         const q = document.getElementById("catalogSearch").value.toLowerCase();
         const list = document.getElementById("catalogList");
         const dotColors = {
-          L7: "var(--l7)",
-          L6: "var(--l6)",
-          L5: "var(--l5)",
-          L4: "var(--l4)",
-          L3: "var(--l3)",
-          L2: "var(--l2)",
-          L1: "var(--l1)",
+          S7: "var(--s7)",
+          S6: "var(--s6)",
+          S5: "var(--s5)",
+          S4: "var(--s4)",
+          S3: "var(--s3)",
+          S2: "var(--s2)",
+          S1: "var(--s1)",
         };
         let html = "";
         let count = 0;

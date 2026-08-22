@@ -25,7 +25,7 @@ This is **alignment**, not imitation.
 
 ## The Three Tiers
 
-### Tier 1 — Strategic Layer (CEO-equivalent)
+### Tier 1 — Strategic Stratum (CEO-equivalent)
 
 The strategic agent holds the mission, routes intent, and keeps the system pointed at goals. It does not do domain work directly. Its job is:
 
@@ -34,9 +34,9 @@ The strategic agent holds the mission, routes intent, and keeps the system point
 - Intervene when the system drifts from its goals
 - Support the human operator's decision-making
 
-In {a}OS terms, the strategic agent lives at **L7 — Experience & Intent**: *What did the human actually want — and did they get it?*
+In {a}OS terms, the strategic agent lives at **S7 — Experience & Intent**: *What did the human actually want — and did they get it?*
 
-### Tier 2 — Operational Layer (COO-equivalent)
+### Tier 2 — Operational Stratum (COO-equivalent)
 
 The operational agent governs the infrastructure that all other agents depend on. It does not decide strategy and does not execute domain work. Its job is:
 
@@ -45,9 +45,9 @@ The operational agent governs the infrastructure that all other agents depend on
 - Keep shared memory compact and accurate
 - Monitor system health and flag drift
 
-In {a}OS terms, the operational agent lives at **L6 — Governance & Trust**: *Who approved this action and under which policy?*
+In {a}OS terms, the operational agent lives at **S6 — Governance & Trust**: *Who approved this action and under which policy?*
 
-### Tier 3 — Domain Layer (Department heads)
+### Tier 3 — Domain Stratum (Department heads)
 
 Domain agents are deep experts in one area. They know their repo, their pipeline, their files, and their constraints. They execute. They do not route, and they do not govern. Their job is:
 
@@ -56,13 +56,13 @@ Domain agents are deep experts in one area. They know their repo, their pipeline
 - Report output up through the system
 - Never act outside their boundary
 
-In {a}OS terms, domain agents live at **L4 — Orchestration & Decisioning**: *What happens next, in what order, with which agent?*
+In {a}OS terms, domain agents live at **S4 — Orchestration & Decisioning**: *What happens next, in what order, with which agent?*
 
 ### Skills — Individual Contributors
 
-Below the domain layer, individual skills execute atomic tasks: write a file, run a pipeline stage, search the web, clip a thought. Skills are the workers.
+Below the domain stratum, individual skills execute atomic tasks: write a file, run a pipeline stage, search the web, clip a thought. Skills are the workers.
 
-In {a}OS terms, skills live at **L3 — Execution & Interfaces**: *How does the agent act on the world?*
+In {a}OS terms, skills live at **S3 — Execution & Interfaces**: *How does the agent act on the world?*
 
 ---
 
@@ -70,10 +70,10 @@ In {a}OS terms, skills live at **L3 — Execution & Interfaces**: *How does the 
 
 | Human Role | Agentic Equivalent | {a}OS Stratum | Core Question |
 |---|---|---|---|
-| CEO | Strategic agent (router + coach) | L7 — Experience & Intent | What did the human want — are we aligned? |
-| COO | Operational agent (hub governor) | L6 — Governance & Trust | Is the system coherent and governed? |
-| Department heads | Domain orchestrators | L4 — Orchestration & Decisioning | What work happens, in what order, by whom? |
-| Individual contributors | Skills | L3 — Execution & Interfaces | How does action happen in the world? |
+| CEO | Strategic agent (router + coach) | S7 — Experience & Intent | What did the human want — are we aligned? |
+| COO | Operational agent (hub governor) | S6 — Governance & Trust | Is the system coherent and governed? |
+| Department heads | Domain orchestrators | S4 — Orchestration & Decisioning | What work happens, in what order, by whom? |
+| Individual contributors | Skills | S3 — Execution & Interfaces | How does action happen in the world? |
 
 ---
 
@@ -104,14 +104,14 @@ The Codepro workspace (a personal operating system for an ADHD developer) demons
 
 ```
                     KOTANA
-              (Strategic Layer — CEO)
+              (Strategic Stratum — CEO)
          Routing · Coaching · Mission alignment
          G0: Ambient Capture Agent Vision
                        |
           ┌────────────┘
           │
     AGENTIC-ORCHESTRATOR
-    (Operational Layer — COO)
+    (Operational Stratum — COO)
     Registry · Memory · Standards · C3
                        |
      ┌─────────────────┼──────────────────────┐
@@ -148,16 +148,16 @@ The Codepro workspace (a personal operating system for an ADHD developer) demons
 
 ## Why This Matters for {a}OS
 
-Understanding the organizational layer of an agentic system changes how you evaluate products.
+Understanding the organizational stratum of an agentic system changes how you evaluate products.
 
-A **single orchestrator** (like LangGraph or CrewAI) gives you L4 machinery — it can sequence agents. But it doesn't tell you:
-- Who holds the mission (L7)
-- Who governs the system's coherence (L6)
+A **single orchestrator** (like LangGraph or CrewAI) gives you S4 machinery — it can sequence agents. But it doesn't tell you:
+- Who holds the mission (S7)
+- Who governs the system's coherence (S6)
 - How domain boundaries are enforced
 
-The {a}OS reference model makes these gaps visible. A well-architected agentic system has agents or policies at each tier — not just an orchestration engine at L4.
+The {a}OS reference model makes these gaps visible. A well-architected agentic system has agents or policies at each tier — not just an orchestration engine at S4.
 
-When you see a product marketed as an "AI agent platform," ask which tiers it actually covers. Most cover L3–L4. Few address L6–L7. None replace the human design decision about where the strategic and operational agents live, and what their relationship is.
+When you see a product marketed as an "AI agent platform," ask which tiers it actually covers. Most cover S3–S4. Few address S6–S7. None replace the human design decision about where the strategic and operational agents live, and what their relationship is.
 
 ---
 
@@ -167,4 +167,4 @@ Agentic org charts emerge from functional necessity. The strategic agent holds t
 
 This structure is not imposed on AI — it is discovered by any multi-agent system complex enough to need it.
 
-*See also: [Layer 0 — Sovereignty & Meta Concepts](../LAYER_0_EASTER_EGG.md), [Classification Guide](classification-guide.md)*
+*See also: [Stratum 0 — Sovereignty & Meta Concepts](../STRATUM_0_EASTER_EGG.md), [Classification Guide](classification-guide.md)*

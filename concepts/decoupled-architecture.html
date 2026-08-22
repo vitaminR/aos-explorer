@@ -55,14 +55,14 @@
   <div class="short-def">System design where agent components communicate via typed contracts rather than direct calls, enabling independent deployment and evolution.</div>
 
   <div class="meta">
-    <span>Strata: <strong>L3, L4</strong></span>
+    <span>Strata: <strong>S3, S4</strong></span>
     <span>Axes: <strong>Orchestration, Execution</strong></span>
     <span>Status: <strong>seed</strong></span>
   </div>
 
   <section>
     <h2>Explainer</h2>
-    <p>Decoupled Architecture is the practice of separating agent components — planners, executors, memory, tools, evaluators — so that each communicates only through well-defined interface contracts rather than direct function calls or shared mutable state. At L3 (Execution), this means tools and sub-agents expose typed input/output schemas (see Pydantic Contracts). At L4 (Orchestration), this means the orchestrator treats each sub-agent as a black box it can swap without rewiring the pipeline. The key benefit: any component can be upgraded, scaled, or replaced without cascading changes. Common patterns include event buses, message queues, and typed RPC schemas. Anti-pattern: tightly-coupled pipelines where a planner directly imports executor internals, making the system impossible to test or evolve in isolation.</p>
+    <p>Decoupled Architecture is the practice of separating agent components — planners, executors, memory, tools, evaluators — so that each communicates only through well-defined interface contracts rather than direct function calls or shared mutable state. At S3 (Execution), this means tools and sub-agents expose typed input/output schemas (see Pydantic Contracts). At S4 (Orchestration), this means the orchestrator treats each sub-agent as a black box it can swap without rewiring the pipeline. The key benefit: any component can be upgraded, scaled, or replaced without cascading changes. Common patterns include event buses, message queues, and typed RPC schemas. Anti-pattern: tightly-coupled pipelines where a planner directly imports executor internals, making the system impossible to test or evolve in isolation.</p>
   </section>
 
   <section>

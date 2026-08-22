@@ -5,7 +5,7 @@
   "strata": [
     {
       "id": "l7",
-      "label": "L7",
+      "label": "S7",
       "name": "Experience & Intent",
       "color": "#f59e0b",
       "definition": "The human boundary where requests enter, responses render, and approvals happen.",
@@ -51,7 +51,7 @@
     },
     {
       "id": "l6",
-      "label": "L6",
+      "label": "S6",
       "name": "Governance & Trust",
       "color": "#6366f1",
       "definition": "The policy boundary where access, safety, approval, budget, and compliance are enforced.",
@@ -102,7 +102,7 @@
     },
     {
       "id": "l5",
-      "label": "L5",
+      "label": "S5",
       "name": "Observability & Evaluation",
       "color": "#8b5cf6",
       "definition": "The proof boundary where execution becomes visible, measurable, and judged.",
@@ -153,7 +153,7 @@
     },
     {
       "id": "l4",
-      "label": "L4",
+      "label": "S4",
       "name": "Orchestration & Decisioning",
       "color": "#3b82f6",
       "definition": "The control boundary where work is routed, sequenced, delegated, retried, and stopped.",
@@ -205,7 +205,7 @@
     },
     {
       "id": "l3",
-      "label": "L3",
+      "label": "S3",
       "name": "Execution & Interfaces",
       "color": "#06b6d4",
       "definition": "The action boundary where external tools, APIs, scripts, and sandboxes are invoked.",
@@ -257,7 +257,7 @@
     },
     {
       "id": "l2",
-      "label": "L2",
+      "label": "S2",
       "name": "Knowledge & Memory",
       "color": "#10b981",
       "definition": "The context boundary where facts, documents, semantic relationships, and memory are stored and retrieved.",
@@ -306,7 +306,7 @@
     },
     {
       "id": "l1",
-      "label": "L1",
+      "label": "S1",
       "name": "Models & Infrastructure",
       "color": "#64748b",
       "definition": "The foundation boundary where models, runtimes, compute, storage, and network resources actually operate.",

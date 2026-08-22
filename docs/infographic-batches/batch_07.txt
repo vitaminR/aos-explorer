@@ -8,13 +8,13 @@ You are a visual design assistant creating ADHD-friendly technical infographics 
 
 DESIGN RULES:
 - Dark background (#0a0a0f) with high-contrast text
-- Use the layer accent color as the primary highlight
+- Use the stratum accent color as the primary highlight
 - Clean, minimal layout - no clutter
 - Large readable typography (minimum 14pt equivalent)
 - Each primitive shown as a distinct card/node with its name + 1-line description
 - Show relationships between primitives with arrows or connectors if applicable
 - Include a small icon or visual metaphor for each primitive
-- Include the layer badge (e.g. "L4 · Orchestration") in the top-left corner
+- Include the stratum badge (e.g. "S4 · Orchestration") in the top-left corner
 - Parent construct name is the large title
 - Aspect ratio: 16:9 (landscape)
 - Style: flat design, subtle gradients, no 3D, modern SaaS dashboard aesthetic
@@ -25,13 +25,13 @@ FORMAT: Create a single infographic image. Do NOT return markdown or text descri
 ─────────────────────────────────────────────────────────
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 1/5  —  #31  L6 | Toxicity Scorer
+│  PROMPT 1/5  —  #31  S6 | Toxicity Scorer
 │  Save as: toxicity-scorer.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Toxicity Scorer" construct from the {a}OS reference model.
 
-LAYER: L6 — Governance
+STRATUM: S6 — Governance
 ACCENT COLOR: #fb7185
 CONSTRUCT: Toxicity Scorer
 PRIMITIVE COUNT: 4
@@ -44,7 +44,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Toxicity Scorer" in large text, colored #fb7185
-- Layer badge: "L6 · Governance" top-left
+- Stratum badge: "S6 · Governance" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fb7185 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -54,13 +54,13 @@ VISUAL GUIDANCE:
 ═══  NEXT PROMPT  (paste after saving the image above)  ═══
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 2/5  —  #32  L6 | PII Redactor
+│  PROMPT 2/5  —  #32  S6 | PII Redactor
 │  Save as: pii-redactor.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "PII Redactor" construct from the {a}OS reference model.
 
-LAYER: L6 — Governance
+STRATUM: S6 — Governance
 ACCENT COLOR: #fb7185
 CONSTRUCT: PII Redactor
 PRIMITIVE COUNT: 4
@@ -73,7 +73,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "PII Redactor" in large text, colored #fb7185
-- Layer badge: "L6 · Governance" top-left
+- Stratum badge: "S6 · Governance" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fb7185 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -83,13 +83,13 @@ VISUAL GUIDANCE:
 ═══  NEXT PROMPT  (paste after saving the image above)  ═══
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 3/5  —  #33  L6 | Safety Boundary
+│  PROMPT 3/5  —  #33  S6 | Safety Boundary
 │  Save as: safety-boundary.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Safety Boundary" construct from the {a}OS reference model.
 
-LAYER: L6 — Governance
+STRATUM: S6 — Governance
 ACCENT COLOR: #fb7185
 CONSTRUCT: Safety Boundary
 PRIMITIVE COUNT: 8
@@ -106,7 +106,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Safety Boundary" in large text, colored #fb7185
-- Layer badge: "L6 · Governance" top-left
+- Stratum badge: "S6 · Governance" top-left
 - Show all 8 primitives as connected cards on dark (#0a0a0f) background
 - Use #fb7185 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -116,13 +116,13 @@ VISUAL GUIDANCE:
 ═══  NEXT PROMPT  (paste after saving the image above)  ═══
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 4/5  —  #34  L5 | Log Entry
+│  PROMPT 4/5  —  #34  S5 | Log Entry
 │  Save as: log-entry.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Log Entry" construct from the {a}OS reference model.
 
-LAYER: L5 — Observability
+STRATUM: S5 — Observability
 ACCENT COLOR: #fbbf24
 CONSTRUCT: Log Entry
 PRIMITIVE COUNT: 4
@@ -135,7 +135,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Log Entry" in large text, colored #fbbf24
-- Layer badge: "L5 · Observability" top-left
+- Stratum badge: "S5 · Observability" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fbbf24 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -145,13 +145,13 @@ VISUAL GUIDANCE:
 ═══  NEXT PROMPT  (paste after saving the image above)  ═══
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 5/5  —  #35  L5 | Token Ledger
+│  PROMPT 5/5  —  #35  S5 | Token Ledger
 │  Save as: token-ledger.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Token Ledger" construct from the {a}OS reference model.
 
-LAYER: L5 — Observability
+STRATUM: S5 — Observability
 ACCENT COLOR: #fbbf24
 CONSTRUCT: Token Ledger
 PRIMITIVE COUNT: 4
@@ -164,7 +164,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Token Ledger" in large text, colored #fbbf24
-- Layer badge: "L5 · Observability" top-left
+- Stratum badge: "S5 · Observability" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fbbf24 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)

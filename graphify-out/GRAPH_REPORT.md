@@ -42,7 +42,7 @@
 
 ### Community 0 - "Community 0"
 Cohesion: 0.1
-Nodes (10): BaseModel, Concept, ConceptRegistry, Source, ConceptMapping, Product, ProductRegistry, Return strata sorted L1 (foundation) → L7 (experience). (+2 more)
+Nodes (10): BaseModel, Concept, ConceptRegistry, Source, ConceptMapping, Product, ProductRegistry, Return strata sorted S1 (foundation) → S7 (experience). (+2 more)
 
 ### Community 1 - "Community 1"
 Cohesion: 0.33
@@ -85,7 +85,7 @@ Cohesion: 1.0
 Nodes (1): One-shot exporter: generates NotebookLM source doc + all 63 infographic prompt f
 
 ## Knowledge Gaps
-- **8 isolated node(s):** `Prototype HTML validator: checks PRD compliance and structural integrity.`, `Extract all primitives from prototype.html into a JSON inventory.`, `Load and validate aOS data from api/v1/*.json against Pydantic models.  Usage:`, `Validated snapshot of the full aOS knowledge base.`, `Return strata sorted L1 (foundation) → L7 (experience).` (+3 more)
+- **8 isolated node(s):** `Prototype HTML validator: checks PRD compliance and structural integrity.`, `Extract all primitives from prototype.html into a JSON inventory.`, `Load and validate aOS data from api/v1/*.json against Pydantic models.  Usage:`, `Validated snapshot of the full aOS knowledge base.`, `Return strata sorted S1 (foundation) → S7 (experience).` (+3 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **Thin community `Community 8`** (4 nodes): `find_object_block()`, `parse_primitive_entries()`, `Extract all primitives from prototype.html into a JSON inventory.`, `_extract_primitives.py`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.

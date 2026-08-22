@@ -5,7 +5,7 @@ Copy/paste directly into Perplexity (sonar-pro recommended).
 
 ---
 
-## Batch 1: L5 Observability (CRITICAL — zero products)
+## Batch 1: S5 Observability (CRITICAL — zero products)
 
 ### Query 1 — LLM Observability Landscape
 
@@ -21,7 +21,7 @@ What are the best LLM evaluation frameworks and harnesses as of 2026? Compare Pr
 
 ---
 
-## Batch 2: L3 Execution & Interfaces (CRITICAL — zero products)
+## Batch 2: S3 Execution & Interfaces (CRITICAL — zero products)
 
 ### Query 3 — MCP and Tool Integration
 
@@ -37,7 +37,7 @@ Compare E2B, Browserbase, Modal, and Fly.io for AI agent code execution in 2026.
 
 ---
 
-## Batch 3: L1 Models & Infrastructure (only 1 vendor)
+## Batch 3: S1 Models & Infrastructure (only 1 vendor)
 
 ### Query 5 — Model Serving Platforms
 
@@ -53,7 +53,7 @@ What are the best tools for running LLMs locally in 2026? Compare Ollama, LM Stu
 
 ---
 
-## Batch 4: L6 Governance & Trust (only OPA)
+## Batch 4: S6 Governance & Trust (only OPA)
 
 ### Query 7 — AI Guardrails and Safety
 
@@ -69,7 +69,7 @@ What platforms provide security APIs specifically for AI applications in 2026? L
 
 ---
 
-## Batch 5: L7 Experience & Intent (no external products)
+## Batch 5: S7 Experience & Intent (no external products)
 
 ### Query 9 — Copilot/Chat UI Frameworks
 
@@ -79,7 +79,7 @@ What are the best open-source frameworks for building AI copilot and chat UIs in
 
 ---
 
-## Batch 6: L4 Orchestration (add BMAD + fill gaps)
+## Batch 6: S4 Orchestration (add BMAD + fill gaps)
 
 ### Query 10 — Agent Frameworks Comparison 2026
 
@@ -95,7 +95,7 @@ How are durable execution platforms like Temporal, Inngest, and Hatchet being us
 
 ---
 
-## Batch 7: L2 Knowledge & Memory (add 1-2)
+## Batch 7: S2 Knowledge & Memory (add 1-2)
 
 ### Query 12 — Vector Databases for RAG
 
@@ -107,7 +107,7 @@ Compare the top vector databases for RAG and agentic AI in 2026: Pinecone, Weavi
 
 ## Usage Notes
 
-- Run Batch 1-2 first (fill critical gaps at L5 and L3)
+- Run Batch 1-2 first (fill critical gaps at S5 and S3)
 - For each query, extract: name, vendor/org, deployment, license, primary stratum, secondary strata, axis roles, evidence basis, and risk flags
 - Save raw Perplexity responses — they become the `evidence` field in CONFIDENCE_META
 - Flag any product that spans 3+ strata — those need careful primary/secondary analysis

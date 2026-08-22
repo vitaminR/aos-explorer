@@ -10,7 +10,7 @@
 ## 1. Problem
 
 The {a}OS Explorer prototype renders named agentic frameworks (GSD, BMAD, Superpowers) as first-class
-substrates in L4, violating the canonical reference stack's design rule:
+substrates in S4, violating the canonical reference stack's design rule:
 
 > *"Products do not live in only one place. Every product gets primary stratum, secondary strata,
 > axis roles if applicable."* — Reference Stack v1.0, Rule 2.2
@@ -25,17 +25,17 @@ ranking signal. The taxonomy conflates **what a pattern is** (substrate) with **
 
 | # | Goal | Metric |
 |---|------|--------|
-| G1 | Core substrates are stable universal patterns | ≤8 per layer, no branded names |
+| G1 | Core substrates are stable universal patterns | ≤8 per stratum, no branded names |
 | G2 | Products are ranked overlays, not structural elements | Top-3 visible by default per substrate |
 | G3 | UI scales to 400 products without scrollbar hell | No substrate list exceeds viewport without collapse |
-| G4 | Top-3 leaderboard works at every ontology level | Layer, substrate, construct each show ranked products |
+| G4 | Top-3 leaderboard works at every ontology level | Stratum, substrate, construct each show ranked products |
 | G5 | Named product constructs/primitives preserved | Zero data loss from GSD/BMAD/SP constructs |
 
 ---
 
 ## 3. Non-Goals
 
-- Redesigning the 7-layer model itself
+- Redesigning the 7-stratum model itself
 - Changing the canonical reference stack v1.0
 - Building a backend/database (prototype remains self-contained HTML)
 - Adding new products (that's R3)
@@ -48,7 +48,7 @@ ranking signal. The taxonomy conflates **what a pattern is** (substrate) with **
 
 ```
 explorer.html (HTML)
-  └── substrate-item (flat list per layer, some are products)
+  └── substrate-item (flat list per stratum, some are products)
         └── construct-panel
               └── primitive-panel
 
@@ -64,7 +64,7 @@ PRIMITIVE_PRODUCT_GUIDES (JS object)
 ```
 CORE_SUBSTRATES (NEW JS object)
   └── per substrate: {
-        id, name, layer, icon, desc,
+        id, name, stratum, icon, desc,
         constructs: [{
           id, name, icon,
           primitives: [string],
@@ -84,7 +84,7 @@ PRODUCT_DETAILS (enhanced)
 
 PRODUCT_RANKINGS (COMPUTED at load time)
   └── per substrate: top-N products sorted by relevance × confidence
-  └── per layer: top-N products across all substrates
+  └── per stratum: top-N products across all substrates
   └── global: top-N products by coverage breadth
 ```
 
@@ -94,7 +94,7 @@ PRODUCT_RANKINGS (COMPUTED at load time)
 |-------------------|--------|-------------------|
 | GSD (l4s-gsd) | **Remove** as substrate | Context Pack → Workflow Engines; State File Set → Workflow Engines; Lifecycle Checkpoint → Retry & Recovery |
 | BMAD (l4s-bmad) | **Remove** as substrate | PRD → Workflow Engines; Persona Handoff → Agent Frameworks; Requirement Matrix → Workflow Engines |
-| Superpowers (l4s-sp) | **Remove** as substrate | Test Gate → Quality Gates (NEW); tmux Session → L3 Code Execution; TDD Workflow Path → Quality Gates (NEW) |
+| Superpowers (l4s-sp) | **Remove** as substrate | Test Gate → Quality Gates (NEW); tmux Session → S3 Code Execution; TDD Workflow Path → Quality Gates (NEW) |
 
 Each migrated construct gains a `product_origin` tag (e.g., `"origin": "gsd"`) so the
 product overlay system can show "This construct pattern is implemented by GSD, Claude Code,
@@ -119,11 +119,11 @@ Each substrate header already shows product dots. Formalize:
 - Show **top 3** product dots by ranking
 - `[+N]` chip expands to full product list
 
-### 5.2 Layer Header → Top-3 Products
+### 5.2 Stratum Header → Top-3 Products
 
 ```
 ┌──────────────────────────────────────────────────────────┐
-│ L4  Orchestration & Decisioning                          │
+│ S4  Orchestration & Decisioning                          │
 │     What happens next, in what order, with which agent?  │
 │     6 substrates · 24 primitives · TOP: [AF] [CW] [LG]  │
 └──────────────────────────────────────────────────────────┘
@@ -145,7 +145,7 @@ When a construct has `product_origin`, show a subtle tag:
 
 Optional floating panel or tab that shows:
 
-| Rank | Product | Layers Touched | Avg Confidence | Type |
+| Rank | Product | Strata Touched | Avg Confidence | Type |
 |------|---------|---------------|---------------|------|
 | 1 | Azure AI Foundry | 5/7 | 0.92 | product |
 | 2 | Claude Code | 5/7 | 0.92 | agent |
@@ -176,11 +176,11 @@ evaluations block or allow pipeline progression.
 
 - `test_gate` — pass/fail checkpoint before proceeding (from Superpowers)
 - `eval_checkpoint` — LLM-judged quality check
-- `approval_gate` — human sign-off point (overlaps L7 HITL)
+- `approval_gate` — human sign-off point (overlaps S7 HITL)
 - `tdd_workflow` — test-first progression harness (from Superpowers)
 
 **This is NOT a testing framework substrate.** It's the pattern of "is this output good enough
-to continue?" which is distinct from L5's "how well did the system perform overall?"
+to continue?" which is distinct from S5's "how well did the system perform overall?"
 
 ---
 
@@ -193,9 +193,9 @@ to continue?" which is distinct from L5's "how well did the system perform overa
 3. Add `product_origin` tags to migrated constructs
 4. Compute `PRODUCT_RANKINGS` at page load
 
-### Phase 2: HTML Restructure (L4 Only)
+### Phase 2: HTML Restructure (S4 Only)
 
-1. Remove GSD, BMAD, Superpowers substrate-items from L4
+1. Remove GSD, BMAD, Superpowers substrate-items from S4
 2. Add "Quality Gates & Verification" as new substrate
 3. Migrate construct/primitive panels to their new parent substrates
 4. Update substrate count badge ("8 substrates" → "6 substrates")
@@ -204,13 +204,13 @@ to continue?" which is distinct from L5's "how well did the system perform overa
 
 1. Implement top-3 product badge bar on all substrates
 2. Add `[+N]` expansion for overflow products
-3. Add layer-level top-3 in stratum header
+3. Add stratum-level top-3 in stratum header
 4. Add `product_origin` tag display on migrated constructs
 
 ### Phase 4: Leaderboard (Optional)
 
 1. Global product ranking panel
-2. Per-layer product ranking
+2. Per-stratum product ranking
 3. Cross-ontology "coverage breadth" metric
 
 ---
@@ -221,15 +221,15 @@ Each major product family gets a mini-PRD that maps its capabilities to core sub
 
 | mPRD | Product | Priority | Why |
 |------|---------|----------|-----|
-| mPRD-001 | Azure AI Foundry | P0 | Highest coverage (5/7 layers), enterprise anchor |
-| mPRD-002 | LangChain / LangGraph | P0 | Most popular open-source L4 framework |
+| mPRD-001 | Azure AI Foundry | P0 | Highest coverage (5/7 strata), enterprise anchor |
+| mPRD-002 | LangChain / LangGraph | P0 | Most popular open-source S4 framework |
 | mPRD-003 | CrewAI | P1 | Multi-agent orchestration leader |
 | mPRD-004 | GSD | P1 | Already mapped, needs reclassification |
 | mPRD-005 | BMAD | P1 | Already mapped, needs reclassification |
 | mPRD-006 | Superpowers | P1 | Already mapped, needs reclassification |
-| mPRD-007 | Claude Code | P1 | Cross-layer agent (L4+L7+L3+L2+L1) |
-| mPRD-008 | Cursor IDE | P2 | L7 primary, growing L3 presence |
-| mPRD-009 | Open Policy Agent | P2 | L6 governance anchor |
+| mPRD-007 | Claude Code | P1 | Cross-stratum agent (S4+S7+S3+S2+S1) |
+| mPRD-008 | Cursor IDE | P2 | S7 primary, growing S3 presence |
+| mPRD-009 | Open Policy Agent | P2 | S6 governance anchor |
 | mPRD-010 | Devin | P2 | Autonomous agent reference point |
 
 Each mPRD follows `R3_mPRD_template.md` and produces machine-readable `substrate_mappings`
@@ -242,7 +242,7 @@ that feed directly into the `PRODUCT_DETAILS` enhancement.
 | Criteria | Test |
 |----------|------|
 | No named products as substrates | `grep "substrate-name" explorer.html` returns 0 branded names |
-| Core substrates ≤8 per layer | Manual count |
+| Core substrates ≤8 per stratum | Manual count |
 | Top-3 visible per substrate | Visual check at each substrate |
 | GSD/BMAD/SP constructs preserved | All 94 primitives still present in the DOM |
 | validate.py passes | No new issues from refactor |

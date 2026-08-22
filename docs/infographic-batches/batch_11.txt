@@ -8,13 +8,13 @@ You are a visual design assistant creating ADHD-friendly technical infographics 
 
 DESIGN RULES:
 - Dark background (#0a0a0f) with high-contrast text
-- Use the layer accent color as the primary highlight
+- Use the stratum accent color as the primary highlight
 - Clean, minimal layout - no clutter
 - Large readable typography (minimum 14pt equivalent)
 - Each primitive shown as a distinct card/node with its name + 1-line description
 - Show relationships between primitives with arrows or connectors if applicable
 - Include a small icon or visual metaphor for each primitive
-- Include the layer badge (e.g. "L4 · Orchestration") in the top-left corner
+- Include the stratum badge (e.g. "S4 · Orchestration") in the top-left corner
 - Parent construct name is the large title
 - Aspect ratio: 16:9 (landscape)
 - Style: flat design, subtle gradients, no 3D, modern SaaS dashboard aesthetic
@@ -25,13 +25,13 @@ FORMAT: Create a single infographic image. Do NOT return markdown or text descri
 ─────────────────────────────────────────────────────────
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 1/5  —  #51  L3 | Response Cache
+│  PROMPT 1/5  —  #51  S3 | Response Cache
 │  Save as: response-cache.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Response Cache" construct from the {a}OS reference model.
 
-LAYER: L3 — Capabilities
+STRATUM: S3 — Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: Response Cache
 PRIMITIVE COUNT: 4
@@ -44,7 +44,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Response Cache" in large text, colored #38bdf8
-- Layer badge: "L3 · Capabilities" top-left
+- Stratum badge: "S3 · Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -54,13 +54,13 @@ VISUAL GUIDANCE:
 ═══  NEXT PROMPT  (paste after saving the image above)  ═══
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 2/5  —  #52  L3 | Browser Session
+│  PROMPT 2/5  —  #52  S3 | Browser Session
 │  Save as: browser-session.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Browser Session" construct from the {a}OS reference model.
 
-LAYER: L3 — Capabilities
+STRATUM: S3 — Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: Browser Session
 PRIMITIVE COUNT: 4
@@ -73,7 +73,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Browser Session" in large text, colored #38bdf8
-- Layer badge: "L3 · Capabilities" top-left
+- Stratum badge: "S3 · Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -83,13 +83,13 @@ VISUAL GUIDANCE:
 ═══  NEXT PROMPT  (paste after saving the image above)  ═══
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 3/5  —  #53  L3 | Page Action
+│  PROMPT 3/5  —  #53  S3 | Page Action
 │  Save as: page-action.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Page Action" construct from the {a}OS reference model.
 
-LAYER: L3 — Capabilities
+STRATUM: S3 — Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: Page Action
 PRIMITIVE COUNT: 4
@@ -102,7 +102,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Page Action" in large text, colored #38bdf8
-- Layer badge: "L3 · Capabilities" top-left
+- Stratum badge: "S3 · Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -112,13 +112,13 @@ VISUAL GUIDANCE:
 ═══  NEXT PROMPT  (paste after saving the image above)  ═══
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 4/5  —  #54  L3 | Element Selector
+│  PROMPT 4/5  —  #54  S3 | Element Selector
 │  Save as: element-selector.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Element Selector" construct from the {a}OS reference model.
 
-LAYER: L3 — Capabilities
+STRATUM: S3 — Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: Element Selector
 PRIMITIVE COUNT: 4
@@ -131,7 +131,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Element Selector" in large text, colored #38bdf8
-- Layer badge: "L3 · Capabilities" top-left
+- Stratum badge: "S3 · Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -141,13 +141,13 @@ VISUAL GUIDANCE:
 ═══  NEXT PROMPT  (paste after saving the image above)  ═══
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 5/5  —  #55  L3 | Screenshot Capture
+│  PROMPT 5/5  —  #55  S3 | Screenshot Capture
 │  Save as: screenshot-capture.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Screenshot Capture" construct from the {a}OS reference model.
 
-LAYER: L3 — Capabilities
+STRATUM: S3 — Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: Screenshot Capture
 PRIMITIVE COUNT: 4
@@ -160,7 +160,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Screenshot Capture" in large text, colored #38bdf8
-- Layer badge: "L3 · Capabilities" top-left
+- Stratum badge: "S3 · Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)

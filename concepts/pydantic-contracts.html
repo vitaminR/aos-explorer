@@ -55,14 +55,14 @@
   <div class="short-def">Typed data contracts enforced at agent boundaries using Pydantic models to validate inputs, outputs, and tool call arguments.</div>
 
   <div class="meta">
-    <span>Strata: <strong>L3</strong></span>
+    <span>Strata: <strong>S3</strong></span>
     <span>Axes: <strong>Execution, Governance</strong></span>
     <span>Status: <strong>seed</strong></span>
   </div>
 
   <section>
     <h2>Explainer</h2>
-    <p>Pydantic Contracts are the practice of using Pydantic BaseModel classes as the canonical type layer between agent components. At L3 (Execution), every tool call input and LLM output is validated against a Pydantic schema before being accepted. This catches hallucinated fields, missing required arguments, and type mismatches at the boundary rather than deep inside pipeline logic. Pydantic Contracts are the runtime enforcement of Decoupled Architecture: they make the contracts machine-testable, not just documented. Structured output APIs (OpenAI, Anthropic) can be driven directly from Pydantic model definitions, ensuring the LLM response parses cleanly. Key benefit: eliminates an entire class of silent failures where a malformed tool call propagates for many steps before producing an error.</p>
+    <p>Pydantic Contracts are the practice of using Pydantic BaseModel classes as the canonical type stratum between agent components. At S3 (Execution), every tool call input and LLM output is validated against a Pydantic schema before being accepted. This catches hallucinated fields, missing required arguments, and type mismatches at the boundary rather than deep inside pipeline logic. Pydantic Contracts are the runtime enforcement of Decoupled Architecture: they make the contracts machine-testable, not just documented. Structured output APIs (OpenAI, Anthropic) can be driven directly from Pydantic model definitions, ensuring the LLM response parses cleanly. Key benefit: eliminates an entire class of silent failures where a malformed tool call propagates for many steps before producing an error.</p>
   </section>
 
   <section>

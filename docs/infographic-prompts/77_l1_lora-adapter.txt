@@ -3,13 +3,13 @@ You are a visual design assistant creating ADHD-friendly technical infographics 
 
 DESIGN RULES:
 - Dark background (#0a0a0f) with high-contrast text
-- Use the layer accent color as the primary highlight
+- Use the stratum accent color as the primary highlight
 - Clean, minimal layout - no clutter
 - Large readable typography (minimum 14pt equivalent)
 - Each primitive shown as a distinct card/node with its name + 1-line description
 - Show relationships between primitives with arrows or connectors if applicable
 - Include a small icon or visual metaphor for each primitive
-- Include the layer badge (e.g. "L4 . Orchestration") in the top-left corner
+- Include the stratum badge (e.g. "S4 . Orchestration") in the top-left corner
 - Parent construct name is the large title
 - Aspect ratio: 16:9 (landscape)
 - Style: flat design, subtle gradients, no 3D, modern SaaS dashboard aesthetic
@@ -21,26 +21,26 @@ FORMAT: Create a single infographic image. Do NOT return markdown or text descri
 USER PROMPT:
 Create an infographic for the "LoRA Adapter" construct from the {a}OS reference model.
 
-LAYER: L1 - Infrastructure
+STRATUM: S1 - Infrastructure
 ACCENT COLOR: #94a3b8
 CONSTRUCT: LoRA Adapter
 PRIMITIVE COUNT: 10
 
 PRIMITIVES (show each as a card/node):
   - **Adapter Rank**: LoRA rank — r=8–16 for style (~10M params, &lt;100MB); r=64–128 for knowledge (~80M params, ~500MB VRAM).
-  - **Target Modules**: Which layers get LoRA adapters. 'All Linear Layers' retains 95% of full fine-tune performance.
+  - **Target Modules**: Which strata get LoRA adapters. 'All Linear Strata' retains 95% of full fine-tune performance.
   - **Merge Strategy**: Combining adapter weights — Merge/Unload (permanent, fastest) or TIES-Merging (multi-adapter, sign-aware).
   - **Adapter Registry**: Centralized catalog of 1,000+ adapters with hot-swap latency &lt;200ms.
   - **Adapter Rank**: Rank of the low-rank matrices (typically 8–64).
   - **Adapter Alpha**: Scaling factor for LoRA updates (typically 16–32).
   - **Base Model ID**: ID of the base model this adapter fine-tunes.
-  - **Weight Decay**: L2 regularization coefficient for adapter weights.
-  - **Target Modules**: List of layer names to apply LoRA to (e.g., ['q_proj', 'v_proj']).
-  - **LoRA Dropout**: Dropout probability for LoRA layers.
+  - **Weight Decay**: S2 regularization coefficient for adapter weights.
+  - **Target Modules**: List of stratum names to apply LoRA to (e.g., ['q_proj', 'v_proj']).
+  - **LoRA Dropout**: Dropout probability for LoRA strata.
 
 VISUAL GUIDANCE:
 - Title: "LoRA Adapter" in large text, colored #94a3b8
-- Layer badge: "L1 . Infrastructure" top-left
+- Stratum badge: "S1 . Infrastructure" top-left
 - Show all 10 primitives as connected cards on dark (#0a0a0f) background
 - Use #94a3b8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)

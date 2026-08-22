@@ -6,13 +6,13 @@
 
 ## Strata
 
-- [L7 Experience & Intent](https://aos7.tech/api/v1/strata): What the human asks, sees, and approves.
-- [L6 Governance & Trust](https://aos7.tech/api/v1/strata): What is allowed, safe, compliant, and budgeted.
-- [L5 Observability & Evaluation](https://aos7.tech/api/v1/strata): What happened, how it performed, and how we know.
-- [L4 Orchestration & Decisioning](https://aos7.tech/api/v1/strata): What happens next, by whom, and in what order.
-- [L3 Execution & Interfaces](https://aos7.tech/api/v1/strata): What external action was actually taken.
-- [L2 Knowledge & Memory](https://aos7.tech/api/v1/strata): What context the system knew, retrieved, or forgot.
-- [L1 Models & Infrastructure](https://aos7.tech/api/v1/strata): What compute, runtime, model, and network foundation made it all possible.
+- [S7 Experience & Intent](https://aos7.tech/api/v1/strata): What the human asks, sees, and approves.
+- [S6 Governance & Trust](https://aos7.tech/api/v1/strata): What is allowed, safe, compliant, and budgeted.
+- [S5 Observability & Evaluation](https://aos7.tech/api/v1/strata): What happened, how it performed, and how we know.
+- [S4 Orchestration & Decisioning](https://aos7.tech/api/v1/strata): What happens next, by whom, and in what order.
+- [S3 Execution & Interfaces](https://aos7.tech/api/v1/strata): What external action was actually taken.
+- [S2 Knowledge & Memory](https://aos7.tech/api/v1/strata): What context the system knew, retrieved, or forgot.
+- [S1 Models & Infrastructure](https://aos7.tech/api/v1/strata): What compute, runtime, model, and network foundation made it all possible.
 
 ## API
 

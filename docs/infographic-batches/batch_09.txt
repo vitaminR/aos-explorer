@@ -8,13 +8,13 @@ You are a visual design assistant creating ADHD-friendly technical infographics 
 
 DESIGN RULES:
 - Dark background (#0a0a0f) with high-contrast text
-- Use the layer accent color as the primary highlight
+- Use the stratum accent color as the primary highlight
 - Clean, minimal layout - no clutter
 - Large readable typography (minimum 14pt equivalent)
 - Each primitive shown as a distinct card/node with its name + 1-line description
 - Show relationships between primitives with arrows or connectors if applicable
 - Include a small icon or visual metaphor for each primitive
-- Include the layer badge (e.g. "L4 · Orchestration") in the top-left corner
+- Include the stratum badge (e.g. "S4 · Orchestration") in the top-left corner
 - Parent construct name is the large title
 - Aspect ratio: 16:9 (landscape)
 - Style: flat design, subtle gradients, no 3D, modern SaaS dashboard aesthetic
@@ -25,13 +25,13 @@ FORMAT: Create a single infographic image. Do NOT return markdown or text descri
 ─────────────────────────────────────────────────────────
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 1/5  —  #41  L5 | Drift Detector
+│  PROMPT 1/5  —  #41  S5 | Drift Detector
 │  Save as: drift-detector.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Drift Detector" construct from the {a}OS reference model.
 
-LAYER: L5 — Observability
+STRATUM: S5 — Observability
 ACCENT COLOR: #fbbf24
 CONSTRUCT: Drift Detector
 PRIMITIVE COUNT: 4
@@ -44,7 +44,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Drift Detector" in large text, colored #fbbf24
-- Layer badge: "L5 · Observability" top-left
+- Stratum badge: "S5 · Observability" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fbbf24 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -54,13 +54,13 @@ VISUAL GUIDANCE:
 ═══  NEXT PROMPT  (paste after saving the image above)  ═══
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 2/5  —  #42  L5 | Anomaly Alert
+│  PROMPT 2/5  —  #42  S5 | Anomaly Alert
 │  Save as: anomaly-alert.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Anomaly Alert" construct from the {a}OS reference model.
 
-LAYER: L5 — Observability
+STRATUM: S5 — Observability
 ACCENT COLOR: #fbbf24
 CONSTRUCT: Anomaly Alert
 PRIMITIVE COUNT: 4
@@ -73,7 +73,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Anomaly Alert" in large text, colored #fbbf24
-- Layer badge: "L5 · Observability" top-left
+- Stratum badge: "S5 · Observability" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fbbf24 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -83,13 +83,13 @@ VISUAL GUIDANCE:
 ═══  NEXT PROMPT  (paste after saving the image above)  ═══
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 3/5  —  #43  L5 | SLO Monitor
+│  PROMPT 3/5  —  #43  S5 | SLO Monitor
 │  Save as: slo-monitor.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "SLO Monitor" construct from the {a}OS reference model.
 
-LAYER: L5 — Observability
+STRATUM: S5 — Observability
 ACCENT COLOR: #fbbf24
 CONSTRUCT: SLO Monitor
 PRIMITIVE COUNT: 4
@@ -102,7 +102,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "SLO Monitor" in large text, colored #fbbf24
-- Layer badge: "L5 · Observability" top-left
+- Stratum badge: "S5 · Observability" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fbbf24 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -112,13 +112,13 @@ VISUAL GUIDANCE:
 ═══  NEXT PROMPT  (paste after saving the image above)  ═══
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 4/5  —  #44  L5 | Cost Tracker
+│  PROMPT 4/5  —  #44  S5 | Cost Tracker
 │  Save as: cost-tracker.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Cost Tracker" construct from the {a}OS reference model.
 
-LAYER: L5 — Observability
+STRATUM: S5 — Observability
 ACCENT COLOR: #fbbf24
 CONSTRUCT: Cost Tracker
 PRIMITIVE COUNT: 8
@@ -135,7 +135,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Cost Tracker" in large text, colored #fbbf24
-- Layer badge: "L5 · Observability" top-left
+- Stratum badge: "S5 · Observability" top-left
 - Show all 8 primitives as connected cards on dark (#0a0a0f) background
 - Use #fbbf24 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -145,13 +145,13 @@ VISUAL GUIDANCE:
 ═══  NEXT PROMPT  (paste after saving the image above)  ═══
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 5/5  —  #45  L3 | Interpreter Session
+│  PROMPT 5/5  —  #45  S3 | Interpreter Session
 │  Save as: interpreter-session.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Interpreter Session" construct from the {a}OS reference model.
 
-LAYER: L3 — Capabilities
+STRATUM: S3 — Capabilities
 ACCENT COLOR: #38bdf8
 CONSTRUCT: Interpreter Session
 PRIMITIVE COUNT: 4
@@ -164,7 +164,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Interpreter Session" in large text, colored #38bdf8
-- Layer badge: "L3 · Capabilities" top-left
+- Stratum badge: "S3 · Capabilities" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #38bdf8 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)

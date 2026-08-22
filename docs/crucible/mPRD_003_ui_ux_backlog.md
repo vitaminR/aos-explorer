@@ -51,7 +51,7 @@ inactive (both use similar dim text).
 
 **Problem:** At ≤640 px the breadcrumb is hidden (`display: none`), losing
 location context.
-**Proposal:** Replace with a compact "L7 › Strata" pill row fixed under the
+**Proposal:** Replace with a compact "S7 › Strata" pill row fixed under the
 header on mobile only.
 **Acceptance:** Current stratum and mode always visible on mobile.
 
@@ -89,10 +89,10 @@ legend key.
 
 ## U11 — Stack-builder drop zone feedback ✅
 
-**Problem:** In `build.html`, the layer drop zones highlight
-uniformly during drag, making it hard to tell which layer is valid for the
+**Problem:** In `build.html`, the stratum drop zones highlight
+uniformly during drag, making it hard to tell which stratum is valid for the
 dragged product.
-**Proposal:** Green outline on valid layers, red on invalid, based on product
+**Proposal:** Green outline on valid strata, red on invalid, based on product
 strata mappings.
 **Acceptance:** Invalid drops are rejected with a toast; outline matches.
 

@@ -17,7 +17,7 @@ Check these in order. Goal: catch new product launches, framework updates, and a
 |---|---|---|
 | AI Agent Store — This Week | https://aiagentstore.ai/ai-agent-news/this-week | New launches, agent news digest |
 | Product Hunt — AI Agents | https://www.producthunt.com/categories/ai-agents | Community launches, upvotes = traction |
-| Product Hunt — AI Coding Agents | https://www.producthunt.com/categories/ai-coding-agents | L3/L4 coding tool launches |
+| Product Hunt — AI Coding Agents | https://www.producthunt.com/categories/ai-coding-agents | S3/S4 coding tool launches |
 | HuggingFace Blog | https://huggingface.co/blog | Open-source model + agent drops |
 | GitHub Trending (Python) | https://github.com/trending/python?since=daily | Rising agent repos, new frameworks |
 
@@ -52,15 +52,15 @@ Check these in order. Goal: catch new product launches, framework updates, and a
 
 | Framework | Stratum | Stars | Repo |
 |---|---|---|---|
-| LangChain | L4 Orchestration | 126k | github.com/langchain-ai/langchain |
-| LangGraph | L4 Orchestration | 24k | github.com/langchain-ai/langgraph |
-| CrewAI | L4 Orchestration | 44k | github.com/crewAIInc/crewAI |
-| Agno | L4 Orchestration | 38.7k | github.com/agno-agi/agno |
-| Smolagents | L4 Orchestration | 25k | github.com/huggingface/smolagents |
-| LlamaIndex | L2 Knowledge | 47k | github.com/run-llama/llama_index |
-| Semantic Kernel | L4 Orchestration | 27k | github.com/microsoft/semantic-kernel |
-| Google ADK | L4 Orchestration | 17k | github.com/google/adk-python |
-| OpenAI Agents SDK | L4 Orchestration | — | github.com/openai/openai-agents-python |
+| LangChain | S4 Orchestration | 126k | github.com/langchain-ai/langchain |
+| LangGraph | S4 Orchestration | 24k | github.com/langchain-ai/langgraph |
+| CrewAI | S4 Orchestration | 44k | github.com/crewAIInc/crewAI |
+| Agno | S4 Orchestration | 38.7k | github.com/agno-agi/agno |
+| Smolagents | S4 Orchestration | 25k | github.com/huggingface/smolagents |
+| LlamaIndex | S2 Knowledge | 47k | github.com/run-llama/llama_index |
+| Semantic Kernel | S4 Orchestration | 27k | github.com/microsoft/semantic-kernel |
+| Google ADK | S4 Orchestration | 17k | github.com/google/adk-python |
+| OpenAI Agents SDK | S4 Orchestration | — | github.com/openai/openai-agents-python |
 
 ---
 

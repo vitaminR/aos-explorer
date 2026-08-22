@@ -1,7 +1,7 @@
-# task-0309 — Explorer Social Layer Design v2 (grounded bridge to PRD Phase 3)
+# task-0309 — Explorer Social Stratum Design v2 (grounded bridge to PRD Phase 3)
 
 **Author:** cid (Commander hands-on, night op 2026-08-02)
-**Supersedes:** gemini-2 draft `artifacts/task-0309/explorer-social-layer-design.md` (branch `task-0309-social-design`), disqualified for designing against a Next.js/shadcn stack this repo does not use.
+**Supersedes:** gemini-2 draft `artifacts/task-0309/explorer-social-stratum-design.md` (branch `task-0309-social-design`), disqualified for designing against a Next.js/shadcn stack this repo does not use.
 **Verify everything cited here with:** `git grep -n <symbol>` at branch point `origin/main @ 9880c69`.
 
 ---
@@ -147,8 +147,8 @@ meet WCAG 2.1 AA. Specific requirements per surface:
   `aria-live="polite"` region. Copy: "Your suggestion was submitted and is pending review."
   Do not silently redirect or clear the form.
 - **Empty-vs-zero:** the ally-only origin/vendor field must never auto-fill or auto-populate —
-  it must be explicitly entered. An empty submission is blocked at the rules layer and at the
-  form layer (disabled Submit when required fields are unfilled).
+  it must be explicitly entered. An empty submission is blocked at the rules stratum and at the
+  form stratum (disabled Submit when required fields are unfilled).
 
 ### 7.4 Moderation view surface (task-0311)
 

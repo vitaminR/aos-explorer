@@ -5,7 +5,7 @@ Usage:
     from aos_core.loaders.json_loader import load_all
     data = load_all()
     concept = data.concepts.by_slug("harness")
-    stratum = data.strata.by_label("L4")
+    stratum = data.strata.by_label("S4")
     products = data.products.by_concept("harness")
 """
 

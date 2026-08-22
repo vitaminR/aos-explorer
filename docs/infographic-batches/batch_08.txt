@@ -8,13 +8,13 @@ You are a visual design assistant creating ADHD-friendly technical infographics 
 
 DESIGN RULES:
 - Dark background (#0a0a0f) with high-contrast text
-- Use the layer accent color as the primary highlight
+- Use the stratum accent color as the primary highlight
 - Clean, minimal layout - no clutter
 - Large readable typography (minimum 14pt equivalent)
 - Each primitive shown as a distinct card/node with its name + 1-line description
 - Show relationships between primitives with arrows or connectors if applicable
 - Include a small icon or visual metaphor for each primitive
-- Include the layer badge (e.g. "L4 · Orchestration") in the top-left corner
+- Include the stratum badge (e.g. "S4 · Orchestration") in the top-left corner
 - Parent construct name is the large title
 - Aspect ratio: 16:9 (landscape)
 - Style: flat design, subtle gradients, no 3D, modern SaaS dashboard aesthetic
@@ -25,13 +25,13 @@ FORMAT: Create a single infographic image. Do NOT return markdown or text descri
 ─────────────────────────────────────────────────────────
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 1/5  —  #36  L5 | Latency Histogram
+│  PROMPT 1/5  —  #36  S5 | Latency Histogram
 │  Save as: latency-histogram.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Latency Histogram" construct from the {a}OS reference model.
 
-LAYER: L5 — Observability
+STRATUM: S5 — Observability
 ACCENT COLOR: #fbbf24
 CONSTRUCT: Latency Histogram
 PRIMITIVE COUNT: 4
@@ -44,7 +44,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Latency Histogram" in large text, colored #fbbf24
-- Layer badge: "L5 · Observability" top-left
+- Stratum badge: "S5 · Observability" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fbbf24 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -54,13 +54,13 @@ VISUAL GUIDANCE:
 ═══  NEXT PROMPT  (paste after saving the image above)  ═══
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 2/5  —  #37  L5 | Eval Suite
+│  PROMPT 2/5  —  #37  S5 | Eval Suite
 │  Save as: eval-suite.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Eval Suite" construct from the {a}OS reference model.
 
-LAYER: L5 — Observability
+STRATUM: S5 — Observability
 ACCENT COLOR: #fbbf24
 CONSTRUCT: Eval Suite
 PRIMITIVE COUNT: 4
@@ -73,7 +73,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Eval Suite" in large text, colored #fbbf24
-- Layer badge: "L5 · Observability" top-left
+- Stratum badge: "S5 · Observability" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fbbf24 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -83,13 +83,13 @@ VISUAL GUIDANCE:
 ═══  NEXT PROMPT  (paste after saving the image above)  ═══
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 3/5  —  #38  L5 | Test Case
+│  PROMPT 3/5  —  #38  S5 | Test Case
 │  Save as: test-case.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Test Case" construct from the {a}OS reference model.
 
-LAYER: L5 — Observability
+STRATUM: S5 — Observability
 ACCENT COLOR: #fbbf24
 CONSTRUCT: Test Case
 PRIMITIVE COUNT: 4
@@ -102,7 +102,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Test Case" in large text, colored #fbbf24
-- Layer badge: "L5 · Observability" top-left
+- Stratum badge: "S5 · Observability" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fbbf24 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -112,13 +112,13 @@ VISUAL GUIDANCE:
 ═══  NEXT PROMPT  (paste after saving the image above)  ═══
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 4/5  —  #39  L5 | Judge Prompt
+│  PROMPT 4/5  —  #39  S5 | Judge Prompt
 │  Save as: judge-prompt.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Judge Prompt" construct from the {a}OS reference model.
 
-LAYER: L5 — Observability
+STRATUM: S5 — Observability
 ACCENT COLOR: #fbbf24
 CONSTRUCT: Judge Prompt
 PRIMITIVE COUNT: 4
@@ -131,7 +131,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Judge Prompt" in large text, colored #fbbf24
-- Layer badge: "L5 · Observability" top-left
+- Stratum badge: "S5 · Observability" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fbbf24 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -141,13 +141,13 @@ VISUAL GUIDANCE:
 ═══  NEXT PROMPT  (paste after saving the image above)  ═══
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 5/5  —  #40  L5 | Score Aggregator
+│  PROMPT 5/5  —  #40  S5 | Score Aggregator
 │  Save as: score-aggregator.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Score Aggregator" construct from the {a}OS reference model.
 
-LAYER: L5 — Observability
+STRATUM: S5 — Observability
 ACCENT COLOR: #fbbf24
 CONSTRUCT: Score Aggregator
 PRIMITIVE COUNT: 4
@@ -160,7 +160,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Score Aggregator" in large text, colored #fbbf24
-- Layer badge: "L5 · Observability" top-left
+- Stratum badge: "S5 · Observability" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #fbbf24 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)

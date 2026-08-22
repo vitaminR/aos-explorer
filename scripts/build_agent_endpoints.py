@@ -48,7 +48,7 @@ def write_json(path, data):
 
 
 # ---------------------------------------------------------------------------
-# Layer 1: llms.txt
+# Stratum 1: llms.txt
 # ---------------------------------------------------------------------------
 
 
@@ -106,7 +106,7 @@ def build_llms_full_txt(strata_data, concepts_data, products_data):
 
     # Strata
     lines.append("=" * 60)
-    lines.append("STRATA (7 canonical layers)")
+    lines.append("STRATA (7 canonical strata)")
     lines.append("=" * 60)
     lines.append("")
 
@@ -166,7 +166,7 @@ def build_llms_full_txt(strata_data, concepts_data, products_data):
 
 
 # ---------------------------------------------------------------------------
-# Layer 2: Static JSON API
+# Stratum 2: Static JSON API
 # ---------------------------------------------------------------------------
 
 
@@ -246,14 +246,14 @@ def main():
     )
     print()
 
-    # Layer 1: llms.txt
-    print("Layer 1: llms.txt")
+    # Stratum 1: llms.txt
+    print("Stratum 1: llms.txt")
     build_llms_txt(strata_data, concepts_data, products_data)
     build_llms_full_txt(strata_data, concepts_data, products_data)
     print()
 
-    # Layer 2: Static JSON API
-    print("Layer 2: Static JSON API")
+    # Stratum 2: Static JSON API
+    print("Stratum 2: Static JSON API")
     build_api_strata(strata_data)
     build_api_concepts(strata_data, concepts_data)
     build_api_products(strata_data, products_data)

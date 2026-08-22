@@ -67,11 +67,11 @@ test.describe("Infographics wired into construct detail panel", () => {
     test.setTimeout(60000);
     await loadWithoutTour(page);
 
-    // Expand L7 stratum
+    // Expand S7 stratum
     await page.locator("#l7").click();
     await page.waitForTimeout(500);
 
-    // Click the L7 substrate to reveal construct chips
+    // Click the S7 substrate to reveal construct chips
     await page
       .locator(".substrate-item")
       .filter({ hasText: "Intent Parsers" })

@@ -9,7 +9,7 @@
 
 ## 1. Current Substrate Inventory
 
-### L7 — Experience & Intent (3 substrates)
+### S7 — Experience & Intent (3 substrates)
 
 | # | Substrate Name | Classification | Products Mapped | Has Constructs | Has Primitives |
 |---|---------------|----------------|-----------------|----------------|----------------|
@@ -21,7 +21,7 @@
 
 ---
 
-### L6 — Governance & Trust (4 substrates)
+### S6 — Governance & Trust (4 substrates)
 
 | # | Substrate Name | Classification | Products Mapped | Has Constructs | Has Primitives |
 |---|---------------|----------------|-----------------|----------------|----------------|
@@ -34,7 +34,7 @@
 
 ---
 
-### L5 — Observability & Evaluation (3 substrates)
+### S5 — Observability & Evaluation (3 substrates)
 
 | # | Substrate Name | Classification | Products Mapped | Has Constructs | Has Primitives |
 |---|---------------|----------------|-----------------|----------------|----------------|
@@ -46,7 +46,7 @@
 
 ---
 
-### L4 — Orchestration & Decisioning (8 substrates) ⚠️ PROBLEM LAYER
+### S4 — Orchestration & Decisioning (8 substrates) ⚠️ PROBLEM STRATUM
 
 | # | Substrate Name | Classification | Products Mapped | Has Constructs | Has Primitives |
 |---|---------------|----------------|-----------------|----------------|----------------|
@@ -61,7 +61,7 @@
 
 **Verdict: 3 of 8 substrates are named products, not universal patterns.**
 
-This is the only layer with the product-as-substrate anti-pattern.
+This is the only stratum with the product-as-substrate anti-pattern.
 
 #### Overlap Analysis (Named Products → Core Substrates)
 
@@ -74,12 +74,12 @@ This is the only layer with the product-as-substrate anti-pattern.
 | BMAD → Persona Handoff Packet | `persona_name`, `handoff_from`, `handoff_to` | **Agent Frameworks** (delegation_policy construct) |
 | BMAD → Requirement Matrix | `feature_id`, `implementation_status`, `approval_status` | **Workflow Engines** (plan/graph constructs) |
 | Superpowers → Test Gate | `pass_fail_bool`, `block_forward_flag`, `gate_status` | New core substrate: **Quality Gates & Verification** or axis concern |
-| Superpowers → tmux Session | `session_id`, `command_string`, `exit_code` | **L3 — Code Execution** (not even L4) |
+| Superpowers → tmux Session | `session_id`, `command_string`, `exit_code` | **S3 — Code Execution** (not even S4) |
 | Superpowers → TDD Workflow Path | `spec_seed`, `failing_test_count`, `final_gate_status` | **Quality Gates & Verification** or **Workflow Engines** |
 
 ---
 
-### L3 — Execution & Interfaces (6 substrates)
+### S3 — Execution & Interfaces (6 substrates)
 
 | # | Substrate Name | Classification | Products Mapped | Has Constructs | Has Primitives |
 |---|---------------|----------------|-----------------|----------------|----------------|
@@ -94,7 +94,7 @@ This is the only layer with the product-as-substrate anti-pattern.
 
 ---
 
-### L2 — Knowledge & Memory (4 substrates)
+### S2 — Knowledge & Memory (4 substrates)
 
 | # | Substrate Name | Classification | Products Mapped | Has Constructs | Has Primitives |
 |---|---------------|----------------|-----------------|----------------|----------------|
@@ -107,7 +107,7 @@ This is the only layer with the product-as-substrate anti-pattern.
 
 ---
 
-### L1 — Models & Infrastructure (3 substrates)
+### S1 — Models & Infrastructure (3 substrates)
 
 | # | Substrate Name | Classification | Products Mapped | Has Constructs | Has Primitives |
 |---|---------------|----------------|-----------------|----------------|----------------|
@@ -125,7 +125,7 @@ This is the only layer with the product-as-substrate anti-pattern.
 |--------|-------|
 | Total substrates in prototype | 31 |
 | Core (universal patterns) | **28** |
-| Named products masquerading as substrates | **3** (all in L4) |
+| Named products masquerading as substrates | **3** (all in S4) |
 | Total products in `PRODUCT_DETAILS` | **43+** |
 | Product types: product/framework/tool/agent/mcp/workflow/skill | 7 entity types |
 | Substrates with constructs + primitives | 19 of 31 (61%) |
@@ -137,19 +137,19 @@ This is the only layer with the product-as-substrate anti-pattern.
 
 ### Current State (43 products)
 
-- L4 already has **8 substrates** (3 are named products)
-- If every L4-primary product got its own substrate: CrewAI, LangGraph, GSD, BMAD, Superpowers, gstack, Shipyard, Agent Skills, Agent CI/CD = **9 named product substrates** + 5 core = 14 total
+- S4 already has **8 substrates** (3 are named products)
+- If every S4-primary product got its own substrate: CrewAI, LangGraph, GSD, BMAD, Superpowers, gstack, Shipyard, Agent Skills, Agent CI/CD = **9 named product substrates** + 5 core = 14 total
 
 ### At 100 Products
 
-- ~25+ would touch L4 (orchestration is the densest layer)
+- ~25+ would touch S4 (orchestration is the densest stratum)
 - Following current pattern: **25+ substrate entries** in one accordion
 - Scroll required, zero signal/noise separation
 
 ### At 400 Products
 
-- ~80-100 would touch L4
-- Every layer would need scrollbars
+- ~80-100 would touch S4
+- Every stratum would need scrollbars
 - Product discovery becomes impossible without search
 - No way to answer "what's the best orchestration framework?" at a glance
 
@@ -159,7 +159,7 @@ This is the only layer with the product-as-substrate anti-pattern.
 
 ### 4.1 Core Substrates Must Be Universal Patterns
 
-- Max **≤8 substrates per layer** (currently respected except L4's named products)
+- Max **≤8 substrates per stratum** (currently respected except S4's named products)
 - Each substrate = a category of capability, not a product brand
 - Products **map onto** substrates as overlays, not **become** substrates
 
@@ -173,14 +173,14 @@ This is the only layer with the product-as-substrate anti-pattern.
 
 - Each substrate shows its **top 3 products** by `confidence` score (already available in PRODUCT_DETAILS)
 - "Show all N products" expands the full list
-- Layer-level summary: top 3 products across all substrates in that layer
+- Stratum-level summary: top 3 products across all substrates in that stratum
 - Cross-ontology: global leaderboard of products by total coverage (how many strata they touch meaningfully)
 
 ### 4.4 Named Product Constructs → Core Construct Children
 
 - GSD's 3 constructs (Context Pack, State File Set, Lifecycle Checkpoint) → merge into Workflow Engines + Retry & Recovery
 - BMAD's 3 constructs (PRD, Persona Handoff, Requirement Matrix) → merge into Workflow Engines + Agent Frameworks
-- Superpowers' 3 constructs (Test Gate, tmux Session, TDD Path) → merge into new "Quality Gates" substrate + L3 Code Execution
+- Superpowers' 3 constructs (Test Gate, tmux Session, TDD Path) → merge into new "Quality Gates" substrate + S3 Code Execution
 - Each primitive retains its `product_origin` tag so the product guide system still works
 
 ### 4.5 UI Patterns for Scale
@@ -188,36 +188,36 @@ This is the only layer with the product-as-substrate anti-pattern.
 | Pattern | Purpose | Threshold |
 |---------|---------|-----------|
 | **Ranked badges** | Show top-3 products per substrate | Always |
-| **Collapsible groups** | Group substrates by sub-category if >6 | >6 per layer |
-| **Product count chip** | "24 products" badge on each layer header | Always |
+| **Collapsible groups** | Group substrates by sub-category if >6 | >6 per stratum |
+| **Product count chip** | "24 products" badge on each stratum header | Always |
 | **Searchable product list** | Full-text search across products | >50 products |
 | **"Show all" expansion** | Expand beyond top-3 | On click |
-| **Layer leaderboard** | Top 3 overall products for this layer | On layer header |
+| **Stratum leaderboard** | Top 3 overall products for this stratum | On stratum header |
 
 ---
 
 ## 5. Recommended Core Substrate Set (Post-Refactor)
 
-### L7 — Experience & Intent (3 → 3, no change)
+### S7 — Experience & Intent (3 → 3, no change)
 
 1. Intent Parsers & UX
 2. Generative UI
 3. Human-in-the-Loop Controls
 
-### L6 — Governance & Trust (4 → 4, no change)
+### S6 — Governance & Trust (4 → 4, no change)
 
 1. Policy Engines
 2. Identity & Access
 3. Audit & Compliance
 4. Safety & Content Filters
 
-### L5 — Observability & Evaluation (3 → 3, no change)
+### S5 — Observability & Evaluation (3 → 3, no change)
 
 1. Tracing & Logging
 2. Eval Frameworks
 3. Drift & Anomaly Detection
 
-### L4 — Orchestration & Decisioning (8 → 6, refactored)
+### S4 — Orchestration & Decisioning (8 → 6, refactored)
 
 1. Workflow Engines *(absorbs GSD Context Pack, GSD State File Set, BMAD Requirement Matrix)*
 2. Agent Frameworks *(absorbs BMAD Persona Handoff)*
@@ -228,7 +228,7 @@ This is the only layer with the product-as-substrate anti-pattern.
 
 **Removed as substrates:** GSD, BMAD, Superpowers → become product overlays
 
-### L3 — Execution & Interfaces (6 → 6, no change)
+### S3 — Execution & Interfaces (6 → 6, no change)
 
 1. Tool Registries & MCP
 2. Code Execution *(absorbs Superpowers tmux Session)*
@@ -237,14 +237,14 @@ This is the only layer with the product-as-substrate anti-pattern.
 5. File & OS Interfaces
 6. Message Queues & Events
 
-### L2 — Knowledge & Memory (4 → 4, no change)
+### S2 — Knowledge & Memory (4 → 4, no change)
 
 1. RAG Pipelines & Search
 2. Memory Systems
 3. Knowledge Graphs
 4. Embedding Stores
 
-### L1 — Models & Infrastructure (3 → 3, no change)
+### S1 — Models & Infrastructure (3 → 3, no change)
 
 1. Foundation Models
 2. Compute & Serving
@@ -256,8 +256,8 @@ This is the only layer with the product-as-substrate anti-pattern.
 
 ## 6. Gate: R1:AUDITED ✅
 
-**Finding:** Only L4 has the named-product-as-substrate anti-pattern (3 instances).
-All other layers are clean. The fix is surgical: reclassify GSD/BMAD/Superpowers as product
+**Finding:** Only S4 has the named-product-as-substrate anti-pattern (3 instances).
+All other strata are clean. The fix is surgical: reclassify GSD/BMAD/Superpowers as product
 overlays, absorb their constructs into core substrates, and add one new core substrate
 ("Quality Gates & Verification").
 

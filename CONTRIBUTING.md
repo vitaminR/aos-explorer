@@ -7,7 +7,7 @@ Thank you for helping build the shared vocabulary for agentic AI.
 1. Open a [Product Suggestion issue](https://github.com/vitaminR/aos-explorer/issues/new?template=product-suggestion.md)
 2. Include:
    - Product name and vendor
-   - Which strata you think it covers (L1-L7)
+   - Which strata you think it covers (S1-S7)
    - Deployment type (Cloud / Self-hosted / Hybrid)
    - License (Open Source / Commercial / Freemium)
    - Your reasoning for the mapping

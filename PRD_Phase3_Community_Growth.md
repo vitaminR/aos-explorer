@@ -33,7 +33,7 @@ engine, no retention loop, and no reason for a visitor to come back tomorrow.
 | G1 | Enable community tool submissions | ≥100 community-submitted tools | 3a |
 | G2 | Ship review & rating system | ≥50 reviews on top tools | 3a |
 | G3 | Launch crowdsourced taxonomy governance | 3+ community taxonomy edits/week | 3b |
-| G4 | Add gamification layer | 50+ users with XP > 0 | 3b |
+| G4 | Add gamification stratum | 50+ users with XP > 0 | 3b |
 | G5 | Execute 90-day viral launch | 5,000 MAU, k-factor ≥ 0.5 | 3c |
 | G6 | Establish contributor incentive model | Public Founders Pool page live | 3c |
 
@@ -45,7 +45,7 @@ engine, no retention loop, and no reason for a visitor to come back tomorrow.
 
 ### Target: Firebase All-In-One (Auth + Firestore + Hosting)
 
-| Layer | Choice | Rationale |
+| Stratum | Choice | Rationale |
 |-------|--------|-----------|
 | **Frontend** | Static HTML/JS on Firebase Hosting | Keep what works, add progressive JS |
 | **Database** | Cloud Firestore | Free tier: 1 GiB storage, 50K reads/day, 20K writes/day |
@@ -88,7 +88,7 @@ engine, no retention loop, and no reason for a visitor to come back tomorrow.
   url: string,            // required, unique index
   description: string,    // 20-500 chars
   type: "platform" | "framework" | "component" | "cli" | "harness",
-  primaryLayer: string,   // required
+  primaryStratum: string,   // required
   license: string | null,
   deployment: string | null,
   submittedBy: string,    // Firebase Auth UID
@@ -166,7 +166,7 @@ engine, no retention loop, and no reason for a visitor to come back tomorrow.
 
 #### Taxonomy Proposal Flow
 
-1. Proposer creates a proposal: "Move Tool X from L4 to L5" or "Create new sub-category: RAG Frameworks"
+1. Proposer creates a proposal: "Move Tool X from S4 to S5" or "Create new sub-category: RAG Frameworks"
 2. 72-hour review window
 3. Requires 3 net upvotes from Reviewers to merge
 4. Auto-merge after 7 days if no opposition and ≥1 upvote

@@ -4,9 +4,9 @@ import json
 with open("_primitives_inventory.json", "r") as f:
     existing = json.load(f)
 
-# These are the 33 missing constructs, grouped by layer
-missing_by_layer = {
-    "L1": {
+# These are the 33 missing constructs, grouped by stratum
+missing_by_stratum = {
+    "S1": {
         "model_card": [
             "model_id",
             "version_tag",
@@ -109,7 +109,7 @@ missing_by_layer = {
             "update_frequency",
         ],
     },
-    "L2": {
+    "S2": {
         "working_memory": [
             "capacity_tokens",
             "retention_policy",
@@ -204,7 +204,7 @@ missing_by_layer = {
             "cleanup_policy",
         ],
     },
-    "L3": {
+    "S3": {
         "sandbox_runtime": [
             "runtime_id",
             "isolation_level",
@@ -214,7 +214,7 @@ missing_by_layer = {
             "filesystem_access",
         ]
     },
-    "L4": {
+    "S4": {
         "pattern": [
             "pattern_id",
             "pattern_type",
@@ -224,7 +224,7 @@ missing_by_layer = {
             "enabled_flag",
         ]
     },
-    "L6-L7": {
+    "S6-S7": {
         "harness": [
             "harness_id",
             "test_suite_id",
@@ -243,7 +243,7 @@ missing_by_layer = {
         ],
         "stack": [
             "stack_id",
-            "layer_composition",
+            "stratum_composition",
             "version_constraints",
             "dependency_graph",
             "deployment_target",
@@ -289,26 +289,26 @@ missing_by_layer = {
 new_primitives = []
 primitive_id = len(existing) + 1
 
-for layer_set, constructs in missing_by_layer.items():
+for stratum_set, constructs in missing_by_stratum.items():
     for construct_name, primitive_names in constructs.items():
-        layer = None
-        if layer_set == "L1":
-            layer = "L1"
-        elif layer_set == "L2":
-            layer = "L2"
-        elif layer_set == "L3":
-            layer = "L3"
-        elif layer_set == "L4":
-            layer = "L4"
-        else:  # L6-L7
-            layer = "L6"  # Map to L6 for now
+        stratum = None
+        if stratum_set == "S1":
+            stratum = "S1"
+        elif stratum_set == "S2":
+            stratum = "S2"
+        elif stratum_set == "S3":
+            stratum = "S3"
+        elif stratum_set == "S4":
+            stratum = "S4"
+        else:  # S6-S7
+            stratum = "S6"  # Map to S6 for now
 
         for prim_name in primitive_names:
             new_primitives.append(
                 {
                     "id": primitive_id,
                     "name": prim_name,
-                    "layer": layer,
+                    "stratum": stratum,
                     "parent": construct_name,
                     "description": f"{prim_name.replace('_', ' ').title()} parameter for {construct_name.replace('_', ' ')}",
                 }
@@ -318,19 +318,19 @@ for layer_set, constructs in missing_by_layer.items():
 # Show counts
 print(f"New primitives to add: {len(new_primitives)}")
 print()
-print("Breakdown by layer:")
-layers = {}
+print("Breakdown by stratum:")
+strata = {}
 for p in new_primitives:
-    layers[p["layer"]] = layers.get(p["layer"], 0) + 1
+    strata[p["stratum"]] = strata.get(p["stratum"], 0) + 1
 
-for layer in sorted(layers.keys()):
-    print(f"  {layer}: {layers[layer]} primitives")
+for stratum in sorted(strata.keys()):
+    print(f"  {stratum}: {strata[stratum]} primitives")
 
 # Show sample
 print()
 print("Sample (first 5):")
 for p in new_primitives[:5]:
-    print(f"  - {p['name']} ({p['layer']}) → {p['parent']}")
+    print(f"  - {p['name']} ({p['stratum']}) → {p['parent']}")
 
 # Output JSON for inspection
 print()

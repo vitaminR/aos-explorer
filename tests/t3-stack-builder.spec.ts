@@ -3,14 +3,14 @@
  *
  * US-T3-1  Clicking "Build Stack" in the nav opens the Stack Builder overlay
  * US-T3-2  Products in the picker can be searched/filtered
- * US-T3-3  Dragging from compare sends items to stack layers
- * US-T3-4  Removing a chip from a layer works
+ * US-T3-3  Dragging from compare sends items to stack strata
+ * US-T3-4  Removing a chip from a stratum works
  * US-T3-5  Export JSON triggers a file download (blob URL)
  * US-T3-6  Export Mermaid copies to clipboard
  * US-T3-7  Share URL encodes stack into location hash and clipboard
  * US-T3-8  Loading the page with a #stack= hash pre-populates the builder
  * US-T3-9  Gap analysis panel shows coverage score after adding products
- * US-T3-10 Clear button resets all layers
+ * US-T3-10 Clear button resets all strata
  */
 
 import { test, expect } from "@playwright/test";
@@ -94,23 +94,23 @@ test("T3-4: Picker search filters products", async ({ page }) => {
   expect(count).toBeLessThan(20);
 });
 
-test("T3-5: 7 layer columns are rendered in canvas", async ({ page }) => {
+test("T3-5: 7 stratum columns are rendered in canvas", async ({ page }) => {
   await load(page);
   await openStackBuilder(page);
-  const cols = page.locator(".sb-layer-col");
+  const cols = page.locator(".sb-stratum-col");
   await expect(cols.first()).toBeVisible({ timeout: 5_000 });
   const count = await cols.count();
   expect(count).toBe(7);
 });
 
-test("T3-6: Adding product to layer via JS API updates canvas", async ({
+test("T3-6: Adding product to stratum via JS API updates canvas", async ({
   page,
 }) => {
   await load(page);
   await openStackBuilder(page);
   // Use JS to add a product directly (avoids DnD complexity in headless)
   await page.evaluate(() => {
-    (window as any).addToStackLayer("af", "l1");
+    (window as any).addToStackStratum("af", "l1");
   });
   await page.waitForTimeout(300);
   const chips = page.locator(".sb-chip");
@@ -123,18 +123,18 @@ test("T3-7: Gap analysis updates after adding products", async ({ page }) => {
   await load(page);
   await openStackBuilder(page);
   await page.evaluate(() => {
-    (window as any).addToStackLayer("af", "l1");
-    (window as any).addToStackLayer("mem0", "l3");
+    (window as any).addToStackStratum("af", "l1");
+    (window as any).addToStackStratum("mem0", "l3");
   });
   await page.waitForTimeout(300);
   const gapBody = page.locator("#sbGapBody");
   await expect(gapBody).toContainText(/Coverage Score/i);
 });
 
-test("T3-8: Remove chip from layer clears it from canvas", async ({ page }) => {
+test("T3-8: Remove chip from stratum clears it from canvas", async ({ page }) => {
   await load(page);
   await openStackBuilder(page);
-  await page.evaluate(() => (window as any).addToStackLayer("af", "l1"));
+  await page.evaluate(() => (window as any).addToStackStratum("af", "l1"));
   await page.waitForTimeout(200);
   const rmBtn = page.locator(".sb-chip-rm").first();
   await expect(rmBtn).toBeVisible();
@@ -145,12 +145,12 @@ test("T3-8: Remove chip from layer clears it from canvas", async ({ page }) => {
   expect(count).toBe(0);
 });
 
-test("T3-9: Clear button resets all layers", async ({ page }) => {
+test("T3-9: Clear button resets all strata", async ({ page }) => {
   await load(page);
   await openStackBuilder(page);
   await page.evaluate(() => {
-    (window as any).addToStackLayer("af", "l1");
-    (window as any).addToStackLayer("crewai", "l4");
+    (window as any).addToStackStratum("af", "l1");
+    (window as any).addToStackStratum("crewai", "l4");
   });
   await page.waitForTimeout(200);
   await page
@@ -166,7 +166,7 @@ test("T3-10: Export Mermaid copies to clipboard", async ({ page }) => {
   await load(page);
   await stubClipboard(page);
   await openStackBuilder(page);
-  await page.evaluate(() => (window as any).addToStackLayer("af", "l1"));
+  await page.evaluate(() => (window as any).addToStackStratum("af", "l1"));
   await page.waitForTimeout(200);
   await page
     .locator(".sb-btn")
@@ -177,13 +177,13 @@ test("T3-10: Export Mermaid copies to clipboard", async ({ page }) => {
     () => (window as any).__clipboardStub,
   );
   expect(text).toContain("mermaid");
-  expect(text).toContain("Infrastructure"); // L1 Infrastructure layer label
+  expect(text).toContain("Infrastructure"); // S1 Infrastructure stratum label
 });
 
 test("T3-11: Export JSON triggers download", async ({ page }) => {
   await load(page);
   await openStackBuilder(page);
-  await page.evaluate(() => (window as any).addToStackLayer("af", "l1"));
+  await page.evaluate(() => (window as any).addToStackStratum("af", "l1"));
   await page.waitForTimeout(200);
   // Listen for download (blob URL click); Playwright intercepts it
   const [download] = await Promise.all([
@@ -199,7 +199,7 @@ test("T3-12: Share URL encodes stack into clipboard", async ({ page }) => {
   await load(page);
   await stubClipboard(page);
   await openStackBuilder(page);
-  await page.evaluate(() => (window as any).addToStackLayer("af", "l1"));
+  await page.evaluate(() => (window as any).addToStackStratum("af", "l1"));
   await page.waitForTimeout(200);
   await page.locator(".sb-btn.primary").filter({ hasText: /Share/ }).click();
   await page.waitForTimeout(300);
@@ -213,7 +213,7 @@ test("T3-13: #stack= hash auto-populates builder on open", async ({ page }) => {
   // Build a hash with a known product in l1
   const payload = JSON.stringify({
     title: "Test Stack",
-    layers: { l1: ["af"], l2: [], l3: [], l4: [], l5: [], l6: [], l7: [] },
+    strata: { l1: ["af"], l2: [], l3: [], l4: [], l5: [], l6: [], l7: [] },
   });
   const b64 = Buffer.from(payload).toString("base64");
   await page.goto(FILE_URL + "#stack=" + b64, { waitUntil: "networkidle" });

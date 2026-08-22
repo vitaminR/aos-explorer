@@ -39,7 +39,7 @@ data/
 | Auto-refresh   | No — human approval required         |
 | Change risk    | High (downstream pages + products)   |
 
-Concept cards are the taxonomy backbone. Each concept maps to one or more strata (L1–L7) and axes (Governance, Observability, etc.). Concepts are referenced by product cards and rendered as standalone HTML pages in `../concepts/`.
+Concept cards are the taxonomy backbone. Each concept maps to one or more strata (S1–S7) and axes (Governance, Observability, etc.). Concepts are referenced by product cards and rendered as standalone HTML pages in `../concepts/`.
 
 ### How to add a concept
 

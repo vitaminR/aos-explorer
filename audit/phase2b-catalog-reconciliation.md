@@ -29,17 +29,17 @@ The `a6d62de` "fix(taxonomy)" commit on 2026-05-23 only patched products.json. T
 
 | ID | PD type | PJ type | PD primary | PJ primary | Status | Action |
 |---|---|---|---|---|---|---|
-| `aosnaming` | skill | skill | `L6 Trust & Governance` | `L6 Governance & Trust` | PRIMARY mismatch | **MERGE-TO-PRODUCTS_JSON** (canonical) — patch PD primary to `L6 Governance & Trust` |
+| `aosnaming` | skill | skill | `S6 Trust & Governance` | `S6 Governance & Trust` | PRIMARY mismatch | **MERGE-TO-PRODUCTS_JSON** (canonical) — patch PD primary to `S6 Governance & Trust` |
 | `bmad` | framework | framework | (match) | (match) | OK | KEEP-BOTH |
 | `clawmem` | tool | tool | (match) | (match) | OK | KEEP-BOTH |
 | `crewai` | framework | framework | (match) | (match) | OK | KEEP-BOTH |
-| `cursor` | product | platform | `L7 Experience & Intent` | `L7 Experience & Intent` | TYPE mismatch | **MERGE-TO-PRODUCT_DETAILS** — patch PJ `cursor.type` to `product` (PD is live; PD vocab does not use `platform`) |
-| `fallow` | tool | tool | `L5 Evaluation & Quality` | `L5 Observability & Evaluation` | PRIMARY mismatch | **MERGE-TO-PRODUCTS_JSON** (canonical) — patch PD primary to `L5 Observability & Evaluation` |
+| `cursor` | product | platform | `S7 Experience & Intent` | `S7 Experience & Intent` | TYPE mismatch | **MERGE-TO-PRODUCT_DETAILS** — patch PJ `cursor.type` to `product` (PD is live; PD vocab does not use `platform`) |
+| `fallow` | tool | tool | `S5 Evaluation & Quality` | `S5 Observability & Evaluation` | PRIMARY mismatch | **MERGE-TO-PRODUCTS_JSON** (canonical) — patch PD primary to `S5 Observability & Evaluation` |
 | `gsd` | framework | framework | (match) | (match) | OK | KEEP-BOTH |
 | `langgraph` | framework | framework | (match) | (match) | OK | KEEP-BOTH |
-| `routa` | agent | agent | `L5 Orchestration` (sec: `L6, L4, L3, L2, L1, L7`) | `L4 Orchestration & Decisioning` (sec: `L7, L6, L5, L3, L2, L1`) | PRIMARY + SECONDARY mismatch | **MERGE-TO-PRODUCTS_JSON** (canonical) — patch PD primary to `L4 Orchestration & Decisioning` and secondary to `L7, L6, L5, L3, L2, L1` |
+| `routa` | agent | agent | `S5 Orchestration` (sec: `S6, S4, S3, S2, S1, S7`) | `S4 Orchestration & Decisioning` (sec: `S7, S6, S5, S3, S2, S1`) | PRIMARY + SECONDARY mismatch | **MERGE-TO-PRODUCTS_JSON** (canonical) — patch PD primary to `S4 Orchestration & Decisioning` and secondary to `S7, S6, S5, S3, S2, S1` |
 
-> Note on `routa`: explorer.html also references `L5 orchestration` inside the `CONFIDENCE_META` rationale `desc` field (line ~16352). That is human-readable prose, not a structured stratum field, so it is **out of scope** for Phase 2b — flag for a follow-up copy fix.
+> Note on `routa`: explorer.html also references `S5 orchestration` inside the `CONFIDENCE_META` rationale `desc` field (line ~16352). That is human-readable prose, not a structured stratum field, so it is **out of scope** for Phase 2b — flag for a follow-up copy fix.
 
 > Note on `cursor`: the type-vocabulary divergence is broader than this one row. PD uses `product / framework / tool / agent / skill / mcp / workflow / model`. PJ adds `platform / infrastructure / model-api`. A workspace-wide vocabulary harmonization is **deferred to a separate PRD** (see "Deferred items" below).
 
@@ -129,9 +129,9 @@ These rows live in the static data file but are invisible to users today. Every 
 
 | # | File | Change | Risk |
 |---|---|---|---|
-| 1 | `explorer.html` | `aosnaming.primary` → `L6 Governance & Trust` | low (string in inline JS) |
-| 2 | `explorer.html` | `fallow.primary` → `L5 Observability & Evaluation` | low |
-| 3 | `explorer.html` | `routa.primary` → `L4 Orchestration & Decisioning`; `secondary` → `L7, L6, L5, L3, L2, L1` | low |
+| 1 | `explorer.html` | `aosnaming.primary` → `S6 Governance & Trust` | low (string in inline JS) |
+| 2 | `explorer.html` | `fallow.primary` → `S5 Observability & Evaluation` | low |
+| 3 | `explorer.html` | `routa.primary` → `S4 Orchestration & Decisioning`; `secondary` → `S7, S6, S5, S3, S2, S1` | low |
 | 4 | `data/products.json` | `cursor.type` → `product` | low (single field) |
 | 5 | `scripts/check-catalog-drift.py` | NEW — guardrail script that fails if shared IDs disagree on `type`/`primary`/`secondary` | additive |
 
@@ -174,15 +174,15 @@ The new `check-catalog-drift.py` surfaced three additional `secondary` disagreem
 
 | ID | PRODUCT_DETAILS (live) | products.json | Notes |
 | --- | --- | --- | --- |
-| `bmad` | `L7, L2` | `L3` | Genuine classification debate — does BMAD touch UX (L7) + Knowledge (L2), or Tooling (L3)? |
-| `cursor` | `L3` | `L4, L3` | Whether Cursor's agent mode warrants L4 Orchestration secondary is a real product call |
-| `gsd` | `L2` | `L3` | L2 Knowledge vs L3 Tooling — needs SME |
+| `bmad` | `S7, S2` | `S3` | Genuine classification debate — does BMAD touch UX (S7) + Knowledge (S2), or Tooling (S3)? |
+| `cursor` | `S3` | `S4, S3` | Whether Cursor's agent mode warrants S4 Orchestration secondary is a real product call |
+| `gsd` | `S2` | `S3` | S2 Knowledge vs S3 Tooling — needs SME |
 
 These are deferred — they require taxonomy SME review, not a clerical merge. They will keep `check-catalog-drift.py` red until resolved (which is the desired behavior; the guardrail is doing its job).
 
 ### 5f. `routa` rationale text in `CONFIDENCE_META`
 
-`explorer.html` line ~16352 has `desc: "L5 orchestration via lane state machine…"`. Stratum number is now wrong (canonical = L4). Out of scope for Phase 2b (prose, not a structured field); flag for a copy-fix commit.
+`explorer.html` line ~16352 has `desc: "S5 orchestration via lane state machine…"`. Stratum number is now wrong (canonical = S4). Out of scope for Phase 2b (prose, not a structured field); flag for a copy-fix commit.
 
 ---
 

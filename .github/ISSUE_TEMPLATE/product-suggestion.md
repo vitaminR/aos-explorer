@@ -15,13 +15,13 @@ assignees: ''
 ## Strata Coverage
 Which strata does this product cover? (Check all that apply)
 
-- [ ] L7 — Experience & Intent
-- [ ] L6 — Governance & Trust
-- [ ] L5 — Observability & Evaluation
-- [ ] L4 — Orchestration & Decisioning
-- [ ] L3 — Execution & Interfaces
-- [ ] L2 — Knowledge & Memory
-- [ ] L1 — Models & Infrastructure
+- [ ] S7 — Experience & Intent
+- [ ] S6 — Governance & Trust
+- [ ] S5 — Observability & Evaluation
+- [ ] S4 — Orchestration & Decisioning
+- [ ] S3 — Execution & Interfaces
+- [ ] S2 — Knowledge & Memory
+- [ ] S1 — Models & Infrastructure
 
 ## Deployment Type
 - [ ] Cloud

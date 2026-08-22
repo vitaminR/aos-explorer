@@ -25,7 +25,7 @@ test.describe("Right rail stratum filtering", () => {
     await page.locator("#l7").click();
 
     await expect(page.locator("#rightRailHeader")).toContainText(
-      /L7 Experience/i,
+      /S7 Experience/i,
     );
 
     const counts = await page.evaluate(() => ({
@@ -48,7 +48,7 @@ test.describe("Right rail stratum filtering", () => {
 
     await page.locator("#l7").click();
     await expect(page.locator("#rightRailHeader")).toContainText(
-      /L7 Experience/i,
+      /S7 Experience/i,
     );
 
     await page.evaluate(() => (window as any).collapseAll());
@@ -77,7 +77,7 @@ test.describe("Right rail stratum filtering", () => {
           const bg =
             (dot.getAttribute("style") || "") +
             (dot as HTMLElement).style.cssText;
-          if (bg.includes("--l7") || bg.includes("var(--l7)")) {
+          if (bg.includes("--s7") || bg.includes("var(--s7)")) {
             dot.classList.remove("active");
           }
         });
@@ -88,7 +88,7 @@ test.describe("Right rail stratum filtering", () => {
 
     const emptyState = page.locator("#rightRailEmptyState");
     await expect(emptyState).toBeVisible();
-    await expect(emptyState).toContainText(/L7 Experience/i);
+    await expect(emptyState).toContainText(/S7 Experience/i);
     await expect(emptyState).toContainText(/Show all featured products/i);
 
     const visible = await page.evaluate(

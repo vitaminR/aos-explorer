@@ -47,15 +47,15 @@
   <line x1="26" y1="122" x2="174" y2="122"
         stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
 
-  <!-- ── 7 Strata Bars  (L7 Interface → L1 Compute) ── -->
+  <!-- ── 7 Strata Bars  (S7 Interface → S1 Compute) ── -->
   <!-- step = 10px  (5px bar + 5px gap)                  -->
   <!-- last bar ends at y = 128 + 6×10 + 5 = 193         -->
 
-  <rect x="26" y="128" width="148" height="5" rx="2.5" fill="#c75a00"/><!-- L7 Interface  -->
-  <rect x="26" y="138" width="148" height="5" rx="2.5" fill="#e15759"/><!-- L6 Reasoning  -->
-  <rect x="26" y="148" width="148" height="5" rx="2.5" fill="#b07aa1"/><!-- L5 Interaction -->
-  <rect x="26" y="158" width="148" height="5" rx="2.5" fill="#59a14f"/><!-- L4 Workflow    -->
-  <rect x="26" y="168" width="148" height="5" rx="2.5" fill="#edc948"/><!-- L3 Memory      -->
-  <rect x="26" y="178" width="148" height="5" rx="2.5" fill="#22d3ee"/><!-- L2 Model       -->
-  <rect x="26" y="188" width="148" height="5" rx="2.5" fill="#4f6bc2"/><!-- L1 Compute     -->
+  <rect x="26" y="128" width="148" height="5" rx="2.5" fill="#c75a00"/><!-- S7 Interface  -->
+  <rect x="26" y="138" width="148" height="5" rx="2.5" fill="#e15759"/><!-- S6 Reasoning  -->
+  <rect x="26" y="148" width="148" height="5" rx="2.5" fill="#b07aa1"/><!-- S5 Interaction -->
+  <rect x="26" y="158" width="148" height="5" rx="2.5" fill="#59a14f"/><!-- S4 Workflow    -->
+  <rect x="26" y="168" width="148" height="5" rx="2.5" fill="#edc948"/><!-- S3 Memory      -->
+  <rect x="26" y="178" width="148" height="5" rx="2.5" fill="#22d3ee"/><!-- S2 Model       -->
+  <rect x="26" y="188" width="148" height="5" rx="2.5" fill="#4f6bc2"/><!-- S1 Compute     -->
 </svg>

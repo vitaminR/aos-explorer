@@ -8,13 +8,13 @@ You are a visual design assistant creating ADHD-friendly technical infographics 
 
 DESIGN RULES:
 - Dark background (#0a0a0f) with high-contrast text
-- Use the layer accent color as the primary highlight
+- Use the stratum accent color as the primary highlight
 - Clean, minimal layout - no clutter
 - Large readable typography (minimum 14pt equivalent)
 - Each primitive shown as a distinct card/node with its name + 1-line description
 - Show relationships between primitives with arrows or connectors if applicable
 - Include a small icon or visual metaphor for each primitive
-- Include the layer badge (e.g. "L4 · Orchestration") in the top-left corner
+- Include the stratum badge (e.g. "S4 · Orchestration") in the top-left corner
 - Parent construct name is the large title
 - Aspect ratio: 16:9 (landscape)
 - Style: flat design, subtle gradients, no 3D, modern SaaS dashboard aesthetic
@@ -25,13 +25,13 @@ FORMAT: Create a single infographic image. Do NOT return markdown or text descri
 ─────────────────────────────────────────────────────────
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 1/5  —  #06  L4 | State Checkpoint
+│  PROMPT 1/5  —  #06  S4 | State Checkpoint
 │  Save as: state-checkpoint.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "State Checkpoint" construct from the {a}OS reference model.
 
-LAYER: L4 — Orchestration
+STRATUM: S4 — Orchestration
 ACCENT COLOR: #34d399
 CONSTRUCT: State Checkpoint
 PRIMITIVE COUNT: 4
@@ -44,7 +44,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "State Checkpoint" in large text, colored #34d399
-- Layer badge: "L4 · Orchestration" top-left
+- Stratum badge: "S4 · Orchestration" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #34d399 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -54,13 +54,13 @@ VISUAL GUIDANCE:
 ═══  NEXT PROMPT  (paste after saving the image above)  ═══
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 2/5  —  #07  L4 | Dependency Graph
+│  PROMPT 2/5  —  #07  S4 | Dependency Graph
 │  Save as: dependency-graph.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Dependency Graph" construct from the {a}OS reference model.
 
-LAYER: L4 — Orchestration
+STRATUM: S4 — Orchestration
 ACCENT COLOR: #34d399
 CONSTRUCT: Dependency Graph
 PRIMITIVE COUNT: 4
@@ -73,7 +73,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Dependency Graph" in large text, colored #34d399
-- Layer badge: "L4 · Orchestration" top-left
+- Stratum badge: "S4 · Orchestration" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #34d399 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -83,13 +83,13 @@ VISUAL GUIDANCE:
 ═══  NEXT PROMPT  (paste after saving the image above)  ═══
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 3/5  —  #08  L4 | Timeout Policy
+│  PROMPT 3/5  —  #08  S4 | Timeout Policy
 │  Save as: timeout-policy.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Timeout Policy" construct from the {a}OS reference model.
 
-LAYER: L4 — Orchestration
+STRATUM: S4 — Orchestration
 ACCENT COLOR: #34d399
 CONSTRUCT: Timeout Policy
 PRIMITIVE COUNT: 4
@@ -102,7 +102,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Timeout Policy" in large text, colored #34d399
-- Layer badge: "L4 · Orchestration" top-left
+- Stratum badge: "S4 · Orchestration" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #34d399 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -112,13 +112,13 @@ VISUAL GUIDANCE:
 ═══  NEXT PROMPT  (paste after saving the image above)  ═══
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 4/5  —  #09  L4 | Agent Roster
+│  PROMPT 4/5  —  #09  S4 | Agent Roster
 │  Save as: agent-roster.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Agent Roster" construct from the {a}OS reference model.
 
-LAYER: L4 — Orchestration
+STRATUM: S4 — Orchestration
 ACCENT COLOR: #34d399
 CONSTRUCT: Agent Roster
 PRIMITIVE COUNT: 4
@@ -131,7 +131,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Agent Roster" in large text, colored #34d399
-- Layer badge: "L4 · Orchestration" top-left
+- Stratum badge: "S4 · Orchestration" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #34d399 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
@@ -141,13 +141,13 @@ VISUAL GUIDANCE:
 ═══  NEXT PROMPT  (paste after saving the image above)  ═══
 
 ┌─────────────────────────────────────────────────────┐
-│  PROMPT 5/5  —  #10  L4 | Task Assignment
+│  PROMPT 5/5  —  #10  S4 | Task Assignment
 │  Save as: task-assignment.png
 └─────────────────────────────────────────────────────┘
 
 Create an infographic for the "Task Assignment" construct from the {a}OS reference model.
 
-LAYER: L4 — Orchestration
+STRATUM: S4 — Orchestration
 ACCENT COLOR: #34d399
 CONSTRUCT: Task Assignment
 PRIMITIVE COUNT: 4
@@ -160,7 +160,7 @@ PRIMITIVES (show each as a card/node):
 
 VISUAL GUIDANCE:
 - Title: "Task Assignment" in large text, colored #34d399
-- Layer badge: "L4 · Orchestration" top-left
+- Stratum badge: "S4 · Orchestration" top-left
 - Show all 4 primitives as connected cards on dark (#0a0a0f) background
 - Use #34d399 accent for borders, connectors, and highlights
 - Each card: primitive name (bold) + 1-line description (smaller)
