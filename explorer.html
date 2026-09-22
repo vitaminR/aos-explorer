@@ -14487,6 +14487,20 @@
           rationale:
             "CNCF-graduated general-purpose policy engine using the Rego declarative language to decouple policy decisions from application code. Applied to agentic systems as a guardrail layer: evaluating tool-call requests, API responses, and agent actions against externally-defined policy before execution, giving auditable allow/deny decisions independent of the agent's own reasoning. Widely used in Kubernetes admission control and API gateways, now extending into AI agent authorization.",
         },
+        foundryagents: {
+          name: "Microsoft Foundry Agent Service",
+          type: "product",
+          vendor: "Microsoft",
+          deployment: "Cloud",
+          license: "Proprietary",
+          primary: "S4 Orchestration & Decisioning",
+          secondary: "S3 Tool Integration, S6",
+          axisRoles: "Orchestration: Primary · Tool Integration: Secondary",
+          confidence: 0.85,
+          lastVerified: "2026-09-22",
+          rationale:
+            "Microsoft's managed agent-hosting layer inside Azure AI Foundry (rebranded Microsoft Foundry in Jan 2026): first-class threads, runs, and messages for durable multi-turn agent state, tool-calling against Foundry connectors and custom functions, and enterprise governance (identity, network isolation, content filtering) wired in by default. No additional service charge to create or run agents; billing is model-token and connected-tool usage. Distinct from the broader Azure AI Foundry platform entry (model hosting/inference, S1) already cataloged: this entry is specifically the agent-orchestration sub-service layered on top of it.",
+        },
         // ===== MCP SERVER ENTITIES =====
         mcpgithub: {
           name: "GitHub MCP",
@@ -32608,6 +32622,7 @@
       const PRODUCT_STRATA_MAP = {
         mcpprotocol: ["l3", "l6"],
         opa: ["l6", "l3"],
+        foundryagents: ["l4", "l3", "l6"],
         af: ["l1", "l2", "l3", "l4"],
         kotana: ["l4", "l5", "l6", "l7"],
         paperclip: ["l7", "l3", "l4"],
