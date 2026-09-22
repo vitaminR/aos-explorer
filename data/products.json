@@ -1303,6 +1303,29 @@
       "changeRisk": "low",
       "sourceQuality": "medium",
       "status": "active"
+    },
+    {
+      "id": "opa",
+      "name": "Open Policy Agent (OPA)",
+      "type": "framework",
+      "vendor": "CNCF",
+      "deployment": "Open Source",
+      "license": "Apache-2.0",
+      "primary": "S6",
+      "secondary": "S3 Tool Integration",
+      "axisRoles": "Governance: Primary · Tool Integration",
+      "confidence": 0.88,
+      "rationale": "CNCF-graduated general-purpose policy engine using the Rego declarative language to decouple policy decisions from application code. Applied to agentic systems as a guardrail layer: evaluating tool-call requests, API responses, and agent actions against externally-defined policy before execution, giving auditable allow/deny decisions independent of the agent's own reasoning. Widely used in Kubernetes admission control and API gateways, now extending into AI agent authorization.",
+      "conceptMappings": [],
+      "evidenceIds": [],
+      "freshnessTier": "B",
+      "lastReviewed": "2026-09-21",
+      "lastVerified": "2026-09-21",
+      "updatePriority": 0.4,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "low",
+      "sourceQuality": "medium",
+      "status": "active"
     }
   ]
 }

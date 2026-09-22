@@ -14488,6 +14488,20 @@
           rationale:
             "Open protocol (Anthropic, Nov 2024) standardizing how AI applications connect to external tools, data sources, and context providers over a client-server JSON-RPC interface. Adopted beyond its originator, including OpenAI and Microsoft integrations, making it a de facto industry standard for agent-tool wiring rather than a single vendor's offering. Individual MCP servers (GitHub MCP, Playwright MCP, etc.) implement this protocol; it is the shared substrate underneath them.",
         },
+        opa: {
+          name: "Open Policy Agent (OPA)",
+          type: "framework",
+          vendor: "CNCF",
+          deployment: "Open Source",
+          license: "Apache-2.0",
+          primary: "S6",
+          secondary: "S3 Tool Integration",
+          axisRoles: "Governance: Primary · Tool Integration",
+          confidence: 0.88,
+          lastVerified: "2026-09-21",
+          rationale:
+            "CNCF-graduated general-purpose policy engine using the Rego declarative language to decouple policy decisions from application code. Applied to agentic systems as a guardrail layer: evaluating tool-call requests, API responses, and agent actions against externally-defined policy before execution, giving auditable allow/deny decisions independent of the agent's own reasoning. Widely used in Kubernetes admission control and API gateways, now extending into AI agent authorization.",
+        },
         // ===== MCP SERVER ENTITIES =====
         mcpgithub: {
           name: "GitHub MCP",
@@ -32608,6 +32622,7 @@
       // ===== PRODUCT LENS (strata highlight per product) =====
       const PRODUCT_STRATA_MAP = {
         mcpprotocol: ["l3", "l6"],
+        opa: ["l6", "l3"],
         af: ["l1", "l2", "l3", "l4"],
         kotana: ["l4", "l5", "l6", "l7"],
         paperclip: ["l7", "l3", "l4"],
