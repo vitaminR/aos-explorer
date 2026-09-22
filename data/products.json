@@ -1280,6 +1280,29 @@
       "changeRisk": "low",
       "sourceQuality": "medium",
       "status": "active"
+    },
+    {
+      "id": "mcpprotocol",
+      "name": "MCP (Model Context Protocol)",
+      "type": "framework",
+      "vendor": "Anthropic",
+      "deployment": "Open Source",
+      "license": "MIT",
+      "primary": "S3 Tool Integration",
+      "secondary": "S6",
+      "axisRoles": "Tool Integration: Primary · Governance",
+      "confidence": 0.9,
+      "rationale": "Open protocol (Anthropic, Nov 2024) standardizing how AI applications connect to external tools, data sources, and context providers over a client-server JSON-RPC interface. Adopted beyond its originator, including OpenAI and Microsoft integrations, making it a de facto industry standard for agent-tool wiring rather than a single vendor's offering. Individual MCP servers (GitHub MCP, Playwright MCP, etc.) implement this protocol; it is the shared substrate underneath them.",
+      "conceptMappings": [],
+      "evidenceIds": [],
+      "freshnessTier": "B",
+      "lastReviewed": "2026-09-21",
+      "lastVerified": "2026-09-21",
+      "updatePriority": 0.4,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "low",
+      "sourceQuality": "medium",
+      "status": "active"
     }
   ]
 }

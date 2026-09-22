@@ -14474,6 +14474,20 @@
           rationale:
             "Database optimization skill. Query analysis, index recommendations, schema normalization, and migration planning for PostgreSQL/SQLite.",
         },
+        mcpprotocol: {
+          name: "MCP (Model Context Protocol)",
+          type: "framework",
+          vendor: "Anthropic",
+          deployment: "Open Source",
+          license: "MIT",
+          primary: "S3 Tool Integration",
+          secondary: "S6",
+          axisRoles: "Tool Integration: Primary · Governance",
+          confidence: 0.9,
+          lastVerified: "2026-09-21",
+          rationale:
+            "Open protocol (Anthropic, Nov 2024) standardizing how AI applications connect to external tools, data sources, and context providers over a client-server JSON-RPC interface. Adopted beyond its originator, including OpenAI and Microsoft integrations, making it a de facto industry standard for agent-tool wiring rather than a single vendor's offering. Individual MCP servers (GitHub MCP, Playwright MCP, etc.) implement this protocol; it is the shared substrate underneath them.",
+        },
         // ===== MCP SERVER ENTITIES =====
         mcpgithub: {
           name: "GitHub MCP",
@@ -32593,6 +32607,7 @@
 
       // ===== PRODUCT LENS (strata highlight per product) =====
       const PRODUCT_STRATA_MAP = {
+        mcpprotocol: ["l3", "l6"],
         af: ["l1", "l2", "l3", "l4"],
         kotana: ["l4", "l5", "l6", "l7"],
         paperclip: ["l7", "l3", "l4"],
