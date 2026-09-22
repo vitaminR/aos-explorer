@@ -14501,6 +14501,20 @@
           rationale:
             "Microsoft's managed agent-hosting layer inside Azure AI Foundry (rebranded Microsoft Foundry in Jan 2026): first-class threads, runs, and messages for durable multi-turn agent state, tool-calling against Foundry connectors and custom functions, and enterprise governance (identity, network isolation, content filtering) wired in by default. No additional service charge to create or run agents; billing is model-token and connected-tool usage. Distinct from the broader Azure AI Foundry platform entry (model hosting/inference, S1) already cataloged: this entry is specifically the agent-orchestration sub-service layered on top of it.",
         },
+        msagentframework: {
+          name: "Microsoft Agent Framework",
+          type: "product",
+          vendor: "Microsoft",
+          deployment: "Open Source",
+          license: "MIT",
+          primary: "S4 Orchestration & Decisioning",
+          secondary: "S3 Tool Integration, S2",
+          axisRoles: "Orchestration: Primary · Tool Integration: Secondary",
+          confidence: 0.85,
+          lastVerified: "2026-09-22",
+          rationale:
+            "Open-source SDK (.NET and Python) that merges AutoGen's multi-agent orchestration patterns with Semantic Kernel's enterprise plumbing (state, telemetry, type-safe plugins) into a single successor framework. Provides graph-based workflow orchestration, built-in MCP and A2A protocol support for tool/agent interop, and OpenTelemetry instrumentation out of the box. Distinct from the cataloged Microsoft Foundry Agent Service (managed cloud hosting layer): this entry is the self-hosted/embeddable code-level framework used to author the agents, which can then optionally deploy to Foundry Agent Service.",
+        },
         // ===== MCP SERVER ENTITIES =====
         mcpgithub: {
           name: "GitHub MCP",
@@ -32623,6 +32637,7 @@
         mcpprotocol: ["l3", "l6"],
         opa: ["l6", "l3"],
         foundryagents: ["l4", "l3", "l6"],
+        msagentframework: ["l4", "l3", "l2"],
         af: ["l1", "l2", "l3", "l4"],
         kotana: ["l4", "l5", "l6", "l7"],
         paperclip: ["l7", "l3", "l4"],

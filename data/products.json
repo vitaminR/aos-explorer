@@ -1349,6 +1349,29 @@
       "changeRisk": "low",
       "sourceQuality": "medium",
       "status": "active"
+    },
+    {
+      "id": "msagentframework",
+      "name": "Microsoft Agent Framework",
+      "type": "product",
+      "vendor": "Microsoft",
+      "deployment": "Open Source",
+      "license": "MIT",
+      "primary": "S4 Orchestration & Decisioning",
+      "secondary": "S3 Tool Integration, S2",
+      "axisRoles": "Orchestration: Primary · Tool Integration: Secondary",
+      "confidence": 0.85,
+      "rationale": "Open-source SDK (.NET and Python) that merges AutoGen's multi-agent orchestration patterns with Semantic Kernel's enterprise plumbing (state, telemetry, type-safe plugins) into a single successor framework. Provides graph-based workflow orchestration, built-in MCP and A2A protocol support for tool/agent interop, and OpenTelemetry instrumentation out of the box. Distinct from the cataloged Microsoft Foundry Agent Service (managed cloud hosting layer): this entry is the self-hosted/embeddable code-level framework used to author the agents, which can then optionally deploy to Foundry Agent Service.",
+      "conceptMappings": [],
+      "evidenceIds": [],
+      "freshnessTier": "B",
+      "lastReviewed": "2026-09-22",
+      "lastVerified": "2026-09-22",
+      "updatePriority": 0.4,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "low",
+      "sourceQuality": "medium",
+      "status": "active"
     }
   ]
 }
