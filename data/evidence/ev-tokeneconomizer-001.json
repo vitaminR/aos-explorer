@@ -1,0 +1,43 @@
+{
+  "$comment": "Tier C evidence packet for TokenEconomizer, captured 2026-11-08 from the public repository (commit 4cbc639, v0.1.0 tag 2026-10-26), the arXiv abstract and the project page.",
+  "id": "ev-tokeneconomizer-001",
+  "productId": "tokeneconomizer",
+  "type": "repo-analysis",
+  "title": "TokenEconomizer repository, paper and plugin documentation",
+  "summary": "Apache 2.0 Microsoft repository (5.2k stars, 317 forks, 8 open issues on 2026-11-08) with a stdlib-only Python package and a hook-based plugin for Claude Code, Codex, Copilot CLI and Pi. Paper arXiv:2610.22732 (submitted 2026-10-15) reports 18.4 to 30.9 percent lower mean cost on 277 SWE-Bench tasks across five agent and model pairs, Pass@1 up in 4 of 5, and 6.4 to 21.2 percent on Web-Bench and security audit workloads. Supported versions are narrow (Claude Code 2.1.300 to 2.1.310, Codex 0.153.1 to 0.164.0). Defaults call a model only for the loop guard's judge; micro-skills is off by default.",
+  "sourceUrl": "https://github.com/microsoft/TokenEconomizer",
+  "sourceType": "github-repo",
+  "sourceQuality": "high",
+  "trustLevel": "verified-manual",
+  "capturedDate": "2026-11-08",
+  "expiresDate": "2027-02-08",
+  "confidence": 0.82,
+  "claims": [
+    {
+      "claim": "18.4 to 30.9 percent lower mean token cost on SWE-Bench across five agent and model combinations, with comparable Pass@1 (authors' own measurement, not independently reproduced).",
+      "evidence": "https://arxiv.org/abs/2610.22732",
+      "confidence": 0.7
+    },
+    {
+      "claim": "Three mechanisms: micro-skills injection, evidence-based tool pruning, and a failure-loop guard, all driven from finished sessions in the same repository.",
+      "evidence": "https://github.com/microsoft/TokenEconomizer/blob/main/README.md",
+      "confidence": 0.95
+    },
+    {
+      "claim": "The plugin runs through each agent's own hooks and makes model calls only through the agent's own CLI (haiku by default on Claude Code); it needs no API key of its own.",
+      "evidence": "https://github.com/microsoft/TokenEconomizer/blob/main/docs/PLUGIN.md",
+      "confidence": 0.95
+    }
+  ],
+  "tags": [
+    "cost-control",
+    "token-economy",
+    "tool-pruning",
+    "loop-guard",
+    "micro-skills",
+    "hooks"
+  ],
+  "status": "active",
+  "lastReviewed": "2026-11-08",
+  "reviewedBy": "manual"
+}

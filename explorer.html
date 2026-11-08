@@ -12946,6 +12946,42 @@
 
         <div
           class="product-card"
+          data-name="TokenEconomizer"
+          data-vendor="Microsoft Research"
+          data-deployment="Local"
+          data-license="Apache 2.0"
+          data-type="tool"
+          onclick="selectProduct('tokeneconomizer')"
+          oncontextmenu="showCtxMenu(event, 'tokeneconomizer')"
+        >
+          <button
+            class="add-compare-btn"
+            onclick="
+              event.stopPropagation();
+              addToCompare(this, 'TokenEconomizer');
+            "
+          >
+            +
+          </button>
+          <div class="name">TokenEconomizer</div>
+          <div class="vendor">
+            Microsoft Research &middot; Local &middot; Apache 2.0
+          </div>
+          <div class="strata-dots">
+            <div class="strata-dot" style="background: var(--s7)"></div>
+            <div class="strata-dot active" style="background: var(--s6)"></div>
+            <div class="strata-dot" style="background: var(--s5)"></div>
+            <div class="strata-dot active" style="background: var(--s4)"></div>
+            <div class="strata-dot active" style="background: var(--s3)"></div>
+            <div class="strata-dot active" style="background: var(--s2)"></div>
+            <div class="strata-dot" style="background: var(--s1)"></div>
+          </div>
+          <div class="spans-label">Spans 4 strata &middot; Primary: S6</div>
+          <span class="confidence medium">0.82</span>
+        </div>
+
+        <div
+          class="product-card"
           data-name="Hermes Agent"
           data-vendor="NousResearch"
           data-deployment="Self-hosted / Cloud"
@@ -14473,6 +14509,20 @@
           lastVerified: "2026-04-06",
           rationale:
             "Database optimization skill. Query analysis, index recommendations, schema normalization, and migration planning for PostgreSQL/SQLite.",
+        },
+        tokeneconomizer: {
+          name: "TokenEconomizer",
+          type: "tool",
+          vendor: "Microsoft Research",
+          deployment: "Local",
+          license: "Open Source",
+          primary: "S6 Governance & Trust",
+          secondary: "S4, S3, S2",
+          axisRoles: "Governance: Strong · Observability: Medium",
+          confidence: 0.82,
+          lastVerified: "2026-11-08",
+          rationale:
+            "Research plugin from Microsoft Research, Microsoft Security and UC Berkeley that sits outside a coding agent (Claude Code, Codex, GitHub Copilot CLI, Pi) and lowers its token spend without touching the model or the agent's code. It learns from a repository's finished sessions and acts through the agent's own lifecycle hooks: micro-skills inject short environment facts at session start, tool pruning deny-lists tools the repository's sessions never use, and a loop guard redirects a turn stuck in a failing loop. The paper reports 18.4 to 30.9 percent lower mean cost on SWE-Bench across five agent and model pairs with Pass@1 within 3 points; Apache 2.0, stdlib-only Python, v0.1.0 released October 2026, so maturity is early and savings are workload dependent.",
         },
         // ===== MCP SERVER ENTITIES =====
         mcpgithub: {
@@ -32593,6 +32643,7 @@
 
       // ===== PRODUCT LENS (strata highlight per product) =====
       const PRODUCT_STRATA_MAP = {
+        tokeneconomizer: ["l6", "l4", "l3", "l2"],
         af: ["l1", "l2", "l3", "l4"],
         kotana: ["l4", "l5", "l6", "l7"],
         paperclip: ["l7", "l3", "l4"],

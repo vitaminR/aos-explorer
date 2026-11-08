@@ -1280,6 +1280,56 @@
       "changeRisk": "low",
       "sourceQuality": "medium",
       "status": "active"
+    },
+    {
+      "id": "tokeneconomizer",
+      "name": "TokenEconomizer",
+      "type": "tool",
+      "vendor": "Microsoft Research",
+      "deployment": "Local",
+      "license": "Open Source",
+      "primary": "S6 Governance & Trust",
+      "secondary": "S4, S3, S2",
+      "axisRoles": "Governance: Strong · Observability: Medium",
+      "confidence": 0.82,
+      "rationale": "Research plugin from Microsoft Research, Microsoft Security and UC Berkeley that sits outside a coding agent (Claude Code, Codex, GitHub Copilot CLI, Pi) and lowers its token spend without touching the model or the agent's code. It learns from a repository's finished sessions and acts through the agent's own lifecycle hooks: micro-skills inject short environment facts at session start, tool pruning deny-lists tools the repository's sessions never use, and a loop guard redirects a turn stuck in a failing loop. The paper reports 18.4 to 30.9 percent lower mean cost on SWE-Bench across five agent and model pairs with Pass@1 within 3 points; Apache 2.0, stdlib-only Python, v0.1.0 released October 2026, so maturity is early and savings are workload dependent.",
+      "conceptMappings": [
+        {
+          "conceptSlug": "hooks",
+          "role": "primary",
+          "rank": 1,
+          "why": "Implemented entirely as agent lifecycle hooks (SessionStart, UserPromptSubmit, PostToolUse, Stop, SessionEnd); nothing in the model or the agent's code changes."
+        },
+        {
+          "conceptSlug": "post-turn-capture",
+          "role": "secondary",
+          "rank": 2,
+          "why": "Each finished session is folded, detached after SessionEnd, into learned environment facts and per-tool usage evidence."
+        },
+        {
+          "conceptSlug": "guardrails",
+          "role": "secondary",
+          "rank": 3,
+          "why": "The loop guard inspects every tool call against a learned turn envelope and redirects a turn its judge finds stuck."
+        },
+        {
+          "conceptSlug": "governance",
+          "role": "secondary",
+          "rank": 4,
+          "why": "Budget control for agent spend: a local ledger prices every session and the plugin's own overhead, and tool pruning writes only deny rules it can take back."
+        }
+      ],
+      "evidenceIds": [
+        "ev-tokeneconomizer-001"
+      ],
+      "freshnessTier": "B",
+      "lastReviewed": "2026-11-08",
+      "lastVerified": "2026-11-08",
+      "updatePriority": 0.5,
+      "reviewPolicy": "scheduled",
+      "changeRisk": "medium",
+      "sourceQuality": "high",
+      "status": "active"
     }
   ]
 }
